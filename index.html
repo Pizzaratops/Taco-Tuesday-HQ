@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -44,7 +45,7 @@
   .team-card:hover::before { opacity: 1; }
   .team-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; margin-bottom: 12px; }
   .team-name { font-weight: 700; font-size: 15px; margin-bottom: 3px; }
-  .team-owner { color: var(--muted); font-size: 12px; }
+  .team-owner { color: var(--muted); font-size: 12px; margin-top: 2px; }
   .team-record { font-size: 12px; color: var(--green); margin-top: 8px; font-weight: 600; }
   .draftboard-btn {
     background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none;
@@ -131,22 +132,22 @@
 
 <script>
 const TEAMS = [
-  { id:1,  name:"Bear Down",             owner:"",  record:"112-41-0", color:"#6c63ff" },
-  { id:2,  name:"Seagulls",              owner:"",  record:"99-53-1",  color:"#29b6f6" },
-  { id:3,  name:"Neukoelln Hustlers",    owner:"",  record:"95-57-1",  color:"#ff6584" },
-  { id:4,  name:"Leaveland Cavaliers",   owner:"",  record:"87-65-1",  color:"#4caf81" },
-  { id:5,  name:"Anadolu Ballers",       owner:"",  record:"82-68-3",  color:"#f5c842" },
-  { id:6,  name:"3-POINT MAFIA",         owner:"",  record:"77-74-2",  color:"#e040fb" },
-  { id:7,  name:"Always Money In Ban",   owner:"",  record:"70-75-8",  color:"#ff9800" },
-  { id:8,  name:"Kawhi So Serious",      owner:"",  record:"73-78-2",  color:"#ef5350" },
-  { id:9,  name:"Cooking Show",          owner:"",  record:"65-85-3",  color:"#26c6da" },
-  { id:10, name:"S-Town Grizzlies",      owner:"",  record:"62-89-2",  color:"#66bb6a" },
-  { id:11, name:"Double Dribble Trouble",owner:"",  record:"45-107-1", color:"#ffa726" },
-  { id:12, name:"Vancouver Curry-Wurst", owner:"",  record:"39-114-0", color:"#78909c" },
+  { id:1,  name:"Bear Down",              owner:"Uggi",                    record:"112-41-0", color:"#6c63ff" },
+  { id:2,  name:"Seagulls",               owner:"Kong Power",              record:"99-53-1",  color:"#29b6f6" },
+  { id:3,  name:"Neukoelln Hustlers",     owner:"Timo Xtremo",             record:"95-57-1",  color:"#ff6584" },
+  { id:4,  name:"Leaveland Cavaliers",    owner:"Sven",                    record:"87-65-1",  color:"#4caf81" },
+  { id:5,  name:"Anadolu Ballers",        owner:"Murat Oguz",              record:"82-68-3",  color:"#f5c842" },
+  { id:6,  name:"3-POINT MAFIA",          owner:"Patrick & Bennet",        record:"77-74-2",  color:"#e040fb" },
+  { id:7,  name:"Always Money In Ban",    owner:"KraftPaket Knödel",       record:"70-75-8",  color:"#ff9800" },
+  { id:8,  name:"Kawhi So Serious",       owner:"Harald Peterson",         record:"73-78-2",  color:"#ef5350" },
+  { id:9,  name:"Cooking Show",           owner:"Stefan Estepham",         record:"65-85-3",  color:"#26c6da" },
+  { id:10, name:"S-Town Grizzlies",       owner:"Jan Schattschneider",     record:"62-89-2",  color:"#66bb6a" },
+  { id:11, name:"Double Dribble Trouble", owner:"Nils",                    record:"45-107-1", color:"#ffa726" },
+  { id:12, name:"Vancouver Curry-Wurst",  owner:"German Bratwurst",        record:"39-114-0", color:"#78909c" },
 ];
 
 const ROSTERS = {
-  1: [ // Bear Down
+  1: [
     { name:"LaMelo Ball",          pos:"PG", team:"CHA" },
     { name:"Reed Sheppard",        pos:"SG", team:"HOU" },
     { name:"Amen Thompson",        pos:"SF", team:"HOU" },
@@ -162,7 +163,7 @@ const ROSTERS = {
     { name:"Dyson Daniels",        pos:"SG", team:"ATL" },
     { name:"Kawhi Leonard",        pos:"SF", team:"LAC" },
   ],
-  2: [ // Seagulls
+  2: [
     { name:"Tyler Herro",          pos:"SG", team:"MIA" },
     { name:"Sion James",           pos:"SF", team:"CHA" },
     { name:"Justin Champagnie",    pos:"SF", team:"WSH" },
@@ -178,44 +179,44 @@ const ROSTERS = {
     { name:"Kyle Kuzma",           pos:"PF", team:"MIL" },
     { name:"Jaden McDaniels",      pos:"SF", team:"MIN" },
   ],
-  3: [ // Neukoelln Hustlers
-    { name:"Vit Krejci",           pos:"PG", team:"POR" },
-    { name:"Scottie Barnes",       pos:"SF", team:"TOR" },
-    { name:"Kevin Durant",         pos:"PF", team:"HOU" },
-    { name:"RJ Barrett",           pos:"SF", team:"TOR" },
-    { name:"Deandre Ayton",        pos:"C",  team:"LAL" },
-    { name:"Brandin Podziemski",   pos:"SG", team:"GS"  },
-    { name:"Kristaps Porzingis",   pos:"C",  team:"GS"  },
-    { name:"Shai Gilgeous-Alexander",pos:"PG",team:"OKC"},
-    { name:"Nikola Vucevic",       pos:"C",  team:"BOS" },
-    { name:"Pat Spencer",          pos:"PG", team:"GS"  },
-    { name:"Paul George",          pos:"SF", team:"PHI" },
-    { name:"Klay Thompson",        pos:"SG", team:"DAL" },
-    { name:"Aaron Wiggins",        pos:"SG", team:"OKC" },
-    { name:"Luguentz Dort",        pos:"SG", team:"OKC" },
+  3: [
+    { name:"Vit Krejci",              pos:"PG", team:"POR" },
+    { name:"Scottie Barnes",          pos:"SF", team:"TOR" },
+    { name:"Kevin Durant",            pos:"PF", team:"HOU" },
+    { name:"RJ Barrett",              pos:"SF", team:"TOR" },
+    { name:"Deandre Ayton",           pos:"C",  team:"LAL" },
+    { name:"Brandin Podziemski",      pos:"SG", team:"GS"  },
+    { name:"Kristaps Porzingis",      pos:"C",  team:"GS"  },
+    { name:"Shai Gilgeous-Alexander", pos:"PG", team:"OKC" },
+    { name:"Nikola Vucevic",          pos:"C",  team:"BOS" },
+    { name:"Pat Spencer",             pos:"PG", team:"GS"  },
+    { name:"Paul George",             pos:"SF", team:"PHI" },
+    { name:"Klay Thompson",           pos:"SG", team:"DAL" },
+    { name:"Aaron Wiggins",           pos:"SG", team:"OKC" },
+    { name:"Luguentz Dort",           pos:"SG", team:"OKC" },
   ],
-  4: [ // Leaveland Cavaliers
-    { name:"Jrue Holiday",         pos:"PG", team:"POR" },
-    { name:"Svi Mykhailiuk",       pos:"SG", team:"UTAH"},
-    { name:"Brandon Ingram",       pos:"SF", team:"TOR" },
-    { name:"Jerami Grant",         pos:"PF", team:"POR" },
-    { name:"Clint Capela",         pos:"C",  team:"HOU" },
-    { name:"Rui Hachimura",        pos:"PF", team:"LAL" },
-    { name:"Donovan Clingan",      pos:"C",  team:"POR" },
-    { name:"Cam Thomas",           pos:"SG", team:"MIL" },
-    { name:"Jamal Shead",          pos:"PG", team:"TOR" },
-    { name:"Gary Payton II",       pos:"SG", team:"GS"  },
-    { name:"Keegan Murray",        pos:"PF", team:"SAC" },
-    { name:"Cedric Coward",        pos:"SF", team:"MEM" },
-    { name:"Danny Wolf",           pos:"PF", team:"BKN" },
-    { name:"Yanic Konan Niederhauser",pos:"C",team:"LAC"},
-    { name:"Mouhamed Gueye",       pos:"PF", team:"ATL" },
-    { name:"Dennis Schroder",      pos:"PG", team:"CLE" },
-    { name:"Ty Jerome",            pos:"PG", team:"MEM" },
-    { name:"De'Andre Hunter",      pos:"SF", team:"SAC" },
-    { name:"Josh Hart",            pos:"SF", team:"NY"  },
+  4: [
+    { name:"Jrue Holiday",               pos:"PG", team:"POR" },
+    { name:"Svi Mykhailiuk",             pos:"SG", team:"UTAH"},
+    { name:"Brandon Ingram",             pos:"SF", team:"TOR" },
+    { name:"Jerami Grant",               pos:"PF", team:"POR" },
+    { name:"Clint Capela",               pos:"C",  team:"HOU" },
+    { name:"Rui Hachimura",              pos:"PF", team:"LAL" },
+    { name:"Donovan Clingan",            pos:"C",  team:"POR" },
+    { name:"Cam Thomas",                 pos:"SG", team:"MIL" },
+    { name:"Jamal Shead",                pos:"PG", team:"TOR" },
+    { name:"Gary Payton II",             pos:"SG", team:"GS"  },
+    { name:"Keegan Murray",              pos:"PF", team:"SAC" },
+    { name:"Cedric Coward",              pos:"SF", team:"MEM" },
+    { name:"Danny Wolf",                 pos:"PF", team:"BKN" },
+    { name:"Yanic Konan Niederhauser",   pos:"C",  team:"LAC" },
+    { name:"Mouhamed Gueye",             pos:"PF", team:"ATL" },
+    { name:"Dennis Schroder",            pos:"PG", team:"CLE" },
+    { name:"Ty Jerome",                  pos:"PG", team:"MEM" },
+    { name:"De'Andre Hunter",            pos:"SF", team:"SAC" },
+    { name:"Josh Hart",                  pos:"SF", team:"NY"  },
   ],
-  5: [ // Anadolu Ballers
+  5: [
     { name:"Dru Smith",            pos:"PG", team:"MIA" },
     { name:"Bilal Coulibaly",      pos:"SF", team:"WSH" },
     { name:"Andrew Wiggins",       pos:"SF", team:"MIA" },
@@ -236,7 +237,7 @@ const ROSTERS = {
     { name:"Terance Mann",         pos:"SG", team:"BKN" },
     { name:"AJ Green",             pos:"SG", team:"MIL" },
   ],
-  6: [ // 3-POINT MAFIA
+  6: [
     { name:"Davion Mitchell",      pos:"PG", team:"MIA" },
     { name:"Sidy Cissoko",         pos:"SG", team:"POR" },
     { name:"Toumani Camara",       pos:"PF", team:"POR" },
@@ -269,7 +270,7 @@ const ROSTERS = {
     { name:"Dillon Brooks",        pos:"SF", team:"PHX" },
     { name:"Aaron Nesmith",        pos:"SF", team:"IND" },
   ],
-  7: [ // Always Money In The Ban...
+  7: [
     { name:"Sharife Cooper",       pos:"PG", team:"WSH" },
     { name:"John Konchar",         pos:"SG", team:"UTAH"},
     { name:"Miles Bridges",        pos:"SF", team:"CHA" },
@@ -302,39 +303,39 @@ const ROSTERS = {
     { name:"Noa Essengue",         pos:"PF", team:"CHI" },
     { name:"Anthony Davis",        pos:"C",  team:"WSH" },
   ],
-  8: [ // Kawhi So Serious
-    { name:"Tre Mann",             pos:"PG", team:"CHA" },
-    { name:"De'Anthony Melton",    pos:"PG", team:"GS"  },
-    { name:"Deni Avdija",          pos:"SF", team:"POR" },
-    { name:"Bam Adebayo",          pos:"C",  team:"MIA" },
-    { name:"Xavier Tillman",       pos:"PF", team:"CHA" },
-    { name:"Aaron Holiday",        pos:"PG", team:"HOU" },
-    { name:"Tari Eason",           pos:"SF", team:"HOU" },
-    { name:"Yves Missi",           pos:"C",  team:"NO"  },
-    { name:"Luka Doncic",          pos:"PG", team:"LAL" },
-    { name:"Chet Holmgren",        pos:"C",  team:"OKC" },
-    { name:"Dylan Harper",         pos:"PG", team:"SA"  },
-    { name:"Mitchell Robinson",    pos:"C",  team:"NY"  },
-    { name:"Jose Alvarado",        pos:"PG", team:"NY"  },
-    { name:"Royce O'Neale",        pos:"SF", team:"PHX" },
-    { name:"Jaylen Wells",         pos:"SG", team:"MEM" },
-    { name:"Jaylon Tyson",         pos:"SG", team:"CLE" },
-    { name:"Jonathan Isaac",       pos:"PF", team:"ORL" },
-    { name:"Tim Hardaway Jr.",     pos:"SG", team:"DEN" },
-    { name:"Cody Martin",          pos:"SG", team:"IND" },
-    { name:"Alex Caruso",          pos:"SG", team:"OKC" },
-    { name:"Nickeil Alexander-Walker",pos:"SG",team:"ATL"},
-    { name:"Domantas Sabonis",     pos:"C",  team:"SAC" },
-    { name:"Nic Claxton",          pos:"C",  team:"BKN" },
-    { name:"Zach Edey",            pos:"C",  team:"MEM" },
-    { name:"Isaiah Hartenstein",   pos:"C",  team:"OKC" },
-    { name:"Larry Nance Jr.",      pos:"PF", team:"CLE" },
-    { name:"Isaiah Stewart",       pos:"C",  team:"DET" },
-    { name:"Devin Carter",         pos:"PG", team:"SAC" },
-    { name:"Fred VanVleet",        pos:"PG", team:"HOU" },
-    { name:"Kris Murray",          pos:"PF", team:"POR" },
+  8: [
+    { name:"Tre Mann",                    pos:"PG", team:"CHA" },
+    { name:"De'Anthony Melton",           pos:"PG", team:"GS"  },
+    { name:"Deni Avdija",                 pos:"SF", team:"POR" },
+    { name:"Bam Adebayo",                 pos:"C",  team:"MIA" },
+    { name:"Xavier Tillman",              pos:"PF", team:"CHA" },
+    { name:"Aaron Holiday",               pos:"PG", team:"HOU" },
+    { name:"Tari Eason",                  pos:"SF", team:"HOU" },
+    { name:"Yves Missi",                  pos:"C",  team:"NO"  },
+    { name:"Luka Doncic",                 pos:"PG", team:"LAL" },
+    { name:"Chet Holmgren",               pos:"C",  team:"OKC" },
+    { name:"Dylan Harper",                pos:"PG", team:"SA"  },
+    { name:"Mitchell Robinson",           pos:"C",  team:"NY"  },
+    { name:"Jose Alvarado",               pos:"PG", team:"NY"  },
+    { name:"Royce O'Neale",               pos:"SF", team:"PHX" },
+    { name:"Jaylen Wells",                pos:"SG", team:"MEM" },
+    { name:"Jaylon Tyson",                pos:"SG", team:"CLE" },
+    { name:"Jonathan Isaac",              pos:"PF", team:"ORL" },
+    { name:"Tim Hardaway Jr.",            pos:"SG", team:"DEN" },
+    { name:"Cody Martin",                 pos:"SG", team:"IND" },
+    { name:"Alex Caruso",                 pos:"SG", team:"OKC" },
+    { name:"Nickeil Alexander-Walker",    pos:"SG", team:"ATL" },
+    { name:"Domantas Sabonis",            pos:"C",  team:"SAC" },
+    { name:"Nic Claxton",                 pos:"C",  team:"BKN" },
+    { name:"Zach Edey",                   pos:"C",  team:"MEM" },
+    { name:"Isaiah Hartenstein",          pos:"C",  team:"OKC" },
+    { name:"Larry Nance Jr.",             pos:"PF", team:"CLE" },
+    { name:"Isaiah Stewart",              pos:"C",  team:"DET" },
+    { name:"Devin Carter",                pos:"PG", team:"SAC" },
+    { name:"Fred VanVleet",               pos:"PG", team:"HOU" },
+    { name:"Kris Murray",                 pos:"PF", team:"POR" },
   ],
-  9: [ // Cooking Show
+  9: [
     { name:"Kasparas Jakucionis",  pos:"PG", team:"MIA" },
     { name:"Caleb Love",           pos:"SG", team:"POR" },
     { name:"Gradey Dick",          pos:"SG", team:"TOR" },
@@ -351,7 +352,7 @@ const ROSTERS = {
     { name:"Bones Hyland",         pos:"PG", team:"MIN" },
     { name:"P.J. Washington",      pos:"PF", team:"DAL" },
     { name:"Luke Kornet",          pos:"C",  team:"SA"  },
-    { name:"Kentavious Caldwell-Pope",pos:"SG",team:"MEM"},
+    { name:"Kentavious Caldwell-Pope", pos:"SG", team:"MEM" },
     { name:"Michael Porter Jr.",   pos:"SF", team:"BKN" },
     { name:"Devin Booker",         pos:"PG", team:"PHX" },
     { name:"Cason Wallace",        pos:"SG", team:"OKC" },
@@ -367,7 +368,7 @@ const ROSTERS = {
     { name:"Obi Toppin",           pos:"PF", team:"IND" },
     { name:"Damian Lillard",       pos:"PG", team:"POR" },
   ],
-  10: [ // S-Town Grizzlies
+  10: [
     { name:"Scoot Henderson",      pos:"PG", team:"POR" },
     { name:"Ja'Kobe Walter",       pos:"SG", team:"TOR" },
     { name:"Will Riley",           pos:"SF", team:"WSH" },
@@ -400,154 +401,302 @@ const ROSTERS = {
     { name:"Franz Wagner",         pos:"SF", team:"ORL" },
     { name:"Jaden Ivey",           pos:"SG", team:"CHI" },
   ],
-  11: [ // Double Dribble Trouble
-    { name:"Isaiah Collier",       pos:"PG", team:"UTAH"},
-    { name:"Kon Knueppel",         pos:"SG", team:"CHA" },
-    { name:"Brandon Miller",       pos:"SF", team:"CHA" },
-    { name:"Sandro Mamukelashvili",pos:"PF", team:"TOR" },
-    { name:"Trayce Jackson-Davis", pos:"PF", team:"TOR" },
-    { name:"Vince Williams Jr.",   pos:"SG", team:"UTAH"},
-    { name:"Herbert Jones",        pos:"SF", team:"NO"  },
-    { name:"Kevin Porter Jr.",     pos:"SG", team:"MIL" },
-    { name:"Anthony Black",        pos:"PG", team:"ORL" },
-    { name:"Anfernee Simons",      pos:"SG", team:"CHI" },
-    { name:"Joan Beringer",        pos:"C",  team:"MIN" },
-    { name:"Asa Newell",           pos:"PF", team:"ATL" },
-    { name:"Jase Richardson",      pos:"SG", team:"ORL" },
-    { name:"Nolan Traore",         pos:"PG", team:"BKN" },
-    { name:"Noah Penda",           pos:"PF", team:"ORL" },
-    { name:"Koby Brea",            pos:"SG", team:"PHX" },
-    { name:"Johni Broome",         pos:"PF", team:"PHI" },
-    { name:"Giannis Antetokounmpo",pos:"PF", team:"MIL" },
-    { name:"Ben Sheppard",         pos:"SG", team:"IND" },
-    { name:"Miles McBride",        pos:"PG", team:"NY"  },
-    { name:"Isaiah Jackson",       pos:"PF", team:"LAC" },
-    { name:"Zaccharie Risacher",   pos:"SF", team:"ATL" },
-    { name:"Darius Garland",       pos:"PG", team:"LAC" },
-    { name:"Patrick Williams",     pos:"PF", team:"CHI" },
-    { name:"Jalen Wilson",         pos:"PF", team:"BKN" },
-    { name:"Craig Porter Jr.",     pos:"SG", team:"CLE" },
-    { name:"Brandon Williams",     pos:"PG", team:"DAL" },
-    { name:"Paul Reed",            pos:"C",  team:"DET" },
-    { name:"Cole Anthony",         pos:"PG", team:"FA"  },
-    { name:"Walker Kessler",       pos:"C",  team:"UTAH"},
-    { name:"Jayson Tatum",         pos:"PF", team:"BOS" },
+  11: [
+    { name:"Isaiah Collier",          pos:"PG", team:"UTAH"},
+    { name:"Kon Knueppel",            pos:"SG", team:"CHA" },
+    { name:"Brandon Miller",          pos:"SF", team:"CHA" },
+    { name:"Sandro Mamukelashvili",   pos:"PF", team:"TOR" },
+    { name:"Trayce Jackson-Davis",    pos:"PF", team:"TOR" },
+    { name:"Vince Williams Jr.",      pos:"SG", team:"UTAH"},
+    { name:"Herbert Jones",           pos:"SF", team:"NO"  },
+    { name:"Kevin Porter Jr.",        pos:"SG", team:"MIL" },
+    { name:"Anthony Black",           pos:"PG", team:"ORL" },
+    { name:"Anfernee Simons",         pos:"SG", team:"CHI" },
+    { name:"Joan Beringer",           pos:"C",  team:"MIN" },
+    { name:"Asa Newell",              pos:"PF", team:"ATL" },
+    { name:"Jase Richardson",         pos:"SG", team:"ORL" },
+    { name:"Nolan Traore",            pos:"PG", team:"BKN" },
+    { name:"Noah Penda",              pos:"PF", team:"ORL" },
+    { name:"Koby Brea",               pos:"SG", team:"PHX" },
+    { name:"Johni Broome",            pos:"PF", team:"PHI" },
+    { name:"Giannis Antetokounmpo",   pos:"PF", team:"MIL" },
+    { name:"Ben Sheppard",            pos:"SG", team:"IND" },
+    { name:"Miles McBride",           pos:"PG", team:"NY"  },
+    { name:"Isaiah Jackson",          pos:"PF", team:"LAC" },
+    { name:"Zaccharie Risacher",      pos:"SF", team:"ATL" },
+    { name:"Darius Garland",          pos:"PG", team:"LAC" },
+    { name:"Patrick Williams",        pos:"PF", team:"CHI" },
+    { name:"Jalen Wilson",            pos:"PF", team:"BKN" },
+    { name:"Craig Porter Jr.",        pos:"SG", team:"CLE" },
+    { name:"Brandon Williams",        pos:"PG", team:"DAL" },
+    { name:"Paul Reed",               pos:"C",  team:"DET" },
+    { name:"Cole Anthony",            pos:"PG", team:"FA"  },
+    { name:"Walker Kessler",          pos:"C",  team:"UTAH"},
+    { name:"Jayson Tatum",            pos:"PF", team:"BOS" },
   ],
-  12: [ // Vancouver Curry-Wurst
-    { name:"JD Davison",           pos:"PG", team:"HOU" },
-    { name:"Alijah Martin",        pos:"SG", team:"TOR" },
-    { name:"Norman Powell",        pos:"SG", team:"MIA" },
-    { name:"Will Richard",         pos:"SG", team:"GS"  },
-    { name:"Ryan Kalkbrenner",     pos:"C",  team:"CHA" },
-    { name:"Bronny James",         pos:"PG", team:"LAL" },
-    { name:"Al Horford",           pos:"C",  team:"GS"  },
-    { name:"Luke Kennard",         pos:"SG", team:"LAL" },
-    { name:"Dalton Knecht",        pos:"SG", team:"LAL" },
-    { name:"Quinten Post",         pos:"C",  team:"GS"  },
-    { name:"Egor Demin",           pos:"PG", team:"BKN" },
-    { name:"Yang Hansen",          pos:"C",  team:"POR" },
-    { name:"Hugo Gonzalez",        pos:"SF", team:"BOS" },
-    { name:"Nique Clifford",       pos:"SG", team:"SAC" },
-    { name:"Ben Saraf",            pos:"SG", team:"BKN" },
-    { name:"Johnny Furphy",        pos:"SG", team:"IND" },
-    { name:"Brook Lopez",          pos:"C",  team:"LAC" },
-    { name:"John Collins",         pos:"PF", team:"LAC" },
-    { name:"Collin Sexton",        pos:"SG", team:"CHI" },
-    { name:"Terrence Shannon Jr.", pos:"SG", team:"MIN" },
-    { name:"DeMar DeRozan",        pos:"SF", team:"SAC" },
-    { name:"Scotty Pippen Jr.",    pos:"PG", team:"MEM" },
-    { name:"D'Angelo Russell",     pos:"PG", team:"WSH" },
-    { name:"T.J. McConnell",       pos:"PG", team:"IND" },
-    { name:"CJ McCollum",          pos:"SG", team:"ATL" },
-    { name:"Nikola Jovic",         pos:"PF", team:"MIA" },
-    { name:"Ryan Nembhard",        pos:"PG", team:"DAL" },
-    { name:"Josh Minott",          pos:"SF", team:"BKN" },
-    { name:"Coby White",           pos:"PG", team:"CHA" },
-    { name:"Steven Adams",         pos:"C",  team:"HOU" },
-    { name:"Tyrese Haliburton",    pos:"PG", team:"IND" },
+  12: [
+    { name:"JD Davison",              pos:"PG", team:"HOU" },
+    { name:"Alijah Martin",           pos:"SG", team:"TOR" },
+    { name:"Norman Powell",           pos:"SG", team:"MIA" },
+    { name:"Will Richard",            pos:"SG", team:"GS"  },
+    { name:"Ryan Kalkbrenner",        pos:"C",  team:"CHA" },
+    { name:"Bronny James",            pos:"PG", team:"LAL" },
+    { name:"Al Horford",              pos:"C",  team:"GS"  },
+    { name:"Luke Kennard",            pos:"SG", team:"LAL" },
+    { name:"Dalton Knecht",           pos:"SG", team:"LAL" },
+    { name:"Quinten Post",            pos:"C",  team:"GS"  },
+    { name:"Egor Demin",              pos:"PG", team:"BKN" },
+    { name:"Yang Hansen",             pos:"C",  team:"POR" },
+    { name:"Hugo Gonzalez",           pos:"SF", team:"BOS" },
+    { name:"Nique Clifford",          pos:"SG", team:"SAC" },
+    { name:"Ben Saraf",               pos:"SG", team:"BKN" },
+    { name:"Johnny Furphy",           pos:"SG", team:"IND" },
+    { name:"Brook Lopez",             pos:"C",  team:"LAC" },
+    { name:"John Collins",            pos:"PF", team:"LAC" },
+    { name:"Collin Sexton",           pos:"SG", team:"CHI" },
+    { name:"Terrence Shannon Jr.",    pos:"SG", team:"MIN" },
+    { name:"DeMar DeRozan",           pos:"SF", team:"SAC" },
+    { name:"Scotty Pippen Jr.",       pos:"PG", team:"MEM" },
+    { name:"D'Angelo Russell",        pos:"PG", team:"WSH" },
+    { name:"T.J. McConnell",          pos:"PG", team:"IND" },
+    { name:"CJ McCollum",             pos:"SG", team:"ATL" },
+    { name:"Nikola Jovic",            pos:"PF", team:"MIA" },
+    { name:"Ryan Nembhard",           pos:"PG", team:"DAL" },
+    { name:"Josh Minott",             pos:"SF", team:"BKN" },
+    { name:"Coby White",              pos:"PG", team:"CHA" },
+    { name:"Steven Adams",            pos:"C",  team:"HOU" },
+    { name:"Tyrese Haliburton",       pos:"PG", team:"IND" },
   ],
 };
 
-// ✏️ PICKS — update currentOwner after every trade!
+// ============================================================
+//  PICKS — currentOwner = who holds the pick NOW
+//  Team IDs: 1=Bear Down, 2=Seagulls, 3=Neukoelln Hustlers,
+//  4=Leaveland Cavaliers, 5=Anadolu Ballers, 6=3-POINT MAFIA,
+//  7=Always Money, 8=Kawhi So Serious, 9=Cooking Show,
+//  10=S-Town Grizzlies, 11=Double Dribble Trouble, 12=Vancouver Curry-Wurst
+// ============================================================
 const PICKS = [
-  // --- 2025 Round 1 ---
-  {year:2025,round:1,originalOwner:1, currentOwner:1 },
-  {year:2025,round:1,originalOwner:2, currentOwner:2 },
-  {year:2025,round:1,originalOwner:3, currentOwner:3 },
-  {year:2025,round:1,originalOwner:4, currentOwner:4 },
-  {year:2025,round:1,originalOwner:5, currentOwner:5 },
-  {year:2025,round:1,originalOwner:6, currentOwner:6 },
-  {year:2025,round:1,originalOwner:7, currentOwner:7 },
-  {year:2025,round:1,originalOwner:8, currentOwner:8 },
-  {year:2025,round:1,originalOwner:9, currentOwner:9 },
-  {year:2025,round:1,originalOwner:10,currentOwner:10},
-  {year:2025,round:1,originalOwner:11,currentOwner:11},
-  {year:2025,round:1,originalOwner:12,currentOwner:12},
-  // --- 2025 Round 2 ---
-  {year:2025,round:2,originalOwner:1, currentOwner:1 },
-  {year:2025,round:2,originalOwner:2, currentOwner:2 },
-  {year:2025,round:2,originalOwner:3, currentOwner:3 },
-  {year:2025,round:2,originalOwner:4, currentOwner:4 },
-  {year:2025,round:2,originalOwner:5, currentOwner:5 },
-  {year:2025,round:2,originalOwner:6, currentOwner:6 },
-  {year:2025,round:2,originalOwner:7, currentOwner:7 },
-  {year:2025,round:2,originalOwner:8, currentOwner:8 },
-  {year:2025,round:2,originalOwner:9, currentOwner:9 },
-  {year:2025,round:2,originalOwner:10,currentOwner:10},
-  {year:2025,round:2,originalOwner:11,currentOwner:11},
-  {year:2025,round:2,originalOwner:12,currentOwner:12},
-  // --- 2025 Round 3 ---
-  {year:2025,round:3,originalOwner:1, currentOwner:1 },
-  {year:2025,round:3,originalOwner:2, currentOwner:2 },
-  {year:2025,round:3,originalOwner:3, currentOwner:3 },
-  {year:2025,round:3,originalOwner:4, currentOwner:4 },
-  {year:2025,round:3,originalOwner:5, currentOwner:5 },
-  {year:2025,round:3,originalOwner:6, currentOwner:6 },
-  {year:2025,round:3,originalOwner:7, currentOwner:7 },
-  {year:2025,round:3,originalOwner:8, currentOwner:8 },
-  {year:2025,round:3,originalOwner:9, currentOwner:9 },
-  {year:2025,round:3,originalOwner:10,currentOwner:10},
-  {year:2025,round:3,originalOwner:11,currentOwner:11},
-  {year:2025,round:3,originalOwner:12,currentOwner:12},
-  // --- 2026 Round 1 ---
-  {year:2026,round:1,originalOwner:1, currentOwner:1 },
-  {year:2026,round:1,originalOwner:2, currentOwner:2 },
-  {year:2026,round:1,originalOwner:3, currentOwner:3 },
-  {year:2026,round:1,originalOwner:4, currentOwner:4 },
-  {year:2026,round:1,originalOwner:5, currentOwner:5 },
-  {year:2026,round:1,originalOwner:6, currentOwner:6 },
-  {year:2026,round:1,originalOwner:7, currentOwner:7 },
-  {year:2026,round:1,originalOwner:8, currentOwner:8 },
-  {year:2026,round:1,originalOwner:9, currentOwner:9 },
-  {year:2026,round:1,originalOwner:10,currentOwner:10},
-  {year:2026,round:1,originalOwner:11,currentOwner:11},
-  {year:2026,round:1,originalOwner:12,currentOwner:12},
-  // --- 2026 Round 2 ---
-  {year:2026,round:2,originalOwner:1, currentOwner:1 },
-  {year:2026,round:2,originalOwner:2, currentOwner:2 },
-  {year:2026,round:2,originalOwner:3, currentOwner:3 },
-  {year:2026,round:2,originalOwner:4, currentOwner:4 },
-  {year:2026,round:2,originalOwner:5, currentOwner:5 },
-  {year:2026,round:2,originalOwner:6, currentOwner:6 },
-  {year:2026,round:2,originalOwner:7, currentOwner:7 },
-  {year:2026,round:2,originalOwner:8, currentOwner:8 },
-  {year:2026,round:2,originalOwner:9, currentOwner:9 },
-  {year:2026,round:2,originalOwner:10,currentOwner:10},
-  {year:2026,round:2,originalOwner:11,currentOwner:11},
-  {year:2026,round:2,originalOwner:12,currentOwner:12},
-  // --- 2026 Round 3 ---
-  {year:2026,round:3,originalOwner:1, currentOwner:1 },
-  {year:2026,round:3,originalOwner:2, currentOwner:2 },
-  {year:2026,round:3,originalOwner:3, currentOwner:3 },
-  {year:2026,round:3,originalOwner:4, currentOwner:4 },
-  {year:2026,round:3,originalOwner:5, currentOwner:5 },
-  {year:2026,round:3,originalOwner:6, currentOwner:6 },
-  {year:2026,round:3,originalOwner:7, currentOwner:7 },
-  {year:2026,round:3,originalOwner:8, currentOwner:8 },
-  {year:2026,round:3,originalOwner:9, currentOwner:9 },
-  {year:2026,round:3,originalOwner:10,currentOwner:10},
-  {year:2026,round:3,originalOwner:11,currentOwner:11},
-  {year:2026,round:3,originalOwner:12,currentOwner:12},
+  // ===================== 2026 =====================
+  // 2026 Round 1
+  // Bear Down holds: own + Neukoelln + Anadolu + Cooking Show + Leaveland + Always Money + Double Dribble + S-Town + 3-POINT MAFIA
+  {year:2026, round:1, originalOwner:1,  currentOwner:1  }, // Bear Down own
+  {year:2026, round:1, originalOwner:2,  currentOwner:2  }, // Seagulls own
+  {year:2026, round:1, originalOwner:3,  currentOwner:1  }, // Neukoelln → Bear Down (Porzingis trade)
+  {year:2026, round:1, originalOwner:4,  currentOwner:1  }, // Leaveland → Bear Down (Jrue trade)
+  {year:2026, round:1, originalOwner:5,  currentOwner:1  }, // Anadolu → Bear Down (VJ Edgecombe trade)
+  {year:2026, round:1, originalOwner:6,  currentOwner:1  }, // 3-POINT MAFIA → Bear Down (Georg trade)
+  {year:2026, round:1, originalOwner:7,  currentOwner:1  }, // Always Money → Bear Down (2027 1st trade)
+  {year:2026, round:1, originalOwner:8,  currentOwner:8  }, // Kawhi So Serious own
+  {year:2026, round:1, originalOwner:9,  currentOwner:1  }, // Cooking Show → Bear Down (Trey Murphy trade)
+  {year:2026, round:1, originalOwner:10, currentOwner:1  }, // S-Town → Bear Down (2025 2nd/3rd trade)
+  {year:2026, round:1, originalOwner:11, currentOwner:1  }, // Double Dribble → Bear Down (2025 5th pick, with protection)
+  {year:2026, round:1, originalOwner:12, currentOwner:12 }, // Vancouver own
+
+  // 2026 Round 2
+  {year:2026, round:2, originalOwner:1,  currentOwner:1  },
+  {year:2026, round:2, originalOwner:2,  currentOwner:2  },
+  {year:2026, round:2, originalOwner:3,  currentOwner:3  },
+  {year:2026, round:2, originalOwner:4,  currentOwner:4  },
+  {year:2026, round:2, originalOwner:5,  currentOwner:5  },
+  {year:2026, round:2, originalOwner:6,  currentOwner:6  },
+  {year:2026, round:2, originalOwner:7,  currentOwner:7  },
+  {year:2026, round:2, originalOwner:8,  currentOwner:8  },
+  {year:2026, round:2, originalOwner:9,  currentOwner:9  },
+  {year:2026, round:2, originalOwner:10, currentOwner:10 },
+  {year:2026, round:2, originalOwner:11, currentOwner:11 },
+  {year:2026, round:2, originalOwner:12, currentOwner:12 },
+
+  // 2026 Round 3
+  // Bear Down traded their own R3 to 3-POINT MAFIA (Jimmy Butler trade)
+  // Bear Down holds 3PM's R3 (from Georg trade)
+  {year:2026, round:3, originalOwner:1,  currentOwner:6  }, // Bear Down R3 → 3-POINT MAFIA (Jimmy Butler)
+  {year:2026, round:3, originalOwner:2,  currentOwner:2  },
+  {year:2026, round:3, originalOwner:3,  currentOwner:3  },
+  {year:2026, round:3, originalOwner:4,  currentOwner:4  },
+  {year:2026, round:3, originalOwner:5,  currentOwner:5  },
+  {year:2026, round:3, originalOwner:6,  currentOwner:1  }, // 3PM R3 → Bear Down (Georg trade)
+  {year:2026, round:3, originalOwner:7,  currentOwner:7  },
+  {year:2026, round:3, originalOwner:8,  currentOwner:8  },
+  {year:2026, round:3, originalOwner:9,  currentOwner:9  },
+  {year:2026, round:3, originalOwner:10, currentOwner:10 },
+  {year:2026, round:3, originalOwner:11, currentOwner:11 },
+  {year:2026, round:3, originalOwner:12, currentOwner:12 },
+
+  // 2026 Round 4
+  // Bear Down traded R4 to Seagulls (Hospital Squad)
+  {year:2026, round:4, originalOwner:1,  currentOwner:2  }, // Bear Down R4 → Seagulls
+  {year:2026, round:4, originalOwner:2,  currentOwner:2  },
+  {year:2026, round:4, originalOwner:3,  currentOwner:3  },
+  {year:2026, round:4, originalOwner:4,  currentOwner:4  },
+  {year:2026, round:4, originalOwner:5,  currentOwner:5  },
+  {year:2026, round:4, originalOwner:6,  currentOwner:6  },
+  {year:2026, round:4, originalOwner:7,  currentOwner:7  },
+  {year:2026, round:4, originalOwner:8,  currentOwner:8  },
+  {year:2026, round:4, originalOwner:9,  currentOwner:9  },
+  {year:2026, round:4, originalOwner:10, currentOwner:10 },
+  {year:2026, round:4, originalOwner:11, currentOwner:11 },
+  {year:2026, round:4, originalOwner:12, currentOwner:12 },
+
+  // ===================== 2027 =====================
+  // 2027 Round 1 — 3PM traded R1 to S-Town (Wembanyama trade)
+  {year:2027, round:1, originalOwner:1,  currentOwner:1  },
+  {year:2027, round:1, originalOwner:2,  currentOwner:2  },
+  {year:2027, round:1, originalOwner:3,  currentOwner:3  },
+  {year:2027, round:1, originalOwner:4,  currentOwner:4  },
+  {year:2027, round:1, originalOwner:5,  currentOwner:5  },
+  {year:2027, round:1, originalOwner:6,  currentOwner:10 }, // 3PM R1 → S-Town (Wembanyama trade)
+  {year:2027, round:1, originalOwner:7,  currentOwner:7  },
+  {year:2027, round:1, originalOwner:8,  currentOwner:8  },
+  {year:2027, round:1, originalOwner:9,  currentOwner:9  },
+  {year:2027, round:1, originalOwner:10, currentOwner:10 },
+  {year:2027, round:1, originalOwner:11, currentOwner:11 },
+  {year:2027, round:1, originalOwner:12, currentOwner:12 },
+
+  // 2027 Round 2
+  {year:2027, round:2, originalOwner:1,  currentOwner:1  },
+  {year:2027, round:2, originalOwner:2,  currentOwner:2  },
+  {year:2027, round:2, originalOwner:3,  currentOwner:3  },
+  {year:2027, round:2, originalOwner:4,  currentOwner:4  },
+  {year:2027, round:2, originalOwner:5,  currentOwner:5  },
+  {year:2027, round:2, originalOwner:6,  currentOwner:6  },
+  {year:2027, round:2, originalOwner:7,  currentOwner:7  },
+  {year:2027, round:2, originalOwner:8,  currentOwner:8  },
+  {year:2027, round:2, originalOwner:9,  currentOwner:9  },
+  {year:2027, round:2, originalOwner:10, currentOwner:10 },
+  {year:2027, round:2, originalOwner:11, currentOwner:11 },
+  {year:2027, round:2, originalOwner:12, currentOwner:12 },
+
+  // 2027 Round 3 — Neukoelln traded R3 to S-Town (Wembanyama trade)
+  {year:2027, round:3, originalOwner:1,  currentOwner:1  },
+  {year:2027, round:3, originalOwner:2,  currentOwner:2  },
+  {year:2027, round:3, originalOwner:3,  currentOwner:10 }, // Neukoelln R3 → S-Town (Wembanyama trade)
+  {year:2027, round:3, originalOwner:4,  currentOwner:4  },
+  {year:2027, round:3, originalOwner:5,  currentOwner:5  },
+  {year:2027, round:3, originalOwner:6,  currentOwner:6  },
+  {year:2027, round:3, originalOwner:7,  currentOwner:7  },
+  {year:2027, round:3, originalOwner:8,  currentOwner:8  },
+  {year:2027, round:3, originalOwner:9,  currentOwner:9  },
+  {year:2027, round:3, originalOwner:10, currentOwner:10 },
+  {year:2027, round:3, originalOwner:11, currentOwner:11 },
+  {year:2027, round:3, originalOwner:12, currentOwner:12 },
+
+  // 2027 Round 4
+  {year:2027, round:4, originalOwner:1,  currentOwner:1  },
+  {year:2027, round:4, originalOwner:2,  currentOwner:2  },
+  {year:2027, round:4, originalOwner:3,  currentOwner:3  },
+  {year:2027, round:4, originalOwner:4,  currentOwner:4  },
+  {year:2027, round:4, originalOwner:5,  currentOwner:5  },
+  {year:2027, round:4, originalOwner:6,  currentOwner:6  },
+  {year:2027, round:4, originalOwner:7,  currentOwner:7  },
+  {year:2027, round:4, originalOwner:8,  currentOwner:8  },
+  {year:2027, round:4, originalOwner:9,  currentOwner:9  },
+  {year:2027, round:4, originalOwner:10, currentOwner:10 },
+  {year:2027, round:4, originalOwner:11, currentOwner:11 },
+  {year:2027, round:4, originalOwner:12, currentOwner:12 },
+
+  // ===================== 2028 =====================
+  // 2028 Round 1 — 3PM traded R1 to S-Town (Wembanyama trade)
+  {year:2028, round:1, originalOwner:1,  currentOwner:1  },
+  {year:2028, round:1, originalOwner:2,  currentOwner:2  },
+  {year:2028, round:1, originalOwner:3,  currentOwner:3  },
+  {year:2028, round:1, originalOwner:4,  currentOwner:4  },
+  {year:2028, round:1, originalOwner:5,  currentOwner:5  },
+  {year:2028, round:1, originalOwner:6,  currentOwner:10 }, // 3PM R1 → S-Town (Wembanyama trade)
+  {year:2028, round:1, originalOwner:7,  currentOwner:7  },
+  {year:2028, round:1, originalOwner:8,  currentOwner:8  },
+  {year:2028, round:1, originalOwner:9,  currentOwner:9  },
+  {year:2028, round:1, originalOwner:10, currentOwner:10 },
+  {year:2028, round:1, originalOwner:11, currentOwner:11 },
+  {year:2028, round:1, originalOwner:12, currentOwner:12 },
+
+  // 2028 Rounds 2-4
+  {year:2028, round:2, originalOwner:1,  currentOwner:1  },
+  {year:2028, round:2, originalOwner:2,  currentOwner:2  },
+  {year:2028, round:2, originalOwner:3,  currentOwner:3  },
+  {year:2028, round:2, originalOwner:4,  currentOwner:4  },
+  {year:2028, round:2, originalOwner:5,  currentOwner:5  },
+  {year:2028, round:2, originalOwner:6,  currentOwner:6  },
+  {year:2028, round:2, originalOwner:7,  currentOwner:7  },
+  {year:2028, round:2, originalOwner:8,  currentOwner:8  },
+  {year:2028, round:2, originalOwner:9,  currentOwner:9  },
+  {year:2028, round:2, originalOwner:10, currentOwner:10 },
+  {year:2028, round:2, originalOwner:11, currentOwner:11 },
+  {year:2028, round:2, originalOwner:12, currentOwner:12 },
+  {year:2028, round:3, originalOwner:1,  currentOwner:1  },
+  {year:2028, round:3, originalOwner:2,  currentOwner:2  },
+  {year:2028, round:3, originalOwner:3,  currentOwner:3  },
+  {year:2028, round:3, originalOwner:4,  currentOwner:4  },
+  {year:2028, round:3, originalOwner:5,  currentOwner:5  },
+  {year:2028, round:3, originalOwner:6,  currentOwner:6  },
+  {year:2028, round:3, originalOwner:7,  currentOwner:7  },
+  {year:2028, round:3, originalOwner:8,  currentOwner:8  },
+  {year:2028, round:3, originalOwner:9,  currentOwner:9  },
+  {year:2028, round:3, originalOwner:10, currentOwner:10 },
+  {year:2028, round:3, originalOwner:11, currentOwner:11 },
+  {year:2028, round:3, originalOwner:12, currentOwner:12 },
+  {year:2028, round:4, originalOwner:1,  currentOwner:1  },
+  {year:2028, round:4, originalOwner:2,  currentOwner:2  },
+  {year:2028, round:4, originalOwner:3,  currentOwner:3  },
+  {year:2028, round:4, originalOwner:4,  currentOwner:4  },
+  {year:2028, round:4, originalOwner:5,  currentOwner:5  },
+  {year:2028, round:4, originalOwner:6,  currentOwner:6  },
+  {year:2028, round:4, originalOwner:7,  currentOwner:7  },
+  {year:2028, round:4, originalOwner:8,  currentOwner:8  },
+  {year:2028, round:4, originalOwner:9,  currentOwner:9  },
+  {year:2028, round:4, originalOwner:10, currentOwner:10 },
+  {year:2028, round:4, originalOwner:11, currentOwner:11 },
+  {year:2028, round:4, originalOwner:12, currentOwner:12 },
+
+  // ===================== 2029 =====================
+  {year:2029, round:1, originalOwner:1,  currentOwner:1  },
+  {year:2029, round:1, originalOwner:2,  currentOwner:2  },
+  {year:2029, round:1, originalOwner:3,  currentOwner:3  },
+  {year:2029, round:1, originalOwner:4,  currentOwner:4  },
+  {year:2029, round:1, originalOwner:5,  currentOwner:5  },
+  {year:2029, round:1, originalOwner:6,  currentOwner:6  },
+  {year:2029, round:1, originalOwner:7,  currentOwner:7  },
+  {year:2029, round:1, originalOwner:8,  currentOwner:8  },
+  {year:2029, round:1, originalOwner:9,  currentOwner:9  },
+  {year:2029, round:1, originalOwner:10, currentOwner:10 },
+  {year:2029, round:1, originalOwner:11, currentOwner:11 },
+  {year:2029, round:1, originalOwner:12, currentOwner:12 },
+  {year:2029, round:2, originalOwner:1,  currentOwner:1  },
+  {year:2029, round:2, originalOwner:2,  currentOwner:2  },
+  {year:2029, round:2, originalOwner:3,  currentOwner:3  },
+  {year:2029, round:2, originalOwner:4,  currentOwner:4  },
+  {year:2029, round:2, originalOwner:5,  currentOwner:5  },
+  {year:2029, round:2, originalOwner:6,  currentOwner:6  },
+  {year:2029, round:2, originalOwner:7,  currentOwner:7  },
+  {year:2029, round:2, originalOwner:8,  currentOwner:8  },
+  {year:2029, round:2, originalOwner:9,  currentOwner:9  },
+  {year:2029, round:2, originalOwner:10, currentOwner:10 },
+  {year:2029, round:2, originalOwner:11, currentOwner:11 },
+  {year:2029, round:2, originalOwner:12, currentOwner:12 },
+  {year:2029, round:3, originalOwner:1,  currentOwner:1  },
+  {year:2029, round:3, originalOwner:2,  currentOwner:2  },
+  {year:2029, round:3, originalOwner:3,  currentOwner:3  },
+  {year:2029, round:3, originalOwner:4,  currentOwner:4  },
+  {year:2029, round:3, originalOwner:5,  currentOwner:5  },
+  {year:2029, round:3, originalOwner:6,  currentOwner:6  },
+  {year:2029, round:3, originalOwner:7,  currentOwner:7  },
+  {year:2029, round:3, originalOwner:8,  currentOwner:8  },
+  {year:2029, round:3, originalOwner:9,  currentOwner:9  },
+  {year:2029, round:3, originalOwner:10, currentOwner:10 },
+  {year:2029, round:3, originalOwner:11, currentOwner:11 },
+  {year:2029, round:3, originalOwner:12, currentOwner:12 },
+  {year:2029, round:4, originalOwner:1,  currentOwner:1  },
+  {year:2029, round:4, originalOwner:2,  currentOwner:2  },
+  {year:2029, round:4, originalOwner:3,  currentOwner:3  },
+  {year:2029, round:4, originalOwner:4,  currentOwner:4  },
+  {year:2029, round:4, originalOwner:5,  currentOwner:5  },
+  {year:2029, round:4, originalOwner:6,  currentOwner:6  },
+  {year:2029, round:4, originalOwner:7,  currentOwner:7  },
+  {year:2029, round:4, originalOwner:8,  currentOwner:8  },
+  {year:2029, round:4, originalOwner:9,  currentOwner:9  },
+  {year:2029, round:4, originalOwner:10, currentOwner:10 },
+  {year:2029, round:4, originalOwner:11, currentOwner:11 },
+  {year:2029, round:4, originalOwner:12, currentOwner:12 },
 ];
 
 // ============================================================
@@ -567,6 +716,7 @@ function renderHome() {
     <div class="team-card" onclick="showTeam(${t.id})">
       <div class="team-avatar" style="background:${t.color}22;color:${t.color};">${getInitials(t.name)}</div>
       <div class="team-name">${t.name}</div>
+      <div class="team-owner">${t.owner}</div>
       <div class="team-record">📊 ${t.record}</div>
     </div>
   `).join('');
@@ -579,7 +729,7 @@ function showTeam(id) {
     <div class="team-page-avatar" style="background:${t.color}22;color:${t.color};">${getInitials(t.name)}</div>
     <div>
       <div class="team-page-name">${t.name}</div>
-      <div class="team-page-owner" style="color:var(--green);">📊 ${t.record}</div>
+      <div class="team-page-owner">${t.owner} &nbsp;·&nbsp; <span style="color:var(--green);">📊 ${t.record}</span></div>
     </div>
   `;
   document.querySelectorAll('.tab').forEach((el, i) => el.classList.toggle('active', i === 0));
@@ -622,7 +772,7 @@ function renderPicks(id) {
   const myPicks = PICKS.filter(p => p.currentOwner === id);
   if (!myPicks.length) return '<p style="color:var(--muted);padding:20px 0;">No picks held.</p>';
   const years  = [...new Set(myPicks.map(p => p.year))].sort();
-  const rounds = [...new Set(myPicks.map(p => p.round))].sort();
+  const rounds = [...new Set(PICKS.map(p => p.round))].sort();
   let html = '';
   years.forEach(year => {
     rounds.forEach(round => {
@@ -654,7 +804,7 @@ function showDraftboard() {
   years.forEach(year => {
     html += `<h3 style="margin:24px 0 12px;font-size:16px;">${year} Draft</h3>
     <table><thead><tr><th class="round-label">Rnd</th>`;
-    TEAMS.forEach(t => { html += `<th>${t.name.split(' ')[0]}</th>`; });
+    TEAMS.forEach(t => { html += `<th title="${t.owner}">${t.name.split(' ')[0]}</th>`; });
     html += '</tr></thead><tbody>';
     rounds.forEach(round => {
       html += `<tr><td style="font-weight:700;color:var(--muted);white-space:nowrap;">R${round}</td>`;
@@ -685,6 +835,4 @@ function goHome() { navigate('homePage'); }
 renderHome();
 </script>
 </body>
-
 </html>
-
