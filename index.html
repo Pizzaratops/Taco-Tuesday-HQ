@@ -104,9 +104,8 @@
 <div class="page active" id="homePage">
   <div style="max-width:920px;margin:0 auto;">
     <div class="home-title">The Taco Tuesday League</div>
-    <div class="home-sub">Select your team — or check the full draft board</div>
-    <button class="draftboard-btn" onclick="showDraftboard()">📋 Full Draft Board</button>
-<button class="draftboard-btn" onclick="showTrades()" style="background: linear-gradient(135deg, #f5c842, #ff9800);">📜 Trade History</button>
+    <div class="home-sub">Klick auf Dein Team für Deine Spieler und Deine Picks</div>
+    <button class="draftboard-btn" onclick="showDraftboard()">Full Draft Board</button>
     <div class="team-grid" id="teamGrid"></div>
   </div>
 </div>
@@ -115,24 +114,24 @@
   <div class="team-page-header" id="teamHeader"></div>
   <div class="tabs">
     <div class="tab active" onclick="switchTab('roster')">🏀 Roster</div>
-    <div class="tab" onclick="switchTab('picks')">🎯 My Picks</div>
+    <div class="tab" onclick="switchTab('picks')"> My Owned Picks</div>
   </div>
   <div id="tabContent"></div>
 </div>
 
 <div class="page" id="draftboardPage">
-  <h2 style="margin-bottom:6px;">📋 Full Draft Board</h2>
+  <h2 style="margin-bottom:6px;"> Full Draft Board</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">All traded picks already reflected</p>
   <div class="legend">
     <div class="legend-item"><div class="legend-dot" style="background:rgba(108,99,255,0.4)"></div>Own pick (kept)</div>
     <div class="legend-item"><div class="legend-dot" style="background:rgba(255,101,132,0.3)"></div>Traded away → shows new holder</div>
   </div>
   <div class="draftboard-grid" id="draftboardContent"></div>
-  <div class="edit-hint">✏️ After trades, update <code>currentOwner</code> in the <code>PICKS</code> array</div>
+  <div class="edit-hint"> After trades, update <code>currentOwner</code> in the <code>PICKS</code> array</div>
 </div>
 
 <div class="page" id="tradesPage">
-  <h2 style="margin-bottom:6px;">📜 Trade History</h2>
+  <h2 style="margin-bottom:6px;"> Trade History</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">All recorded trades by year</p>
   <div id="tradesContent"></div>
 </div>
@@ -497,7 +496,7 @@ const PICKS = [
   {year:2026, round:1, originalOwner:8,  currentOwner:8  }, // Kawhi So Serious own
   {year:2026, round:1, originalOwner:9,  currentOwner:1  }, // Cooking Show → Bear Down (Trey Murphy trade)
   {year:2026, round:1, originalOwner:10, currentOwner:1  }, // S-Town → Bear Down (2025 2nd/3rd trade)
-  {year:2026, round:1, originalOwner:11, currentOwner:1  }, // Double Dribble → Bear Down (2025 5th pick, with protection)
+  {year:2026, round:1, originalOwner:11, currentOwner:1, note:"with Protection" }, // Double Dribble → Bear Down
   {year:2026, round:1, originalOwner:12, currentOwner:12 }, // Vancouver own
 
   // 2026 Round 2
@@ -546,13 +545,13 @@ const PICKS = [
   {year:2026, round:4, originalOwner:12, currentOwner:12 },
 
   // ===================== 2027 =====================
-  // 2027 Round 1 — 3PM traded R1 to S-Town (Wembanyama trade)
-  {year:2027, round:1, originalOwner:1,  currentOwner:1  },
+  // 2027 Round 1 — Neukoelln sends a 1st to 3PM in Banchero-Trade
+  {year:2027, round:1, originalOwner:1,  currentOwner:7  }, // Bear Down R1 → Always Money
   {year:2027, round:1, originalOwner:2,  currentOwner:2  },
-  {year:2027, round:1, originalOwner:3,  currentOwner:3  },
+  {year:2027, round:1, originalOwner:3,  currentOwner:6  }, // Neukoelln R1 → 3-POINT MAFIA
   {year:2027, round:1, originalOwner:4,  currentOwner:4  },
   {year:2027, round:1, originalOwner:5,  currentOwner:5  },
-  {year:2027, round:1, originalOwner:6,  currentOwner:10 }, // 3PM R1 → S-Town (Wembanyama trade)
+  {year:2027, round:1, originalOwner:6,  currentOwner:6  }, // 3PM R1 → own
   {year:2027, round:1, originalOwner:7,  currentOwner:7  },
   {year:2027, round:1, originalOwner:8,  currentOwner:8  },
   {year:2027, round:1, originalOwner:9,  currentOwner:9  },
@@ -574,13 +573,13 @@ const PICKS = [
   {year:2027, round:2, originalOwner:11, currentOwner:11 },
   {year:2027, round:2, originalOwner:12, currentOwner:12 },
 
-  // 2027 Round 3 — Neukoelln traded R3 to S-Town (Wembanyama trade)
+  // 2027 Round 3
   {year:2027, round:3, originalOwner:1,  currentOwner:1  },
   {year:2027, round:3, originalOwner:2,  currentOwner:2  },
-  {year:2027, round:3, originalOwner:3,  currentOwner:10 }, // Neukoelln R3 → S-Town (Wembanyama trade)
+  {year:2027, round:3, originalOwner:3,  currentOwner:3 },
   {year:2027, round:3, originalOwner:4,  currentOwner:4  },
   {year:2027, round:3, originalOwner:5,  currentOwner:5  },
-  {year:2027, round:3, originalOwner:6,  currentOwner:6  },
+  {year:2027, round:3, originalOwner:6,  currentOwner:3  }, // 3PM R3 → Neukoelln
   {year:2027, round:3, originalOwner:7,  currentOwner:7  },
   {year:2027, round:3, originalOwner:8,  currentOwner:8  },
   {year:2027, round:3, originalOwner:9,  currentOwner:9  },
@@ -603,13 +602,13 @@ const PICKS = [
   {year:2027, round:4, originalOwner:12, currentOwner:12 },
 
   // ===================== 2028 =====================
-  // 2028 Round 1 — 3PM traded R1 to S-Town (Wembanyama trade)
+  // 2028 Round 1 — Neukoelln sends a 1st to 3PM in Banchero-Trade
   {year:2028, round:1, originalOwner:1,  currentOwner:1  },
   {year:2028, round:1, originalOwner:2,  currentOwner:2  },
-  {year:2028, round:1, originalOwner:3,  currentOwner:3  },
+  {year:2028, round:1, originalOwner:3,  currentOwner:6  }, // Neukoelln R1 → 3-POINT MAFIA
   {year:2028, round:1, originalOwner:4,  currentOwner:4  },
   {year:2028, round:1, originalOwner:5,  currentOwner:5  },
-  {year:2028, round:1, originalOwner:6,  currentOwner:10 }, // 3PM R1 → S-Town (Wembanyama trade)
+  {year:2028, round:1, originalOwner:6,  currentOwner:6 },
   {year:2028, round:1, originalOwner:7,  currentOwner:7  },
   {year:2028, round:1, originalOwner:8,  currentOwner:8  },
   {year:2028, round:1, originalOwner:9,  currentOwner:9  },
@@ -708,9 +707,9 @@ const PICKS = [
 
 // ✏️ DRAFT YEAR NOTES — edit these to notify your players
 const DRAFT_NOTES = {
-  2026: "⚠️ Bear Down holds 7 of 12 first round picks. Draft order TBD based on final standings.",
-  2027: "🔄 S-Town Grizzlies received 3PM's R1 and Neukoelln's R3 via the Wembanyama trade.",
-  2028: "🔄 S-Town Grizzlies also holds 3PM's R1 from the Wembanyama deal.",
+  2026: "Do not trade a 1st to Bear Down. He has enough. Draft order TBD based on final standings.",
+  2027: "🔄 Bear Down's R1 goes to Always Money. Neukoelln's R1 goes to 3-POINT MAFIA. 3PM's R3 goes to Neukoelln.",
+  2028: "🔄 Neukoelln's R1 goes to 3-POINT MAFIA in Banchero-Trade",
   2029: "✅ All teams hold their own picks. No trades recorded yet.",
 };
 
@@ -818,7 +817,7 @@ function showTeam(id) {
     <div class="team-page-avatar" style="background:${t.color}22;color:${t.color};">${getInitials(t.name)}</div>
     <div>
       <div class="team-page-name">${t.name}</div>
-      <div class="team-page-owner">${t.owner} &nbsp;·&nbsp; <span style="color:var(--green);">📊 ${t.record}</span></div>
+      <div class="team-page-owner">${t.owner} &nbsp;·&nbsp; <span style="color:var(--green);"> ${t.record}</span></div>
     </div>
   `;
   document.querySelectorAll('.tab').forEach((el, i) => el.classList.toggle('active', i === 0));
@@ -909,7 +908,7 @@ function renderPicks(id) {
               <td style="padding:10px 12px;font-size:13px;color:var(--text);">${orig.name}</td>
               <td style="padding:10px 12px;">
                 <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:${traded ? s.traded : s.own};border:1px solid ${traded ? s.tradedBorder : s.ownBorder};color:${s.label};">
-                  ${traded ? '🔄 Traded' : '✓ Own'}
+                  ${traded ? '🔄 Traded' + (pick.note ? ' ('+pick.note+')' : '') : '✓ Own'}
                 </span>
               </td>
             </tr>`;
@@ -960,7 +959,7 @@ function showTrades() {
   let html = '';
   years.forEach(year => {
     const yearTrades = TRADES.filter(t => t.year === year);
-    html += `<h3 style="margin:24px 0 12px;font-size:16px;">📅 ${year} Trades</h3>`;
+    html += `<h3 style="margin:24px 0 12px;font-size:16px;"> ${year} Trades</h3>`;
     yearTrades.forEach(trade => {
       html += `
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;">
