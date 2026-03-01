@@ -708,7 +708,7 @@ const PICKS = [
 
 // ✏️ DRAFT YEAR NOTES — edit these to notify your players
 const DRAFT_NOTES = {
-  2026: "⚠️ Bear Down holds 8 of 12 first round picks. Draft order TBD based on final standings.",
+  2026: "⚠️ Bear Down holds 7 of 12 first round picks. Draft order TBD based on final standings.",
   2027: "🔄 S-Town Grizzlies received 3PM's R1 and Neukoelln's R3 via the Wembanyama trade.",
   2028: "🔄 S-Town Grizzlies also holds 3PM's R1 from the Wembanyama deal.",
   2029: "✅ All teams hold their own picks. No trades recorded yet.",
@@ -720,28 +720,28 @@ const TRADES = [
     year: 2026,
     teamA: "Bear Down (Uggi)",
     teamB: "Leaveland Cavaliers (Sven)",
-    aGave: "Jrue Holiday, Kevin Porter Jr., Jarrett Allen, 2026 Last Round Pick",
+    aGave: "Jrue Holiday, Kevin Porter Jr., Jarrett Allen, 2023 1st Round Pick, 2026 Last Round Pick",
     bGave: "Leaveland Cavaliers 2026 1st, Trae Young",
   },
   {
     year: 2026,
     teamA: "Bear Down (Uggi)",
     teamB: "Anadolu Ballers (Murat)",
-    aGave: "2026 R6 (4th pick), 2023 R8 PS",
-    bGave: "Austin Reaves (TS), 2026 Last Round Pick, 2023 R8 PS",
+    aGave: "2026 R6 (1st Round Pick), 2023 R8 (3rd Round) Pick Swap",
+    bGave: "Austin Reaves (TS), 2026 Last Round Pick, 2023 R8 (3rd Round) Pick Swap",
   },
   {
     year: 2026,
     teamA: "Bear Down (Uggi)",
     teamB: "3-POINT MAFIA (Georg → Patrick/Bennet)",
-    aGave: "2023 R7, 2025 R6",
+    aGave: "2023 2nd Round Pick, 2025 1st Round Pick (Shaedon Sharpe)",
     bGave: "3-POINT MAFIA 2026 1st Round Pick",
   },
   {
     year: 2026,
     teamA: "Bear Down (Uggi)",
     teamB: "Cooking Show (Felix → Stefan)",
-    aGave: "Jalen Johnson (1st Round Pick: Bilal Coulibaly), 2026 R9 (4th pick)",
+    aGave: "2024 1st Round Pick, Bilal Coulibaly, 2026 R9 (4th pick)",
     bGave: "Trey Murphy III, 2026 R6 (1st pick)",
   },
   {
@@ -774,24 +774,10 @@ const TRADES = [
   },
   {
     year: 2026,
-    teamA: "Bear Down (Uggi)",
-    teamB: "Jimmy Butler III → 3-POINT MAFIA",
-    aGave: "Jimmy Butler III",
-    bGave: "3-POINT MAFIA 2026 3rd Round Pick",
-  },
-  {
-    year: 2026,
     teamA: "Anadolu Ballers (Murat)",
     teamB: "Bear Down (Uggi)",
-    aGave: "VJ Edgecombe, Anadolu Ballers 2026 1st, Bilal Coulibaly",
-    bGave: "TBD",
-  },
-  {
-    year: 2027,
-    teamA: "3-POINT MAFIA (Patrick/Bennet)",
-    teamB: "S-Town Grizzlies (Jan)",
-    aGave: "Victor Wembanyama, 2027 1st Round Pick, 2028 1st Round Pick",
-    bGave: "Desmond Bane, Kel'el Ware, Cam Whitmore",
+    aGave: "VJ Edgecombe",
+    bGave: "Anadolu Ballers 2026 1st, Bilal Coulibaly",
   },
   {
     year: 2027,
@@ -799,13 +785,6 @@ const TRADES = [
     teamB: "3-POINT MAFIA (Patrick/Bennet)",
     aGave: "Paolo Banchero, 2027 3rd Round Pick",
     bGave: "2027 1st Round Pick, 2028 1st Round Pick, Cam Whitmore",
-  },
-  {
-    year: 2028,
-    teamA: "3-POINT MAFIA (Patrick/Bennet)",
-    teamB: "S-Town Grizzlies (Jan)",
-    aGave: "3-POINT MAFIA 2028 1st Round Pick",
-    bGave: "(part of Wembanyama deal)",
   },
 ];
 
@@ -883,55 +862,61 @@ function renderPicks(id) {
   if (!myPicks.length) return '<p style="color:var(--muted);padding:20px 0;">No picks held.</p>';
 
   const yearStyles = {
-    2026: { bg: 'rgba(108,99,255,0.12)', border: 'rgba(108,99,255,0.35)', label: '#a89bff', dot: '#6c63ff' },
-    2027: { bg: 'rgba(76,175,129,0.12)', border: 'rgba(76,175,129,0.35)', label: '#6dddaa', dot: '#4caf81' },
-    2028: { bg: 'rgba(245,200,66,0.12)', border: 'rgba(245,200,66,0.35)', label: '#f5d97a', dot: '#f5c842' },
-    2029: { bg: 'rgba(41,182,246,0.12)', border: 'rgba(41,182,246,0.35)', label: '#7dd8f8', dot: '#29b6f6' },
+    2026: { header: 'rgba(108,99,255,0.25)', dot: '#6c63ff', label: '#a89bff', own: 'rgba(108,99,255,0.12)', ownBorder: 'rgba(108,99,255,0.35)', traded: 'rgba(108,99,255,0.06)', tradedBorder: 'rgba(108,99,255,0.2)' },
+    2027: { header: 'rgba(76,175,129,0.25)', dot: '#4caf81', label: '#6dddaa', own: 'rgba(76,175,129,0.12)', ownBorder: 'rgba(76,175,129,0.35)', traded: 'rgba(76,175,129,0.06)', tradedBorder: 'rgba(76,175,129,0.2)' },
+    2028: { header: 'rgba(245,200,66,0.25)', dot: '#f5c842', label: '#f5d97a', own: 'rgba(245,200,66,0.12)', ownBorder: 'rgba(245,200,66,0.35)', traded: 'rgba(245,200,66,0.06)', tradedBorder: 'rgba(245,200,66,0.2)' },
+    2029: { header: 'rgba(41,182,246,0.25)', dot: '#29b6f6', label: '#7dd8f8', own: 'rgba(41,182,246,0.12)', ownBorder: 'rgba(41,182,246,0.35)', traded: 'rgba(41,182,246,0.06)', tradedBorder: 'rgba(41,182,246,0.2)' },
   };
 
+  const allYears = [...new Set(PICKS.map(p => p.year))].sort();
+  const allRounds = [...new Set(PICKS.map(p => p.round))].sort();
   const years = [...new Set(myPicks.map(p => p.year))].sort();
   let html = '';
 
   years.forEach(year => {
-    const s = yearStyles[year] || { bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.15)', label: '#e8eaf6', dot: '#fff' };
-    const yearPicks = myPicks.filter(p => p.year === year).sort((a,b) => a.round - b.round || a.originalOwner - b.originalOwner);
-
-    // Count picks per round for summary
-    const rounds = [...new Set(yearPicks.map(p => p.round))].sort();
+    const s = yearStyles[year] || { header: 'rgba(255,255,255,0.1)', dot: '#fff', label: '#e8eaf6', own: 'rgba(255,255,255,0.05)', ownBorder: 'rgba(255,255,255,0.2)', traded: 'rgba(255,255,255,0.02)', tradedBorder: 'rgba(255,255,255,0.1)' };
+    const yearPicks = myPicks.filter(p => p.year === year);
+    const totalPicks = yearPicks.length;
 
     html += `
-      <div style="margin-bottom:28px;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-          <div style="width:10px;height:10px;border-radius:50%;background:${s.dot};flex-shrink:0;"></div>
-          <div style="font-size:13px;font-weight:800;letter-spacing:1px;color:${s.label};">${year}</div>
-          <div style="font-size:11px;color:var(--muted);background:var(--surface2);padding:2px 8px;border-radius:20px;">${yearPicks.length} pick${yearPicks.length !== 1 ? 's' : ''}</div>
-        </div>`;
+      <div style="margin-bottom:28px;border:1px solid ${s.ownBorder};border-radius:12px;overflow:hidden;">
+        <div style="background:${s.header};padding:12px 16px;display:flex;align-items:center;gap:10px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:${s.dot};"></div>
+          <div style="font-size:14px;font-weight:800;color:${s.label};">${year}</div>
+          <div style="font-size:11px;color:var(--muted);background:var(--surface2);padding:2px 8px;border-radius:20px;margin-left:4px;">${totalPicks} pick${totalPicks !== 1 ? 's' : ''}</div>
+        </div>
+        <table style="width:100%;border-collapse:collapse;">
+          <thead>
+            <tr>
+              <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">ROUND</th>
+              <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">ORIGIN</th>
+              <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">STATUS</th>
+            </tr>
+          </thead>
+          <tbody>`;
 
-    rounds.forEach(round => {
-      const roundPicks = yearPicks.filter(p => p.round === round);
-      html += `
-        <div style="margin-bottom:8px;">
-          <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;padding-left:4px;">Round ${round}</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;">`;
-
-      roundPicks.forEach(pick => {
+    allRounds.forEach(round => {
+      const roundPicks = yearPicks.filter(p => p.round === round).sort((a,b) => a.originalOwner - b.originalOwner);
+      roundPicks.forEach((pick, i) => {
         const traded = pick.originalOwner !== pick.currentOwner;
         const orig = teamMap[pick.originalOwner];
+        const isFirst = i === 0;
         html += `
-            <div style="background:${s.bg};border:1px solid ${s.border};border-radius:10px;padding:10px 14px;min-width:140px;flex:1;">
-              <div style="font-size:12px;font-weight:700;color:${s.label};margin-bottom:3px;">
-                ${traded ? '🔄 Via ' + orig.name.split(' ')[0] : '✓ Own Pick'}
-              </div>
-              <div style="font-size:11px;color:var(--muted);">
-                ${traded ? orig.name : 'Original'}
-              </div>
-            </div>`;
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:10px 12px;font-size:12px;font-weight:700;color:${s.label};white-space:nowrap;">
+                ${isFirst ? `R${round}` : ''}
+              </td>
+              <td style="padding:10px 12px;font-size:13px;color:var(--text);">${orig.name}</td>
+              <td style="padding:10px 12px;">
+                <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:${traded ? s.traded : s.own};border:1px solid ${traded ? s.tradedBorder : s.ownBorder};color:${s.label};">
+                  ${traded ? '🔄 Traded' : '✓ Own'}
+                </span>
+              </td>
+            </tr>`;
       });
-
-      html += `</div></div>`;
     });
 
-    html += `</div>`;
+    html += `</tbody></table></div>`;
   });
 
   return html;
@@ -1009,4 +994,3 @@ renderHome();
 </script>
 </body>
 </html>
-
