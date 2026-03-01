@@ -131,8 +131,8 @@
 
 <script>
 const TEAMS = [
-  { id:1,  name:"Bear Down",              owner:"Uggi",                    record:"112-41-0", color:"#6c63ff" },
-  { id:2,  name:"Seagulls",               owner:"Kong Power",              record:"99-53-1",  color:"#29b6f6" },
+  { id:1,  name:"Bear Down",              owner:"Kong Power",                    record:"112-41-0", color:"#6c63ff" },
+  { id:2,  name:"Seagulls",               owner:"Möwe",              record:"99-53-1",  color:"#29b6f6" },
   { id:3,  name:"Neukoelln Hustlers",     owner:"Timo Xtremo",             record:"95-57-1",  color:"#ff6584" },
   { id:4,  name:"Leaveland Cavaliers",    owner:"Sven",                    record:"87-65-1",  color:"#4caf81" },
   { id:5,  name:"Anadolu Ballers",        owner:"Murat Oguz",              record:"82-68-3",  color:"#f5c842" },
@@ -771,17 +771,15 @@ function renderPicks(id) {
   const myPicks = PICKS.filter(p => p.currentOwner === id);
   if (!myPicks.length) return '<p style="color:var(--muted);padding:20px 0;">No picks held.</p>';
   const years  = [...new Set(myPicks.map(p => p.year))].sort();
-  const rounds = [...new Set(PICKS.map(p => p.round))].sort();
   let html = '';
   years.forEach(year => {
-    rounds.forEach(round => {
-      const pick = myPicks.find(p => p.year === year && p.round === round);
-      if (!pick) return;
+    const yearPicks = myPicks.filter(p => p.year === year).sort((a,b) => a.round - b.round || a.originalOwner - b.originalOwner);
+    yearPicks.forEach(pick => {
       const traded = pick.originalOwner !== pick.currentOwner;
       const orig = teamMap[pick.originalOwner];
       html += `<div class="pick-card">
         <div class="pick-badge">
-          <div class="pick-round">ROUND ${round}</div>
+          <div class="pick-round">ROUND ${pick.round}</div>
           <div class="pick-year">${year}</div>
         </div>
         <div>
@@ -835,5 +833,3 @@ renderHome();
 </script>
 </body>
 </html>
-
-
