@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Taco Tuesday League HQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* ===================== DARK MODE (default) ===================== */
   :root {
     --bg: #0f1117;
     --surface: #1a1d27;
@@ -12,86 +14,287 @@
     --border: #2e3250;
     --accent: #6c63ff;
     --accent2: #ff6584;
+    --accent-light: rgba(108,99,255,0.08);
     --text: #e8eaf6;
     --muted: #7b7f9e;
     --green: #4caf81;
+    --pick-own-bg: rgba(108,99,255,0.15);
+    --pick-own-color: #6c63ff;
+    --pick-traded-bg: rgba(255,101,132,0.1);
+    --pick-traded-color: #ff8fa3;
+    --toggle-icon: "☀️";
   }
+
+  /* ===================== LIGHT MODE ===================== */
+  body.light {
+    --bg: #fff5ee;
+    --surface: #ffffff;
+    --surface2: #fdebd8;
+    --border: #f0d5bc;
+    --accent: #c0622f;
+    --accent2: #e8975a;
+    --accent-light: rgba(192,98,47,0.08);
+    --text: #2c1a0e;
+    --muted: #9a7560;
+    --green: #3d8a5c;
+    --pick-own-bg: rgba(192,98,47,0.1);
+    --pick-own-color: #c0622f;
+    --pick-traded-bg: rgba(180,60,100,0.08);
+    --pick-traded-color: #b43c64;
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
-  .header {
-    background: var(--surface); border-bottom: 1px solid var(--border);
-    padding: 16px 24px; display: flex; align-items: center; gap: 12px;
-    position: sticky; top: 0; z-index: 100;
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
   }
-  .header .logo { font-size: 22px; font-weight: 800; }
+
+  body.light {
+    background-image: radial-gradient(ellipse at 20% 0%, rgba(232,151,90,0.12) 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 100%, rgba(192,98,47,0.08) 0%, transparent 50%);
+  }
+
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  body.light .header {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .header .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+  }
   .header .logo span { color: var(--accent); }
+
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+
+  .theme-toggle {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .theme-toggle:hover { border-color: var(--accent); background: var(--accent-light); }
+
   .back-btn {
-    background: var(--surface2); border: 1px solid var(--border); color: var(--text);
-    padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 13px;
-    display: none; align-items: center; gap: 6px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    display: none;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
   }
   .back-btn:hover { border-color: var(--accent); }
-  .page { display: none; padding: 24px; max-width: 920px; margin: 0 auto; }
+
+  .page { display: none; padding: 28px 24px; max-width: 960px; margin: 0 auto; }
   .page.active { display: block; }
-  .home-title { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
-  .home-sub { color: var(--muted); margin-bottom: 28px; }
-  .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
-  .team-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-    padding: 20px; cursor: pointer; transition: all 0.18s ease; position: relative; overflow: hidden;
+
+  .home-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--text);
   }
-  .team-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); opacity: 0; transition: opacity 0.18s; }
+  .home-sub { color: var(--muted); margin-bottom: 28px; font-size: 14px; }
+
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 14px; }
+
+  .team-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .team-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.18s;
+  }
   .team-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(108,99,255,0.15); }
+  body.light .team-card:hover { box-shadow: 0 8px 24px rgba(192,98,47,0.12); }
   .team-card:hover::before { opacity: 1; }
-  .team-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; margin-bottom: 12px; }
-  .team-name { font-weight: 700; font-size: 15px; margin-bottom: 3px; }
+
+  .team-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; margin-bottom: 12px; font-family: 'Playfair Display', serif; }
+  .team-name { font-weight: 700; font-size: 14px; margin-bottom: 3px; color: var(--text); }
   .team-owner { color: var(--muted); font-size: 12px; margin-top: 2px; }
   .team-record { font-size: 12px; color: var(--green); margin-top: 8px; font-weight: 600; }
+
   .draftboard-btn {
-    background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none;
-    color: white; padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 700;
-    cursor: pointer; margin-bottom: 28px; display: inline-flex; align-items: center; gap: 8px; transition: opacity 0.18s;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none;
+    color: white;
+    padding: 13px 26px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    margin-bottom: 28px;
+    margin-right: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.18s;
+    box-shadow: 0 4px 12px rgba(108,99,255,0.25);
   }
-  .draftboard-btn:hover { opacity: 0.9; }
+  body.light .draftboard-btn { box-shadow: 0 4px 12px rgba(192,98,47,0.25); }
+  .draftboard-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
   .team-page-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-  .team-page-avatar { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 26px; }
-  .team-page-name { font-size: 24px; font-weight: 800; }
-  .team-page-owner { color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .team-page-avatar { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; font-family: 'Playfair Display', serif; }
+  .team-page-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 800; color: var(--text); }
+  .team-page-owner { color: var(--muted); font-size: 14px; margin-top: 3px; }
+
   .tabs { display: flex; gap: 4px; background: var(--surface); border-radius: 12px; padding: 5px; margin-bottom: 24px; border: 1px solid var(--border); }
   .tab { flex: 1; padding: 9px; text-align: center; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--muted); transition: all 0.15s; }
   .tab.active { background: var(--accent); color: white; }
   .tab:not(.active):hover { color: var(--text); background: var(--surface2); }
-  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; margin-top: 18px; }
-  .player-row { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-  .pos-badge { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; margin-top: 20px; }
+
+  .player-row { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 11px 16px; display: flex; align-items: center; gap: 12px; margin-bottom: 7px; transition: border-color 0.15s; }
+  .player-row:hover { border-color: var(--accent); }
+
+  .pos-badge { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; }
+
+  /* Dark mode position badges */
   .pos-PG { background: rgba(108,99,255,0.2); color: #a89bff; }
   .pos-SG { background: rgba(255,101,132,0.2); color: #ff8fa3; }
   .pos-SF { background: rgba(76,175,129,0.2); color: #6dddaa; }
   .pos-PF { background: rgba(245,200,66,0.2); color: #f5c842; }
   .pos-C  { background: rgba(41,182,246,0.2); color: #4fc3f7; }
-  .player-name { font-weight: 600; font-size: 14px; flex: 1; }
+
+  /* Light mode position badges */
+  body.light .pos-PG { background: rgba(192,98,47,0.12); color: #a84520; }
+  body.light .pos-SG { background: rgba(180,60,100,0.1);  color: #b43c64; }
+  body.light .pos-SF { background: rgba(61,138,92,0.12);  color: #2d7a50; }
+  body.light .pos-PF { background: rgba(180,130,30,0.12); color: #9a6e10; }
+  body.light .pos-C  { background: rgba(50,130,200,0.1);  color: #2a7ab8; }
+
+  .player-name { font-weight: 600; font-size: 14px; flex: 1; color: var(--text); }
   .player-team { color: var(--muted); font-size: 12px; }
-  .pick-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
-  .pick-badge { background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 10px; padding: 10px 14px; text-align: center; flex-shrink: 0; min-width: 60px; }
-  .pick-round { font-size: 10px; font-weight: 700; letter-spacing: 1px; opacity: 0.8; }
-  .pick-year { font-size: 20px; font-weight: 800; }
-  .pick-from { color: var(--muted); font-size: 13px; }
-  .pick-from strong { color: var(--text); }
-  .pick-own { font-size: 12px; font-weight: 600; margin-top: 3px; }
+
   .draftboard-grid { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  th { background: var(--surface2); padding: 8px 10px; text-align: center; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; color: var(--muted); border: 1px solid var(--border); white-space: nowrap; }
+  th { background: var(--surface2); padding: 9px 10px; text-align: center; font-size: 10px; font-weight: 700; letter-spacing: 0.8px; color: var(--muted); border: 1px solid var(--border); white-space: nowrap; }
   th.round-label { background: var(--surface); color: var(--text); font-size: 12px; }
-  td { padding: 8px 10px; border: 1px solid var(--border); text-align: center; vertical-align: middle; }
+  td { padding: 8px 10px; border: 1px solid var(--border); text-align: center; vertical-align: middle; background: var(--surface); }
+
   .pick-cell { border-radius: 6px; padding: 5px 7px; font-weight: 600; font-size: 11px; line-height: 1.3; }
-  .pick-own-cell { background: rgba(108,99,255,0.15); color: var(--accent); }
-  .pick-traded-cell { background: rgba(255,101,132,0.1); color: #ff8fa3; }
+  .pick-own-cell { background: var(--pick-own-bg); color: var(--pick-own-color); }
+  .pick-traded-cell { background: var(--pick-traded-bg); color: var(--pick-traded-color); }
   .pick-empty { color: var(--border); }
+
   .legend { display: flex; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
   .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
   .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
   .edit-hint { background: var(--surface2); border: 1px dashed var(--border); border-radius: 10px; padding: 12px 16px; font-size: 12px; color: var(--muted); margin-top: 20px; text-align: center; }
-  .edit-hint code { background: var(--surface); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: var(--accent); }
+  .edit-hint code { background: var(--surface); border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: var(--accent); }
+
+  h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--text); }
+
+  /* ===== RULES PAGE ===== */
+  .rule-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .rule-section-header {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text);
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .rule-section-header:hover { background: var(--surface2); }
+  .rule-chevron { font-size: 18px; color: var(--muted); transition: transform 0.2s; }
+  .rule-section.collapsed .rule-chevron { transform: rotate(-90deg); }
+  .rule-section-body {
+    padding: 4px 20px 16px;
+    border-top: 1px solid var(--border);
+  }
+  .rule-section.collapsed .rule-section-body { display: none; }
+  .rule-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .rule-item:last-child { border-bottom: none; }
+  .rule-number {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .rule-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    flex: 1;
+  }
 </style>
 </head>
 <body>
@@ -99,13 +302,17 @@
 <div class="header">
   <button class="back-btn" id="backBtn" onclick="goHome()">← Back</button>
   <div class="logo">🌮 Taco Tuesday <span>HQ</span></div>
+  <div class="header-right">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">☀️ Light</button>
+  </div>
 </div>
 
 <div class="page active" id="homePage">
-  <div style="max-width:920px;margin:0 auto;">
+  <div style="max-width:960px;margin:0 auto;">
     <div class="home-title">The Taco Tuesday League</div>
     <div class="home-sub">Klick auf Dein Team für Deine Spieler und Deine Picks</div>
-    <button class="draftboard-btn" onclick="showDraftboard()">Full Draft Board</button>
+    <button class="draftboard-btn" onclick="showDraftboard()">📋 Full Draft Board</button>
+    <button class="draftboard-btn" onclick="showRules()" style="background:linear-gradient(135deg,#f5c842,#ff9800);box-shadow:0 4px 12px rgba(245,200,66,0.3);">📜 Rules</button>
     <div class="team-grid" id="teamGrid"></div>
   </div>
 </div>
@@ -114,43 +321,174 @@
   <div class="team-page-header" id="teamHeader"></div>
   <div class="tabs">
     <div class="tab active" onclick="switchTab('roster')">🏀 Roster</div>
-    <div class="tab" onclick="switchTab('picks')"> My Owned Picks</div>
+    <div class="tab" onclick="switchTab('picks')">🎯 My Owned Picks</div>
   </div>
   <div id="tabContent"></div>
 </div>
 
 <div class="page" id="draftboardPage">
-  <h2 style="margin-bottom:6px;"> Full Draft Board</h2>
+  <h2 style="margin-bottom:6px;">📋 Full Draft Board</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">All traded picks already reflected</p>
   <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:rgba(108,99,255,0.4)"></div>Own pick (kept)</div>
-    <div class="legend-item"><div class="legend-dot" style="background:rgba(255,101,132,0.3)"></div>Traded away → shows new holder</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--pick-own-bg);border:1px solid var(--pick-own-color);"></div>Own pick (kept)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--pick-traded-bg);border:1px solid var(--pick-traded-color);"></div>Traded away → shows new holder</div>
   </div>
   <div class="draftboard-grid" id="draftboardContent"></div>
-  <div class="edit-hint"> After trades, update <code>currentOwner</code> in the <code>PICKS</code> array</div>
+  <div class="edit-hint">✏️ After trades, update <code>currentOwner</code> in the <code>PICKS</code> array</div>
 </div>
 
 <div class="page" id="tradesPage">
-  <h2 style="margin-bottom:6px;"> Trade History</h2>
+  <h2 style="margin-bottom:6px;">📜 Trade History</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">All recorded trades by year</p>
   <div id="tradesContent"></div>
 </div>
 
+<div class="page" id="rulesPage">
+  <h2 style="margin-bottom:6px;">📜 Rules</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:28px;">Taco Tuesday League Rules & Regulations</p>
+  <div id="rulesContent">
+
+    <!-- ============================================================
+         RULES PAGE — edit the sections below to add your rules
+         Each rule-section is a collapsible card. To add a new section,
+         copy one <div class="rule-section"> block and paste it below.
+         ============================================================ -->
+
+    <div class="rule-section">
+      <div class="rule-section-header" onclick="toggleRule(this)">
+        <span>🏆 General League Rules</span>
+        <span class="rule-chevron">▾</span>
+      </div>
+      <div class="rule-section-body">
+        <div class="rule-item">
+          <div class="rule-number">1</div>
+          <div class="rule-text">Tanking ist nicht erlaubt. Spielt bitte alle Spieler so weit es möglich ist.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-number">2</div>
+          <div class="rule-text">Ansonsten wird eine Strafe verhangen: Ihr rutscht für jedes Vergehen einen Draftspot nach hinten.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-number">3</div>
+          <div class="rule-text">Habt Spaß, antwortet auf Tradeanfragen und versucht aktiv zu sein.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-section">
+      <div class="rule-section-header" onclick="toggleRule(this)">
+        <span>📅 Draft Rules</span>
+        <span class="rule-chevron">▾</span>
+      </div>
+      <div class="rule-section-body">
+        <div class="rule-item">
+          <div class="rule-number">1</div>
+          <div class="rule-text">Draft Order wird durch Regular Season Standing bestimmt. Der letzte Platz darf sich ein Real Life NBA Team auswählen, dessen Pick es erhält. Beispiel: Wählt Team X die Pacers und die Pacers erhalten den #1, erhält Team X den #1 für die Taco Tuesday Fantasy Basketball League. Sollte Team X den Pick an Team Y getraded haben, darf Team Y das Real Life NBA Team wählen.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-number">2</div>
+          <div class="rule-text">Draft ist linear. Habt ihr den 1.01, habt ihr auch den 2.01, 3.01 und 4.01.</div>
+        </div>
+<div class="rule-item">
+          <div class="rule-number">3</div>
+          <div class="rule-text">Der Draft geht über 4 Runden. Bevor der Draft losgeht, müsst ihr eure Keeper einstellen, die Spieler, die ihr halten wollt. Für jeden Pick solltet ihr einen Spieler abwerfen, dh. jedes Jahr vier Spieler nicht keepen. Wenn ihr 8 Picks habt, solltet ihr 8 Spieler abwerfen (bzw. nicht keepen). Wenn ihr das nicht wollt und zu viele Spieler haltet, verfallen eure Picks (von unten aufgefüllt). Fragt hier unbedingt nacht, wenn etwas unklar ist.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="rule-section">
+      <div class="rule-section-header" onclick="toggleRule(this)">
+        <span>🔄 Trade Rules</span>
+        <span class="rule-chevron">▾</span>
+      </div>
+      <div class="rule-section-body">
+        <div class="rule-item">
+          <div class="rule-number">1</div>
+          <div class="rule-text">Trades dauern einen Tag. Bitte merkt Bedenken sofort an.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-number">2</div>
+          <div class="rule-text">Hier ein Beispiel für Dynastyrankings: https://hashtagbasketball.com/fantasy-basketball-dynasty-rankings.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-section">
+      <div class="rule-section-header" onclick="toggleRule(this)">
+        <span>💰 Scoring & Waivers</span>
+        <span class="rule-chevron">▾</span>
+      </div>
+      <div class="rule-section-body">
+        <div class="rule-item">
+          <div class="rule-number">1</div>
+          <div class="rule-text">7 Adds pro Woche.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-number">2</div>
+          <div class="rule-text">Waiver Order laut ESPN.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-section">
+      <div class="rule-section-header" onclick="toggleRule(this)">
+        <span>🌮 Taco Tuesday Traditions</span>
+        <span class="rule-chevron">▾</span>
+      </div>
+      <div class="rule-section-body">
+        <div class="rule-item">
+          <div class="rule-number">1</div>
+          <div class="rule-text">Champions: 2025/ 2026 - TBD 2024/ 2025 - Bear Down 2023/ 2024 - Vancouver Curry-Wurst 2022/2023 - Vancouver Curry-Wurst 2021/ 2022- Bear Down.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script>
+// ============================================================
+//  THEME TOGGLE
+// ============================================================
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeToggle');
+  if (body.classList.contains('light')) {
+    body.classList.remove('light');
+    btn.textContent = '☀️ Light';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.classList.add('light');
+    btn.textContent = '🌙 Dark';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+// Remember preference on reload
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light');
+  document.getElementById('themeToggle').textContent = '🌙 Dark';
+}
+
 const TEAMS = [
-  { id:1,  name:"Bear Down",              owner:"Kong Power",                    record:"112-41-0", color:"#6c63ff" },
-  { id:2,  name:"Seagulls",               owner:"Möwe",              record:"99-53-1",  color:"#29b6f6" },
-  { id:3,  name:"Neukoelln Hustlers",     owner:"Timo Xtremo",             record:"95-57-1",  color:"#ff6584" },
-  { id:4,  name:"Leaveland Cavaliers",    owner:"Sven",                    record:"87-65-1",  color:"#4caf81" },
-  { id:5,  name:"Anadolu Ballers",        owner:"Murat Oguz",              record:"82-68-3",  color:"#f5c842" },
-  { id:6,  name:"3-POINT MAFIA",          owner:"Patrick & Bennet",        record:"77-74-2",  color:"#e040fb" },
-  { id:7,  name:"Always Money In The BananaStand",    owner:"KraftPaket Knödel",       record:"70-75-8",  color:"#ff9800" },
-  { id:8,  name:"Kawhi So Serious",       owner:"Harald Peterson",         record:"73-78-2",  color:"#ef5350" },
-  { id:9,  name:"Cooking Show",           owner:"Stefan Estepham",         record:"65-85-3",  color:"#26c6da" },
-  { id:10, name:"S-Town Grizzlies",       owner:"Jan Schattschneider",     record:"62-89-2",  color:"#66bb6a" },
-  { id:11, name:"Double Dribble Trouble", owner:"Nils",                    record:"45-107-1", color:"#ffa726" },
-  { id:12, name:"Vancouver Curry-Wurst",  owner:"German Bratwurst",        record:"39-114-0", color:"#78909c" },
+  { id:1,  name:"Bear Down",                       owner:"Kong Power",          record:"112-41-0", color:"#6c63ff", lightColor:"#c0622f" },
+  { id:2,  name:"Seagulls",                        owner:"Möwe",                record:"99-53-1",  color:"#29b6f6", lightColor:"#2a7ab8" },
+  { id:3,  name:"Neukoelln Hustlers",              owner:"Timo Xtremo",         record:"95-57-1",  color:"#ff6584", lightColor:"#b43c64" },
+  { id:4,  name:"Leaveland Cavaliers",             owner:"Sven",                record:"87-65-1",  color:"#4caf81", lightColor:"#2d7a50" },
+  { id:5,  name:"Anadolu Ballers",                 owner:"Murat Oguz",          record:"82-68-3",  color:"#f5c842", lightColor:"#9a6e10" },
+  { id:6,  name:"3-POINT MAFIA",                   owner:"Patrick & Bennet",    record:"77-74-2",  color:"#e040fb", lightColor:"#7b3fa8" },
+  { id:7,  name:"Always Money In The BananaStand", owner:"KraftPaket Knödel",   record:"70-75-8",  color:"#ff9800", lightColor:"#c06020" },
+  { id:8,  name:"Kawhi So Serious",                owner:"Harald Peterson",     record:"73-78-2",  color:"#ef5350", lightColor:"#a83030" },
+  { id:9,  name:"Cooking Show",                    owner:"Stefan Estepham",     record:"65-85-3",  color:"#26c6da", lightColor:"#1a8080" },
+  { id:10, name:"S-Town Grizzlies",                owner:"Jan Schattschneider", record:"62-89-2",  color:"#66bb6a", lightColor:"#3d7a30" },
+  { id:11, name:"Double Dribble Trouble",          owner:"Nils",                record:"45-107-1", color:"#ffa726", lightColor:"#b86020" },
+  { id:12, name:"Vancouver Curry-Wurst",           owner:"German Bratwurst",    record:"39-114-0", color:"#78909c", lightColor:"#607080" },
 ];
+
+function getTeamColor(t) {
+  return document.body.classList.contains('light') ? t.lightColor : t.color;
+}
 
 const ROSTERS = {
 1: [
@@ -183,8 +521,8 @@ const ROSTERS = {
   { name:"Adem Bona",             pos:"C",  team:"PHI" },
   { name:"Jordan Poole",          pos:"PG", team:"NOR" },
   { name:"Alondes Williams",      pos:"SG", team:"FA"  },
-  ],
-  2: [
+],
+2: [
   { name:"Stephen Curry",         pos:"PG", team:"GSW" },
   { name:"LeBron James",          pos:"SF", team:"LAL" },
   { name:"Onyeka Okongwu",        pos:"C",  team:"ATL" },
@@ -308,7 +646,7 @@ const ROSTERS = {
   { name:"Lauri Markkanen",        pos:"PF", team:"UTA" },
   { name:"Lonzo Ball",             pos:"PG", team:"FA"  },
 ],
- 6: [
+6: [
   { name:"James Harden",           pos:"PG", team:"CLE" },
   { name:"Jamal Murray",           pos:"PG", team:"DEN" },
   { name:"Julius Randle",          pos:"PF", team:"MIN" },
@@ -431,7 +769,7 @@ const ROSTERS = {
   { name:"Zach Edey",              pos:"C",  team:"MEM" },
   { name:"Cody Martin",            pos:"SG", team:"FA"  },
 ],
-  10: [
+10: [
   { name:"Victor Wembanyama",      pos:"C",  team:"SAS" },
   { name:"Keyonte George",         pos:"PG", team:"UTA" },
   { name:"Kyle Filipowski",        pos:"PF", team:"UTA" },
@@ -526,32 +864,20 @@ const ROSTERS = {
 ],
 };
 
-// ============================================================
-//  PICKS — currentOwner = who holds the pick NOW
-//  Team IDs: 1=Bear Down, 2=Seagulls, 3=Neukoelln Hustlers,
-//  4=Leaveland Cavaliers, 5=Anadolu Ballers, 6=3-POINT MAFIA,
-//  7=Always Money, 8=Kawhi So Serious, 9=Cooking Show,
-//  10=S-Town Grizzlies, 11=Double Dribble Trouble, 12=Vancouver Curry-Wurst
-// ============================================================
 const PICKS = [
-  // ===================== 2026 =====================
-  // 2026 Round 1
-  // Bear Down holds: own + Neukoelln + Anadolu + Cooking Show + Leaveland + Always Money + Double Dribble + S-Town + 3-POINT MAFIA
-  {year:2026, round:1, originalOwner:1,  currentOwner:1  }, // Bear Down own
-  {year:2026, round:1, originalOwner:2,  currentOwner:2  }, // Seagulls own
-  {year:2026, round:1, originalOwner:3,  currentOwner:1  }, // Neukoelln → Bear Down (Porzingis trade)
-  {year:2026, round:1, originalOwner:4,  currentOwner:1  }, // Leaveland → Bear Down (Jrue trade)
-  {year:2026, round:1, originalOwner:5,  currentOwner:5  }, // Anadolu Ballers own
-  {year:2026, round:1, originalOwner:6,  currentOwner:1  }, // 3-POINT MAFIA → Bear Down (Georg trade)
-  {year:2026, round:1, originalOwner:7,  currentOwner:1  }, // Always Money → Bear Down (2027 1st trade)
-  {year:2026, round:1, originalOwner:8,  currentOwner:8  }, // Kawhi So Serious own
-  {year:2026, round:1, originalOwner:9,  currentOwner:1  }, // Cooking Show → Bear Down (Trey Murphy trade)
-  {year:2026, round:1, originalOwner:10, currentOwner:1  }, // S-Town → Bear Down (2025 2nd/3rd trade)
-  {year:2026, round:1, originalOwner:11, currentOwner:1, note:"with Protection" }, // Double Dribble → Bear Down
-  {year:2026, round:1, originalOwner:12, currentOwner:12 }, // Vancouver own
-
-  // 2026 Round 2
-  {year:2026, round:2, originalOwner:1, currentOwner:1 }, // Bear Down own
+  {year:2026, round:1, originalOwner:1,  currentOwner:1  },
+  {year:2026, round:1, originalOwner:2,  currentOwner:2  },
+  {year:2026, round:1, originalOwner:3,  currentOwner:1  },
+  {year:2026, round:1, originalOwner:4,  currentOwner:1  },
+  {year:2026, round:1, originalOwner:5,  currentOwner:5  },
+  {year:2026, round:1, originalOwner:6,  currentOwner:1  },
+  {year:2026, round:1, originalOwner:7,  currentOwner:1  },
+  {year:2026, round:1, originalOwner:8,  currentOwner:8  },
+  {year:2026, round:1, originalOwner:9,  currentOwner:1  },
+  {year:2026, round:1, originalOwner:10, currentOwner:1  },
+  {year:2026, round:1, originalOwner:11, currentOwner:1, note:"with Protection" },
+  {year:2026, round:1, originalOwner:12, currentOwner:12 },
+  {year:2026, round:2, originalOwner:1,  currentOwner:1  },
   {year:2026, round:2, originalOwner:2,  currentOwner:2  },
   {year:2026, round:2, originalOwner:3,  currentOwner:3  },
   {year:2026, round:2, originalOwner:4,  currentOwner:4  },
@@ -563,26 +889,19 @@ const PICKS = [
   {year:2026, round:2, originalOwner:10, currentOwner:10 },
   {year:2026, round:2, originalOwner:11, currentOwner:11 },
   {year:2026, round:2, originalOwner:12, currentOwner:12 },
-
-  // 2026 Round 3
-  // Bear Down traded their own R3 to 3-POINT MAFIA (Jimmy Butler trade)
-  // Bear Down holds 3PM's R3 (from Georg trade)
-  {year:2026, round:3, originalOwner:1, currentOwner:1 }, // Bear Down own
+  {year:2026, round:3, originalOwner:1,  currentOwner:1  },
   {year:2026, round:3, originalOwner:2,  currentOwner:2  },
   {year:2026, round:3, originalOwner:3,  currentOwner:3  },
   {year:2026, round:3, originalOwner:4,  currentOwner:4  },
   {year:2026, round:3, originalOwner:5,  currentOwner:5  },
-  {year:2026, round:3, originalOwner:6,  currentOwner:1  }, // 3PM R3 → Bear Down (Georg trade)
+  {year:2026, round:3, originalOwner:6,  currentOwner:1  },
   {year:2026, round:3, originalOwner:7,  currentOwner:7  },
   {year:2026, round:3, originalOwner:8,  currentOwner:8  },
   {year:2026, round:3, originalOwner:9,  currentOwner:9  },
   {year:2026, round:3, originalOwner:10, currentOwner:10 },
   {year:2026, round:3, originalOwner:11, currentOwner:11 },
   {year:2026, round:3, originalOwner:12, currentOwner:12 },
-
-  // 2026 Round 4
-  // Bear Down traded R4 to Seagulls (Hospital Squad)
-  {year:2026, round:4, originalOwner:1,  currentOwner:2  }, // Bear Down R4 → Seagulls
+  {year:2026, round:4, originalOwner:1,  currentOwner:2  },
   {year:2026, round:4, originalOwner:2,  currentOwner:2  },
   {year:2026, round:4, originalOwner:3,  currentOwner:3  },
   {year:2026, round:4, originalOwner:4,  currentOwner:4  },
@@ -594,23 +913,18 @@ const PICKS = [
   {year:2026, round:4, originalOwner:10, currentOwner:10 },
   {year:2026, round:4, originalOwner:11, currentOwner:11 },
   {year:2026, round:4, originalOwner:12, currentOwner:12 },
-
-  // ===================== 2027 =====================
-  // 2027 Round 1 — Neukoelln sends a 1st to 3PM in Banchero-Trade
-  {year:2027, round:1, originalOwner:1,  currentOwner:7  }, // Bear Down R1 → Always Money
+  {year:2027, round:1, originalOwner:1,  currentOwner:7  },
   {year:2027, round:1, originalOwner:2,  currentOwner:2  },
-  {year:2027, round:1, originalOwner:3,  currentOwner:6  }, // Neukoelln R1 → 3-POINT MAFIA
+  {year:2027, round:1, originalOwner:3,  currentOwner:6  },
   {year:2027, round:1, originalOwner:4,  currentOwner:4  },
   {year:2027, round:1, originalOwner:5,  currentOwner:5  },
-  {year:2027, round:1, originalOwner:6,  currentOwner:6  }, // 3PM R1 → own
+  {year:2027, round:1, originalOwner:6,  currentOwner:6  },
   {year:2027, round:1, originalOwner:7,  currentOwner:7  },
   {year:2027, round:1, originalOwner:8,  currentOwner:8  },
   {year:2027, round:1, originalOwner:9,  currentOwner:9  },
   {year:2027, round:1, originalOwner:10, currentOwner:10 },
   {year:2027, round:1, originalOwner:11, currentOwner:11 },
   {year:2027, round:1, originalOwner:12, currentOwner:12 },
-
-  // 2027 Round 2
   {year:2027, round:2, originalOwner:1,  currentOwner:1  },
   {year:2027, round:2, originalOwner:2,  currentOwner:2  },
   {year:2027, round:2, originalOwner:3,  currentOwner:3  },
@@ -623,22 +937,18 @@ const PICKS = [
   {year:2027, round:2, originalOwner:10, currentOwner:10 },
   {year:2027, round:2, originalOwner:11, currentOwner:11 },
   {year:2027, round:2, originalOwner:12, currentOwner:12 },
-
-  // 2027 Round 3
   {year:2027, round:3, originalOwner:1,  currentOwner:1  },
   {year:2027, round:3, originalOwner:2,  currentOwner:2  },
-  {year:2027, round:3, originalOwner:3,  currentOwner:3 },
+  {year:2027, round:3, originalOwner:3,  currentOwner:3  },
   {year:2027, round:3, originalOwner:4,  currentOwner:4  },
   {year:2027, round:3, originalOwner:5,  currentOwner:5  },
-  {year:2027, round:3, originalOwner:6,  currentOwner:3  }, // 3PM R3 → Neukoelln
+  {year:2027, round:3, originalOwner:6,  currentOwner:3  },
   {year:2027, round:3, originalOwner:7,  currentOwner:7  },
   {year:2027, round:3, originalOwner:8,  currentOwner:8  },
   {year:2027, round:3, originalOwner:9,  currentOwner:9  },
   {year:2027, round:3, originalOwner:10, currentOwner:10 },
   {year:2027, round:3, originalOwner:11, currentOwner:11 },
   {year:2027, round:3, originalOwner:12, currentOwner:12 },
-
-  // 2027 Round 4
   {year:2027, round:4, originalOwner:1,  currentOwner:1  },
   {year:2027, round:4, originalOwner:2,  currentOwner:2  },
   {year:2027, round:4, originalOwner:3,  currentOwner:3  },
@@ -651,23 +961,18 @@ const PICKS = [
   {year:2027, round:4, originalOwner:10, currentOwner:10 },
   {year:2027, round:4, originalOwner:11, currentOwner:11 },
   {year:2027, round:4, originalOwner:12, currentOwner:12 },
-
-  // ===================== 2028 =====================
-  // 2028 Round 1 — Neukoelln sends a 1st to 3PM in Banchero-Trade
   {year:2028, round:1, originalOwner:1,  currentOwner:1  },
   {year:2028, round:1, originalOwner:2,  currentOwner:2  },
-  {year:2028, round:1, originalOwner:3,  currentOwner:6  }, // Neukoelln R1 → 3-POINT MAFIA
+  {year:2028, round:1, originalOwner:3,  currentOwner:6  },
   {year:2028, round:1, originalOwner:4,  currentOwner:4  },
   {year:2028, round:1, originalOwner:5,  currentOwner:5  },
-  {year:2028, round:1, originalOwner:6,  currentOwner:6 },
+  {year:2028, round:1, originalOwner:6,  currentOwner:6  },
   {year:2028, round:1, originalOwner:7,  currentOwner:7  },
   {year:2028, round:1, originalOwner:8,  currentOwner:8  },
   {year:2028, round:1, originalOwner:9,  currentOwner:9  },
   {year:2028, round:1, originalOwner:10, currentOwner:10 },
   {year:2028, round:1, originalOwner:11, currentOwner:11 },
   {year:2028, round:1, originalOwner:12, currentOwner:12 },
-
-  // 2028 Rounds 2-4
   {year:2028, round:2, originalOwner:1,  currentOwner:1  },
   {year:2028, round:2, originalOwner:2,  currentOwner:2  },
   {year:2028, round:2, originalOwner:3,  currentOwner:3  },
@@ -704,8 +1009,6 @@ const PICKS = [
   {year:2028, round:4, originalOwner:10, currentOwner:10 },
   {year:2028, round:4, originalOwner:11, currentOwner:11 },
   {year:2028, round:4, originalOwner:12, currentOwner:12 },
-
-  // ===================== 2029 =====================
   {year:2029, round:1, originalOwner:1,  currentOwner:1  },
   {year:2029, round:1, originalOwner:2,  currentOwner:2  },
   {year:2029, round:1, originalOwner:3,  currentOwner:3  },
@@ -756,7 +1059,6 @@ const PICKS = [
   {year:2029, round:4, originalOwner:12, currentOwner:12 },
 ];
 
-// ✏️ DRAFT YEAR NOTES — edit these to notify your players
 const DRAFT_NOTES = {
   2026: "Do not trade a 1st to Bear Down. He has enough. Draft order TBD based on final standings.",
   2027: "🔄 Bear Down's R1 goes to Always Money. Neukoelln's R1 goes to 3-POINT MAFIA. 3PM's R3 goes to Neukoelln.",
@@ -764,83 +1066,19 @@ const DRAFT_NOTES = {
   2029: "✅ All teams hold their own picks. No trades recorded yet.",
 };
 
-// ✏️ TRADES — add new trades as objects in this array
 const TRADES = [
-  {
-    year: 2026,
-    teamA: "Bear Down (Uggi)",
-    teamB: "Leaveland Cavaliers (Sven)",
-    aGave: "Jrue Holiday, Kevin Porter Jr., Jarrett Allen, 2023 1st Round Pick, 2026 Last Round Pick",
-    bGave: "Leaveland Cavaliers 2026 1st, Trae Young",
-  },
-  {
-    year: 2026,
-    teamA: "Bear Down (Uggi)",
-    teamB: "Anadolu Ballers (Murat)",
-    aGave: "2026 R6 (1st Round Pick), 2023 R8 (3rd Round) Pick Swap",
-    bGave: "Austin Reaves (TS), 2026 Last Round Pick, 2023 R8 (3rd Round) Pick Swap",
-  },
-  {
-    year: 2026,
-    teamA: "Bear Down (Uggi)",
-    teamB: "3-POINT MAFIA (Georg → Patrick/Bennet)",
-    aGave: "2023 2nd Round Pick, 2025 1st Round Pick (Shaedon Sharpe)",
-    bGave: "3-POINT MAFIA 2026 1st Round Pick",
-  },
-  {
-    year: 2026,
-    teamA: "Bear Down (Uggi)",
-    teamB: "Cooking Show (Felix → Stefan)",
-    aGave: "2024 1st Round Pick, Bilal Coulibaly, 2026 R9 (4th pick)",
-    bGave: "Trey Murphy III, 2026 R6 (1st pick)",
-  },
-  {
-    year: 2026,
-    teamA: "Bear Down (Uggi)",
-    teamB: "Neukoelln Hustlers (Timo)",
-    aGave: "Kristaps Porzingis",
-    bGave: "Neukoelln Hustlers 2026 1st Round Pick",
-  },
-  {
-    year: 2026,
-    teamA: "Bear Down (Uggi)",
-    teamB: "Always Money in the BananaStand (Tobi)",
-    aGave: "2027 1st Round Pick",
-    bGave: "Always Money 2026 1st Round Pick",
-  },
-  {
-    year: 2026,
-    teamA: "Bear Down (Uggi)",
-    teamB: "Double Dribble Trouble (Nils)",
-    aGave: "2025 1st (5th Overall)",
-    bGave: "Double Dribble 2026 1st (with protection)",
-  },
-  {
-    year: 2026,
-    teamA: "Bear Down (Uggi)",
-    teamB: "S-Town Grizzlies (Jan)",
-    aGave: "2025 2nd, 2025 3rd (with protection)",
-    bGave: "S-Town 2026 1st Round Pick",
-  },
-  {
-    year: 2026,
-    teamA: "Anadolu Ballers (Murat)",
-    teamB: "Bear Down (Uggi)",
-    aGave: "VJ Edgecombe",
-    bGave: "Anadolu Ballers 2026 1st, Bilal Coulibaly",
-  },
-  {
-    year: 2027,
-    teamA: "Neukoelln Hustlers (Timo)",
-    teamB: "3-POINT MAFIA (Patrick/Bennet)",
-    aGave: "Paolo Banchero, 2027 3rd Round Pick",
-    bGave: "2027 1st Round Pick, 2028 1st Round Pick, Cam Whitmore",
-  },
+  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Leaveland Cavaliers (Sven)", aGave:"Jrue Holiday, Kevin Porter Jr., Jarrett Allen, 2023 1st Round Pick, 2026 Last Round Pick", bGave:"Leaveland Cavaliers 2026 1st, Trae Young" },
+  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Anadolu Ballers (Murat)", aGave:"2026 R6 (1st Round Pick), 2023 R8 (3rd Round) Pick Swap", bGave:"Austin Reaves (TS), 2026 Last Round Pick, 2023 R8 (3rd Round) Pick Swap" },
+  { year:2026, teamA:"Bear Down (Uggi)", teamB:"3-POINT MAFIA (Georg → Patrick/Bennet)", aGave:"2023 2nd Round Pick, 2025 1st Round Pick (Shaedon Sharpe)", bGave:"3-POINT MAFIA 2026 1st Round Pick" },
+  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Cooking Show (Felix → Stefan)", aGave:"2024 1st Round Pick, Bilal Coulibaly, 2026 R9 (4th pick)", bGave:"Trey Murphy III, 2026 R6 (1st pick)" },
+  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Neukoelln Hustlers (Timo)", aGave:"Kristaps Porzingis", bGave:"Neukoelln Hustlers 2026 1st Round Pick" },
+  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Always Money in the BananaStand (Tobi)", aGave:"2027 1st Round Pick", bGave:"Always Money 2026 1st Round Pick" },
+  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Double Dribble Trouble (Nils)", aGave:"2025 1st (5th Overall)", bGave:"Double Dribble 2026 1st (with protection)" },
+  { year:2026, teamA:"Bear Down (Uggi)", teamB:"S-Town Grizzlies (Jan)", aGave:"2025 2nd, 2025 3rd (with protection)", bGave:"S-Town 2026 1st Round Pick" },
+  { year:2026, teamA:"Anadolu Ballers (Murat)", teamB:"Bear Down (Uggi)", aGave:"VJ Edgecombe", bGave:"Anadolu Ballers 2026 1st, Bilal Coulibaly" },
+  { year:2027, teamA:"Neukoelln Hustlers (Timo)", teamB:"3-POINT MAFIA (Patrick/Bennet)", aGave:"Paolo Banchero, 2027 3rd Round Pick", bGave:"2027 1st Round Pick, 2028 1st Round Pick, Cam Whitmore" },
 ];
 
-// ============================================================
-//  APP LOGIC
-// ============================================================
 let currentTeamId = null;
 let currentTab = 'roster';
 const teamMap = {};
@@ -851,24 +1089,27 @@ function getInitials(name) {
 }
 
 function renderHome() {
-  document.getElementById('teamGrid').innerHTML = TEAMS.map(t => `
+  document.getElementById('teamGrid').innerHTML = TEAMS.map(t => {
+    const c = getTeamColor(t);
+    return `
     <div class="team-card" onclick="showTeam(${t.id})">
-      <div class="team-avatar" style="background:${t.color}22;color:${t.color};">${getInitials(t.name)}</div>
+      <div class="team-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</div>
       <div class="team-name">${t.name}</div>
       <div class="team-owner">${t.owner}</div>
       <div class="team-record">📊 ${t.record}</div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 function showTeam(id) {
   currentTeamId = id; currentTab = 'roster';
   const t = teamMap[id];
+  const c = getTeamColor(t);
   document.getElementById('teamHeader').innerHTML = `
-    <div class="team-page-avatar" style="background:${t.color}22;color:${t.color};">${getInitials(t.name)}</div>
+    <div class="team-page-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</div>
     <div>
       <div class="team-page-name">${t.name}</div>
-      <div class="team-page-owner">${t.owner} &nbsp;·&nbsp; <span style="color:var(--green);"> ${t.record}</span></div>
+      <div class="team-page-owner">${t.owner} &nbsp;·&nbsp; <span style="color:var(--green);">📊 ${t.record}</span></div>
     </div>
   `;
   document.querySelectorAll('.tab').forEach((el, i) => el.classList.toggle('active', i === 0));
@@ -911,29 +1152,34 @@ function renderPicks(id) {
   const myPicks = PICKS.filter(p => p.currentOwner === id);
   if (!myPicks.length) return '<p style="color:var(--muted);padding:20px 0;">No picks held.</p>';
 
-  const yearStyles = {
-    2026: { header: 'rgba(108,99,255,0.25)', dot: '#6c63ff', label: '#a89bff', own: 'rgba(108,99,255,0.12)', ownBorder: 'rgba(108,99,255,0.35)', traded: 'rgba(108,99,255,0.06)', tradedBorder: 'rgba(108,99,255,0.2)' },
-    2027: { header: 'rgba(76,175,129,0.25)', dot: '#4caf81', label: '#6dddaa', own: 'rgba(76,175,129,0.12)', ownBorder: 'rgba(76,175,129,0.35)', traded: 'rgba(76,175,129,0.06)', tradedBorder: 'rgba(76,175,129,0.2)' },
-    2028: { header: 'rgba(245,200,66,0.25)', dot: '#f5c842', label: '#f5d97a', own: 'rgba(245,200,66,0.12)', ownBorder: 'rgba(245,200,66,0.35)', traded: 'rgba(245,200,66,0.06)', tradedBorder: 'rgba(245,200,66,0.2)' },
-    2029: { header: 'rgba(41,182,246,0.25)', dot: '#29b6f6', label: '#7dd8f8', own: 'rgba(41,182,246,0.12)', ownBorder: 'rgba(41,182,246,0.35)', traded: 'rgba(41,182,246,0.06)', tradedBorder: 'rgba(41,182,246,0.2)' },
+  const isLight = document.body.classList.contains('light');
+  const yearStyles = isLight ? {
+    2026: { header:'rgba(192,98,47,0.1)',   dot:'#c0622f', label:'#8a3a10', own:'rgba(192,98,47,0.08)',  ownBorder:'rgba(192,98,47,0.3)',  traded:'rgba(192,98,47,0.04)',  tradedBorder:'rgba(192,98,47,0.15)'  },
+    2027: { header:'rgba(45,122,80,0.1)',    dot:'#2d7a50', label:'#1a5c35', own:'rgba(45,122,80,0.08)',  ownBorder:'rgba(45,122,80,0.3)',  traded:'rgba(45,122,80,0.04)',  tradedBorder:'rgba(45,122,80,0.15)'  },
+    2028: { header:'rgba(154,110,16,0.1)',   dot:'#9a6e10', label:'#6e4c08', own:'rgba(154,110,16,0.08)', ownBorder:'rgba(154,110,16,0.3)', traded:'rgba(154,110,16,0.04)', tradedBorder:'rgba(154,110,16,0.15)' },
+    2029: { header:'rgba(42,122,184,0.1)',   dot:'#2a7ab8', label:'#1a5a8a', own:'rgba(42,122,184,0.08)', ownBorder:'rgba(42,122,184,0.3)', traded:'rgba(42,122,184,0.04)', tradedBorder:'rgba(42,122,184,0.15)' },
+  } : {
+    2026: { header:'rgba(108,99,255,0.25)',  dot:'#6c63ff', label:'#a89bff', own:'rgba(108,99,255,0.12)', ownBorder:'rgba(108,99,255,0.35)', traded:'rgba(108,99,255,0.06)', tradedBorder:'rgba(108,99,255,0.2)'  },
+    2027: { header:'rgba(76,175,129,0.25)',  dot:'#4caf81', label:'#6dddaa', own:'rgba(76,175,129,0.12)', ownBorder:'rgba(76,175,129,0.35)', traded:'rgba(76,175,129,0.06)', tradedBorder:'rgba(76,175,129,0.2)'  },
+    2028: { header:'rgba(245,200,66,0.25)',  dot:'#f5c842', label:'#f5d97a', own:'rgba(245,200,66,0.12)', ownBorder:'rgba(245,200,66,0.35)', traded:'rgba(245,200,66,0.06)', tradedBorder:'rgba(245,200,66,0.2)'  },
+    2029: { header:'rgba(41,182,246,0.25)',  dot:'#29b6f6', label:'#7dd8f8', own:'rgba(41,182,246,0.12)', ownBorder:'rgba(41,182,246,0.35)', traded:'rgba(41,182,246,0.06)', tradedBorder:'rgba(41,182,246,0.2)'  },
   };
 
-  const allYears = [...new Set(PICKS.map(p => p.year))].sort();
   const allRounds = [...new Set(PICKS.map(p => p.round))].sort();
   const years = [...new Set(myPicks.map(p => p.year))].sort();
   let html = '';
 
   years.forEach(year => {
-    const s = yearStyles[year] || { header: 'rgba(255,255,255,0.1)', dot: '#fff', label: '#e8eaf6', own: 'rgba(255,255,255,0.05)', ownBorder: 'rgba(255,255,255,0.2)', traded: 'rgba(255,255,255,0.02)', tradedBorder: 'rgba(255,255,255,0.1)' };
+    const s = yearStyles[year] || yearStyles[2026];
     const yearPicks = myPicks.filter(p => p.year === year);
     const totalPicks = yearPicks.length;
 
     html += `
-      <div style="margin-bottom:28px;border:1px solid ${s.ownBorder};border-radius:12px;overflow:hidden;">
-        <div style="background:${s.header};padding:12px 16px;display:flex;align-items:center;gap:10px;">
+      <div style="margin-bottom:28px;border:1px solid ${s.ownBorder};border-radius:14px;overflow:hidden;">
+        <div style="background:${s.header};padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid ${s.ownBorder};">
           <div style="width:10px;height:10px;border-radius:50%;background:${s.dot};"></div>
-          <div style="font-size:14px;font-weight:800;color:${s.label};">${year}</div>
-          <div style="font-size:11px;color:var(--muted);background:var(--surface2);padding:2px 8px;border-radius:20px;margin-left:4px;">${totalPicks} pick${totalPicks !== 1 ? 's' : ''}</div>
+          <div style="font-size:14px;font-weight:800;color:${s.label};font-family:'Playfair Display',serif;">${year}</div>
+          <div style="font-size:11px;color:var(--muted);background:var(--surface2);padding:2px 8px;border-radius:20px;margin-left:4px;font-weight:600;">${totalPicks} pick${totalPicks !== 1 ? 's' : ''}</div>
         </div>
         <table style="width:100%;border-collapse:collapse;">
           <thead>
@@ -953,11 +1199,9 @@ function renderPicks(id) {
         const isFirst = i === 0;
         html += `
             <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:10px 12px;font-size:12px;font-weight:700;color:${s.label};white-space:nowrap;">
-                ${isFirst ? `R${round}` : ''}
-              </td>
-              <td style="padding:10px 12px;font-size:13px;color:var(--text);">${orig.name}</td>
-              <td style="padding:10px 12px;">
+              <td style="padding:10px 12px;font-size:12px;font-weight:700;color:${s.label};white-space:nowrap;background:var(--surface);">${isFirst ? `R${round}` : ''}</td>
+              <td style="padding:10px 12px;font-size:13px;color:var(--text);background:var(--surface);">${orig.name}</td>
+              <td style="padding:10px 12px;background:var(--surface);">
                 <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:${traded ? s.traded : s.own};border:1px solid ${traded ? s.tradedBorder : s.ownBorder};color:${s.label};">
                   ${traded ? '🔄 Traded' + (pick.note ? ' ('+pick.note+')' : '') : '✓ Own'}
                 </span>
@@ -977,25 +1221,21 @@ function showDraftboard() {
   const rounds = [...new Set(PICKS.map(p => p.round))].sort();
   let html = '';
   years.forEach(year => {
-    html += `<h3 style="margin:24px 0 12px;font-size:16px;">${year} Draft</h3>`;
-
-    // Draft year note
+    html += `<h3 style="margin:24px 0 12px;font-size:16px;font-family:'Playfair Display',serif;color:var(--text);">${year} Draft</h3>`;
     if (DRAFT_NOTES[year]) {
-      html += `<div style="background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--muted);">${DRAFT_NOTES[year]}</div>`;
+      html += `<div style="background:var(--accent-light);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--muted);">${DRAFT_NOTES[year]}</div>`;
     }
-
     html += `<table><thead><tr><th class="round-label">Rnd</th>`;
     TEAMS.forEach(t => { html += `<th title="${t.owner}">${t.name.split(' ')[0]}</th>`; });
     html += '</tr></thead><tbody>';
     rounds.forEach(round => {
-      html += `<tr><td style="font-weight:700;color:var(--muted);white-space:nowrap;">R${round}</td>`;
+      html += `<tr><td style="font-weight:700;color:var(--muted);white-space:nowrap;background:var(--surface);">R${round}</td>`;
       TEAMS.forEach(t => {
         const pick = PICKS.find(p => p.year===year && p.round===round && p.originalOwner===t.id);
         if (!pick) { html += `<td><span class="pick-empty">—</span></td>`; return; }
         const traded = pick.currentOwner !== pick.originalOwner;
         const holder = teamMap[pick.currentOwner];
-        html += `<td><div class="pick-cell ${traded ? 'pick-traded-cell' : 'pick-own-cell'}">
-          ${traded ? '→ '+holder.name.split(' ')[0] : '✓ Keep'}</div></td>`;
+        html += `<td><div class="pick-cell ${traded ? 'pick-traded-cell' : 'pick-own-cell'}">${traded ? '→ '+holder.name.split(' ')[0] : '✓ Keep'}</div></td>`;
       });
       html += '</tr>';
     });
@@ -1010,19 +1250,19 @@ function showTrades() {
   let html = '';
   years.forEach(year => {
     const yearTrades = TRADES.filter(t => t.year === year);
-    html += `<h3 style="margin:24px 0 12px;font-size:16px;"> ${year} Trades</h3>`;
+    html += `<h3 style="margin:24px 0 12px;font-size:16px;font-family:'Playfair Display',serif;">📅 ${year} Trades</h3>`;
     yearTrades.forEach(trade => {
       html += `
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;">
           <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;">
             <div style="flex:1;min-width:200px;">
               <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:6px;">TEAM A — ${trade.teamA}</div>
-              <div style="font-size:13px;color:#ff8fa3;">gave: ${trade.aGave}</div>
+              <div style="font-size:13px;color:var(--pick-traded-color);">gave: ${trade.aGave}</div>
             </div>
-            <div style="font-size:20px;padding-top:16px;">⇄</div>
+            <div style="font-size:20px;padding-top:16px;color:var(--muted);">⇄</div>
             <div style="flex:1;min-width:200px;">
               <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:6px;">TEAM B — ${trade.teamB}</div>
-              <div style="font-size:13px;color:#6dddaa;">gave: ${trade.bGave}</div>
+              <div style="font-size:13px;color:var(--green);">gave: ${trade.bGave}</div>
             </div>
           </div>
         </div>`;
@@ -1040,6 +1280,15 @@ function navigate(pageId) {
 }
 
 function goHome() { navigate('homePage'); }
+
+function showRules() {
+  navigate('rulesPage');
+}
+
+function toggleRule(header) {
+  header.parentElement.classList.toggle('collapsed');
+}
+
 renderHome();
 </script>
 </body>
