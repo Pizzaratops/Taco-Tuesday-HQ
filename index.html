@@ -321,30 +321,30 @@
   <div class="team-page-header" id="teamHeader"></div>
   <div class="tabs">
     <div class="tab active" onclick="switchTab('roster')">🏀 Roster</div>
-    <div class="tab" onclick="switchTab('picks')">🎯 My Owned Picks</div>
+    <div class="tab" onclick="switchTab('picks')"> My Owned Picks</div>
   </div>
   <div id="tabContent"></div>
 </div>
 
 <div class="page" id="draftboardPage">
-  <h2 style="margin-bottom:6px;">📋 Full Draft Board</h2>
+  <h2 style="margin-bottom:6px;"> Full Draft Board</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">All traded picks already reflected</p>
   <div class="legend">
     <div class="legend-item"><div class="legend-dot" style="background:var(--pick-own-bg);border:1px solid var(--pick-own-color);"></div>Own pick (kept)</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--pick-traded-bg);border:1px solid var(--pick-traded-color);"></div>Traded away → shows new holder</div>
   </div>
   <div class="draftboard-grid" id="draftboardContent"></div>
-  <div class="edit-hint">✏️ After trades, update <code>currentOwner</code> in the <code>PICKS</code> array</div>
+  <div class="edit-hint"> After trades, update <code>currentOwner</code> in the <code>PICKS</code> array</div>
 </div>
 
 <div class="page" id="tradesPage">
-  <h2 style="margin-bottom:6px;">📜 Trade History</h2>
+  <h2 style="margin-bottom:6px;"> Trade History</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">All recorded trades by year</p>
   <div id="tradesContent"></div>
 </div>
 
 <div class="page" id="rulesPage">
-  <h2 style="margin-bottom:6px;">📜 Rules</h2>
+  <h2 style="margin-bottom:6px;"> Rules</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:28px;">Taco Tuesday League Rules & Regulations</p>
   <div id="rulesContent">
 
@@ -356,7 +356,7 @@
 
     <div class="rule-section">
       <div class="rule-section-header" onclick="toggleRule(this)">
-        <span>🏆 General League Rules</span>
+        <span> General League Rules</span>
         <span class="rule-chevron">▾</span>
       </div>
       <div class="rule-section-body">
@@ -377,7 +377,7 @@
 
     <div class="rule-section">
       <div class="rule-section-header" onclick="toggleRule(this)">
-        <span>📅 Draft Rules</span>
+        <span> Draft Rules</span>
         <span class="rule-chevron">▾</span>
       </div>
       <div class="rule-section-body">
@@ -399,7 +399,7 @@
 
     <div class="rule-section">
       <div class="rule-section-header" onclick="toggleRule(this)">
-        <span>🔄 Trade Rules</span>
+        <span> Trade Rules</span>
         <span class="rule-chevron">▾</span>
       </div>
       <div class="rule-section-body">
@@ -416,7 +416,7 @@
 
     <div class="rule-section">
       <div class="rule-section-header" onclick="toggleRule(this)">
-        <span>💰 Scoring & Waivers</span>
+        <span> Scoring & Waivers</span>
         <span class="rule-chevron">▾</span>
       </div>
       <div class="rule-section-body">
@@ -1250,7 +1250,7 @@ function showTrades() {
   let html = '';
   years.forEach(year => {
     const yearTrades = TRADES.filter(t => t.year === year);
-    html += `<h3 style="margin:24px 0 12px;font-size:16px;font-family:'Playfair Display',serif;">📅 ${year} Trades</h3>`;
+    html += `<h3 style="margin:24px 0 12px;font-size:16px;font-family:'Playfair Display',serif;"> ${year} Trades</h3>`;
     yearTrades.forEach(trade => {
       html += `
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;">
@@ -1293,3 +1293,4 @@ renderHome();
 </script>
 </body>
 </html>
+
