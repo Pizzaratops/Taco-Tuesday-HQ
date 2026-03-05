@@ -296,6 +296,7 @@
     flex: 1;
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -313,6 +314,7 @@
     <div class="home-sub">Klick auf Dein Team für Deine Spieler und Deine Picks</div>
     <button class="draftboard-btn" onclick="showDraftboard()">📋 Full Draft Board</button>
     <button class="draftboard-btn" onclick="showRules()" style="background:linear-gradient(135deg,#f5c842,#ff9800);box-shadow:0 4px 12px rgba(245,200,66,0.3);">📜 Rules</button>
+    <button class="draftboard-btn" onclick="showStandings()" style="background:linear-gradient(135deg,#4caf81,#26c6da);box-shadow:0 4px 12px rgba(76,175,129,0.3);">📈 Standings History</button>
     <div class="team-grid" id="teamGrid"></div>
   </div>
 </div>
@@ -321,30 +323,39 @@
   <div class="team-page-header" id="teamHeader"></div>
   <div class="tabs">
     <div class="tab active" onclick="switchTab('roster')">🏀 Roster</div>
-    <div class="tab" onclick="switchTab('picks')"> My Owned Picks</div>
+    <div class="tab" onclick="switchTab('picks')">🎯 My Owned Picks</div>
   </div>
   <div id="tabContent"></div>
 </div>
 
 <div class="page" id="draftboardPage">
-  <h2 style="margin-bottom:6px;"> Full Draft Board</h2>
+  <h2 style="margin-bottom:6px;">📋 Full Draft Board</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">All traded picks already reflected</p>
   <div class="legend">
     <div class="legend-item"><div class="legend-dot" style="background:var(--pick-own-bg);border:1px solid var(--pick-own-color);"></div>Own pick (kept)</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--pick-traded-bg);border:1px solid var(--pick-traded-color);"></div>Traded away → shows new holder</div>
   </div>
   <div class="draftboard-grid" id="draftboardContent"></div>
-  <div class="edit-hint"> After trades, update <code>currentOwner</code> in the <code>PICKS</code> array</div>
+  <div class="edit-hint">✏️ After trades, update <code>currentOwner</code> in the <code>PICKS</code> array</div>
 </div>
 
 <div class="page" id="tradesPage">
-  <h2 style="margin-bottom:6px;"> Trade History</h2>
+  <h2 style="margin-bottom:6px;">📜 Trade History</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">All recorded trades by year</p>
   <div id="tradesContent"></div>
 </div>
 
+<div class="page" id="standingsPage">
+  <h2 style="margin-bottom:6px;">📈 Standings History</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:24px;">Final standings per season — click teams in the legend to show/hide</p>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+    <canvas id="standingsChart"></canvas>
+  </div>
+  <p style="color:var(--muted);font-size:12px;margin-top:12px;text-align:center;">— = did not participate that season</p>
+</div>
+
 <div class="page" id="rulesPage">
-  <h2 style="margin-bottom:6px;"> Rules</h2>
+  <h2 style="margin-bottom:6px;">📜 Rules</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:28px;">Taco Tuesday League Rules & Regulations</p>
   <div id="rulesContent">
 
@@ -356,77 +367,72 @@
 
     <div class="rule-section">
       <div class="rule-section-header" onclick="toggleRule(this)">
-        <span> General League Rules</span>
+        <span>🏆 General League Rules</span>
         <span class="rule-chevron">▾</span>
       </div>
       <div class="rule-section-body">
         <div class="rule-item">
           <div class="rule-number">1</div>
-          <div class="rule-text">Tanking ist nicht erlaubt. Spielt bitte alle Spieler so weit es möglich ist.</div>
+          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
         </div>
         <div class="rule-item">
           <div class="rule-number">2</div>
-          <div class="rule-text">Ansonsten wird eine Strafe verhangen: Ihr rutscht für jedes Vergehen einen Draftspot nach hinten.</div>
+          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
         </div>
         <div class="rule-item">
           <div class="rule-number">3</div>
-          <div class="rule-text">Habt Spaß, antwortet auf Tradeanfragen und versucht aktiv zu sein.</div>
+          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
         </div>
       </div>
     </div>
 
     <div class="rule-section">
       <div class="rule-section-header" onclick="toggleRule(this)">
-        <span> Draft Rules</span>
+        <span>📅 Draft Rules</span>
         <span class="rule-chevron">▾</span>
       </div>
       <div class="rule-section-body">
         <div class="rule-item">
           <div class="rule-number">1</div>
-          <div class="rule-text">Draft Order wird durch Regular Season Standing bestimmt. Der letzte Platz darf sich ein Real Life NBA Team auswählen, dessen Pick es erhält. Beispiel: Wählt Team X die Pacers und die Pacers erhalten den #1, erhält Team X den #1 für die Taco Tuesday Fantasy Basketball League. Sollte Team X den Pick an Team Y getraded haben, darf Team Y das Real Life NBA Team wählen.</div>
+          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
         </div>
         <div class="rule-item">
           <div class="rule-number">2</div>
-          <div class="rule-text">Draft ist linear. Habt ihr den 1.01, habt ihr auch den 2.01, 3.01 und 4.01.</div>
-        </div>
-<div class="rule-item">
-          <div class="rule-number">3</div>
-          <div class="rule-text">Der Draft geht über 4 Runden. Bevor der Draft losgeht, müsst ihr eure Keeper einstellen, die Spieler, die ihr halten wollt. Für jeden Pick solltet ihr einen Spieler abwerfen, dh. jedes Jahr vier Spieler nicht keepen. Wenn ihr 8 Picks habt, solltet ihr 8 Spieler abwerfen (bzw. nicht keepen). Wenn ihr das nicht wollt und zu viele Spieler haltet, verfallen eure Picks (von unten aufgefüllt). Fragt hier unbedingt nacht, wenn etwas unklar ist.</div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="rule-section">
-      <div class="rule-section-header" onclick="toggleRule(this)">
-        <span> Trade Rules</span>
-        <span class="rule-chevron">▾</span>
-      </div>
-      <div class="rule-section-body">
-        <div class="rule-item">
-          <div class="rule-number">1</div>
-          <div class="rule-text">Trades dauern einen Tag. Bitte merkt Bedenken sofort an.</div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-number">2</div>
-          <div class="rule-text">Hier ein Beispiel für Dynastyrankings: https://hashtagbasketball.com/fantasy-basketball-dynasty-rankings.</div>
+          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
         </div>
       </div>
     </div>
 
     <div class="rule-section">
       <div class="rule-section-header" onclick="toggleRule(this)">
-        <span> Scoring & Waivers</span>
+        <span>🔄 Trade Rules</span>
         <span class="rule-chevron">▾</span>
       </div>
       <div class="rule-section-body">
         <div class="rule-item">
           <div class="rule-number">1</div>
-          <div class="rule-text">7 Adds pro Woche.</div>
+          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
         </div>
         <div class="rule-item">
           <div class="rule-number">2</div>
-          <div class="rule-text">Waiver Order laut ESPN.</div>
+          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-section">
+      <div class="rule-section-header" onclick="toggleRule(this)">
+        <span>💰 Scoring & Waivers</span>
+        <span class="rule-chevron">▾</span>
+      </div>
+      <div class="rule-section-body">
+        <div class="rule-item">
+          <div class="rule-number">1</div>
+          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-number">2</div>
+          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
         </div>
       </div>
     </div>
@@ -439,7 +445,7 @@
       <div class="rule-section-body">
         <div class="rule-item">
           <div class="rule-number">1</div>
-          <div class="rule-text">Champions: 2025/ 2026 - TBD 2024/ 2025 - Bear Down 2023/ 2024 - Vancouver Curry-Wurst 2022/2023 - Vancouver Curry-Wurst 2021/ 2022- Bear Down.</div>
+          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
         </div>
       </div>
     </div>
@@ -882,7 +888,7 @@ const PICKS = [
   {year:2026, round:2, originalOwner:3,  currentOwner:3  },
   {year:2026, round:2, originalOwner:4,  currentOwner:4  },
   {year:2026, round:2, originalOwner:5,  currentOwner:5  },
-  {year:2026, round:2, originalOwner:6,  currentOwner:7  },
+  {year:2026, round:2, originalOwner:6,  currentOwner:6  },
   {year:2026, round:2, originalOwner:7,  currentOwner:7  },
   {year:2026, round:2, originalOwner:8,  currentOwner:8  },
   {year:2026, round:2, originalOwner:9,  currentOwner:9  },
@@ -930,7 +936,7 @@ const PICKS = [
   {year:2027, round:2, originalOwner:3,  currentOwner:3  },
   {year:2027, round:2, originalOwner:4,  currentOwner:4  },
   {year:2027, round:2, originalOwner:5,  currentOwner:5  },
-  {year:2027, round:2, originalOwner:6,  currentOwner:7  },
+  {year:2027, round:2, originalOwner:6,  currentOwner:6  },
   {year:2027, round:2, originalOwner:7,  currentOwner:7  },
   {year:2027, round:2, originalOwner:8,  currentOwner:8  },
   {year:2027, round:2, originalOwner:9,  currentOwner:9  },
@@ -1250,7 +1256,7 @@ function showTrades() {
   let html = '';
   years.forEach(year => {
     const yearTrades = TRADES.filter(t => t.year === year);
-    html += `<h3 style="margin:24px 0 12px;font-size:16px;font-family:'Playfair Display',serif;"> ${year} Trades</h3>`;
+    html += `<h3 style="margin:24px 0 12px;font-size:16px;font-family:'Playfair Display',serif;">📅 ${year} Trades</h3>`;
     yearTrades.forEach(trade => {
       html += `
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;">
@@ -1285,6 +1291,113 @@ function showRules() {
   navigate('rulesPage');
 }
 
+function showStandings() {
+  navigate('standingsPage');
+  // Small delay to ensure canvas is visible before drawing
+  setTimeout(renderStandingsChart, 50);
+}
+
+let standingsChartInstance = null;
+
+function renderStandingsChart() {
+  const ctx = document.getElementById('standingsChart').getContext('2d');
+  if (standingsChartInstance) {
+    standingsChartInstance.destroy();
+  }
+
+  const seasons = ['2021/22', '2022/23', '2023/24', '2024/25', '2025/26'];
+
+  // Sorted by average (best average = first = top of legend)
+  const standingsData = [
+    { team: 'Bear Down',                       color: '#6c63ff', lightColor: '#c0622f', avg: 1.6,  data: [1,    3,  2,  1,  1 ] },
+    { team: 'Vancouver Curry-Wurst',           color: '#78909c', lightColor: '#607080', avg: 4.4,  data: [3,    1,  1,  5,  12] },
+    { team: 'Seagulls',                        color: '#29b6f6', lightColor: '#2a7ab8', avg: 5.4,  data: [9,    8,  6,  2,  2 ] },
+    { team: 'Anadolu Ballers',                 color: '#f5c842', lightColor: '#9a6e10', avg: 5.6,  data: [8,    7,  5,  3,  5 ] },
+    { team: 'Leaveland Cavaliers',             color: '#4caf81', lightColor: '#2d7a50', avg: 6.0,  data: [5,    6,  8,  7,  4 ] },
+    { team: 'Kawhi So Serious',                color: '#ef5350', lightColor: '#a83030', avg: 6.2,  data: [4,    4,  3,  12, 8 ] },
+    { team: 'Neukoelln Hustlers',              color: '#ff6584', lightColor: '#b43c64', avg: 6.4,  data: [10,   11, 4,  4,  3 ] },
+    { team: 'Cooking Show',                    color: '#26c6da', lightColor: '#1a8080', avg: 6.4,  data: [2,    2,  11, 8,  9 ] },
+    { team: 'Always Money In The BananaStand', color: '#ff9800', lightColor: '#c06020', avg: 7.2,  data: [6,    10, 7,  6,  7 ] },
+    { team: '3-POINT MAFIA',                   color: '#e040fb', lightColor: '#7b3fa8', avg: 8.2,  data: [7,    5,  12, 11, 6 ] },
+    { team: 'S-Town Grizzlies',                color: '#66bb6a', lightColor: '#3d7a30', avg: 9.25, data: [null, 9,  9,  9,  10] },
+    { team: 'Double Dribble Trouble',          color: '#ffa726', lightColor: '#b86020', avg: 10.75,data: [null, 12, 10, 10, 11] },
+  ];
+
+  const isLight = document.body.classList.contains('light');
+  const textColor = isLight ? '#9a7560' : '#7b7f9e';
+  const gridColor = isLight ? 'rgba(240,213,188,0.6)' : 'rgba(46,50,80,0.6)';
+
+  const datasets = standingsData.map(d => ({
+    label: `${d.team} (Ø ${d.avg})`,
+    data: d.data,
+    borderColor: isLight ? d.lightColor : d.color,
+    backgroundColor: isLight ? d.lightColor : d.color,
+    borderWidth: 2.5,
+    pointRadius: 5,
+    pointHoverRadius: 7,
+    tension: 0.3,
+    spanGaps: false,
+  }));
+
+  standingsChartInstance = new Chart(ctx, {
+    type: 'line',
+    data: { labels: seasons, datasets },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: isLight ? '#2c1a0e' : '#e8eaf6',
+            padding: 16,
+            font: { family: 'DM Sans', size: 11 },
+            boxWidth: 12,
+            boxHeight: 12,
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const teamName = ctx.dataset.label.replace(/ \(Ø [\d.]+\)/, '');
+              return ` ${teamName}: Place ${ctx.parsed.y}`;
+            }
+          },
+          backgroundColor: isLight ? '#ffffff' : '#1a1d27',
+          borderColor: isLight ? '#f0d5bc' : '#2e3250',
+          borderWidth: 1,
+          titleColor: isLight ? '#2c1a0e' : '#e8eaf6',
+          bodyColor: isLight ? '#9a7560' : '#7b7f9e',
+          bodyFont: { family: 'DM Sans' },
+          titleFont: { family: 'DM Sans', weight: '700' },
+        }
+      },
+      scales: {
+        y: {
+          reverse: true, // 1st place at the top
+          min: 1,
+          max: 12,
+          ticks: {
+            stepSize: 1,
+            color: textColor,
+            font: { family: 'DM Sans', size: 11 },
+            callback: val => val === 1 ? '🥇 1st' : val === 2 ? '🥈 2nd' : val === 3 ? '🥉 3rd' : `${val}th`
+          },
+          grid: { color: gridColor },
+          border: { color: gridColor },
+        },
+        x: {
+          ticks: {
+            color: textColor,
+            font: { family: 'DM Sans', size: 12, weight: '600' },
+          },
+          grid: { color: gridColor },
+          border: { color: gridColor },
+        }
+      }
+    }
+  });
+}
+
 function toggleRule(header) {
   header.parentElement.classList.toggle('collapsed');
 }
@@ -1293,4 +1406,3 @@ renderHome();
 </script>
 </body>
 </html>
-
