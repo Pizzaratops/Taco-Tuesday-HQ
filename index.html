@@ -227,18 +227,64 @@
     gap: 10px;
   }
 
+  /* ---- flip card wrapper ---- */
+  .draft26-card-wrap {
+    height: 116px;
+    perspective: 900px;
+  }
+
   .draft26-card {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.45s ease;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+  .draft26-card.flipped { transform: rotateY(180deg); }
+
+  .draft26-front, .draft26-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 14px 16px;
+    transition: border-color 0.15s;
+  }
+  .draft26-card:hover .draft26-front,
+  .draft26-card:hover .draft26-back { border-color: var(--accent); }
+
+  .draft26-front {
     display: flex;
     align-items: center;
     gap: 14px;
-    transition: border-color 0.15s, transform 0.15s;
-    cursor: default;
   }
-  .draft26-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+  .draft26-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    overflow: hidden;
+  }
+  .draft26-back-header {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .draft26-scout-text {
+    font-size: 12px; line-height: 1.5; color: var(--text); flex: 1;
+    overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .draft26-flip-hint {
+    font-size: 10px; color: var(--muted); text-align: right; margin-top: 2px;
+  }
 
   .draft26-pick-num {
     font-family: 'Playfair Display', serif;
@@ -254,6 +300,7 @@
   .pick-t3       { color: #6dddaa; }
   .pick-t4       { color: #4fc3f7; }
   .pick-late     { color: var(--muted); }
+  .pick-mystery  { color: #c792ea; }
 
   .draft26-info { flex: 1; min-width: 0; }
   .draft26-name { font-weight: 700; font-size: 14px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -408,7 +455,7 @@
 <!-- 2026 DRAFT BOARD -->
 <div class="page" id="draft26Page">
   <h2 style="margin-bottom:6px;">MFHFBs 2026 Draft Board</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">30 prospects · Tiered Big Board</p>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">30 prospects · Tiered Big Board + Mystery Tier + Comment: Ich muss noch viel ändern, einige Prospects müssen höher/ niedriger.</p>
   <div class="draft26-search">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -892,36 +939,145 @@ function showRankings() { renderRankings(rCurrentData); navigate('rankingsPage')
 //  2026 DRAFT BOARD DATA (from Fanspo mock, 03/29/2026)
 // ============================================================
 const DRAFT_2026 = [
-  {pick:1,  name:"Cameron Boozer",        pos:"PF",    school:"Duke",                    tier:"Tier 1"},
-  {pick:2,  name:"Darryn Peterson",       pos:"PG",    school:"Kansas",                  tier:"Tier 1"},
-  {pick:3,  name:"AJ Dybantsa",           pos:"SF",    school:"BYU",                     tier:"Tier 1"},
-  {pick:4,  name:"Caleb Wilson",          pos:"PF",    school:"North Carolina",           tier:"Tier 1.5"},
-  {pick:5,  name:"Keaton Wagler",         pos:"PG",    school:"Illinois",                tier:"Tier 1.5"},
-  {pick:6,  name:"Kingston Flemings",     pos:"PG",    school:"Houston",                  tier:"Tier 2"},
-  {pick:7,  name:"Darius Acuff Jr.",      pos:"PG",    school:"Arkansas",                tier:"Tier 2"},
-  {pick:8,  name:"Yaxel Lendeborg",       pos:"PF",    school:"Michigan",                tier:"Tier 2"},
-  {pick:9,  name:"Labaron Philon Jr.",    pos:"PG",    school:"Alabama",                 tier:"Tier 3"},
-  {pick:10, name:"Hannes Steinbach",      pos:"PF",    school:"Washington",              tier:"Tier 3"},
-  {pick:11, name:"Brayden Burries",       pos:"SG",    school:"Arizona",                 tier:"Tier 3"},
-  {pick:12, name:"Mikel Brown Jr.",       pos:"SG",    school:"Louisville",              tier:"Tier 3"},
-  {pick:13, name:"Morez Johnson Jr.",     pos:"PF",    school:"Michigan",                tier:"Tier 3"},
-  {pick:14, name:"Nate Ament",            pos:"PF",    school:"Tennessee",               tier:"Tier 4"},
-  {pick:15, name:"Aday Mara",             pos:"C",     school:"Michigan",                tier:"Tier 4"},
-  {pick:16, name:"Dailyn Swain",          pos:"SF",    school:"Texas",                   tier:"Tier 4"},
-  {pick:17, name:"Jayden Quaintance",     pos:"C",     school:"Kentucky",                tier:"Tier 4"},
-  {pick:18, name:"Tyler Tanner",          pos:"PG",    school:"Vanderbilt",              tier:"Tier 4"},
-  {pick:19, name:"Allen Graves",          pos:"PF",    school:"",                        tier:"Tier 4"},
-  {pick:20, name:"Patrick Ngongba II",    pos:"C",     school:"Duke",                    tier:"Tier 5"},
-  {pick:21, name:"Cameron Carr",          pos:"SG",    school:"Baylor",                  tier:"Tier 5"},
-  {pick:22, name:"Amari Allen",           pos:"SF",    school:"Alabama",                 tier:"Tier 5"},
-  {pick:23, name:"Isiah Evans",           pos:"PG",    school:"",                        tier:"Tier 5"},
-  {pick:24, name:"Chris Cenac Jr.",       pos:"PF",    school:"Houston",                 tier:"Tier 5"},
-  {pick:25, name:"Karim Lopez",           pos:"PF",    school:"New Zealand Breakers",    tier:"Tier 5"},
-  {pick:26, name:"Tounde Yessoufou",      pos:"SF",    school:"Baylor",                  tier:"Tier 5"},
-  {pick:27, name:"Henri Veesaar",         pos:"C",     school:"North Carolina",           tier:"Tier 5"},
-  {pick:28, name:"Flory Bidunga",         pos:"C",     school:"Kansas",                  tier:"Tier 6"},
-  {pick:29, name:"Meleek Thomas",         pos:"SG",    school:"Arkansas",                tier:"Tier 6"},
-  {pick:30, name:"Motiejus Krivas",       pos:"C",     school:"Arizona",                 tier:"Tier 6"},
+  // ── TIER 1 ──────────────────────────────────────────────────
+  {pick:1,  name:"Cameron Boozer",        pos:"PF",    school:"Duke",                    tier:"Tier 1",
+   scouting:"Superstar-Ceiling Big mit Elite-Post-Footwork, überragendem Rebounding und NBA-reifen Playmaking (3.7 APG, 25% AST%). Stärken: Kontakt-Finishing, Passqualität, Foul-Drawing — Floor einer der höchsten der Klasse, Frage gilt der Vertikalathlethik und dem noch inkonstanten Dreier."},
+  {pick:2,  name:"Darryn Peterson",       pos:"PG",    school:"Kansas",                  tier:"Tier 1",
+   scouting:"Elite Combo Guard mit Jamal-Murray/Ant-Edwards-Pull-up-Jumper und starker Zwei-Wege-Defense. Hamstring-Sorgen werden kleingeredet — sein Score-Repertoire auf allen drei Leveln ist unter den Guards dieses Jahrzehnts einzigartig."},
+  {pick:3,  name:"AJ Dybantsa",           pos:"SF",    school:"BYU",                     tier:"Tier 1",
+   scouting:"6'9'' Wing mit T-Mac-Ceiling: insane Athletik, explosive Driving-Fähigkeit und Three-Level-Scoring. Shot-Selection und Off-Ball-Defense sind Knackpunkte — Scalability als echter #1-Option bleibt die zentrale Frage."},
+
+  // ── TIER 1.5 ────────────────────────────────────────────────
+  {pick:4,  name:"Caleb Wilson",          pos:"PF",    school:"North Carolina",           tier:"Tier 1.5",
+   scouting:"NCAA-Dunking-Rekord-Maschine mit Jonathan-Isaac-Defensivprofil und Lamar-Odom-Playmaking-Flashes. Halbcourt-Offense und 3PT-Konsistenz sind seine Hürden — Walking Double-Double der Spiele gewinnt ohne Highlight-Scoring."},
+  {pick:5,  name:"Keaton Wagler",         pos:"SG",    school:"Illinois",                tier:"Tier 1.5",
+   scouting:"Out-of-nowhere Riser: Do-it-All 2-Guard mit Elite-FT-Rate, 39% von Drei und überraschend starkem Playmaking. Max-Christie-Comp mit mehr Upside — Körper (185 lbs) muss NBA-Physis standhalten."},
+
+  // ── TIER 2 ──────────────────────────────────────────────────
+  {pick:6,  name:"Kingston Flemings",     pos:"PG",    school:"Houston",                  tier:"Tier 2",
+   scouting:"Lightning-Quick Guard aus Houston mit Elite-Midrange-Trennung, starkem Finishing (~90% am Ring) und Multi-All-Star-Ceiling laut Scouts. Leichter Frame kann bei Over-Physis leiden — Effizienz, Führungsqualität und Kelvin Sampsons Lob sorgen für Top-5-Diskussionen."},
+  {pick:7,  name:"Darius Acuff Jr.",      pos:"PG",    school:"Arkansas",                tier:"Tier 2",
+   scouting:"Cleverer Point Guard mit explosivem First Step, gutem PnR-Spielmachen und aufsteigendem Scoring-Profil — Cole-Anthony-Comp mit mehr Starter-Potenzial. Defensiv noch eine Haftung, aber Basketball-IQ und Ballhandling überzeugen."},
+  {pick:8,  name:"Yaxel Lendeborg",       pos:"PF",    school:"Michigan",                tier:"Tier 2",
+   scouting:"NBA-ready Glue Guy mit 7'4'' Wingspan, Elite-Rebounding, 40.8% von Drei und defensiver Versatilität — PJ-Tucker/Josh-Hart im PF-Körper. Älter als die meisten (24 vor Rookie-Season), aber 59.6% FG-Effizienz und IQ machen ihn zum No-Brainer im Bereich 13–20."},
+
+  // ── TIER 3 ──────────────────────────────────────────────────
+  {pick:9,  name:"Labaron Philon Jr.",    pos:"PG",    school:"Alabama",                 tier:"Tier 3",
+   scouting:"Herky-Jerky Brunson-artiger Guard mit überragender Passqualität, Elite-Floater-Touch und enorm gestiegenem Scoring (41.5% von Drei, 31.4 USG%). Leichter Frame und Finishing durch Kontakt müssen sich entwickeln — Cason-Wallace-Median-Comp mit höherem Ceiling."},
+  {pick:10, name:"Hannes Steinbach",      pos:"PF",    school:"Washington",              tier:"Tier 3",
+   scouting:"Dominantester Rebounder der Klasse (4.8 OREB/G) mit solidem Post-Touch, Moritz-Wagner/Steven-Adams-Comp und möglichem Alperen-Sengun-Vergleich laut Community. Perimeter-Defense und Drop-Coverage-Anfälligkeit sind Diskussionspunkte — überzeugt Scouts aber kontinuierlich."},
+  {pick:11, name:"Brayden Burries",       pos:"SG",    school:"Arizona",                 tier:"Tier 3",
+   scouting:"Athletischer Combo Guard (6'4'', 205 lbs) mit Downhill-Rim-Druck, wachsendem Shotmaking und Young-Ibaka-Comp in der Verteidigung. Braucht noch mehr Dreier-Volumen und Konsistenz — aber Frame und Motor passen ins moderne NBA-System."},
+  {pick:12, name:"Mikel Brown Jr.",       pos:"SG",    school:"Louisville",              tier:"Tier 3",
+   scouting:"6'5'' Lead Guard mit Jamal-Murray-Comp, starkem PnR-Spielmachen, sauberem Release und 83% FT. Schlanker Frame und Defense sind aktuell Schwächen — aber Shooting-Floor und Multi-Level-Scoring geben genug Vertrauen für eine Lottery-Auswahl."},
+  {pick:13, name:"Morez Johnson Jr.",     pos:"PF",    school:"Michigan",                tier:"Tier 3",
+   scouting:"Intensiver Motor-Big mit starkem Rebounding, wachsender Defensiv-Versatilität und contagious hustle energy. Offensiv noch roh — aber er kennt seine Rolle, maximiert sie und bringt bereits klaren NBA-Mehrwert als Two-Way Contributor."},
+
+  // ── TIER 4 ──────────────────────────────────────────────────
+  {pick:14, name:"Nate Ament",            pos:"PF",    school:"Tennessee",               tier:"Tier 4",
+   scouting:"6'9'' Stretch-Wing (Zaccharie-Risacher-Comp) mit High-Release, guter Passvision und Potential als 3&D-Projekt. Hat 17 lbs zugelegt — aktuell inkonstant am Ring (44.8%), aber Länge und Shooting-Mechanik interessieren Teams."},
+  {pick:15, name:"Aday Mara",             pos:"C",     school:"Michigan",                tier:"Tier 4",
+   scouting:"7'3'' Center mit echter Post-Passvision (Hub-Spielmachen) und NCAA-führender Block-Rate. Scoring primär durch schiere Länge — Tempo und Hüftmobilität sind Limits, aber die Seltenheit seines Profils macht ihn zu einem faszinierenden Lottery-Glücksspiel."},
+  {pick:16, name:"Dailyn Swain",          pos:"SF",    school:"Texas",                   tier:"Tier 4",
+   scouting:"Physischer 3&D Wing der Winning Plays macht und defensiv als schwere Herausforderung für Gegner gilt. Kein Primary Creator — aber als Low-Usage Beitragsstück im richtigen System sehr wertvoll."},
+  {pick:17, name:"Jayden Quaintance",     pos:"C",     school:"Kentucky",                tier:"Tier 4",
+   scouting:"Bester Defender der Klasse laut vielen Scouts: Bam-Adebayo-Ceiling mit Lightning-Speed, Elite-Shotblocking und IQ weit über sein Alter hinaus. Kommt von ACL-Riss — offensive Entwicklung (47.9% FT) und Verletzungsgeschichte sind die Schlüsselfragen."},
+  {pick:18, name:"Tyler Tanner",          pos:"PG",    school:"Vanderbilt",              tier:"Tier 4",
+   scouting:"Mini-Guard (~5'11'') der wie 6'3'' spielt — 4.1% Steal-Rate, 16 Dunks, schnelles Release und José-Alvarado-Defense-Motor. Größe ist sein Hauptlimit, aber outlier-level Athletik, Shooting-IQ und Stealing schreien Überraschungspick."},
+  {pick:19, name:"Allen Graves",          pos:"PF",    school:"",                        tier:"Tier 4",
+   scouting:"Wenig verfügbares College-Tape. Scouts loben Athletik und Entwicklungspotenzial — High-Variance Second-Round-Projekt."},
+
+  // ── TIER 5 ──────────────────────────────────────────────────
+  {pick:20, name:"Patrick Ngongba II",    pos:"C",     school:"Duke",                    tier:"Tier 5",
+   scouting:"Höchstgefühl-Big (Day'Ron-Sharpe-Comp) mit überragender Passvision (3:1 AST/TO), gutem Finishing (75.9% am Ring) und solider Shotblocking. Verletzungshistorie (wiederkehrende Fußprobleme) ist das wichtigste Med-Flag — wenn gesund, echter Starter-Ceiling."},
+  {pick:21, name:"Cameron Carr",          pos:"SG",    school:"Baylor",                  tier:"Tier 5",
+   scouting:"Elite Shotmaker (57.5% FG, 44% 3PT) mit MPJ-Comp, 7-Foot-Wingspan und spektakulärer Athletik (22 Dunks in 10 Spielen). Tunnelvision und niedrige Assist-Rate (6.2%) schränken sein Ceiling ein — als Off-Ball-Scorer-Projekt echter Top-10-Wert."},
+  {pick:22, name:"Amari Allen",           pos:"SF",    school:"Alabama",                 tier:"Tier 5",
+   scouting:"Vielseitiger 6'8'' Wing mit Draymond-ähnlichem Stat-Profil: 37% von Drei, 3.0 BLK%, 2.1 STL%, rebounding und passing. Niedrige Usage kaschiert seinen Wert — Conference-Play (14.4 PPG, 42.1% 3PT) zeigt sein echtes Niveau."},
+  {pick:23, name:"Isiah Evans",           pos:"PG",    school:"",                        tier:"Tier 5",
+   scouting:"Elite Off-Ball-Shooter mit Isaiah-Joe-Comp, aktivem Off-Screen-Movement und starkem defensivem Engagement. Kein Handle, kein Playmaking — aber Shooting-Reliability und Schwesterathlethik machen ihn zum verlässlichen Rotation-Wing."},
+  {pick:24, name:"Chris Cenac Jr.",       pos:"PF",    school:"Houston",                 tier:"Tier 5",
+   scouting:"Athletischer 6'11'' Center mit gutem Timing, Motor und Rim-Running-Profil — \"Capella with jumper upside\" als Comp. Noch roh, aber physisches Paket und Coachability machen ihn zu einem legitimen Lottery-Gamble."},
+  {pick:25, name:"Karim Lopez",           pos:"PF",    school:"New Zealand Breakers",    tier:"Tier 5",
+   scouting:"6'9'' internationaler Wing (7'1'' Wingspan) mit 44% Dreier auf gutem Volumen — Patrick-Williams/Christian-Braun-Comp. Defensiv fundmental stark verbessert — pro-readies 3&D-Profil mit wachsendem On-Ball-Spiel."},
+  {pick:26, name:"Tounde Yessoufou",      pos:"SF",    school:"Baylor",                  tier:"Tier 5",
+   scouting:"Super-Athlet mit Monster-Defensivpotenzial, Elite-Steal-Rate und Luguentz-Dort-Profil. Off-Ball-Defense und Handle brauchen deutliche Verbesserung — aber physischer Rahmen und Wille sichern ihm immer eine NBA-Rolle."},
+  {pick:27, name:"Henri Veesaar",         pos:"C",     school:"North Carolina",           tier:"Tier 5",
+   scouting:"Lighter Quinten Post — schlanker Stretch-Center der Dreier trifft, Lob-Chancen findet und solide beiträgt. Frame ist aktuell zu dünn für viele NBA-Bigs — braucht massiv Kraft, bringt aber seltenes Skill-Profil für seine Spielergröße."},
+
+  // ── TIER 6 ──────────────────────────────────────────────────
+  {pick:28, name:"Flory Bidunga",         pos:"C",     school:"Kansas",                  tier:"Tier 6",
+   scouting:"Mobiler Center mit gutem 3PT-Ansatz, echter Drive-Fähigkeit und Helpside-Rimschutz. Kann schlecht screenen, meidet Post-Kontakt — aber Skill-Profil ist für einen Big der späten Lottery interessant."},
+  {pick:29, name:"Meleek Thomas",         pos:"SG",    school:"Arkansas",                tier:"Tier 6",
+   scouting:"Defensiv-begeisternder Guard mit explosivem Shooting-Upside und Malik-Monk-Vibes. High Variance: wenn der Shot fällt gefährlich und vielschichtig, wenn nicht sind die Werkzeuge limitiert — Scouts debattieren Schul-Rückkehr."},
+  {pick:30, name:"Motiejus Krivas",       pos:"C",     school:"Arizona",                 tier:"Tier 6",
+   scouting:"Europäischer Projekt-Center mit entwicklungsfähigem Profil. Wenig auswertbares Tape — Floor ist klein, Ceiling hängt von physischer Reifung ab."},
+
+  // ── MYSTERY TIER ─────────────────────────────────────────────
+  {pick:31, name:"Koa Peat",             pos:"PF",    school:"Arizona",                  tier:"Mystery",
+   scouting:"Zion-ähnlicher PF mit Elite-Athletik, überzeugender Footwork und solidem Midrange-Spiel. Top-6-Kandidat auf vielen Boards — 3PT-Volumen und FT% (sub-70%) sind die einzigen echten Fragezeichen."},
+  {pick:32, name:"Bennett Stirtz",       pos:"PG",    school:"Iowa",                     tier:"Mystery",
+   scouting:"Ältester Guard im Draft mit Haliburton-ähnlicher Passvision, Elite-Dreier (44% bei fast 10/100 Versuchen) und 3:1 AST/TO. Screen-Nav und POA-Defense sind Schwächen — Ty-Jerome-Comp mit höherem Ceiling."},
+  {pick:33, name:"Braylon Mullins",      pos:"SG",    school:"UConn",                    tier:"Mystery",
+   scouting:"6'6'' Movement-Shooter aus UConn mit blitzschnellem Release und Off-Screen-Expertise — Taller-Tyrese-Maxey-Comp. Kommt von Ankle-Verletzung zurück — Frame (196 lbs) braucht Arbeit, 17-Punkte-Breakout gegen Kansas zeigt sein Potenzial."},
+  {pick:34, name:"Neoklis Avdalas",      pos:"PG",    school:"Virginia Tech",            tier:"Mystery",
+   scouting:"6'9'' griechischer Point-Forward mit Luka-ähnlicher Skip-Passvision und gutem Shotmaking. Ballschirm-abhängig, kein POA-Defender — Bogdan-Bogdanovic-Comp als sekundärer Creator im richtigen System."},
+  {pick:35, name:"Dame Sarr",            pos:"SF",    school:"G-League/Overtime",        tier:"Mystery",
+   scouting:"Langer Wing mit beeindruckender Spannweite und Deflection-Maschine auf Defense — Dyson-Daniels-ähnliches Profil. Shot fehlt noch — Mid-Second-Round-Kandidat mit defensivem Upside."},
+  {pick:36, name:"Thomas Haugh",         pos:"SF",    school:"Florida",                  tier:"Mystery",
+   scouting:"Vielseitiger 3&D Wing (6'9'') aus Florida mit Jake-LaRavia-Comp, Elite-Motor und Leading Scorer bei niedrigem Usage (21%). Kann Defense anführen, off-ball scoren — unterschätzter Lottery-Kandidat auf vielen Boards."},
+  {pick:37, name:"Dash Daniels",         pos:"SG",    school:"Melbourne United",         tier:"Mystery",
+   scouting:"Dyson Daniels' jüngerer Bruder mit ähnlichem Defensivprofil und flüssigerer offensiver Basis. 6'6'' NBL-Next-Stars-Wing mit Grit, Perimeter-IQ und NBA-Reife durch Spiele gegen echte Profis."},
+  {pick:38, name:"Christian Anderson",   pos:"PG",    school:"Texas Tech",               tier:"Mystery",
+   scouting:"Bester Shotmaker und Playmaker der Klasse laut einigen Scouts — Keonte-George-Lite mit mehr Passvision (33% AST%, 2.43 AST/TO, 45% von Drei). Klein (6'2''), aber offensiv brillant und echter Three-Level-Scorer."},
+  {pick:39, name:"JT Toppin",            pos:"PF",    school:"Texas Tech",               tier:"Mystery",
+   scouting:"Bouncy High-Motor Big (Obi Toppins jüngerer Bruder) mit gutem Interior Scoring, starkem Rebounding und defensiven Instinkten. Undersized (6'7'' ohne Schuhe), kein konsistenter Dreier — Ceiling als Starter, Floor als verlässlicher Backup."},
+  {pick:40, name:"Tahaad Pettiford",     pos:"PG",    school:"Auburn",                   tier:"Mystery",
+   scouting:"Explosiver kleiner Guard mit Elite-Tough-Shotmaking, überzeugenden Floatern und Cameron-Payne-Comp. Winzig (6'0'', 168 lbs) und risikoreich — als Sixth-Man-Spark-Plug macht er aber absolut Sinn."},
+  {pick:41, name:"Sergio De Larrea",     pos:"PG",    school:"Valencia",                 tier:"Mystery",
+   scouting:"Spanischer 6'6'' Playmaker mit überzeugenden Dreier-Zahlen und gutem Dribbling bei Valencia. Inkonstante Minuten — Teams könnten ihn stashen wie OKC es mit Topić tat."},
+  {pick:42, name:"Alex Condon",          pos:"C",     school:"Australia",                tier:"Mystery",
+   scouting:"Mobiler australischer Center mit Rugby-Background, Scrappy-Spielweise und Shooting-Potenzial. Richtet sich nicht immer auf den Ring aus — braucht Rollenkonsistenz, bringt aber NBL-gestählte Physis mit."},
+  {pick:43, name:"Miles Byrd",           pos:"SF",    school:"San Diego State",          tier:"Mystery",
+   scouting:"Athletischer 3&D Wing mit Defense-First-Profil, Bruce-Brown-Median-Comp und 6'10'' Wingspan. Offensive Kreativität fehlt aktuell — Frame und Athletik schreien aber klar einen NBA-Roster-Spot."},
+  {pick:44, name:"Alex Karaban",         pos:"PF",    school:"UConn",                    tier:"Mystery",
+   scouting:"Georges-Niang-artiger Stretch-Forward mit Elite-Off-Ball-Shooting (39.4% Karriere) und UConn-Championship-DNA. Kein Athlet, kein Shot-Creator — als Movement-Shooter im richtigen Spacing-System aber wertvoller Beitragsstück."},
+  {pick:45, name:"Braden Smith",         pos:"PG",    school:"Purdue",                   tier:"Mystery",
+   scouting:"Cerebraler Zach-Edey-Partner mit Elite-Basketball-IQ und selbstlosem Spielstil — perfekter PnR-Initiator und Table-Setter. Athletik ist klar sein Limit, aber für Teams die einen smarten Playmaker suchen echter Early-Second-Value."},
+  {pick:46, name:"Andrej Stojakovic",    pos:"SG",    school:"",                         tier:"Mystery",
+   scouting:"Peja Stojakovics Sohn mit elterlichen Schuss-Genen und athletischerer Basis als sein Vater — Three-Level-Scorer mit solider Defense. Wurfform ist unkonventionell aber effektiv. Noch roh, hohes Long-Term-Upside."},
+  {pick:47, name:"JoJo Tugler",          pos:"PF",    school:"Houston",                  tier:"Mystery",
+   scouting:"Elite-Defensiv-Motor mit 7'6'' Wingspan und drei-dimensionalen Shotblocking — Kenneth-Faried/PJ-Tucker-Comp. Kann keine eigene Offense kreieren — klares NBA-Profil als Rim-Protector und hochenergetischer Beitragsstück."},
+  {pick:48, name:"Boogie Fland",         pos:"PG",    school:"Arkansas",                 tier:"Mystery",
+   scouting:"Shifty Guard mit guter 3PT-Touch (39.6%), starkem Playmaking und schnellem Decision-Making — Terry-Rozier-Median-Comp. Saison verletzungsbedingt früh beendet — Finishing und Größe (6'2'') bleiben die größten Hürden."},
+  {pick:49, name:"Tomislav Ivisic",      pos:"C",     school:"Illinois",                 tier:"Mystery",
+   scouting:"7'1'' Hub-Big mit Jokic/Sabonis-ähnlicher Passvision, gutem Shooting (schnelles Release, gute Range) und solidem Post-Scoring aus beiden Blöcken. Defensive Beweglichkeit fehlt — aber sein Skill-Profil ist für die NBA hochattraktiv."},
+  {pick:50, name:"Ian Jackson",          pos:"SG",    school:"UNC",                      tier:"Mystery",
+   scouting:"Explosiver Scorer mit Top-Dreier-Shooting, guter Athletik und Transition-Dominanz aus einer limitierten Bench-Rolle. Zu wenig Playmaking für eine größere Rolle — aber als Off-Ball-Dropper und Scorer ist er auf jedem Board präsent."},
+  {pick:51, name:"Daniel Jacobsen",      pos:"C",     school:"",                         tier:"Mystery",
+   scouting:"7'4'' Center mit höchster Block-Rate im College-Basketball und überraschend guten Touch-Indikatoren (76.9% am Ring, 56.3% auf mittlere Distanz). Schlechter Playmaker (0.6 AST/TO) — aber elite Größe und Rimschutz machen ihn zum Projekt mit Potenzial."},
+  {pick:52, name:"Adam Atamna",          pos:"SG",    school:"Frankreich",               tier:"Mystery",
+   scouting:"18-jähriger französischer Guard mit Midrange-Brillanz, starkem Handle und wachsendem 3PT-Spiel (37% auf 5+ Versuchen). Im Cade-Cunningham-artigen System idealer Shot-Creator — bereits sehr NBA-nah für sein Alter."},
+  {pick:53, name:"David Mirkovic",       pos:"PF",    school:"Illinois",                 tier:"Mystery",
+   scouting:"6'9'' vielseitiger Forward mit Elite-Passvision, 35% von Drei auf 3.6 Versuchen und starkem Interior-Finishing (71% am Ring). Kompletter Connector-Typ — Dribble-Pass-Shoot-Forward mit First-Round-Upside."},
+  {pick:54, name:"Isiah Harwell",        pos:"SG",    school:"",                         tier:"Mystery",
+   scouting:"Solider Shooter mit textbook-Form und connectivem Passspiel. Guter Verteidiger mit Positional Strength — kein Ballhandler, aber verlässlicher 3&D-Kandidat auf niedrigem Usage."},
+  {pick:55, name:"Milos Uzan",           pos:"PG",    school:"",                         tier:"Mystery",
+   scouting:"Solider Verteidiger (kann Guards und Wings deckeln) mit gutem Motor und wenig Turnovers. Shot ist inkonsistent und offensiv limitiert — Ceiling als tiefer Roster-Spot oder Two-Way Contract."},
+  {pick:56, name:"Cayden",              pos:"SG",    school:"",                          tier:"Mystery",
+   scouting:"Wenig verfügbares Scouting-Tape. Entwicklungs-Prospect mit begrenzten öffentlichen Informationen."},
+  {pick:57, name:"Johann Grünloh",      pos:"SF",    school:"",                          tier:"Mystery",
+   scouting:"Wenig verfügbares Scouting-Tape. Internationaler Prospect im Radar."},
+  {pick:58, name:"Eric Reibe",          pos:"PF",    school:"",                          tier:"Mystery",
+   scouting:"Wenig verfügbares Scouting-Tape. Wird von Teams beobachtet."},
+  {pick:59, name:"Kylan Boswell",       pos:"PG",    school:"",                          tier:"Mystery",
+   scouting:"Wenig verfügbares Scouting-Tape. Guard-Projekt mit Entwicklungspotenzial."},
+  {pick:60, name:"Zvonimir Ivisic",     pos:"C",     school:"",                          tier:"Mystery",
+   scouting:"Wenig verfügbares Scouting-Tape. Internationaler Big — möglicherweise verwandt mit Tomislav Ivisic."},
+  {pick:61, name:"Khamenia",            pos:"PF",    school:"",                          tier:"Mystery",
+   scouting:"Wenig verfügbares Scouting-Tape. Athletisch interessant laut frühen Berichten."},
+  {pick:62, name:"Abaev",              pos:"C",     school:"",                           tier:"Mystery",
+   scouting:"Wenig verfügbares Scouting-Tape. Internationaler Projekt-Center."},
 ];
 
 // position color helper — reuse same palette
@@ -943,12 +1099,13 @@ function pickNumClass(n, tier) {
   if(tier==='Tier 2')   return 'pick-mid';
   if(tier==='Tier 3')   return 'pick-t3';
   if(tier==='Tier 4')   return 'pick-t4';
+  if(tier==='Mystery')  return 'pick-mystery';
   return 'pick-late';
 }
 
 let d26CurrentData = [...DRAFT_2026];
 
-const TIER_ORDER = ['Tier 1','Tier 1.5','Tier 2','Tier 3','Tier 4','Tier 5','Tier 6'];
+const TIER_ORDER = ['Tier 1','Tier 1.5','Tier 2','Tier 3','Tier 4','Tier 5','Tier 6','Mystery'];
 
 const TIER_STYLE_DARK = {
   'Tier 1':   {dot:'#f5c842', label:'#f5d97a'},
@@ -958,6 +1115,7 @@ const TIER_STYLE_DARK = {
   'Tier 4':   {dot:'#4fc3f7', label:'#4fc3f7'},
   'Tier 5':   {dot:'#ff8fa3', label:'#ff8fa3'},
   'Tier 6':   {dot:'#7b7f9e', label:'#7b7f9e'},
+  'Mystery':  {dot:'#c792ea', label:'#c792ea'},
 };
 const TIER_STYLE_LIGHT = {
   'Tier 1':   {dot:'#9a6e10', label:'#6e4c08'},
@@ -967,6 +1125,7 @@ const TIER_STYLE_LIGHT = {
   'Tier 4':   {dot:'#2a7ab8', label:'#1a5a8a'},
   'Tier 5':   {dot:'#b43c64', label:'#8a1a40'},
   'Tier 6':   {dot:'#9a7560', label:'#7a5040'},
+  'Mystery':  {dot:'#7b3fa8', label:'#5a1580'},
 };
 
 function renderDraft26(data) {
@@ -999,13 +1158,27 @@ function renderDraft26(data) {
 
 function draft26Card(p) {
   const c = posColor(p.pos);
-  return `<div class="draft26-card">
-    <div class="draft26-pick-num ${pickNumClass(p.pick, p.tier)}">${p.pick}</div>
-    <div class="draft26-info">
-      <div class="draft26-name">${p.name}</div>
-      <div class="draft26-meta">
-        <span class="draft26-pos" style="background:${c.bg};color:${c.txt};">${p.pos}</span>
-        ${p.school ? `<span class="draft26-school">${p.school}</span>` : ''}
+  return `<div class="draft26-card-wrap">
+    <div class="draft26-card" onclick="this.classList.toggle('flipped')" title="Klicken zum Umdrehen">
+      <div class="draft26-front">
+        <div class="draft26-pick-num ${pickNumClass(p.pick, p.tier)}">${p.pick}</div>
+        <div class="draft26-info">
+          <div class="draft26-name">${p.name}</div>
+          <div class="draft26-meta">
+            <span class="draft26-pos" style="background:${c.bg};color:${c.txt};">${p.pos}</span>
+            ${p.school ? `<span class="draft26-school">${p.school}</span>` : ''}
+          </div>
+          <div class="draft26-flip-hint">🔍 Scouting →</div>
+        </div>
+      </div>
+      <div class="draft26-back">
+        <div class="draft26-back-header">
+          <span class="draft26-pos" style="background:${c.bg};color:${c.txt};">${p.pos}</span>
+          <span style="color:var(--text);font-size:12px;font-weight:700;text-transform:none;letter-spacing:0;">${p.name}</span>
+          <span style="margin-left:auto;font-size:10px;color:var(--muted);">#${p.pick}</span>
+        </div>
+        <div class="draft26-scout-text">${p.scouting || '—'}</div>
+        <div class="draft26-flip-hint">← zurück</div>
       </div>
     </div>
   </div>`;
