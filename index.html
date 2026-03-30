@@ -5,24 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Taco Tuesday League HQ</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#fff5ee">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Taco Tuesday HQ">
   <link rel="apple-touch-icon" href="icon-192.png">
-
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js');
-      });
+      window.addEventListener('load', () => { navigator.serviceWorker.register('service-worker.js'); });
     }
   </script>
 <style>
-  /* ===================== DARK MODE (default) ===================== */
   :root {
     --bg: #0f1117;
     --surface: #1a1d27;
@@ -38,10 +32,7 @@
     --pick-own-color: #6c63ff;
     --pick-traded-bg: rgba(255,101,132,0.1);
     --pick-traded-color: #ff8fa3;
-    --toggle-icon: "☀️";
   }
-
-  /* ===================== LIGHT MODE ===================== */
   body.light {
     --bg: #fff5ee;
     --surface: #ffffff;
@@ -58,9 +49,7 @@
     --pick-traded-bg: rgba(180,60,100,0.08);
     --pick-traded-color: #b43c64;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -68,12 +57,10 @@
     min-height: 100vh;
     transition: background 0.3s ease, color 0.3s ease;
   }
-
   body.light {
     background-image: radial-gradient(ellipse at 20% 0%, rgba(232,151,90,0.12) 0%, transparent 60%),
                       radial-gradient(ellipse at 80% 100%, rgba(192,98,47,0.08) 0%, transparent 50%);
   }
-
   .header {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -86,230 +73,209 @@
     z-index: 100;
     transition: background 0.3s ease, border-color 0.3s ease;
   }
-
-  body.light .header {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(12px);
-  }
-
-  .header .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--text);
-  }
+  body.light .header { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); }
+  .header .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: var(--text); }
   .header .logo span { color: var(--accent); }
-
   .header-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
-
   .theme-toggle {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 6px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    font-family: 'DM Sans', sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.2s ease;
-    white-space: nowrap;
+    background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+    padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 600;
+    font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 6px;
+    transition: all 0.2s ease; white-space: nowrap;
   }
   .theme-toggle:hover { border-color: var(--accent); background: var(--accent-light); }
-
   .back-btn {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 6px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    display: none;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.15s;
+    background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+    padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 13px;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; display: none;
+    align-items: center; gap: 6px; transition: all 0.15s;
   }
   .back-btn:hover { border-color: var(--accent); }
-
   .page { display: none; padding: 28px 24px; max-width: 960px; margin: 0 auto; }
   .page.active { display: block; }
-
-  .home-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 800;
-    margin-bottom: 6px;
-    color: var(--text);
-  }
+  .home-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; margin-bottom: 6px; color: var(--text); }
   .home-sub { color: var(--muted); margin-bottom: 28px; font-size: 14px; }
-
   .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 14px; }
-
   .team-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.18s ease;
-    position: relative;
-    overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 20px; cursor: pointer; transition: all 0.18s ease; position: relative; overflow: hidden;
   }
   .team-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--accent);
-    opacity: 0;
-    transition: opacity 0.18s;
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent); opacity: 0; transition: opacity 0.18s;
   }
   .team-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(108,99,255,0.15); }
   body.light .team-card:hover { box-shadow: 0 8px 24px rgba(192,98,47,0.12); }
   .team-card:hover::before { opacity: 1; }
-
   .team-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; margin-bottom: 12px; font-family: 'Playfair Display', serif; }
   .team-name { font-weight: 700; font-size: 14px; margin-bottom: 3px; color: var(--text); }
   .team-owner { color: var(--muted); font-size: 12px; margin-top: 2px; }
   .team-record { font-size: 12px; color: var(--green); margin-top: 8px; font-weight: 600; }
-
   .draftboard-btn {
     background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border: none;
-    color: white;
-    padding: 13px 26px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 700;
-    font-family: 'DM Sans', sans-serif;
-    cursor: pointer;
-    margin-bottom: 28px;
-    margin-right: 12px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.18s;
+    border: none; color: white; padding: 13px 26px; border-radius: 12px; font-size: 14px;
+    font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer; margin-bottom: 12px;
+    margin-right: 12px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.18s;
     box-shadow: 0 4px 12px rgba(108,99,255,0.25);
   }
   body.light .draftboard-btn { box-shadow: 0 4px 12px rgba(192,98,47,0.25); }
   .draftboard-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-
   .team-page-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
   .team-page-avatar { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; font-family: 'Playfair Display', serif; }
   .team-page-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 800; color: var(--text); }
   .team-page-owner { color: var(--muted); font-size: 14px; margin-top: 3px; }
-
   .tabs { display: flex; gap: 4px; background: var(--surface); border-radius: 12px; padding: 5px; margin-bottom: 24px; border: 1px solid var(--border); }
   .tab { flex: 1; padding: 9px; text-align: center; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--muted); transition: all 0.15s; }
   .tab.active { background: var(--accent); color: white; }
   .tab:not(.active):hover { color: var(--text); background: var(--surface2); }
-
   .section-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; margin-top: 20px; }
-
   .player-row { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 11px 16px; display: flex; align-items: center; gap: 12px; margin-bottom: 7px; transition: border-color 0.15s; }
   .player-row:hover { border-color: var(--accent); }
-
   .pos-badge { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; }
-
-  /* Dark mode position badges */
   .pos-PG { background: rgba(108,99,255,0.2); color: #a89bff; }
   .pos-SG { background: rgba(255,101,132,0.2); color: #ff8fa3; }
   .pos-SF { background: rgba(76,175,129,0.2); color: #6dddaa; }
   .pos-PF { background: rgba(245,200,66,0.2); color: #f5c842; }
   .pos-C  { background: rgba(41,182,246,0.2); color: #4fc3f7; }
-
-  /* Light mode position badges */
   body.light .pos-PG { background: rgba(192,98,47,0.12); color: #a84520; }
   body.light .pos-SG { background: rgba(180,60,100,0.1);  color: #b43c64; }
   body.light .pos-SF { background: rgba(61,138,92,0.12);  color: #2d7a50; }
   body.light .pos-PF { background: rgba(180,130,30,0.12); color: #9a6e10; }
   body.light .pos-C  { background: rgba(50,130,200,0.1);  color: #2a7ab8; }
-
   .player-name { font-weight: 600; font-size: 14px; flex: 1; color: var(--text); }
   .player-team { color: var(--muted); font-size: 12px; }
-
   .draftboard-grid { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 12px; }
   th { background: var(--surface2); padding: 9px 10px; text-align: center; font-size: 10px; font-weight: 700; letter-spacing: 0.8px; color: var(--muted); border: 1px solid var(--border); white-space: nowrap; }
   th.round-label { background: var(--surface); color: var(--text); font-size: 12px; }
   td { padding: 8px 10px; border: 1px solid var(--border); text-align: center; vertical-align: middle; background: var(--surface); }
-
   .pick-cell { border-radius: 6px; padding: 5px 7px; font-weight: 600; font-size: 11px; line-height: 1.3; }
   .pick-own-cell { background: var(--pick-own-bg); color: var(--pick-own-color); }
   .pick-traded-cell { background: var(--pick-traded-bg); color: var(--pick-traded-color); }
   .pick-empty { color: var(--border); }
-
   .legend { display: flex; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
   .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
   .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
-
   .edit-hint { background: var(--surface2); border: 1px dashed var(--border); border-radius: 10px; padding: 12px 16px; font-size: 12px; color: var(--muted); margin-top: 20px; text-align: center; }
   .edit-hint code { background: var(--surface); border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: var(--accent); }
-
   h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--text); }
 
-  /* ===== RULES PAGE ===== */
-  .rule-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    margin-bottom: 12px;
-    overflow: hidden;
-  }
-  .rule-section-header {
-    padding: 16px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--text);
-    transition: background 0.15s;
-    user-select: none;
-  }
+  /* ===== RULES ===== */
+  .rule-section { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 12px; overflow: hidden; }
+  .rule-section-header { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 700; font-size: 15px; color: var(--text); transition: background 0.15s; user-select: none; }
   .rule-section-header:hover { background: var(--surface2); }
   .rule-chevron { font-size: 18px; color: var(--muted); transition: transform 0.2s; }
   .rule-section.collapsed .rule-chevron { transform: rotate(-90deg); }
-  .rule-section-body {
-    padding: 4px 20px 16px;
-    border-top: 1px solid var(--border);
-  }
+  .rule-section-body { padding: 4px 20px 16px; border-top: 1px solid var(--border); }
   .rule-section.collapsed .rule-section-body { display: none; }
-  .rule-item {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-  }
+  .rule-item { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border); }
   .rule-item:last-child { border-bottom: none; }
-  .rule-number {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--accent-light);
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-size: 11px;
-    font-weight: 800;
+  .rule-number { width: 26px; height: 26px; border-radius: 50%; background: var(--accent-light); border: 1px solid var(--accent); color: var(--accent); font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .rule-text { font-size: 14px; line-height: 1.6; color: var(--text); flex: 1; }
+
+  /* ===== RANKINGS ===== */
+  .rankings-search { position: relative; margin-bottom: 20px; }
+  .rankings-search input {
+    width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 11px 16px 11px 42px;
+    border-radius: 10px; outline: none; transition: border-color 0.2s;
+  }
+  .rankings-search input:focus { border-color: var(--accent); }
+  .rankings-search input::placeholder { color: var(--muted); }
+  .rankings-search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+  .rankings-table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .rankings-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .rankings-table thead tr { background: var(--surface2); border-bottom: 1px solid var(--border); }
+  .rankings-table thead th {
+    padding: 11px 16px; text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--muted); cursor: pointer; user-select: none;
+    white-space: nowrap; transition: color 0.15s; border: none; background: var(--surface2);
+  }
+  .rankings-table thead th:hover { color: var(--accent); }
+  .rankings-table thead th.r-sorted { color: var(--accent); }
+  .rankings-table thead th:first-child { width: 56px; text-align: center; }
+  .rankings-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+  .rankings-table tbody tr:last-child { border-bottom: none; }
+  .rankings-table tbody tr:hover { background: var(--surface2); }
+  .rankings-table td { padding: 10px 16px; vertical-align: middle; border: none; background: transparent; text-align: left; }
+  .rankings-table td:first-child { text-align: center; }
+  .r-rank { font-size: 11px; font-weight: 700; color: var(--muted); width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px; }
+  .r-rank-top1  { background: rgba(245,200,66,0.15); color: #f5c842; }
+  .r-rank-top5  { background: rgba(108,99,255,0.15); color: #a89bff; }
+  .r-rank-top15 { background: rgba(76,175,129,0.15); color: #6dddaa; }
+  .r-name { font-weight: 600; color: var(--text); }
+  .r-team { display: inline-block; background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 5px; }
+  .r-pos { color: var(--muted); font-size: 12px; font-weight: 500; }
+  .r-no-results { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
+  .r-sort-arrow { margin-left: 4px; opacity: 0.5; font-size: 9px; }
+  .r-sorted .r-sort-arrow { opacity: 1; }
+
+  /* ===== 2026 DRAFT BOARD ===== */
+  .draft26-search { position: relative; margin-bottom: 20px; }
+  .draft26-search input {
+    width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 11px 16px 11px 42px;
+    border-radius: 10px; outline: none; transition: border-color 0.2s;
+  }
+  .draft26-search input:focus { border-color: var(--accent); }
+  .draft26-search input::placeholder { color: var(--muted); }
+  .draft26-search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+
+  .draft26-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+  }
+
+  .draft26-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
+    gap: 14px;
+    transition: border-color 0.15s, transform 0.15s;
+    cursor: default;
   }
-  .rule-text {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text);
-    flex: 1;
+  .draft26-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+  .draft26-pick-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 800;
+    min-width: 36px;
+    text-align: center;
+    line-height: 1;
+  }
+  .pick-lottery  { color: #f5c842; }
+  .pick-t15      { color: #ffa726; }
+  .pick-mid      { color: var(--accent); }
+  .pick-t3       { color: #6dddaa; }
+  .pick-t4       { color: #4fc3f7; }
+  .pick-late     { color: var(--muted); }
+
+  .draft26-info { flex: 1; min-width: 0; }
+  .draft26-name { font-weight: 700; font-size: 14px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .draft26-meta { display: flex; align-items: center; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
+  .draft26-pos {
+    font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 5px;
+    letter-spacing: 0.05em; white-space: nowrap;
+  }
+  .draft26-school { color: var(--muted); font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .draft26-no-results { text-align: center; padding: 48px; color: var(--muted); font-size: 13px; }
+
+  .draft26-tier-label {
+    grid-column: 1 / -1;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 4px 2px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2px;
   }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -324,6 +290,7 @@
   </div>
 </div>
 
+<!-- HOME -->
 <div class="page active" id="homePage">
   <div style="max-width:960px;margin:0 auto;">
     <div class="home-title">The Taco Tuesday League</div>
@@ -331,10 +298,13 @@
     <button class="draftboard-btn" onclick="showDraftboard()">📋 Full Draft Board</button>
     <button class="draftboard-btn" onclick="showRules()" style="background:linear-gradient(135deg,#f5c842,#ff9800);box-shadow:0 4px 12px rgba(245,200,66,0.3);">📜 Rules</button>
     <button class="draftboard-btn" onclick="showStandings()" style="background:linear-gradient(135deg,#4caf81,#26c6da);box-shadow:0 4px 12px rgba(76,175,129,0.3);">📈 Standings History</button>
+    <button class="draftboard-btn" onclick="showRankings()" style="background:linear-gradient(135deg,#29b6f6,#6c63ff);box-shadow:0 4px 12px rgba(41,182,246,0.3);">Dynasty Rankings</button>
+    <button class="draftboard-btn" onclick="showDraft26()" style="background:linear-gradient(135deg,#ff9800,#e040fb);box-shadow:0 4px 12px rgba(224,64,251,0.3);">MFHFBs 2026 Draft Board</button>
     <div class="team-grid" id="teamGrid"></div>
   </div>
 </div>
 
+<!-- TEAM PAGE -->
 <div class="page" id="teamPage">
   <div class="team-page-header" id="teamHeader"></div>
   <div class="tabs">
@@ -344,6 +314,7 @@
   <div id="tabContent"></div>
 </div>
 
+<!-- DRAFT BOARD -->
 <div class="page" id="draftboardPage">
   <h2 style="margin-bottom:6px;">📋 Full Draft Board</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">All traded picks already reflected</p>
@@ -355,12 +326,7 @@
   <div class="edit-hint">✏️ After trades, update <code>currentOwner</code> in the <code>PICKS</code> array</div>
 </div>
 
-<div class="page" id="tradesPage">
-  <h2 style="margin-bottom:6px;">📜 Trade History</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">All recorded trades by year</p>
-  <div id="tradesContent"></div>
-</div>
-
+<!-- STANDINGS -->
 <div class="page" id="standingsPage">
   <h2 style="margin-bottom:6px;">📈 Standings History</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:24px;">Final standings per season — click teams in the legend to show/hide</p>
@@ -370,129 +336,110 @@
   <p style="color:var(--muted);font-size:12px;margin-top:12px;text-align:center;">— = did not participate that season</p>
 </div>
 
+<!-- RULES -->
 <div class="page" id="rulesPage">
   <h2 style="margin-bottom:6px;">📜 Rules</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:28px;">Taco Tuesday League Rules & Regulations</p>
   <div id="rulesContent">
-
-    <!-- ============================================================
-         RULES PAGE — edit the sections below to add your rules
-         Each rule-section is a collapsible card. To add a new section,
-         copy one <div class="rule-section"> block and paste it below.
-         ============================================================ -->
-
     <div class="rule-section">
-      <div class="rule-section-header" onclick="toggleRule(this)">
-        <span>🏆 General League Rules</span>
-        <span class="rule-chevron">▾</span>
-      </div>
+      <div class="rule-section-header" onclick="toggleRule(this)"><span>🏆 General League Rules</span><span class="rule-chevron">▾</span></div>
       <div class="rule-section-body">
-        <div class="rule-item">
-          <div class="rule-number">1</div>
-          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-number">2</div>
-          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-number">3</div>
-          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
-        </div>
+        <div class="rule-item"><div class="rule-number">1</div><div class="rule-text">Rule goes here — edit this text to add your actual rule.</div></div>
+        <div class="rule-item"><div class="rule-number">2</div><div class="rule-text">Rule goes here — edit this text to add your actual rule.</div></div>
+        <div class="rule-item"><div class="rule-number">3</div><div class="rule-text">Rule goes here — edit this text to add your actual rule.</div></div>
       </div>
     </div>
-
     <div class="rule-section">
-      <div class="rule-section-header" onclick="toggleRule(this)">
-        <span>📅 Draft Rules</span>
-        <span class="rule-chevron">▾</span>
-      </div>
+      <div class="rule-section-header" onclick="toggleRule(this)"><span>📅 Draft Rules</span><span class="rule-chevron">▾</span></div>
       <div class="rule-section-body">
-        <div class="rule-item">
-          <div class="rule-number">1</div>
-          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-number">2</div>
-          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
-        </div>
+        <div class="rule-item"><div class="rule-number">1</div><div class="rule-text">Rule goes here — edit this text to add your actual rule.</div></div>
+        <div class="rule-item"><div class="rule-number">2</div><div class="rule-text">Rule goes here — edit this text to add your actual rule.</div></div>
       </div>
     </div>
-
     <div class="rule-section">
-      <div class="rule-section-header" onclick="toggleRule(this)">
-        <span>🔄 Trade Rules</span>
-        <span class="rule-chevron">▾</span>
-      </div>
+      <div class="rule-section-header" onclick="toggleRule(this)"><span>🔄 Trade Rules</span><span class="rule-chevron">▾</span></div>
       <div class="rule-section-body">
-        <div class="rule-item">
-          <div class="rule-number">1</div>
-          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-number">2</div>
-          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
-        </div>
+        <div class="rule-item"><div class="rule-number">1</div><div class="rule-text">Rule goes here — edit this text to add your actual rule.</div></div>
+        <div class="rule-item"><div class="rule-number">2</div><div class="rule-text">Rule goes here — edit this text to add your actual rule.</div></div>
       </div>
     </div>
-
     <div class="rule-section">
-      <div class="rule-section-header" onclick="toggleRule(this)">
-        <span>💰 Scoring & Waivers</span>
-        <span class="rule-chevron">▾</span>
-      </div>
+      <div class="rule-section-header" onclick="toggleRule(this)"><span>💰 Scoring & Waivers</span><span class="rule-chevron">▾</span></div>
       <div class="rule-section-body">
-        <div class="rule-item">
-          <div class="rule-number">1</div>
-          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-number">2</div>
-          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
-        </div>
+        <div class="rule-item"><div class="rule-number">1</div><div class="rule-text">Rule goes here — edit this text to add your actual rule.</div></div>
+        <div class="rule-item"><div class="rule-number">2</div><div class="rule-text">Rule goes here — edit this text to add your actual rule.</div></div>
       </div>
     </div>
-
     <div class="rule-section">
-      <div class="rule-section-header" onclick="toggleRule(this)">
-        <span>🌮 Taco Tuesday Traditions</span>
-        <span class="rule-chevron">▾</span>
-      </div>
+      <div class="rule-section-header" onclick="toggleRule(this)"><span>🌮 Taco Tuesday Traditions</span><span class="rule-chevron">▾</span></div>
       <div class="rule-section-body">
-        <div class="rule-item">
-          <div class="rule-number">1</div>
-          <div class="rule-text">Rule goes here — edit this text to add your actual rule.</div>
-        </div>
+        <div class="rule-item"><div class="rule-number">1</div><div class="rule-text">Rule goes here — edit this text to add your actual rule.</div></div>
       </div>
     </div>
-
   </div>
+</div>
+
+<!-- DYNASTY RANKINGS -->
+<div class="page" id="rankingsPage">
+  <h2 style="margin-bottom:6px;">Dynasty Rankings</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">150 players · 2025–26 Season</p>
+  <div class="rankings-search">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" id="rankSearch" placeholder="Search player, team, or position…" oninput="filterRankings()"/>
+  </div>
+  <div class="rankings-table-wrap">
+    <table class="rankings-table">
+      <thead>
+        <tr>
+          <th onclick="sortRankings(0)">#<span class="r-sort-arrow">↕</span></th>
+          <th onclick="sortRankings(1)">Name<span class="r-sort-arrow">↕</span></th>
+          <th onclick="sortRankings(2)">Team<span class="r-sort-arrow">↕</span></th>
+          <th onclick="sortRankings(3)">Position<span class="r-sort-arrow">↕</span></th>
+        </tr>
+      </thead>
+      <tbody id="rankingsBody"></tbody>
+    </table>
+    <div class="r-no-results" id="rankingsNoResults" style="display:none;">No players found.</div>
+  </div>
+</div>
+
+<!-- 2026 DRAFT BOARD -->
+<div class="page" id="draft26Page">
+  <h2 style="margin-bottom:6px;">MFHFBs 2026 Draft Board</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">30 prospects · Tiered Big Board</p>
+  <div class="draft26-search">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" id="draft26Search" placeholder="Search prospect, school, or position…" oninput="filterDraft26()"/>
+  </div>
+  <div id="draft26Grid"></div>
+  <div class="draft26-no-results" id="draft26NoResults" style="display:none;">No prospects found.</div>
 </div>
 
 <script>
 // ============================================================
-//  THEME TOGGLE
+//  THEME
 // ============================================================
 function toggleTheme() {
   const body = document.body;
   const btn = document.getElementById('themeToggle');
   if (body.classList.contains('light')) {
-    body.classList.remove('light');
-    btn.textContent = '☀️ Light';
-    localStorage.setItem('theme', 'dark');
+    body.classList.remove('light'); btn.textContent = '☀️ Light'; localStorage.setItem('theme','dark');
   } else {
-    body.classList.add('light');
-    btn.textContent = '🌙 Dark';
-    localStorage.setItem('theme', 'light');
+    body.classList.add('light'); btn.textContent = '🌙 Dark'; localStorage.setItem('theme','light');
   }
 }
-
-// Remember preference on reload
 if (localStorage.getItem('theme') === 'light') {
   document.body.classList.add('light');
   document.getElementById('themeToggle').textContent = '🌙 Dark';
 }
 
+// ============================================================
+//  TEAMS
+// ============================================================
 const TEAMS = [
   { id:1,  name:"Bear Down",                       owner:"Kong Power",          record:"112-41-0", color:"#6c63ff", lightColor:"#c0622f" },
   { id:2,  name:"Seagulls",                        owner:"Möwe",                record:"99-53-1",  color:"#29b6f6", lightColor:"#2a7ab8" },
@@ -507,614 +454,592 @@ const TEAMS = [
   { id:11, name:"Double Dribble Trouble",          owner:"Nils",                record:"45-107-1", color:"#ffa726", lightColor:"#b86020" },
   { id:12, name:"Vancouver Curry-Wurst",           owner:"German Bratwurst",    record:"39-114-0", color:"#78909c", lightColor:"#607080" },
 ];
+function getTeamColor(t) { return document.body.classList.contains('light') ? t.lightColor : t.color; }
 
-function getTeamColor(t) {
-  return document.body.classList.contains('light') ? t.lightColor : t.color;
-}
-
+// ============================================================
+//  ROSTERS
+// ============================================================
 const ROSTERS = {
-1: [
-  { name:"Nikola Jokic",          pos:"C",  team:"DEN" },
-  { name:"Kawhi Leonard",         pos:"SF", team:"LAC" },
-  { name:"Cade Cunningham",       pos:"PG", team:"DET" },
-  { name:"Jalen Johnson",         pos:"PF", team:"ATL" },
-  { name:"Anthony Edwards",       pos:"SG", team:"MIN" },
-  { name:"Karl-Anthony Towns",    pos:"C",  team:"NYK" },
-  { name:"Amen Thompson",         pos:"SF", team:"HOU" },
-  { name:"Jalen Suggs",           pos:"PG", team:"ORL" },
-  { name:"Cooper Flagg",          pos:"SF", team:"DAL" },
-  { name:"Josh Giddey",           pos:"PG", team:"CHI" },
-  { name:"LaMelo Ball",           pos:"PG", team:"CHA" },
-  { name:"Alperen Sengun",        pos:"C",  team:"HOU" },
-  { name:"Matas Buzelis",         pos:"PF", team:"CHI" },
-  { name:"Dyson Daniels",         pos:"SG", team:"ATL" },
-  { name:"Zion Williamson",       pos:"PF", team:"NOR" },
-  { name:"Desmond Bane",          pos:"SG", team:"ORL" },
-  { name:"Neemias Queta",         pos:"C",  team:"BOS" },
-  { name:"Moussa Diabate",        pos:"PF", team:"CHA" },
-  { name:"Ausar Thompson",        pos:"SF", team:"DET" },
-  { name:"VJ Edgecombe",          pos:"SG", team:"PHI" },
-  { name:"Reed Sheppard",         pos:"SG", team:"HOU" },
-  { name:"Dejounte Murray",       pos:"PG", team:"NOR" },
-  { name:"Day'Ron Sharpe",        pos:"C",  team:"BKN" },
-  { name:"Ivica Zubac",           pos:"C",  team:"IND" },
-  { name:"Taylor Hendricks",      pos:"PF", team:"MEM" },
-  { name:"Grant Williams",        pos:"PF", team:"CHA" },
-  { name:"Adem Bona",             pos:"C",  team:"PHI" },
-  { name:"Jordan Poole",          pos:"PG", team:"NOR" },
-  { name:"Alondes Williams",      pos:"SG", team:"FA"  },
+1:[
+  {name:"Nikola Jokic",pos:"C",team:"DEN"},{name:"Kawhi Leonard",pos:"SF",team:"LAC"},
+  {name:"Cade Cunningham",pos:"PG",team:"DET"},{name:"Jalen Johnson",pos:"PF",team:"ATL"},
+  {name:"Anthony Edwards",pos:"SG",team:"MIN"},{name:"Karl-Anthony Towns",pos:"C",team:"NYK"},
+  {name:"Amen Thompson",pos:"SF",team:"HOU"},{name:"Jalen Suggs",pos:"PG",team:"ORL"},
+  {name:"Cooper Flagg",pos:"SF",team:"DAL"},{name:"Josh Giddey",pos:"PG",team:"CHI"},
+  {name:"LaMelo Ball",pos:"PG",team:"CHA"},{name:"Alperen Sengun",pos:"C",team:"HOU"},
+  {name:"Matas Buzelis",pos:"PF",team:"CHI"},{name:"Dyson Daniels",pos:"SG",team:"ATL"},
+  {name:"Zion Williamson",pos:"PF",team:"NOR"},{name:"Desmond Bane",pos:"SG",team:"ORL"},
+  {name:"Neemias Queta",pos:"C",team:"BOS"},{name:"Moussa Diabate",pos:"PF",team:"CHA"},
+  {name:"Ausar Thompson",pos:"SF",team:"DET"},{name:"VJ Edgecombe",pos:"SG",team:"PHI"},
+  {name:"Reed Sheppard",pos:"SG",team:"HOU"},{name:"Dejounte Murray",pos:"PG",team:"NOR"},
+  {name:"Day'Ron Sharpe",pos:"C",team:"BKN"},{name:"Ivica Zubac",pos:"C",team:"IND"},
+  {name:"Taylor Hendricks",pos:"PF",team:"MEM"},{name:"Grant Williams",pos:"PF",team:"CHA"},
+  {name:"Adem Bona",pos:"C",team:"PHI"},{name:"Jordan Poole",pos:"PG",team:"NOR"},
+  {name:"Alondes Williams",pos:"SG",team:"FA"},
 ],
-2: [
-  { name:"Stephen Curry",         pos:"PG", team:"GSW" },
-  { name:"LeBron James",          pos:"SF", team:"LAL" },
-  { name:"Onyeka Okongwu",        pos:"C",  team:"ATL" },
-  { name:"Tyler Herro",           pos:"SG", team:"MIA" },
-  { name:"Jaylen Brown",          pos:"SF", team:"BOS" },
-  { name:"Ryan Rollins",          pos:"SG", team:"MIL" },
-  { name:"Jabari Smith Jr.",      pos:"PF", team:"HOU" },
-  { name:"Jaden McDaniels",       pos:"SF", team:"MIN" },
-  { name:"Collin Gillespie",      pos:"PG", team:"PHO" },
-  { name:"Aaron Gordon",          pos:"PF", team:"DEN" },
-  { name:"Cam Spencer",           pos:"SG", team:"MEM" },
-  { name:"Tristan Vukcevic",      pos:"PF", team:"WAS" },
-  { name:"Justin Champagnie",     pos:"SF", team:"WAS" },
-  { name:"Derik Queen",           pos:"C",  team:"NOR" },
-  { name:"Guerschon Yabusele",    pos:"PF", team:"CHI" },
-  { name:"Javon Small",           pos:"PG", team:"MEM" },
-  { name:"Jaime Jaquez Jr.",      pos:"SF", team:"MIA" },
-  { name:"Malik Monk",            pos:"SG", team:"SAC" },
-  { name:"Moritz Wagner",         pos:"C",  team:"ORL" },
-  { name:"Daniss Jenkins",        pos:"PG", team:"DET" },
-  { name:"Kyle Kuzma",            pos:"SF", team:"MIL" },
-  { name:"Bub Carrington",        pos:"SG", team:"WAS" },
-  { name:"Trendon Watford",       pos:"PF", team:"PHI" },
-  { name:"Javonte Green",         pos:"SF", team:"DET" },
-  { name:"Nae'Qwan Tomlin",       pos:"PF", team:"CLE" },
-  { name:"Sion James",            pos:"SF", team:"CHA" },
-  { name:"Tyler Kolek",           pos:"PG", team:"NYK" },
-  { name:"Dylan Cardwell",        pos:"C",  team:"SAC" },
-  { name:"Jaren Jackson Jr.",     pos:"PF", team:"UTA" },
+2:[
+  {name:"Stephen Curry",pos:"PG",team:"GSW"},{name:"LeBron James",pos:"SF",team:"LAL"},
+  {name:"Onyeka Okongwu",pos:"C",team:"ATL"},{name:"Tyler Herro",pos:"SG",team:"MIA"},
+  {name:"Jaylen Brown",pos:"SF",team:"BOS"},{name:"Ryan Rollins",pos:"SG",team:"MIL"},
+  {name:"Jabari Smith Jr.",pos:"PF",team:"HOU"},{name:"Jaden McDaniels",pos:"SF",team:"MIN"},
+  {name:"Collin Gillespie",pos:"PG",team:"PHO"},{name:"Aaron Gordon",pos:"PF",team:"DEN"},
+  {name:"Cam Spencer",pos:"SG",team:"MEM"},{name:"Tristan Vukcevic",pos:"PF",team:"WAS"},
+  {name:"Justin Champagnie",pos:"SF",team:"WAS"},{name:"Derik Queen",pos:"C",team:"NOR"},
+  {name:"Guerschon Yabusele",pos:"PF",team:"CHI"},{name:"Javon Small",pos:"PG",team:"MEM"},
+  {name:"Jaime Jaquez Jr.",pos:"SF",team:"MIA"},{name:"Malik Monk",pos:"SG",team:"SAC"},
+  {name:"Moritz Wagner",pos:"C",team:"ORL"},{name:"Daniss Jenkins",pos:"PG",team:"DET"},
+  {name:"Kyle Kuzma",pos:"SF",team:"MIL"},{name:"Bub Carrington",pos:"SG",team:"WAS"},
+  {name:"Trendon Watford",pos:"PF",team:"PHI"},{name:"Javonte Green",pos:"SF",team:"DET"},
+  {name:"Nae'Qwan Tomlin",pos:"PF",team:"CLE"},{name:"Sion James",pos:"SF",team:"CHA"},
+  {name:"Tyler Kolek",pos:"PG",team:"NYK"},{name:"Dylan Cardwell",pos:"C",team:"SAC"},
+  {name:"Jaren Jackson Jr.",pos:"PF",team:"UTA"},
 ],
-3: [
-  { name:"Shai Gilgeous-Alexander", pos:"PG", team:"OKC" },
-  { name:"Kevin Durant",           pos:"SF", team:"HOU" },
-  { name:"Scottie Barnes",         pos:"SF", team:"TOR" },
-  { name:"Paolo Banchero",         pos:"PF", team:"ORL" },
-  { name:"De'Aaron Fox",           pos:"PG", team:"SAS" },
-  { name:"Brandin Podziemski",     pos:"SG", team:"GSW" },
-  { name:"Kristaps Porzingis",     pos:"C",  team:"GSW" },
-  { name:"Andrew Nembhard",        pos:"PG", team:"IND" },
-  { name:"Nikola Vucevic",         pos:"C",  team:"BOS" },
-  { name:"Khris Middleton",        pos:"SF", team:"DAL" },
-  { name:"Micah Potter",           pos:"C",  team:"IND" },
-  { name:"RJ Barrett",             pos:"SG", team:"TOR" },
-  { name:"Jonas Valanciunas",      pos:"C",  team:"DEN" },
-  { name:"Pat Spencer",            pos:"PG", team:"GSW" },
-  { name:"Julian Champagnie",      pos:"SF", team:"SAS" },
-  { name:"Santi Aldama",           pos:"SF", team:"MEM" },
-  { name:"Baylor Scheierman",      pos:"SG", team:"BOS" },
-  { name:"Ziaire Williams",        pos:"SF", team:"BKN" },
-  { name:"Dean Wade",              pos:"PF", team:"CLE" },
-  { name:"Luguentz Dort",          pos:"SG", team:"OKC" },
-  { name:"Vit Krejci",             pos:"PG", team:"POR" },
-  { name:"Aaron Wiggins",          pos:"SG", team:"OKC" },
-  { name:"Jordan Miller",          pos:"SF", team:"LAC" },
-  { name:"Klay Thompson",          pos:"SG", team:"DAL" },
-  { name:"Ochai Agbaji",           pos:"SG", team:"BKN" },
-  { name:"Jalen Pickett",          pos:"PG", team:"DEN" },
-  { name:"Jordan Clarkson",        pos:"SG", team:"NYK" },
-  { name:"Paul George",            pos:"SF", team:"PHI" },
-  { name:"Deandre Ayton",          pos:"C",  team:"LAL" },
+3:[
+  {name:"Shai Gilgeous-Alexander",pos:"PG",team:"OKC"},{name:"Kevin Durant",pos:"SF",team:"HOU"},
+  {name:"Scottie Barnes",pos:"SF",team:"TOR"},{name:"Paolo Banchero",pos:"PF",team:"ORL"},
+  {name:"De'Aaron Fox",pos:"PG",team:"SAS"},{name:"Brandin Podziemski",pos:"SG",team:"GSW"},
+  {name:"Kristaps Porzingis",pos:"C",team:"GSW"},{name:"Andrew Nembhard",pos:"PG",team:"IND"},
+  {name:"Nikola Vucevic",pos:"C",team:"BOS"},{name:"Khris Middleton",pos:"SF",team:"DAL"},
+  {name:"Micah Potter",pos:"C",team:"IND"},{name:"RJ Barrett",pos:"SG",team:"TOR"},
+  {name:"Jonas Valanciunas",pos:"C",team:"DEN"},{name:"Pat Spencer",pos:"PG",team:"GSW"},
+  {name:"Julian Champagnie",pos:"SF",team:"SAS"},{name:"Santi Aldama",pos:"SF",team:"MEM"},
+  {name:"Baylor Scheierman",pos:"SG",team:"BOS"},{name:"Ziaire Williams",pos:"SF",team:"BKN"},
+  {name:"Dean Wade",pos:"PF",team:"CLE"},{name:"Luguentz Dort",pos:"SG",team:"OKC"},
+  {name:"Vit Krejci",pos:"PG",team:"POR"},{name:"Aaron Wiggins",pos:"SG",team:"OKC"},
+  {name:"Jordan Miller",pos:"SF",team:"LAC"},{name:"Klay Thompson",pos:"SG",team:"DAL"},
+  {name:"Ochai Agbaji",pos:"SG",team:"BKN"},{name:"Jalen Pickett",pos:"PG",team:"DEN"},
+  {name:"Jordan Clarkson",pos:"SG",team:"NYK"},{name:"Paul George",pos:"SF",team:"PHI"},
+  {name:"Deandre Ayton",pos:"C",team:"LAL"},
 ],
-4: [
-  { name:"James Harden",           pos:"PG", team:"CLE" },
-  { name:"Jamal Murray",           pos:"PG", team:"DEN" },
-  { name:"Julius Randle",          pos:"PF", team:"MIN" },
-  { name:"Jarrett Allen",          pos:"C",  team:"CLE" },
-  { name:"Donovan Clingan",        pos:"C",  team:"POR" },
-  { name:"Brandon Ingram",         pos:"SF", team:"TOR" },
-  { name:"Ty Jerome",              pos:"PG", team:"MEM" },
-  { name:"Jrue Holiday",           pos:"PG", team:"POR" },
-  { name:"Josh Hart",              pos:"SF", team:"NYK" },
-  { name:"Jerami Grant",           pos:"PF", team:"POR" },
-  { name:"Cedric Coward",          pos:"SF", team:"MEM" },
-  { name:"Christian Braun",        pos:"SG", team:"DEN" },
-  { name:"Danny Wolf",             pos:"PF", team:"BKN" },
-  { name:"Gary Payton II",         pos:"SG", team:"GSW" },
-  { name:"Clint Capela",           pos:"C",  team:"HOU" },
-  { name:"Duncan Robinson",        pos:"SF", team:"DET" },
-  { name:"Jamal Shead",            pos:"PG", team:"TOR" },
-  { name:"Rui Hachimura",          pos:"SF", team:"LAL" },
-  { name:"Dennis Schroder",        pos:"PG", team:"CLE" },
-  { name:"Yanic Konan Niederhauser", pos:"C", team:"LAC" },
-  { name:"Corey Kispert",          pos:"SF", team:"ATL" },
-  { name:"Harrison Barnes",        pos:"PF", team:"SAS" },
-  { name:"Svi Mykhailiuk",         pos:"SG", team:"UTA" },
-  { name:"Mouhamed Gueye",         pos:"PF", team:"ATL" },
-  { name:"Cam Thomas",             pos:"SG", team:"MIL" },
-  { name:"Zach LaVine",            pos:"SG", team:"SAC" },
-  { name:"De'Andre Hunter",        pos:"SF", team:"SAC" },
-  { name:"Jalen Smith",            pos:"PF", team:"CHI" },
-  { name:"Keegan Murray",          pos:"SF", team:"SAC" },
+4:[
+  {name:"James Harden",pos:"PG",team:"CLE"},{name:"Jamal Murray",pos:"PG",team:"DEN"},
+  {name:"Julius Randle",pos:"PF",team:"MIN"},{name:"Jarrett Allen",pos:"C",team:"CLE"},
+  {name:"Donovan Clingan",pos:"C",team:"POR"},{name:"Brandon Ingram",pos:"SF",team:"TOR"},
+  {name:"Ty Jerome",pos:"PG",team:"MEM"},{name:"Jrue Holiday",pos:"PG",team:"POR"},
+  {name:"Josh Hart",pos:"SF",team:"NYK"},{name:"Jerami Grant",pos:"PF",team:"POR"},
+  {name:"Cedric Coward",pos:"SF",team:"MEM"},{name:"Christian Braun",pos:"SG",team:"DEN"},
+  {name:"Danny Wolf",pos:"PF",team:"BKN"},{name:"Gary Payton II",pos:"SG",team:"GSW"},
+  {name:"Clint Capela",pos:"C",team:"HOU"},{name:"Duncan Robinson",pos:"SF",team:"DET"},
+  {name:"Jamal Shead",pos:"PG",team:"TOR"},{name:"Rui Hachimura",pos:"SF",team:"LAL"},
+  {name:"Dennis Schroder",pos:"PG",team:"CLE"},{name:"Yanic Konan Niederhauser",pos:"C",team:"LAC"},
+  {name:"Corey Kispert",pos:"SF",team:"ATL"},{name:"Harrison Barnes",pos:"PF",team:"SAS"},
+  {name:"Svi Mykhailiuk",pos:"SG",team:"UTA"},{name:"Mouhamed Gueye",pos:"PF",team:"ATL"},
+  {name:"Cam Thomas",pos:"SG",team:"MIL"},{name:"Zach LaVine",pos:"SG",team:"SAC"},
+  {name:"De'Andre Hunter",pos:"SF",team:"SAC"},{name:"Jalen Smith",pos:"PF",team:"CHI"},
+  {name:"Keegan Murray",pos:"SF",team:"SAC"},
 ],
-5: [
-  { name:"Tyrese Maxey",           pos:"PG", team:"PHI" },
-  { name:"Austin Reaves",          pos:"SG", team:"LAL" },
-  { name:"Jalen Duren",            pos:"C",  team:"DET" },
-  { name:"Payton Pritchard",       pos:"PG", team:"BOS" },
-  { name:"Andrew Wiggins",         pos:"SF", team:"MIA" },
-  { name:"Saddiq Bey",             pos:"SF", team:"NOR" },
-  { name:"Precious Achiuwa",       pos:"PF", team:"SAC" },
-  { name:"Jakob Poeltl",           pos:"C",  team:"TOR" },
-  { name:"Jalen Green",            pos:"SG", team:"PHO" },
-  { name:"Bennedict Mathurin",     pos:"SG", team:"LAC" },
-  { name:"Pascal Siakam",          pos:"PF", team:"IND" },
-  { name:"Russell Westbrook",      pos:"PG", team:"SAC" },
-  { name:"Bilal Coulibaly",        pos:"SF", team:"WAS" },
-  { name:"Sam Hauser",             pos:"SF", team:"BOS" },
-  { name:"AJ Green",               pos:"SG", team:"MIL" },
-  { name:"Jaylin Williams",        pos:"C",  team:"OKC" },
-  { name:"Dru Smith",              pos:"PG", team:"MIA" },
-  { name:"Caris LeVert",           pos:"SG", team:"DET" },
-  { name:"Jarred Vanderbilt",      pos:"PF", team:"LAL" },
-  { name:"Kyle Anderson",          pos:"SF", team:"MIN" },
-  { name:"Ousmane Dieng",          pos:"SF", team:"MIL" },
-  { name:"Goga Bitadze",           pos:"C",  team:"ORL" },
-  { name:"Nicolas Batum",          pos:"PF", team:"LAC" },
-  { name:"Terance Mann",           pos:"SG", team:"BKN" },
-  { name:"Caleb Martin",           pos:"SG", team:"DAL" },
-  { name:"Kelly Olynyk",           pos:"C",  team:"SAS" },
-  { name:"Joel Embiid",            pos:"C",  team:"PHI" },
-  { name:"Zach Collins",           pos:"PF", team:"CHI" },
-  { name:"Malik Beasley",          pos:"SG", team:"FA"  },
+5:[
+  {name:"Tyrese Maxey",pos:"PG",team:"PHI"},{name:"Austin Reaves",pos:"SG",team:"LAL"},
+  {name:"Jalen Duren",pos:"C",team:"DET"},{name:"Payton Pritchard",pos:"PG",team:"BOS"},
+  {name:"Andrew Wiggins",pos:"SF",team:"MIA"},{name:"Saddiq Bey",pos:"SF",team:"NOR"},
+  {name:"Precious Achiuwa",pos:"PF",team:"SAC"},{name:"Jakob Poeltl",pos:"C",team:"TOR"},
+  {name:"Jalen Green",pos:"SG",team:"PHO"},{name:"Bennedict Mathurin",pos:"SG",team:"LAC"},
+  {name:"Pascal Siakam",pos:"PF",team:"IND"},{name:"Russell Westbrook",pos:"PG",team:"SAC"},
+  {name:"Bilal Coulibaly",pos:"SF",team:"WAS"},{name:"Sam Hauser",pos:"SF",team:"BOS"},
+  {name:"AJ Green",pos:"SG",team:"MIL"},{name:"Jaylin Williams",pos:"C",team:"OKC"},
+  {name:"Dru Smith",pos:"PG",team:"MIA"},{name:"Caris LeVert",pos:"SG",team:"DET"},
+  {name:"Jarred Vanderbilt",pos:"PF",team:"LAL"},{name:"Kyle Anderson",pos:"SF",team:"MIN"},
+  {name:"Ousmane Dieng",pos:"SF",team:"MIL"},{name:"Goga Bitadze",pos:"C",team:"ORL"},
+  {name:"Nicolas Batum",pos:"PF",team:"LAC"},{name:"Terance Mann",pos:"SG",team:"BKN"},
+  {name:"Caleb Martin",pos:"SG",team:"DAL"},{name:"Kelly Olynyk",pos:"C",team:"SAS"},
+  {name:"Joel Embiid",pos:"C",team:"PHI"},{name:"Zach Collins",pos:"PF",team:"CHI"},
+  {name:"Malik Beasley",pos:"SG",team:"FA"},
 ],
-6: [
-  { name:"Victor Wembanyama",      pos:"C",  team:"SAS" },
-  { name:"Keyonte George",         pos:"PG", team:"UTA" },
-  { name:"Kyle Filipowski",        pos:"PF", team:"UTA" },
-  { name:"Naz Reid",               pos:"PF", team:"MIN" },
-  { name:"Jay Huff",               pos:"C",  team:"IND" },
-  { name:"Karlo Matkovic",         pos:"PF", team:"NOR" },
-  { name:"Jarace Walker",          pos:"PF", team:"IND" },
-  { name:"Donte DiVincenzo",       pos:"PG", team:"MIN" },
-  { name:"GG Jackson",             pos:"PF", team:"MEM" },
-  { name:"Pelle Larsson",          pos:"SG", team:"MIA" },
-  { name:"Toumani Camara",         pos:"SF", team:"POR" },
-  { name:"Gui Santos",             pos:"SF", team:"GSW" },
-  { name:"Olivier-Maxence Prosper", pos:"PF", team:"MEM" },
-  { name:"Davion Mitchell",        pos:"PG", team:"MIA" },
-  { name:"Keldon Johnson",         pos:"SF", team:"SAS" },
-  { name:"Kevin Love",             pos:"PF", team:"UTA" },
-  { name:"Isaac Okoro",            pos:"SF", team:"CHI" },
-  { name:"Quentin Grimes",         pos:"SG", team:"PHI" },
-  { name:"Tre Johnson",            pos:"SG", team:"WAS" },
-  { name:"Isaiah Joe",             pos:"SG", team:"OKC" },
-  { name:"Jake LaRavia",           pos:"PF", team:"LAL" },
-  { name:"Walter Clayton Jr.",     pos:"PG", team:"MEM" },
-  { name:"Bruce Brown",            pos:"SG", team:"DEN" },
-  { name:"Bobby Portis",           pos:"PF", team:"MIL" },
-  { name:"Tristan da Silva",       pos:"SF", team:"ORL" },
-  { name:"Sidy Cissoko",           pos:"SG", team:"POR" },
-  { name:"Gary Trent Jr.",         pos:"SG", team:"MIL" },
-  { name:"Shaedon Sharpe",         pos:"SG", team:"POR" },
-  { name:"Cam Whitmore",           pos:"SF", team:"WAS" },
+6:[
+  {name:"Victor Wembanyama",pos:"C",team:"SAS"},{name:"Keyonte George",pos:"PG",team:"UTA"},
+  {name:"Kyle Filipowski",pos:"PF",team:"UTA"},{name:"Naz Reid",pos:"PF",team:"MIN"},
+  {name:"Jay Huff",pos:"C",team:"IND"},{name:"Karlo Matkovic",pos:"PF",team:"NOR"},
+  {name:"Jarace Walker",pos:"PF",team:"IND"},{name:"Donte DiVincenzo",pos:"PG",team:"MIN"},
+  {name:"GG Jackson",pos:"PF",team:"MEM"},{name:"Pelle Larsson",pos:"SG",team:"MIA"},
+  {name:"Toumani Camara",pos:"SF",team:"POR"},{name:"Gui Santos",pos:"SF",team:"GSW"},
+  {name:"Olivier-Maxence Prosper",pos:"PF",team:"MEM"},{name:"Davion Mitchell",pos:"PG",team:"MIA"},
+  {name:"Keldon Johnson",pos:"SF",team:"SAS"},{name:"Kevin Love",pos:"PF",team:"UTA"},
+  {name:"Isaac Okoro",pos:"SF",team:"CHI"},{name:"Quentin Grimes",pos:"SG",team:"PHI"},
+  {name:"Tre Johnson",pos:"SG",team:"WAS"},{name:"Isaiah Joe",pos:"SG",team:"OKC"},
+  {name:"Jake LaRavia",pos:"PF",team:"LAL"},{name:"Walter Clayton Jr.",pos:"PG",team:"MEM"},
+  {name:"Bruce Brown",pos:"SG",team:"DEN"},{name:"Bobby Portis",pos:"PF",team:"MIL"},
+  {name:"Tristan da Silva",pos:"SF",team:"ORL"},{name:"Sidy Cissoko",pos:"SG",team:"POR"},
+  {name:"Gary Trent Jr.",pos:"SG",team:"MIL"},{name:"Shaedon Sharpe",pos:"SG",team:"POR"},
+  {name:"Cam Whitmore",pos:"SF",team:"WAS"},
 ],
-7: [
-  { name:"Derrick White",          pos:"PG", team:"BOS" },
-  { name:"Evan Mobley",            pos:"PF", team:"CLE" },
-  { name:"Mikal Bridges",          pos:"SG", team:"NYK" },
-  { name:"Jalen Brunson",          pos:"PG", team:"NYK" },
-  { name:"Robert Williams III",    pos:"C",  team:"POR" },
-  { name:"Grayson Allen",          pos:"SG", team:"PHO" },
-  { name:"Rudy Gobert",            pos:"C",  team:"MIN" },
-  { name:"Naji Marshall",          pos:"SF", team:"DAL" },
-  { name:"Stephon Castle",         pos:"PG", team:"SAS" },
-  { name:"Derrick Jones Jr.",      pos:"SF", team:"LAC" },
-  { name:"Miles Bridges",          pos:"SF", team:"CHA" },
-  { name:"Tobias Harris",          pos:"SF", team:"DET" },
-  { name:"Draymond Green",         pos:"PF", team:"GSW" },
-  { name:"Myles Turner",           pos:"C",  team:"MIL" },
-  { name:"Quenton Jackson",        pos:"PG", team:"IND" },
-  { name:"Ayo Dosunmu",            pos:"SG", team:"MIN" },
-  { name:"Kelly Oubre Jr.",        pos:"SF", team:"PHI" },
-  { name:"Brice Sensabaugh",       pos:"SF", team:"UTA" },
-  { name:"Ja Morant",              pos:"PG", team:"MEM" },
-  { name:"John Konchar",           pos:"SG", team:"UTA" },
-  { name:"Wendell Carter Jr.",     pos:"C",  team:"ORL" },
-  { name:"Jericho Sims",           pos:"C",  team:"MIL" },
-  { name:"Anthony Gill",           pos:"PF", team:"WAS" },
-  { name:"Keon Ellis",             pos:"SG", team:"CLE" },
-  { name:"Sharife Cooper",         pos:"PG", team:"WAS" },
-  { name:"Andre Drummond",         pos:"C",  team:"PHI" },
-  { name:"Landry Shamet",          pos:"SG", team:"NYK" },
-  { name:"Kevin Huerter",          pos:"SG", team:"DET" },
-  { name:"Dorian Finney-Smith",    pos:"SF", team:"HOU" },
+7:[
+  {name:"Derrick White",pos:"PG",team:"BOS"},{name:"Evan Mobley",pos:"PF",team:"CLE"},
+  {name:"Mikal Bridges",pos:"SG",team:"NYK"},{name:"Jalen Brunson",pos:"PG",team:"NYK"},
+  {name:"Robert Williams III",pos:"C",team:"POR"},{name:"Grayson Allen",pos:"SG",team:"PHO"},
+  {name:"Rudy Gobert",pos:"C",team:"MIN"},{name:"Naji Marshall",pos:"SF",team:"DAL"},
+  {name:"Stephon Castle",pos:"PG",team:"SAS"},{name:"Derrick Jones Jr.",pos:"SF",team:"LAC"},
+  {name:"Miles Bridges",pos:"SF",team:"CHA"},{name:"Tobias Harris",pos:"SF",team:"DET"},
+  {name:"Draymond Green",pos:"PF",team:"GSW"},{name:"Myles Turner",pos:"C",team:"MIL"},
+  {name:"Quenton Jackson",pos:"PG",team:"IND"},{name:"Ayo Dosunmu",pos:"SG",team:"MIN"},
+  {name:"Kelly Oubre Jr.",pos:"SF",team:"PHI"},{name:"Brice Sensabaugh",pos:"SF",team:"UTA"},
+  {name:"Ja Morant",pos:"PG",team:"MEM"},{name:"John Konchar",pos:"SG",team:"UTA"},
+  {name:"Wendell Carter Jr.",pos:"C",team:"ORL"},{name:"Jericho Sims",pos:"C",team:"MIL"},
+  {name:"Anthony Gill",pos:"PF",team:"WAS"},{name:"Keon Ellis",pos:"SG",team:"CLE"},
+  {name:"Sharife Cooper",pos:"PG",team:"WAS"},{name:"Andre Drummond",pos:"C",team:"PHI"},
+  {name:"Landry Shamet",pos:"SG",team:"NYK"},{name:"Kevin Huerter",pos:"SG",team:"DET"},
+  {name:"Dorian Finney-Smith",pos:"SF",team:"HOU"},
 ],
-8: [
-  { name:"Luka Doncic",            pos:"PG", team:"LAL" },
-  { name:"Chet Holmgren",          pos:"PF", team:"OKC" },
-  { name:"Bam Adebayo",            pos:"C",  team:"MIA" },
-  { name:"Deni Avdija",            pos:"SF", team:"POR" },
-  { name:"Nickeil Alexander-Walker", pos:"SG", team:"ATL" },
-  { name:"Tari Eason",             pos:"SF", team:"HOU" },
-  { name:"Isaiah Hartenstein",     pos:"C",  team:"OKC" },
-  { name:"De'Anthony Melton",      pos:"SG", team:"GSW" },
-  { name:"Mitchell Robinson",      pos:"C",  team:"NYK" },
-  { name:"Nic Claxton",            pos:"C",  team:"BKN" },
-  { name:"Isaiah Stewart",         pos:"PF", team:"DET" },
-  { name:"Royce O'Neale",          pos:"SF", team:"PHO" },
-  { name:"Jaylen Wells",           pos:"SG", team:"MEM" },
-  { name:"Alex Caruso",            pos:"SG", team:"OKC" },
-  { name:"Yves Missi",             pos:"C",  team:"NOR" },
-  { name:"Devin Carter",           pos:"PG", team:"SAC" },
-  { name:"Dylan Harper",           pos:"PG", team:"SAS" },
-  { name:"Jose Alvarado",          pos:"PG", team:"NYK" },
-  { name:"Jaylon Tyson",           pos:"SG", team:"CLE" },
-  { name:"Tim Hardaway Jr.",       pos:"SG", team:"DEN" },
-  { name:"Larry Nance Jr.",        pos:"PF", team:"CLE" },
-  { name:"Jonathan Isaac",         pos:"PF", team:"ORL" },
-  { name:"Aaron Holiday",          pos:"PG", team:"HOU" },
-  { name:"Tre Mann",               pos:"PG", team:"CHA" },
-  { name:"Xavier Tillman",         pos:"PF", team:"CHA" },
-  { name:"Domantas Sabonis",       pos:"C",  team:"SAC" },
-  { name:"Zach Edey",              pos:"C",  team:"MEM" },
-  { name:"Cody Martin",            pos:"SG", team:"FA"  },
+8:[
+  {name:"Luka Doncic",pos:"PG",team:"LAL"},{name:"Chet Holmgren",pos:"PF",team:"OKC"},
+  {name:"Bam Adebayo",pos:"C",team:"MIA"},{name:"Deni Avdija",pos:"SF",team:"POR"},
+  {name:"Nickeil Alexander-Walker",pos:"SG",team:"ATL"},{name:"Tari Eason",pos:"SF",team:"HOU"},
+  {name:"Isaiah Hartenstein",pos:"C",team:"OKC"},{name:"De'Anthony Melton",pos:"SG",team:"GSW"},
+  {name:"Mitchell Robinson",pos:"C",team:"NYK"},{name:"Nic Claxton",pos:"C",team:"BKN"},
+  {name:"Isaiah Stewart",pos:"PF",team:"DET"},{name:"Royce O'Neale",pos:"SF",team:"PHO"},
+  {name:"Jaylen Wells",pos:"SG",team:"MEM"},{name:"Alex Caruso",pos:"SG",team:"OKC"},
+  {name:"Yves Missi",pos:"C",team:"NOR"},{name:"Devin Carter",pos:"PG",team:"SAC"},
+  {name:"Dylan Harper",pos:"PG",team:"SAS"},{name:"Jose Alvarado",pos:"PG",team:"NYK"},
+  {name:"Jaylon Tyson",pos:"SG",team:"CLE"},{name:"Tim Hardaway Jr.",pos:"SG",team:"DEN"},
+  {name:"Larry Nance Jr.",pos:"PF",team:"CLE"},{name:"Jonathan Isaac",pos:"PF",team:"ORL"},
+  {name:"Aaron Holiday",pos:"PG",team:"HOU"},{name:"Tre Mann",pos:"PG",team:"CHA"},
+  {name:"Xavier Tillman",pos:"PF",team:"CHA"},{name:"Domantas Sabonis",pos:"C",team:"SAC"},
+  {name:"Zach Edey",pos:"C",team:"MEM"},{name:"Cody Martin",pos:"SG",team:"FA"},
 ],
-9: [
-  { name:"Donovan Mitchell",       pos:"SG", team:"CLE" },
-  { name:"Michael Porter Jr.",     pos:"SF", team:"BKN" },
-  { name:"Devin Booker",           pos:"PG", team:"PHO" },
-  { name:"Moses Moody",            pos:"SG", team:"GSW" },
-  { name:"Luke Kornet",            pos:"C",  team:"SAS" },
-  { name:"PJ Washington",          pos:"PF", team:"DAL" },
-  { name:"Kris Dunn",              pos:"PG", team:"LAC" },
-  { name:"Collin Murray-Boyles",   pos:"PF", team:"TOR" },
-  { name:"Tre Jones",              pos:"PG", team:"CHI" },
-  { name:"Cam Johnson",            pos:"SF", team:"DEN" },
-  { name:"Cason Wallace",          pos:"SG", team:"OKC" },
-  { name:"Jonathan Kuminga",       pos:"PF", team:"ATL" },
-  { name:"Jock Landale",           pos:"C",  team:"ATL" },
-  { name:"Marcus Smart",           pos:"SG", team:"LAL" },
-  { name:"Kasparas Jakucionis",    pos:"PG", team:"MIA" },
-  { name:"Bones Hyland",           pos:"PG", team:"MIN" },
-  { name:"Gradey Dick",            pos:"SG", team:"TOR" },
-  { name:"Luka Garza",             pos:"C",  team:"BOS" },
-  { name:"Tidjane Salaun",         pos:"PF", team:"CHA" },
-  { name:"Kevon Looney",           pos:"C",  team:"NOR" },
-  { name:"Julian Strawther",       pos:"SF", team:"DEN" },
-  { name:"Buddy Hield",            pos:"SG", team:"ATL" },
-  { name:"Nikola Topic",           pos:"PG", team:"OKC" },
-  { name:"Khaman Maluach",         pos:"C",  team:"PHO" },
-  { name:"Caleb Love",             pos:"SG", team:"POR" },
-  { name:"Jeremy Sochan",          pos:"PF", team:"NYK" },
-  { name:"Kentavious Caldwell-Pope", pos:"SG", team:"MEM" },
-  { name:"Lauri Markkanen",        pos:"PF", team:"UTA" },
-  { name:"Lonzo Ball",             pos:"PG", team:"FA"  },
+9:[
+  {name:"Donovan Mitchell",pos:"SG",team:"CLE"},{name:"Michael Porter Jr.",pos:"SF",team:"BKN"},
+  {name:"Devin Booker",pos:"PG",team:"PHO"},{name:"Moses Moody",pos:"SG",team:"GSW"},
+  {name:"Luke Kornet",pos:"C",team:"SAS"},{name:"PJ Washington",pos:"PF",team:"DAL"},
+  {name:"Kris Dunn",pos:"PG",team:"LAC"},{name:"Collin Murray-Boyles",pos:"PF",team:"TOR"},
+  {name:"Tre Jones",pos:"PG",team:"CHI"},{name:"Cam Johnson",pos:"SF",team:"DEN"},
+  {name:"Cason Wallace",pos:"SG",team:"OKC"},{name:"Jonathan Kuminga",pos:"PF",team:"ATL"},
+  {name:"Jock Landale",pos:"C",team:"ATL"},{name:"Marcus Smart",pos:"SG",team:"LAL"},
+  {name:"Kasparas Jakucionis",pos:"PG",team:"MIA"},{name:"Bones Hyland",pos:"PG",team:"MIN"},
+  {name:"Gradey Dick",pos:"SG",team:"TOR"},{name:"Luka Garza",pos:"C",team:"BOS"},
+  {name:"Tidjane Salaun",pos:"PF",team:"CHA"},{name:"Kevon Looney",pos:"C",team:"NOR"},
+  {name:"Julian Strawther",pos:"SF",team:"DEN"},{name:"Buddy Hield",pos:"SG",team:"ATL"},
+  {name:"Nikola Topic",pos:"PG",team:"OKC"},{name:"Khaman Maluach",pos:"C",team:"PHO"},
+  {name:"Caleb Love",pos:"SG",team:"POR"},{name:"Jeremy Sochan",pos:"PF",team:"NYK"},
+  {name:"Kentavious Caldwell-Pope",pos:"SG",team:"MEM"},{name:"Lauri Markkanen",pos:"PF",team:"UTA"},
+  {name:"Lonzo Ball",pos:"PG",team:"FA"},
 ],
-10: [
-  { name:"Trey Murphy III",        pos:"SF", team:"NOR" },
-  { name:"OG Anunoby",             pos:"SF", team:"NYK" },
-  { name:"Immanuel Quickley",      pos:"PG", team:"TOR" },
-  { name:"Jalen Williams",         pos:"SF", team:"OKC" },
-  { name:"Maxime Raynaud",         pos:"C",  team:"SAC" },
-  { name:"Mark Williams",          pos:"C",  team:"PHO" },
-  { name:"Daniel Gafford",         pos:"C",  team:"DAL" },
-  { name:"Kel'el Ware",            pos:"C",  team:"MIA" },
-  { name:"Marvin Bagley III",      pos:"PF", team:"DAL" },
-  { name:"Kyshawn George",         pos:"SG", team:"WAS" },
-  { name:"Ace Bailey",             pos:"SF", team:"UTA" },
-  { name:"Max Christie",           pos:"SG", team:"DAL" },
-  { name:"Will Riley",             pos:"SF", team:"WAS" },
-  { name:"Devin Vassell",          pos:"SG", team:"SAS" },
-  { name:"Jeremiah Fears",         pos:"SG", team:"NOR" },
-  { name:"Scoot Henderson",        pos:"PG", team:"POR" },
-  { name:"Noah Clowney",           pos:"PF", team:"BKN" },
-  { name:"Sam Merrill",            pos:"SG", team:"CLE" },
-  { name:"Ronald Holland II",      pos:"SF", team:"DET" },
-  { name:"Oso Ighodaro",           pos:"PF", team:"PHO" },
-  { name:"Cody Williams",          pos:"SG", team:"UTA" },
-  { name:"Ja'Kobe Walter",         pos:"SG", team:"TOR" },
-  { name:"Rob Dillingham",         pos:"PG", team:"CHI" },
-  { name:"Ryan Dunn",              pos:"SF", team:"PHO" },
-  { name:"Jared McCain",           pos:"SG", team:"OKC" },
-  { name:"Drake Powell",           pos:"SG", team:"BKN" },
-  { name:"Carter Bryant",          pos:"SF", team:"SAS" },
-  { name:"DaRon Holmes II",        pos:"PF", team:"DEN" },
-  { name:"Alex Sarr",              pos:"C",  team:"WAS" },
+10:[
+  {name:"Trey Murphy III",pos:"SF",team:"NOR"},{name:"OG Anunoby",pos:"SF",team:"NYK"},
+  {name:"Immanuel Quickley",pos:"PG",team:"TOR"},{name:"Jalen Williams",pos:"SF",team:"OKC"},
+  {name:"Maxime Raynaud",pos:"C",team:"SAC"},{name:"Mark Williams",pos:"C",team:"PHO"},
+  {name:"Daniel Gafford",pos:"C",team:"DAL"},{name:"Kel'el Ware",pos:"C",team:"MIA"},
+  {name:"Marvin Bagley III",pos:"PF",team:"DAL"},{name:"Kyshawn George",pos:"SG",team:"WAS"},
+  {name:"Ace Bailey",pos:"SF",team:"UTA"},{name:"Max Christie",pos:"SG",team:"DAL"},
+  {name:"Will Riley",pos:"SF",team:"WAS"},{name:"Devin Vassell",pos:"SG",team:"SAS"},
+  {name:"Jeremiah Fears",pos:"SG",team:"NOR"},{name:"Scoot Henderson",pos:"PG",team:"POR"},
+  {name:"Noah Clowney",pos:"PF",team:"BKN"},{name:"Sam Merrill",pos:"SG",team:"CLE"},
+  {name:"Ronald Holland II",pos:"SF",team:"DET"},{name:"Oso Ighodaro",pos:"PF",team:"PHO"},
+  {name:"Cody Williams",pos:"SG",team:"UTA"},{name:"Ja'Kobe Walter",pos:"SG",team:"TOR"},
+  {name:"Rob Dillingham",pos:"PG",team:"CHI"},{name:"Ryan Dunn",pos:"SF",team:"PHO"},
+  {name:"Jared McCain",pos:"SG",team:"OKC"},{name:"Drake Powell",pos:"SG",team:"BKN"},
+  {name:"Carter Bryant",pos:"SF",team:"SAS"},{name:"DaRon Holmes II",pos:"PF",team:"DEN"},
+  {name:"Alex Sarr",pos:"C",team:"WAS"},
 ],
-11: [
-  { name:"Kevin Porter Jr.",       pos:"PG", team:"MIL" },
-  { name:"Giannis Antetokounmpo",  pos:"PF", team:"MIL" },
-  { name:"Brandon Miller",         pos:"SF", team:"CHA" },
-  { name:"Kon Knueppel",           pos:"SG", team:"CHA" },
-  { name:"Isaiah Collier",         pos:"PG", team:"UTA" },
-  { name:"Anthony Black",          pos:"PG", team:"ORL" },
-  { name:"Darius Garland",         pos:"PG", team:"LAC" },
-  { name:"Paul Reed",              pos:"PF", team:"DET" },
-  { name:"Brandon Williams",       pos:"PG", team:"DAL" },
-  { name:"Herbert Jones",          pos:"SF", team:"NOR" },
-  { name:"Nolan Traore",           pos:"PG", team:"BKN" },
-  { name:"Patrick Williams",       pos:"PF", team:"CHI" },
-  { name:"Craig Porter Jr.",       pos:"SG", team:"CLE" },
-  { name:"Sandro Mamukelashvili",  pos:"PF", team:"TOR" },
-  { name:"Ben Sheppard",           pos:"SG", team:"IND" },
-  { name:"Isaiah Jackson",         pos:"PF", team:"LAC" },
-  { name:"Zaccharie Risacher",     pos:"SF", team:"ATL" },
-  { name:"Trayce Jackson-Davis",   pos:"PF", team:"TOR" },
-  { name:"Noah Penda",             pos:"SF", team:"ORL" },
-  { name:"Joan Beringer",          pos:"C",  team:"MIN" },
-  { name:"Jase Richardson",        pos:"SG", team:"ORL" },
-  { name:"Asa Newell",             pos:"PF", team:"ATL" },
-  { name:"Jalen Wilson",           pos:"PF", team:"BKN" },
-  { name:"Koby Brea",              pos:"SG", team:"PHO" },
-  { name:"Vince Williams Jr.",     pos:"SG", team:"UTA" },
-  { name:"Miles McBride",          pos:"PG", team:"NYK" },
-  { name:"Johni Broome",           pos:"PF", team:"PHI" },
-  { name:"Anfernee Simons",        pos:"PG", team:"CHI" },
-  { name:"Cole Anthony",           pos:"PG", team:"FA"  },
+11:[
+  {name:"Kevin Porter Jr.",pos:"PG",team:"MIL"},{name:"Giannis Antetokounmpo",pos:"PF",team:"MIL"},
+  {name:"Brandon Miller",pos:"SF",team:"CHA"},{name:"Kon Knueppel",pos:"SG",team:"CHA"},
+  {name:"Isaiah Collier",pos:"PG",team:"UTA"},{name:"Anthony Black",pos:"PG",team:"ORL"},
+  {name:"Darius Garland",pos:"PG",team:"LAC"},{name:"Paul Reed",pos:"PF",team:"DET"},
+  {name:"Brandon Williams",pos:"PG",team:"DAL"},{name:"Herbert Jones",pos:"SF",team:"NOR"},
+  {name:"Nolan Traore",pos:"PG",team:"BKN"},{name:"Patrick Williams",pos:"PF",team:"CHI"},
+  {name:"Craig Porter Jr.",pos:"SG",team:"CLE"},{name:"Sandro Mamukelashvili",pos:"PF",team:"TOR"},
+  {name:"Ben Sheppard",pos:"SG",team:"IND"},{name:"Isaiah Jackson",pos:"PF",team:"LAC"},
+  {name:"Zaccharie Risacher",pos:"SF",team:"ATL"},{name:"Trayce Jackson-Davis",pos:"PF",team:"TOR"},
+  {name:"Noah Penda",pos:"SF",team:"ORL"},{name:"Joan Beringer",pos:"C",team:"MIN"},
+  {name:"Jase Richardson",pos:"SG",team:"ORL"},{name:"Asa Newell",pos:"PF",team:"ATL"},
+  {name:"Jalen Wilson",pos:"PF",team:"BKN"},{name:"Koby Brea",pos:"SG",team:"PHO"},
+  {name:"Vince Williams Jr.",pos:"SG",team:"UTA"},{name:"Miles McBride",pos:"PG",team:"NYK"},
+  {name:"Johni Broome",pos:"PF",team:"PHI"},{name:"Anfernee Simons",pos:"PG",team:"CHI"},
+  {name:"Cole Anthony",pos:"PG",team:"FA"},
 ],
-12: [
-  { name:"Al Horford",             pos:"PF", team:"GSW" },
-  { name:"John Collins",           pos:"PF", team:"LAC" },
-  { name:"Norman Powell",          pos:"SG", team:"MIA" },
-  { name:"Scotty Pippen Jr.",      pos:"PG", team:"MEM" },
-  { name:"Brook Lopez",            pos:"C",  team:"LAC" },
-  { name:"CJ McCollum",            pos:"PG", team:"ATL" },
-  { name:"DeMar DeRozan",          pos:"SF", team:"SAC" },
-  { name:"Collin Sexton",          pos:"SG", team:"CHI" },
-  { name:"Nique Clifford",         pos:"SG", team:"SAC" },
-  { name:"Will Richard",           pos:"SG", team:"GSW" },
-  { name:"Coby White",             pos:"PG", team:"CHA" },
-  { name:"Egor Demin",             pos:"PG", team:"BKN" },
-  { name:"Ryan Kalkbrenner",       pos:"C",  team:"CHA" },
-  { name:"TJ McConnell",           pos:"PG", team:"IND" },
-  { name:"Luke Kennard",           pos:"SG", team:"LAL" },
-  { name:"Quinten Post",           pos:"C",  team:"GSW" },
-  { name:"Josh Minott",            pos:"SF", team:"BKN" },
-  { name:"Nikola Jovic",           pos:"PF", team:"MIA" },
-  { name:"Hugo Gonzalez",          pos:"SG", team:"BOS" },
-  { name:"Ryan Nembhard",          pos:"PG", team:"DAL" },
-  { name:"Yang Hansen",            pos:"C",  team:"POR" },
-  { name:"Ben Saraf",              pos:"SG", team:"BKN" },
-  { name:"Terrence Shannon Jr.",   pos:"SG", team:"MIN" },
-  { name:"Dalton Knecht",          pos:"SG", team:"LAL" },
-  { name:"JD Davison",             pos:"PG", team:"HOU" },
-  { name:"Bronny James",           pos:"PG", team:"LAL" },
-  { name:"Alijah Martin",          pos:"SG", team:"TOR" },
-  { name:"D'Angelo Russell",       pos:"PG", team:"WAS" },
-  { name:"Johnny Furphy",          pos:"SG", team:"IND" },
+12:[
+  {name:"Al Horford",pos:"PF",team:"GSW"},{name:"John Collins",pos:"PF",team:"LAC"},
+  {name:"Norman Powell",pos:"SG",team:"MIA"},{name:"Scotty Pippen Jr.",pos:"PG",team:"MEM"},
+  {name:"Brook Lopez",pos:"C",team:"LAC"},{name:"CJ McCollum",pos:"PG",team:"ATL"},
+  {name:"DeMar DeRozan",pos:"SF",team:"SAC"},{name:"Collin Sexton",pos:"SG",team:"CHI"},
+  {name:"Nique Clifford",pos:"SG",team:"SAC"},{name:"Will Richard",pos:"SG",team:"GSW"},
+  {name:"Coby White",pos:"PG",team:"CHA"},{name:"Egor Demin",pos:"PG",team:"BKN"},
+  {name:"Ryan Kalkbrenner",pos:"C",team:"CHA"},{name:"TJ McConnell",pos:"PG",team:"IND"},
+  {name:"Luke Kennard",pos:"SG",team:"LAL"},{name:"Quinten Post",pos:"C",team:"GSW"},
+  {name:"Josh Minott",pos:"SF",team:"BKN"},{name:"Nikola Jovic",pos:"PF",team:"MIA"},
+  {name:"Hugo Gonzalez",pos:"SG",team:"BOS"},{name:"Ryan Nembhard",pos:"PG",team:"DAL"},
+  {name:"Yang Hansen",pos:"C",team:"POR"},{name:"Ben Saraf",pos:"SG",team:"BKN"},
+  {name:"Terrence Shannon Jr.",pos:"SG",team:"MIN"},{name:"Dalton Knecht",pos:"SG",team:"LAL"},
+  {name:"JD Davison",pos:"PG",team:"HOU"},{name:"Bronny James",pos:"PG",team:"LAL"},
+  {name:"Alijah Martin",pos:"SG",team:"TOR"},{name:"D'Angelo Russell",pos:"PG",team:"WAS"},
+  {name:"Johnny Furphy",pos:"SG",team:"IND"},
 ],
 };
 
+// ============================================================
+//  PICKS
+// ============================================================
 const PICKS = [
-  {year:2026, round:1, originalOwner:1,  currentOwner:1  },
-  {year:2026, round:1, originalOwner:2,  currentOwner:2  },
-  {year:2026, round:1, originalOwner:3,  currentOwner:1  },
-  {year:2026, round:1, originalOwner:4,  currentOwner:1  },
-  {year:2026, round:1, originalOwner:5,  currentOwner:5  },
-  {year:2026, round:1, originalOwner:6,  currentOwner:1  },
-  {year:2026, round:1, originalOwner:7,  currentOwner:1  },
-  {year:2026, round:1, originalOwner:8,  currentOwner:8  },
-  {year:2026, round:1, originalOwner:9,  currentOwner:1  },
-  {year:2026, round:1, originalOwner:10, currentOwner:1  },
-  {year:2026, round:1, originalOwner:11, currentOwner:1, note:"with Protection" },
-  {year:2026, round:1, originalOwner:12, currentOwner:12 },
-  {year:2026, round:2, originalOwner:1,  currentOwner:1  },
-  {year:2026, round:2, originalOwner:2,  currentOwner:2  },
-  {year:2026, round:2, originalOwner:3,  currentOwner:3  },
-  {year:2026, round:2, originalOwner:4,  currentOwner:4  },
-  {year:2026, round:2, originalOwner:5,  currentOwner:5  },
-  {year:2026, round:2, originalOwner:6,  currentOwner:6  },
-  {year:2026, round:2, originalOwner:7,  currentOwner:7  },
-  {year:2026, round:2, originalOwner:8,  currentOwner:8  },
-  {year:2026, round:2, originalOwner:9,  currentOwner:9  },
-  {year:2026, round:2, originalOwner:10, currentOwner:10 },
-  {year:2026, round:2, originalOwner:11, currentOwner:11 },
-  {year:2026, round:2, originalOwner:12, currentOwner:12 },
-  {year:2026, round:3, originalOwner:1,  currentOwner:1  },
-  {year:2026, round:3, originalOwner:2,  currentOwner:2  },
-  {year:2026, round:3, originalOwner:3,  currentOwner:3  },
-  {year:2026, round:3, originalOwner:4,  currentOwner:4  },
-  {year:2026, round:3, originalOwner:5,  currentOwner:5  },
-  {year:2026, round:3, originalOwner:6,  currentOwner:1  },
-  {year:2026, round:3, originalOwner:7,  currentOwner:7  },
-  {year:2026, round:3, originalOwner:8,  currentOwner:8  },
-  {year:2026, round:3, originalOwner:9,  currentOwner:9  },
-  {year:2026, round:3, originalOwner:10, currentOwner:10 },
-  {year:2026, round:3, originalOwner:11, currentOwner:11 },
-  {year:2026, round:3, originalOwner:12, currentOwner:12 },
-  {year:2026, round:4, originalOwner:1,  currentOwner:2  },
-  {year:2026, round:4, originalOwner:2,  currentOwner:2  },
-  {year:2026, round:4, originalOwner:3,  currentOwner:3  },
-  {year:2026, round:4, originalOwner:4,  currentOwner:4  },
-  {year:2026, round:4, originalOwner:5,  currentOwner:5  },
-  {year:2026, round:4, originalOwner:6,  currentOwner:6  },
-  {year:2026, round:4, originalOwner:7,  currentOwner:7  },
-  {year:2026, round:4, originalOwner:8,  currentOwner:8  },
-  {year:2026, round:4, originalOwner:9,  currentOwner:9  },
-  {year:2026, round:4, originalOwner:10, currentOwner:10 },
-  {year:2026, round:4, originalOwner:11, currentOwner:11 },
-  {year:2026, round:4, originalOwner:12, currentOwner:12 },
-  {year:2027, round:1, originalOwner:1,  currentOwner:7  },
-  {year:2027, round:1, originalOwner:2,  currentOwner:2  },
-  {year:2027, round:1, originalOwner:3,  currentOwner:6  },
-  {year:2027, round:1, originalOwner:4,  currentOwner:4  },
-  {year:2027, round:1, originalOwner:5,  currentOwner:5  },
-  {year:2027, round:1, originalOwner:6,  currentOwner:6  },
-  {year:2027, round:1, originalOwner:7,  currentOwner:7  },
-  {year:2027, round:1, originalOwner:8,  currentOwner:8  },
-  {year:2027, round:1, originalOwner:9,  currentOwner:9  },
-  {year:2027, round:1, originalOwner:10, currentOwner:10 },
-  {year:2027, round:1, originalOwner:11, currentOwner:11 },
-  {year:2027, round:1, originalOwner:12, currentOwner:12 },
-  {year:2027, round:2, originalOwner:1,  currentOwner:1  },
-  {year:2027, round:2, originalOwner:2,  currentOwner:2  },
-  {year:2027, round:2, originalOwner:3,  currentOwner:3  },
-  {year:2027, round:2, originalOwner:4,  currentOwner:4  },
-  {year:2027, round:2, originalOwner:5,  currentOwner:5  },
-  {year:2027, round:2, originalOwner:6,  currentOwner:6  },
-  {year:2027, round:2, originalOwner:7,  currentOwner:7  },
-  {year:2027, round:2, originalOwner:8,  currentOwner:8  },
-  {year:2027, round:2, originalOwner:9,  currentOwner:9  },
-  {year:2027, round:2, originalOwner:10, currentOwner:10 },
-  {year:2027, round:2, originalOwner:11, currentOwner:11 },
-  {year:2027, round:2, originalOwner:12, currentOwner:12 },
-  {year:2027, round:3, originalOwner:1,  currentOwner:1  },
-  {year:2027, round:3, originalOwner:2,  currentOwner:2  },
-  {year:2027, round:3, originalOwner:3,  currentOwner:3  },
-  {year:2027, round:3, originalOwner:4,  currentOwner:4  },
-  {year:2027, round:3, originalOwner:5,  currentOwner:5  },
-  {year:2027, round:3, originalOwner:6,  currentOwner:3  },
-  {year:2027, round:3, originalOwner:7,  currentOwner:7  },
-  {year:2027, round:3, originalOwner:8,  currentOwner:8  },
-  {year:2027, round:3, originalOwner:9,  currentOwner:9  },
-  {year:2027, round:3, originalOwner:10, currentOwner:10 },
-  {year:2027, round:3, originalOwner:11, currentOwner:11 },
-  {year:2027, round:3, originalOwner:12, currentOwner:12 },
-  {year:2027, round:4, originalOwner:1,  currentOwner:1  },
-  {year:2027, round:4, originalOwner:2,  currentOwner:2  },
-  {year:2027, round:4, originalOwner:3,  currentOwner:3  },
-  {year:2027, round:4, originalOwner:4,  currentOwner:4  },
-  {year:2027, round:4, originalOwner:5,  currentOwner:5  },
-  {year:2027, round:4, originalOwner:6,  currentOwner:6  },
-  {year:2027, round:4, originalOwner:7,  currentOwner:7  },
-  {year:2027, round:4, originalOwner:8,  currentOwner:8  },
-  {year:2027, round:4, originalOwner:9,  currentOwner:9  },
-  {year:2027, round:4, originalOwner:10, currentOwner:10 },
-  {year:2027, round:4, originalOwner:11, currentOwner:11 },
-  {year:2027, round:4, originalOwner:12, currentOwner:12 },
-  {year:2028, round:1, originalOwner:1,  currentOwner:1  },
-  {year:2028, round:1, originalOwner:2,  currentOwner:2  },
-  {year:2028, round:1, originalOwner:3,  currentOwner:6  },
-  {year:2028, round:1, originalOwner:4,  currentOwner:4  },
-  {year:2028, round:1, originalOwner:5,  currentOwner:5  },
-  {year:2028, round:1, originalOwner:6,  currentOwner:6  },
-  {year:2028, round:1, originalOwner:7,  currentOwner:7  },
-  {year:2028, round:1, originalOwner:8,  currentOwner:8  },
-  {year:2028, round:1, originalOwner:9,  currentOwner:9  },
-  {year:2028, round:1, originalOwner:10, currentOwner:10 },
-  {year:2028, round:1, originalOwner:11, currentOwner:11 },
-  {year:2028, round:1, originalOwner:12, currentOwner:12 },
-  {year:2028, round:2, originalOwner:1,  currentOwner:1  },
-  {year:2028, round:2, originalOwner:2,  currentOwner:2  },
-  {year:2028, round:2, originalOwner:3,  currentOwner:3  },
-  {year:2028, round:2, originalOwner:4,  currentOwner:4  },
-  {year:2028, round:2, originalOwner:5,  currentOwner:5  },
-  {year:2028, round:2, originalOwner:6,  currentOwner:6  },
-  {year:2028, round:2, originalOwner:7,  currentOwner:7  },
-  {year:2028, round:2, originalOwner:8,  currentOwner:8  },
-  {year:2028, round:2, originalOwner:9,  currentOwner:9  },
-  {year:2028, round:2, originalOwner:10, currentOwner:10 },
-  {year:2028, round:2, originalOwner:11, currentOwner:11 },
-  {year:2028, round:2, originalOwner:12, currentOwner:12 },
-  {year:2028, round:3, originalOwner:1,  currentOwner:1  },
-  {year:2028, round:3, originalOwner:2,  currentOwner:2  },
-  {year:2028, round:3, originalOwner:3,  currentOwner:3  },
-  {year:2028, round:3, originalOwner:4,  currentOwner:4  },
-  {year:2028, round:3, originalOwner:5,  currentOwner:5  },
-  {year:2028, round:3, originalOwner:6,  currentOwner:6  },
-  {year:2028, round:3, originalOwner:7,  currentOwner:7  },
-  {year:2028, round:3, originalOwner:8,  currentOwner:8  },
-  {year:2028, round:3, originalOwner:9,  currentOwner:9  },
-  {year:2028, round:3, originalOwner:10, currentOwner:10 },
-  {year:2028, round:3, originalOwner:11, currentOwner:11 },
-  {year:2028, round:3, originalOwner:12, currentOwner:12 },
-  {year:2028, round:4, originalOwner:1,  currentOwner:1  },
-  {year:2028, round:4, originalOwner:2,  currentOwner:2  },
-  {year:2028, round:4, originalOwner:3,  currentOwner:3  },
-  {year:2028, round:4, originalOwner:4,  currentOwner:4  },
-  {year:2028, round:4, originalOwner:5,  currentOwner:5  },
-  {year:2028, round:4, originalOwner:6,  currentOwner:6  },
-  {year:2028, round:4, originalOwner:7,  currentOwner:7  },
-  {year:2028, round:4, originalOwner:8,  currentOwner:8  },
-  {year:2028, round:4, originalOwner:9,  currentOwner:9  },
-  {year:2028, round:4, originalOwner:10, currentOwner:10 },
-  {year:2028, round:4, originalOwner:11, currentOwner:11 },
-  {year:2028, round:4, originalOwner:12, currentOwner:12 },
-  {year:2029, round:1, originalOwner:1,  currentOwner:1  },
-  {year:2029, round:1, originalOwner:2,  currentOwner:2  },
-  {year:2029, round:1, originalOwner:3,  currentOwner:3  },
-  {year:2029, round:1, originalOwner:4,  currentOwner:4  },
-  {year:2029, round:1, originalOwner:5,  currentOwner:5  },
-  {year:2029, round:1, originalOwner:6,  currentOwner:6  },
-  {year:2029, round:1, originalOwner:7,  currentOwner:7  },
-  {year:2029, round:1, originalOwner:8,  currentOwner:8  },
-  {year:2029, round:1, originalOwner:9,  currentOwner:9  },
-  {year:2029, round:1, originalOwner:10, currentOwner:10 },
-  {year:2029, round:1, originalOwner:11, currentOwner:11 },
-  {year:2029, round:1, originalOwner:12, currentOwner:12 },
-  {year:2029, round:2, originalOwner:1,  currentOwner:1  },
-  {year:2029, round:2, originalOwner:2,  currentOwner:2  },
-  {year:2029, round:2, originalOwner:3,  currentOwner:3  },
-  {year:2029, round:2, originalOwner:4,  currentOwner:4  },
-  {year:2029, round:2, originalOwner:5,  currentOwner:5  },
-  {year:2029, round:2, originalOwner:6,  currentOwner:6  },
-  {year:2029, round:2, originalOwner:7,  currentOwner:7  },
-  {year:2029, round:2, originalOwner:8,  currentOwner:8  },
-  {year:2029, round:2, originalOwner:9,  currentOwner:9  },
-  {year:2029, round:2, originalOwner:10, currentOwner:10 },
-  {year:2029, round:2, originalOwner:11, currentOwner:11 },
-  {year:2029, round:2, originalOwner:12, currentOwner:12 },
-  {year:2029, round:3, originalOwner:1,  currentOwner:1  },
-  {year:2029, round:3, originalOwner:2,  currentOwner:2  },
-  {year:2029, round:3, originalOwner:3,  currentOwner:3  },
-  {year:2029, round:3, originalOwner:4,  currentOwner:4  },
-  {year:2029, round:3, originalOwner:5,  currentOwner:5  },
-  {year:2029, round:3, originalOwner:6,  currentOwner:6  },
-  {year:2029, round:3, originalOwner:7,  currentOwner:7  },
-  {year:2029, round:3, originalOwner:8,  currentOwner:8  },
-  {year:2029, round:3, originalOwner:9,  currentOwner:9  },
-  {year:2029, round:3, originalOwner:10, currentOwner:10 },
-  {year:2029, round:3, originalOwner:11, currentOwner:11 },
-  {year:2029, round:3, originalOwner:12, currentOwner:12 },
-  {year:2029, round:4, originalOwner:1,  currentOwner:1  },
-  {year:2029, round:4, originalOwner:2,  currentOwner:2  },
-  {year:2029, round:4, originalOwner:3,  currentOwner:3  },
-  {year:2029, round:4, originalOwner:4,  currentOwner:4  },
-  {year:2029, round:4, originalOwner:5,  currentOwner:5  },
-  {year:2029, round:4, originalOwner:6,  currentOwner:6  },
-  {year:2029, round:4, originalOwner:7,  currentOwner:7  },
-  {year:2029, round:4, originalOwner:8,  currentOwner:8  },
-  {year:2029, round:4, originalOwner:9,  currentOwner:9  },
-  {year:2029, round:4, originalOwner:10, currentOwner:10 },
-  {year:2029, round:4, originalOwner:11, currentOwner:11 },
-  {year:2029, round:4, originalOwner:12, currentOwner:12 },
+  {year:2026,round:1,originalOwner:1,currentOwner:1},{year:2026,round:1,originalOwner:2,currentOwner:2},
+  {year:2026,round:1,originalOwner:3,currentOwner:1},{year:2026,round:1,originalOwner:4,currentOwner:1},
+  {year:2026,round:1,originalOwner:5,currentOwner:5},{year:2026,round:1,originalOwner:6,currentOwner:1},
+  {year:2026,round:1,originalOwner:7,currentOwner:1},{year:2026,round:1,originalOwner:8,currentOwner:8},
+  {year:2026,round:1,originalOwner:9,currentOwner:1},{year:2026,round:1,originalOwner:10,currentOwner:1},
+  {year:2026,round:1,originalOwner:11,currentOwner:1,note:"with Protection"},{year:2026,round:1,originalOwner:12,currentOwner:12},
+  {year:2026,round:2,originalOwner:1,currentOwner:1},{year:2026,round:2,originalOwner:2,currentOwner:2},
+  {year:2026,round:2,originalOwner:3,currentOwner:3},{year:2026,round:2,originalOwner:4,currentOwner:4},
+  {year:2026,round:2,originalOwner:5,currentOwner:5},{year:2026,round:2,originalOwner:6,currentOwner:6},
+  {year:2026,round:2,originalOwner:7,currentOwner:7},{year:2026,round:2,originalOwner:8,currentOwner:8},
+  {year:2026,round:2,originalOwner:9,currentOwner:9},{year:2026,round:2,originalOwner:10,currentOwner:10},
+  {year:2026,round:2,originalOwner:11,currentOwner:11},{year:2026,round:2,originalOwner:12,currentOwner:12},
+  {year:2026,round:3,originalOwner:1,currentOwner:1},{year:2026,round:3,originalOwner:2,currentOwner:2},
+  {year:2026,round:3,originalOwner:3,currentOwner:3},{year:2026,round:3,originalOwner:4,currentOwner:4},
+  {year:2026,round:3,originalOwner:5,currentOwner:5},{year:2026,round:3,originalOwner:6,currentOwner:1},
+  {year:2026,round:3,originalOwner:7,currentOwner:7},{year:2026,round:3,originalOwner:8,currentOwner:8},
+  {year:2026,round:3,originalOwner:9,currentOwner:9},{year:2026,round:3,originalOwner:10,currentOwner:10},
+  {year:2026,round:3,originalOwner:11,currentOwner:11},{year:2026,round:3,originalOwner:12,currentOwner:12},
+  {year:2026,round:4,originalOwner:1,currentOwner:2},{year:2026,round:4,originalOwner:2,currentOwner:2},
+  {year:2026,round:4,originalOwner:3,currentOwner:3},{year:2026,round:4,originalOwner:4,currentOwner:4},
+  {year:2026,round:4,originalOwner:5,currentOwner:5},{year:2026,round:4,originalOwner:6,currentOwner:6},
+  {year:2026,round:4,originalOwner:7,currentOwner:7},{year:2026,round:4,originalOwner:8,currentOwner:8},
+  {year:2026,round:4,originalOwner:9,currentOwner:9},{year:2026,round:4,originalOwner:10,currentOwner:10},
+  {year:2026,round:4,originalOwner:11,currentOwner:11},{year:2026,round:4,originalOwner:12,currentOwner:12},
+  {year:2027,round:1,originalOwner:1,currentOwner:7},{year:2027,round:1,originalOwner:2,currentOwner:2},
+  {year:2027,round:1,originalOwner:3,currentOwner:6},{year:2027,round:1,originalOwner:4,currentOwner:4},
+  {year:2027,round:1,originalOwner:5,currentOwner:5},{year:2027,round:1,originalOwner:6,currentOwner:6},
+  {year:2027,round:1,originalOwner:7,currentOwner:7},{year:2027,round:1,originalOwner:8,currentOwner:8},
+  {year:2027,round:1,originalOwner:9,currentOwner:9},{year:2027,round:1,originalOwner:10,currentOwner:10},
+  {year:2027,round:1,originalOwner:11,currentOwner:11},{year:2027,round:1,originalOwner:12,currentOwner:12},
+  {year:2027,round:2,originalOwner:1,currentOwner:1},{year:2027,round:2,originalOwner:2,currentOwner:2},
+  {year:2027,round:2,originalOwner:3,currentOwner:3},{year:2027,round:2,originalOwner:4,currentOwner:4},
+  {year:2027,round:2,originalOwner:5,currentOwner:5},{year:2027,round:2,originalOwner:6,currentOwner:6},
+  {year:2027,round:2,originalOwner:7,currentOwner:7},{year:2027,round:2,originalOwner:8,currentOwner:8},
+  {year:2027,round:2,originalOwner:9,currentOwner:9},{year:2027,round:2,originalOwner:10,currentOwner:10},
+  {year:2027,round:2,originalOwner:11,currentOwner:11},{year:2027,round:2,originalOwner:12,currentOwner:12},
+  {year:2027,round:3,originalOwner:1,currentOwner:1},{year:2027,round:3,originalOwner:2,currentOwner:2},
+  {year:2027,round:3,originalOwner:3,currentOwner:3},{year:2027,round:3,originalOwner:4,currentOwner:4},
+  {year:2027,round:3,originalOwner:5,currentOwner:5},{year:2027,round:3,originalOwner:6,currentOwner:3},
+  {year:2027,round:3,originalOwner:7,currentOwner:7},{year:2027,round:3,originalOwner:8,currentOwner:8},
+  {year:2027,round:3,originalOwner:9,currentOwner:9},{year:2027,round:3,originalOwner:10,currentOwner:10},
+  {year:2027,round:3,originalOwner:11,currentOwner:11},{year:2027,round:3,originalOwner:12,currentOwner:12},
+  {year:2027,round:4,originalOwner:1,currentOwner:1},{year:2027,round:4,originalOwner:2,currentOwner:2},
+  {year:2027,round:4,originalOwner:3,currentOwner:3},{year:2027,round:4,originalOwner:4,currentOwner:4},
+  {year:2027,round:4,originalOwner:5,currentOwner:5},{year:2027,round:4,originalOwner:6,currentOwner:6},
+  {year:2027,round:4,originalOwner:7,currentOwner:7},{year:2027,round:4,originalOwner:8,currentOwner:8},
+  {year:2027,round:4,originalOwner:9,currentOwner:9},{year:2027,round:4,originalOwner:10,currentOwner:10},
+  {year:2027,round:4,originalOwner:11,currentOwner:11},{year:2027,round:4,originalOwner:12,currentOwner:12},
+  {year:2028,round:1,originalOwner:1,currentOwner:1},{year:2028,round:1,originalOwner:2,currentOwner:2},
+  {year:2028,round:1,originalOwner:3,currentOwner:6},{year:2028,round:1,originalOwner:4,currentOwner:4},
+  {year:2028,round:1,originalOwner:5,currentOwner:5},{year:2028,round:1,originalOwner:6,currentOwner:6},
+  {year:2028,round:1,originalOwner:7,currentOwner:7},{year:2028,round:1,originalOwner:8,currentOwner:8},
+  {year:2028,round:1,originalOwner:9,currentOwner:9},{year:2028,round:1,originalOwner:10,currentOwner:10},
+  {year:2028,round:1,originalOwner:11,currentOwner:11},{year:2028,round:1,originalOwner:12,currentOwner:12},
+  {year:2028,round:2,originalOwner:1,currentOwner:1},{year:2028,round:2,originalOwner:2,currentOwner:2},
+  {year:2028,round:2,originalOwner:3,currentOwner:3},{year:2028,round:2,originalOwner:4,currentOwner:4},
+  {year:2028,round:2,originalOwner:5,currentOwner:5},{year:2028,round:2,originalOwner:6,currentOwner:6},
+  {year:2028,round:2,originalOwner:7,currentOwner:7},{year:2028,round:2,originalOwner:8,currentOwner:8},
+  {year:2028,round:2,originalOwner:9,currentOwner:9},{year:2028,round:2,originalOwner:10,currentOwner:10},
+  {year:2028,round:2,originalOwner:11,currentOwner:11},{year:2028,round:2,originalOwner:12,currentOwner:12},
+  {year:2028,round:3,originalOwner:1,currentOwner:1},{year:2028,round:3,originalOwner:2,currentOwner:2},
+  {year:2028,round:3,originalOwner:3,currentOwner:3},{year:2028,round:3,originalOwner:4,currentOwner:4},
+  {year:2028,round:3,originalOwner:5,currentOwner:5},{year:2028,round:3,originalOwner:6,currentOwner:6},
+  {year:2028,round:3,originalOwner:7,currentOwner:7},{year:2028,round:3,originalOwner:8,currentOwner:8},
+  {year:2028,round:3,originalOwner:9,currentOwner:9},{year:2028,round:3,originalOwner:10,currentOwner:10},
+  {year:2028,round:3,originalOwner:11,currentOwner:11},{year:2028,round:3,originalOwner:12,currentOwner:12},
+  {year:2028,round:4,originalOwner:1,currentOwner:1},{year:2028,round:4,originalOwner:2,currentOwner:2},
+  {year:2028,round:4,originalOwner:3,currentOwner:3},{year:2028,round:4,originalOwner:4,currentOwner:4},
+  {year:2028,round:4,originalOwner:5,currentOwner:5},{year:2028,round:4,originalOwner:6,currentOwner:6},
+  {year:2028,round:4,originalOwner:7,currentOwner:7},{year:2028,round:4,originalOwner:8,currentOwner:8},
+  {year:2028,round:4,originalOwner:9,currentOwner:9},{year:2028,round:4,originalOwner:10,currentOwner:10},
+  {year:2028,round:4,originalOwner:11,currentOwner:11},{year:2028,round:4,originalOwner:12,currentOwner:12},
+  {year:2029,round:1,originalOwner:1,currentOwner:1},{year:2029,round:1,originalOwner:2,currentOwner:2},
+  {year:2029,round:1,originalOwner:3,currentOwner:3},{year:2029,round:1,originalOwner:4,currentOwner:4},
+  {year:2029,round:1,originalOwner:5,currentOwner:5},{year:2029,round:1,originalOwner:6,currentOwner:6},
+  {year:2029,round:1,originalOwner:7,currentOwner:7},{year:2029,round:1,originalOwner:8,currentOwner:8},
+  {year:2029,round:1,originalOwner:9,currentOwner:9},{year:2029,round:1,originalOwner:10,currentOwner:10},
+  {year:2029,round:1,originalOwner:11,currentOwner:11},{year:2029,round:1,originalOwner:12,currentOwner:12},
+  {year:2029,round:2,originalOwner:1,currentOwner:1},{year:2029,round:2,originalOwner:2,currentOwner:2},
+  {year:2029,round:2,originalOwner:3,currentOwner:3},{year:2029,round:2,originalOwner:4,currentOwner:4},
+  {year:2029,round:2,originalOwner:5,currentOwner:5},{year:2029,round:2,originalOwner:6,currentOwner:6},
+  {year:2029,round:2,originalOwner:7,currentOwner:7},{year:2029,round:2,originalOwner:8,currentOwner:8},
+  {year:2029,round:2,originalOwner:9,currentOwner:9},{year:2029,round:2,originalOwner:10,currentOwner:10},
+  {year:2029,round:2,originalOwner:11,currentOwner:11},{year:2029,round:2,originalOwner:12,currentOwner:12},
+  {year:2029,round:3,originalOwner:1,currentOwner:1},{year:2029,round:3,originalOwner:2,currentOwner:2},
+  {year:2029,round:3,originalOwner:3,currentOwner:3},{year:2029,round:3,originalOwner:4,currentOwner:4},
+  {year:2029,round:3,originalOwner:5,currentOwner:5},{year:2029,round:3,originalOwner:6,currentOwner:6},
+  {year:2029,round:3,originalOwner:7,currentOwner:7},{year:2029,round:3,originalOwner:8,currentOwner:8},
+  {year:2029,round:3,originalOwner:9,currentOwner:9},{year:2029,round:3,originalOwner:10,currentOwner:10},
+  {year:2029,round:3,originalOwner:11,currentOwner:11},{year:2029,round:3,originalOwner:12,currentOwner:12},
+  {year:2029,round:4,originalOwner:1,currentOwner:1},{year:2029,round:4,originalOwner:2,currentOwner:2},
+  {year:2029,round:4,originalOwner:3,currentOwner:3},{year:2029,round:4,originalOwner:4,currentOwner:4},
+  {year:2029,round:4,originalOwner:5,currentOwner:5},{year:2029,round:4,originalOwner:6,currentOwner:6},
+  {year:2029,round:4,originalOwner:7,currentOwner:7},{year:2029,round:4,originalOwner:8,currentOwner:8},
+  {year:2029,round:4,originalOwner:9,currentOwner:9},{year:2029,round:4,originalOwner:10,currentOwner:10},
+  {year:2029,round:4,originalOwner:11,currentOwner:11},{year:2029,round:4,originalOwner:12,currentOwner:12},
 ];
 
 const DRAFT_NOTES = {
-  2026: "Do not trade a 1st to Bear Down. He has enough. Draft order TBD based on final standings.",
-  2027: "🔄 Bear Down's R1 goes to Always Money. Neukoelln's R1 goes to 3-POINT MAFIA. 3PM's R3 goes to Neukoelln.",
-  2028: "🔄 Neukoelln's R1 goes to 3-POINT MAFIA in Banchero-Trade",
-  2029: "✅ All teams hold their own picks. No trades recorded yet.",
+  2026:"Do not trade a 1st to Bear Down. He has enough. Draft order TBD based on final standings.",
+  2027:"Bear Down's R1 goes to Always Money. Neukoelln's R1 goes to 3-POINT MAFIA. 3PM's R3 goes to Neukoelln.",
+  2028:"Neukoelln's R1 goes to 3-POINT MAFIA in Banchero-Trade",
+  2029:"All teams hold their own picks. No trades recorded yet.",
 };
 
-const TRADES = [
-  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Leaveland Cavaliers (Sven)", aGave:"Jrue Holiday, Kevin Porter Jr., Jarrett Allen, 2023 1st Round Pick, 2026 Last Round Pick", bGave:"Leaveland Cavaliers 2026 1st, Trae Young" },
-  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Anadolu Ballers (Murat)", aGave:"2026 R6 (1st Round Pick), 2023 R8 (3rd Round) Pick Swap", bGave:"Austin Reaves (TS), 2026 Last Round Pick, 2023 R8 (3rd Round) Pick Swap" },
-  { year:2026, teamA:"Bear Down (Uggi)", teamB:"3-POINT MAFIA (Georg → Patrick/Bennet)", aGave:"2023 2nd Round Pick, 2025 1st Round Pick (Shaedon Sharpe)", bGave:"3-POINT MAFIA 2026 1st Round Pick" },
-  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Cooking Show (Felix → Stefan)", aGave:"2024 1st Round Pick, Bilal Coulibaly, 2026 R9 (4th pick)", bGave:"Trey Murphy III, 2026 R6 (1st pick)" },
-  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Neukoelln Hustlers (Timo)", aGave:"Kristaps Porzingis", bGave:"Neukoelln Hustlers 2026 1st Round Pick" },
-  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Always Money in the BananaStand (Tobi)", aGave:"2027 1st Round Pick", bGave:"Always Money 2026 1st Round Pick" },
-  { year:2026, teamA:"Bear Down (Uggi)", teamB:"Double Dribble Trouble (Nils)", aGave:"2025 1st (5th Overall)", bGave:"Double Dribble 2026 1st (with protection)" },
-  { year:2026, teamA:"Bear Down (Uggi)", teamB:"S-Town Grizzlies (Jan)", aGave:"2025 2nd, 2025 3rd (with protection)", bGave:"S-Town 2026 1st Round Pick" },
-  { year:2026, teamA:"Anadolu Ballers (Murat)", teamB:"Bear Down (Uggi)", aGave:"VJ Edgecombe", bGave:"Anadolu Ballers 2026 1st, Bilal Coulibaly" },
-  { year:2027, teamA:"Neukoelln Hustlers (Timo)", teamB:"3-POINT MAFIA (Patrick/Bennet)", aGave:"Paolo Banchero, 2027 3rd Round Pick", bGave:"2027 1st Round Pick, 2028 1st Round Pick, Cam Whitmore" },
+// ============================================================
+//  DYNASTY RANKINGS
+// ============================================================
+const DYNASTY_PLAYERS = [
+  [1,"Victor Wembanyama","SAS","PF/C"],[2,"Shai Gilgeous-Alexander","OKC","PG/SG"],
+  [3,"Luka Doncic","LAL","PG/SG"],[4,"Nikola Jokic","DEN","C"],
+  [5,"Cooper Flagg","DAL","SF/PF"],[6,"Cade Cunningham","DET","PG/SG"],
+  [7,"Tyrese Maxey","PHI","PG/SG"],[8,"Anthony Edwards","MIN","SG/SF"],
+  [9,"Jalen Johnson","ATL","SF/PF"],[10,"Jayson Tatum","BOS","SF/PF"],
+  [11,"Cameron Boozer","Duke","PF/C"],[12,"Chet Holmgren","OKC","PF/C"],
+  [13,"Tyrese Haliburton","IND","PG/SG"],[14,"Alperen Sengun","HOU","C"],
+  [15,"Jalen Williams","OKC","SG/SF/PF"],[16,"Evan Mobley","CLE","PF/C"],
+  [17,"Scottie Barnes","TOR","SF/PF"],[18,"Giannis Antetokounmpo","MIL","PF/C"],
+  [19,"Darryn Peterson","Kansas","PG/SG"],[20,"Amen Thompson","HOU","PG/SG/SF"],
+  [21,"Austin Reaves","LAL","PG/SG"],[22,"Donovan Mitchell","CLE","PG/SG"],
+  [23,"Franz Wagner","ORL","SG/SF/PF"],[24,"Deni Avdija","POR","SF/PF"],
+  [25,"AJ Dybantsa","BYU","SG/SF"],[26,"Trae Young","WAS","PG/SG"],
+  [27,"Devin Booker","PHO","SG/SF"],[28,"Jalen Brunson","NYK","PG/SG"],
+  [29,"LaMelo Ball","CHA","PG/SG"],[30,"Josh Giddey","CHI","PG/SG/SF"],
+  [31,"Kon Knueppel","CHA","SG/SF"],[32,"Dylan Harper","SAS","PG/SG"],
+  [33,"Trey Murphy III","NOP","SG/SF/PF"],[34,"Paolo Banchero","ORL","SF/PF"],
+  [35,"Jalen Duren","DET","C"],[36,"Alex Sarr","WAS","PF/C"],
+  [37,"Jamal Murray","DEN","PG/SG"],[38,"Caleb Wilson","North Carolina","SF/PF"],
+  [39,"Darius Garland","LAC","PG/SG"],[40,"Jaren Jackson Jr.","UTA","PF/C"],
+  [41,"VJ Edgecombe","PHI","PG/SG"],[42,"Karl-Anthony Towns","NYK","PF/C"],
+  [43,"Bam Adebayo","MIA","PF/C"],[44,"Jaylen Brown","BOS","SG/SF"],
+  [45,"De'Aaron Fox","SAS","PG/SG"],[46,"Kingston Flemings","Houston","PG/SG"],
+  [47,"Desmond Bane","ORL","SG/SF"],[48,"Lauri Markkanen","UTA","SF/PF"],
+  [49,"James Harden","CLE","PG/SG"],[50,"Domantas Sabonis","SAC","PF/C"],
+  [51,"Kevin Durant","HOU","SF/PF"],[52,"Stephen Curry","GSW","PG/SG"],
+  [53,"Tyler Herro","MIA","PG/SG"],[54,"Anthony Davis","WAS","PF/C"],
+  [55,"Brandon Miller","CHA","SF/PF"],[56,"Keyonte George","UTA","PG/SG"],
+  [57,"Ivica Zubac","IND","C"],[58,"Zach Edey","MEM","C"],
+  [59,"Stephon Castle","SAS","PG/SG/SF"],[60,"Derrick White","BOS","PG/SG"],
+  [61,"Donovan Clingan","POR","C"],[62,"Onyeka Okongwu","ATL","PF/C"],
+  [63,"Pascal Siakam","IND","PF/C"],[64,"Derik Queen","NOP","PF/C"],
+  [65,"Kel'el Ware","MIA","C"],[66,"Ja Morant","MEM","PG/SG"],
+  [67,"Zion Williamson","NOP","PF/C"],[68,"Keaton Wagler","Illinois","PG/SG"],
+  [69,"Walker Kessler","UTA","C"],[70,"Dyson Daniels","ATL","PG/SG"],
+  [71,"Jalen Suggs","ORL","PG/SG"],[72,"OG Anunoby","NYK","SG/SF/PF"],
+  [73,"Matas Buzelis","CHI","SF/PF"],[74,"Reed Sheppard","HOU","PG/SG"],
+  [75,"Isaiah Hartenstein","OKC","C"],[76,"Kyrie Irving","DAL","PG/SG"],
+  [77,"Mikel Brown Jr.","Louisville","PG/SG"],[78,"Kawhi Leonard","LAC","SG/SF"],
+  [79,"Jarrett Allen","CLE","C"],[80,"Kyshawn George","WAS","SG/SF"],
+  [81,"Cedric Coward","MEM","SG/SF"],[82,"Ace Bailey","UTA","SF/PF"],
+  [83,"Ausar Thompson","DET","SG/SF"],[84,"Brandon Ingram","TOR","SF/PF"],
+  [85,"Mikal Bridges","NYK","SG/SF"],[86,"Joel Embiid","PHI","C"],
+  [87,"Jayden Quaintance","Kentucky","PF/C"],[88,"Brayden Burries","Arizona","PG/SG"],
+  [89,"Scoot Henderson","POR","PG/SG"],[90,"Jaden McDaniels","MIN","SF/PF"],
+  [91,"Immanuel Quickley","TOR","PG/SG"],[92,"Michael Porter Jr.","BKN","SF/PF"],
+  [93,"Darius Acuff Jr.","Arkansas","PG"],[94,"Jeremiah Fears","NOP","PG/SG"],
+  [95,"Nic Claxton","BKN","C"],[96,"Collin Murray-Boyles","TOR","PF/C"],
+  [97,"Tari Eason","HOU","SF/PF"],[98,"Coby White","CHA","PG/SG"],
+  [99,"Julius Randle","MIN","PF"],[100,"Ryan Rollins","MIL","PG/SG"],
+  [101,"Anthony Black","ORL","PG/SG/SF"],[102,"Shaedon Sharpe","POR","SG/SF"],
+  [103,"Nickeil Alexander-Walker","ATL","SG/SF"],[104,"Dejounte Murray","NOP","PG/SG"],
+  [105,"Mark Williams","PHO","C"],[106,"Zach LaVine","SAC","SG/SF"],
+  [107,"Jabari Smith Jr.","HOU","PF"],[108,"Jakob Poeltl","TOR","C"],
+  [109,"Payton Pritchard","BOS","PG/SG"],[110,"Jalen Green","PHO","PG/SG"],
+  [111,"Myles Turner","MIL","C"],[112,"Keegan Murray","SAC","SF/PF"],
+  [113,"Tre Johnson","WAS","SG/SF"],[114,"Naz Reid","MIN","PF/C"],
+  [115,"Devin Vassell","SAS","SG/SF"],[116,"Peyton Watson","DEN","SF/PF"],
+  [117,"Egor Demin","BKN","PG/SG/SF"],[118,"Andrew Nembhard","IND","PG/SG"],
+  [119,"Ajay Mitchell","OKC","PG/SG"],[120,"Dailyn Swain","Texas","SF/PF"],
+  [121,"PJ Washington","DAL","PF/C"],[122,"Cason Wallace","OKC","PG/SG"],
+  [123,"Kristaps Porzingis","GSW","PF/C"],[124,"Josh Hart","NYK","SG/SF"],
+  [125,"Nate Ament","Tennessee","SF/PF"],[126,"Jonathan Kuminga","ATL","SF/PF"],
+  [127,"Bilal Coulibaly","WAS","SG/SF"],[128,"Jared McCain","OKC","PG/SG"],
+  [129,"Dereck Lively II","DAL","C"],[130,"Yaxel Lendeborg","Michigan","PF"],
+  [131,"Khaman Malauch","PHO","C"],[132,"Patrick Ngongba II","Duke","C"],
+  [133,"LeBron James","LAL","SG/SF/PF"],[134,"Norman Powell","MIA","SG/SF"],
+  [135,"Christian Braun","DEN","SG/SF"],[136,"Miles Bridges","CHA","SF/PF"],
+  [137,"Toumani Camara","POR","SF/PF"],[138,"De'Andre Ayton","LAL","C"],
+  [139,"Rudy Gobert","MIN","C"],[140,"Labaron Philon","Alabama","PG/SG"],
+  [141,"Ty Jerome","MEM","PG/SG"],[142,"Nikola Topic","OKC","PG/SG"],
+  [143,"Jaylon Tyson","CLE","SG/SF"],[144,"Santi Aldama","MEM","PF/C"],
+  [145,"Daniel Gafford","DAL","C"],[146,"Brandin Podziemski","GSW","PG/SG/SF"],
+  [147,"John Collins","LAC","PF/C"],[148,"Ron Holland","DET","SF/PF"],
+  [149,"Aaron Gordon","DEN","SF/PF"],[150,"Jaime Jaquez Jr.","MIA","SG/SF"],
 ];
 
-let currentTeamId = null;
-let currentTab = 'roster';
-const teamMap = {};
-TEAMS.forEach(t => teamMap[t.id] = t);
+let rSortCol=0, rSortAsc=true, rCurrentData=[...DYNASTY_PLAYERS];
 
-function getInitials(name) {
-  return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+function rankClass(r) {
+  if(r===1) return 'r-rank-top1';
+  if(r<=5)  return 'r-rank-top5';
+  if(r<=15) return 'r-rank-top15';
+  return '';
+}
+function renderRankings(data) {
+  const tbody=document.getElementById('rankingsBody');
+  const noR=document.getElementById('rankingsNoResults');
+  if(!data.length){tbody.innerHTML='';noR.style.display='block';return;}
+  noR.style.display='none';
+  tbody.innerHTML=data.map(p=>`<tr>
+    <td><span class="r-rank ${rankClass(p[0])}">${p[0]}</span></td>
+    <td><span class="r-name">${p[1]}</span></td>
+    <td><span class="r-team">${p[2]}</span></td>
+    <td><span class="r-pos">${p[3]}</span></td>
+  </tr>`).join('');
+}
+function filterRankings() {
+  const q=document.getElementById('rankSearch').value.toLowerCase().trim();
+  rCurrentData=q?DYNASTY_PLAYERS.filter(p=>p[1].toLowerCase().includes(q)||p[2].toLowerCase().includes(q)||p[3].toLowerCase().includes(q)):[...DYNASTY_PLAYERS];
+  renderRankings(rCurrentData);
+}
+function sortRankings(col) {
+  if(rSortCol===col) rSortAsc=!rSortAsc; else{rSortCol=col;rSortAsc=true;}
+  document.querySelectorAll('.rankings-table thead th').forEach((th,i)=>th.classList.toggle('r-sorted',i===col));
+  rCurrentData.sort((a,b)=>{const av=a[col],bv=b[col];const c=typeof av==='number'?av-bv:String(av).localeCompare(String(bv));return rSortAsc?c:-c;});
+  renderRankings(rCurrentData);
+}
+function showRankings() { renderRankings(rCurrentData); navigate('rankingsPage'); }
+
+// ============================================================
+//  2026 DRAFT BOARD DATA (from Fanspo mock, 03/29/2026)
+// ============================================================
+const DRAFT_2026 = [
+  {pick:1,  name:"Cameron Boozer",        pos:"PF",    school:"Duke",                    tier:"Tier 1"},
+  {pick:2,  name:"Darryn Peterson",       pos:"PG",    school:"Kansas",                  tier:"Tier 1"},
+  {pick:3,  name:"AJ Dybantsa",           pos:"SF",    school:"BYU",                     tier:"Tier 1"},
+  {pick:4,  name:"Caleb Wilson",          pos:"PF",    school:"North Carolina",           tier:"Tier 1.5"},
+  {pick:5,  name:"Keaton Wagler",         pos:"PG",    school:"Illinois",                tier:"Tier 1.5"},
+  {pick:6,  name:"Kingston Flemings",     pos:"PG",    school:"Houston",                  tier:"Tier 2"},
+  {pick:7,  name:"Darius Acuff Jr.",      pos:"PG",    school:"Arkansas",                tier:"Tier 2"},
+  {pick:8,  name:"Yaxel Lendeborg",       pos:"PF",    school:"Michigan",                tier:"Tier 2"},
+  {pick:9,  name:"Labaron Philon Jr.",    pos:"PG",    school:"Alabama",                 tier:"Tier 3"},
+  {pick:10, name:"Hannes Steinbach",      pos:"PF",    school:"Washington",              tier:"Tier 3"},
+  {pick:11, name:"Brayden Burries",       pos:"SG",    school:"Arizona",                 tier:"Tier 3"},
+  {pick:12, name:"Mikel Brown Jr.",       pos:"SG",    school:"Louisville",              tier:"Tier 3"},
+  {pick:13, name:"Morez Johnson Jr.",     pos:"PF",    school:"Michigan",                tier:"Tier 3"},
+  {pick:14, name:"Nate Ament",            pos:"PF",    school:"Tennessee",               tier:"Tier 4"},
+  {pick:15, name:"Aday Mara",             pos:"C",     school:"Michigan",                tier:"Tier 4"},
+  {pick:16, name:"Dailyn Swain",          pos:"SF",    school:"Texas",                   tier:"Tier 4"},
+  {pick:17, name:"Jayden Quaintance",     pos:"C",     school:"Kentucky",                tier:"Tier 4"},
+  {pick:18, name:"Tyler Tanner",          pos:"PG",    school:"Vanderbilt",              tier:"Tier 4"},
+  {pick:19, name:"Allen Graves",          pos:"PF",    school:"",                        tier:"Tier 4"},
+  {pick:20, name:"Patrick Ngongba II",    pos:"C",     school:"Duke",                    tier:"Tier 5"},
+  {pick:21, name:"Cameron Carr",          pos:"SG",    school:"Baylor",                  tier:"Tier 5"},
+  {pick:22, name:"Amari Allen",           pos:"SF",    school:"Alabama",                 tier:"Tier 5"},
+  {pick:23, name:"Isiah Evans",           pos:"PG",    school:"",                        tier:"Tier 5"},
+  {pick:24, name:"Chris Cenac Jr.",       pos:"PF",    school:"Houston",                 tier:"Tier 5"},
+  {pick:25, name:"Karim Lopez",           pos:"PF",    school:"New Zealand Breakers",    tier:"Tier 5"},
+  {pick:26, name:"Tounde Yessoufou",      pos:"SF",    school:"Baylor",                  tier:"Tier 5"},
+  {pick:27, name:"Henri Veesaar",         pos:"C",     school:"North Carolina",           tier:"Tier 5"},
+  {pick:28, name:"Flory Bidunga",         pos:"C",     school:"Kansas",                  tier:"Tier 6"},
+  {pick:29, name:"Meleek Thomas",         pos:"SG",    school:"Arkansas",                tier:"Tier 6"},
+  {pick:30, name:"Motiejus Krivas",       pos:"C",     school:"Arizona",                 tier:"Tier 6"},
+];
+
+// position color helper — reuse same palette
+function posColor(pos) {
+  const p = pos.split('/')[0];
+  const dark = {PG:'rgba(108,99,255,0.25)','#a89bff':1, SG:'rgba(255,101,132,0.2)', SF:'rgba(76,175,129,0.2)', PF:'rgba(245,200,66,0.2)', C:'rgba(41,182,246,0.2)'};
+  const darkTxt = {PG:'#a89bff', SG:'#ff8fa3', SF:'#6dddaa', PF:'#f5c842', C:'#4fc3f7'};
+  const lightBg = {PG:'rgba(192,98,47,0.12)', SG:'rgba(180,60,100,0.1)', SF:'rgba(61,138,92,0.12)', PF:'rgba(180,130,30,0.12)', C:'rgba(50,130,200,0.1)'};
+  const lightTxt = {PG:'#a84520', SG:'#b43c64', SF:'#2d7a50', PF:'#9a6e10', C:'#2a7ab8'};
+  const isLight = document.body.classList.contains('light');
+  const bg = isLight ? (lightBg[p]||lightBg.SG) : (dark[p]||dark.SG);
+  const txt = isLight ? (lightTxt[p]||lightTxt.SG) : (darkTxt[p]||darkTxt.SG);
+  return {bg,txt};
 }
 
-function renderHome() {
-  document.getElementById('teamGrid').innerHTML = TEAMS.map(t => {
-    const c = getTeamColor(t);
-    return `
-    <div class="team-card" onclick="showTeam(${t.id})">
+function pickNumClass(n, tier) {
+  if(tier==='Tier 1')   return 'pick-lottery';
+  if(tier==='Tier 1.5') return 'pick-t15';
+  if(tier==='Tier 2')   return 'pick-mid';
+  if(tier==='Tier 3')   return 'pick-t3';
+  if(tier==='Tier 4')   return 'pick-t4';
+  return 'pick-late';
+}
+
+let d26CurrentData = [...DRAFT_2026];
+
+const TIER_ORDER = ['Tier 1','Tier 1.5','Tier 2','Tier 3','Tier 4','Tier 5','Tier 6'];
+
+const TIER_STYLE_DARK = {
+  'Tier 1':   {dot:'#f5c842', label:'#f5d97a'},
+  'Tier 1.5': {dot:'#ffa726', label:'#ffcc80'},
+  'Tier 2':   {dot:'#a89bff', label:'#a89bff'},
+  'Tier 3':   {dot:'#6dddaa', label:'#6dddaa'},
+  'Tier 4':   {dot:'#4fc3f7', label:'#4fc3f7'},
+  'Tier 5':   {dot:'#ff8fa3', label:'#ff8fa3'},
+  'Tier 6':   {dot:'#7b7f9e', label:'#7b7f9e'},
+};
+const TIER_STYLE_LIGHT = {
+  'Tier 1':   {dot:'#9a6e10', label:'#6e4c08'},
+  'Tier 1.5': {dot:'#b86020', label:'#8a4010'},
+  'Tier 2':   {dot:'#7b3fa8', label:'#5a2080'},
+  'Tier 3':   {dot:'#2d7a50', label:'#1a5c35'},
+  'Tier 4':   {dot:'#2a7ab8', label:'#1a5a8a'},
+  'Tier 5':   {dot:'#b43c64', label:'#8a1a40'},
+  'Tier 6':   {dot:'#9a7560', label:'#7a5040'},
+};
+
+function renderDraft26(data) {
+  const grid = document.getElementById('draft26Grid');
+  const noR  = document.getElementById('draft26NoResults');
+  if(!data.length){ grid.innerHTML=''; noR.style.display='block'; return; }
+  noR.style.display='none';
+
+  const isFiltering = document.getElementById('draft26Search').value.trim() !== '';
+  const isLight = document.body.classList.contains('light');
+  const ts = isLight ? TIER_STYLE_LIGHT : TIER_STYLE_DARK;
+
+  let html = '<div class="draft26-grid">';
+  if(isFiltering) {
+    data.forEach(p => { html += draft26Card(p); });
+  } else {
+    TIER_ORDER.forEach(tier => {
+      const picks = data.filter(p => p.tier === tier);
+      if(!picks.length) return;
+      const s = ts[tier] || ts['Tier 6'];
+      html += `<div class="draft26-tier-label" style="color:${s.label};border-color:${s.dot}22;">
+        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${s.dot};margin-right:8px;vertical-align:middle;"></span>${tier}
+      </div>`;
+      picks.forEach(p => { html += draft26Card(p); });
+    });
+  }
+  html += '</div>';
+  grid.innerHTML = html;
+}
+
+function draft26Card(p) {
+  const c = posColor(p.pos);
+  return `<div class="draft26-card">
+    <div class="draft26-pick-num ${pickNumClass(p.pick, p.tier)}">${p.pick}</div>
+    <div class="draft26-info">
+      <div class="draft26-name">${p.name}</div>
+      <div class="draft26-meta">
+        <span class="draft26-pos" style="background:${c.bg};color:${c.txt};">${p.pos}</span>
+        ${p.school ? `<span class="draft26-school">${p.school}</span>` : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function filterDraft26() {
+  const q = document.getElementById('draft26Search').value.toLowerCase().trim();
+  d26CurrentData = q
+    ? DRAFT_2026.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        p.pos.toLowerCase().includes(q) ||
+        p.school.toLowerCase().includes(q))
+    : [...DRAFT_2026];
+  renderDraft26(d26CurrentData);
+}
+
+function showDraft26() {
+  renderDraft26(d26CurrentData);
+  navigate('draft26Page');
+}
+
+// ============================================================
+//  NAVIGATION
+// ============================================================
+let currentTeamId=null, currentTab='roster';
+const teamMap={};
+TEAMS.forEach(t=>teamMap[t.id]=t);
+
+function getInitials(name){return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
+
+function renderHome(){
+  document.getElementById('teamGrid').innerHTML=TEAMS.map(t=>{
+    const c=getTeamColor(t);
+    return `<div class="team-card" onclick="showTeam(${t.id})">
       <div class="team-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</div>
       <div class="team-name">${t.name}</div>
       <div class="team-owner">${t.owner}</div>
@@ -1123,299 +1048,180 @@ function renderHome() {
   }).join('');
 }
 
-function showTeam(id) {
-  currentTeamId = id; currentTab = 'roster';
-  const t = teamMap[id];
-  const c = getTeamColor(t);
-  document.getElementById('teamHeader').innerHTML = `
+function showTeam(id){
+  currentTeamId=id; currentTab='roster';
+  const t=teamMap[id]; const c=getTeamColor(t);
+  document.getElementById('teamHeader').innerHTML=`
     <div class="team-page-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</div>
     <div>
       <div class="team-page-name">${t.name}</div>
       <div class="team-page-owner">${t.owner} &nbsp;·&nbsp; <span style="color:var(--green);">📊 ${t.record}</span></div>
-    </div>
-  `;
-  document.querySelectorAll('.tab').forEach((el, i) => el.classList.toggle('active', i === 0));
-  renderTab();
-  navigate('teamPage');
+    </div>`;
+  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',i===0));
+  renderTab(); navigate('teamPage');
 }
 
-function switchTab(tab) {
-  currentTab = tab;
-  document.querySelectorAll('.tab').forEach((el, i) => {
-    el.classList.toggle('active', (i===0&&tab==='roster')||(i===1&&tab==='picks'));
-  });
+function switchTab(tab){
+  currentTab=tab;
+  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',(i===0&&tab==='roster')||(i===1&&tab==='picks')));
   renderTab();
 }
-
-function renderTab() {
-  document.getElementById('tabContent').innerHTML =
-    currentTab === 'roster' ? renderRoster(currentTeamId) : renderPicks(currentTeamId);
+function renderTab(){
+  document.getElementById('tabContent').innerHTML=currentTab==='roster'?renderRoster(currentTeamId):renderPicks(currentTeamId);
 }
 
-function renderRoster(id) {
-  const roster = ROSTERS[id] || [];
-  let html = '';
-  ['PG','SG','SF','PF','C'].forEach(pos => {
-    const players = roster.filter(p => p.pos === pos);
-    if (!players.length) return;
-    html += `<div class="section-label">${pos}</div>`;
-    players.forEach(p => {
-      html += `<div class="player-row">
-        <div class="pos-badge pos-${p.pos}">${p.pos}</div>
-        <div class="player-name">${p.name}</div>
-        <div class="player-team">${p.team}</div>
-      </div>`;
-    });
+function renderRoster(id){
+  const roster=ROSTERS[id]||[]; let html='';
+  ['PG','SG','SF','PF','C'].forEach(pos=>{
+    const players=roster.filter(p=>p.pos===pos);
+    if(!players.length) return;
+    html+=`<div class="section-label">${pos}</div>`;
+    players.forEach(p=>{html+=`<div class="player-row"><div class="pos-badge pos-${p.pos}">${p.pos}</div><div class="player-name">${p.name}</div><div class="player-team">${p.team}</div></div>`;});
   });
   return html;
 }
 
-function renderPicks(id) {
-  const myPicks = PICKS.filter(p => p.currentOwner === id);
-  if (!myPicks.length) return '<p style="color:var(--muted);padding:20px 0;">No picks held.</p>';
-
-  const isLight = document.body.classList.contains('light');
-  const yearStyles = isLight ? {
-    2026: { header:'rgba(192,98,47,0.1)',   dot:'#c0622f', label:'#8a3a10', own:'rgba(192,98,47,0.08)',  ownBorder:'rgba(192,98,47,0.3)',  traded:'rgba(192,98,47,0.04)',  tradedBorder:'rgba(192,98,47,0.15)'  },
-    2027: { header:'rgba(45,122,80,0.1)',    dot:'#2d7a50', label:'#1a5c35', own:'rgba(45,122,80,0.08)',  ownBorder:'rgba(45,122,80,0.3)',  traded:'rgba(45,122,80,0.04)',  tradedBorder:'rgba(45,122,80,0.15)'  },
-    2028: { header:'rgba(154,110,16,0.1)',   dot:'#9a6e10', label:'#6e4c08', own:'rgba(154,110,16,0.08)', ownBorder:'rgba(154,110,16,0.3)', traded:'rgba(154,110,16,0.04)', tradedBorder:'rgba(154,110,16,0.15)' },
-    2029: { header:'rgba(42,122,184,0.1)',   dot:'#2a7ab8', label:'#1a5a8a', own:'rgba(42,122,184,0.08)', ownBorder:'rgba(42,122,184,0.3)', traded:'rgba(42,122,184,0.04)', tradedBorder:'rgba(42,122,184,0.15)' },
-  } : {
-    2026: { header:'rgba(108,99,255,0.25)',  dot:'#6c63ff', label:'#a89bff', own:'rgba(108,99,255,0.12)', ownBorder:'rgba(108,99,255,0.35)', traded:'rgba(108,99,255,0.06)', tradedBorder:'rgba(108,99,255,0.2)'  },
-    2027: { header:'rgba(76,175,129,0.25)',  dot:'#4caf81', label:'#6dddaa', own:'rgba(76,175,129,0.12)', ownBorder:'rgba(76,175,129,0.35)', traded:'rgba(76,175,129,0.06)', tradedBorder:'rgba(76,175,129,0.2)'  },
-    2028: { header:'rgba(245,200,66,0.25)',  dot:'#f5c842', label:'#f5d97a', own:'rgba(245,200,66,0.12)', ownBorder:'rgba(245,200,66,0.35)', traded:'rgba(245,200,66,0.06)', tradedBorder:'rgba(245,200,66,0.2)'  },
-    2029: { header:'rgba(41,182,246,0.25)',  dot:'#29b6f6', label:'#7dd8f8', own:'rgba(41,182,246,0.12)', ownBorder:'rgba(41,182,246,0.35)', traded:'rgba(41,182,246,0.06)', tradedBorder:'rgba(41,182,246,0.2)'  },
+function renderPicks(id){
+  const myPicks=PICKS.filter(p=>p.currentOwner===id);
+  if(!myPicks.length) return '<p style="color:var(--muted);padding:20px 0;">No picks held.</p>';
+  const isLight=document.body.classList.contains('light');
+  const yearStyles=isLight?{
+    2026:{header:'rgba(192,98,47,0.1)',dot:'#c0622f',label:'#8a3a10',own:'rgba(192,98,47,0.08)',ownBorder:'rgba(192,98,47,0.3)',traded:'rgba(192,98,47,0.04)',tradedBorder:'rgba(192,98,47,0.15)'},
+    2027:{header:'rgba(45,122,80,0.1)',dot:'#2d7a50',label:'#1a5c35',own:'rgba(45,122,80,0.08)',ownBorder:'rgba(45,122,80,0.3)',traded:'rgba(45,122,80,0.04)',tradedBorder:'rgba(45,122,80,0.15)'},
+    2028:{header:'rgba(154,110,16,0.1)',dot:'#9a6e10',label:'#6e4c08',own:'rgba(154,110,16,0.08)',ownBorder:'rgba(154,110,16,0.3)',traded:'rgba(154,110,16,0.04)',tradedBorder:'rgba(154,110,16,0.15)'},
+    2029:{header:'rgba(42,122,184,0.1)',dot:'#2a7ab8',label:'#1a5a8a',own:'rgba(42,122,184,0.08)',ownBorder:'rgba(42,122,184,0.3)',traded:'rgba(42,122,184,0.04)',tradedBorder:'rgba(42,122,184,0.15)'},
+  }:{
+    2026:{header:'rgba(108,99,255,0.25)',dot:'#6c63ff',label:'#a89bff',own:'rgba(108,99,255,0.12)',ownBorder:'rgba(108,99,255,0.35)',traded:'rgba(108,99,255,0.06)',tradedBorder:'rgba(108,99,255,0.2)'},
+    2027:{header:'rgba(76,175,129,0.25)',dot:'#4caf81',label:'#6dddaa',own:'rgba(76,175,129,0.12)',ownBorder:'rgba(76,175,129,0.35)',traded:'rgba(76,175,129,0.06)',tradedBorder:'rgba(76,175,129,0.2)'},
+    2028:{header:'rgba(245,200,66,0.25)',dot:'#f5c842',label:'#f5d97a',own:'rgba(245,200,66,0.12)',ownBorder:'rgba(245,200,66,0.35)',traded:'rgba(245,200,66,0.06)',tradedBorder:'rgba(245,200,66,0.2)'},
+    2029:{header:'rgba(41,182,246,0.25)',dot:'#29b6f6',label:'#7dd8f8',own:'rgba(41,182,246,0.12)',ownBorder:'rgba(41,182,246,0.35)',traded:'rgba(41,182,246,0.06)',tradedBorder:'rgba(41,182,246,0.2)'},
   };
-
-  const allRounds = [...new Set(PICKS.map(p => p.round))].sort();
-  const years = [...new Set(myPicks.map(p => p.year))].sort();
-  let html = '';
-
-  years.forEach(year => {
-    const s = yearStyles[year] || yearStyles[2026];
-    const yearPicks = myPicks.filter(p => p.year === year);
-    const totalPicks = yearPicks.length;
-
-    html += `
-      <div style="margin-bottom:28px;border:1px solid ${s.ownBorder};border-radius:14px;overflow:hidden;">
-        <div style="background:${s.header};padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid ${s.ownBorder};">
-          <div style="width:10px;height:10px;border-radius:50%;background:${s.dot};"></div>
-          <div style="font-size:14px;font-weight:800;color:${s.label};font-family:'Playfair Display',serif;">${year}</div>
-          <div style="font-size:11px;color:var(--muted);background:var(--surface2);padding:2px 8px;border-radius:20px;margin-left:4px;font-weight:600;">${totalPicks} pick${totalPicks !== 1 ? 's' : ''}</div>
-        </div>
-        <table style="width:100%;border-collapse:collapse;">
-          <thead>
-            <tr>
-              <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">ROUND</th>
-              <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">ORIGIN</th>
-              <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">STATUS</th>
-            </tr>
-          </thead>
-          <tbody>`;
-
-    allRounds.forEach(round => {
-      const roundPicks = yearPicks.filter(p => p.round === round).sort((a,b) => a.originalOwner - b.originalOwner);
-      roundPicks.forEach((pick, i) => {
-        const traded = pick.originalOwner !== pick.currentOwner;
-        const orig = teamMap[pick.originalOwner];
-        const isFirst = i === 0;
-        html += `
-            <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:10px 12px;font-size:12px;font-weight:700;color:${s.label};white-space:nowrap;background:var(--surface);">${isFirst ? `R${round}` : ''}</td>
-              <td style="padding:10px 12px;font-size:13px;color:var(--text);background:var(--surface);">${orig.name}</td>
-              <td style="padding:10px 12px;background:var(--surface);">
-                <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:${traded ? s.traded : s.own};border:1px solid ${traded ? s.tradedBorder : s.ownBorder};color:${s.label};">
-                  ${traded ? '🔄 Traded' + (pick.note ? ' ('+pick.note+')' : '') : '✓ Own'}
-                </span>
-              </td>
-            </tr>`;
+  const allRounds=[...new Set(PICKS.map(p=>p.round))].sort();
+  const years=[...new Set(myPicks.map(p=>p.year))].sort();
+  let html='';
+  years.forEach(year=>{
+    const s=yearStyles[year]||yearStyles[2026];
+    const yearPicks=myPicks.filter(p=>p.year===year);
+    html+=`<div style="margin-bottom:28px;border:1px solid ${s.ownBorder};border-radius:14px;overflow:hidden;">
+      <div style="background:${s.header};padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid ${s.ownBorder};">
+        <div style="width:10px;height:10px;border-radius:50%;background:${s.dot};"></div>
+        <div style="font-size:14px;font-weight:800;color:${s.label};font-family:'Playfair Display',serif;">${year}</div>
+        <div style="font-size:11px;color:var(--muted);background:var(--surface2);padding:2px 8px;border-radius:20px;margin-left:4px;font-weight:600;">${yearPicks.length} pick${yearPicks.length!==1?'s':''}</div>
+      </div>
+      <table style="width:100%;border-collapse:collapse;">
+        <thead><tr>
+          <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">ROUND</th>
+          <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">ORIGIN</th>
+          <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">STATUS</th>
+        </tr></thead><tbody>`;
+    allRounds.forEach(round=>{
+      const roundPicks=yearPicks.filter(p=>p.round===round).sort((a,b)=>a.originalOwner-b.originalOwner);
+      roundPicks.forEach((pick,i)=>{
+        const traded=pick.originalOwner!==pick.currentOwner;
+        const orig=teamMap[pick.originalOwner];
+        html+=`<tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:10px 12px;font-size:12px;font-weight:700;color:${s.label};white-space:nowrap;background:var(--surface);">${i===0?`R${round}`:''}</td>
+          <td style="padding:10px 12px;font-size:13px;color:var(--text);background:var(--surface);">${orig.name}</td>
+          <td style="padding:10px 12px;background:var(--surface);">
+            <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:${traded?s.traded:s.own};border:1px solid ${traded?s.tradedBorder:s.ownBorder};color:${s.label};">
+              ${traded?'Traded'+(pick.note?' ('+pick.note+')':''):'Own'}
+            </span>
+          </td>
+        </tr>`;
       });
     });
-
-    html += `</tbody></table></div>`;
+    html+='</tbody></table></div>';
   });
-
   return html;
 }
 
-function showDraftboard() {
-  const years  = [...new Set(PICKS.map(p => p.year))].sort();
-  const rounds = [...new Set(PICKS.map(p => p.round))].sort();
-  let html = '';
-  years.forEach(year => {
-    html += `<h3 style="margin:24px 0 12px;font-size:16px;font-family:'Playfair Display',serif;color:var(--text);">${year} Draft</h3>`;
-    if (DRAFT_NOTES[year]) {
-      html += `<div style="background:var(--accent-light);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--muted);">${DRAFT_NOTES[year]}</div>`;
-    }
-    html += `<table><thead><tr><th class="round-label">Rnd</th>`;
-    TEAMS.forEach(t => { html += `<th title="${t.owner}">${t.name.split(' ')[0]}</th>`; });
-    html += '</tr></thead><tbody>';
-    rounds.forEach(round => {
-      html += `<tr><td style="font-weight:700;color:var(--muted);white-space:nowrap;background:var(--surface);">R${round}</td>`;
-      TEAMS.forEach(t => {
-        const pick = PICKS.find(p => p.year===year && p.round===round && p.originalOwner===t.id);
-        if (!pick) { html += `<td><span class="pick-empty">—</span></td>`; return; }
-        const traded = pick.currentOwner !== pick.originalOwner;
-        const holder = teamMap[pick.currentOwner];
-        html += `<td><div class="pick-cell ${traded ? 'pick-traded-cell' : 'pick-own-cell'}">${traded ? '→ '+holder.name.split(' ')[0] : '✓ Keep'}</div></td>`;
+function showDraftboard(){
+  const years=[...new Set(PICKS.map(p=>p.year))].sort();
+  const rounds=[...new Set(PICKS.map(p=>p.round))].sort();
+  let html='';
+  years.forEach(year=>{
+    html+=`<h3 style="margin:24px 0 12px;font-size:16px;font-family:'Playfair Display',serif;color:var(--text);">${year} Draft</h3>`;
+    if(DRAFT_NOTES[year]) html+=`<div style="background:var(--accent-light);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--muted);">${DRAFT_NOTES[year]}</div>`;
+    html+=`<table><thead><tr><th class="round-label">Rnd</th>`;
+    TEAMS.forEach(t=>{html+=`<th title="${t.owner}">${t.name.split(' ')[0]}</th>`;});
+    html+='</tr></thead><tbody>';
+    rounds.forEach(round=>{
+      html+=`<tr><td style="font-weight:700;color:var(--muted);white-space:nowrap;background:var(--surface);">R${round}</td>`;
+      TEAMS.forEach(t=>{
+        const pick=PICKS.find(p=>p.year===year&&p.round===round&&p.originalOwner===t.id);
+        if(!pick){html+=`<td><span class="pick-empty">—</span></td>`;return;}
+        const traded=pick.currentOwner!==pick.originalOwner;
+        const holder=teamMap[pick.currentOwner];
+        html+=`<td><div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}">${traded?'→ '+holder.name.split(' ')[0]:'Keep'}</div></td>`;
       });
-      html += '</tr>';
+      html+='</tr>';
     });
-    html += '</tbody></table>';
+    html+='</tbody></table>';
   });
-  document.getElementById('draftboardContent').innerHTML = html;
+  document.getElementById('draftboardContent').innerHTML=html;
   navigate('draftboardPage');
 }
 
-function showTrades() {
-  const years = [...new Set(TRADES.map(t => t.year))].sort();
-  let html = '';
-  years.forEach(year => {
-    const yearTrades = TRADES.filter(t => t.year === year);
-    html += `<h3 style="margin:24px 0 12px;font-size:16px;font-family:'Playfair Display',serif;">📅 ${year} Trades</h3>`;
-    yearTrades.forEach(trade => {
-      html += `
-        <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;">
-          <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;">
-            <div style="flex:1;min-width:200px;">
-              <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:6px;">TEAM A — ${trade.teamA}</div>
-              <div style="font-size:13px;color:var(--pick-traded-color);">gave: ${trade.aGave}</div>
-            </div>
-            <div style="font-size:20px;padding-top:16px;color:var(--muted);">⇄</div>
-            <div style="flex:1;min-width:200px;">
-              <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:6px;">TEAM B — ${trade.teamB}</div>
-              <div style="font-size:13px;color:var(--green);">gave: ${trade.bGave}</div>
-            </div>
-          </div>
-        </div>`;
-    });
-  });
-  document.getElementById('tradesContent').innerHTML = html;
-  navigate('tradesPage');
-}
-
-function navigate(pageId) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+function navigate(pageId){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
-  document.getElementById('backBtn').style.display = pageId !== 'homePage' ? 'flex' : 'none';
-  window.scrollTo(0, 0);
+  document.getElementById('backBtn').style.display=pageId!=='homePage'?'flex':'none';
+  window.scrollTo(0,0);
 }
+function goHome(){navigate('homePage');}
+function showRules(){navigate('rulesPage');}
+function showStandings(){navigate('standingsPage');setTimeout(renderStandingsChart,50);}
+function toggleRule(header){header.parentElement.classList.toggle('collapsed');}
 
-function goHome() { navigate('homePage'); }
-
-function showRules() {
-  navigate('rulesPage');
-}
-
-function showStandings() {
-  navigate('standingsPage');
-  // Small delay to ensure canvas is visible before drawing
-  setTimeout(renderStandingsChart, 50);
-}
-
-let standingsChartInstance = null;
-
-function renderStandingsChart() {
-  const ctx = document.getElementById('standingsChart').getContext('2d');
-  if (standingsChartInstance) {
-    standingsChartInstance.destroy();
-  }
-
-  const seasons = ['2021/22', '2022/23', '2023/24', '2024/25', '2025/26'];
-
-  // Sorted by average (best average = first = top of legend)
-  const standingsData = [
-    { team: 'Bear Down',                       color: '#6c63ff', lightColor: '#c0622f', avg: 1.6,  data: [1,    3,  2,  1,  1 ] },
-    { team: 'Vancouver Curry-Wurst',           color: '#78909c', lightColor: '#607080', avg: 4.4,  data: [3,    1,  1,  5,  12] },
-    { team: 'Seagulls',                        color: '#29b6f6', lightColor: '#2a7ab8', avg: 5.4,  data: [9,    8,  6,  2,  2 ] },
-    { team: 'Anadolu Ballers',                 color: '#f5c842', lightColor: '#9a6e10', avg: 5.6,  data: [8,    7,  5,  3,  5 ] },
-    { team: 'Leaveland Cavaliers',             color: '#4caf81', lightColor: '#2d7a50', avg: 6.0,  data: [5,    6,  8,  7,  4 ] },
-    { team: 'Kawhi So Serious',                color: '#ef5350', lightColor: '#a83030', avg: 6.2,  data: [4,    4,  3,  12, 8 ] },
-    { team: 'Neukoelln Hustlers',              color: '#ff6584', lightColor: '#b43c64', avg: 6.4,  data: [10,   11, 4,  4,  3 ] },
-    { team: 'Cooking Show',                    color: '#26c6da', lightColor: '#1a8080', avg: 6.4,  data: [2,    2,  11, 8,  9 ] },
-    { team: 'Always Money In The BananaStand', color: '#ff9800', lightColor: '#c06020', avg: 7.2,  data: [6,    10, 7,  6,  7 ] },
-    { team: '3-POINT MAFIA',                   color: '#e040fb', lightColor: '#7b3fa8', avg: 8.2,  data: [7,    5,  12, 11, 6 ] },
-    { team: 'S-Town Grizzlies',                color: '#66bb6a', lightColor: '#3d7a30', avg: 9.25, data: [null, 9,  9,  9,  10] },
-    { team: 'Double Dribble Trouble',          color: '#ffa726', lightColor: '#b86020', avg: 10.75,data: [null, 12, 10, 10, 11] },
+// ============================================================
+//  STANDINGS CHART
+// ============================================================
+let standingsChartInstance=null;
+function renderStandingsChart(){
+  const ctx=document.getElementById('standingsChart').getContext('2d');
+  if(standingsChartInstance) standingsChartInstance.destroy();
+  const seasons=['2021/22','2022/23','2023/24','2024/25','2025/26'];
+  const standingsData=[
+    {team:'Bear Down',color:'#6c63ff',lightColor:'#c0622f',avg:1.6,data:[1,3,2,1,1]},
+    {team:'Vancouver Curry-Wurst',color:'#78909c',lightColor:'#607080',avg:4.4,data:[3,1,1,5,12]},
+    {team:'Seagulls',color:'#29b6f6',lightColor:'#2a7ab8',avg:5.4,data:[9,8,6,2,2]},
+    {team:'Anadolu Ballers',color:'#f5c842',lightColor:'#9a6e10',avg:5.6,data:[8,7,5,3,5]},
+    {team:'Leaveland Cavaliers',color:'#4caf81',lightColor:'#2d7a50',avg:6.0,data:[5,6,8,7,4]},
+    {team:'Kawhi So Serious',color:'#ef5350',lightColor:'#a83030',avg:6.2,data:[4,4,3,12,8]},
+    {team:'Neukoelln Hustlers',color:'#ff6584',lightColor:'#b43c64',avg:6.4,data:[10,11,4,4,3]},
+    {team:'Cooking Show',color:'#26c6da',lightColor:'#1a8080',avg:6.4,data:[2,2,11,8,9]},
+    {team:'Always Money In The BananaStand',color:'#ff9800',lightColor:'#c06020',avg:7.2,data:[6,10,7,6,7]},
+    {team:'3-POINT MAFIA',color:'#e040fb',lightColor:'#7b3fa8',avg:8.2,data:[7,5,12,11,6]},
+    {team:'S-Town Grizzlies',color:'#66bb6a',lightColor:'#3d7a30',avg:9.25,data:[null,9,9,9,10]},
+    {team:'Double Dribble Trouble',color:'#ffa726',lightColor:'#b86020',avg:10.75,data:[null,12,10,10,11]},
   ];
-
-  const isLight = document.body.classList.contains('light');
-  const textColor = isLight ? '#9a7560' : '#7b7f9e';
-  const gridColor = isLight ? 'rgba(240,213,188,0.6)' : 'rgba(46,50,80,0.6)';
-
-  const datasets = standingsData.map(d => ({
-    label: `${d.team} (Ø ${d.avg})`,
-    data: d.data,
-    borderColor: isLight ? d.lightColor : d.color,
-    backgroundColor: isLight ? d.lightColor : d.color,
-    borderWidth: 2.5,
-    pointRadius: 5,
-    pointHoverRadius: 7,
-    tension: 0.3,
-    spanGaps: false,
-  }));
-
-  standingsChartInstance = new Chart(ctx, {
-    type: 'line',
-    data: { labels: seasons, datasets },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'bottom',
-          labels: {
-            color: isLight ? '#2c1a0e' : '#e8eaf6',
-            padding: 16,
-            font: { family: 'DM Sans', size: 11 },
-            boxWidth: 12,
-            boxHeight: 12,
-          }
-        },
-        tooltip: {
-          callbacks: {
-            label: ctx => {
-              const teamName = ctx.dataset.label.replace(/ \(Ø [\d.]+\)/, '');
-              return ` ${teamName}: Place ${ctx.parsed.y}`;
-            }
-          },
-          backgroundColor: isLight ? '#ffffff' : '#1a1d27',
-          borderColor: isLight ? '#f0d5bc' : '#2e3250',
-          borderWidth: 1,
-          titleColor: isLight ? '#2c1a0e' : '#e8eaf6',
-          bodyColor: isLight ? '#9a7560' : '#7b7f9e',
-          bodyFont: { family: 'DM Sans' },
-          titleFont: { family: 'DM Sans', weight: '700' },
+  const isLight=document.body.classList.contains('light');
+  const textColor=isLight?'#9a7560':'#7b7f9e';
+  const gridColor=isLight?'rgba(240,213,188,0.6)':'rgba(46,50,80,0.6)';
+  standingsChartInstance=new Chart(ctx,{
+    type:'line',
+    data:{labels:seasons,datasets:standingsData.map(d=>({
+      label:`${d.team} (Ø ${d.avg})`,data:d.data,
+      borderColor:isLight?d.lightColor:d.color,backgroundColor:isLight?d.lightColor:d.color,
+      borderWidth:2.5,pointRadius:5,pointHoverRadius:7,tension:0.3,spanGaps:false,
+    }))},
+    options:{
+      responsive:true,
+      plugins:{
+        legend:{position:'bottom',labels:{color:isLight?'#2c1a0e':'#e8eaf6',padding:16,font:{family:'DM Sans',size:11},boxWidth:12,boxHeight:12}},
+        tooltip:{
+          callbacks:{label:ctx=>{const t=ctx.dataset.label.replace(/ \(Ø [\d.]+\)/,'');return ` ${t}: Place ${ctx.parsed.y}`;}},
+          backgroundColor:isLight?'#ffffff':'#1a1d27',borderColor:isLight?'#f0d5bc':'#2e3250',borderWidth:1,
+          titleColor:isLight?'#2c1a0e':'#e8eaf6',bodyColor:isLight?'#9a7560':'#7b7f9e',
+          bodyFont:{family:'DM Sans'},titleFont:{family:'DM Sans',weight:'700'},
         }
       },
-      scales: {
-        y: {
-          reverse: true, // 1st place at the top
-          min: 1,
-          max: 12,
-          ticks: {
-            stepSize: 1,
-            color: textColor,
-            font: { family: 'DM Sans', size: 11 },
-            callback: val => val === 1 ? '🥇 1st' : val === 2 ? '🥈 2nd' : val === 3 ? '🥉 3rd' : `${val}th`
-          },
-          grid: { color: gridColor },
-          border: { color: gridColor },
-        },
-        x: {
-          ticks: {
-            color: textColor,
-            font: { family: 'DM Sans', size: 12, weight: '600' },
-          },
-          grid: { color: gridColor },
-          border: { color: gridColor },
-        }
+      scales:{
+        y:{reverse:true,min:1,max:12,ticks:{stepSize:1,color:textColor,font:{family:'DM Sans',size:11},callback:val=>val===1?'1st':val===2?'2nd':val===3?'3rd':`${val}th`},grid:{color:gridColor},border:{color:gridColor}},
+        x:{ticks:{color:textColor,font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:gridColor},border:{color:gridColor}},
       }
     }
   });
-}
-
-function toggleRule(header) {
-  header.parentElement.classList.toggle('collapsed');
 }
 
 renderHome();
