@@ -227,63 +227,98 @@
     gap: 10px;
   }
 
-  /* ---- flip card wrapper ---- */
-  .draft26-card-wrap {
-    height: 116px;
-    perspective: 900px;
-  }
+  /* ---- draft card ---- */
+  .draft26-card-wrap { }
 
   .draft26-card {
-    width: 100%; height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.45s ease;
-    cursor: pointer;
-    border-radius: 12px;
-  }
-  .draft26-card.flipped { transform: rotateY(180deg); }
-
-  .draft26-front, .draft26-back {
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    width: 100%;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 14px 16px;
-    transition: border-color 0.15s;
-  }
-  .draft26-card:hover .draft26-front,
-  .draft26-card:hover .draft26-back { border-color: var(--accent); }
-
-  .draft26-front {
     display: flex;
     align-items: center;
     gap: 14px;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+    position: relative;
   }
+  .draft26-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108,99,255,0.15);
+  }
+  body.light .draft26-card:hover { box-shadow: 0 6px 20px rgba(192,98,47,0.12); }
 
-  .draft26-back {
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
-    overflow: hidden;
+  .draft26-scout-preview {
+    font-size: 11px; color: var(--muted); margin-top: 4px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px;
   }
-  .draft26-back-header {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
-    text-transform: uppercase; color: var(--muted);
-    margin-bottom: 2px;
+  .draft26-open-hint {
+    position: absolute; bottom: 10px; right: 14px;
+    font-size: 10px; color: var(--muted); opacity: 0;
+    transition: opacity 0.15s;
   }
-  .draft26-scout-text {
-    font-size: 12px; line-height: 1.5; color: var(--text); flex: 1;
-    overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+  .draft26-card:hover .draft26-open-hint { opacity: 1; }
+
+  /* ---- scout modal ---- */
+  .scout-modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+    padding: 20px;
   }
-  .draft26-flip-hint {
-    font-size: 10px; color: var(--muted); text-align: right; margin-top: 2px;
+  .scout-modal-overlay.open { display: flex; }
+
+  .scout-modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    width: 100%; max-width: 480px;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    animation: modalIn 0.22s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.93) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .scout-modal-close {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); border-radius: 50%; width: 32px; height: 32px;
+    font-size: 16px; cursor: pointer; display: flex; align-items: center;
+    justify-content: center; transition: all 0.15s; font-family: 'DM Sans', sans-serif;
+  }
+  .scout-modal-close:hover { border-color: var(--accent); color: var(--text); }
+  .scout-modal-pick {
+    font-family: 'Playfair Display', serif; font-size: 13px;
+    font-weight: 700; color: var(--muted); margin-bottom: 4px; letter-spacing: 0.5px;
+  }
+  .scout-modal-name {
+    font-family: 'Playfair Display', serif; font-size: 26px;
+    font-weight: 800; color: var(--text); margin-bottom: 8px; line-height: 1.1;
+  }
+  .scout-modal-meta {
+    display: flex; gap: 8px; align-items: center; margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .scout-modal-divider {
+    border: none; border-top: 1px solid var(--border); margin-bottom: 16px;
+  }
+  .scout-modal-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+  }
+  .scout-modal-text {
+    font-size: 14px; line-height: 1.7; color: var(--text);
+  }
+  .scout-modal-tier {
+    font-size: 11px; font-weight: 700; padding: 3px 10px;
+    border-radius: 20px; background: var(--surface2);
+    border: 1px solid var(--border); color: var(--muted);
   }
 
   .draft26-pick-num {
@@ -452,10 +487,23 @@
   </div>
 </div>
 
+<!-- SCOUT MODAL -->
+<div class="scout-modal-overlay" id="scoutModal" onclick="closeScoutModal(event)">
+  <div class="scout-modal">
+    <button class="scout-modal-close" onclick="closeScoutModal()">✕</button>
+    <div class="scout-modal-pick" id="modalPick"></div>
+    <div class="scout-modal-name" id="modalName"></div>
+    <div class="scout-modal-meta" id="modalMeta"></div>
+    <hr class="scout-modal-divider">
+    <div class="scout-modal-label">🔍 Scouting Report</div>
+    <div class="scout-modal-text" id="modalScouting"></div>
+  </div>
+</div>
+
 <!-- 2026 DRAFT BOARD -->
 <div class="page" id="draft26Page">
   <h2 style="margin-bottom:6px;">MFHFBs 2026 Draft Board</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">30 prospects · Tiered Big Board + Mystery Tier + Comment: Ich muss noch viel ändern, einige Prospects müssen höher/ niedriger.</p>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">30 prospects · Tiered Big Board + Mystery Tier + Die Descriptors sind KI-Zusammenfassungen meiner Notizen, also manchmal Banane und vorerst nur Platzhalter. Die richtigen Berichte findet ihr dann hier verlinkt. Es ist auch nur mein Board Pre-March Madness und ich habe einige Änderungen vorgenommen bereits.</p>
   <div class="draft26-search">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -941,55 +989,55 @@ function showRankings() { renderRankings(rCurrentData); navigate('rankingsPage')
 const DRAFT_2026 = [
   // ── TIER 1 ──────────────────────────────────────────────────
   {pick:1,  name:"Cameron Boozer",        pos:"PF",    school:"Duke",                    tier:"Tier 1",
-   scouting:"Superstar-Ceiling Big mit Elite-Post-Footwork, überragendem Rebounding und NBA-reifen Playmaking (3.7 APG, 25% AST%). Stärken: Kontakt-Finishing, Passqualität, Foul-Drawing — Floor einer der höchsten der Klasse, Frage gilt der Vertikalathlethik und dem noch inkonstanten Dreier."},
+   scouting:"Der kompletteste Big in diesem Draft. Seine Footwork im Post ist auf einem Niveau, das man sonst nicht von College-Spielern sieht, und er reboundt als wäre der Ball ihm persönlich verschrieben. Dazu 3,7 Assists pro Spiel als Big, das ist keine Kleinigkeit. Einzige echte Frage: Kann er athletisch mit den besten NBA-Bigs mithalten? Der Dreier ist noch unfertig, aber der Rest ist schon jetzt sehr nah an NBA-ready."},
   {pick:2,  name:"Darryn Peterson",       pos:"PG",    school:"Kansas",                  tier:"Tier 1",
-   scouting:"Elite Combo Guard mit Jamal-Murray/Ant-Edwards-Pull-up-Jumper und starker Zwei-Wege-Defense. Hamstring-Sorgen werden kleingeredet — sein Score-Repertoire auf allen drei Leveln ist unter den Guards dieses Jahrzehnts einzigartig."},
+   scouting:"Dieser Mann kann auf allen drei Leveln scoren und macht das mit einer Effizienz, die bei Guards seines Alters selten ist. Verteidigt dazu ernsthaft. Die Hamstringprobleme werden von manchen Teams runtergespielt, was vielleicht ein Fehler ist, aber sein Scoring-Repertoire rechtfertigt es, das Risiko einzugehen. Einer der vollständigsten Guards seit Jahren in diesem Draft."},
   {pick:3,  name:"AJ Dybantsa",           pos:"SF",    school:"BYU",                     tier:"Tier 1",
-   scouting:"6'9'' Wing mit T-Mac-Ceiling: insane Athletik, explosive Driving-Fähigkeit und Three-Level-Scoring. Shot-Selection und Off-Ball-Defense sind Knackpunkte — Scalability als echter #1-Option bleibt die zentrale Frage."},
+   scouting:"6'9'', kann den Ball auf dem Boden bewegen wie ein Guard, scort auf allen drei Leveln und ist dabei so athletisch, dass Scouts von T-Mac reden. Das ist kein Zufall. Die Frage, die niemand ganz beantworten kann: Ist er gut genug als Option Nr. 1 in einem NBA-Team? Seine Ballauswahl und sein Einsatz ohne Ball lassen noch zu wünschen übrig. Aber das Rohmaterial ist in diesem Draft einmalig."},
 
   // ── TIER 1.5 ────────────────────────────────────────────────
   {pick:4,  name:"Caleb Wilson",          pos:"PF",    school:"North Carolina",           tier:"Tier 1.5",
-   scouting:"NCAA-Dunking-Rekord-Maschine mit Jonathan-Isaac-Defensivprofil und Lamar-Odom-Playmaking-Flashes. Halbcourt-Offense und 3PT-Konsistenz sind seine Hürden — Walking Double-Double der Spiele gewinnt ohne Highlight-Scoring."},
+   scouting:"Wilson hat in dieser Saison den NCAA-Dunking-Rekord gebrochen und ist dabei defensiv auf einem Niveau, das an Jonathan Isaac erinnert. Er gewinnt Spiele, auch wenn er nicht auf dem Scoringzettel auftaucht. Das Problem ist die Halbcourt-Offense: Er braucht klare Strukturen, und sein Dreier ist noch kein Werkzeug, auf das man sich verlassen kann. Trotzdem ist sein Beitrag in fast jedem Spiel sichtbar."},
   {pick:5,  name:"Keaton Wagler",         pos:"SG",    school:"Illinois",                tier:"Tier 1.5",
-   scouting:"Out-of-nowhere Riser: Do-it-All 2-Guard mit Elite-FT-Rate, 39% von Drei und überraschend starkem Playmaking. Max-Christie-Comp mit mehr Upside — Körper (185 lbs) muss NBA-Physis standhalten."},
+   scouting:"Vor dieser Saison hatte kaum jemand Wagler auf dem Radar. Jetzt redet jeder über ihn. Er trifft 39% von der Dreierlinie, wirft fast alle Freiwürfe rein und macht überraschend viele gute Pässe für einen Shooting Guard. Die einzige echte Schwäche ist sein Körper: Mit 185 Pfund wird er in der NBA physisch unter Druck gesetzt werden. Ob er das kompensieren kann, wird sich zeigen."},
 
   // ── TIER 2 ──────────────────────────────────────────────────
   {pick:6,  name:"Kingston Flemings",     pos:"PG",    school:"Houston",                  tier:"Tier 2",
-   scouting:"Lightning-Quick Guard aus Houston mit Elite-Midrange-Trennung, starkem Finishing (~90% am Ring) und Multi-All-Star-Ceiling laut Scouts. Leichter Frame kann bei Over-Physis leiden — Effizienz, Führungsqualität und Kelvin Sampsons Lob sorgen für Top-5-Diskussionen."},
+   scouting:"Flemings ist der schnellste Guard in diesem Draft und findet am Ring eine Quote von fast 90% in dieser Saison. Sein Mitteldistanzspiel ist auf einem Niveau, das für sein Alter beeindruckend ist. Kelvin Sampson hat ihn in höchsten Tönen gelobt, was bei dem Coach kein Marketingtrick ist. Die Frage ist, ob sein leichter Körperbau in der NBA standhält, wenn jede Nacht athletischere Verteidiger auf ihn warten."},
   {pick:7,  name:"Darius Acuff Jr.",      pos:"PG",    school:"Arkansas",                tier:"Tier 2",
-   scouting:"Cleverer Point Guard mit explosivem First Step, gutem PnR-Spielmachen und aufsteigendem Scoring-Profil — Cole-Anthony-Comp mit mehr Starter-Potenzial. Defensiv noch eine Haftung, aber Basketball-IQ und Ballhandling überzeugen."},
+   scouting:"Acuff ist kein Spektakel, aber er macht sehr wenig falsch. Sein erster Schritt ist echt, sein Pick-and-Roll-Spiel funktioniert, und sein Scoring ist in dieser Saison deutlich gewachsen. Defensiv ist er noch eine Schwachstelle, aber sein Spielverständnis und seine Ballsicherheit überzeugen Scouts. Solides Starterpotenial, wenn er sich defensiv weiterentwickelt."},
   {pick:8,  name:"Yaxel Lendeborg",       pos:"PF",    school:"Michigan",                tier:"Tier 2",
-   scouting:"NBA-ready Glue Guy mit 7'4'' Wingspan, Elite-Rebounding, 40.8% von Drei und defensiver Versatilität — PJ-Tucker/Josh-Hart im PF-Körper. Älter als die meisten (24 vor Rookie-Season), aber 59.6% FG-Effizienz und IQ machen ihn zum No-Brainer im Bereich 13–20."},
+   scouting:"Lendeborg ist der klassische Spieler, den Teams in der zweiten Runde eigentlich nicht mehr finden sollten, aber hier ist er. 7'4'' Spannweite, reboundt auf Top-10-Niveau, trifft 40,8% von der Dreierlinie und kann auf mehreren Positionen verteidigen. Er ist älter als die meisten in diesem Draft, was einige abschreckt. Aber seine Effizienz von fast 60% aus dem Feld und sein IQ machen ihn zu einem sicheren NBA-Spieler."},
 
   // ── TIER 3 ──────────────────────────────────────────────────
   {pick:9,  name:"Labaron Philon Jr.",    pos:"PG",    school:"Alabama",                 tier:"Tier 3",
-   scouting:"Herky-Jerky Brunson-artiger Guard mit überragender Passqualität, Elite-Floater-Touch und enorm gestiegenem Scoring (41.5% von Drei, 31.4 USG%). Leichter Frame und Finishing durch Kontakt müssen sich entwickeln — Cason-Wallace-Median-Comp mit höherem Ceiling."},
+   scouting:"Philon erinnert an Brunson in seiner Spielweise: kein Athlet der Sorte, der Leute mit Sprungkraft beeindruckt, aber seine Pässe kommen an, sein Floater ist tödlich und er hat seinen Scoring-Anteil in dieser Saison massiv gesteigert. 41,5% von der Dreierlinie bei fast einem Drittel aller Teamabschlüsse. Sein Frame ist schlank und er muss lernen, durch Kontakt zu finishen. Aber sein Potenzial geht deutlich über einen Backup hinaus."},
   {pick:10, name:"Hannes Steinbach",      pos:"PF",    school:"Washington",              tier:"Tier 3",
-   scouting:"Dominantester Rebounder der Klasse (4.8 OREB/G) mit solidem Post-Touch, Moritz-Wagner/Steven-Adams-Comp und möglichem Alperen-Sengun-Vergleich laut Community. Perimeter-Defense und Drop-Coverage-Anfälligkeit sind Diskussionspunkte — überzeugt Scouts aber kontinuierlich."},
+   scouting:"Wer am meisten reboundt in diesem Draft? Steinbach. 4,8 offensive Rebounds pro Spiel, das ist ein Ausreißerwert. Er hat berührbares Post-Spiel, und einige Scouts sehen in ihm einen künftigen Starter in der Mitte. Seine Schwäche ist die Außenverteidigung und sein Anfälligkeit beim Drop-Coverage. Aber er überzeugt Scouts Woche für Woche weiter, und die Community vergleicht ihn inzwischen mit Sengun."},
   {pick:11, name:"Brayden Burries",       pos:"SG",    school:"Arizona",                 tier:"Tier 3",
-   scouting:"Athletischer Combo Guard (6'4'', 205 lbs) mit Downhill-Rim-Druck, wachsendem Shotmaking und Young-Ibaka-Comp in der Verteidigung. Braucht noch mehr Dreier-Volumen und Konsistenz — aber Frame und Motor passen ins moderne NBA-System."},
+   scouting:"6'4'', 205 Pfund und er geht zum Ring als wäre er größer. Burries baut sein Dreier-Spiel aus, trifft immer konsistenter und ist in der Verteidigung auf einem Niveau, das an Thaddeus Young in jungen Jahren erinnert. Sein Volumen von der Dreierlinie muss noch wachsen, und er muss beweisen, dass er das auch in einer NBA-Saison über 82 Spiele reproduzieren kann. Gutes Paket."},
   {pick:12, name:"Mikel Brown Jr.",       pos:"SG",    school:"Louisville",              tier:"Tier 3",
-   scouting:"6'5'' Lead Guard mit Jamal-Murray-Comp, starkem PnR-Spielmachen, sauberem Release und 83% FT. Schlanker Frame und Defense sind aktuell Schwächen — aber Shooting-Floor und Multi-Level-Scoring geben genug Vertrauen für eine Lottery-Auswahl."},
+   scouting:"Brown kann sich in dieser Liga zu einem echten Scorer entwickeln. 6'5'', trifft 83% von der Freiwurflinie, gutes Pick-and-Roll-Spiel und ein sauberer Wurf. Defensiv und von der Physis her ist er noch nicht fertig. Aber wer scoren kann und 83% Freiwurf trifft, findet immer einen Platz in einem Kader."},
   {pick:13, name:"Morez Johnson Jr.",     pos:"PF",    school:"Michigan",                tier:"Tier 3",
-   scouting:"Intensiver Motor-Big mit starkem Rebounding, wachsender Defensiv-Versatilität und contagious hustle energy. Offensiv noch roh — aber er kennt seine Rolle, maximiert sie und bringt bereits klaren NBA-Mehrwert als Two-Way Contributor."},
+   scouting:"Johnson ist keiner, der die Scoringliste anführt. Aber er reboundt, er verteidigt auf mehreren Positionen, und er gibt in jedem Spiel alles. Er kennt seine Rolle, überschreitet sie nicht und macht das, was er macht, besser als die meisten. Offensive Kreativität ist nicht sein Ding. Als Energiebringer vom Bench mit klarer Rolle hat er NBA-Niveau."},
 
   // ── TIER 4 ──────────────────────────────────────────────────
   {pick:14, name:"Nate Ament",            pos:"PF",    school:"Tennessee",               tier:"Tier 4",
-   scouting:"6'9'' Stretch-Wing (Zaccharie-Risacher-Comp) mit High-Release, guter Passvision und Potential als 3&D-Projekt. Hat 17 lbs zugelegt — aktuell inkonstant am Ring (44.8%), aber Länge und Shooting-Mechanik interessieren Teams."},
+   scouting:"Ament hat in dieser Saison 17 Pfund zugelegt und sieht jetzt wie ein NBA-Körper aus. 6'9'', langer Arm, schneller Release. Sein Abschluss am Ring ist noch zu unbeständig bei 44,8%, aber Länge und Wurfmechanik machen ihn zu einem 3-and-D-Projekt mit echtem Potenzial. Erinnert vom Typ her an Risacher in seinem Rookiejahr."},
   {pick:15, name:"Aday Mara",             pos:"C",     school:"Michigan",                tier:"Tier 4",
-   scouting:"7'3'' Center mit echter Post-Passvision (Hub-Spielmachen) und NCAA-führender Block-Rate. Scoring primär durch schiere Länge — Tempo und Hüftmobilität sind Limits, aber die Seltenheit seines Profils macht ihn zu einem faszinierenden Lottery-Glücksspiel."},
+   scouting:"7'3'' Center, der als Passspieler aus dem Post funktioniert und mehr Blocks zieht als jeder andere in der NCAA. Sein Scoring kommt fast ausschließlich durch seine Größe. Tempo und Beweglichkeit in den Hüften sind echte Grenzen. Aber ein Center dieses Typs kommt selten und Teams wetten gerne auf solche Profile."},
   {pick:16, name:"Dailyn Swain",          pos:"SF",    school:"Texas",                   tier:"Tier 4",
-   scouting:"Physischer 3&D Wing der Winning Plays macht und defensiv als schwere Herausforderung für Gegner gilt. Kein Primary Creator — aber als Low-Usage Beitragsstück im richtigen System sehr wertvoll."},
+   scouting:"Swain ist kein Creator. Er macht keine Highlights. Er verteidigt physisch, gewinnt seine Duelle und bringt das Team in die richtigen Situationen. In einem System mit klaren Rollen ist er sehr wertvoll, auch wenn er keine eigene Offense generiert."},
   {pick:17, name:"Jayden Quaintance",     pos:"C",     school:"Kentucky",                tier:"Tier 4",
-   scouting:"Bester Defender der Klasse laut vielen Scouts: Bam-Adebayo-Ceiling mit Lightning-Speed, Elite-Shotblocking und IQ weit über sein Alter hinaus. Kommt von ACL-Riss — offensive Entwicklung (47.9% FT) und Verletzungsgeschichte sind die Schlüsselfragen."},
+   scouting:"Viele Scouts nennen ihn den besten Verteidiger in diesem Draft. Seine Geschwindigkeit für einen Center ist ungewöhnlich, sein Shotblocking ist konstant und sein Basketball-IQ ist weit über seinem Alter. Er kommt von einem Kreuzbandriss zurück, und seine 47,9% Freiwurfquote zeigt, wie roh er offensiv noch ist. Wenn er gesund bleibt und seine Offense entwickelt, hat er Bam-Adebayo-Potenzial."},
   {pick:18, name:"Tyler Tanner",          pos:"PG",    school:"Vanderbilt",              tier:"Tier 4",
-   scouting:"Mini-Guard (~5'11'') der wie 6'3'' spielt — 4.1% Steal-Rate, 16 Dunks, schnelles Release und José-Alvarado-Defense-Motor. Größe ist sein Hauptlimit, aber outlier-level Athletik, Shooting-IQ und Stealing schreien Überraschungspick."},
+   scouting:"Tanner ist klein, aber er spielt als wäre er es nicht. 4,1% Steal-Rate, 16 Dunks in einer Saison als Guard, schneller Release. Er stehlt Bälle als wäre es sein Hauptjob. Seine Größe wird immer eine Diskussion in der NBA sein, aber sein Athletik-Niveau und seine defensive Energie machen ihn zu einem echten Kandidaten für eine Überraschungsposition im Draft."},
   {pick:19, name:"Allen Graves",          pos:"PF",    school:"",                        tier:"Tier 4",
-   scouting:"Wenig verfügbares College-Tape. Scouts loben Athletik und Entwicklungspotenzial — High-Variance Second-Round-Projekt."},
+   scouting:"Wenig verfügbares Tape. Scouts loben seine Athletik und sein Potenzial, aber konkrete Bewertungen sind schwierig. Hohes Risiko, potenziell hohe Belohnung."},
 
   // ── TIER 5 ──────────────────────────────────────────────────
   {pick:20, name:"Patrick Ngongba II",    pos:"C",     school:"Duke",                    tier:"Tier 5",
-   scouting:"Höchstgefühl-Big (Day'Ron-Sharpe-Comp) mit überragender Passvision (3:1 AST/TO), gutem Finishing (75.9% am Ring) und solider Shotblocking. Verletzungshistorie (wiederkehrende Fußprobleme) ist das wichtigste Med-Flag — wenn gesund, echter Starter-Ceiling."},
+   scouting:"Ngongba verteilt den Ball wie ein Guard: 3:1 Assist-Turnover-Quote als Center ist bemerkenswert. Er finisht am Ring bei 75,9% und blockt ordentlich. Das Problem ist seine Verletzungsgeschichte, immer wieder Fußprobleme, das wird das erste Thema in jedem Med-Check sein. Wenn er gesund bleibt, ist er ein Starter. Das Wenn ist halt groß."},
   {pick:21, name:"Cameron Carr",          pos:"SG",    school:"Baylor",                  tier:"Tier 5",
    scouting:"Elite Shotmaker (57.5% FG, 44% 3PT) mit MPJ-Comp, 7-Foot-Wingspan und spektakulärer Athletik (22 Dunks in 10 Spielen). Tunnelvision und niedrige Assist-Rate (6.2%) schränken sein Ceiling ein — als Off-Ball-Scorer-Projekt echter Top-10-Wert."},
   {pick:22, name:"Amari Allen",           pos:"SF",    school:"Alabama",                 tier:"Tier 5",
@@ -1158,31 +1206,49 @@ function renderDraft26(data) {
 
 function draft26Card(p) {
   const c = posColor(p.pos);
+  const idx = DRAFT_2026.indexOf(p);
   return `<div class="draft26-card-wrap">
-    <div class="draft26-card" onclick="this.classList.toggle('flipped')" title="Klicken zum Umdrehen">
-      <div class="draft26-front">
-        <div class="draft26-pick-num ${pickNumClass(p.pick, p.tier)}">${p.pick}</div>
-        <div class="draft26-info">
-          <div class="draft26-name">${p.name}</div>
-          <div class="draft26-meta">
-            <span class="draft26-pos" style="background:${c.bg};color:${c.txt};">${p.pos}</span>
-            ${p.school ? `<span class="draft26-school">${p.school}</span>` : ''}
-          </div>
-          <div class="draft26-flip-hint">🔍 Scouting →</div>
-        </div>
-      </div>
-      <div class="draft26-back">
-        <div class="draft26-back-header">
+    <div class="draft26-card" onclick="openScoutModal(${idx})" title="Klicken für Scouting Report">
+      <div class="draft26-pick-num ${pickNumClass(p.pick, p.tier)}">${p.pick}</div>
+      <div class="draft26-info">
+        <div class="draft26-name">${p.name}</div>
+        <div class="draft26-meta">
           <span class="draft26-pos" style="background:${c.bg};color:${c.txt};">${p.pos}</span>
-          <span style="color:var(--text);font-size:12px;font-weight:700;text-transform:none;letter-spacing:0;">${p.name}</span>
-          <span style="margin-left:auto;font-size:10px;color:var(--muted);">#${p.pick}</span>
+          ${p.school ? `<span class="draft26-school">${p.school}</span>` : ''}
         </div>
-        <div class="draft26-scout-text">${p.scouting || '—'}</div>
-        <div class="draft26-flip-hint">← zurück</div>
+        ${p.scouting ? `<div class="draft26-scout-preview">${p.scouting}</div>` : ''}
       </div>
+      <div class="draft26-open-hint">🔍 öffnen</div>
     </div>
   </div>`;
 }
+
+function openScoutModal(idx) {
+  const p = DRAFT_2026[idx];
+  const c = posColor(p.pos);
+  const isLight = document.body.classList.contains('light');
+  const ts = isLight ? TIER_STYLE_LIGHT : TIER_STYLE_DARK;
+  const s = ts[p.tier] || ts['Tier 6'];
+  document.getElementById('modalPick').textContent = `Pick #${p.pick} · ${p.tier}`;
+  document.getElementById('modalName').textContent = p.name;
+  document.getElementById('modalMeta').innerHTML = `
+    <span class="draft26-pos" style="background:${c.bg};color:${c.txt};font-size:12px;font-weight:800;padding:3px 9px;border-radius:6px;">${p.pos}</span>
+    ${p.school ? `<span class="scout-modal-tier">${p.school}</span>` : ''}
+    <span class="scout-modal-tier" style="color:${s.label};border-color:${s.dot}44;">${p.tier}</span>
+  `;
+  document.getElementById('modalScouting').textContent = p.scouting || 'Kein Scouting Report verfügbar.';
+  document.getElementById('scoutModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeScoutModal(e) {
+  if (e && e.target !== document.getElementById('scoutModal')) return;
+  document.getElementById('scoutModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { document.getElementById('scoutModal').classList.remove('open'); document.body.style.overflow = ''; }
+});
 
 function filterDraft26() {
   const q = document.getElementById('draft26Search').value.toLowerCase().trim();
