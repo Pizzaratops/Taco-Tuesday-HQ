@@ -536,7 +536,7 @@ if (localStorage.getItem('theme') === 'light') {
 //  TEAMS
 // ============================================================
 const TEAMS = [
-  { id:1,  name:"Bear Down",                       owner:"Kong Power",          record:"112-41-0", color:"#6c63ff", lightColor:"#c0622f" },
+  { id:1,  name:"Fighting Illini",                 owner:"Kong Power",          record:"112-41-0", color:"#6c63ff", lightColor:"#c0622f" },
   { id:2,  name:"Seagulls",                        owner:"Möwe",                record:"99-53-1",  color:"#29b6f6", lightColor:"#2a7ab8" },
   { id:3,  name:"Neukoelln Hustlers",              owner:"Timo Xtremo",         record:"95-57-1",  color:"#ff6584", lightColor:"#b43c64" },
   { id:4,  name:"Leaveland Cavaliers",             owner:"Sven",                record:"87-65-1",  color:"#4caf81", lightColor:"#2d7a50" },
@@ -564,7 +564,7 @@ const ROSTERS = {
   {name:"LaMelo Ball",pos:"PG",team:"CHA"},{name:"Alperen Sengun",pos:"C",team:"HOU"},
   {name:"Matas Buzelis",pos:"PF",team:"CHI"},{name:"Dyson Daniels",pos:"SG",team:"ATL"},
   {name:"Zion Williamson",pos:"PF",team:"NOR"},{name:"Desmond Bane",pos:"SG",team:"ORL"},
-  {name:"Neemias Queta",pos:"C",team:"BOS"},{name:"Moussa Diabate",pos:"PF",team:"CHA"},
+  {name:"Neemias Queta",pos:"C",team:"BOS"},
   {name:"Ausar Thompson",pos:"SF",team:"DET"},{name:"VJ Edgecombe",pos:"SG",team:"PHI"},
   {name:"Reed Sheppard",pos:"SG",team:"HOU"},{name:"Dejounte Murray",pos:"PG",team:"NOR"},
   {name:"Day'Ron Sharpe",pos:"C",team:"BKN"},{name:"Ivica Zubac",pos:"C",team:"IND"},
@@ -655,7 +655,7 @@ const ROSTERS = {
   {name:"Bruce Brown",pos:"SG",team:"DEN"},{name:"Bobby Portis",pos:"PF",team:"MIL"},
   {name:"Tristan da Silva",pos:"SF",team:"ORL"},{name:"Sidy Cissoko",pos:"SG",team:"POR"},
   {name:"Gary Trent Jr.",pos:"SG",team:"MIL"},{name:"Shaedon Sharpe",pos:"SG",team:"POR"},
-  {name:"Cam Whitmore",pos:"SF",team:"WAS"},
+  {name:"Cam Whitmore",pos:"SF",team:"WAS"},{name:"Moussa Diabate",pos:"PF",team:"CHA"},
 ],
 7:[
   {name:"Derrick White",pos:"PG",team:"BOS"},{name:"Evan Mobley",pos:"PF",team:"CLE"},
@@ -820,7 +820,7 @@ const PICKS = [
   {year:2028,round:1,originalOwner:11,currentOwner:11},{year:2028,round:1,originalOwner:12,currentOwner:12},
   {year:2028,round:2,originalOwner:1,currentOwner:1},{year:2028,round:2,originalOwner:2,currentOwner:2},
   {year:2028,round:2,originalOwner:3,currentOwner:3},{year:2028,round:2,originalOwner:4,currentOwner:4},
-  {year:2028,round:2,originalOwner:5,currentOwner:5},{year:2028,round:2,originalOwner:6,currentOwner:6},
+  {year:2028,round:2,originalOwner:5,currentOwner:5},{year:2028,round:2,originalOwner:6,currentOwner:1},
   {year:2028,round:2,originalOwner:7,currentOwner:7},{year:2028,round:2,originalOwner:8,currentOwner:8},
   {year:2028,round:2,originalOwner:9,currentOwner:9},{year:2028,round:2,originalOwner:10,currentOwner:10},
   {year:2028,round:2,originalOwner:11,currentOwner:11},{year:2028,round:2,originalOwner:12,currentOwner:12},
@@ -863,9 +863,9 @@ const PICKS = [
 ];
 
 const DRAFT_NOTES = {
-  2026:"Do not trade a 1st to Bear Down. He has enough. Draft order TBD based on final standings.",
-  2027:"Bear Down's R1 goes to Always Money. Neukoelln's R1 goes to 3-POINT MAFIA. 3PM's R3 goes to Neukoelln.",
-  2028:"Neukoelln's R1 goes to 3-POINT MAFIA in Banchero-Trade",
+  2026:"Do not trade a 1st to Fighting Illini. He has enough. Draft order TBD based on final standings.",
+  2027:"Fighting Illini's R1 goes to Always Money. Neukoelln's R1 goes to 3-POINT MAFIA. 3PM's R3 goes to Neukoelln.",
+  2028:"Neukoelln's R1 goes to 3-POINT MAFIA in Banchero-Trade. Neukoelln's R1 goes to 3-POINT MAFIA in Banchero-Trade. 3PM's R2 goes to Bear Down (Moussa Diabate Trade).",
   2029:"All teams hold their own picks. No trades recorded yet.",
 };
 
@@ -1421,7 +1421,7 @@ function renderStandingsChart(){
   if(standingsChartInstance) standingsChartInstance.destroy();
   const seasons=['2021/22','2022/23','2023/24','2024/25','2025/26'];
   const standingsData=[
-    {team:'Bear Down',color:'#6c63ff',lightColor:'#c0622f',avg:1.6,data:[1,3,2,1,1]},
+    {team:'Fighting Illini',color:'#6c63ff',lightColor:'#c0622f',avg:1.6,data:[1,3,2,1,1]},
     {team:'Vancouver Curry-Wurst',color:'#78909c',lightColor:'#607080',avg:4.4,data:[3,1,1,5,12]},
     {team:'Seagulls',color:'#29b6f6',lightColor:'#2a7ab8',avg:5.4,data:[9,8,6,2,2]},
     {team:'Anadolu Ballers',color:'#f5c842',lightColor:'#9a6e10',avg:5.6,data:[8,7,5,3,5]},
