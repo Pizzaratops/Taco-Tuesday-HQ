@@ -209,6 +209,16 @@
   .r-no-results { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
   .r-sort-arrow { margin-left: 4px; opacity: 0.5; font-size: 9px; }
   .r-sorted .r-sort-arrow { opacity: 1; }
+  .r-team-link { cursor: pointer; transition: all 0.15s; }
+  .r-team-link:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+  .nba-team-hero { display:flex; align-items:center; gap:20px; margin-bottom:28px; }
+  .nba-team-abbr { font-family:'Playfair Display',serif; font-size:36px; font-weight:800; width:72px; height:72px; border-radius:16px; display:flex; align-items:center; justify-content:center; background:var(--accent-light); color:var(--accent); border:1px solid var(--border); flex-shrink:0; }
+  .nba-team-title { font-family:'Playfair Display',serif; font-size:26px; font-weight:800; color:var(--text); }
+  .nba-team-sub { color:var(--muted); font-size:13px; margin-top:4px; }
+  .nba-player-row { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:11px 16px; display:flex; align-items:center; gap:12px; margin-bottom:7px; transition:border-color 0.15s; }
+  .nba-player-row:hover { border-color:var(--accent); }
+  .nba-rank-badge { font-family:'Playfair Display',serif; font-size:13px; font-weight:800; width:42px; text-align:center; flex-shrink:0; }
+  .nba-owner-tag { font-size:11px; font-weight:600; padding:2px 8px; border-radius:5px; background:var(--surface2); border:1px solid var(--border); color:var(--muted); white-space:nowrap; }
 
   /* ===== 2026 DRAFT BOARD ===== */
   .draft26-search { position: relative; margin-bottom: 20px; }
@@ -485,6 +495,12 @@
     </table>
     <div class="r-no-results" id="rankingsNoResults" style="display:none;">No players found.</div>
   </div>
+</div>
+
+<!-- NBA TEAM PAGE -->
+<div class="page" id="nbaTeamPage">
+  <div id="nbaTeamHeader" style="margin-bottom:24px;"></div>
+  <div id="nbaTeamContent"></div>
 </div>
 
 <!-- SCOUT MODAL -->
@@ -1341,7 +1357,7 @@ function renderRankings(data) {
   tbody.innerHTML=data.map(p=>`<tr>
     <td><span class="r-rank ${rankClass(p[0])}">${p[0]}</span></td>
     <td><span class="r-name">${p[1]}</span></td>
-    <td><span class="r-team">${p[2]}</span></td>
+    <td><span class="r-team r-team-link" onclick="showNBATeam('${p[2]}')" title="View ${NBA_TEAM_NAMES[p[2]]||p[2]}">${p[2]}</span></td>
     <td><span class="r-pos">${p[3]}</span></td>
   </tr>`).join('');
 }
@@ -1684,13 +1700,36 @@ function renderTab(){
   document.getElementById('tabContent').innerHTML=currentTab==='roster'?renderRoster(currentTeamId):renderPicks(currentTeamId);
 }
 
+function getDynastyRank(name) {
+  const entry = DYNASTY_PLAYERS.find(p => p[1].toLowerCase() === name.toLowerCase());
+  return entry ? entry[0] : null;
+}
+function dynastyRankBadge(rank) {
+  if (rank === null) return '<span style="font-size:11px;color:var(--border);font-weight:600;min-width:48px;text-align:right;padding:3px 8px;">—</span>';
+  let bg, color;
+  if (rank === 1)       { bg='rgba(245,200,66,0.15)';  color='#f5c842'; }
+  else if (rank <= 5)   { bg='rgba(108,99,255,0.15)';  color='#a89bff'; }
+  else if (rank <= 15)  { bg='rgba(76,175,129,0.15)';  color='#6dddaa'; }
+  else if (rank <= 30)  { bg='rgba(41,182,246,0.15)';  color='#4fc3f7'; }
+  else if (rank <= 75)  { bg='rgba(255,101,132,0.12)'; color='#ff8fa3'; }
+  else                  { bg='rgba(123,127,158,0.12)'; color='var(--muted)'; }
+  return `<span onclick="showRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${bg};color:${color};cursor:pointer;transition:opacity 0.15s;" onmouseenter="this.style.opacity='0.75'" onmouseleave="this.style.opacity='1'">#${rank}</span>`;
+}
 function renderRoster(id){
   const roster=ROSTERS[id]||[]; let html='';
+  html+=`<div style="display:flex;align-items:center;gap:12px;padding:6px 16px 10px;border-bottom:1px solid var(--border);margin-bottom:8px;">
+    <div style="width:32px;flex-shrink:0;"></div>
+    <div style="flex:1;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);">Name</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);width:36px;text-align:center;">Pos</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:48px;text-align:right;">Dynasty</div>
+  </div>`;
   ['PG','SG','SF','PF','C'].forEach(pos=>{
     const players=roster.filter(p=>p.pos===pos);
     if(!players.length) return;
-    html+=`<div class="section-label">${pos}</div>`;
-    players.forEach(p=>{html+=`<div class="player-row"><div class="pos-badge pos-${p.pos}">${p.pos}</div><div class="player-name">${p.name}</div><div class="player-team">${p.team}</div></div>`;});
+    players.forEach(p=>{
+      const rank=getDynastyRank(p.name);
+      html+=`<div class="player-row"><div class="pos-badge pos-${p.pos}">${p.pos}</div><div class="player-name">${p.name}</div><span class="player-team r-team-link" onclick="showNBATeam('${p.team}')" style="font-size:12px;">${p.team}</span>${dynastyRankBadge(rank)}</div>`;
+    });
   });
   return html;
 }
@@ -1837,6 +1876,90 @@ function renderStandingsChart(){
     }
   });
 }
+
+// ============================================================
+//  NBA TEAM PAGE
+// ============================================================
+const NBA_TEAM_NAMES = {
+  ATL:'Atlanta Hawks', BOS:'Boston Celtics', BKN:'Brooklyn Nets',
+  CHA:'Charlotte Hornets', CHI:'Chicago Bulls', CLE:'Cleveland Cavaliers',
+  DAL:'Dallas Mavericks', DEN:'Denver Nuggets', DET:'Detroit Pistons',
+  GSW:'Golden State Warriors', HOU:'Houston Rockets', IND:'Indiana Pacers',
+  LAC:'LA Clippers', LAL:'LA Lakers', MEM:'Memphis Grizzlies',
+  MIA:'Miami Heat', MIL:'Milwaukee Bucks', MIN:'Minnesota Timberwolves',
+  NOR:'New Orleans Pelicans', NOP:'New Orleans Pelicans', NYK:'New York Knicks',
+  OKC:'Oklahoma City Thunder', ORL:'Orlando Magic', PHI:'Philadelphia 76ers',
+  PHO:'Phoenix Suns', POR:'Portland Trail Blazers', SAC:'Sacramento Kings',
+  SAS:'San Antonio Spurs', TOR:'Toronto Raptors', UTA:'Utah Jazz',
+  WAS:'Washington Wizards', FA:'Free Agent',
+};
+
+function buildFantasyOwnerMap() {
+  const map = {};
+  Object.entries(ROSTERS).forEach(([teamId, roster]) => {
+    roster.forEach(p => { map[p.name.toLowerCase()] = parseInt(teamId); });
+  });
+  return map;
+}
+
+function showNBATeam(abbr) {
+  const fullName = NBA_TEAM_NAMES[abbr] || abbr;
+  const fantasyOwners = buildFantasyOwnerMap();
+
+  const ranked = DYNASTY_PLAYERS
+    .filter(p => p[2] === abbr)
+    .map(p => {
+      const ownerId = fantasyOwners[p[1].toLowerCase()] || null;
+      const owner = ownerId ? teamMap[ownerId] : null;
+      return { rank: p[0], name: p[1], pos: p[3], owner };
+    });
+
+  ranked.sort((a, b) => a.rank - b.rank);
+
+  const isLight = document.body.classList.contains('light');
+
+  let headerHtml = `<div class="nba-team-hero">
+    <div class="nba-team-abbr">${abbr}</div>
+    <div>
+      <div class="nba-team-title">${fullName}</div>
+      <div class="nba-team-sub">${ranked.length} ranked player${ranked.length!==1?'s':''} · sorted by dynasty rank</div>
+    </div>
+  </div>`;
+
+  let rows = '';
+  if (!ranked.length) {
+    rows = '<p style="color:var(--muted);padding:20px 0;">No ranked players on this team.</p>';
+  } else {
+    ranked.forEach(p => {
+      let bg, color;
+      const r = p.rank;
+      if (r === 1)      { bg='rgba(245,200,66,0.15)';  color='#f5c842'; }
+      else if (r <= 5)  { bg='rgba(108,99,255,0.15)';  color='#a89bff'; }
+      else if (r <= 15) { bg='rgba(76,175,129,0.15)';  color='#6dddaa'; }
+      else if (r <= 30) { bg='rgba(41,182,246,0.15)';  color='#4fc3f7'; }
+      else if (r <= 75) { bg='rgba(255,101,132,0.12)'; color='#ff8fa3'; }
+      else              { bg='rgba(123,127,158,0.12)'; color='var(--muted)'; }
+
+      const ownerColor = p.owner ? (isLight ? p.owner.lightColor : p.owner.color) : null;
+      const ownerTag = p.owner
+        ? `<span class="nba-owner-tag" style="border-color:${ownerColor}44;color:${ownerColor};" onclick="showTeam(${p.owner.id})" title="Go to ${p.owner.name}">${p.owner.name}</span>`
+        : `<span class="nba-owner-tag">Unowned</span>`;
+
+      const posCls = `pos-${p.pos.split('/')[0]}`;
+      rows += `<div class="nba-player-row">
+        <span class="nba-rank-badge" style="background:${bg};color:${color};border-radius:8px;padding:4px 6px;">#${r}</span>
+        <div class="pos-badge ${posCls}">${p.pos.split('/')[0]}</div>
+        <div style="flex:1;font-weight:600;font-size:14px;color:var(--text);">${p.name}</div>
+        ${ownerTag}
+      </div>`;
+    });
+  }
+
+  document.getElementById('nbaTeamHeader').innerHTML = headerHtml;
+  document.getElementById('nbaTeamContent').innerHTML = rows;
+  navigate('nbaTeamPage');
+}
+
 
 renderHome();
 </script>
