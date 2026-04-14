@@ -220,7 +220,7 @@
   .nba-rank-badge { font-family:'Playfair Display',serif; font-size:13px; font-weight:800; width:42px; text-align:center; flex-shrink:0; }
   .nba-owner-tag { font-size:11px; font-weight:600; padding:2px 8px; border-radius:5px; background:var(--surface2); border:1px solid var(--border); color:var(--muted); white-space:nowrap; }
 
-  /* ===== TRADE ANALYZER ===== */
+ /* ===== TRADE ANALYZER ===== */
   .trade-layout { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: start; }
   @media (max-width: 600px) { .trade-layout { grid-template-columns: 1fr; } .trade-vs { display: none; } }
   .trade-side { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
@@ -568,7 +568,7 @@
 <!-- DYNASTY RANKINGS -->
 <div class="page" id="rankingsPage">
   <h2 style="margin-bottom:6px;">Dynasty Rankings</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">450 players · 2025–26 Season</p>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">450 players · 2025–26 Season · MFHFBs DR = your ranking · Matt DR = Matt Lawson's ranking</p>
   <div class="rankings-search">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -583,6 +583,8 @@
           <th onclick="sortRankings(1)">Name<span class="r-sort-arrow">↕</span></th>
           <th onclick="sortRankings(2)">Team<span class="r-sort-arrow">↕</span></th>
           <th onclick="sortRankings(3)">Position<span class="r-sort-arrow">↕</span></th>
+          <th style="text-align:center;white-space:nowrap;">MFHFBs DR</th>
+          <th style="text-align:center;white-space:nowrap;">Matt DR</th>
         </tr>
       </thead>
       <tbody id="rankingsBody"></tbody>
@@ -1501,6 +1503,420 @@ const DYNASTY_PLAYERS = [
   [450,"Branden Carlson","OKC","C"]
 ];
 
+const MATT_RANKS = {
+  "Victor Wembanyama":1,
+  "Shai Gilgeous-Alexander":2,
+  "Luka Doncic":4,
+  "Nikola Jokic":3,
+  "Cade Cunningham":5,
+  "Tyrese Maxey":21,
+  "Anthony Edwards":7,
+  "Jalen Johnson":11,
+  "Jayson Tatum":13,
+  "Cooper Flagg":6,
+  "Tyrese Haliburton":12,
+  "Alperen Sengun":19,
+  "Chet Holmgren":8,
+  "Evan Mobley":9,
+  "Scottie Barnes":17,
+  "Jalen Williams":14,
+  "Giannis Antetokounmpo":15,
+  "Amen Thompson":10,
+  "Franz Wagner":20,
+  "Austin Reaves":38,
+  "Donovan Mitchell":27,
+  "Deni Avdija":43,
+  "Dylan Harper":31,
+  "Darius Garland":30,
+  "Devin Booker":24,
+  "Josh Giddey":44,
+  "Jalen Brunson":29,
+  "Jalen Duren":71,
+  "Trey Murphy III":26,
+  "Jamal Murray":37,
+  "Paolo Banchero":23,
+  "Alex Sarr":73,
+  "Donovan Clingan":67,
+  "Jaren Jackson Jr.":25,
+  "Jaylen Brown":39,
+  "Karl-Anthony Towns":18,
+  "Bam Adebayo":35,
+  "VJ Edgecombe":63,
+  "LaMelo Ball":16,
+  "Trae Young":22,
+  "De'Aaron Fox":28,
+  "Desmond Bane":42,
+  "Lauri Markkanen":40,
+  "James Harden":48,
+  "Domantas Sabonis":34,
+  "Kevin Durant":45,
+  "Tyler Herro":36,
+  "Kon Knueppel":82,
+  "Zach Edey":89,
+  "Brandon Miller":32,
+  "Stephen Curry":46,
+  "Stephon Castle":81,
+  "Ivica Zubac":51,
+  "Derrick White":77,
+  "Keyonte George":152,
+  "Onyeka Okongwu":60,
+  "Pascal Siakam":64,
+  "Kel'el Ware":72,
+  "Anthony Davis":33,
+  "Zion Williamson":66,
+  "Ja Morant":50,
+  "Walker Kessler":53,
+  "Derik Queen":96,
+  "Dyson Daniels":41,
+  "Jalen Suggs":70,
+  "Matas Buzelis":123,
+  "OG Anunoby":75,
+  "Reed Sheppard":80,
+  "Isaiah Hartenstein":68,
+  "Kyrie Irving":47,
+  "Ace Bailey":59,
+  "Kawhi Leonard":105,
+  "Jarrett Allen":69,
+  "Kyshawn George":164,
+  "Cedric Coward":139,
+  "Joel Embiid":103,
+  "Mikal Bridges":76,
+  "Brandon Ingram":62,
+  "Scoot Henderson":49,
+  "Jaden McDaniels":79,
+  "Ausar Thompson":54,
+  "Michael Porter Jr.":118,
+  "Jeremiah Fears":120,
+  "Immanuel Quickley":56,
+  "Collin Murray-Boyles":100,
+  "Nic Claxton":111,
+  "Tari Eason":55,
+  "Coby White":86,
+  "Julius Randle":126,
+  "Ryan Rollins":337,
+  "Anthony Black":165,
+  "Shaedon Sharpe":95,
+  "Nickeil Alexander-Walker":186,
+  "Dejounte Murray":74,
+  "Mark Williams":98,
+  "Zach LaVine":61,
+  "Jabari Smith Jr.":116,
+  "Jakob Poeltl":84,
+  "Payton Pritchard":129,
+  "Devin Vassell":87,
+  "Jalen Green":90,
+  "Myles Turner":58,
+  "Keegan Murray":94,
+  "Tre Johnson":102,
+  "Naz Reid":83,
+  "Peyton Watson":184,
+  "Egor Demin":92,
+  "Andrew Nembhard":131,
+  "Ajay Mitchell":252,
+  "Cason Wallace":132,
+  "Josh Hart":112,
+  "Jonathan Kuminga":115,
+  "Bilal Coulibaly":85,
+  "Jared McCain":119,
+  "Kristaps Porzingis":65,
+  "Dereck Lively II":52,
+  "Khaman Malauch":88,
+  "Toumani Camara":136,
+  "Miles Bridges":91,
+  "Rudy Gobert":117,
+  "LeBron James":104,
+  "Norman Powell":146,
+  "Christian Braun":135,
+  "Ty Jerome":170,
+  "De'Andre Ayton":128,
+  "Daniel Gafford":133,
+  "Nikola Topic":99,
+  "Jaime Jaquez Jr.":182,
+  "Jaylon Tyson":247,
+  "Santi Aldama":148,
+  "Brandin Podziemski":93,
+  "John Collins":143,
+  "Kevin Porter Jr.":187,
+  "Ron Holland":177,
+  "Aaron Gordon":144,
+  "Moussa Diabate":272,
+  "RJ Barrett":134,
+  "Aaron Nesmith":169,
+  "Thomas Sorber":127,
+  "Cameron Johnson":125,
+  "Malik Monk":97,
+  "Neemias Queta":223,
+  "Will Riley":359,
+  "Quentin Grimes":140,
+  "Bennedict Mathurin":149,
+  "Maxime Raynaud":201,
+  "Joan Beringer":213,
+  "Wendell Carter Jr.":222,
+  "Ryan Kalkbrenner":176,
+  "Donte DiVincenzo":155,
+  "Max Christie":192,
+  "Fred VanVleet":78,
+  "Paul George":108,
+  "Herbert Jones":124,
+  "Carter Bryant":142,
+  "Kyle Filipowski":194,
+  "Jrue Holiday":160,
+  "CJ McCollum":159,
+  "Andrew Wiggins":145,
+  "Keon Ellis":141,
+  "Zaccharie Risacher":147,
+  "Naji Marshall":203,
+  "Isaiah Collier":180,
+  "Ayo Dosunmu":190,
+  "Walter Clayton Jr.":178,
+  "Noa Essengue":166,
+  "Jordan Poole":57,
+  "DeMar DeRozan":109,
+  "Dillon Brooks":235,
+  "Nique Clifford":188,
+  "De'Andre Hunter":167,
+  "Jimmy Butler":106,
+  "Grayson Allen":229,
+  "Daniss Jenkins":459,
+  "Kasparas Jakucionis":154,
+  "Hugo Gonzalez":312,
+  "Josh Minott":254,
+  "Davion Mitchell":150,
+  "Scotty Pippen Jr.":214,
+  "Jerami Grant":162,
+  "Nikola Vucevic":110,
+  "Damian Lillard":107,
+  "Tobias Harris":161,
+  "Tristan Da Silva":302,
+  "Isaiah Stewart":197,
+  "Danny Wolf":224,
+  "Day'Ron Sharpe":171,
+  "Anfernee Simons":114,
+  "Jase Richardson":232,
+  "Draymond Green":219,
+  "Collin Gillespie":340,
+  "Noah Penda":275,
+  "Rob Dillingham":101,
+  "Saddiq Bey":292,
+  "Jaylen Wells":205,
+  "Brice Sensabaugh":277,
+  "Mitchell Robinson":191,
+  "Cam Spencer":362,
+  "De'Anthony Melton":236,
+  "Dylan Cardwell":440,
+  "Miles McBride":239,
+  "Luke Kornet":266,
+  "Yang Hansen":193,
+  "Noah Clowney":181,
+  "Rui Hachimura":168,
+  "Keldon Johnson":271,
+  "Nolan Traore":207,
+  "Collin Sexton":163,
+  "Brandon Williams":309,
+  "Isaiah Joe":329,
+  "Kyle Kuzma":189,
+  "Sam Hauser":339,
+  "Julian Champagnie":287,
+  "Taylor Hendricks":138,
+  "Gui Santos":476,
+  "Cody Williams":245,
+  "Sam Merrill":335,
+  "Justin Champagnie":256,
+  "Kris Dunn":244,
+  "GG Jackson":196,
+  "Jay Huff":306,
+  "Kelly Oubre Jr.":202,
+  "AJ Green":346,
+  "DaRon Holmes II":234,
+  "Duncan Robinson":338,
+  "Luguentz Dort":185,
+  "Adou Thiero":237,
+  "Nikola Jovic":156,
+  "Devin Carter":151,
+  "Goga Bitadze":158,
+  "Alex Caruso":174,
+  "Dennis Schroder":195,
+  "Ryan Dunn":206,
+  "Will Richard":460,
+  "Aaron Wiggins":204,
+  "Jake LaRavia":200,
+  "Moses Moody":225,
+  "Ousmane Dieng":371,
+  "Jeremy Sochan":121,
+  "Jamal Shead":279,
+  "Jordan Walsh":412,
+  "TJ McConnell":273,
+  "Jarace Walker":179,
+  "Bobby Portis":231,
+  "Kobe Sanders":446,
+  "Russell Westbrook":243,
+  "Obi Toppin":233,
+  "Rasheer Fleming":215,
+  "Drake Powell":332,
+  "Yanic Konan Niederhauser":250,
+  "Leonard Miller":276,
+  "Jose Alvarado":263,
+  "Baylor Scheierman":347,
+  "Royce O'Neale":218,
+  "Yves Missi":157,
+  "Jusuf Nurkic":290,
+  "Tre Jones":251,
+  "Oso Ighodaro":354,
+  "Vit Krejci":238,
+  "Ryan Nembhard":471,
+  "Kevin Huerter":228,
+  "Bruce Brown":240,
+  "Jalen Smith":283,
+  "Javon Small":421,
+  "Derrick Jones Jr.":286,
+  "Liam McNeeley":304,
+  "Tidjane Salaun":241,
+  "Asa Newell":230,
+  "Max Strus":227,
+  "Jamir Watkins":448,
+  "Isaiah Jackson":297,
+  "Pelle Larsson":376,
+  "Ben Saraf":294,
+  "Robert Williams III":255,
+  "Harrison Barnes":365,
+  "Kam Jones":257,
+  "Justin Edwards":303,
+  "Bradley Beal":183,
+  "Jaylin Williams":381,
+  "Jaden Ivey":130,
+  "Mouhamed Gueye":289,
+  "Tristan Vukcevic":331,
+  "Amari Williams":462,
+  "Craig Porter Jr.":285,
+  "Guerschon Yabusele":246,
+  "Al Horford":324,
+  "Vince Williams Jr.":209,
+  "Cam Thomas":122,
+  "Luke Kennard":344,
+  "Spencer Jones":477,
+  "Jamaree Bouyea":519,
+  "Jordan Miller":369,
+  "Julian Strawther":226,
+  "Sandro Mamukelashvili":307,
+  "Adem Bona":259,
+  "Corey Kispert":274,
+  "Jonas Valanciunas":334,
+  "Tyler Kolek":328,
+  "Bogdan Bogdanovic":221,
+  "Luka Garza":408,
+  "Karlo Matkovic":253,
+  "Andre Drummond":364,
+  "Tyrese Proctor":313,
+  "Rocco Zikarsky":488,
+  "Terance Mann":336,
+  "Khris Middleton":210,
+  "Caris LeVert":269,
+  "Ben Sheppard":378,
+  "Gradey Dick":172,
+  "Ziaire Williams":249,
+  "Jock Landale":404,
+  "Johni Broome":242,
+  "Jordan Goodwin":405,
+  "Tim Hardaway Jr.":367,
+  "Cam Whitmore":153,
+  "Ja'Kobe Walter":310,
+  "Kentavious Caldwell-Pope":293,
+  "Simone Fontecchio":353,
+  "Sion James":291,
+  "Johnny Furphy":379,
+  "Malik Beasley":298,
+  "Isaac Okoro":373,
+  "D'Angelo Russell":173,
+  "Lonzo Ball":175,
+  "Klay Thompson":262,
+  "Caleb Love":465,
+  "Trendon Watford":315,
+  "Brook Lopez":265,
+  "Gary Trent Jr.":208,
+  "Jaylen Clark":311,
+  "Steven Adams":220,
+  "Brandon Clarke":281,
+  "Matisse Thybulle":299,
+  "Paul Reed":296,
+  "Nick Richards":314,
+  "Patrick Williams":284,
+  "Elijah Harkless":511,
+  "Ron Harper Jr.":503,
+  "Tre Mann":199,
+  "Jordan Hawkins":248,
+  "Grant Williams":308,
+  "Brooks Barnhizer":411,
+  "Dean Wade":391,
+  "Jaxson Hayes":352,
+  "Ochai Agbaji":349,
+  "Cole Anthony":280,
+  "Dorian Finney-Smith":301,
+  "Jonathan Mogbo":216,
+  "Nae'Qwan Tomlin":498,
+  "Buddy Hield":261,
+  "AJ Johnson":330,
+  "Tyus Jones":198,
+  "Haywood Highsmith":386,
+  "Dalton Knecht":270,
+  "Moritz Wagner":357,
+  "Pacome Dadiet":423,
+  "Josh Green":316,
+  "Clint Capela":264,
+  "Gary Payton II":396,
+  "Jaden Hardy":351,
+  "Jarred Vanderbilt":300,
+  "Kelly Olynyk":278,
+  "Koby Brea":356,
+  "Mike Conley":325,
+  "Jonathan Isaac":211,
+  "Jordan Clarkson":320,
+  "Micah Peavy":453,
+  "Alijah Martin":260,
+  "Bronny James":479,
+  "Quenton Jackson":523,
+  "Rayan Rupert":473,
+  "Alex Toohey":455,
+  "John Tonje":432,
+  "Precious Achiuwa":317,
+  "Trayce Jackson-Davis":217,
+  "Kevon Looney":439,
+  "Jericho Sims":433,
+  "Taurean Prince":385,
+  "Pete Nance":516,
+  "Zach Collins":342,
+  "Tyrese Martin":420,
+  "Kyle Anderson":363,
+  "Tyler Smith":327,
+  "Jett Howard":355,
+  "Sidy Cissoko":490,
+  "Aaron Holiday":394,
+  "Kris Murray":424,
+  "Blake Wesley":417,
+  "KJ Simpson":413,
+  "Chaz Lanier":288,
+  "John Konchar":428,
+  "Josh Okogie":358,
+  "Caleb Martin":282,
+  "Jabari Walker":372,
+  "Jalen Wilson":370,
+  "Marcus Sasser":343,
+  "Kevin Love":532,
+  "Ariel Hukporti":392,
+  "Dru Smith":529,
+  "Jalen Pickett":383,
+  "Kenrich Williams":438,
+  "Thomas Bryant":426,
+  "Keshad Johnson":452,
+  "Taelon Peter":419,
+  "Jahmai Mashack":485,
+  "Lachlan Olbrich":468,
+  "Max Shulga":437,
+  "Dillon Jones":268,
+  "Dalen Terry":418,
+  "Larry Nance Jr.":350,
+  "Branden Carlson":514
+};
+
 let rSortCol=0, rSortAsc=true, rCurrentData=[...DYNASTY_PLAYERS];
 
 function rankClass(r) {
@@ -1508,6 +1924,18 @@ function rankClass(r) {
   if(r<=5)  return 'r-rank-top5';
   if(r<=15) return 'r-rank-top15';
   return '';
+}
+function mattRankBadge(name) {
+  const r = MATT_RANKS[name];
+  if (!r) return '<span style="color:var(--border);font-size:11px;font-weight:600;">—</span>';
+  let bg, color;
+  if (r === 1)      { bg='rgba(245,200,66,0.15)';  color='#f5c842'; }
+  else if (r <= 5)  { bg='rgba(108,99,255,0.15)';  color='#a89bff'; }
+  else if (r <= 15) { bg='rgba(76,175,129,0.15)';  color='#6dddaa'; }
+  else if (r <= 30) { bg='rgba(41,182,246,0.15)';  color='#4fc3f7'; }
+  else if (r <= 75) { bg='rgba(255,101,132,0.12)'; color='#ff8fa3'; }
+  else              { bg='rgba(123,127,158,0.12)'; color='var(--muted)'; }
+  return `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${bg};color:${color};">#${r}</span>`;
 }
 function renderRankings(data) {
   const tbody=document.getElementById('rankingsBody');
@@ -1519,6 +1947,8 @@ function renderRankings(data) {
     <td><span class="r-name">${p[1]}</span></td>
     <td><span class="r-team r-team-link" onclick="showNBATeam('${p[2]}')" title="View ${NBA_TEAM_NAMES[p[2]]||p[2]}">${p[2]}</span></td>
     <td><span class="r-pos">${p[3]}</span></td>
+    <td style="text-align:center;"><span class="r-rank ${rankClass(p[0])}">${p[0]}</span></td>
+    <td style="text-align:center;">${mattRankBadge(p[1])}</td>
   </tr>`).join('');
 }
 function filterRankings() {
@@ -1864,16 +2294,25 @@ function getDynastyRank(name) {
   const entry = DYNASTY_PLAYERS.find(p => p[1].toLowerCase() === name.toLowerCase());
   return entry ? entry[0] : null;
 }
+function dynastyRankBg(rank) {
+  if (rank === 1)      return 'rgba(245,200,66,0.15)';
+  if (rank <= 5)       return 'rgba(108,99,255,0.15)';
+  if (rank <= 15)      return 'rgba(76,175,129,0.15)';
+  if (rank <= 30)      return 'rgba(41,182,246,0.15)';
+  if (rank <= 75)      return 'rgba(255,101,132,0.12)';
+  return 'rgba(123,127,158,0.12)';
+}
+function dynastyRankColor(rank) {
+  if (rank === 1)      return '#f5c842';
+  if (rank <= 5)       return '#a89bff';
+  if (rank <= 15)      return '#6dddaa';
+  if (rank <= 30)      return '#4fc3f7';
+  if (rank <= 75)      return '#ff8fa3';
+  return 'var(--muted)';
+}
 function dynastyRankBadge(rank) {
   if (rank === null) return '<span style="font-size:11px;color:var(--border);font-weight:600;min-width:48px;text-align:right;padding:3px 8px;">—</span>';
-  let bg, color;
-  if (rank === 1)       { bg='rgba(245,200,66,0.15)';  color='#f5c842'; }
-  else if (rank <= 5)   { bg='rgba(108,99,255,0.15)';  color='#a89bff'; }
-  else if (rank <= 15)  { bg='rgba(76,175,129,0.15)';  color='#6dddaa'; }
-  else if (rank <= 30)  { bg='rgba(41,182,246,0.15)';  color='#4fc3f7'; }
-  else if (rank <= 75)  { bg='rgba(255,101,132,0.12)'; color='#ff8fa3'; }
-  else                  { bg='rgba(123,127,158,0.12)'; color='var(--muted)'; }
-  return `<span onclick="showRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${bg};color:${color};cursor:pointer;transition:opacity 0.15s;" onmouseenter="this.style.opacity='0.75'" onmouseleave="this.style.opacity='1'">#${rank}</span>`;
+  return `<span onclick="showRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(rank)};color:${dynastyRankColor(rank)};cursor:pointer;transition:opacity 0.15s;" onmouseenter="this.style.opacity='0.75'" onmouseleave="this.style.opacity='1'">#${rank}</span>`;
 }
 function renderRoster(id){
   const roster=ROSTERS[id]||[]; let html='';
@@ -1881,14 +2320,17 @@ function renderRoster(id){
     <div style="width:32px;flex-shrink:0;"></div>
     <div style="flex:1;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);">Name</div>
     <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);width:36px;text-align:center;">Pos</div>
-    <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:48px;text-align:right;">Dynasty</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">MFHFBs</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">Matt</div>
   </div>`;
   ['PG','SG','SF','PF','C'].forEach(pos=>{
     const players=roster.filter(p=>p.pos===pos);
     if(!players.length) return;
     players.forEach(p=>{
       const rank=getDynastyRank(p.name);
-      html+=`<div class="player-row"><div class="pos-badge pos-${p.pos}">${p.pos}</div><div class="player-name">${p.name}</div><span class="player-team r-team-link" onclick="showNBATeam('${p.team}')" style="font-size:12px;">${p.team}</span>${dynastyRankBadge(rank)}</div>`;
+      const mattRk = MATT_RANKS[p.name] || null;
+      const mattBadge = mattRk ? `<span onclick="showRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(mattRk)};color:${dynastyRankColor(mattRk)};cursor:pointer;transition:opacity 0.15s;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${mattRk}</span>` : '<span style="font-size:11px;color:var(--border);font-weight:600;min-width:48px;text-align:right;padding:3px 8px;">—</span>';
+      html+=`<div class="player-row"><div class="pos-badge pos-${p.pos}">${p.pos}</div><div class="player-name">${p.name}</div><span class="player-team r-team-link" onclick="showNBATeam('${p.team}')" style="font-size:12px;">${p.team}</span>${dynastyRankBadge(rank)}${mattBadge}</div>`;
     });
   });
   return html;
@@ -2428,3 +2870,4 @@ renderHome();
 </script>
 </body>
 </html>
+
