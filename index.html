@@ -111,15 +111,24 @@
   .team-name { font-weight: 700; font-size: 14px; margin-bottom: 3px; color: var(--text); }
   .team-owner { color: var(--muted); font-size: 12px; margin-top: 2px; }
   .team-record { font-size: 12px; color: var(--green); margin-top: 8px; font-weight: 600; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
   .draftboard-btn {
     background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border: none; color: white; padding: 13px 26px; border-radius: 12px; font-size: 14px;
-    font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer; margin-bottom: 12px;
-    margin-right: 12px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.18s;
-    box-shadow: 0 4px 12px rgba(108,99,255,0.25);
+    border: none; color: white; padding: 14px 16px; border-radius: 14px; font-size: 13px;
+    font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    transition: all 0.18s; box-shadow: 0 4px 12px rgba(108,99,255,0.22);
+    text-align: center; line-height: 1.2; width: 100%;
   }
-  body.light .draftboard-btn { box-shadow: 0 4px 12px rgba(192,98,47,0.25); }
-  .draftboard-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  body.light .draftboard-btn { box-shadow: 0 4px 12px rgba(192,98,47,0.2); }
+  .draftboard-btn:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(108,99,255,0.3); }
+  body.light .draftboard-btn:hover { box-shadow: 0 8px 20px rgba(192,98,47,0.22); }
+  .draftboard-btn.full-width { grid-column: 1 / -1; }
   .team-page-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
   .team-page-avatar { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; font-family: 'Playfair Display', serif; }
   .team-page-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 800; color: var(--text); }
@@ -480,12 +489,14 @@
   <div style="max-width:960px;margin:0 auto;">
     <div class="home-title">The Taco Tuesday League</div>
     <div class="home-sub">Klick auf Dein Team für Deine Spieler und Deine Picks</div>
-    <button class="draftboard-btn" onclick="showDraftboard()">📋 Full Draft Board</button>
-    <button class="draftboard-btn" onclick="showRules()" style="background:linear-gradient(135deg,#f5c842,#ff9800);box-shadow:0 4px 12px rgba(245,200,66,0.3);">📜 Rules</button>
-    <button class="draftboard-btn" onclick="showStandings()" style="background:linear-gradient(135deg,#4caf81,#26c6da);box-shadow:0 4px 12px rgba(76,175,129,0.3);">📈 Standings History</button>
-    <button class="draftboard-btn" onclick="showRankings()" style="background:linear-gradient(135deg,#29b6f6,#6c63ff);box-shadow:0 4px 12px rgba(41,182,246,0.3);">Dynasty Rankings</button>
-    <button class="draftboard-btn" onclick="showDraft26()" style="background:linear-gradient(135deg,#ff9800,#e040fb);box-shadow:0 4px 12px rgba(224,64,251,0.3);">MFHFBs 2026 Draft Board</button>
-    <button class="draftboard-btn" onclick="showTrade()" style="background:linear-gradient(135deg,#4caf81,#6c63ff);box-shadow:0 4px 12px rgba(76,175,129,0.3);">⚖️ Trade Analyzer</button>
+    <div class="nav-grid">
+      <button class="draftboard-btn" onclick="showDraftboard()">📋 Full Draft Board</button>
+      <button class="draftboard-btn" onclick="showRules()" style="background:linear-gradient(135deg,#f5c842,#ff9800);box-shadow:0 4px 12px rgba(245,200,66,0.28);">📜 Rules</button>
+      <button class="draftboard-btn" onclick="showStandings()" style="background:linear-gradient(135deg,#4caf81,#26c6da);box-shadow:0 4px 12px rgba(76,175,129,0.28);">📈 Standings</button>
+      <button class="draftboard-btn" onclick="showRankings()" style="background:linear-gradient(135deg,#29b6f6,#6c63ff);box-shadow:0 4px 12px rgba(41,182,246,0.28);">🏅 Dynasty Rankings</button>
+      <button class="draftboard-btn" onclick="showDraft26()" style="background:linear-gradient(135deg,#ff9800,#e040fb);box-shadow:0 4px 12px rgba(224,64,251,0.28);">📋 2026 Draft Board</button>
+      <button class="draftboard-btn" onclick="showTrade()" style="background:linear-gradient(135deg,#4caf81,#6c63ff);box-shadow:0 4px 12px rgba(76,175,129,0.28);">⚖️ Trade Analyzer</button>
+    </div>
     <div class="team-grid" id="teamGrid"></div>
   </div>
 </div>
@@ -898,7 +909,7 @@ const ROSTERS = {
   {name:"Devin Booker",pos:"PG",team:"PHO"},{name:"Moses Moody",pos:"SG",team:"GSW"},
   {name:"Luke Kornet",pos:"C",team:"SAS"},{name:"PJ Washington",pos:"PF",team:"DAL"},
   {name:"Kris Dunn",pos:"PG",team:"LAC"},{name:"Collin Murray-Boyles",pos:"PF",team:"TOR"},
-  {name:"Tre Jones",pos:"PG",team:"CHI"},{name:"Cam Johnson",pos:"SF",team:"DEN"},
+  {name:"Tre Jones",pos:"PG",team:"CHI"},{name:"Camerpn Johnson",pos:"SF",team:"DEN"},
   {name:"Cason Wallace",pos:"SG",team:"OKC"},{name:"Jonathan Kuminga",pos:"PF",team:"ATL"},
   {name:"Jock Landale",pos:"C",team:"ATL"},{name:"Marcus Smart",pos:"SG",team:"LAL"},
   {name:"Kasparas Jakucionis",pos:"PG",team:"MIA"},{name:"Bones Hyland",pos:"PG",team:"MIN"},
@@ -920,7 +931,7 @@ const ROSTERS = {
   {name:"Will Riley",pos:"SF",team:"WAS"},{name:"Devin Vassell",pos:"SG",team:"SAS"},
   {name:"Jeremiah Fears",pos:"SG",team:"NOR"},{name:"Scoot Henderson",pos:"PG",team:"POR"},
   {name:"Noah Clowney",pos:"PF",team:"BKN"},{name:"Sam Merrill",pos:"SG",team:"CLE"},
-  {name:"Ronald Holland II",pos:"SF",team:"DET"},{name:"Oso Ighodaro",pos:"PF",team:"PHO"},
+  {name:"Ron Holland II",pos:"SF",team:"DET"},{name:"Oso Ighodaro",pos:"PF",team:"PHO"},
   {name:"Cody Williams",pos:"SG",team:"UTA"},{name:"Ja'Kobe Walter",pos:"SG",team:"TOR"},
   {name:"Rob Dillingham",pos:"PG",team:"CHI"},{name:"Ryan Dunn",pos:"SF",team:"PHO"},
   {name:"Jared McCain",pos:"SG",team:"OKC"},{name:"Drake Powell",pos:"SG",team:"BKN"},
@@ -1206,7 +1217,7 @@ const DYNASTY_PLAYERS = [
   [126,"Jared McCain","OKC","PG/SG"],
   [127,"Kristaps Porzingis","GSW","PF/C"],
   [128,"Dereck Lively II","DAL","C"],
-  [129,"Khaman Malauch","PHO","C"],
+  [129,"Khaman Maluach","PHO","C"],
   [130,"Toumani Camara","POR","SF/PF"],
   [131,"Miles Bridges","CHA","SF/PF"],
   [132,"Rudy Gobert","MIN","C"],
@@ -1215,7 +1226,7 @@ const DYNASTY_PLAYERS = [
   [135,"Christian Braun","DEN","SG/SF"],
   [136,"Dailyn Swain","Texas","SF/PF"],
   [137,"Ty Jerome","MEM","PG/SG"],
-  [138,"De'Andre Ayton","LAL","C"],
+  [138,"Deandre Ayton","LAL","C"],
   [139,"Daniel Gafford","DAL","C"],
   [140,"Nikola Topic","OKC","PG/SG"],
   [141,"Jaime Jaquez Jr.","MIA","SG/SF"],
@@ -1226,7 +1237,7 @@ const DYNASTY_PLAYERS = [
   [146,"John Collins","LAC","PF/C"],
   [147,"Patrick Ngongba II","Duke","C"],
   [148,"Kevin Porter Jr.","MIL","PG/SG"],
-  [149,"Ron Holland","DET","SF/PF"],
+  [149,"Ron Holland II","DET","SF/PF"],
   [150,"Labaron Philon","Alabama","PG/SG"],
   [151,"Nate Ament","Tennessee","SF/PF"],
   [152,"Aaron Gordon","DEN","SF/PF"],
@@ -1351,7 +1362,7 @@ const DYNASTY_PLAYERS = [
   [271,"Royce O'Neale","PHO","SF"],
   [272,"Yves Missi","NOR","C"],
   [273,"Jusuf Nurkic","UTA","C"],
-  [274,"Carlton Carrington","WAS","PG"],
+  [274,"Bub Carrington","WAS","PG"],
   [275,"Tre Jones","CHI","PG"],
   [276,"Oso Ighodaro","PHO","PF"],
   [277,"Vit Krejci","POR","PG"],
@@ -1392,9 +1403,9 @@ const DYNASTY_PLAYERS = [
   [312,"Jamaree Bouyea","PHO","PG"],
   [313,"Jordan Miller","LAC","SF"],
   [314,"Julian Strawther","DEN","SF"],
-  [315,"Terrance Shannon Jr.","MIN","SG"],
+  [315,"Terrence Shannon Jr.","MIN","SG"],
   [316,"Sandro Mamukelashvili","TOR","PF"],
-  [317,"Quentin Post","GSW","C"],
+  [317,"Quinten Post","GSW","C"],
   [318,"Adem Bona","PHI","C"],
   [319,"Corey Kispert","ATL","SF"],
   [320,"Jonas Valanciunas","DEN","C"],
@@ -1442,7 +1453,7 @@ const DYNASTY_PLAYERS = [
   [362,"Elijah Harkless","PHI","SF"],
   [363,"Ron Harper Jr.","BOS","SF"],
   [364,"Tre Mann","CHA","PG"],
-  [365,"Svi Mykhailuk","UTA","SG"],
+  [365,"Svi Mykhailiuk","UTA","SG"],
   [366,"Jordan Hawkins","NOR","SG"],
   [367,"Grant Williams","CHA","PF"],
   [368,"Brooks Barnhizer","OKC","SG"],
@@ -1509,7 +1520,7 @@ const DYNASTY_PLAYERS = [
   [429,"Kevin Love","UTA","PF"],
   [430,"Ariel Hukporti","NYK","C"],
   [431,"Tyler Burton","FA","PF"],
-  [432,"Olivier Maxence-Prosper","MEM","PF"],
+  [432,"Olivier-Maxence Prosper","MEM","PF"],
   [433,"Jalen Slawson","IND","PF"],
   [434,"Dru Smith","MIA","PG"],
   [435,"Kennedy Chandler","FA","PG"],
@@ -1570,7 +1581,7 @@ const HASHTAG_RANKINGS = [
   [34,"Jaylen Brown","BOS","SG,SF"],
   [35,"VJ Edgecombe","PHI","PG,SG"],
   [36,"Josh Giddey","CHI","PG,SG"],
-  [37,"Alexandre Sarr","WAS","C"],
+  [37,"Alex Sarr","WAS","C"],
   [38,"Jalen Brunson","NY","PG"],
   [39,"Donovan Clingan","POR","C"],
   [40,"2026 Draft (Pick 3-4)","DRA",""],
@@ -1673,7 +1684,7 @@ const HASHTAG_RANKINGS = [
   [142,"Isaiah Roby","FA","PF,C"],
   [143,"Pat Spencer","GS","PG,SG"],
   [144,"Jazian Gortman","DAL",""],
-  [145,"Nicolas Claxton","BKN","C"],
+  [145,"Nic Claxton","BKN","C"],
   [146,"Noah Clowney","BKN","PF,C"],
   [147,"Trey Alexander","NO","SG"],
   [148,"Cam Spencer","MEM","PG,SG"],
@@ -1781,7 +1792,7 @@ const HASHTAG_RANKINGS = [
   [250,"Oscar Tshiebwe","UTA","PF,C"],
   [251,"Donte DiVincenzo","MIN","PG,SG"],
   [252,"Drew Peterson","CHA",""],
-  [253,"Carlton Carrington","WAS","PG,SG"],
+  [253,"Bub Carrington","WAS","PG,SG"],
   [254,"Jaden Ivey","CHI","PG,SG"],
   [255,"Walter Clayton Jr.","MEM","PG,SG"],
   [256,"Daniss Jenkins","DET","PG,SG"],
@@ -1807,7 +1818,7 @@ const HASHTAG_RANKINGS = [
   [276,"Thomas Sorber","OKC","C"],
   [277,"Collin Sexton","CHI","PG,SG"],
   [278,"Ben Saraf","BKN","SG"],
-  [279,"P.J. Washington","DAL","SF,PF,C"],
+  [279,"PJ Washington","DAL","SF,PF,C"],
   [280,"Kasparas Jakucionis","MIA","PG"],
   [281,"CJ McCollum","ATL","PG,SG"],
   [282,"Rob Dillingham","CHI","PG"],
@@ -2153,7 +2164,7 @@ const HASHTAG_RANKINGS = [
   [622,"Matisse Thybulle","POR","SG,SF"],
   [623,"Larry Nance Jr.","CLE","PF,C"],
   [624,"Andre Jackson Jr.","MIL","SG,SF"],
-  [625,"T.J. McConnell","IND","PG"],
+  [625,"TJ McConnell","IND","PG"],
   [626,"Cam Reddish","LAL","SG,SF"],
   [627,"Kyle Anderson","MIN","PF,C"],
   [628,"Harrison Barnes","SA","SF,PF"],
@@ -2354,7 +2365,7 @@ const MATT_RANKS = {
   "Jared McCain":119,
   "Kristaps Porzingis":65,
   "Dereck Lively II":52,
-  "Khaman Malauch":88,
+  "Khaman Maluach":88,
   "Toumani Camara":136,
   "Miles Bridges":91,
   "Rudy Gobert":117,
@@ -2362,7 +2373,7 @@ const MATT_RANKS = {
   "Norman Powell":146,
   "Christian Braun":135,
   "Ty Jerome":170,
-  "De'Andre Ayton":128,
+  "Deandre Ayton":128,
   "Daniel Gafford":133,
   "Nikola Topic":99,
   "Jaime Jaquez Jr.":182,
@@ -2371,7 +2382,7 @@ const MATT_RANKS = {
   "Brandin Podziemski":93,
   "John Collins":143,
   "Kevin Porter Jr.":187,
-  "Ron Holland":177,
+  "Ron Holland II":177,
   "Aaron Gordon":144,
   "Moussa Diabate":272,
   "RJ Barrett":134,
@@ -3347,6 +3358,36 @@ const TRADE_STATE = {
   B: { nbaFilter: '', ttFilter: '', search: '', selected: [] },
 };
 
+// Pre-built lookup maps for Hashtag and Matt rankings
+const _hashtagRankMap = (() => {
+  const m = {};
+  HASHTAG_RANKINGS.forEach(p => { m[p[1].toLowerCase()] = p[0]; });
+  return m;
+})();
+
+function hashtagRank(name) {
+  return _hashtagRankMap[name.toLowerCase()] ?? null;
+}
+
+function mattRank(name) {
+  return MATT_RANKS[name] ?? null;
+}
+
+function rankBadgeHtml(label, rank, style) {
+  if (rank === null) return `<span style="font-size:9px;font-weight:700;color:var(--muted);white-space:nowrap;">${label} —</span>`;
+  return `<span style="font-size:9px;font-weight:700;${style}padding:1px 5px;border-radius:3px;white-space:nowrap;">${label} #${rank}</span>`;
+}
+
+function rankStyle(rank) {
+  if (rank === null) return '';
+  if (rank <= 5)  return 'background:rgba(245,200,66,0.18);color:#f5c842;';
+  if (rank <= 15) return 'background:rgba(108,99,255,0.18);color:#a89bff;';
+  if (rank <= 30) return 'background:rgba(76,175,129,0.18);color:#6dddaa;';
+  if (rank <= 75) return 'background:rgba(41,182,246,0.15);color:#4fc3f7;';
+  if (rank <= 150) return 'background:rgba(255,101,132,0.13);color:#ff8fa3;';
+  return 'background:rgba(123,127,158,0.13);color:var(--muted);';
+}
+
 function buildTradePlayerPool() {
   const ownerMap = buildFantasyOwnerMap();
   return DYNASTY_PLAYERS.map(p => {
@@ -3426,11 +3467,19 @@ function renderTradeList(side) {
     const isSel = selectedNames.includes(p.name);
     const ownerLabel = p.owner ? p.owner.name : 'Unowned';
     const val = dynastyValue(p.rank);
+    const mRank = mattRank(p.name);
+    const hRank = hashtagRank(p.name);
     return `<div class="trade-player-item ${isSel ? 'selected' : ''}" onclick="toggleTradePlayer('${side}', ${p.rank})">
       <div class="tp-check">${isSel ? '<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</div>
-      <div class="tp-name">${p.name}<div class="tp-detail" style="font-size:11px;color:var(--muted);font-weight:400;margin-top:1px;">${p.nba} · ${ownerLabel}</div></div>
+      <div class="tp-name">${p.name}
+        <div class="tp-detail" style="font-size:11px;color:var(--muted);font-weight:400;margin-top:1px;">${p.nba} · ${ownerLabel}</div>
+        <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;">
+          ${rankBadgeHtml('MFHFBs', p.rank, rankStyle(p.rank))}
+          ${rankBadgeHtml('Matt', mRank, rankStyle(mRank))}
+          ${rankBadgeHtml('#️⃣', hRank, rankStyle(hRank))}
+        </div>
+      </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
-        <span class="tp-rank" style="${rankBadgeStyle(p.rank)}">#${p.rank}</span>
         <span style="font-size:10px;font-weight:700;${valueBadgeStyle(val)}padding:1px 5px;border-radius:4px;">${val.toLocaleString()}</span>
       </div>
     </div>`;
@@ -3512,13 +3561,19 @@ function renderTradeResult() {
       const effectiveVal = Math.round(rawVal * Math.pow(0.70, sorted.indexOf(p)));
       const ownerLabel = p.owner ? p.owner.name : 'Unowned';
       const isDiscounted = i > 0;
+      const mRank = mattRank(p.name);
+      const hRank = hashtagRank(p.name);
       return `<div class="trade-breakdown-player">
-        <span style="${rankBadgeStyle(p.rank)}font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;">#${p.rank}</span>
         <div style="flex:1;">
           <div class="tbp-name">${p.name}</div>
           <div class="tbp-detail">${p.nba} · ${ownerLabel}</div>
+          <div style="display:flex;gap:4px;margin-top:5px;flex-wrap:wrap;">
+            ${rankBadgeHtml('MFHFBs', p.rank, rankStyle(p.rank))}
+            ${rankBadgeHtml('Matt', mRank, rankStyle(mRank))}
+            ${rankBadgeHtml('#️⃣', hRank, rankStyle(hRank))}
+          </div>
         </div>
-        <div style="text-align:right;">
+        <div style="text-align:right;flex-shrink:0;">
           <div style="font-size:11px;font-weight:800;${valueBadgeStyle(rawVal)}padding:2px 5px;border-radius:4px;">${effectiveVal.toLocaleString()}</div>
           ${isDiscounted ? `<div style="font-size:9px;color:var(--muted);margin-top:2px;">–30% depth</div>` : ''}
         </div>
