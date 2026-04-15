@@ -642,62 +642,124 @@
 <!-- TRADE ANALYZER -->
 <div class="page" id="tradePage">
   <h2 style="margin-bottom:6px;">⚖️ Trade Analyzer</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:24px;">Schwierig, einen Dynastycalc zu bauen, der alles berücksichtigt. Nehmt dies hier als Anlaufpunkt, vorerst</p>
-  <div class="trade-layout">
-    <div class="trade-side" id="tradeSideA">
-      <div class="trade-side-title">Side A</div>
-      <div class="trade-dropdowns">
-        <div class="trade-dropdown-wrap">
-          <select id="tradeNbaFilterA" onchange="applyTradeDropdown('A')">
-            <option value="">🏀 NBA Team</option>
-          </select>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:24px;">
+    Schwierig, einen Dynastycalc zu bauen, der alles berücksichtigt. Nehmt dies hier als Anlaufpunkt, vorerst
+  </p>
+
+  <!-- START: Screenshot wrapper -->
+  <div id="tradeCapture">
+
+    <!-- TRADE SIDES -->
+    <div class="trade-layout">
+
+      <div class="trade-side" id="tradeSideA">
+        <div class="trade-side-title">Side A</div>
+
+        <div class="trade-dropdowns">
+          <div class="trade-dropdown-wrap">
+            <select id="tradeNbaFilterA" onchange="applyTradeDropdown('A')">
+              <option value="">🏀 NBA Team</option>
+            </select>
+          </div>
+          <div class="trade-dropdown-wrap">
+            <select id="tradeTTFilterA" onchange="applyTradeDropdown('A')">
+              <option value="">🌮 TT Team</option>
+            </select>
+          </div>
         </div>
-        <div class="trade-dropdown-wrap">
-          <select id="tradeTTFilterA" onchange="applyTradeDropdown('A')">
-            <option value="">🌮 TT Team</option>
-          </select>
+
+        <div class="trade-search-wrap">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="tradeSearchA" placeholder="Search player…" oninput="filterTradePlayers('A')"/>
+        </div>
+
+        <div class="trade-player-list" id="tradeListA"></div>
+
+        <div class="trade-selected-wrap">
+          <div class="trade-selected-label">Selected</div>
+          <div id="tradeSelectedA">
+            <span style="color:var(--muted);font-size:12px;">None yet</span>
+          </div>
         </div>
       </div>
-      <div class="trade-search-wrap">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="tradeSearchA" placeholder="Search player…" oninput="filterTradePlayers('A')"/>
+
+      <div class="trade-vs">vs</div>
+
+      <div class="trade-side" id="tradeSideB">
+        <div class="trade-side-title">Side B</div>
+
+        <div class="trade-dropdowns">
+          <div class="trade-dropdown-wrap">
+            <select id="tradeNbaFilterB" onchange="applyTradeDropdown('B')">
+              <option value="">🏀 NBA Team</option>
+            </select>
+          </div>
+          <div class="trade-dropdown-wrap">
+            <select id="tradeTTFilterB" onchange="applyTradeDropdown('B')">
+              <option value="">🌮 TT Team</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="trade-search-wrap">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="tradeSearchB" placeholder="Search player…" oninput="filterTradePlayers('B')"/>
+        </div>
+
+        <div class="trade-player-list" id="tradeListB"></div>
+
+        <div class="trade-selected-wrap">
+          <div class="trade-selected-label">Selected</div>
+          <div id="tradeSelectedB">
+            <span style="color:var(--muted);font-size:12px;">None yet</span>
+          </div>
+        </div>
       </div>
-      <div class="trade-player-list" id="tradeListA"></div>
-      <div class="trade-selected-wrap">
-        <div class="trade-selected-label">Selected</div>
-        <div id="tradeSelectedA"><span style="color:var(--muted);font-size:12px;">None yet</span></div>
+
+    </div>
+
+    <!-- RESULT -->
+    <div class="trade-result-wrap" id="tradeResult">
+      <div class="trade-empty-state">
+        Select at least one player on each side to analyze the trade.
       </div>
     </div>
-    <div class="trade-vs">vs</div>
-    <div class="trade-side" id="tradeSideB">
-      <div class="trade-side-title">Side B</div>
-      <div class="trade-dropdowns">
-        <div class="trade-dropdown-wrap">
-          <select id="tradeNbaFilterB" onchange="applyTradeDropdown('B')">
-            <option value="">🏀 NBA Team</option>
-          </select>
-        </div>
-        <div class="trade-dropdown-wrap">
-          <select id="tradeTTFilterB" onchange="applyTradeDropdown('B')">
-            <option value="">🌮 TT Team</option>
-          </select>
-        </div>
-      </div>
-      <div class="trade-search-wrap">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="tradeSearchB" placeholder="Search player…" oninput="filterTradePlayers('B')"/>
-      </div>
-      <div class="trade-player-list" id="tradeListB"></div>
-      <div class="trade-selected-wrap">
-        <div class="trade-selected-label">Selected</div>
-        <div id="tradeSelectedB"><span style="color:var(--muted);font-size:12px;">None yet</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="trade-result-wrap" id="tradeResult">
-    <div class="trade-empty-state">Select at least one player on each side to analyze the trade.</div>
-  </div>
+
+    <!-- BUTTON -->
+    <button id="tradeScreenshotBtn" class="draftboard-btn" style="margin-top:16px;">
+      📸 Share Trade
+    </button>
+
+  </div> <!-- END tradeCapture -->
 </div>
+
+<!-- REQUIRED SCRIPT -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<script>
+document.getElementById("tradeScreenshotBtn").addEventListener("click", previewTradeImage);
+
+function previewTradeImage() {
+  const element = document.getElementById("tradeCapture");
+
+  html2canvas(element, {
+    backgroundColor: null,
+    scale: 2,
+    useCORS: true
+  }).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "trade.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+}
+</script>
 
 <!-- SCOUT MODAL -->
 <div class="scout-modal-overlay" id="scoutModal" onclick="closeScoutModal(event)">
