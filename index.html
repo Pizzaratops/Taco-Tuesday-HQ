@@ -765,74 +765,97 @@ function openShareModal() {
   const barFillStyle = box.querySelector(".trade-value-bar-fill")?.getAttribute("style") || "";
 
   // Pull player breakdowns cleanly
-  function buildSideCard(sideEl) {
+  function buildSideSection(sideEl, accentColor) {
     if (!sideEl) return "";
     const label = sideEl.querySelector(".trade-breakdown-label")?.textContent || "";
     const totalVal = sideEl.querySelector(".trade-value-val")?.textContent || "";
-    const players = [...sideEl.querySelectorAll(".trade-breakdown-player")].map(p => {
-      const name = p.querySelector(".tbp-name")?.textContent || "";
-      const detail = p.querySelector(".tbp-detail")?.textContent || "";
-      const valEl = p.querySelector("[style*='font-size:11px;font-weight:800']");
-      const val = valEl?.textContent || "";
-      const discount = p.querySelector("[style*='9px']")?.textContent || "";
-      return `<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #2e3250;">
-        <div>
-          <div style="font-weight:700;font-size:13px;color:#e8eaf6;">${name}</div>
-          <div style="font-size:11px;color:#7b7f9e;margin-top:1px;">${detail}</div>
-        </div>
-        <div style="text-align:right;flex-shrink:0;margin-left:8px;">
-          <div style="font-size:12px;font-weight:800;color:#e8eaf6;">${val}</div>
-          ${discount ? `<div style="font-size:9px;color:#7b7f9e;">${discount}</div>` : ""}
-        </div>
-      </div>`;
+
+    const players = [...sideEl.querySelectorAll(".trade-breakdown-player")].map((p, i) => {
+      const name = p.querySelector(".tbp-name")?.textContent?.trim() || "";
+      const detail = p.querySelector(".tbp-detail")?.textContent?.trim() || "";
+      // Grab the effective value from the styled span (first bold number)
+      const valEl = p.querySelector("div[style*='font-weight:800']");
+      const val = valEl?.textContent?.trim() || "";
+      const isDiscounted = i > 0;
+
+      // Extract individual ranks from badge elements
+      const badges = [...p.querySelectorAll("span[style]")].filter(s =>
+        s.style.fontSize === "10px" || s.style.fontWeight === "700"
+      );
+      // Simpler: just grab all rank badge spans that have a rank number
+      const rankBadges = [...p.querySelectorAll("span")].filter(s =>
+        s.textContent && /^\d+$/.test(s.textContent.trim())
+      ).map(s => s.textContent.trim());
+
+      return `
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #2e3250;">
+          <div style="width:28px;height:28px;border-radius:8px;background:${accentColor}22;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:${accentColor};flex-shrink:0;">${i + 1}</div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-weight:700;font-size:13px;color:#e8eaf6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${name}</div>
+            <div style="font-size:11px;color:#7b7f9e;margin-top:1px;">${detail}</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-size:13px;font-weight:800;color:#e8eaf6;">${val}</div>
+            ${isDiscounted ? `<div style="font-size:9px;color:#7b7f9e;">–30% depth</div>` : ""}
+          </div>
+        </div>`;
     }).join("");
-    return `<div style="flex:1;min-width:0;background:#1a1d27;border-radius:12px;padding:12px 14px;">
-      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#7b7f9e;margin-bottom:8px;">${label}</div>
-      ${players}
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px solid #2e3250;">
-        <span style="font-size:11px;color:#7b7f9e;font-weight:600;">Total Value</span>
-        <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#6c63ff;">${totalVal}</span>
-      </div>
-    </div>`;
+
+    return `
+      <div style="background:#1a1d27;border-radius:14px;padding:14px 16px;margin-bottom:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#7b7f9e;">${label}</div>
+          <div style="font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:800;color:${accentColor};">${totalVal}</div>
+        </div>
+        ${players}
+      </div>`;
   }
 
   const sides = box.querySelectorAll(".trade-breakdown-side");
-  const sideAHtml = buildSideCard(sides[0]);
-  const sideBHtml = buildSideCard(sides[1]);
+  const sideAHtml = buildSideSection(sides[0], "#6c63ff");
+  const sideBHtml = buildSideSection(sides[1], "#ff6584");
 
   const cardHtml = `
     <div id="shareCardInner" style="
       background:#0f1117;
       border:2px solid ${verdictColor};
       border-radius:20px;
-      padding:24px 20px 20px;
+      padding:22px 18px 18px;
       font-family:'DM Sans',system-ui,sans-serif;
       color:#e8eaf6;
     ">
-      <div style="text-align:center;margin-bottom:4px;font-size:10px;font-weight:700;letter-spacing:2px;color:#7b7f9e;text-transform:uppercase;">🌮 Taco Tuesday HQ · Trade Analyzer</div>
-      <div style="font-family:'Playfair Display',Georgia,serif;font-size:26px;font-weight:800;color:${verdictColor};text-align:center;margin-bottom:3px;">${verdict}</div>
-      <div style="color:#7b7f9e;font-size:12px;text-align:center;margin-bottom:16px;">${sub}</div>
+      <!-- Header -->
+      <div style="text-align:center;margin-bottom:12px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:#7b7f9e;text-transform:uppercase;margin-bottom:6px;">🌮 Taco Tuesday HQ · Trade Analyzer</div>
+        <div style="font-family:'Playfair Display',Georgia,serif;font-size:28px;font-weight:800;color:${verdictColor};line-height:1.1;">${verdict}</div>
+        <div style="color:#7b7f9e;font-size:12px;margin-top:4px;">${sub}</div>
+      </div>
 
-      <div style="margin-bottom:14px;">
-        <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:#7b7f9e;margin-bottom:5px;">
-          <span>Side A &nbsp;<strong style="color:#e8eaf6;">${valA}</strong></span>
-          <span><strong style="color:#e8eaf6;">${valB}</strong>&nbsp; Side B</span>
+      <!-- Value bar -->
+      <div style="background:#1a1d27;border-radius:12px;padding:12px 14px;margin-bottom:12px;">
+        <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:#7b7f9e;margin-bottom:7px;">
+          <span>Side A &nbsp;<strong style="color:#e8eaf6;font-size:15px;">${valA}</strong></span>
+          <span><strong style="color:#e8eaf6;font-size:15px;">${valB}</strong>&nbsp; Side B</span>
         </div>
-        <div style="background:#222636;border-radius:20px;height:8px;overflow:hidden;">
+        <div style="background:#222636;border-radius:20px;height:10px;overflow:hidden;">
           <div style="height:100%;border-radius:20px;${barFillStyle}"></div>
         </div>
-        <div style="display:flex;justify-content:space-between;font-size:11px;color:#7b7f9e;font-weight:600;margin-top:4px;">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:#7b7f9e;font-weight:600;margin-top:5px;">
           <span>${pctA}</span><span>${pctB}</span>
         </div>
       </div>
 
-      <div style="display:flex;gap:8px;">
-        ${sideAHtml}
-        <div style="display:flex;align-items:center;padding:0 2px;">
-          <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:#7b7f9e;">vs</div>
-        </div>
-        ${sideBHtml}
-      </div>
+      <!-- Side A -->
+      ${sideAHtml}
+
+      <!-- Divider -->
+      <div style="text-align:center;font-family:'Playfair Display',serif;font-size:13px;font-weight:800;color:#2e3250;letter-spacing:3px;margin:4px 0 10px;">— VS —</div>
+
+      <!-- Side B -->
+      ${sideBHtml}
+
+      <!-- Footer -->
+      <div style="text-align:center;margin-top:6px;font-size:9px;color:#2e3250;letter-spacing:1px;text-transform:uppercase;">taco-tuesday-league.com</div>
     </div>`;
 
   document.getElementById("shareCardContent").innerHTML = cardHtml;
@@ -850,7 +873,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   document.getElementById("downloadShareBtn").addEventListener("click", function() {
-  const el = document.getElementById("shareCardInner");
+  const el = document.getElementById("shareCardInner") || document.getElementById("shareCardContent");
   if (!el) return;
   const btn = this;
   btn.textContent = "⏳ Generating...";
@@ -873,31 +896,55 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-document.getElementById("copyShareBtn").addEventListener("click", function() {
-  const result = document.getElementById("tradeResult");
-  const verdict = result.querySelector(".trade-verdict")?.textContent || "";
-  const sub     = result.querySelector(".trade-sub")?.textContent || "";
-  const valLabels = result.querySelectorAll(".trade-value-bar-wrap strong");
-  const valA = valLabels[0]?.textContent || "?";
-  const valB = valLabels[1]?.textContent || "?";
-  const pctLabels = result.querySelectorAll(".trade-value-bar-labels span");
-  const pctA = pctLabels[0]?.textContent || "";
-  const pctB = pctLabels[1]?.textContent || "";
+  document.getElementById("copyShareBtn").addEventListener("click", function() {
+    const result = document.getElementById("tradeResult");
+    const verdict = result.querySelector(".trade-verdict")?.textContent || "";
+    const sub     = result.querySelector(".trade-sub")?.textContent || "";
+    const valLabels = result.querySelectorAll(".trade-value-bar-wrap strong");
+    const valA = valLabels[0]?.textContent || "?";
+    const valB = valLabels[1]?.textContent || "?";
+    const pctLabels = result.querySelectorAll(".trade-value-bar-labels span");
+    const pctA = pctLabels[0]?.textContent || "";
+    const pctB = pctLabels[1]?.textContent || "";
 
-  const sideNames = [...result.querySelectorAll(".trade-breakdown-side")].map(side => {
-    const label = side.querySelector(".trade-breakdown-label")?.textContent || "";
-    const players = [...side.querySelectorAll(".tbp-name")].map(n => n.textContent).join(", ");
-    const total = side.querySelector(".trade-value-val")?.textContent || "";
-    return `${label}: ${players} (${total})`;
-  });
+    const sideNames = [...result.querySelectorAll(".trade-breakdown-side")].map(side => {
+      const label = side.querySelector(".trade-breakdown-label")?.textContent || "";
+      const players = [...side.querySelectorAll(".tbp-name")].map(n => n.textContent).join(", ");
+      const total = side.querySelector(".trade-value-val")?.textContent || "";
+      return `${label}: ${players} (${total})`;
+    });
 
-  const text = `🌮 Taco Tuesday HQ — Trade Analyzer\n\n${verdict}\n${sub}\n\nSide A ${valA} (${pctA}) vs Side B ${valB} (${pctB})\n\n${sideNames.join("\n")}`;
-
-  navigator.clipboard.writeText(text).then(() => {
+    const text = `🌮 Taco Tuesday HQ — Trade Analyzer\n\n${verdict}\n${sub}\n\nSide A ${valA} (${pctA}) vs Side B ${valB} (${pctB})\n\n${sideNames.join("\n")}`;
     const btn = document.getElementById("copyShareBtn");
-    btn.textContent = "✅ Copied!";
-    setTimeout(() => btn.textContent = "📋 Copy Text", 2000);
+
+    function fallbackCopy(str) {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = str;
+        ta.style.cssText = "position:fixed;top:-9999px;left:-9999px;opacity:0;";
+        document.body.appendChild(ta);
+        ta.focus(); ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        btn.textContent = "✅ Copied!";
+      } catch(e) {
+        btn.textContent = "❌ Failed";
+      }
+      setTimeout(() => btn.textContent = "📋 Copy Text", 2000);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          btn.textContent = "✅ Copied!";
+          setTimeout(() => btn.textContent = "📋 Copy Text", 2000);
+        })
+        .catch(() => fallbackCopy(text));
+    } else {
+      fallbackCopy(text);
+    }
   });
+
 }); // end DOMContentLoaded
 </script>
 
