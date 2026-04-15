@@ -732,8 +732,8 @@
     </div>
 
     <!-- BUTTON -->
-    <button id="tradeScreenshotBtn" class="draftboard-btn" style="margin-top:16px;">
-      📸 Share Trade
+    <button id="tradeScreenshotBtn" class="draftboard-btn" style="margin-top:16px;background:linear-gradient(135deg,#6c63ff,#ff6584);box-shadow:0 4px 14px rgba(108,99,255,0.3);">
+      📤 Share Trade
     </button>
 
   </div> <!-- END tradeCapture -->
@@ -743,23 +743,256 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <script>
-document.getElementById("tradeScreenshotBtn").addEventListener("click", previewTradeImage);
+document.getElementById("tradeScreenshotBtn").addEventListener("click", openShareModal);
 
-function previewTradeImage() {
-  const element = document.getElementById("tradeCapture");
+function openShareModal() {
+  const result = document.getElementById("tradeResult");
+  const box = result.querySelector(".trade-result-box");
+  if (!box) { alert("Select players on both sides first!"); return; }
 
-  html2canvas(element, {
-    backgroundColor: null,
-    scale: 2,
-    useCORS: true
+  const verdict = box.querySelector(".trade-verdict")?.textContent || "";
+  const sub     = box.querySelector(".trade-sub")?.textContent || "";
+
+  const verdictColor = box.classList.contains("fair") ? "#4caf81" : box.classList.contains("slight") ? "#f5c842" : "#ff6584";
+
+  // Pull bar values
+  const barStrongs = box.querySelectorAll(".trade-value-bar-wrap strong");
+  const valA = barStrongs[0]?.textContent || "?";
+  const valB = barStrongs[1]?.textContent || "?";
+  const pctLabels = box.querySelectorAll(".trade-value-bar-labels span");
+  const pctA = pctLabels[0]?.textContent || "";
+  const pctB = pctLabels[1]?.textContent || "";
+  const barFillStyle = box.querySelector(".trade-value-bar-fill")?.getAttribute("style") || "";
+
+  // Pull player breakdowns cleanly
+  function buildSideCard(sideEl) {
+    if (!sideEl) return "";
+    const label = sideEl.querySelector(".trade-breakdown-label")?.textContent || "";
+    const totalVal = sideEl.querySelector(".trade-value-val")?.textContent || "";
+    const players = [...sideEl.querySelectorAll(".trade-breakdown-player")].map(p => {
+      const name = p.querySelector(".tbp-name")?.textContent || "";
+      const detail = p.querySelector(".tbp-detail")?.textContent || "";
+      const valEl = p.querySelector("[style*='font-size:11px;font-weight:800']");
+      const val = valEl?.textContent || "";
+      const discount = p.querySelector("[style*='9px']")?.textContent || "";
+      return `<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #2e3250;">
+        <div>
+          <div style="font-weight:700;font-size:13px;color:#e8eaf6;">${name}</div>
+          <div style="font-size:11px;color:#7b7f9e;margin-top:1px;">${detail}</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:8px;">
+          <div style="font-size:12px;font-weight:800;color:#e8eaf6;">${val}</div>
+          ${discount ? `<div style="font-size:9px;color:#7b7f9e;">${discount}</div>` : ""}
+        </div>
+      </div>`;
+    }).join("");
+    return `<div style="flex:1;min-width:0;background:#1a1d27;border-radius:12px;padding:12px 14px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#7b7f9e;margin-bottom:8px;">${label}</div>
+      ${players}
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px solid #2e3250;">
+        <span style="font-size:11px;color:#7b7f9e;font-weight:600;">Total Value</span>
+        <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#6c63ff;">${totalVal}</span>
+      </div>
+    </div>`;
+  }
+
+  const sides = box.querySelectorAll(".trade-breakdown-side");
+  const sideAHtml = buildSideCard(sides[0]);
+  const sideBHtml = buildSideCard(sides[1]);
+
+  const cardHtml = `
+    <div id="shareCardInner" style="
+      background:#0f1117;
+      border:2px solid ${verdictColor};
+      border-radius:20px;
+      padding:24px 20px 20px;
+      font-family:'DM Sans',system-ui,sans-serif;
+      color:#e8eaf6;
+    ">
+      <div style="text-align:center;margin-bottom:4px;font-size:10px;font-weight:700;letter-spacing:2px;color:#7b7f9e;text-transform:uppercase;">🌮 Taco Tuesday HQ · Trade Analyzer</div>
+      <div style="font-family:'Playfair Display',Georgia,serif;font-size:26px;font-weight:800;color:${verdictColor};text-align:center;margin-bottom:3px;">${verdict}</div>
+      <div style="color:#7b7f9e;font-size:12px;text-align:center;margin-bottom:16px;">${sub}</div>
+
+      <div style="margin-bottom:14px;">
+        <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:#7b7f9e;margin-bottom:5px;">
+          <span>Side A &nbsp;<strong style="color:#e8eaf6;">${valA}</strong></span>
+          <span><strong style="color:#e8eaf6;">${valB}</strong>&nbsp; Side B</span>
+        </div>
+        <div style="background:#222636;border-radius:20px;height:8px;overflow:hidden;">
+          <div style="height:100%;border-radius:20px;${barFillStyle}"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:#7b7f9e;font-weight:600;margin-top:4px;">
+          <span>${pctA}</span><span>${pctB}</span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;">
+        ${sideAHtml}
+        <div style="display:flex;align-items:center;padding:0 2px;">
+          <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:#7b7f9e;">vs</div>
+        </div>
+        ${sideBHtml}
+      </div>
+    </div>`;
+
+  document.getElementById("shareCardContent").innerHTML = cardHtml;
+  document.getElementById("shareModalOverlay").style.display = "flex";
+}
+
+function closeShareModal() {
+  document.getElementById("shareModalOverlay").style.display = "none";
+}
+
+// Attach modal button listeners after DOM is fully parsed
+window.addEventListener('DOMContentLoaded', function() {
+  document.getElementById("shareModalOverlay").addEventListener("click", function(e) {
+    if (e.target === this) closeShareModal();
+  });
+
+  document.getElementById("downloadShareBtn").addEventListener("click", function() {
+  const el = document.getElementById("shareCardInner");
+  if (!el) return;
+  const btn = this;
+  btn.textContent = "⏳ Generating...";
+  btn.disabled = true;
+  html2canvas(el, {
+    backgroundColor: "#0f1117",
+    scale: 3,
+    useCORS: true,
+    logging: false,
   }).then(canvas => {
     const link = document.createElement("a");
-    link.download = "trade.png";
+    link.download = "trade-taco-tuesday.png";
     link.href = canvas.toDataURL("image/png");
     link.click();
+    btn.textContent = "💾 Save Image";
+    btn.disabled = false;
+  }).catch(() => {
+    btn.textContent = "💾 Save Image";
+    btn.disabled = false;
   });
-}
+});
+
+document.getElementById("copyShareBtn").addEventListener("click", function() {
+  const result = document.getElementById("tradeResult");
+  const verdict = result.querySelector(".trade-verdict")?.textContent || "";
+  const sub     = result.querySelector(".trade-sub")?.textContent || "";
+  const valLabels = result.querySelectorAll(".trade-value-bar-wrap strong");
+  const valA = valLabels[0]?.textContent || "?";
+  const valB = valLabels[1]?.textContent || "?";
+  const pctLabels = result.querySelectorAll(".trade-value-bar-labels span");
+  const pctA = pctLabels[0]?.textContent || "";
+  const pctB = pctLabels[1]?.textContent || "";
+
+  const sideNames = [...result.querySelectorAll(".trade-breakdown-side")].map(side => {
+    const label = side.querySelector(".trade-breakdown-label")?.textContent || "";
+    const players = [...side.querySelectorAll(".tbp-name")].map(n => n.textContent).join(", ");
+    const total = side.querySelector(".trade-value-val")?.textContent || "";
+    return `${label}: ${players} (${total})`;
+  });
+
+  const text = `🌮 Taco Tuesday HQ — Trade Analyzer\n\n${verdict}\n${sub}\n\nSide A ${valA} (${pctA}) vs Side B ${valB} (${pctB})\n\n${sideNames.join("\n")}`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById("copyShareBtn");
+    btn.textContent = "✅ Copied!";
+    setTimeout(() => btn.textContent = "📋 Copy Text", 2000);
+  });
+}); // end DOMContentLoaded
 </script>
+
+<!-- SHARE MODAL -->
+<style>
+  #shareModalOverlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 600;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+  }
+  @media (min-width: 500px) {
+    #shareModalOverlay { align-items: center; padding: 20px; }
+  }
+  #shareModalBox {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px 24px 0 0;
+    width: 100%;
+    max-width: 480px;
+    padding: 20px 20px 32px;
+    position: relative;
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.5);
+    animation: slideUp 0.26s cubic-bezier(.22,.61,.36,1);
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+  @media (min-width: 500px) {
+    #shareModalBox {
+      border-radius: 24px;
+      animation: modalIn 0.22s ease;
+      max-height: 85vh;
+    }
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+  #shareModalBox .drag-handle {
+    width: 40px; height: 4px; border-radius: 2px;
+    background: var(--border); margin: 0 auto 16px;
+  }
+  @media (min-width: 500px) { #shareModalBox .drag-handle { display: none; } }
+  .share-modal-title {
+    font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 800;
+    color: var(--text); text-align: center; margin-bottom: 16px;
+  }
+  #shareCardContent {
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .share-btn-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .share-action-btn {
+    background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+    padding: 13px 10px; border-radius: 14px; font-size: 14px; font-weight: 700;
+    font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.18s;
+    text-align: center;
+  }
+  .share-action-btn:hover { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+  .share-action-btn.primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-color: transparent; color: white;
+    box-shadow: 0 4px 14px rgba(108,99,255,0.3);
+  }
+  .share-action-btn.primary:hover { opacity: 0.88; }
+  .share-close-btn {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); border-radius: 50%; width: 32px; height: 32px;
+    font-size: 16px; cursor: pointer; display: flex; align-items: center;
+    justify-content: center; transition: all 0.15s; font-family: 'DM Sans', sans-serif;
+  }
+  .share-close-btn:hover { border-color: var(--accent); color: var(--text); }
+</style>
+<div id="shareModalOverlay">
+  <div id="shareModalBox">
+    <div class="drag-handle"></div>
+    <button class="share-close-btn" onclick="closeShareModal()">✕</button>
+    <div class="share-modal-title">🌮 Share Trade</div>
+    <div id="shareCardContent"></div>
+    <div class="share-btn-row">
+      <button class="share-action-btn" id="copyShareBtn">📋 Copy Text</button>
+      <button class="share-action-btn primary" id="downloadShareBtn">💾 Save Image</button>
+    </div>
+  </div>
+</div>
 
 <!-- SCOUT MODAL -->
 <div class="scout-modal-overlay" id="scoutModal" onclick="closeScoutModal(event)">
