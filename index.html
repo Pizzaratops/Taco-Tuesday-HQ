@@ -588,7 +588,7 @@
 <!-- DYNASTY RANKINGS -->
 <div class="page" id="rankingsPage">
   <h2 style="margin-bottom:6px;">Dynasty Rankings</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">450 players · 2025–26 Season · MFHFBs DR = your ranking · Matt DR = Matt Lawson's ranking</p>
+<p style="color:var(--muted);font-size:13px;margin-bottom:20px;">450 players · 2025–26 Season · MFHFBs DR = your ranking · Matt DR = Matt Lawson's ranking · #️⃣ = Hashtag Basketball</p>
   <div class="rankings-search">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -630,8 +630,9 @@
           <th onclick="sortRankings(1)">Name<span class="r-sort-arrow">↕</span></th>
           <th onclick="sortRankings(2)">Team<span class="r-sort-arrow">↕</span></th>
           <th onclick="sortRankings(3)">Position<span class="r-sort-arrow">↕</span></th>
-          <th style="text-align:center;white-space:nowrap;">MFHFBs DR</th>
+	<th style="text-align:center;white-space:nowrap;">MFHFBs DR</th>
           <th style="text-align:center;white-space:nowrap;">Matt DR</th>
+          <th style="text-align:center;white-space:nowrap;">#️⃣ Hashtag</th>
         </tr>
       </thead>
       <tbody id="rankingsBody"></tbody>
@@ -3072,6 +3073,18 @@ function rankClass(r) {
   if(r<=15) return 'r-rank-top15';
   return '';
 }
+function hashtagRankBadge(name) {
+  const r = hashtagRank(name);
+  if (!r) return '<span style="color:var(--border);font-size:11px;font-weight:600;">—</span>';
+  let bg, color;
+  if (r === 1)      { bg='rgba(245,200,66,0.15)';  color='#f5c842'; }
+  else if (r <= 5)  { bg='rgba(108,99,255,0.15)';  color='#a89bff'; }
+  else if (r <= 15) { bg='rgba(76,175,129,0.15)';  color='#6dddaa'; }
+  else if (r <= 30) { bg='rgba(41,182,246,0.15)';  color='#4fc3f7'; }
+  else if (r <= 75) { bg='rgba(255,101,132,0.12)'; color='#ff8fa3'; }
+  else              { bg='rgba(123,127,158,0.12)'; color='var(--muted)'; }
+  return `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${bg};color:${color};">#${r}</span>`;
+}
 function mattRankBadge(name) {
   const r = MATT_RANKS[name];
   if (!r) return '<span style="color:var(--border);font-size:11px;font-weight:600;">—</span>';
@@ -3094,8 +3107,9 @@ function renderRankings(data) {
     <td><span class="r-name">${p[1]}</span></td>
     <td><span class="r-team r-team-link" onclick="showNBATeam('${p[2]}')" title="View ${NBA_TEAM_NAMES[p[2]]||p[2]}">${p[2]}</span></td>
     <td><span class="r-pos">${p[3]}</span></td>
-    <td style="text-align:center;"><span class="r-rank ${rankClass(p[0])}">${p[0]}</span></td>
+<td style="text-align:center;"><span class="r-rank ${rankClass(p[0])}">${p[0]}</span></td>
     <td style="text-align:center;">${mattRankBadge(p[1])}</td>
+    <td style="text-align:center;">${hashtagRankBadge(p[1])}</td>
   </tr>`).join('');
 }
 function filterRankings() {
