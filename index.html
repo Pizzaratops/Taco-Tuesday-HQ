@@ -511,23 +511,30 @@
 
 <!-- TEAM PAGE -->
 <div class="page" id="teamPage">
-  <div class="team-page-header" id="teamHeader"></div>
- <div style="display:flex;gap:8px;align-items:center;margin-bottom:24px;">
-  <div class="tabs" style="flex:1;margin-bottom:0;">
-    <div class="tab active" onclick="switchTab('roster')">🏀 Roster</div>
-    <div class="tab" onclick="switchTab('picks')">🎯 My Owned Picks</div>
-  </div>
-  <div id="rosterSortBtn" style="display:none;">
-    <button onclick="toggleRosterSort()" id="sortToggleBtn"
-      style="background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.15s;white-space:nowrap;"
-      onmouseenter="this.style.borderColor='var(--accent)';this.style.color='var(--text)'"
-      onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
-      📊 Sort by Rank
+  
+  <div class="team-page-header" id="teamHeader"></div>  ← BLEIBT
+
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:24px;">
+    <div class="tabs" style="flex:1;margin-bottom:0;">
+      <div class="tab active" onclick="switchTab('roster')">🏀 Roster</div>
+      <div class="tab" onclick="switchTab('picks')">🎯 My Owned Picks</div>
+    </div>
+    <button onclick="showTrade()" style="background:linear-gradient(135deg,#4caf81,#6c63ff);border:none;color:white;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;"
+      onmouseenter="this.style.opacity='0.85'" onmouseleave="this.style.opacity='1'">
+      ⚖️ Trade
     </button>
+    <div id="rosterSortBtn" style="display:none;">
+      <button onclick="toggleRosterSort()" id="sortToggleBtn"
+        style="background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.15s;white-space:nowrap;"
+        onmouseenter="this.style.borderColor='var(--accent)';this.style.color='var(--text)'"
+        onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
+        📊 Sort by Rank
+      </button>
+    </div>
   </div>
+
+  <div id="tabContent"></div>
 </div>
-	<div id="tabContent"></div>
-</div>  <!-- end #teamPage -->
 
 <!-- DRAFT BOARD -->
 <div class="page" id="draftboardPage">
