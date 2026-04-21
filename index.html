@@ -503,7 +503,8 @@
       <button class="draftboard-btn" onclick="showRankings()" style="background:linear-gradient(135deg,#29b6f6,#6c63ff);box-shadow:0 4px 12px rgba(41,182,246,0.28);">🏅 Dynasty Rankings</button>
       <button class="draftboard-btn" onclick="showDraft26()" style="background:linear-gradient(135deg,#ff9800,#e040fb);box-shadow:0 4px 12px rgba(224,64,251,0.28);">📋 2026 Draft Board</button>
       <button class="draftboard-btn" onclick="showTrade()" style="background:linear-gradient(135deg,#4caf81,#6c63ff);box-shadow:0 4px 12px rgba(76,175,129,0.28);">⚖️ Trade Analyzer</button>
-    </div>
+    <button class="draftboard-btn" onclick="showBestAvail()" style="background:linear-gradient(135deg,#ff6584,#f5c842);box-shadow:0 4px 12px rgba(245,100,132,0.28);">🆓 Best Available</button>
+	</div>
     <div class="team-grid" id="teamGrid"></div>
   </div>
 </div>
@@ -511,12 +512,22 @@
 <!-- TEAM PAGE -->
 <div class="page" id="teamPage">
   <div class="team-page-header" id="teamHeader"></div>
-  <div class="tabs">
+ <div style="display:flex;gap:8px;align-items:center;margin-bottom:24px;">
+  <div class="tabs" style="flex:1;margin-bottom:0;">
     <div class="tab active" onclick="switchTab('roster')">🏀 Roster</div>
     <div class="tab" onclick="switchTab('picks')">🎯 My Owned Picks</div>
   </div>
-  <div id="tabContent"></div>
+  <div id="rosterSortBtn" style="display:none;">
+    <button onclick="toggleRosterSort()" id="sortToggleBtn"
+      style="background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.15s;white-space:nowrap;"
+      onmouseenter="this.style.borderColor='var(--accent)';this.style.color='var(--text)'"
+      onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
+      📊 Sort by Rank
+    </button>
+  </div>
 </div>
+	<div id="tabContent"></div>
+</div>  <!-- end #teamPage -->
 
 <!-- DRAFT BOARD -->
 <div class="page" id="draftboardPage">
@@ -646,7 +657,36 @@
   <div id="nbaTeamHeader" style="margin-bottom:24px;"></div>
   <div id="nbaTeamContent"></div>
 </div>
-
+	
+<!-- BEST AVAILABLE -->
+<div class="page" id="bestAvailPage">
+  <h2 style="margin-bottom:6px;">🆓 Best Available</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Spieler aus Dynasty Rankings die in keinem Roster stehen — sortiert nach Rank</p>
+  <div class="rankings-search">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" id="baSearch" placeholder="Search player, team, or position…" oninput="filterBestAvail()"/>
+  </div>
+  <div class="rankings-table-wrap">
+    <table class="rankings-table">
+      <thead>
+        <tr>
+          <th style="width:56px;text-align:center;">#</th>
+          <th>Name</th>
+          <th>NBA Team</th>
+          <th>Position</th>
+          <th style="text-align:center;">Alter</th>
+          <th style="text-align:center;">Matt DR</th>
+          <th style="text-align:center;">#️⃣</th>
+        </tr>
+      </thead>
+      <tbody id="baBody"></tbody>
+    </table>
+    <div class="r-no-results" id="baNoResults" style="display:none;">Keine Spieler gefunden.</div>
+  </div>
+</div>
+	
 <!-- TRADE ANALYZER -->
 <div class="page" id="tradePage">
   <h2 style="margin-bottom:6px;">⚖️ Trade Analyzer</h2>
@@ -3594,21 +3634,59 @@ TEAMS.forEach(t=>teamMap[t.id]=t);
 
 function getInitials(name){return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
 
-function renderHome(){
-  document.getElementById('teamGrid').innerHTML=TEAMS.map(t=>{
-    const c=getTeamColor(t);
+function teamStrengthBadge(teamId) {
+  const roster = ROSTERS[teamId] || [];
+  const ranks = roster
+    .map(p => getDynastyRank(p.name))
+    .filter(r => r !== null)
+    .sort((a, b) => a - b)
+    .slice(0, 10);
+  if (!ranks.length) return '';
+  const avg = Math.round(ranks.reduce((a, b) => a + b, 0) / ranks.length);
+  // Farbe nach Stärke
+  let color, bg;
+  if (avg <= 30)       { color = '#f5c842'; bg = 'rgba(245,200,66,0.15)'; }
+  else if (avg <= 60)  { color = '#a89bff'; bg = 'rgba(108,99,255,0.15)'; }
+  else if (avg <= 100) { color = '#6dddaa'; bg = 'rgba(76,175,129,0.15)'; }
+  else if (avg <= 150) { color = '#4fc3f7'; bg = 'rgba(41,182,246,0.15)'; }
+  else                 { color = 'var(--muted)'; bg = 'rgba(123,127,158,0.12)'; }
+  const isLight = document.body.classList.contains('light');
+  if (isLight) {
+    if (avg <= 30)       { color = '#9a6e10'; bg = 'rgba(154,110,16,0.15)'; }
+    else if (avg <= 60)  { color = '#c0622f'; bg = 'rgba(192,98,47,0.15)'; }
+    else if (avg <= 100) { color = '#2d7a50'; bg = 'rgba(61,138,92,0.15)'; }
+    else if (avg <= 150) { color = '#2a7ab8'; bg = 'rgba(42,122,184,0.15)'; }
+    else                 { color = 'var(--muted)'; bg = 'rgba(123,127,158,0.12)'; }
+  }
+  return `<div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:10px;color:var(--muted);font-weight:600;">Ø Top-10 Rank</span>
+    <span style="font-size:11px;font-weight:800;padding:2px 9px;border-radius:20px;background:${bg};color:${color};">#${avg}</span>
+  </div>`;
+}
+
+function renderHome() {
+  document.getElementById('teamGrid').innerHTML = TEAMS.map(t => {
+    const c = getTeamColor(t);
     return `<div class="team-card" onclick="showTeam(${t.id})">
       <div class="team-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</div>
       <div class="team-name">${t.name}</div>
       <div class="team-owner">${t.owner}</div>
       <div class="team-record">📊 ${t.record}</div>
+      ${teamStrengthBadge(t.id)}
     </div>`;
   }).join('');
 }
 
 function showTeam(id){
   currentTeamId=id; currentTab='roster';
-  const t=teamMap[id]; const c=getTeamColor(t);
+  currentRosterSort = 'pos';
+  const sortBtn = document.getElementById('rosterSortBtn');
+  if (sortBtn) {
+    sortBtn.style.display = 'block';
+    const btn = document.getElementById('sortToggleBtn');
+    if (btn) { btn.textContent = '📊 Sort by Rank'; btn.style.background='var(--surface)'; btn.style.borderColor='var(--border)'; btn.style.color='var(--muted)'; }
+  }
+	const t=teamMap[id]; const c=getTeamColor(t);
   document.getElementById('teamHeader').innerHTML=`
     <div class="team-page-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</div>
     <div>
@@ -3619,9 +3697,25 @@ function showTeam(id){
   renderTab(); navigate('teamPage');
 }
 
-function switchTab(tab){
-  currentTab=tab;
-  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',(i===0&&tab==='roster')||(i===1&&tab==='picks')));
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach((el, i) =>
+    el.classList.toggle('active', (i===0&&tab==='roster')||(i===1&&tab==='picks')));
+  // Sort-Button nur bei Roster anzeigen
+  const sortBtn = document.getElementById('rosterSortBtn');
+  if (sortBtn) sortBtn.style.display = tab === 'roster' ? 'block' : 'none';
+  renderTab();
+}
+
+function toggleRosterSort() {
+  currentRosterSort = currentRosterSort === 'pos' ? 'rank' : 'pos';
+  const btn = document.getElementById('sortToggleBtn');
+  if (btn) {
+    btn.textContent = currentRosterSort === 'rank' ? '📋 Sort by Position' : '📊 Sort by Rank';
+    btn.style.background = currentRosterSort === 'rank' ? 'var(--accent-light)' : 'var(--surface)';
+    btn.style.borderColor = currentRosterSort === 'rank' ? 'var(--accent)' : 'var(--border)';
+    btn.style.color = currentRosterSort === 'rank' ? 'var(--accent)' : 'var(--muted)';
+  }
   renderTab();
 }
 function renderTab(){
@@ -3663,9 +3757,22 @@ function dynastyRankBadge(rank) {
   if (rank === null) return '<span style="font-size:11px;color:var(--border);font-weight:600;min-width:48px;text-align:right;padding:3px 8px;">—</span>';
   return `<span onclick="showRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(rank)};color:${dynastyRankColor(rank)};cursor:pointer;transition:opacity 0.15s;" onmouseenter="this.style.opacity='0.75'" onmouseleave="this.style.opacity='1'">#${rank}</span>`;
 }
-function renderRoster(id){
-  const roster=ROSTERS[id]||[]; let html='';
-  html+=`<div style="display:flex;align-items:center;gap:12px;padding:6px 16px 10px;border-bottom:1px solid var(--border);margin-bottom:8px;">
+function playerAge(dob) {
+  if (!dob) return null;
+  const d = new Date(dob);
+  const today = new Date();
+  let age = today.getFullYear() - d.getFullYear();
+  const m = today.getMonth() - d.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < d.getDate())) age--;
+  return age;
+}
+	
+let currentRosterSort = 'pos'; // 'pos' | 'rank'
+
+function renderRoster(id) {
+  const roster = ROSTERS[id] || [];
+  let html = '';
+  html += `<div style="display:flex;align-items:center;gap:12px;padding:6px 16px 10px;border-bottom:1px solid var(--border);margin-bottom:8px;">
     <div style="width:32px;flex-shrink:0;"></div>
     <div style="flex:1;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);">Name</div>
     <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);width:36px;text-align:center;">Pos</div>
@@ -3673,16 +3780,48 @@ function renderRoster(id){
     <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">Matt</div>
     <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">#️⃣</div>
   </div>`;
-  ['PG','SG','SF','PF','C'].forEach(pos=>{
-    const players=roster.filter(p=>p.pos===pos);
-    if(!players.length) return;
-    players.forEach(p=>{
-      const rank=getDynastyRank(p.name);
+
+  // Sortierung
+  const sorted = currentRosterSort === 'rank'
+    ? [...roster].sort((a, b) => {
+        const ra = getDynastyRank(a.name) ?? 9999;
+        const rb = getDynastyRank(b.name) ?? 9999;
+        return ra - rb;
+      })
+    : roster;
+
+  // Gruppierung nach Position (nur wenn nicht nach Rank sortiert)
+  const posGroups = currentRosterSort === 'rank'
+    ? [{ pos: null, players: sorted }]
+    : ['PG','SG','SF','PF','C'].map(pos => ({ pos, players: sorted.filter(p => p.pos === pos) }));
+
+  posGroups.forEach(({ pos, players }) => {
+    if (!players.length) return;
+    players.forEach(p => {
+      const rank = getDynastyRank(p.name);
       const mattRk = MATT_RANKS[p.name] || null;
       const hashRk = getHashtagRank(p.name);
-      const mattBadge = mattRk ? `<span onclick="showRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(mattRk)};color:${dynastyRankColor(mattRk)};cursor:pointer;transition:opacity 0.15s;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${mattRk}</span>` : '<span style="font-size:11px;color:var(--border);font-weight:600;min-width:48px;text-align:right;padding:3px 8px;">—</span>';
-      const hashBadge = hashRk ? `<span onclick="showHashtagRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(hashRk)};color:${dynastyRankColor(hashRk)};cursor:pointer;transition:opacity 0.15s;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${hashRk}</span>` : '<span style="font-size:11px;color:var(--border);font-weight:600;min-width:48px;text-align:right;padding:3px 8px;">—</span>';
-      html+=`<div class="player-row"><div class="pos-badge pos-${p.pos}">${p.pos}</div><div class="player-name">${p.name}</div><span class="player-team r-team-link" onclick="showNBATeam('${p.team}')" style="font-size:12px;">${p.team}</span>${dynastyRankBadge(rank)}${mattBadge}${hashBadge}</div>`;
+
+      // Alter aus DYNASTY_PLAYERS
+      const dpEntry = DYNASTY_PLAYERS.find(dp => dp[1] === p.name || normalizeName(dp[1]) === normalizeName(p.name));
+      const age = dpEntry ? playerAge(dpEntry[4]) : null;
+      const ageStr = age !== null
+        ? `<span style="font-size:10px;font-weight:600;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:1px 6px;border-radius:10px;margin-left:4px;">${age}y</span>`
+        : '';
+
+      const mattBadge = mattRk
+        ? `<span onclick="showRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(mattRk)};color:${dynastyRankColor(mattRk)};cursor:pointer;transition:opacity 0.15s;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${mattRk}</span>`
+        : '<span style="font-size:11px;color:var(--border);font-weight:600;min-width:48px;text-align:right;padding:3px 8px;">—</span>';
+      const hashBadge = hashRk
+        ? `<span onclick="showHashtagRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(hashRk)};color:${dynastyRankColor(hashRk)};cursor:pointer;transition:opacity 0.15s;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${hashRk}</span>`
+        : '<span style="font-size:11px;color:var(--border);font-weight:600;min-width:48px;text-align:right;padding:3px 8px;">—</span>';
+
+      html += `<div class="player-row">
+        <div class="pos-badge pos-${p.pos}">${p.pos}</div>
+        <div class="player-name">${p.name}${ageStr}</div>
+        <span class="player-team r-team-link" onclick="showNBATeam('${p.team}')" style="font-size:12px;">${p.team}</span>
+        ${dynastyRankBadge(rank)}${mattBadge}${hashBadge}
+      </div>`;
     });
   });
   return html;
@@ -4345,24 +4484,41 @@ function renderTradeResult() {
 function showTrade() {
   TRADE_STATE.A.selected = []; TRADE_STATE.B.selected = [];
   TRADE_STATE.A.nbaFilter = ''; TRADE_STATE.B.nbaFilter = '';
-  TRADE_STATE.A.ttFilter  = ''; TRADE_STATE.B.ttFilter  = '';
   TRADE_STATE.A.search    = ''; TRADE_STATE.B.search    = '';
+
+  // Auto-Vorauswahl: wenn ein Team aktiv war, Side A vorfiltern
+  const preselectTeam = currentTeamId;
+  TRADE_STATE.A.ttFilter = preselectTeam ? String(preselectTeam) : '';
+  TRADE_STATE.B.ttFilter = '';
+
   initTradeDropdowns();
+
   ['A','B'].forEach(side => {
     document.getElementById('tradeNbaFilter'+side).value = '';
-    document.getElementById('tradeTTFilter'+side).value  = '';
+    document.getElementById('tradeTTFilter'+side).value  = TRADE_STATE[side].ttFilter || '';
     document.getElementById('tradeSearch'+side).value    = '';
     document.getElementById('tradeNbaFilter'+side).classList.remove('has-filter');
-    document.getElementById('tradeTTFilter'+side).classList.remove('has-filter');
+    const ttEl = document.getElementById('tradeTTFilter'+side);
+    ttEl.classList.toggle('has-filter', !!TRADE_STATE[side].ttFilter);
   });
+
   renderTradeList('A');
   renderTradeList('B');
   renderSelectedPills('A');
   renderSelectedPills('B');
   renderTradeResult();
   navigate('tradePage');
-}
 
+  // Kleiner Hinweis wenn vorausgefüllt
+  if (preselectTeam) {
+    const team = teamMap[preselectTeam];
+    const hint = document.createElement('div');
+    hint.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--accent);border-radius:12px;padding:10px 18px;font-size:12px;font-weight:600;color:var(--accent);z-index:200;box-shadow:0 4px 20px rgba(108,99,255,0.3);animation:modalIn 0.2s ease;pointer-events:none;white-space:nowrap;';
+    hint.textContent = `Side A → ${team.name} vorausgewählt`;
+    document.body.appendChild(hint);
+    setTimeout(() => hint.remove(), 2500);
+  }
+}
 
 
 // ============================================================
@@ -4398,6 +4554,67 @@ function sortHashtag(col) {
 
 function showHashtagRankings() { renderHashtag(hCurrentData); navigate('hashtagRankingsPage'); }
 
+// ============================================================
+//  BEST AVAILABLE
+// ============================================================
+let baCurrentData = [];
+
+function buildBestAvail() {
+  const allRosteredNames = new Set();
+  Object.values(ROSTERS).forEach(roster => {
+    roster.forEach(p => allRosteredNames.add(normalizeName(p.name).toLowerCase()));
+  });
+  return DYNASTY_PLAYERS.filter(p => {
+    const key = normalizeName(p[1]).toLowerCase();
+    return !allRosteredNames.has(key);
+  });
+}
+
+function renderBestAvail(data) {
+  const tbody = document.getElementById('baBody');
+  const noR = document.getElementById('baNoResults');
+  if (!data.length) { tbody.innerHTML = ''; noR.style.display = 'block'; return; }
+  noR.style.display = 'none';
+  tbody.innerHTML = data.map(p => {
+    const age = playerAge(p[4]);
+    const mRk = MATT_RANKS[p[1]] || null;
+    const hRk = hashtagRank(p[1]);
+    const rc = rankClass(p[0]);
+    const mattBadge = mRk
+      ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(mRk)};color:${dynastyRankColor(mRk)};">#${mRk}</span>`
+      : '<span style="color:var(--border);">—</span>';
+    const hashBadge = hRk
+      ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(hRk)};color:${dynastyRankColor(hRk)};">#${hRk}</span>`
+      : '<span style="color:var(--border);">—</span>';
+    return `<tr>
+      <td><span class="r-rank ${rc}">${p[0]}</span></td>
+      <td><span class="r-name">${p[1]}</span></td>
+      <td><span class="r-team r-team-link" onclick="showNBATeam('${p[2]}')" title="${NBA_TEAM_NAMES[p[2]]||p[2]}">${p[2]}</span></td>
+      <td><span class="r-pos">${p[3]}</span></td>
+      <td style="text-align:center;font-size:12px;color:var(--muted);font-weight:600;">${age !== null ? age+'y' : '—'}</td>
+      <td style="text-align:center;">${mattBadge}</td>
+      <td style="text-align:center;">${hashBadge}</td>
+    </tr>`;
+  }).join('');
+}
+
+function filterBestAvail() {
+  const q = document.getElementById('baSearch').value.toLowerCase().trim();
+  baCurrentData = q
+    ? buildBestAvail().filter(p =>
+        p[1].toLowerCase().includes(q) ||
+        p[2].toLowerCase().includes(q) ||
+        p[3].toLowerCase().includes(q))
+    : buildBestAvail();
+  renderBestAvail(baCurrentData);
+}
+
+function showBestAvail() {
+  baCurrentData = buildBestAvail();
+  renderBestAvail(baCurrentData);
+  navigate('bestAvailPage');
+}
+	
 renderHome();
 </script>
 </body>
