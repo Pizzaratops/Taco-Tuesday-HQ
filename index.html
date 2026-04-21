@@ -3915,8 +3915,7 @@ function valueBadgeStyle(val) {
 function initTradeDropdowns() {
   const nbaAbbrs = [...new Set(DYNASTY_PLAYERS.map(p => p[2]))].filter(a => a !== 'FA').sort();
   const nbaOpts = nbaAbbrs.map(a => `<option value="${a}">${a} – ${NBA_TEAM_NAMES[a]||a}</option>`).join('');
-  const ttOpts = TEAMS.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
-
+const ttOpts = `<option value="unowned">👻 Unowned</option>` + TEAMS.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
   ['A','B'].forEach(side => {
     document.getElementById('tradeNbaFilter'+side).innerHTML = `<option value="">🏀 NBA Team</option>${nbaOpts}`;
     document.getElementById('tradeTTFilter'+side).innerHTML = `<option value="">🌮 TT Team</option>${ttOpts}`;
@@ -3946,8 +3945,8 @@ function renderTradeList(side) {
 
   let filtered = pool.filter(p => {
     if (st.nbaFilter && p.nba !== st.nbaFilter) return false;
-    if (st.ttFilter  && p.ownerId !== parseInt(st.ttFilter)) return false;
-    if (q && !(p.name.toLowerCase().includes(q) || p.nba.toLowerCase().includes(q) ||
+if (st.ttFilter === 'unowned' && p.ownerId !== null) return false;
+if (st.ttFilter && st.ttFilter !== 'unowned' && p.ownerId !== parseInt(st.ttFilter)) return false;    if (q && !(p.name.toLowerCase().includes(q) || p.nba.toLowerCase().includes(q) ||
                (p.owner && p.owner.name.toLowerCase().includes(q)))) return false;
     return true;
   });
