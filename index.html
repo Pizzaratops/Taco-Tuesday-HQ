@@ -4310,9 +4310,9 @@ function renderTradeResult() {
       <div class="trade-value-bar-track">
         <div class="trade-value-bar-fill" style="width:${pctA.toFixed(1)}%;background:${aWins ? barColor : 'var(--muted)'};"></div>
       </div>
-      <div class="trade-value-bar-labels">
-        <span>${pctA.toFixed(1)}%</span>
-        <span>${pctB.toFixed(1)}%</span>
+      <div class="trade-value-bar-labels" style="align-items:center;">
+        <span style="${aWins ? `font-weight:800;color:${barColor};` : ''}">${pctA.toFixed(1)}% ${aWins ? '← Side A wins' : ''}</span>
+        <span style="${!aWins ? `font-weight:800;color:${barColor};` : ''}">${!aWins ? 'Side B wins →' : ''} ${pctB.toFixed(1)}%</span>
       </div>
     </div>
     <div class="trade-breakdown">
