@@ -4136,23 +4136,26 @@ const TRADE_VALUE_TABLE = {"1": 2107.0, "2": 1873.5, "3": 1857.0, "4": 1792.0, "
 //  Jahres-Discount: ×1.0 / ×0.82 / ×0.67 / ×0.55
 // ============================================================
 
+// Pick values calibrated so 2026 R1 early = 1016 = Cameron Boozer dynasty value
+// (rank #20, age 18, dynasty mode ×1.50 youth mult, replacement floor subtracted)
+// Tier ratios follow KTC-style community standards. Year discount: ×0.80 / ×0.65 / ×0.53
 const PICK_VALUES = {
-  "2026_R1_early": 1550, "2026_R1_mid": 1100, "2026_R1_late":  950,
-  "2026_R2_early":  780, "2026_R2_mid":  720, "2026_R2_late":  670,
-  "2026_R3_early":  615, "2026_R3_mid":  590, "2026_R3_late":  565,
-  "2026_R4_early":  530, "2026_R4_mid":  515, "2026_R4_late":  500,
-  "2027_R1_early": 1271, "2027_R1_mid":  902, "2027_R1_late":  779,
-  "2027_R2_early":  640, "2027_R2_mid":  590, "2027_R2_late":  549,
-  "2027_R3_early":  504, "2027_R3_mid":  484, "2027_R3_late":  463,
-  "2027_R4_early":  435, "2027_R4_mid":  422, "2027_R4_late":  410,
-  "2028_R1_early": 1038, "2028_R1_mid":  737, "2028_R1_late":  636,
-  "2028_R2_early":  523, "2028_R2_mid":  482, "2028_R2_late":  449,
-  "2028_R3_early":  412, "2028_R3_mid":  395, "2028_R3_late":  379,
-  "2028_R4_early":  355, "2028_R4_mid":  345, "2028_R4_late":  335,
-  "2029_R1_early":  853, "2029_R1_mid":  605, "2029_R1_late":  522,
-  "2029_R2_early":  429, "2029_R2_mid":  396, "2029_R2_late":  369,
-  "2029_R3_early":  338, "2029_R3_mid":  324, "2029_R3_late":  311,
-  "2029_R4_early":  292, "2029_R4_mid":  283, "2029_R4_late":  275,
+  "2026_R1_early": 1016, "2026_R1_mid":  610, "2026_R1_late":  366,
+  "2026_R2_early":  244, "2026_R2_mid":  163, "2026_R2_late":  112,
+  "2026_R3_early":   81, "2026_R3_mid":   61, "2026_R3_late":   46,
+  "2026_R4_early":   36, "2026_R4_mid":   27, "2026_R4_late":   20,
+  "2027_R1_early":  813, "2027_R1_mid":  488, "2027_R1_late":  293,
+  "2027_R2_early":  195, "2027_R2_mid":  130, "2027_R2_late":   89,
+  "2027_R3_early":   65, "2027_R3_mid":   49, "2027_R3_late":   37,
+  "2027_R4_early":   28, "2027_R4_mid":   22, "2027_R4_late":   16,
+  "2028_R1_early":  660, "2028_R1_mid":  396, "2028_R1_late":  238,
+  "2028_R2_early":  158, "2028_R2_mid":  106, "2028_R2_late":   73,
+  "2028_R3_early":   53, "2028_R3_mid":   40, "2028_R3_late":   30,
+  "2028_R4_early":   23, "2028_R4_mid":   18, "2028_R4_late":   13,
+  "2029_R1_early":  538, "2029_R1_mid":  323, "2029_R1_late":  194,
+  "2029_R2_early":  129, "2029_R2_mid":   86, "2029_R2_late":   59,
+  "2029_R3_early":   43, "2029_R3_mid":   32, "2029_R3_late":   24,
+  "2029_R4_early":   19, "2029_R4_mid":   15, "2029_R4_late":   11,
 };
 
 const PICK_POS_LABELS = {
