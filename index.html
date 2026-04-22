@@ -1035,6 +1035,14 @@ window.addEventListener('DOMContentLoaded', function() {
     justify-content: center;
     padding: 0;
   }
+	.nav-menu-item {
+    width:100%;background:none;border:none;border-bottom:1px solid var(--border);
+    color:var(--text);padding:14px 20px;font-size:14px;font-weight:600;
+    font-family:'DM Sans',sans-serif;cursor:pointer;text-align:left;
+    transition:background 0.15s;display:block;
+  }
+  .nav-menu-item:last-child { border-bottom:none; }
+  .nav-menu-item:hover { background:var(--accent-light); color:var(--accent); }
   @media (min-width: 500px) {
     #shareModalOverlay { align-items: center; padding: 20px; }
   }
@@ -4610,6 +4618,22 @@ function showBestAvail() {
   renderBestAvail(baCurrentData);
   navigate('bestAvailPage');
 }
+	function toggleNavMenu() {
+  const d = document.getElementById('navMenuDropdown');
+  const a = document.getElementById('navMenuArrow');
+  const open = d.style.display === 'block';
+  d.style.display = open ? 'none' : 'block';
+  a.style.transform = open ? '' : 'rotate(180deg)';
+}
+document.addEventListener('click', e => {
+  const wrap = document.getElementById('navMenuWrap');
+  if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('navMenuDropdown').style.display = 'none';
+    document.getElementById('navMenuArrow').style.transform = '';
+  }
+});
+
+renderHome(); // this line already exists, just put the above before it
 	
 renderHome();
 </script>
