@@ -747,6 +747,8 @@
           <input type="text" id="tradeSearchA" placeholder="Search player…" oninput="filterTradePlayers('A')"/>
         </div>
 
+<button class="pick-pool-btn" id="pickBtnA" onclick="togglePickMode('A')">📋 Picks anzeigen</button>
+
         <div class="trade-player-list" id="tradeListA"></div>
 
         <div class="trade-selected-wrap">
@@ -782,6 +784,8 @@
           </svg>
           <input type="text" id="tradeSearchB" placeholder="Search player…" oninput="filterTradePlayers('B')"/>
         </div>
+
+<button class="pick-pool-btn" id="pickBtnB" onclick="togglePickMode('B')">📋 Picks anzeigen</button>
 
         <div class="trade-player-list" id="tradeListB"></div>
 
@@ -1126,6 +1130,46 @@ window.addEventListener('DOMContentLoaded', function() {
   }
   .share-close-btn:hover { border-color: var(--accent); color: var(--text); }
 </style>
+
+<style>
+  /* ===== PICK POOL IN TRADE ANALYZER ===== */
+  .pick-pool-btn {
+    background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
+    padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 700;
+    font-family: 'DM Sans', sans-serif; transition: all 0.15s; margin-bottom: 10px;
+  }
+  .pick-pool-btn:hover { border-color: #c58f32; color: #c58f32; }
+  .pick-pool-btn.active { background: rgba(197,143,50,0.15); border-color: #c58f32; color: #c58f32; }
+  body.light .pick-pool-btn { }
+  body.light .pick-pool-btn.active { background: rgba(154,110,16,0.12); border-color: #9a6e10; color: #9a6e10; }
+  .pick-item {
+    display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px;
+    cursor: pointer; transition: background 0.1s; border-bottom: 1px solid var(--border); font-size: 13px;
+  }
+  .pick-item:last-child { border-bottom: none; }
+  .pick-item:hover { background: var(--surface2); }
+  .pick-item.selected { background: rgba(197,143,50,0.08); }
+  .pick-round-pos {
+    font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 5px;
+    letter-spacing: 0.05em; white-space: nowrap;
+    background: rgba(197,143,50,0.15); color: #c58f32;
+  }
+  body.light .pick-round-pos { background: rgba(154,110,16,0.12); color: #9a6e10; }
+  .pick-owner-chip {
+    display: inline-flex; align-items: center; gap: 3px;
+    font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 10px;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); margin: 1px 2px 1px 0;
+  }
+  .pick-owner-chip.traded { border-color: rgba(255,101,132,0.4); color: #ff8fa3; background: rgba(255,101,132,0.08); }
+  body.light .pick-owner-chip.traded { border-color: rgba(180,60,100,0.3); color: #b43c64; background: rgba(180,60,100,0.06); }
+  .pick-value-badge {
+    font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 4px;
+    background: rgba(197,143,50,0.15); color: #c58f32; white-space: nowrap;
+  }
+  body.light .pick-value-badge { background: rgba(154,110,16,0.12); color: #9a6e10; }
+</style>
+
 <div id="shareModalOverlay">
   <div id="shareModalBox">
     <div class="drag-handle"></div>
@@ -4081,6 +4125,154 @@ function showNBATeam(abbr) {
 const TRADE_VALUE_TABLE = {"1": 2107.0, "2": 1873.5, "3": 1857.0, "4": 1792.0, "5": 1564.5, "6": 1555.0, "7": 1517.0, "8": 1492.5, "9": 1486.5, "10": 1435.5, "11": 1416.0, "12": 1409.0, "13": 1397.0, "14": 1376.5, "15": 1370.0, "16": 1358.0, "17": 1338.0, "18": 1324.5, "19": 1287.5, "20": 1274.0, "21": 1258.5, "22": 1222.5, "23": 1193.0, "24": 1182.5, "25": 1164.5, "26": 1156.5, "27": 1146.5, "28": 1135.5, "29": 1118.0, "30": 1099.5, "31": 1089.0, "32": 1078.5, "33": 1063.5, "34": 1048.0, "35": 1038.0, "36": 1025.0, "37": 1015.0, "38": 994.5, "39": 976.0, "40": 966.0, "41": 955.5, "42": 949.0, "43": 930.5, "44": 922.0, "45": 916.0, "46": 904.0, "47": 897.0, "48": 880.0, "49": 878.0, "50": 872.0, "51": 867.5, "52": 865.5, "53": 864.0, "54": 862.0, "55": 844.0, "56": 826.5, "57": 823.0, "58": 813.0, "59": 808.5, "60": 805.5, "61": 803.0, "62": 801.0, "63": 799.0, "64": 793.5, "65": 789.0, "66": 787.5, "67": 782.0, "68": 781.75, "69": 780.5, "70": 772.25, "71": 770.5, "72": 769.75, "73": 768.5, "74": 768.25, "75": 767.5, "76": 766.75, "77": 765.5, "78": 758.25, "79": 757.0, "80": 756.75, "81": 755.0, "82": 751.25, "83": 744.5, "84": 743.25, "85": 742.0, "86": 739.75, "87": 739.0, "88": 736.75, "89": 735.0, "90": 730.75, "91": 723.0, "92": 721.75, "93": 720.0, "94": 719.25, "95": 717.0, "96": 712.75, "97": 711.5, "98": 710.75, "99": 708.5, "100": 707.75, "101": 705.0, "102": 703.25, "103": 702.0, "104": 701.75, "105": 701.5, "106": 700.75, "107": 697.5, "108": 693.25, "109": 691.0, "110": 686.75, "111": 680.5, "112": 680.25, "113": 677.0, "114": 672.25, "115": 670.0, "116": 668.75, "117": 666.5, "118": 665.25, "119": 662.0, "120": 659.75, "124": 652.5, "125": 652.25, "126": 651.0, "129": 644.25, "130": 642.0, "131": 641.75, "132": 641.0, "133": 640.25, "134": 637.0, "135": 636.25, "136": 635.0, "137": 632.75, "138": 630.5, "139": 629.75, "140": 629.5, "141": 628.25, "142": 628.0, "143": 627.75, "144": 627.0, "145": 626.75, "146": 626.5, "147": 625.75, "148": 625.5, "149": 625.25, "150": 625.0, "151": 624.75, "152": 621.0, "153": 620.75, "154": 620.0, "155": 619.75, "156": 619.5, "157": 619.25, "158": 619.0, "159": 618.25, "160": 618.0, "161": 617.25, "162": 617.0, "163": 616.25, "164": 616.0, "165": 615.75, "166": 615.5, "167": 614.75, "168": 614.5, "169": 614.25, "170": 614.0, "171": 613.75, "172": 613.5, "173": 612.75, "174": 612.0, "175": 611.75, "176": 611.5, "177": 611.25, "178": 611.0, "179": 610.75, "180": 610.5, "181": 610.25, "182": 610.0, "183": 609.75, "184": 609.0, "185": 608.75, "186": 608.5, "187": 608.25, "188": 608.0, "189": 607.0, "190": 606.25, "191": 606.0, "192": 605.75, "193": 605.5, "194": 605.25, "195": 605.0, "196": 604.75, "197": 604.5, "198": 603.75, "199": 603.5, "200": 603.25, "201": 603.0, "202": 602.75, "203": 602.5, "204": 602.25, "205": 601.5, "206": 601.25, "207": 601.0, "208": 600.25, "209": 600.0, "210": 599.75, "211": 599.0, "212": 598.75, "213": 598.5, "214": 598.25, "215": 597.5, "216": 597.25, "217": 596.5, "218": 596.25, "219": 596.0, "220": 595.25, "221": 595.0, "222": 594.75, "223": 594.5, "224": 594.25, "225": 592.5, "226": 592.35, "227": 592.2, "228": 592.05, "229": 591.9, "230": 591.25, "231": 591.1, "232": 590.95, "233": 590.3, "234": 590.15, "235": 590.0, "236": 589.35, "237": 588.7, "238": 588.55, "239": 588.4, "240": 586.75, "241": 585.6, "242": 583.95, "243": 583.3, "244": 581.65, "245": 581.5, "246": 579.85, "247": 579.2, "248": 579.05, "249": 578.4, "250": 577.75, "251": 574.1, "252": 573.45, "253": 572.8, "254": 572.15, "255": 572.0, "256": 568.85, "257": 568.7, "258": 567.55, "259": 565.9, "260": 565.75, "261": 564.1, "262": 562.45, "263": 559.8, "264": 558.65, "265": 557.5, "266": 556.85, "267": 554.7, "268": 554.55, "269": 553.9, "270": 553.75, "271": 552.5, "272": 551.9, "273": 550.8, "274": 550.2, "275": 549.6, "276": 549.5, "277": 548.9, "278": 547.8, "279": 546.7, "280": 546.1, "281": 544.5, "282": 543.9, "283": 543.3, "284": 542.7, "285": 542.1, "286": 541.5, "287": 541.4, "288": 539.8, "289": 538.7, "290": 538.6, "291": 538.0, "292": 537.9, "293": 536.8, "294": 536.7, "295": 536.1, "296": 535.0, "297": 534.9, "298": 533.3, "299": 533.2, "300": 531.6, "301": 531.0, "302": 530.4, "303": 530.3, "304": 530.2, "305": 529.6, "306": 529.5, "307": 528.9, "308": 528.8, "309": 527.7, "310": 527.6, "311": 527.5, "312": 527.4, "313": 526.8, "314": 526.2, "315": 526.1, "316": 526.0, "317": 525.4, "318": 525.3, "319": 525.2, "320": 525.1, "321": 525.0, "322": 524.4, "323": 524.3, "324": 524.2, "325": 524.1, "326": 524.0, "327": 523.9, "328": 523.5, "329": 522.95, "330": 522.9, "331": 522.85, "332": 522.8, "333": 522.25, "334": 522.2, "335": 522.15, "336": 522.1, "337": 522.05, "338": 521.5, "339": 521.45, "340": 521.4, "341": 520.85, "342": 520.8, "343": 520.75, "344": 520.2, "345": 520.15, "346": 520.1, "347": 520.05, "348": 520.0, "349": 519.45, "350": 519.4, "351": 519.35, "352": 519.3, "353": 518.75, "354": 518.7, "355": 518.65, "356": 518.6, "357": 518.05, "358": 517.5, "359": 517.45, "360": 516.9, "361": 516.85, "362": 516.8, "363": 516.25, "364": 516.2, "365": 516.15, "366": 516.1, "367": 515.55, "368": 515.5, "369": 514.45, "370": 514.4, "371": 513.85, "372": 513.8, "373": 513.75, "374": 513.5, "375": 513.45, "376": 513.4, "377": 512.85, "378": 512.8, "379": 512.25, "380": 511.2, "381": 511.15, "382": 511.1, "383": 511.05, "384": 510.0, "385": 509.95, "386": 509.9, "387": 508.85, "388": 508.8, "389": 508.75, "390": 508.2, "391": 507.65, "392": 507.1, "393": 507.05, "394": 507.0, "395": 505.95, "396": 505.4, "397": 505.35, "398": 505.3, "399": 504.75, "400": 504.7, "401": 504.65, "402": 503.6, "403": 503.05, "404": 502.5, "405": 502.45, "406": 502.4, "407": 502.35, "408": 501.8, "409": 501.75, "410": 501.2, "411": 501.15, "412": 500.6, "413": 499.5, "414": 499.45, "415": 499.4, "416": 499.35, "417": 499.3, "418": 499.25, "419": 499.2, "420": 498.65, "421": 498.1, "422": 498.05, "423": 498.0, "424": 497.95, "425": 497.9, "426": 497.35, "427": 497.3, "428": 497.25, "429": 496.7, "430": 496.65, "431": 495.6, "432": 494.55, "433": 494.0, "434": 493.45, "435": 492.4, "436": 492.35, "437": 492.3, "438": 491.75, "439": 491.2, "440": 491.15, "441": 489.6, "442": 489.55, "443": 489.0, "444": 487.45, "445": 485.4, "446": 484.35, "447": 483.8, "448": 482.75, "449": 482.2, "450": 482.15, "451": 480.1, "452": 479.55, "453": 477.5, "454": 477.45, "455": 475.9, "456": 475.35, "457": 472.3, "458": 471.75, "459": 471.7, "460": 471.65, "461": 470.1, "462": 469.55, "463": 464.0, "464": 463.45, "465": 462.9, "466": 462.0, "467": 461.45, "468": 460.9, "469": 460.85, "470": 460.3, "471": 460.25, "472": 459.2, "473": 459.15, "474": 458.6, "475": 458.55, "476": 458.5, "477": 457.95, "478": 457.4, "479": 456.85, "480": 455.8, "481": 455.25, "482": 455.2, "483": 453.65, "484": 453.6, "485": 453.05, "486": 453.0, "487": 451.95, "488": 451.9, "489": 451.85, "490": 451.3, "491": 451.25, "492": 451.2, "493": 451.15, "494": 451.1, "495": 451.05, "496": 451.0, "497": 450.45, "498": 449.4, "499": 449.35, "500": 448.8, "501": 448.75, "502": 447.7, "503": 447.65, "504": 447.6, "505": 445.55, "506": 445.5, "507": 445.45, "508": 444.4, "509": 443.85, "510": 443.3, "511": 443.25, "512": 443.2, "513": 442.65, "514": 442.6, "515": 442.05, "516": 442.0, "517": 441.45, "518": 440.9, "519": 440.85, "520": 439.8, "521": 439.75, "522": 439.7, "523": 439.15, "524": 439.1, "525": 438.55, "526": 437.5, "527": 435.95, "528": 435.9, "529": 435.35, "530": 434.8, "531": 433.75, "532": 433.2, "533": 433.15, "534": 433.1, "535": 432.05, "536": 432.0, "537": 429.95, "538": 429.4, "539": 428.35};
 
 // ============================================================
+//  DRAFT PICK VALUES
+//  KTC-ähnlicher Algorithmus für 12-Team / 4-Runden Liga
+//  Basis-Werte vom Rang-Äquivalent abgeleitet:
+//    R1-early ≈ Ränge 5–15    (Ø ~1550)
+//    R1-mid   ≈ Ränge 20–35   (Ø ~1100)
+//    R1-late  ≈ Ränge 36–55   (Ø ~950)
+//    R2-early ≈ Ränge 60–80   (Ø ~780)
+//    ... etc.
+//  Jahres-Discount: ×1.0 / ×0.82 / ×0.67 / ×0.55
+// ============================================================
+
+const PICK_VALUES = {
+  "2026_R1_early": 1550, "2026_R1_mid": 1100, "2026_R1_late":  950,
+  "2026_R2_early":  780, "2026_R2_mid":  720, "2026_R2_late":  670,
+  "2026_R3_early":  615, "2026_R3_mid":  590, "2026_R3_late":  565,
+  "2026_R4_early":  530, "2026_R4_mid":  515, "2026_R4_late":  500,
+  "2027_R1_early": 1271, "2027_R1_mid":  902, "2027_R1_late":  779,
+  "2027_R2_early":  640, "2027_R2_mid":  590, "2027_R2_late":  549,
+  "2027_R3_early":  504, "2027_R3_mid":  484, "2027_R3_late":  463,
+  "2027_R4_early":  435, "2027_R4_mid":  422, "2027_R4_late":  410,
+  "2028_R1_early": 1038, "2028_R1_mid":  737, "2028_R1_late":  636,
+  "2028_R2_early":  523, "2028_R2_mid":  482, "2028_R2_late":  449,
+  "2028_R3_early":  412, "2028_R3_mid":  395, "2028_R3_late":  379,
+  "2028_R4_early":  355, "2028_R4_mid":  345, "2028_R4_late":  335,
+  "2029_R1_early":  853, "2029_R1_mid":  605, "2029_R1_late":  522,
+  "2029_R2_early":  429, "2029_R2_mid":  396, "2029_R2_late":  369,
+  "2029_R3_early":  338, "2029_R3_mid":  324, "2029_R3_late":  311,
+  "2029_R4_early":  292, "2029_R4_mid":  283, "2029_R4_late":  275,
+};
+
+const PICK_POS_LABELS = {
+  early: { label: 'Early', picks: 'Picks 1–4'  },
+  mid:   { label: 'Mid',   picks: 'Picks 5–8'  },
+  late:  { label: 'Late',  picks: 'Picks 9–12' },
+};
+
+// Baut Pick-Pool aus PICKS-Array mit echten Besitzern
+function buildPickPool() {
+  const pool = [];
+  const combos = new Set();
+  PICKS.forEach(p => combos.add(`${p.year}_${p.round}`));
+
+  combos.forEach(combo => {
+    const [yearStr, rndStr] = combo.split('_');
+    const year  = parseInt(yearStr);
+    const round = parseInt(rndStr);
+    const picksForCombo = PICKS
+      .filter(p => p.year === year && p.round === round)
+      .sort((a, b) => a.originalOwner - b.originalOwner);
+
+    ['early', 'mid', 'late'].forEach((pos, posIdx) => {
+      const key       = `${year}_R${round}_${pos}`;
+      const baseValue = PICK_VALUES[key];
+      if (!baseValue) return;
+
+      // Picks 1-4 = early, 5-8 = mid, 9-12 = late
+      const chunk  = picksForCombo.slice(posIdx * 4, posIdx * 4 + 4);
+      const owners = chunk.map(p => ({
+        orig:   teamMap[p.originalOwner],
+        curr:   teamMap[p.currentOwner],
+        traded: p.originalOwner !== p.currentOwner,
+        note:   p.note || null,
+      }));
+
+      const pl = PICK_POS_LABELS[pos];
+      pool.push({
+        isPick:      true,
+        pickKey:     key,
+        year,        round,        pos,
+        name:        `${year} R${round} (${pl.label})`,
+        displayName: `${year} · Round ${round} · ${pl.label}`,
+        pickRange:   pl.picks,
+        baseValue,
+        nba:         '📋',
+        owners,
+        // Dummy-Felder für Kompatibilität mit Player-Pool
+        rank: null, dob: null, owner: null, ownerId: null,
+      });
+    });
+  });
+
+  pool.sort((a, b) => {
+    if (a.year  !== b.year)  return a.year  - b.year;
+    if (a.round !== b.round) return a.round - b.round;
+    const o = { early: 0, mid: 1, late: 2 };
+    return o[a.pos] - o[b.pos];
+  });
+  return pool;
+}
+
+// Wert mit Mode-Anpassung
+function pickTradeValue(pick, mode) {
+  let val = pick.baseValue;
+  if (mode === 'winnow') {
+    // Win-Now: nahe Picks stärker gewichtet
+    const m = { 2026: 1.15, 2027: 1.00, 2028: 0.85, 2029: 0.70 };
+    val = Math.round(val * (m[pick.year] || 0.65));
+  } else if (mode === 'dynasty') {
+    // Dynasty: zukünftige Picks leicht aufgewertet (Rebuild-Wert)
+    const m = { 2026: 0.95, 2027: 1.00, 2028: 1.05, 2029: 1.08 };
+    val = Math.round(val * (m[pick.year] || 1.00));
+  }
+  return val;
+}
+
+// Pick-Mode Toggle
+function togglePickMode(side) {
+  TRADE_STATE[side].showPicks = !TRADE_STATE[side].showPicks;
+  const btn = document.getElementById('pickBtn' + side);
+  if (btn) {
+    btn.classList.toggle('active', TRADE_STATE[side].showPicks);
+    btn.textContent = TRADE_STATE[side].showPicks ? '👤 Spieler anzeigen' : '📋 Picks anzeigen';
+  }
+  // Filter beim Wechsel zurücksetzen
+  TRADE_STATE[side].nbaFilter = '';
+  TRADE_STATE[side].ttFilter  = '';
+  TRADE_STATE[side].search    = '';
+  document.getElementById('tradeNbaFilter' + side).value = '';
+  document.getElementById('tradeTTFilter'  + side).value = '';
+  document.getElementById('tradeSearch'    + side).value = '';
+  renderTradeList(side);
+}
+
+// Toggle für Pick-Auswahl
+function toggleTradePick(side, pickKey) {
+  const st   = TRADE_STATE[side];
+  const pool = buildPickPool();
+  const pick = pool.find(p => p.pickKey === pickKey);
+  if (!pick) return;
+  const idx = st.selected.findIndex(s => s.isPick && s.pickKey === pickKey);
+  if (idx >= 0) { st.selected.splice(idx, 1); } else { st.selected.push(pick); }
+  renderTradeList(side);
+  renderSelectedPills(side);
+  renderTradeResult();
+}
+
+// Pick aus Auswahl entfernen
+function removeTradePick(side, pickKey) {
+  TRADE_STATE[side].selected = TRADE_STATE[side].selected.filter(
+    s => !(s.isPick && s.pickKey === pickKey)
+  );
+  renderTradeList(side);
+  renderSelectedPills(side);
+  renderTradeResult();
+}
+
+
+// ============================================================
 //  VALUATION MODE  (dynasty | raw | winnow)
 // ============================================================
 let TRADE_MODE = 'dynasty';
@@ -4189,17 +4381,17 @@ function dynastyValue(rank, dob) {
 // stacking many fringe players cannot manufacture value equal to one real asset.
 function tradeSideValue(players) {
   if (!players.length) return 0;
-  const withValues = players.map(p => dynastyValue(p.rank, p.dob)).sort((a, b) => b - a);
+  const withValues = players
+    .map(p => p.isPick ? pickTradeValue(p, TRADE_MODE) : dynastyValue(p.rank, p.dob))
+    .sort((a, b) => b - a);
   let total = 0;
-  withValues.forEach((val, i) => {
-    total += val * Math.pow(0.70, i);
-  });
+  withValues.forEach((val, i) => { total += val * Math.pow(0.70, i); });
   return Math.round(total);
 }
 
 const TRADE_STATE = {
-  A: { nbaFilter: '', ttFilter: '', search: '', selected: [] },
-  B: { nbaFilter: '', ttFilter: '', search: '', selected: [] },
+  A: { nbaFilter: '', ttFilter: '', search: '', selected: [], showPicks: false },
+  B: { nbaFilter: '', ttFilter: '', search: '', selected: [], showPicks: false },
 };
 
 // Pre-built lookup maps for Hashtag and Matt rankings
@@ -4242,11 +4434,12 @@ function rankStyle(rank) {
 
 function buildTradePlayerPool() {
   const ownerMap = buildFantasyOwnerMap();
-  return DYNASTY_PLAYERS.map(p => {
+  const players  = DYNASTY_PLAYERS.map(p => {
     const ownerId = ownerMap[p[1].toLowerCase()] || null;
-    const owner = ownerId ? teamMap[ownerId] : null;
-    return { rank: p[0], name: p[1], nba: p[2], pos: p[3], dob: p[4] || null, owner, ownerId };
+    const owner   = ownerId ? teamMap[ownerId] : null;
+    return { isPick: false, rank: p[0], name: p[1], nba: p[2], pos: p[3], dob: p[4] || null, owner, ownerId };
   });
+  return [...players, ...buildPickPool()];
 }
 
 function rankBadgeStyle(rank) {
@@ -4295,32 +4488,80 @@ function filterTradePlayers(side) {
 }
 
 function renderTradeList(side) {
-  const st = TRADE_STATE[side];
-  const pool = buildTradePlayerPool();
-  const q = st.search.toLowerCase().trim();
+  const st   = TRADE_STATE[side];
+  const list = document.getElementById('tradeList' + side);
 
-  let filtered = pool.filter(p => {
+  // ── PICK MODE ──────────────────────────────────────────────
+  if (st.showPicks) {
+    const pickPool = buildPickPool();
+    const q = st.search.toLowerCase().trim();
+    const filtered = q
+      ? pickPool.filter(p =>
+          p.name.toLowerCase().includes(q) ||
+          String(p.year).includes(q) ||
+          String(p.round).includes(q))
+      : pickPool;
+
+    const selectedKeys = st.selected.filter(s => s.isPick).map(s => s.pickKey);
+    if (!filtered.length) { list.innerHTML = '<div class="trade-no-players">Keine Picks gefunden.</div>'; return; }
+
+    let lastYear = null;
+    list.innerHTML = filtered.map(p => {
+      const isSel = selectedKeys.includes(p.pickKey);
+      const val   = pickTradeValue(p, TRADE_MODE);
+      const isLight = document.body.classList.contains('light');
+
+      const yearHeader = p.year !== lastYear
+        ? `<div style="padding:6px 12px 3px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);background:var(--surface2);border-bottom:1px solid var(--border);">${p.year}</div>`
+        : '';
+      lastYear = p.year;
+
+      const ownerChips = (p.owners || []).map(o => {
+        if (!o.orig) return '';
+        const color = isLight ? o.curr.lightColor : o.curr.color;
+        const tradedClass = o.traded ? 'traded' : '';
+        const tradedStyle = o.traded ? '' : `border-color:${color}55;color:${color};`;
+        return `<span class="pick-owner-chip ${tradedClass}" style="${tradedStyle}" title="${o.traded ? `Von ${o.orig.name} traded` : o.orig.name}">${o.traded ? '→ ' : ''}${o.curr.name}${o.note ? ` (${o.note})` : ''}</span>`;
+      }).join('');
+
+      return `${yearHeader}<div class="pick-item ${isSel ? 'selected' : ''}" onclick="toggleTradePick('${side}','${p.pickKey}')">
+        <div class="tp-check" style="margin-top:2px;flex-shrink:0;">${isSel ? '<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;">
+            <span style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:#c58f32;">${p.year}</span>
+            <span class="pick-round-pos">R${p.round} · ${PICK_POS_LABELS[p.pos].label}</span>
+            <span style="font-size:10px;color:var(--muted);">${p.pickRange}</span>
+          </div>
+          <div style="margin-top:4px;">${ownerChips || '<span style="color:var(--muted);font-size:10px;">Keine Daten</span>'}</div>
+        </div>
+        <div style="flex-shrink:0;"><span class="pick-value-badge">${val.toLocaleString()}</span></div>
+      </div>`;
+    }).join('');
+    return;
+  }
+
+  // ── PLAYER MODE ────────────────────────────────────────────
+  const pool = buildTradePlayerPool().filter(p => !p.isPick);
+  const q    = st.search.toLowerCase().trim();
+
+  const filtered = pool.filter(p => {
     if (st.nbaFilter && p.nba !== st.nbaFilter) return false;
-if (st.ttFilter === 'unowned' && p.ownerId !== null) return false;
-if (st.ttFilter && st.ttFilter !== 'unowned' && p.ownerId !== parseInt(st.ttFilter)) return false;    if (q && !(p.name.toLowerCase().includes(q) || p.nba.toLowerCase().includes(q) ||
+    if (st.ttFilter === 'unowned' && p.ownerId !== null) return false;
+    if (st.ttFilter && st.ttFilter !== 'unowned' && p.ownerId !== parseInt(st.ttFilter)) return false;
+    if (q && !(p.name.toLowerCase().includes(q) || p.nba.toLowerCase().includes(q) ||
                (p.owner && p.owner.name.toLowerCase().includes(q)))) return false;
     return true;
   });
 
-  const selectedNames = st.selected.map(s => s.name);
-  const list = document.getElementById('tradeList'+side);
-
-  if (!filtered.length) {
-    list.innerHTML = '<div class="trade-no-players">No players found.</div>';
-    return;
-  }
+  const selectedNames = st.selected.filter(s => !s.isPick).map(s => s.name);
+  if (!filtered.length) { list.innerHTML = '<div class="trade-no-players">No players found.</div>'; return; }
 
   list.innerHTML = filtered.map(p => {
-    const isSel = selectedNames.includes(p.name);
-    const ownerLabel = p.owner ? p.owner.name : 'Unowned';
-    const val = dynastyValue(p.rank, p.dob);
-    const mRank = mattRank(p.name);
-    const hRank = hashtagRank(p.name);
+    const isSel       = selectedNames.includes(p.name);
+    const ownerLabel  = p.owner ? p.owner.name : 'Unowned';
+    const val         = dynastyValue(p.rank, p.dob);
+    const mRank       = mattRank(p.name);
+    const hRank       = hashtagRank(p.name);
     return `<div class="trade-player-item ${isSel ? 'selected' : ''}" onclick="toggleTradePlayer('${side}', ${p.rank})">
       <div class="tp-check">${isSel ? '<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</div>
       <div class="tp-name">${p.name}
@@ -4359,17 +4600,23 @@ function removeTradePlayer(side, name) {
 }
 
 function renderSelectedPills(side) {
-  const st = TRADE_STATE[side];
-  const wrap = document.getElementById('tradeSelected'+side);
+  const st   = TRADE_STATE[side];
+  const wrap = document.getElementById('tradeSelected' + side);
   if (!st.selected.length) {
     wrap.innerHTML = '<span style="color:var(--muted);font-size:12px;">None yet</span>';
     return;
   }
-  wrap.innerHTML = st.selected.map(p =>
-    `<span class="trade-selected-pill" onclick="removeTradePlayer('${side}','${p.name.replace(/'/g,"\\'")}')">
-      ${p.name} <span class="pill-x">×</span>
-    </span>`
-  ).join('');
+  wrap.innerHTML = st.selected.map(item => {
+    if (item.isPick) {
+      const val = pickTradeValue(item, TRADE_MODE);
+      return `<span class="trade-selected-pill" style="background:rgba(197,143,50,0.12);border-color:#c58f3266;color:#c58f32;" onclick="removeTradePick('${side}','${item.pickKey}')">
+        📋 ${item.name}&nbsp;<span style="font-size:10px;opacity:0.75;">(${val.toLocaleString()})</span> <span class="pill-x">×</span>
+      </span>`;
+    }
+    return `<span class="trade-selected-pill" onclick="removeTradePlayer('${side}','${item.name.replace(/'/g,"\\'")}')">
+      ${item.name} <span class="pill-x">×</span>
+    </span>`;
+  }).join('');
 }
 
 function renderTradeResult() {
@@ -4407,34 +4654,57 @@ function renderTradeResult() {
 
   function breakdownSide(players, label, sideVal) {
     // Sort by value for display
-    const sorted = [...players].sort((a, b) => dynastyValue(a.rank, a.dob) > dynastyValue(b.rank, b.dob) ? -1 : 1);
-    const rows = sorted.map((p, i) => {
-      const rawVal = dynastyValue(p.rank, p.dob);
+const sorted = [...players].sort((a, b) => {
+  const va = a.isPick ? pickTradeValue(a, TRADE_MODE) : dynastyValue(a.rank, a.dob);
+  const vb = b.isPick ? pickTradeValue(b, TRADE_MODE) : dynastyValue(b.rank, b.dob);
+  return vb - va;
+});   const rows = sorted.map((p, i) => {
+      const rawVal       = p.isPick ? pickTradeValue(p, TRADE_MODE) : dynastyValue(p.rank, p.dob);
       const effectiveVal = Math.round(rawVal * Math.pow(0.70, sorted.indexOf(p)));
-      const ownerLabel = p.owner ? p.owner.name : 'Unowned';
       const isDiscounted = i > 0;
-      const mRank = mattRank(p.name);
-      const hRank = hashtagRank(p.name);
-      const ageMult = ageMultiplier(p.dob, TRADE_MODE);
-      const playerAge = p.dob ? playerAgeToday(p.dob) : null;
-      const ageStyle = ageMult >= 1.20 ? 'background:rgba(76,175,129,0.18);color:#6dddaa;' :
-                       ageMult >= 1.05 ? 'background:rgba(108,99,255,0.15);color:#a89bff;' :
-                       ageMult <= 0.50 ? 'background:rgba(255,101,132,0.18);color:#ff8fa3;' :
-                       ageMult <= 0.80 ? 'background:rgba(245,200,66,0.15);color:#f5c842;' :
-                       'background:rgba(123,127,158,0.12);color:var(--muted);';
-      const ageLabel = TRADE_MODE !== 'raw' && playerAge
-        ? `<span style="font-size:9px;font-weight:700;${ageStyle}padding:1px 5px;border-radius:3px;white-space:nowrap;">age ${playerAge} · ${ageMult >= 1 ? '+' : ''}${Math.round((ageMult-1)*100)}%</span>`
-        : '';
+      const isLight      = document.body.classList.contains('light');
+
+      let rankSection = '';
+      if (p.isPick) {
+        const ownerChips = (p.owners || []).map(o => {
+          if (!o.curr) return '';
+          const color = isLight ? o.curr.lightColor : o.curr.color;
+          return `<span class="pick-owner-chip ${o.traded ? 'traded' : ''}" style="${o.traded ? '' : `border-color:${color}44;color:${color};`}">${o.traded ? '→ ' : ''}${o.curr.name}${o.note ? ` (${o.note})` : ''}</span>`;
+        }).join('');
+        rankSection = `<div style="margin-top:5px;">
+          <span style="font-size:9px;font-weight:700;background:rgba(197,143,50,0.15);color:#c58f32;padding:1px 5px;border-radius:3px;">📋 ${p.pickRange} · ${p.year}</span>
+          <div style="margin-top:3px;">${ownerChips}</div>
+        </div>`;
+      } else {
+        const mRank2    = mattRank(p.name);
+        const hRank2    = hashtagRank(p.name);
+        const ageMult2  = ageMultiplier(p.dob, TRADE_MODE);
+        const pAge2     = p.dob ? playerAgeToday(p.dob) : null;
+        const ageStyle2 = ageMult2 >= 1.20 ? 'background:rgba(76,175,129,0.18);color:#6dddaa;' :
+                          ageMult2 >= 1.05 ? 'background:rgba(108,99,255,0.15);color:#a89bff;' :
+                          ageMult2 <= 0.50 ? 'background:rgba(255,101,132,0.18);color:#ff8fa3;' :
+                          ageMult2 <= 0.80 ? 'background:rgba(245,200,66,0.15);color:#f5c842;' :
+                          'background:rgba(123,127,158,0.12);color:var(--muted);';
+        const ageLabel2 = TRADE_MODE !== 'raw' && pAge2
+          ? `<span style="font-size:9px;font-weight:700;${ageStyle2}padding:1px 5px;border-radius:3px;white-space:nowrap;">age ${pAge2} · ${ageMult2 >= 1 ? '+' : ''}${Math.round((ageMult2-1)*100)}%</span>`
+          : '';
+        rankSection = `<div style="display:flex;gap:4px;margin-top:5px;flex-wrap:wrap;">
+          ${rankBadgeHtml('MFHFBs', p.rank, rankStyle(p.rank))}
+          ${rankBadgeHtml('Matt',   mRank2, rankStyle(mRank2))}
+          ${rankBadgeHtml('#️⃣',   hRank2, rankStyle(hRank2))}
+          ${ageLabel2}
+        </div>`;
+      }
+
+      const ownerLabel = p.isPick
+        ? (p.owners || []).map(o => o.curr ? o.curr.name : '').filter(Boolean).join(', ') || '—'
+        : (p.owner ? p.owner.name : 'Unowned');
+
       return `<div class="trade-breakdown-player">
         <div style="flex:1;">
           <div class="tbp-name">${p.name}</div>
-          <div class="tbp-detail">${p.nba} · ${ownerLabel}</div>
-          <div style="display:flex;gap:4px;margin-top:5px;flex-wrap:wrap;">
-            ${rankBadgeHtml('MFHFBs', p.rank, rankStyle(p.rank))}
-            ${rankBadgeHtml('Matt', mRank, rankStyle(mRank))}
-            ${rankBadgeHtml('#️⃣', hRank, rankStyle(hRank))}
-            ${ageLabel}
-          </div>
+          <div class="tbp-detail">${p.isPick ? '📋 Draft Pick' : p.nba} · ${ownerLabel}</div>
+          ${rankSection}
         </div>
         <div style="text-align:right;flex-shrink:0;">
           <div style="font-size:11px;font-weight:800;${valueBadgeStyle(rawVal)}padding:2px 5px;border-radius:4px;">${effectiveVal.toLocaleString()}</div>
@@ -4442,6 +4712,7 @@ function renderTradeResult() {
         </div>
       </div>`;
     }).join('');
+
     return `<div class="trade-breakdown-side">
       <div class="trade-breakdown-label">${label}</div>
       ${rows}
@@ -4501,6 +4772,8 @@ function renderTradeResult() {
 
 function showTrade() {
   TRADE_STATE.A.selected = []; TRADE_STATE.B.selected = [];
+  TRADE_STATE.A.showPicks = false;
+  TRADE_STATE.B.showPicks = false;
   TRADE_STATE.A.nbaFilter = ''; TRADE_STATE.B.nbaFilter = '';
   TRADE_STATE.A.search    = ''; TRADE_STATE.B.search    = '';
 
@@ -4516,6 +4789,8 @@ function showTrade() {
     document.getElementById('tradeTTFilter'+side).value  = TRADE_STATE[side].ttFilter || '';
     document.getElementById('tradeSearch'+side).value    = '';
     document.getElementById('tradeNbaFilter'+side).classList.remove('has-filter');
+const pickBtn = document.getElementById('pickBtn' + side);
+    if (pickBtn) { pickBtn.classList.remove('active'); pickBtn.textContent = '📋 Picks anzeigen'; }
     const ttEl = document.getElementById('tradeTTFilter'+side);
     ttEl.classList.toggle('has-filter', !!TRADE_STATE[side].ttFilter);
   });
