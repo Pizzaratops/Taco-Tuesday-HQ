@@ -496,15 +496,29 @@
   <div style="max-width:960px;margin:0 auto;">
     <div class="home-title">The Taco Tuesday League</div>
     <div class="home-sub">Klick auf Dein Team für Deine Spieler und Deine Picks</div>
-    <div class="nav-grid">
-      <button class="draftboard-btn" onclick="showDraftboard()">📋 Full Draft Board</button>
-      <button class="draftboard-btn" onclick="showRules()" style="background:linear-gradient(135deg,#f5c842,#ff9800);box-shadow:0 4px 12px rgba(245,200,66,0.28);">📜 Rules</button>
-      <button class="draftboard-btn" onclick="showStandings()" style="background:linear-gradient(135deg,#4caf81,#26c6da);box-shadow:0 4px 12px rgba(76,175,129,0.28);">📈 Standings</button>
-      <button class="draftboard-btn" onclick="showRankings()" style="background:linear-gradient(135deg,#29b6f6,#6c63ff);box-shadow:0 4px 12px rgba(41,182,246,0.28);">🏅 Dynasty Rankings</button>
-      <button class="draftboard-btn" onclick="showDraft26()" style="background:linear-gradient(135deg,#ff9800,#e040fb);box-shadow:0 4px 12px rgba(224,64,251,0.28);">📋 2026 Draft Board</button>
-      <button class="draftboard-btn" onclick="showTrade()" style="background:linear-gradient(135deg,#4caf81,#6c63ff);box-shadow:0 4px 12px rgba(76,175,129,0.28);">⚖️ Trade Analyzer</button>
-    <button class="draftboard-btn" onclick="showBestAvail()" style="background:linear-gradient(135deg,#ff6584,#f5c842);box-shadow:0 4px 12px rgba(245,100,132,0.28);">🆓 Best Available</button>
-	</div>
+   <div style="position:relative;margin-bottom:28px;" id="navMenuWrap">
+  <button onclick="toggleNavMenu()" id="navMenuBtn" style="
+    width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));
+    border:none;color:white;padding:14px 20px;border-radius:14px;font-size:14px;
+    font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;
+    display:flex;align-items:center;justify-content:space-between;
+    box-shadow:0 4px 12px rgba(108,99,255,0.22);">
+    <span>🌮 League Tools</span>
+    <span id="navMenuArrow" style="transition:transform 0.2s;">▾</span>
+  </button>
+  <div id="navMenuDropdown" style="
+    display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    overflow:hidden;z-index:50;box-shadow:0 8px 24px rgba(0,0,0,0.2);">
+    <button class="nav-menu-item" onclick="showDraftboard();toggleNavMenu()">📋 Full Draft Board</button>
+    <button class="nav-menu-item" onclick="showRules();toggleNavMenu()">📜 Rules</button>
+    <button class="nav-menu-item" onclick="showStandings();toggleNavMenu()">📈 Standings</button>
+    <button class="nav-menu-item" onclick="showRankings();toggleNavMenu()">🏅 Dynasty Rankings</button>
+    <button class="nav-menu-item" onclick="showDraft26();toggleNavMenu()">📋 2026 Draft Board</button>
+    <button class="nav-menu-item" onclick="showTrade();toggleNavMenu()">⚖️ Trade Analyzer</button>
+    <button class="nav-menu-item" onclick="showBestAvail();toggleNavMenu()">🆓 Best Available</button>
+  </div>
+</div>
     <div class="team-grid" id="teamGrid"></div>
   </div>
 </div>
@@ -4632,9 +4646,6 @@ document.addEventListener('click', e => {
     document.getElementById('navMenuArrow').style.transform = '';
   }
 });
-
-renderHome(); // this line already exists, just put the above before it
-	
 renderHome();
 </script>
 </body>
