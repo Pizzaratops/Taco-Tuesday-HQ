@@ -2172,7 +2172,9 @@ const DYNASTY_PLAYERS = [
   [447,"Dalen Terry","PHI","SF","2002-12-12"],
   [448,"Juan Nunez","DEN","PG","2003-01-01"],
   [449,"Larry Nance Jr.","CLE","PF","1993-01-01"],
-  [450,"Branden Carlson","OKC","C","1999-06-14"],
+[450,"Branden Carlson","OKC","C","1999-06-14"],
+  [421,"Javon Small","MEM","PG","2001-05-15"],
+  [340,"Collin Gillespie","PHO","PG","1999-12-16"],
 ];
 
 // ============================================================
@@ -3470,7 +3472,10 @@ const NAME_ALIASES = {
   "jakobe walter":            "Ja'Kobe Walter",
 
   // Cody Williams (not to confuse)
-  "cody williams":            "Cody Williams",
+"cody williams":            "Cody Williams",
+  "javon small":              "Javon Small",
+  "collin gillespie":         "Collin Gillespie",
+  "javonte green":            "Javonte Green",
 };
 
 /**
@@ -3933,12 +3938,29 @@ function renderTab(){
   document.getElementById('tabContent').innerHTML=currentTab==='roster'?renderRoster(currentTeamId):renderPicks(currentTeamId);
 }
 
+const DYNASTY_RANK_MAP = (() => {
+  const m = {};
+  DYNASTY_PLAYERS.forEach(p => {
+    const key = p[1].toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[\u2018\u2019\u02bc\u0060]/g, "'");
+    m[key] = { rank: p[0], dob: p[4] || null };
+  });
+  return m;
+})();
+
+function _normKey(name) {
+  return normalizeName(name).toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\u2018\u2019\u02bc\u0060]/g, "'");
+}
+
 function getDynastyRank(name) {
-  const canonical = normalizeName(name).toLowerCase();
-  const entry = DYNASTY_PLAYERS.find(p =>
-    normalizeName(p[1]).toLowerCase() === canonical
-  );
-  return entry ? entry[0] : null;
+  return (DYNASTY_RANK_MAP[_normKey(name)] || {}).rank || null;
+}
+
+function getDynastyDob(name) {
+  return (DYNASTY_RANK_MAP[_normKey(name)] || {}).dob || null;
 }
 function getHashtagRank(name) {
   const canonical = normalizeName(name).toLowerCase()
@@ -3986,7 +4008,7 @@ function renderRoster(id) {
   html += `<div style="display:flex;align-items:center;gap:12px;padding:6px 16px 10px;border-bottom:1px solid var(--border);margin-bottom:8px;">
     <div style="width:32px;flex-shrink:0;"></div>
     <div style="flex:1;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);">Name</div>
-    <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);width:36px;text-align:center;">Pos</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);width:36px;text-align:center;">NBA</div>
     <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">MFHFBs</div>
     <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">Matt</div>
     <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">#️⃣</div>
@@ -4014,8 +4036,7 @@ function renderRoster(id) {
       const hashRk = getHashtagRank(p.name);
 
       // Alter aus DYNASTY_PLAYERS
-      const dpEntry = DYNASTY_PLAYERS.find(dp => dp[1] === p.name || normalizeName(dp[1]) === normalizeName(p.name));
-      const age = dpEntry ? playerAge(dpEntry[4]) : null;
+      const age = playerAge(getDynastyDob(p.name));
       const ageStr = age !== null
         ? `<span style="font-size:10px;font-weight:600;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:1px 6px;border-radius:10px;margin-left:4px;">${age}y</span>`
         : '';
@@ -5057,12 +5078,19 @@ let baCurrentData = [];
 function buildBestAvail() {
   const allRosteredNames = new Set();
   Object.values(ROSTERS).forEach(roster => {
-    roster.forEach(p => allRosteredNames.add(normalizeName(p.name).toLowerCase()));
+    roster.forEach(p => allRosteredNames.add(_normKey(p.name)));
   });
-  return DYNASTY_PLAYERS.filter(p => {
-    const key = normalizeName(p[1]).toLowerCase();
-    return !allRosteredNames.has(key);
+  const dynastyPart = DYNASTY_PLAYERS.filter(p => {
+    return !allRosteredNames.has(_normKey(p[1]));
   });
+  const dynastyNames = new Set(DYNASTY_PLAYERS.map(p => _normKey(p[1])));
+  const NONMYSTERY_TIERS = ['Tier 1','Tier 1.5','Tier 2','Tier 3','Tier 4','Tier 5','Tier 6'];
+  const draftPart = DRAFT_2026
+    .filter(p => NONMYSTERY_TIERS.includes(p.tier) && !dynastyNames.has(_normKey(p.name)))
+    .map(p => [
+      `P${p.pick}`, p.name, p.school || '—', p.pos, null
+    ]);
+  return [...dynastyPart, ...draftPart];
 }
 
 function renderBestAvail(data) {
@@ -5071,10 +5099,11 @@ function renderBestAvail(data) {
   if (!data.length) { tbody.innerHTML = ''; noR.style.display = 'block'; return; }
   noR.style.display = 'none';
   tbody.innerHTML = data.map(p => {
-    const age = playerAge(p[4]);
-    const mRk = MATT_RANKS[p[1]] || null;
-    const hRk = hashtagRank(p[1]);
-    const rc = rankClass(p[0]);
+   const age = p[4] ? playerAge(p[4]) : null;
+      const mRk = MATT_RANKS[p[1]] || null;
+      const hRk = hashtagRank(p[1]);
+      const isDraft = typeof p[0] === 'string' && p[0].startsWith('P');
+      const rc = isDraft ? '' : rankClass(p[0]);
     const mattBadge = mRk
       ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(mRk)};color:${dynastyRankColor(mRk)};">#${mRk}</span>`
       : '<span style="color:var(--border);">—</span>';
@@ -5082,7 +5111,7 @@ function renderBestAvail(data) {
       ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(hRk)};color:${dynastyRankColor(hRk)};">#${hRk}</span>`
       : '<span style="color:var(--border);">—</span>';
     return `<tr>
-      <td><span class="r-rank ${rc}">${p[0]}</span></td>
+    <td><span class="r-rank ${rc}" style="${isDraft ? 'background:rgba(197,143,50,0.15);color:#c58f32;font-size:10px;' : ''}">${isDraft ? '🏀'+p[0].slice(1) : p[0]}</span></td>
       <td><span class="r-name">${p[1]}</span></td>
       <td><span class="r-team r-team-link" onclick="showNBATeam('${p[2]}')" title="${NBA_TEAM_NAMES[p[2]]||p[2]}">${p[2]}</span></td>
       <td><span class="r-pos">${p[3]}</span></td>
