@@ -5536,17 +5536,25 @@ function _runTFCore(fmt) {
   const pickMode = TF_STATE.pickMode;
 
   // Build player pool for results
+  // — always exclude players that are being given away
+  // — always exclude the give-side team (you can't trade to yourself)
+  // — if a specific targetOwner is set, restrict to that team only
   const allPlayers = buildTFPlayerPool().filter(p => {
     if (giveNames.has(p.name)) return false;
-    if (TF_STATE.targetOwner && p.ownerId !== TF_STATE.targetOwner) return false;
+    if (TF_STATE.targetOwner) return p.ownerId === TF_STATE.targetOwner;
+    if (TF_STATE.giveTeam && p.ownerId === TF_STATE.giveTeam) return false;
     return true;
   }).sort((a, b) => b.dynVal - a.dynVal);
 
-  // Build pick pool for results (for_picks / with_picks / give_picks modes need picks in results or give)
+  // Build pick pool for results (for_picks / with_picks modes)
+  // — always exclude picks already being given away
+  // — always exclude picks currently owned by the give-side team
+  // — if targetOwner set, restrict to that team only
   const allPicks = (pickMode === 'for_picks' || pickMode === 'with_picks')
     ? buildTFPickPool().filter(p => {
         if (giveKeys.has(p.pickKey)) return false;
-        if (TF_STATE.targetOwner && p.currentOwner !== TF_STATE.targetOwner) return false;
+        if (TF_STATE.targetOwner) return p.currentOwner === TF_STATE.targetOwner;
+        if (TF_STATE.giveTeam && p.currentOwner === TF_STATE.giveTeam) return false;
         return true;
       }).sort((a, b) => b.dynVal - a.dynVal)
     : [];
