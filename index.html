@@ -91,6 +91,116 @@
     align-items: center; gap: 6px; transition: all 0.15s;
   }
   .back-btn:hover { border-color: var(--accent); }
+
+  /* Sub-navigation bar */
+  .subnav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 53px;
+    z-index: 99;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  body.light .subnav { background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); }
+
+  /* Desktop: two rows */
+  .subnav-desktop {
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 4px 20px;
+    gap: 2px;
+  }
+  .subnav-row {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .subnav-item {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .subnav-item:hover { background: var(--accent-light); color: var(--accent); }
+  .subnav-item.active { background: var(--accent-light); color: var(--accent); font-weight: 700; }
+  .subnav-divider {
+    width: 1px; height: 14px;
+    background: var(--border);
+    flex-shrink: 0;
+    margin: 0 3px;
+  }
+
+  /* Mobile: hamburger */
+  .subnav-mobile { display: none; }
+  .subnav-hamburger {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .subnav-mobile-dropdown {
+    display: none;
+    flex-direction: column;
+    border-top: 1px solid var(--border);
+  }
+  .subnav-mobile-dropdown.open { display: flex; }
+  .subnav-mobile-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .subnav-mobile-group:last-child { border-bottom: none; }
+  .subnav-mobile-label {
+    width: 100%;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .subnav-mobile-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .subnav-mobile-btn:hover, .subnav-mobile-btn.active {
+    background: var(--accent-light);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  @media (max-width: 700px) {
+    .subnav-desktop { display: none; }
+    .subnav-mobile  { display: block; }
+  }
   .page { display: none; padding: 28px 32px; max-width: 1280px; margin: 0 auto; }
   .page.active { display: block; }
   .home-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; margin-bottom: 6px; color: var(--text); }
@@ -593,37 +703,71 @@
   </div>
 </div>
 
+<!-- SUB-NAV BAR -->
+<div class="subnav" id="subNav">
+
+  <!-- Desktop: two rows -->
+  <div class="subnav-desktop">
+    <div class="subnav-row">
+      <button class="subnav-item" data-page="home" onclick="goHome()">🏠 Home</button>
+      <div class="subnav-divider"></div>
+      <button class="subnav-item" data-page="draftboard" onclick="showDraftboard()">📋 Full Draft Board</button>
+      <button class="subnav-item" data-page="draft26" onclick="showDraft26()">🏀 2026 Draft Board</button>
+      <button class="subnav-item" data-page="lottery" onclick="showLottery()">🎲 2026 Lottery</button>
+      <div class="subnav-divider"></div>
+      <button class="subnav-item" data-page="standings" onclick="showStandings()">📈 Standings</button>
+      <button class="subnav-item" data-page="rules" onclick="showRules()">📜 Rules</button>
+    </div>
+    <div class="subnav-row">
+      <button class="subnav-item" data-page="rankings" onclick="showRankings()">🏅 Dynasty Rankings</button>
+      <button class="subnav-item" data-page="bestavail" onclick="showBestAvail()">🆓 Best Available</button>
+      <button class="subnav-item" data-page="analytics" onclick="showAnalytics()">📊 Team Analytics</button>
+      <div class="subnav-divider"></div>
+      <button class="subnav-item" data-page="trade" onclick="showTrade()">⚖️ Trade Analyzer</button>
+      <button class="subnav-item" data-page="tradefinder" onclick="showTradeFinder()">🔍 Trade Finder</button>
+    </div>
+  </div>
+
+  <!-- Mobile: hamburger dropdown -->
+  <div class="subnav-mobile">
+    <button class="subnav-hamburger" onclick="toggleMobileNav()">
+      <span id="mobileNavLabel">🌮 League Tools</span>
+      <span id="mobileNavArrow" style="transition:transform 0.2s;font-size:11px;">▾</span>
+    </button>
+    <div class="subnav-mobile-dropdown" id="mobileNavDropdown">
+      <div class="subnav-mobile-group">
+        <div class="subnav-mobile-label">Navigation</div>
+        <button class="subnav-mobile-btn" data-page="home" onclick="goHome();closeMobileNav()">🏠 Home</button>
+        <button class="subnav-mobile-btn" data-page="standings" onclick="showStandings();closeMobileNav()">📈 Standings</button>
+        <button class="subnav-mobile-btn" data-page="rules" onclick="showRules();closeMobileNav()">📜 Rules</button>
+      </div>
+      <div class="subnav-mobile-group">
+        <div class="subnav-mobile-label">Draft</div>
+        <button class="subnav-mobile-btn" data-page="draftboard" onclick="showDraftboard();closeMobileNav()">📋 Full Draft Board</button>
+        <button class="subnav-mobile-btn" data-page="draft26" onclick="showDraft26();closeMobileNav()">🏀 2026 Draft Board</button>
+        <button class="subnav-mobile-btn" data-page="lottery" onclick="showLottery();closeMobileNav()">🎲 2026 Lottery</button>
+      </div>
+      <div class="subnav-mobile-group">
+        <div class="subnav-mobile-label">Rankings & Analytics</div>
+        <button class="subnav-mobile-btn" data-page="rankings" onclick="showRankings();closeMobileNav()">🏅 Dynasty Rankings</button>
+        <button class="subnav-mobile-btn" data-page="bestavail" onclick="showBestAvail();closeMobileNav()">🆓 Best Available</button>
+        <button class="subnav-mobile-btn" data-page="analytics" onclick="showAnalytics();closeMobileNav()">📊 Team Analytics</button>
+      </div>
+      <div class="subnav-mobile-group">
+        <div class="subnav-mobile-label">Trade Tools</div>
+        <button class="subnav-mobile-btn" data-page="trade" onclick="showTrade();closeMobileNav()">⚖️ Trade Analyzer</button>
+        <button class="subnav-mobile-btn" data-page="tradefinder" onclick="showTradeFinder();closeMobileNav()">🔍 Trade Finder</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <!-- HOME -->
 <div class="page active" id="homePage">
   <div style="max-width:960px;margin:0 auto;">
     <div class="home-title">The Taco Tuesday League</div>
     <div class="home-sub">Klick auf Dein Team für Deine Spieler und Deine Picks</div>
-   <div style="position:relative;margin-bottom:28px;" id="navMenuWrap">
-  <button onclick="toggleNavMenu()" id="navMenuBtn" style="
-    width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));
-    border:none;color:white;padding:14px 20px;border-radius:14px;font-size:14px;
-    font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;
-    display:flex;align-items:center;justify-content:space-between;
-    box-shadow:0 4px 12px rgba(108,99,255,0.22);">
-    <span>🌮 League Tools</span>
-    <span id="navMenuArrow" style="transition:transform 0.2s;">▾</span>
-  </button>
-  <div id="navMenuDropdown" style="
-    display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;
-    background:var(--surface);border:1px solid var(--border);border-radius:14px;
-    overflow:hidden;z-index:50;box-shadow:0 8px 24px rgba(0,0,0,0.2);">
-    <button class="nav-menu-item" onclick="showDraftboard();toggleNavMenu()">📋 Full Draft Board</button>
-    <button class="nav-menu-item" onclick="showRules();toggleNavMenu()">📜 Rules</button>
-    <button class="nav-menu-item" onclick="showStandings();toggleNavMenu()">📈 Standings</button>
-    <button class="nav-menu-item" onclick="showRankings();toggleNavMenu()">🏅 Dynasty Rankings</button>
-    <button class="nav-menu-item" onclick="showDraft26();toggleNavMenu()">📋 2026 Draft Board</button>
-    <button class="nav-menu-item" onclick="showTrade();toggleNavMenu()">⚖️ Trade Analyzer</button>
-    <button class="nav-menu-item" onclick="showBestAvail();toggleNavMenu()">🆓 Best Available</button>
-    <button class="nav-menu-item" onclick="showTradeFinder();toggleNavMenu()">🔍 Trade Finder</button>
-    <button class="nav-menu-item" onclick="showLottery();toggleNavMenu()">🎲 2026 Lottery</button>
-    <button class="nav-menu-item" onclick="showAnalytics();toggleNavMenu()">📊 Team Analytics</button>
-  </div>
-</div>
     <div class="team-grid" id="teamGrid"></div>
   </div>
 </div>
@@ -4397,11 +4541,48 @@ function showDraftboard(){
   navigate('draftboardPage');
 }
 
+// Page → subnav page key mapping
+const SUBNAV_PAGES = {
+  homePage:        'home',
+  draftboardPage:  'draftboard',
+  draft26Page:     'draft26',
+  lotteryPage:     'lottery',
+  rankingsPage:    'rankings',
+  hashtagRankingsPage: 'rankings',
+  bestAvailPage:   'bestavail',
+  analyticsPage:   'analytics',
+  tradePage:       'trade',
+  tradeFinderPage: 'tradefinder',
+  standingsPage:   'standings',
+  rulesPage:       'rules',
+};
+
 function navigate(pageId){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
   document.getElementById('backBtn').style.display=pageId!=='homePage'?'flex':'none';
+  // Highlight subnav items on desktop
+  const pageKey = SUBNAV_PAGES[pageId] || '';
+  document.querySelectorAll('.subnav-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.page === pageKey);
+  });
+  // Update mobile label
+  const activeBtn = document.querySelector('.subnav-mobile-btn[data-page="'+pageKey+'"]');
+  const label = document.getElementById('mobileNavLabel');
+  if (label) label.textContent = activeBtn ? activeBtn.textContent : '🌮 League Tools';
   window.scrollTo(0,0);
+}
+
+function toggleMobileNav() {
+  const dd = document.getElementById('mobileNavDropdown');
+  const arrow = document.getElementById('mobileNavArrow');
+  const open = dd.classList.toggle('open');
+  arrow.style.transform = open ? 'rotate(180deg)' : '';
+}
+
+function closeMobileNav() {
+  document.getElementById('mobileNavDropdown').classList.remove('open');
+  document.getElementById('mobileNavArrow').style.transform = '';
 }
 function goHome(){navigate('homePage');}
 function showRules(){navigate('rulesPage');}
@@ -5387,20 +5568,6 @@ function showBestAvail() {
   renderBestAvail(baCurrentData);
   navigate('bestAvailPage');
 }
-	function toggleNavMenu() {
-  const d = document.getElementById('navMenuDropdown');
-  const a = document.getElementById('navMenuArrow');
-  const open = d.style.display === 'block';
-  d.style.display = open ? 'none' : 'block';
-  a.style.transform = open ? '' : 'rotate(180deg)';
-}
-document.addEventListener('click', e => {
-  const wrap = document.getElementById('navMenuWrap');
-  if (wrap && !wrap.contains(e.target)) {
-    document.getElementById('navMenuDropdown').style.display = 'none';
-    document.getElementById('navMenuArrow').style.transform = '';
-  }
-});
 renderHome();
 
 // ============================================================
