@@ -566,6 +566,17 @@
 }
 .tf-owner-chip:hover { border-color: var(--accent); color: var(--text); }
 .tf-owner-chip.active { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+
+/* Trade Finder main grid — side-by-side on desktop, stacked on mobile */
+.tf-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+@media (max-width: 640px) {
+  .tf-main-grid { grid-template-columns: 1fr; }
+}
 .tf-progress { height: 3px; background: var(--border); border-radius: 2px; margin-top: 12px; overflow: hidden; }
 .tf-progress-bar { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.15s; }
 </style>
@@ -1275,84 +1286,120 @@ window.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="page" id="tradeFinderPage">
-  <h2 style="margin-bottom:6px;">🔍 Trade Finder</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:16px;">Gib an was du abgeben willst — der Finder sucht faire Gegenleistungen aus allen Rosters</p>
+  <h2 style="margin-bottom:4px;">🔍 Trade Finder</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:16px;">Gib an was du abgeben willst — der Finder sucht faire Gegenleistungen</p>
 
-  <!-- VALUATION MODE -->
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:16px;">
-    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Valuation Mode</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;">
-      <button onclick="setTFMode('dynasty')" class="trade-mode-btn active" id="tfModeBtn-dynasty">🏗️ Dynasty</button>
-      <button onclick="setTFMode('raw')"     class="trade-mode-btn"        id="tfModeBtn-raw">📊 Raw</button>
-      <button onclick="setTFMode('winnow')"  class="trade-mode-btn"        id="tfModeBtn-winnow">🏆 Win-Now</button>
+  <!-- TOP BAR: Mode + Target Team in one row -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:12px;">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px;">
+      <div style="flex:1;min-width:140px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Valuation</div>
+        <div style="display:flex;gap:6px;">
+          <button onclick="setTFMode('dynasty')" class="trade-mode-btn active" id="tfModeBtn-dynasty" style="flex:1;padding:7px 4px;font-size:11px;">🏗️ Dynasty</button>
+          <button onclick="setTFMode('raw')"     class="trade-mode-btn"        id="tfModeBtn-raw"     style="flex:1;padding:7px 4px;font-size:11px;">📊 Raw</button>
+          <button onclick="setTFMode('winnow')"  class="trade-mode-btn"        id="tfModeBtn-winnow"  style="flex:1;padding:7px 4px;font-size:11px;">🏆 Win-Now</button>
+        </div>
+      </div>
+      <div style="min-width:160px;flex:0 0 auto;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Trade mit</div>
+        <div class="trade-dropdown-wrap" style="min-width:unset;">
+          <select id="tfOwnerDropdown" onchange="setTFOwnerFromDropdown()" style="width:100%;font-size:12px;">
+            <option value="">🌮 Alle Teams</option>
+          </select>
+        </div>
+      </div>
     </div>
-    <div style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6;" id="tfModeDesc">
+    <div style="font-size:11px;color:var(--muted);line-height:1.5;" id="tfModeDesc">
       <strong style="color:var(--text);">Dynasty:</strong> Age-adjusted for long-term value. Young players get a significant boost, veterans are discounted. Best for rebuilding teams.
     </div>
   </div>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
-
-    <!-- LEFT: Configuration -->
-    <div>
-      <div class="section-label">Trade Format</div>
-      <div class="tf-format-grid" id="tfFormatGrid">
-        <button class="tf-format-btn" onclick="setTFFormat('1for1')">1 für 1</button>
-        <button class="tf-format-btn active" onclick="setTFFormat('2for1')">2 für 1</button>
-        <button class="tf-format-btn" onclick="setTFFormat('1for2')">1 für 2</button>
-        <button class="tf-format-btn" onclick="setTFFormat('2for2')">2 für 2</button>
-        <button class="tf-format-btn" onclick="setTFFormat('3for2')">3 für 2</button>
-        <button class="tf-format-btn" onclick="setTFFormat('2for3')">2 für 3</button>
+  <!-- CONFIG ROW: Format + Picks -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:12px;">
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:160px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Trade Format</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+            <label style="font-size:10px;color:var(--muted);font-weight:600;">Ich gebe</label>
+            <input type="number" id="tfGiveNum" min="1" max="5" value="2"
+              oninput="setTFFormatFree()"
+              style="width:56px;background:var(--surface2);border:1px solid var(--border);color:var(--text);
+                     font-family:'DM Sans',sans-serif;font-size:18px;font-weight:800;text-align:center;
+                     padding:6px 4px;border-radius:9px;outline:none;-moz-appearance:textfield;"
+            />
+          </div>
+          <span style="font-size:20px;color:var(--muted);font-weight:300;padding-bottom:2px;">für</span>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+            <label style="font-size:10px;color:var(--muted);font-weight:600;">Ich bekomme</label>
+            <input type="number" id="tfGetNum" min="1" max="5" value="1"
+              oninput="setTFFormatFree()"
+              style="width:56px;background:var(--surface2);border:1px solid var(--border);color:var(--text);
+                     font-family:'DM Sans',sans-serif;font-size:18px;font-weight:800;text-align:center;
+                     padding:6px 4px;border-radius:9px;outline:none;-moz-appearance:textfield;"
+            />
+          </div>
+        </div>
+        <style>
+          #tfGiveNum:focus, #tfGetNum:focus { border-color: var(--accent); }
+          #tfGiveNum::-webkit-inner-spin-button, #tfGiveNum::-webkit-outer-spin-button,
+          #tfGetNum::-webkit-inner-spin-button,  #tfGetNum::-webkit-outer-spin-button { opacity:1; }
+        </style>
       </div>
-
-      <!-- Same-team toggle (only relevant for multi-player returns) -->
-      <div id="tfSameTeamWrap" style="margin-bottom:12px;display:flex;align-items:center;gap:8px;cursor:pointer;" onclick="toggleTFSameTeam()">
-        <div id="tfSameTeamCheck" style="width:16px;height:16px;border-radius:4px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.15s;"></div>
-        <span style="font-size:12px;color:var(--muted);font-weight:600;">Alle Spieler müssen vom selben Team kommen</span>
+      <div style="flex:1;min-width:160px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Picks einbeziehen</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;" id="tfPickModeGrid">
+          <button class="tf-format-btn active" onclick="setTFPickMode('none')" id="tfPickModeBtn-none" style="font-size:11px;padding:7px 6px;">🚫 Keine</button>
+          <button class="tf-format-btn" onclick="setTFPickMode('give_picks')" id="tfPickModeBtn-give_picks" style="font-size:11px;padding:7px 6px;">📤 Du gibst</button>
+          <button class="tf-format-btn" onclick="setTFPickMode('for_picks')" id="tfPickModeBtn-for_picks" style="font-size:11px;padding:7px 6px;">📥 Du bekommst</button>
+          <button class="tf-format-btn" onclick="setTFPickMode('with_picks')" id="tfPickModeBtn-with_picks" style="font-size:11px;padding:7px 6px;">⚡ Gemischt</button>
+        </div>
       </div>
+    </div>
+  </div>
 
-      <!-- Pick Mode -->
-      <div class="section-label" style="margin-top:4px;">Picks einbeziehen</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px;" id="tfPickModeGrid">
-        <button class="tf-format-btn active" onclick="setTFPickMode('none')" id="tfPickModeBtn-none">🚫 Keine Picks</button>
-        <button class="tf-format-btn" onclick="setTFPickMode('with_picks')" id="tfPickModeBtn-with_picks">🎯 Mit Picks<br><span style="font-size:10px;font-weight:500;opacity:0.75;">du gibst + Picks</span></button>
-        <button class="tf-format-btn" onclick="setTFPickMode('for_picks')" id="tfPickModeBtn-for_picks">📋 Für Picks<br><span style="font-size:10px;font-weight:500;opacity:0.75;">du bekommst Picks</span></button>
-        <button class="tf-format-btn" onclick="setTFPickMode('picks_and_players')" id="tfPickModeBtn-picks_and_players">⚡ Picks & Spieler<br><span style="font-size:10px;font-weight:500;opacity:0.75;">du gibst Picks ab</span></button>
+  <!-- MAIN: Give + Results stacked on mobile, side by side on desktop -->
+  <div class="tf-main-grid">
+
+    <!-- LEFT: Du gibst ab -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);">Du gibst ab</div>
+        <span id="tfGiveCount" style="font-size:11px;font-weight:800;background:var(--accent-light);color:var(--accent);padding:2px 8px;border-radius:10px;">0 / 2</span>
       </div>
-
-      <div class="section-label">Du gibst ab <span id="tfGiveCount" style="color:var(--accent);">(0 / 2)</span></div>
+      <!-- Give-side team filter -->
+      <div class="trade-dropdown-wrap" style="margin-bottom:8px;">
+        <select id="tfGiveTeamDropdown" onchange="setTFGiveTeamFromDropdown()" style="width:100%;font-size:12px;">
+          <option value="">🌮 Alle Teams</option>
+        </select>
+      </div>
       <div class="tf-search-wrap" id="tfGiveSearchWrap">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
-        <input type="text" id="tfGiveSearch" placeholder="Spieler suchen…" oninput="renderTFGiveList()"/>
+        <input type="text" id="tfGiveSearch" placeholder="Spieler oder Pick suchen…" oninput="renderTFGiveList()"/>
       </div>
       <div class="tf-give-list" id="tfGiveList">
         <div style="text-align:center;padding:24px;color:var(--muted);font-size:12px;">Tippe zum Suchen…</div>
       </div>
-
-      <div id="tfGivePills" style="margin-top:8px;min-height:32px;">
+      <div id="tfGivePills" style="margin-top:8px;min-height:28px;">
         <span style="color:var(--muted);font-size:12px;">Noch nichts ausgewählt</span>
       </div>
-      <div id="tfGiveValue" style="margin-top:8px;"></div>
-
-      <div class="section-label" style="margin-top:16px;">Trade mit (optional)</div>
-      <div class="tf-owner-filter" id="tfOwnerFilter"></div>
-
+      <div id="tfGiveValue" style="margin-top:6px;"></div>
       <button onclick="runTradeFinder()" id="tfFindBtn" style="
         width:100%;margin-top:12px;
         background:linear-gradient(135deg,var(--accent),var(--accent2));
-        border:none;color:white;padding:14px;border-radius:12px;
+        border:none;color:white;padding:13px;border-radius:11px;
         font-size:14px;font-weight:800;font-family:'DM Sans',sans-serif;
-        cursor:pointer;transition:opacity 0.15s;box-shadow:0 4px 14px rgba(108,99,255,0.3);">
+        cursor:pointer;transition:opacity 0.15s;box-shadow:0 4px 14px rgba(108,99,255,0.28);">
         🔍 Faire Trades finden
       </button>
     </div>
 
     <!-- RIGHT: Results -->
     <div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-        <div class="section-label" style="margin:0;">Ergebnisse <span id="tfResultCount" style="color:var(--accent);"></span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);">Ergebnisse <span id="tfResultCount" style="color:var(--accent);text-transform:none;letter-spacing:0;"></span></div>
         <button id="tfShareBtn" onclick="openTFShareModal()" style="display:none;background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)';" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)';">
           📤 Share
         </button>
@@ -5167,9 +5214,10 @@ const TF_STATE = {
   format: '2for1',
   give: [],
   targetOwner: null,
-  sameTeam: false,
+  giveTeam: null,
+  sameTeam: true,
   mode: 'dynasty',
-  pickMode: 'none', // 'none' | 'with_picks' | 'for_picks' | 'picks_and_players'
+  pickMode: 'none', // 'none' | 'with_picks' | 'for_picks' | 'give_picks'
 };
 
 const TF_MODE_DESCRIPTIONS = {
@@ -5188,36 +5236,17 @@ function setTFMode(mode) {
   updateTFGiveUI();
 }
 
-function toggleTFSameTeam() {
-  TF_STATE.sameTeam = !TF_STATE.sameTeam;
-  const fmt = TF_FORMATS[TF_STATE.format];
-  const checkEl = document.getElementById('tfSameTeamCheck');
-  if (TF_STATE.sameTeam) {
-    checkEl.style.background = 'var(--accent)';
-    checkEl.style.borderColor = 'var(--accent)';
-    checkEl.innerHTML = '<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  } else {
-    checkEl.style.background = '';
-    checkEl.style.borderColor = 'var(--border)';
-    checkEl.innerHTML = '';
-  }
+
+// Free-form format: user types numbers directly
+// TF_STATE.format stores { give: N, get: M }
+function getTFFormat() {
+  const g = Math.max(1, Math.min(5, parseInt(document.getElementById('tfGiveNum')?.value) || 2));
+  const r = Math.max(1, Math.min(5, parseInt(document.getElementById('tfGetNum')?.value) || 1));
+  return { give: g, get: r };
 }
 
-const TF_FORMATS = {
-  '1for1': { give: 1, get: 1 },
-  '2for1': { give: 2, get: 1 },
-  '1for2': { give: 1, get: 2 },
-  '2for2': { give: 2, get: 2 },
-  '3for2': { give: 3, get: 2 },
-  '2for3': { give: 2, get: 3 },
-};
-
-function setTFFormat(fmt) {
-  TF_STATE.format = fmt;
+function setTFFormatFree() {
   TF_STATE.give = [];
-  document.querySelectorAll('.tf-format-btn').forEach((b, i) => {
-    b.classList.toggle('active', Object.keys(TF_FORMATS)[i] === fmt);
-  });
   updateTFGiveUI();
   document.getElementById('tfResults').innerHTML =
     '<div class="tf-empty">Wähle Spieler aus und klicke "Faire Trades finden"</div>';
@@ -5228,10 +5257,8 @@ function setTFPickMode(mode) {
   TF_STATE.pickMode = mode;
   TF_STATE.give = [];
   document.querySelectorAll('[id^="tfPickModeBtn-"]').forEach(b => b.classList.remove('active'));
-  document.getElementById('tfPickModeBtn-' + mode).classList.add('active');
-  // Update give section heading
-  const giveLabel = document.querySelector('.section-label[style*="margin-top"]');
-  // Refresh list
+  const btn = document.getElementById('tfPickModeBtn-' + mode);
+  if (btn) btn.classList.add('active');
   updateTFGiveUI();
   document.getElementById('tfResults').innerHTML =
     '<div class="tf-empty">Wähle Spieler aus und klicke "Faire Trades finden"</div>';
@@ -5287,16 +5314,23 @@ function buildTFPlayerPool() {
 }
 
 function renderTFGiveList() {
-  const fmt  = TF_FORMATS[TF_STATE.format];
+  const fmt  = getTFFormat();
   const q    = (document.getElementById('tfGiveSearch')?.value || '').toLowerCase().trim();
   const listEl = document.getElementById('tfGiveList');
   if (!listEl) return;
 
-  // picks_and_players mode: give section shows PICKS
-  if (TF_STATE.pickMode === 'picks_and_players') {
-    const pickPool = buildTFPickPool();
-    const filtered = TF_STATE.targetOwner
-      ? pickPool.filter(p => p.currentOwner === TF_STATE.targetOwner)
+  // give_picks mode: give section shows PICKS to trade away
+  if (TF_STATE.pickMode === 'give_picks') {
+    const pickPool = buildTFPickPool().filter(p =>
+      TF_STATE.giveTeam ? p.currentOwner === TF_STATE.giveTeam : true
+    );
+    const filtered = q
+      ? pickPool.filter(p =>
+          String(p.year).includes(q) ||
+          p.name.toLowerCase().includes(q) ||
+          (p.curr && p.curr.name.toLowerCase().includes(q)) ||
+          (p.orig && p.orig.name.toLowerCase().includes(q))
+        )
       : pickPool;
     const selectedKeys = new Set(TF_STATE.give.filter(p => p.isPick).map(p => p.pickKey));
     const isMaxed = TF_STATE.give.length >= fmt.give;
@@ -5330,14 +5364,21 @@ function renderTFGiveList() {
     return;
   }
 
-  // Default: player pool
-  const pool = buildTFPlayerPool();
+  // Default: player pool (none / with_picks / for_picks modes)
+  const pool = buildTFPlayerPool().filter(p => {
+    if (TF_STATE.giveTeam && p.ownerId !== TF_STATE.giveTeam) return false;
+    return true;
+  });
   const filtered = q
     ? pool.filter(p => p.name.toLowerCase().includes(q) || p.nba.toLowerCase().includes(q))
     : pool;
   const selectedNames = new Set(TF_STATE.give.filter(p => !p.isPick).map(p => p.name));
   const isMaxed = TF_STATE.give.length >= fmt.give;
   if (!q && !filtered.length) {
+    listEl.innerHTML = '<div style="text-align:center;padding:24px;color:var(--muted);font-size:12px;">Tippe zum Suchen…</div>';
+    return;
+  }
+  if (!q) {
     listEl.innerHTML = '<div style="text-align:center;padding:24px;color:var(--muted);font-size:12px;">Tippe zum Suchen…</div>';
     return;
   }
@@ -5361,7 +5402,7 @@ function renderTFGiveList() {
 }
 
 function toggleTFGive(name) {
-  const fmt    = TF_FORMATS[TF_STATE.format];
+  const fmt    = getTFFormat();
   const pool   = buildTFPlayerPool();
   const player = pool.find(p => p.name === name);
   if (!player) return;
@@ -5376,7 +5417,7 @@ function toggleTFGive(name) {
 }
 
 function toggleTFGivePick(pickKey) {
-  const fmt    = TF_FORMATS[TF_STATE.format];
+  const fmt    = getTFFormat();
   const pool   = buildTFPickPool();
   const pick   = pool.find(p => p.pickKey === pickKey);
   if (!pick) return;
@@ -5391,9 +5432,9 @@ function toggleTFGivePick(pickKey) {
 }
 
 function updateTFGiveUI() {
-  const fmt = TF_FORMATS[TF_STATE.format];
+  const fmt = getTFFormat();
   const cntEl = document.getElementById('tfGiveCount');
-  if (cntEl) cntEl.textContent = `(${TF_STATE.give.length} / ${fmt.give})`;
+  if (cntEl) cntEl.textContent = `${TF_STATE.give.length} / ${fmt.give}`;
   const pillsEl = document.getElementById('tfGivePills');
   if (pillsEl) {
     pillsEl.innerHTML = TF_STATE.give.length
@@ -5426,28 +5467,45 @@ function updateTFGiveUI() {
 }
 
 function initTFOwnerFilter() {
-  const wrap = document.getElementById('tfOwnerFilter');
-  if (!wrap) return;
-  wrap.innerHTML =
-    `<span class="tf-owner-chip active" onclick="setTFOwner(null)" id="tfOwnerAll">Alle</span>` +
-    TEAMS.map(t =>
-      `<span class="tf-owner-chip" onclick="setTFOwner(${t.id})" id="tfOwner${t.id}">${t.name.split(' ')[0]}</span>`
-    ).join('');
+  const sel = document.getElementById('tfOwnerDropdown');
+  if (!sel) return;
+  sel.innerHTML =
+    `<option value="">🌮 Alle Teams</option>` +
+    TEAMS.map(t => `<option value="${t.id}">${t.name} (${t.owner})</option>`).join('');
+  sel.value = TF_STATE.targetOwner || '';
+  initTFGiveTeamDropdown();
 }
 
-function setTFOwner(id) {
-  TF_STATE.targetOwner = id;
-  document.querySelectorAll('.tf-owner-chip').forEach(el => el.classList.remove('active'));
-  const target = document.getElementById(id ? `tfOwner${id}` : 'tfOwnerAll');
-  if (target) target.classList.add('active');
+function setTFOwnerFromDropdown() {
+  const sel = document.getElementById('tfOwnerDropdown');
+  const val = sel ? sel.value : '';
+  TF_STATE.targetOwner = val ? parseInt(val) : null;
+  renderTFGiveList();
+}
+
+function initTFGiveTeamDropdown() {
+  const sel = document.getElementById('tfGiveTeamDropdown');
+  if (!sel) return;
+  sel.innerHTML =
+    `<option value="">🌮 Alle Teams</option>` +
+    TEAMS.map(t => `<option value="${t.id}">${t.name} (${t.owner})</option>`).join('');
+  sel.value = TF_STATE.giveTeam || '';
+}
+
+function setTFGiveTeamFromDropdown() {
+  const sel = document.getElementById('tfGiveTeamDropdown');
+  const val = sel ? sel.value : '';
+  TF_STATE.giveTeam = val ? parseInt(val) : null;
+  TF_STATE.give = []; // clear selection when team changes
+  updateTFGiveUI();
 }
 
 function runTradeFinder() {
-  const fmt = TF_FORMATS[TF_STATE.format];
+  const fmt = getTFFormat();
   if (TF_STATE.give.length !== fmt.give) {
     const btn = document.getElementById('tfFindBtn');
     const orig = btn.textContent;
-    const itemWord = TF_STATE.pickMode === 'picks_and_players' ? 'Picks' : 'Spieler';
+    const itemWord = TF_STATE.pickMode === 'give_picks' ? 'Picks' : 'Spieler';
     btn.textContent = `⚠️ Wähle genau ${fmt.give} ${itemWord} aus!`;
     btn.style.background = '#ff6584';
     setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 2000);
@@ -5474,7 +5532,7 @@ function _runTFCore(fmt) {
 
   // Determine the RESULT pool based on pick mode
   // none / with_picks / for_picks → results are players (+ picks if with_picks/for_picks)
-  // picks_and_players → give = picks, results = players
+  // give_picks → give = picks, results = players
   const pickMode = TF_STATE.pickMode;
 
   // Build player pool for results
@@ -5484,7 +5542,7 @@ function _runTFCore(fmt) {
     return true;
   }).sort((a, b) => b.dynVal - a.dynVal);
 
-  // Build pick pool for results (for_picks mode, or with_picks augment)
+  // Build pick pool for results (for_picks / with_picks / give_picks modes need picks in results or give)
   const allPicks = (pickMode === 'for_picks' || pickMode === 'with_picks')
     ? buildTFPickPool().filter(p => {
         if (giveKeys.has(p.pickKey)) return false;
@@ -5603,7 +5661,7 @@ function _runTFCore(fmt) {
       _runTFCorePlayersOnly(fmt, playerPool, giveSorted, giveTotal, minVal, maxVal, seen, results);
     }
   } else {
-    // 'none' or 'picks_and_players' (give=picks, get=players)
+    // 'none' or 'give_picks' (give=picks, get=players)
     _runTFCorePlayersOnly(fmt, allPlayers, giveSorted, giveTotal, minVal, maxVal, seen, results);
   }
 
@@ -5819,16 +5877,18 @@ function showTradeFinder() {
   // Reset state
   TF_STATE.give        = [];
   TF_STATE.targetOwner = null;
+  TF_STATE.giveTeam    = null;
   TF_STATE.format      = '2for1';
-  TF_STATE.sameTeam    = false;
+  TF_STATE.sameTeam    = true;
   TF_STATE.mode        = 'dynasty';
   TF_STATE.pickMode    = 'none';
   TRADE_MODE           = 'dynasty';
 
-  // Reset format buttons
-  document.querySelectorAll('.tf-format-btn').forEach((b, i) => {
-    b.classList.toggle('active', i === 1);
-  });
+  // Reset format inputs
+  const gn = document.getElementById('tfGiveNum');
+  const rn = document.getElementById('tfGetNum');
+  if (gn) gn.value = 2;
+  if (rn) rn.value = 1;
 
   // Reset pick mode buttons
   document.querySelectorAll('[id^="tfPickModeBtn-"]').forEach(b => b.classList.remove('active'));
@@ -5841,10 +5901,6 @@ function showTradeFinder() {
   if (dm) dm.classList.add('active');
   const descEl = document.getElementById('tfModeDesc');
   if (descEl) descEl.innerHTML = TF_MODE_DESCRIPTIONS.dynasty;
-
-  // Reset same-team checkbox
-  const chk = document.getElementById('tfSameTeamCheck');
-  if (chk) { chk.style.background = ''; chk.style.borderColor = 'var(--border)'; chk.innerHTML = ''; }
 
   // Reset share button
   const shareBtn = document.getElementById('tfShareBtn');
