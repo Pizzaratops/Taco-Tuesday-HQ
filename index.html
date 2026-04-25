@@ -314,6 +314,21 @@
   .section-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; margin-top: 20px; }
   .player-row { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 11px 16px; display: flex; align-items: center; gap: 12px; margin-bottom: 7px; transition: border-color 0.15s; }
   .player-row:hover { border-color: var(--accent); }
+
+  /* Desktop roster layout */
+  .roster-header-row { display:flex;align-items:center;gap:12px;padding:6px 16px 10px;border-bottom:1px solid var(--border);margin-bottom:8px; }
+  .roster-desktop-row { display:flex;align-items:center;gap:8px; }
+  .roster-mobile-row  { display:none; }
+  .roster-col-nba  {}
+  .roster-col-rank {}
+
+  @media (max-width: 600px) {
+    .roster-header-row  { display: none; }
+    .roster-desktop-row { display: none; }
+    .roster-mobile-row  { display: block; }
+    .player-row { align-items: flex-start; padding: 10px 12px; }
+    .pos-badge  { margin-top: 2px; flex-shrink: 0; }
+  }
   .pos-badge { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; }
   .pos-PG { background: rgba(108,99,255,0.2); color: #a89bff; }
   .pos-SG { background: rgba(255,101,132,0.2); color: #ff8fa3; }
@@ -1923,232 +1938,18 @@ function getTeamColor(t) { return document.body.classList.contains('light') ? t.
 //  ROSTERS
 // ============================================================
 const ROSTERS = {
-1:[
-  {name:"Nikola Jokic",pos:"C",team:"DEN"},{name:"Kawhi Leonard",pos:"SF",team:"LAC"},
-  {name:"Cade Cunningham",pos:"PG",team:"DET"},{name:"Jalen Johnson",pos:"PF",team:"ATL"},
-  {name:"Anthony Edwards",pos:"SG",team:"MIN"},{name:"Karl-Anthony Towns",pos:"C",team:"NYK"},
-  {name:"Amen Thompson",pos:"SF",team:"HOU"},{name:"Jalen Suggs",pos:"PG",team:"ORL"},
-  {name:"Cooper Flagg",pos:"SF",team:"DAL"},{name:"Josh Giddey",pos:"PG",team:"CHI"},
-  {name:"LaMelo Ball",pos:"PG",team:"CHA"},{name:"Alperen Sengun",pos:"C",team:"HOU"},
-  {name:"Matas Buzelis",pos:"PF",team:"CHI"},{name:"Dyson Daniels",pos:"SG",team:"ATL"},
-  {name:"Zion Williamson",pos:"PF",team:"NOR"},{name:"Desmond Bane",pos:"SG",team:"ORL"},
-  {name:"Neemias Queta",pos:"C",team:"BOS"},
-  {name:"Ausar Thompson",pos:"SF",team:"DET"},{name:"VJ Edgecombe",pos:"SG",team:"PHI"},
-  {name:"Reed Sheppard",pos:"SG",team:"HOU"},{name:"Dejounte Murray",pos:"PG",team:"NOR"},
-  {name:"Day'Ron Sharpe",pos:"C",team:"BKN"},{name:"Ivica Zubac",pos:"C",team:"IND"},
-  {name:"Taylor Hendricks",pos:"PF",team:"MEM"},{name:"Grant Williams",pos:"PF",team:"CHA"},
-  {name:"Adem Bona",pos:"C",team:"PHI"},{name:"Jordan Poole",pos:"PG",team:"NOR"},
-  {name:"Trae Young",pos:"PG",team:"WAS"},
-  {name:"Moussa Diabate",pos:"PF",team:"CHA"},
-],
-2:[
-  {name:"Stephen Curry",pos:"PG",team:"GSW"},{name:"LeBron James",pos:"SF",team:"LAL"},
-  {name:"Onyeka Okongwu",pos:"C",team:"ATL"},{name:"Tyler Herro",pos:"SG",team:"MIA"},
-  {name:"Jaylen Brown",pos:"SF",team:"BOS"},{name:"Ryan Rollins",pos:"SG",team:"MIL"},
-  {name:"Jabari Smith Jr.",pos:"PF",team:"HOU"},{name:"Jaden McDaniels",pos:"SF",team:"MIN"},
-  {name:"Collin Gillespie",pos:"PG",team:"PHO"},{name:"Aaron Gordon",pos:"PF",team:"DEN"},
-  {name:"Cam Spencer",pos:"SG",team:"MEM"},{name:"Tristan Vukcevic",pos:"PF",team:"WAS"},
-  {name:"Justin Champagnie",pos:"SF",team:"WAS"},{name:"Derik Queen",pos:"C",team:"NOR"},
-  {name:"Javon Small",pos:"PG",team:"MEM"},
-  {name:"Jaime Jaquez Jr.",pos:"SF",team:"MIA"},{name:"Malik Monk",pos:"SG",team:"SAC"},
-  {name:"Moritz Wagner",pos:"C",team:"ORL"},{name:"Daniss Jenkins",pos:"PG",team:"DET"},
-  {name:"Kyle Kuzma",pos:"SF",team:"MIL"},{name:"Bub Carrington",pos:"SG",team:"WAS"},
-  {name:"Javonte Green",pos:"SF",team:"DET"},
-  {name:"Nae'Qwan Tomlin",pos:"PF",team:"CLE"},{name:"Sion James",pos:"SF",team:"CHA"},
-  {name:"Tyler Kolek",pos:"PG",team:"NYK"},{name:"Dylan Cardwell",pos:"C",team:"SAC"},
-  {name:"Jaren Jackson Jr.",pos:"PF",team:"UTA"},
-  {name:"Peyton Watson",pos:"SF",team:"DEN"},
-  {name:"Bradley Beal",pos:"SG",team:"LAC"},
-],
-3:[
-  {name:"Shai Gilgeous-Alexander",pos:"PG",team:"OKC"},{name:"Kevin Durant",pos:"SF",team:"HOU"},
-  {name:"Scottie Barnes",pos:"SF",team:"TOR"},{name:"Paolo Banchero",pos:"PF",team:"ORL"},
-  {name:"De'Aaron Fox",pos:"PG",team:"SAS"},{name:"Brandin Podziemski",pos:"SG",team:"GSW"},
-  {name:"Kristaps Porzingis",pos:"C",team:"GSW"},{name:"Andrew Nembhard",pos:"PG",team:"IND"},
-  {name:"Nikola Vucevic",pos:"C",team:"BOS"},{name:"Khris Middleton",pos:"SF",team:"DAL"},
-  {name:"Micah Potter",pos:"C",team:"IND"},{name:"RJ Barrett",pos:"SG",team:"TOR"},
-  {name:"Jonas Valanciunas",pos:"C",team:"DEN"},{name:"Pat Spencer",pos:"PG",team:"GSW"},
-  {name:"Julian Champagnie",pos:"SF",team:"SAS"},{name:"Santi Aldama",pos:"SF",team:"MEM"},
-  {name:"Baylor Scheierman",pos:"SG",team:"BOS"},{name:"Ziaire Williams",pos:"SF",team:"BKN"},
-  {name:"Dean Wade",pos:"PF",team:"CLE"},{name:"Luguentz Dort",pos:"SG",team:"OKC"},
-  {name:"Vit Krejci",pos:"PG",team:"POR"},{name:"Aaron Wiggins",pos:"SG",team:"OKC"},
-  {name:"Jordan Miller",pos:"SF",team:"LAC"},{name:"Klay Thompson",pos:"SG",team:"DAL"},
-  {name:"Ochai Agbaji",pos:"SG",team:"BKN"},{name:"Jalen Pickett",pos:"PG",team:"DEN"},
-  {name:"Jordan Clarkson",pos:"SG",team:"NYK"},{name:"Paul George",pos:"SF",team:"PHI"},
-  {name:"Deandre Ayton",pos:"C",team:"LAL"},
-  {name:"Guerschon Yabusele",pos:"PF",team:"CHI"},
-],
-4:[
-  {name:"James Harden",pos:"PG",team:"CLE"},{name:"Jamal Murray",pos:"PG",team:"DEN"},
-  {name:"Julius Randle",pos:"PF",team:"MIN"},{name:"Jarrett Allen",pos:"C",team:"CLE"},
-  {name:"Donovan Clingan",pos:"C",team:"POR"},{name:"Brandon Ingram",pos:"SF",team:"TOR"},
-  {name:"Ty Jerome",pos:"PG",team:"MEM"},{name:"Jrue Holiday",pos:"PG",team:"POR"},
-  {name:"Josh Hart",pos:"SF",team:"NYK"},{name:"Jerami Grant",pos:"PF",team:"POR"},
-  {name:"Cedric Coward",pos:"SF",team:"MEM"},{name:"Christian Braun",pos:"SG",team:"DEN"},
-  {name:"Danny Wolf",pos:"PF",team:"BKN"},{name:"Gary Payton II",pos:"SG",team:"GSW"},
-  {name:"Clint Capela",pos:"C",team:"HOU"},{name:"Duncan Robinson",pos:"SF",team:"DET"},
-  {name:"Jamal Shead",pos:"PG",team:"TOR"},{name:"Rui Hachimura",pos:"SF",team:"LAL"},
-  {name:"Dennis Schroder",pos:"PG",team:"CLE"},{name:"Yanic Konan Niederhauser",pos:"C",team:"LAC"},
-  {name:"Corey Kispert",pos:"SF",team:"ATL"},{name:"Harrison Barnes",pos:"PF",team:"SAS"},
-  {name:"Svi Mykhailiuk",pos:"SG",team:"UTA"},{name:"Mouhamed Gueye",pos:"PF",team:"ATL"},
-  {name:"Cam Thomas",pos:"SG",team:"FA"},{name:"Zach LaVine",pos:"SG",team:"SAC"},
-  {name:"De'Andre Hunter",pos:"SF",team:"SAC"},{name:"Jalen Smith",pos:"PF",team:"CHI"},
-  {name:"Keegan Murray",pos:"SF",team:"SAC"},
-  {name:"Aaron Nesmith",pos:"SF",team:"IND"},
-  {name:"Dillon Brooks",pos:"SF",team:"PHO"},
-],
-5:[
-  {name:"Tyrese Maxey",pos:"PG",team:"PHI"},{name:"Austin Reaves",pos:"SG",team:"LAL"},
-  {name:"Jalen Duren",pos:"C",team:"DET"},{name:"Payton Pritchard",pos:"PG",team:"BOS"},
-  {name:"Andrew Wiggins",pos:"SF",team:"MIA"},{name:"Saddiq Bey",pos:"SF",team:"NOR"},
-  {name:"Precious Achiuwa",pos:"PF",team:"SAC"},{name:"Jakob Poeltl",pos:"C",team:"TOR"},
-  {name:"Jalen Green",pos:"SG",team:"PHO"},{name:"Bennedict Mathurin",pos:"SG",team:"LAC"},
-  {name:"Pascal Siakam",pos:"PF",team:"IND"},{name:"Russell Westbrook",pos:"PG",team:"SAC"},
-  {name:"Bilal Coulibaly",pos:"SF",team:"WAS"},{name:"Sam Hauser",pos:"SF",team:"BOS"},
-  {name:"AJ Green",pos:"SG",team:"MIL"},{name:"Jaylin Williams",pos:"C",team:"OKC"},
-  {name:"Dru Smith",pos:"PG",team:"MIA"},{name:"Caris LeVert",pos:"SG",team:"DET"},
-  {name:"Jarred Vanderbilt",pos:"PF",team:"LAL"},{name:"Kyle Anderson",pos:"SF",team:"MIN"},
-  {name:"Ousmane Dieng",pos:"SF",team:"MIL"},{name:"Goga Bitadze",pos:"C",team:"ORL"},
-  {name:"Nicolas Batum",pos:"PF",team:"LAC"},{name:"Terance Mann",pos:"SG",team:"BKN"},
-  {name:"Caleb Martin",pos:"SG",team:"DAL"},{name:"Kelly Olynyk",pos:"C",team:"SAS"},
-  {name:"Joel Embiid",pos:"C",team:"PHI"},{name:"Zach Collins",pos:"PF",team:"CHI"},
-  {name:"Malik Beasley",pos:"SG",team:"FA"},
-  {name:"Ajay Mitchell",pos:"SG",team:"OKC"},
-  {name:"Kyrie Irving",pos:"PG",team:"DAL"},
-],
-6:[
-  {name:"Victor Wembanyama",pos:"C",team:"SAS"},{name:"Keyonte George",pos:"PG",team:"UTA"},
-  {name:"Kyle Filipowski",pos:"PF",team:"UTA"},{name:"Naz Reid",pos:"PF",team:"MIN"},
-  {name:"Jay Huff",pos:"C",team:"IND"},{name:"Karlo Matkovic",pos:"PF",team:"NOR"},
-  {name:"Jarace Walker",pos:"PF",team:"IND"},{name:"Donte DiVincenzo",pos:"PG",team:"MIN"},
-  {name:"GG Jackson",pos:"PF",team:"MEM"},{name:"Pelle Larsson",pos:"SG",team:"MIA"},
-  {name:"Toumani Camara",pos:"SF",team:"POR"},{name:"Gui Santos",pos:"SF",team:"GSW"},
-  {name:"Olivier-Maxence Prosper",pos:"PF",team:"MEM"},{name:"Davion Mitchell",pos:"PG",team:"MIA"},
-  {name:"Keldon Johnson",pos:"SF",team:"SAS"},{name:"Kevin Love",pos:"PF",team:"UTA"},
-  {name:"Isaac Okoro",pos:"SF",team:"CHI"},{name:"Quentin Grimes",pos:"SG",team:"PHI"},
-  {name:"Tre Johnson",pos:"SG",team:"WAS"},{name:"Isaiah Joe",pos:"SG",team:"OKC"},
-  {name:"Jake LaRavia",pos:"PF",team:"LAL"},{name:"Walter Clayton Jr.",pos:"PG",team:"MEM"},
-  {name:"Bruce Brown",pos:"SG",team:"DEN"},{name:"Bobby Portis",pos:"PF",team:"MIL"},
-  {name:"Tristan da Silva",pos:"SF",team:"ORL"},{name:"Sidy Cissoko",pos:"SG",team:"POR"},
-  {name:"Gary Trent Jr.",pos:"SG",team:"MIL"},{name:"Shaedon Sharpe",pos:"SG",team:"POR"},
-  {name:"Cam Whitmore",pos:"SF",team:"WAS"},
-  {name:"Dereck Lively II",pos:"C",team:"DAL"},
-  {name:"Thomas Sorber",pos:"C",team:"OKC"},
-  {name:"Rasheer Fleming",pos:"PF",team:"PHO"},
-],
-7:[
-  {name:"Derrick White",pos:"PG",team:"BOS"},{name:"Evan Mobley",pos:"PF",team:"CLE"},
-  {name:"Mikal Bridges",pos:"SG",team:"NYK"},{name:"Jalen Brunson",pos:"PG",team:"NYK"},
-  {name:"Robert Williams III",pos:"C",team:"POR"},{name:"Grayson Allen",pos:"SG",team:"PHO"},
-  {name:"Rudy Gobert",pos:"C",team:"MIN"},{name:"Naji Marshall",pos:"SF",team:"DAL"},
-  {name:"Stephon Castle",pos:"PG",team:"SAS"},{name:"Derrick Jones Jr.",pos:"SF",team:"LAC"},
-  {name:"Miles Bridges",pos:"SF",team:"CHA"},{name:"Tobias Harris",pos:"SF",team:"DET"},
-  {name:"Draymond Green",pos:"PF",team:"GSW"},{name:"Myles Turner",pos:"C",team:"MIL"},
-  {name:"Quenton Jackson",pos:"PG",team:"IND"},{name:"Ayo Dosunmu",pos:"SG",team:"MIN"},
-  {name:"Kelly Oubre Jr.",pos:"SF",team:"PHI"},{name:"Brice Sensabaugh",pos:"SF",team:"UTA"},
-  {name:"Ja Morant",pos:"PG",team:"MEM"},{name:"John Konchar",pos:"SG",team:"UTA"},
-  {name:"Wendell Carter Jr.",pos:"C",team:"ORL"},{name:"Jericho Sims",pos:"C",team:"MIL"},
-  {name:"Anthony Gill",pos:"PF",team:"WAS"},{name:"Keon Ellis",pos:"SG",team:"CLE"},
-  {name:"Sharife Cooper",pos:"PG",team:"WAS"},{name:"Andre Drummond",pos:"C",team:"PHI"},
-  {name:"Landry Shamet",pos:"SG",team:"NYK"},{name:"Kevin Huerter",pos:"SG",team:"DET"},
-  {name:"Dorian Finney-Smith",pos:"SF",team:"HOU"},
-  {name:"Anthony Davis",pos:"C",team:"WAS"},
-  {name:"Noa Essengue",pos:"PF",team:"CHI"},
-],
-8:[
-  {name:"Luka Doncic",pos:"PG",team:"LAL"},{name:"Chet Holmgren",pos:"PF",team:"OKC"},
-  {name:"Bam Adebayo",pos:"C",team:"MIA"},{name:"Deni Avdija",pos:"SF",team:"POR"},
-  {name:"Nickeil Alexander-Walker",pos:"SG",team:"ATL"},{name:"Tari Eason",pos:"SF",team:"HOU"},
-  {name:"Isaiah Hartenstein",pos:"C",team:"OKC"},{name:"De'Anthony Melton",pos:"SG",team:"GSW"},
-  {name:"Mitchell Robinson",pos:"C",team:"NYK"},{name:"Nic Claxton",pos:"C",team:"BKN"},
-  {name:"Isaiah Stewart",pos:"PF",team:"DET"},{name:"Royce O'Neale",pos:"SF",team:"PHO"},
-  {name:"Jaylen Wells",pos:"SG",team:"MEM"},{name:"Alex Caruso",pos:"SG",team:"OKC"},
-  {name:"Yves Missi",pos:"C",team:"NOR"},{name:"Devin Carter",pos:"PG",team:"SAC"},
-  {name:"Dylan Harper",pos:"PG",team:"SAS"},{name:"Jose Alvarado",pos:"PG",team:"NYK"},
-  {name:"Jaylon Tyson",pos:"SG",team:"CLE"},{name:"Tim Hardaway Jr.",pos:"SG",team:"DEN"},
-  {name:"Larry Nance Jr.",pos:"PF",team:"CLE"},{name:"Jonathan Isaac",pos:"PF",team:"ORL"},
-  {name:"Aaron Holiday",pos:"PG",team:"HOU"},{name:"Tre Mann",pos:"PG",team:"CHA"},
-  {name:"Xavier Tillman",pos:"PF",team:"CHA"},{name:"Domantas Sabonis",pos:"C",team:"SAC"},
-  {name:"Zach Edey",pos:"C",team:"MEM"},{name:"Cody Martin",pos:"SG",team:"FA"},
-  {name:"Fred VanVleet",pos:"PG",team:"HOU"},
-  {name:"Kris Murray",pos:"PF",team:"POR"},
-],
-9:[
-  {name:"Donovan Mitchell",pos:"SG",team:"CLE"},{name:"Michael Porter Jr.",pos:"SF",team:"BKN"},
-  {name:"Devin Booker",pos:"PG",team:"PHO"},{name:"Moses Moody",pos:"SG",team:"GSW"},
-  {name:"Luke Kornet",pos:"C",team:"SAS"},{name:"PJ Washington",pos:"PF",team:"DAL"},
-  {name:"Kris Dunn",pos:"PG",team:"LAC"},{name:"Collin Murray-Boyles",pos:"PF",team:"TOR"},
-  {name:"Tre Jones",pos:"PG",team:"CHI"},{name:"Cam Johnson",pos:"SF",team:"DEN"},
-  {name:"Cason Wallace",pos:"SG",team:"OKC"},{name:"Jonathan Kuminga",pos:"PF",team:"ATL"},
-  {name:"Jock Landale",pos:"C",team:"ATL"},{name:"Marcus Smart",pos:"SG",team:"LAL"},
-  {name:"Kasparas Jakucionis",pos:"PG",team:"MIA"},{name:"Bones Hyland",pos:"PG",team:"MIN"},
-  {name:"Gradey Dick",pos:"SG",team:"TOR"},{name:"Luka Garza",pos:"C",team:"BOS"},
-  {name:"Tidjane Salaun",pos:"PF",team:"CHA"},{name:"Kevon Looney",pos:"C",team:"NOR"},
-  {name:"Julian Strawther",pos:"SF",team:"DEN"},{name:"Buddy Hield",pos:"SG",team:"ATL"},
-  {name:"Nikola Topic",pos:"PG",team:"OKC"},{name:"Khaman Maluach",pos:"C",team:"PHO"},
-  {name:"Caleb Love",pos:"SG",team:"POR"},{name:"Jeremy Sochan",pos:"PF",team:"NYK"},
-  {name:"Kentavious Caldwell-Pope",pos:"SG",team:"MEM"},{name:"Lauri Markkanen",pos:"PF",team:"UTA"},
-  {name:"Lonzo Ball",pos:"PG",team:"FA"},
-  {name:"Obi Toppin",pos:"PF",team:"IND"},
-  {name:"Damian Lillard",pos:"PG",team:"POR"},
-],
-10:[
-  {name:"Trey Murphy III",pos:"SF",team:"NOR"},{name:"OG Anunoby",pos:"SF",team:"NYK"},
-  {name:"Immanuel Quickley",pos:"PG",team:"TOR"},{name:"Jalen Williams",pos:"SF",team:"OKC"},
-  {name:"Maxime Raynaud",pos:"C",team:"SAC"},{name:"Mark Williams",pos:"C",team:"PHO"},
-  {name:"Daniel Gafford",pos:"C",team:"DAL"},{name:"Kel'el Ware",pos:"C",team:"MIA"},
-  {name:"Marvin Bagley III",pos:"PF",team:"DAL"},{name:"Kyshawn George",pos:"SG",team:"WAS"},
-  {name:"Ace Bailey",pos:"SF",team:"UTA"},{name:"Max Christie",pos:"SG",team:"DAL"},
-  {name:"Will Riley",pos:"SF",team:"WAS"},{name:"Devin Vassell",pos:"SG",team:"SAS"},
-  {name:"Jeremiah Fears",pos:"SG",team:"NOR"},{name:"Scoot Henderson",pos:"PG",team:"POR"},
-  {name:"Noah Clowney",pos:"PF",team:"BKN"},{name:"Sam Merrill",pos:"SG",team:"CLE"},
-  {name:"Ronald Holland II",pos:"SF",team:"DET"},{name:"Oso Ighodaro",pos:"PF",team:"PHO"},
-  {name:"Cody Williams",pos:"SG",team:"UTA"},{name:"Ja'Kobe Walter",pos:"SG",team:"TOR"},
-  {name:"Rob Dillingham",pos:"PG",team:"CHI"},{name:"Ryan Dunn",pos:"SF",team:"PHO"},
-  {name:"Jared McCain",pos:"SG",team:"OKC"},{name:"Drake Powell",pos:"SG",team:"BKN"},
-  {name:"Carter Bryant",pos:"SF",team:"SAS"},{name:"DaRon Holmes II",pos:"PF",team:"DEN"},
-  {name:"Alex Sarr",pos:"C",team:"WAS"},
-  {name:"Franz Wagner",pos:"SF",team:"ORL"},
-  {name:"Jaden Ivey",pos:"SG",team:"FA"},
-],
-11:[
-  {name:"Kevin Porter Jr.",pos:"PG",team:"MIL"},{name:"Giannis Antetokounmpo",pos:"PF",team:"MIL"},
-  {name:"Brandon Miller",pos:"SF",team:"CHA"},{name:"Kon Knueppel",pos:"SG",team:"CHA"},
-  {name:"Isaiah Collier",pos:"PG",team:"UTA"},{name:"Anthony Black",pos:"PG",team:"ORL"},
-  {name:"Darius Garland",pos:"PG",team:"LAC"},{name:"Paul Reed",pos:"PF",team:"DET"},
-  {name:"Brandon Williams",pos:"PG",team:"DAL"},{name:"Herbert Jones",pos:"SF",team:"NOR"},
-  {name:"Nolan Traore",pos:"PG",team:"BKN"},{name:"Patrick Williams",pos:"PF",team:"CHI"},
-  {name:"Craig Porter Jr.",pos:"SG",team:"CLE"},{name:"Sandro Mamukelashvili",pos:"PF",team:"TOR"},
-  {name:"Ben Sheppard",pos:"SG",team:"IND"},{name:"Isaiah Jackson",pos:"PF",team:"LAC"},
-  {name:"Zaccharie Risacher",pos:"SF",team:"ATL"},{name:"Trayce Jackson-Davis",pos:"PF",team:"TOR"},
-  {name:"Noah Penda",pos:"SF",team:"ORL"},{name:"Joan Beringer",pos:"C",team:"MIN"},
-  {name:"Jase Richardson",pos:"SG",team:"ORL"},{name:"Asa Newell",pos:"PF",team:"ATL"},
-  {name:"Jalen Wilson",pos:"PF",team:"BKN"},{name:"Koby Brea",pos:"SG",team:"PHO"},
-  {name:"Vince Williams Jr.",pos:"SG",team:"FA"},{name:"Miles McBride",pos:"PG",team:"NYK"},
-  {name:"Johni Broome",pos:"PF",team:"PHI"},{name:"Anfernee Simons",pos:"PG",team:"CHI"},
-  {name:"Cole Anthony",pos:"PG",team:"FA"},
-  {name:"Jayson Tatum",pos:"PF",team:"BOS"},
-  {name:"Walker Kessler",pos:"C",team:"UTA"},
-],
-12:[
-  {name:"Al Horford",pos:"PF",team:"GSW"},{name:"John Collins",pos:"PF",team:"LAC"},
-  {name:"Norman Powell",pos:"SG",team:"MIA"},{name:"Scotty Pippen Jr.",pos:"PG",team:"MEM"},
-  {name:"Brook Lopez",pos:"C",team:"LAC"},{name:"CJ McCollum",pos:"PG",team:"ATL"},
-  {name:"DeMar DeRozan",pos:"SF",team:"SAC"},{name:"Collin Sexton",pos:"SG",team:"CHI"},
-  {name:"Nique Clifford",pos:"SG",team:"SAC"},{name:"Will Richard",pos:"SG",team:"GSW"},
-  {name:"Coby White",pos:"PG",team:"CHA"},{name:"Egor Demin",pos:"PG",team:"BKN"},
-  {name:"Ryan Kalkbrenner",pos:"C",team:"CHA"},{name:"TJ McConnell",pos:"PG",team:"IND"},
-  {name:"Luke Kennard",pos:"SG",team:"LAL"},{name:"Quinten Post",pos:"C",team:"GSW"},
-  {name:"Josh Minott",pos:"SF",team:"BKN"},{name:"Nikola Jovic",pos:"PF",team:"MIA"},
-  {name:"Hugo Gonzalez",pos:"SG",team:"BOS"},{name:"Ryan Nembhard",pos:"PG",team:"DAL"},
-  {name:"Yang Hansen",pos:"C",team:"POR"},{name:"Ben Saraf",pos:"SG",team:"BKN"},
-  {name:"Terrence Shannon Jr.",pos:"SG",team:"MIN"},{name:"Dalton Knecht",pos:"SG",team:"LAL"},
-  {name:"JD Davison",pos:"PG",team:"HOU"},{name:"Bronny James",pos:"PG",team:"LAL"},
-  {name:"Alijah Martin",pos:"SG",team:"TOR"},{name:"D'Angelo Russell",pos:"PG",team:"WAS"},
-  {name:"Johnny Furphy",pos:"SG",team:"IND"},
-  {name:"Trendon Watford",pos:"PF",team:"PHI"},
-  {name:"Tyrese Haliburton",pos:"PG",team:"IND"},
-],
+1:[{name:"Cade Cunningham",pos:"PG",team:"DET"},{name:"Anthony Edwards",pos:"SG",team:"MIN"},{name:"Cooper Flagg",pos:"SF",team:"DAL"},{name:"Ausar Thompson",pos:"SF",team:"DET"},{name:"Ivica Zubac",pos:"C",team:"IND"},{name:"Karl-Anthony Towns",pos:"C",team:"NYK"},{name:"Omer Yurtseven",pos:"C",team:"GSW"},{name:"Kawhi Leonard",pos:"SF",team:"LAC"},{name:"Nikola Jokic",pos:"C",team:"DEN"},{name:"VJ Edgecombe",pos:"SG",team:"PHI"},{name:"Neemias Queta",pos:"C",team:"BOS"},{name:"Dyson Daniels",pos:"SG",team:"ATL"},{name:"LaMelo Ball",pos:"PG",team:"CHA"},{name:"Trae Young",pos:"PG",team:"WAS"},{name:"Zion Williamson",pos:"PF",team:"NOR"},{name:"Jalen Johnson",pos:"PF",team:"ATL"},{name:"Jalen Suggs",pos:"PG",team:"ORL"},{name:"Jordan Poole",pos:"PG",team:"NOR"},{name:"Amen Thompson",pos:"SF",team:"HOU"},{name:"Josh Giddey",pos:"PG",team:"CHI"},{name:"Alperen Sengun",pos:"C",team:"HOU"},{name:"Matas Buzelis",pos:"PF",team:"CHI"},{name:"Reed Sheppard",pos:"SG",team:"HOU"},{name:"Dejounte Murray",pos:"PG",team:"NOR"},{name:"Taylor Hendricks",pos:"PF",team:"MEM"},{name:"Desmond Bane",pos:"SG",team:"ORL"},{name:"Nick Richards",pos:"C",team:"CHI"},{name:"Julian Reese",pos:"PF",team:"WAS"},{name:"Kobe Brown",pos:"PF",team:"IND"},{name:"Day'Ron Sharpe",pos:"C",team:"BKN"},{name:"Jimmy Butler III",pos:"SF",team:"GSW"}],
+2:[{name:"Malik Monk",pos:"SG",team:"SAC"},{name:"Ryan Rollins",pos:"SG",team:"MIL"},{name:"Jaylen Brown",pos:"SF",team:"BOS"},{name:"LeBron James",pos:"SF",team:"LAL"},{name:"Onyeka Okongwu",pos:"C",team:"ATL"},{name:"Jabari Smith Jr.",pos:"PF",team:"HOU"},{name:"Tristan Vukcevic",pos:"PF",team:"WAS"},{name:"Jaden McDaniels",pos:"SF",team:"MIN"},{name:"Aaron Gordon",pos:"PF",team:"DEN"},{name:"Cam Spencer",pos:"SG",team:"MEM"},{name:"Derik Queen",pos:"C",team:"NOR"},{name:"Sion James",pos:"SF",team:"CHA"},{name:"Bub Carrington",pos:"SG",team:"WAS"},{name:"Kyle Kuzma",pos:"SF",team:"MIL"},{name:"Tyler Herro",pos:"SG",team:"MIA"},{name:"Stephen Curry",pos:"PG",team:"GSW"},{name:"Collin Gillespie",pos:"PG",team:"PHO"},{name:"Moritz Wagner",pos:"C",team:"ORL"},{name:"Jaime Jaquez Jr.",pos:"SF",team:"MIA"},{name:"Justin Champagnie",pos:"SF",team:"WAS"},{name:"Tyler Kolek",pos:"PG",team:"NYK"},{name:"Daniss Jenkins",pos:"PG",team:"DET"},{name:"Dylan Cardwell",pos:"C",team:"SAC"},{name:"Javon Small",pos:"PG",team:"MEM"},{name:"Kobe Sanders",pos:"SG",team:"LAC"},{name:"Thomas Bryant",pos:"C",team:"CLE"},{name:"Bradley Beal",pos:"SG",team:"LAC"},{name:"Justin Edwards",pos:"SF",team:"PHI"},{name:"Leonard Miller",pos:"SF",team:"CHI"},{name:"Peyton Watson",pos:"SF",team:"DEN"},{name:"Jaren Jackson Jr.",pos:"PF",team:"UTA"}],
+3:[{name:"Shai Gilgeous-Alexander",pos:"PG",team:"OKC"},{name:"Aaron Wiggins",pos:"SG",team:"OKC"},{name:"Luguentz Dort",pos:"SG",team:"OKC"},{name:"Dean Wade",pos:"PF",team:"CLE"},{name:"Micah Potter",pos:"C",team:"IND"},{name:"Brandin Podziemski",pos:"SG",team:"GSW"},{name:"RJ Barrett",pos:"SG",team:"TOR"},{name:"Scottie Barnes",pos:"SF",team:"TOR"},{name:"Vit Krejci",pos:"PG",team:"POR"},{name:"Andrew Nembhard",pos:"PG",team:"IND"},{name:"Paul George",pos:"SF",team:"PHI"},{name:"Klay Thompson",pos:"SG",team:"DAL"},{name:"Julian Champagnie",pos:"SF",team:"SAS"},{name:"Ochai Agbaji",pos:"SG",team:"BKN"},{name:"Ziaire Williams",pos:"SF",team:"BKN"},{name:"Deandre Ayton",pos:"C",team:"LAL"},{name:"Nikola Vucevic",pos:"C",team:"BOS"},{name:"Jonas Valanciunas",pos:"C",team:"DEN"},{name:"De'Aaron Fox",pos:"PG",team:"SAS"},{name:"Kristaps Porzingis",pos:"C",team:"GSW"},{name:"Santi Aldama",pos:"SF",team:"MEM"},{name:"Kevin Durant",pos:"SF",team:"HOU"},{name:"Khris Middleton",pos:"SF",team:"DAL"},{name:"Jalen Pickett",pos:"PG",team:"DEN"},{name:"Jordan Miller",pos:"SF",team:"LAC"},{name:"Paolo Banchero",pos:"PF",team:"ORL"},{name:"Baylor Scheierman",pos:"SG",team:"BOS"},{name:"Pat Spencer",pos:"PG",team:"GSW"},{name:"Guerschon Yabusele",pos:"PF",team:"CHI"},{name:"Max Strus",pos:"SG",team:"CLE"},{name:"Jordan Goodwin",pos:"PG",team:"PHO"}],
+4:[{name:"James Harden",pos:"PG",team:"CLE"},{name:"Josh Hart",pos:"SF",team:"NYK"},{name:"Brandon Ingram",pos:"SF",team:"TOR"},{name:"Jerami Grant",pos:"PF",team:"POR"},{name:"Donovan Clingan",pos:"C",team:"POR"},{name:"Jrue Holiday",pos:"PG",team:"POR"},{name:"Cam Thomas",pos:"SG",team:"FA"},{name:"Dennis Schroder",pos:"PG",team:"CLE"},{name:"Duncan Robinson",pos:"SF",team:"DET"},{name:"Svi Mykhailiuk",pos:"SG",team:"UTA"},{name:"Cedric Coward",pos:"SF",team:"MEM"},{name:"Danny Wolf",pos:"PF",team:"BKN"},{name:"Yanic Konan Niederhauser",pos:"C",team:"LAC"},{name:"Mouhamed Gueye",pos:"PF",team:"ATL"},{name:"Ty Jerome",pos:"PG",team:"MEM"},{name:"De'Andre Hunter",pos:"SF",team:"SAC"},{name:"Jamal Murray",pos:"PG",team:"DEN"},{name:"Corey Kispert",pos:"SF",team:"ATL"},{name:"Zach LaVine",pos:"SG",team:"SAC"},{name:"Christian Braun",pos:"SG",team:"DEN"},{name:"Harrison Barnes",pos:"PF",team:"SAS"},{name:"Aaron Nesmith",pos:"SF",team:"IND"},{name:"Clint Capela",pos:"C",team:"HOU"},{name:"Julius Randle",pos:"PF",team:"MIN"},{name:"Jalen Smith",pos:"PF",team:"CHI"},{name:"Rui Hachimura",pos:"SF",team:"LAL"},{name:"Jarrett Allen",pos:"C",team:"CLE"},{name:"Jamal Shead",pos:"PG",team:"TOR"},{name:"Gary Payton II",pos:"SG",team:"GSW"},{name:"Keegan Murray",pos:"SF",team:"SAC"},{name:"Dillon Brooks",pos:"SF",team:"PHO"}],
+5:[{name:"Ajay Mitchell",pos:"SG",team:"OKC"},{name:"AJ Green",pos:"SG",team:"MIL"},{name:"Kyle Anderson",pos:"SF",team:"MIN"},{name:"Pascal Siakam",pos:"PF",team:"IND"},{name:"Jaylin Williams",pos:"C",team:"OKC"},{name:"Russell Westbrook",pos:"PG",team:"SAC"},{name:"Precious Achiuwa",pos:"PF",team:"SAC"},{name:"Jalen Duren",pos:"C",team:"DET"},{name:"Jakob Poeltl",pos:"C",team:"TOR"},{name:"Caris LeVert",pos:"SG",team:"DET"},{name:"Goga Bitadze",pos:"C",team:"ORL"},{name:"Saddiq Bey",pos:"SF",team:"NOR"},{name:"Ousmane Dieng",pos:"SF",team:"MIL"},{name:"Kelly Olynyk",pos:"C",team:"SAS"},{name:"Terance Mann",pos:"SG",team:"BKN"},{name:"Caleb Martin",pos:"SG",team:"DAL"},{name:"Jarred Vanderbilt",pos:"PF",team:"LAL"},{name:"Jalen Green",pos:"SG",team:"PHO"},{name:"Tyrese Maxey",pos:"PG",team:"PHI"},{name:"Andrew Wiggins",pos:"SF",team:"MIA"},{name:"Joel Embiid",pos:"C",team:"PHI"},{name:"Malik Beasley",pos:"SG",team:"FA"},{name:"Bennedict Mathurin",pos:"SG",team:"LAC"},{name:"Sam Hauser",pos:"SF",team:"BOS"},{name:"Payton Pritchard",pos:"PG",team:"BOS"},{name:"Austin Reaves",pos:"SG",team:"LAL"},{name:"Bilal Coulibaly",pos:"SF",team:"WAS"},{name:"Dru Smith",pos:"PG",team:"MIA"},{name:"Nicolas Batum",pos:"PF",team:"LAC"},{name:"Zach Collins",pos:"PF",team:"CHI"},{name:"Kyrie Irving",pos:"PG",team:"DAL"}],
+6:[{name:"Keyonte George",pos:"PG",team:"UTA"},{name:"Donte DiVincenzo",pos:"PG",team:"MIN"},{name:"Toumani Camara",pos:"SF",team:"POR"},{name:"Naz Reid",pos:"PF",team:"MIN"},{name:"Jay Huff",pos:"C",team:"IND"},{name:"Kyle Filipowski",pos:"PF",team:"UTA"},{name:"Bobby Portis",pos:"PF",team:"MIL"},{name:"Isaiah Joe",pos:"SG",team:"OKC"},{name:"Quentin Grimes",pos:"SG",team:"PHI"},{name:"Jarace Walker",pos:"PF",team:"IND"},{name:"Tre Johnson",pos:"SG",team:"WAS"},{name:"Walter Clayton Jr.",pos:"PG",team:"MEM"},{name:"Isaac Okoro",pos:"SF",team:"CHI"},{name:"Jake LaRavia",pos:"PF",team:"LAL"},{name:"Keldon Johnson",pos:"SF",team:"SAS"},{name:"Davion Mitchell",pos:"PG",team:"MIA"},{name:"Shaedon Sharpe",pos:"SG",team:"POR"},{name:"Tristan da Silva",pos:"SF",team:"ORL"},{name:"GG Jackson",pos:"PF",team:"MEM"},{name:"Pelle Larsson",pos:"SG",team:"MIA"},{name:"Cam Whitmore",pos:"SF",team:"WAS"},{name:"Sidy Cissoko",pos:"SG",team:"POR"},{name:"Gui Santos",pos:"SF",team:"GSW"},{name:"Victor Wembanyama",pos:"C",team:"SAS"},{name:"Olivier-Maxence Prosper",pos:"PF",team:"MEM"},{name:"Karlo Matkovic",pos:"PF",team:"NOR"},{name:"Rasheer Fleming",pos:"PF",team:"PHO"},{name:"Kennedy Chandler",pos:"PG",team:"UTA"},{name:"Moussa Diabate",pos:"PF",team:"CHA"},{name:"Thomas Sorber",pos:"C",team:"OKC"},{name:"Dereck Lively II",pos:"C",team:"DAL"}],
+7:[{name:"Jalen Brunson",pos:"PG",team:"NYK"},{name:"Mikal Bridges",pos:"SG",team:"NYK"},{name:"Kelly Oubre Jr.",pos:"SF",team:"PHI"},{name:"Evan Mobley",pos:"PF",team:"CLE"},{name:"Myles Turner",pos:"C",team:"MIL"},{name:"Derrick White",pos:"PG",team:"BOS"},{name:"Rudy Gobert",pos:"C",team:"MIN"},{name:"Stephon Castle",pos:"PG",team:"SAS"},{name:"Kevin Huerter",pos:"SG",team:"DET"},{name:"Keon Ellis",pos:"SG",team:"CLE"},{name:"Dorian Finney-Smith",pos:"SF",team:"HOU"},{name:"Draymond Green",pos:"PF",team:"GSW"},{name:"Andre Drummond",pos:"C",team:"PHI"},{name:"Wendell Carter Jr.",pos:"C",team:"ORL"},{name:"Ja Morant",pos:"PG",team:"MEM"},{name:"Ayo Dosunmu",pos:"SG",team:"MIN"},{name:"Tobias Harris",pos:"SF",team:"DET"},{name:"Naji Marshall",pos:"SF",team:"DAL"},{name:"Miles Bridges",pos:"SF",team:"CHA"},{name:"Robert Williams III",pos:"C",team:"POR"},{name:"Derrick Jones Jr.",pos:"SF",team:"LAC"},{name:"Brice Sensabaugh",pos:"SF",team:"UTA"},{name:"Grayson Allen",pos:"SG",team:"PHO"},{name:"Jericho Sims",pos:"C",team:"MIL"},{name:"Quenton Jackson",pos:"PG",team:"IND"},{name:"Sharife Cooper",pos:"PG",team:"WAS"},{name:"Landry Shamet",pos:"SG",team:"NYK"},{name:"John Konchar",pos:"SG",team:"UTA"},{name:"Anthony Gill",pos:"PF",team:"WAS"},{name:"Noa Essengue",pos:"PF",team:"CHI"},{name:"Anthony Davis",pos:"C",team:"WAS"}],
+8:[{name:"Luka Doncic",pos:"PG",team:"LAL"},{name:"Jaylon Tyson",pos:"SG",team:"CLE"},{name:"Tari Eason",pos:"SF",team:"HOU"},{name:"Bam Adebayo",pos:"C",team:"MIA"},{name:"Mitchell Robinson",pos:"C",team:"NYK"},{name:"Jose Alvarado",pos:"PG",team:"NYK"},{name:"Royce O'Neale",pos:"SF",team:"PHO"},{name:"Dylan Harper",pos:"PG",team:"SAS"},{name:"Yves Missi",pos:"C",team:"NOR"},{name:"Isaiah Stewart",pos:"PF",team:"DET"},{name:"De'Anthony Melton",pos:"SG",team:"GSW"},{name:"Jaylen Wells",pos:"SG",team:"MEM"},{name:"Tre Mann",pos:"PG",team:"CHA"},{name:"Jonathan Isaac",pos:"PF",team:"ORL"},{name:"Xavier Tillman",pos:"PF",team:"CHA"},{name:"Aaron Holiday",pos:"PG",team:"HOU"},{name:"Tim Hardaway Jr.",pos:"SG",team:"DEN"},{name:"Cody Martin",pos:"SG",team:"FA"},{name:"Alex Caruso",pos:"SG",team:"OKC"},{name:"Nickeil Alexander-Walker",pos:"SG",team:"ATL"},{name:"Domantas Sabonis",pos:"C",team:"SAC"},{name:"Nic Claxton",pos:"C",team:"BKN"},{name:"Zach Edey",pos:"C",team:"MEM"},{name:"Isaiah Hartenstein",pos:"C",team:"OKC"},{name:"Larry Nance Jr.",pos:"PF",team:"CLE"},{name:"Deni Avdija",pos:"SF",team:"POR"},{name:"Chet Holmgren",pos:"PF",team:"OKC"},{name:"Devin Carter",pos:"PG",team:"SAC"},{name:"Fred VanVleet",pos:"PG",team:"HOU"},{name:"Kris Murray",pos:"PF",team:"POR"}],
+9:[{name:"Tre Jones",pos:"PG",team:"CHI"},{name:"Cason Wallace",pos:"SG",team:"OKC"},{name:"Michael Porter Jr.",pos:"SF",team:"BKN"},{name:"Zaccharie Risacher",pos:"SF",team:"ATL"},{name:"Cameron Johnson",pos:"SF",team:"DEN"},{name:"Luke Kornet",pos:"C",team:"SAS"},{name:"Kris Dunn",pos:"PG",team:"LAC"},{name:"Jock Landale",pos:"C",team:"ATL"},{name:"PJ Washington",pos:"PF",team:"DAL"},{name:"Marcus Smart",pos:"SG",team:"LAL"},{name:"Luka Garza",pos:"C",team:"BOS"},{name:"Khaman Maluach",pos:"C",team:"PHO"},{name:"Collin Murray-Boyles",pos:"PF",team:"TOR"},{name:"Moses Moody",pos:"SG",team:"GSW"},{name:"Bones Hyland",pos:"PG",team:"MIN"},{name:"Kevon Looney",pos:"C",team:"NOR"},{name:"Gradey Dick",pos:"SG",team:"TOR"},{name:"Lauri Markkanen",pos:"PF",team:"UTA"},{name:"Kentavious Caldwell-Pope",pos:"SG",team:"MEM"},{name:"Donovan Mitchell",pos:"SG",team:"CLE"},{name:"Devin Booker",pos:"PG",team:"PHO"},{name:"Lonzo Ball",pos:"PG",team:"FA"},{name:"Buddy Hield",pos:"SG",team:"ATL"},{name:"Nikola Topic",pos:"PG",team:"OKC"},{name:"Julian Strawther",pos:"SF",team:"DEN"},{name:"Caleb Love",pos:"SG",team:"POR"},{name:"Jeremy Sochan",pos:"PF",team:"NYK"},{name:"Jonathan Kuminga",pos:"PF",team:"ATL"},{name:"Tidjane Salaun",pos:"PF",team:"CHA"},{name:"Kasparas Jakucionis",pos:"PG",team:"MIA"},{name:"Obi Toppin",pos:"PF",team:"IND"},{name:"Damian Lillard",pos:"PG",team:"POR"}],
+10:[{name:"Immanuel Quickley",pos:"PG",team:"TOR"},{name:"Jared McCain",pos:"SG",team:"OKC"},{name:"Ronald Holland II",pos:"SF",team:"DET"},{name:"Marvin Bagley III",pos:"PF",team:"DAL"},{name:"Daniel Gafford",pos:"C",team:"DAL"},{name:"OG Anunoby",pos:"SF",team:"NYK"},{name:"Maxime Raynaud",pos:"C",team:"SAC"},{name:"Max Christie",pos:"SG",team:"DAL"},{name:"Ja'Kobe Walter",pos:"SG",team:"TOR"},{name:"Cody Williams",pos:"SG",team:"UTA"},{name:"Ace Bailey",pos:"SF",team:"UTA"},{name:"Jeremiah Fears",pos:"SG",team:"NOR"},{name:"Carter Bryant",pos:"SF",team:"SAS"},{name:"Ryan Dunn",pos:"SF",team:"PHO"},{name:"Scoot Henderson",pos:"PG",team:"POR"},{name:"Rob Dillingham",pos:"PG",team:"CHI"},{name:"Alex Sarr",pos:"C",team:"WAS"},{name:"Devin Vassell",pos:"SG",team:"SAS"},{name:"Noah Clowney",pos:"PF",team:"BKN"},{name:"Franz Wagner",pos:"SF",team:"ORL"},{name:"Will Riley",pos:"SF",team:"WAS"},{name:"Oso Ighodaro",pos:"PF",team:"PHO"},{name:"Drake Powell",pos:"SG",team:"BKN"},{name:"Kel'el Ware",pos:"C",team:"MIA"},{name:"Mark Williams",pos:"C",team:"PHO"},{name:"Trey Murphy III",pos:"SF",team:"NOR"},{name:"Jalen Williams",pos:"SF",team:"OKC"},{name:"Dariq Whitehead",pos:"SF",team:"MEM"},{name:"Jusuf Nurkic",pos:"C",team:"UTA"},{name:"Jaden Ivey",pos:"SG",team:"FA"},{name:"Kyshawn George",pos:"SG",team:"WAS"}],
+11:[{name:"Anthony Black",pos:"PG",team:"ORL"},{name:"Kevin Porter Jr.",pos:"PG",team:"MIL"},{name:"Zaccharie Risacher",pos:"SF",team:"ATL"},{name:"Paul Reed",pos:"PF",team:"DET"},{name:"Isaiah Jackson",pos:"PF",team:"LAC"},{name:"Craig Porter Jr.",pos:"SG",team:"CLE"},{name:"Herbert Jones",pos:"SF",team:"NOR"},{name:"Asa Newell",pos:"PF",team:"ATL"},{name:"Ben Sheppard",pos:"SG",team:"IND"},{name:"Brandon Williams",pos:"PG",team:"DAL"},{name:"Kon Knueppel",pos:"SG",team:"CHA"},{name:"Joan Beringer",pos:"C",team:"MIN"},{name:"Jase Richardson",pos:"SG",team:"ORL"},{name:"Nolan Traore",pos:"PG",team:"BKN"},{name:"Noah Penda",pos:"SF",team:"ORL"},{name:"Koby Brea",pos:"SG",team:"PHO"},{name:"Johni Broome",pos:"PF",team:"PHI"},{name:"Giannis Antetokounmpo",pos:"PF",team:"MIL"},{name:"Miles McBride",pos:"PG",team:"NYK"},{name:"Anfernee Simons",pos:"PG",team:"CHI"},{name:"Vince Williams Jr.",pos:"SG",team:"FA"},{name:"Darius Garland",pos:"PG",team:"LAC"},{name:"Patrick Williams",pos:"PF",team:"CHI"},{name:"Brandon Miller",pos:"SF",team:"CHA"},{name:"Jalen Wilson",pos:"PF",team:"BKN"},{name:"Isaiah Collier",pos:"PG",team:"UTA"},{name:"Trayce Jackson-Davis",pos:"PF",team:"TOR"},{name:"Sandro Mamukelashvili",pos:"PF",team:"TOR"},{name:"Cole Anthony",pos:"PG",team:"FA"},{name:"Walker Kessler",pos:"C",team:"UTA"},{name:"Jayson Tatum",pos:"PF",team:"BOS"}],
+12:[{name:"Ryan Nembhard",pos:"PG",team:"DAL"},{name:"Terrence Shannon Jr.",pos:"SG",team:"MIN"},{name:"DeMar DeRozan",pos:"SF",team:"SAC"},{name:"Trendon Watford",pos:"PF",team:"PHI"},{name:"Yang Hansen",pos:"C",team:"POR"},{name:"Nique Clifford",pos:"SG",team:"SAC"},{name:"Al Horford",pos:"PF",team:"GSW"},{name:"Will Richard",pos:"SG",team:"GSW"},{name:"TJ McConnell",pos:"PG",team:"IND"},{name:"Quinten Post",pos:"C",team:"GSW"},{name:"Egor Demin",pos:"PG",team:"BKN"},{name:"Hugo Gonzalez",pos:"SG",team:"BOS"},{name:"Bronny James",pos:"PG",team:"LAL"},{name:"Ben Saraf",pos:"SG",team:"BKN"},{name:"Luke Kennard",pos:"SG",team:"LAL"},{name:"Johnny Furphy",pos:"SG",team:"IND"},{name:"Dalton Knecht",pos:"SG",team:"LAL"},{name:"Norman Powell",pos:"SG",team:"MIA"},{name:"Brook Lopez",pos:"C",team:"LAC"},{name:"John Collins",pos:"PF",team:"LAC"},{name:"Collin Sexton",pos:"SG",team:"CHI"},{name:"Scotty Pippen Jr.",pos:"PG",team:"MEM"},{name:"CJ McCollum",pos:"PG",team:"ATL"},{name:"Nikola Jovic",pos:"PF",team:"MIA"},{name:"Josh Minott",pos:"SF",team:"BKN"},{name:"Coby White",pos:"PG",team:"CHA"},{name:"Ryan Kalkbrenner",pos:"C",team:"CHA"},{name:"Jaxson Hayes",pos:"C",team:"LAL"},{name:"Jordan Walsh",pos:"SF",team:"BOS"},{name:"Steven Adams",pos:"C",team:"HOU"},{name:"Tyrese Haliburton",pos:"PG",team:"IND"}],
 };
 
 // ============================================================
@@ -3981,20 +3782,26 @@ const NAME_ALIASES = {
  * Normalize a player name to its canonical ESPN form.
  * Steps: trim → lowercase → alias lookup → if no hit, strip diacritics and try again.
  */
+// Name variants that can't be solved by normalization alone
+const NAME_FIRST_ALIASES = {
+  'nicolas claxton':  'nic claxton',
+  'alexandre sarr':   'alex sarr',
+  'cameron johnson':  'cam johnson',  // Roster uses Cameron, DYNASTY_PLAYERS uses Cam
+};
+
+/**
+ * Canonical name for deduplication/matching:
+ * lowercase → strip dots → strip apostrophes → strip Jr/Sr/II/III → apply first-name aliases
+ * This lets "C.J. McCollum" == "CJ McCollum", "Michael Porter Jr." == "Michael Porter", etc.
+ */
 function normalizeName(raw) {
-  if (!raw) return raw;
-  const trimmed = raw.trim();
-  const lower = trimmed.toLowerCase();
-
-  // 1. Direct alias hit (lowercase)
-  if (NAME_ALIASES[lower]) return NAME_ALIASES[lower];
-
-  // 2. Strip diacritics and try again
-  const stripped = lower.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  if (NAME_ALIASES[stripped]) return NAME_ALIASES[stripped];
-
-  // 3. No alias — return original (preserving original casing)
-  return trimmed;
+  if (!raw) return '';
+  let s = raw.toLowerCase().trim();
+  s = s.replace(/\./g, '');                          // c.j. → cj
+  s = s.replace(/['\u2019\u2018`]/g, '');         // day'ron → dayron
+  s = s.replace(/\b(jr|sr|iii|ii)\b/g, '');        // strip suffixes
+  s = s.replace(/\s+/g, ' ').trim();
+  return NAME_FIRST_ALIASES[s] || s;
 }
 	
 let rSortCol=0, rSortAsc=true, rCurrentData=[...DYNASTY_PLAYERS];
@@ -4487,16 +4294,17 @@ let currentRosterSort = 'pos'; // 'pos' | 'rank'
 function renderRoster(id) {
   const roster = ROSTERS[id] || [];
   let html = '';
-  html += `<div style="display:flex;align-items:center;gap:12px;padding:6px 16px 10px;border-bottom:1px solid var(--border);margin-bottom:8px;">
+
+  // Desktop header (hidden on mobile)
+  html += `<div class="roster-header-row">
     <div style="width:32px;flex-shrink:0;"></div>
     <div style="flex:1;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);">Name</div>
-    <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);width:36px;text-align:center;">Pos</div>
-    <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">MFHFBs</div>
-    <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">Matt</div>
-    <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">#️⃣</div>
+    <div class="roster-col-nba" style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);width:42px;text-align:center;">NBA</div>
+    <div class="roster-col-rank" style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">MFHFBs</div>
+    <div class="roster-col-rank" style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">Matt</div>
+    <div class="roster-col-rank" style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);min-width:54px;text-align:right;">#️⃣</div>
   </div>`;
 
-  // Sortierung
   const sorted = currentRosterSort === 'rank'
     ? [...roster].sort((a, b) => {
         const ra = getDynastyRank(a.name) ?? 9999;
@@ -4505,7 +4313,6 @@ function renderRoster(id) {
       })
     : roster;
 
-  // Gruppierung nach Position (nur wenn nicht nach Rank sortiert)
   const posGroups = currentRosterSort === 'rank'
     ? [{ pos: null, players: sorted }]
     : ['PG','SG','SF','PF','C'].map(pos => ({ pos, players: sorted.filter(p => p.pos === pos) }));
@@ -4513,29 +4320,47 @@ function renderRoster(id) {
   posGroups.forEach(({ pos, players }) => {
     if (!players.length) return;
     players.forEach(p => {
-      const rank = getDynastyRank(p.name);
+      const rank   = getDynastyRank(p.name);
       const mattRk = MATT_RANKS[p.name] || null;
       const hashRk = getHashtagRank(p.name);
-
-      // Alter aus DYNASTY_PLAYERS
       const dpEntry = DYNASTY_PLAYERS.find(dp => dp[1] === p.name || normalizeName(dp[1]) === normalizeName(p.name));
-      const age = dpEntry ? playerAge(dpEntry[4]) : null;
+      const age    = dpEntry ? playerAge(dpEntry[4]) : null;
       const ageStr = age !== null
-        ? `<span style="font-size:10px;font-weight:600;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:1px 6px;border-radius:10px;margin-left:4px;">${age}y</span>`
+        ? `<span style="font-size:10px;font-weight:600;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:1px 5px;border-radius:10px;margin-left:4px;">${age}y</span>`
         : '';
 
       const mattBadge = mattRk
-        ? `<span onclick="showRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(mattRk)};color:${dynastyRankColor(mattRk)};cursor:pointer;transition:opacity 0.15s;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${mattRk}</span>`
+        ? `<span onclick="showRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(mattRk)};color:${dynastyRankColor(mattRk)};cursor:pointer;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${mattRk}</span>`
         : '<span style="font-size:11px;color:var(--border);font-weight:600;min-width:48px;text-align:right;padding:3px 8px;">—</span>';
       const hashBadge = hashRk
-        ? `<span onclick="showHashtagRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(hashRk)};color:${dynastyRankColor(hashRk)};cursor:pointer;transition:opacity 0.15s;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${hashRk}</span>`
+        ? `<span onclick="showHashtagRankings()" style="font-size:11px;font-weight:800;min-width:48px;text-align:right;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(hashRk)};color:${dynastyRankColor(hashRk)};cursor:pointer;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${hashRk}</span>`
         : '<span style="font-size:11px;color:var(--border);font-weight:600;min-width:48px;text-align:right;padding:3px 8px;">—</span>';
+      const dynBadge = dynastyRankBadge(rank);
 
       html += `<div class="player-row">
         <div class="pos-badge pos-${p.pos}">${p.pos}</div>
-        <div class="player-name">${p.name}${ageStr}</div>
-        <span class="player-team r-team-link" onclick="showNBATeam('${p.team}')" style="font-size:12px;">${p.team}</span>
-        ${dynastyRankBadge(rank)}${mattBadge}${hashBadge}
+        <div style="flex:1;min-width:0;">
+          <!-- Desktop: single line -->
+          <div class="roster-desktop-row">
+            <div class="player-name" style="flex:1;">${p.name}${ageStr}</div>
+            <span class="roster-col-nba player-team r-team-link" onclick="showNBATeam('${p.team}')" style="font-size:12px;width:42px;text-align:center;">${p.team}</span>
+            <span class="roster-col-rank">${dynBadge}</span>
+            <span class="roster-col-rank">${mattBadge}</span>
+            <span class="roster-col-rank">${hashBadge}</span>
+          </div>
+          <!-- Mobile: two lines -->
+          <div class="roster-mobile-row">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+              <span class="player-name" style="font-size:13px;">${p.name}${ageStr}</span>
+              <span class="player-team r-team-link" onclick="showNBATeam('${p.team}')" style="font-size:11px;">${p.team}</span>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;">
+              <span style="font-size:9px;font-weight:700;color:var(--muted);padding:2px 6px;background:var(--surface2);border-radius:4px;">MFH</span>${dynBadge}
+              <span style="font-size:9px;font-weight:700;color:var(--muted);padding:2px 6px;background:var(--surface2);border-radius:4px;">Matt</span>${mattBadge}
+              <span style="font-size:9px;font-weight:700;color:var(--muted);padding:2px 6px;background:var(--surface2);border-radius:4px;">#️⃣</span>${hashBadge}
+            </div>
+          </div>
+        </div>
       </div>`;
     });
   });
@@ -5597,44 +5422,39 @@ function showHashtagRankings() { renderHashtag(hCurrentData); navigate('hashtagR
 // ============================================================
 let baCurrentData = [];
 
-const FA_PLAYERS = [{"name":"Trey Murphy","nba":"NOR","pos":"SG/SF","rank":22},{"name":"Jimmy Butler","nba":"GSW","pos":"SG/SF/PF","rank":25},{"name":"Kadary Richmond","nba":"FA","pos":"SG","rank":40},{"name":"O.G. Anunoby","nba":"NYK","pos":"SF/PF","rank":47},{"name":"Alexandre Sarr","nba":"WAS","pos":"C","rank":59},{"name":"Alondes Williams","nba":"FA","pos":"SG","rank":62},{"name":"Jusuf Nurkic","nba":"UTA","pos":"C","rank":97},{"name":"Bez Mbeng","nba":"UTA","pos":"SG","rank":109},{"name":"Cormac Ryan","nba":"MIL","pos":"SG","rank":113},{"name":"Julian Reese","nba":"WAS","pos":"PF","rank":119},{"name":"Robert Williams","nba":"POR","pos":"C","rank":122},{"name":"Jalen Slawson","nba":"IND","pos":"SF","rank":124},{"name":"C.J. McCollum","nba":"ATL","pos":"PG/SG","rank":127},{"name":"Nicolas Claxton","nba":"BKN","pos":"C","rank":138},{"name":"R.J. Barrett","nba":"TOR","pos":"SG/SF/PF","rank":142},{"name":"Kelly Oubre","nba":"PHI","pos":"SG/SF","rank":145},{"name":"Andersson Garcia","nba":"FA","pos":"SF","rank":152},{"name":"T.J. McConnell","nba":"IND","pos":"PG","rank":173},{"name":"Derrick Jones","nba":"LAC","pos":"SF","rank":176},{"name":"Lucas Williamson","nba":"MEM","pos":"SG","rank":179},{"name":"Jordan Goodwin","nba":"PHO","pos":"PG/SG","rank":186},{"name":"Chaney Johnson","nba":"BKN","pos":"SF","rank":192},{"name":"Malachi Smith","nba":"BKN","pos":"SG","rank":196},{"name":"Herb Jones","nba":"NOR","pos":"SF/PF","rank":197},{"name":"Adama Bal","nba":"MEM","pos":"SG","rank":199},{"name":"Kennedy Chandler","nba":"FA","pos":"PG","rank":206},{"name":"Max Strus","nba":"CLE","pos":"SG/SF","rank":208},{"name":"Tre Scott","nba":"BKN","pos":"SF","rank":213},{"name":"Mouhamadou Gueye","nba":"CHI","pos":"PF","rank":214},{"name":"Matisse Thybulle","nba":"POR","pos":"SG/SF","rank":215},{"name":"Hayden Gray","nba":"UTA","pos":"SG","rank":216},{"name":"G.G. Jackson","nba":"MEM","pos":"PF","rank":223},{"name":"Leaky Black","nba":"WAS","pos":"SF","rank":225},{"name":"DaQuan Jeffries","nba":"FA","pos":"SG","rank":238},{"name":"Dominick Barlow","nba":"PHI","pos":"PF/C","rank":241},{"name":"David Roddy","nba":"DEN","pos":"PF","rank":242},{"name":"Isaiah Stevens","nba":"SAC","pos":"PG","rank":246},{"name":"Lawson Lovering","nba":"FA","pos":"C","rank":253},{"name":"Blake Hinson","nba":"UTA","pos":"SF","rank":257},{"name":"Taurean Prince","nba":"MIL","pos":"SF","rank":259},{"name":"DeJon Jarreau","nba":"FA","pos":"PG/SG","rank":260},{"name":"Keshon Gilbert","nba":"ATL","pos":"SF","rank":265},{"name":"Jaxson Hayes","nba":"LAL","pos":"C","rank":268},{"name":"Tyler Burton","nba":"FA","pos":"SF","rank":272},{"name":"Daeqwon Plowden","nba":"SAC","pos":"SG","rank":274},{"name":"Jamir Watkins","nba":"WAS","pos":"SG/SF","rank":275},{"name":"Cam Payne","nba":"FA","pos":"PG/SG","rank":276},{"name":"Ron Holland","nba":"DET","pos":"SF","rank":281},{"name":"Steven Adams","nba":"HOU","pos":"C","rank":289},{"name":"DeAndre Jordan","nba":"NOR","pos":"C","rank":294},{"name":"Oscar Tshiebwe","nba":"UTA","pos":"C","rank":301},{"name":"Walter Clayton","nba":"MEM","pos":"PG/SG","rank":303},{"name":"John Poulakidas","nba":"DAL","pos":"SG","rank":313},{"name":"Dariq Whitehead","nba":"MEM","pos":"SF","rank":314},{"name":"Jordan Walsh","nba":"BOS","pos":"SF","rank":316},{"name":"Leonard Miller","nba":"CHI","pos":"SF","rank":322},{"name":"Skal Labissiere","nba":"FA","pos":"PF","rank":326},{"name":"Charles Bassey","nba":"GSW","pos":"C","rank":327},{"name":"Spencer Jones","nba":"DEN","pos":"SF","rank":329},{"name":"Simone Fontecchio","nba":"MIA","pos":"SF","rank":334},{"name":"Kobe Sanders","nba":"LAC","pos":"SG/SF","rank":339},{"name":"Bryce McGowens","nba":"NOR","pos":"SG","rank":341},{"name":"EJ Harkless","nba":"UTA","pos":"SG","rank":347},{"name":"Killian Hayes","nba":"SAC","pos":"PG","rank":348},{"name":"Tristen Newton","nba":"HOU","pos":"PG","rank":349},{"name":"Thomas Bryant","nba":"CLE","pos":"C","rank":353},{"name":"Josh Oduro","nba":"NOR","pos":"C","rank":356},{"name":"Jahmai Mashack","nba":"MEM","pos":"SG","rank":358},{"name":"Justin Edwards","nba":"PHI","pos":"SF","rank":359},{"name":"Mike Conley","nba":"MIN","pos":"PG","rank":361},{"name":"Rocco Zikarsky","nba":"MIN","pos":"C","rank":363},{"name":"Jevon Carter","nba":"ORL","pos":"PG","rank":365},{"name":"Moussa Cisse","nba":"DAL","pos":"C","rank":366},{"name":"Enrique Freeman","nba":"MIN","pos":"PF","rank":369},{"name":"Branden Carlson","nba":"OKC","pos":"C","rank":370},{"name":"Kobe Brown","nba":"IND","pos":"PF","rank":374},{"name":"Kenrich Williams","nba":"OKC","pos":"SF","rank":375},{"name":"Dwight Powell","nba":"DAL","pos":"C","rank":377},{"name":"Ethan Thompson","nba":"IND","pos":"PG/SG","rank":378},{"name":"Bogdan Bogdanovic","nba":"LAC","pos":"SG/SF","rank":379},{"name":"Pete Nance","nba":"MIL","pos":"PF","rank":380},{"name":"Rayan Rupert","nba":"MEM","pos":"SG","rank":381},{"name":"Olivier Sarr","nba":"CLE","pos":"C","rank":382},{"name":"MarJon Beauchamp","nba":"PHI","pos":"SG","rank":383},{"name":"E.J. Liddell","nba":"BKN","pos":"PF","rank":384},{"name":"Jeenathan Williams Jr","nba":"GSW","pos":"SG","rank":385},{"name":"Christian Koloko","nba":"ATL","pos":"C","rank":386},{"name":"Tyson Etienne","nba":"BKN","pos":"PG","rank":387},{"name":"Jamaree Bouyea","nba":"PHO","pos":"PG","rank":390},{"name":"Eric Gordon","nba":"FA","pos":"SG/SF","rank":391},{"name":"Mo Bamba","nba":"FA","pos":"C","rank":393},{"name":"Grant Nelson","nba":"FA","pos":"SF","rank":394},{"name":"PJ Hall","nba":"CHA","pos":"PF","rank":395},{"name":"Trey Alexander","nba":"NOR","pos":"SG","rank":400},{"name":"Josh Okogie","nba":"HOU","pos":"SG/SF","rank":402},{"name":"Haywood Highsmith","nba":"PHO","pos":"SF","rank":403},{"name":"Nick Richards","nba":"CHI","pos":"C","rank":404},{"name":"Tyrese Martin","nba":"PHI","pos":"SF","rank":405},{"name":"Josh Green","nba":"CHA","pos":"SG/SF","rank":406},{"name":"Zyon Pullin","nba":"MIN","pos":"SG","rank":407},{"name":"Seth Curry","nba":"GSW","pos":"PG/SG","rank":408},{"name":"Jeremiah Robinson-Earl","nba":"FA","pos":"PF/C","rank":409},{"name":"Myron Gardner","nba":"MIA","pos":"SF","rank":410},{"name":"Drew Eubanks","nba":"SAC","pos":"C","rank":414},{"name":"Mac McClung","nba":"CHI","pos":"SG","rank":415},{"name":"Yuki Kawamura","nba":"CHI","pos":"PG","rank":416},{"name":"L.J. Cryer","nba":"GSW","pos":"PG","rank":421},{"name":"Chris Paul","nba":"FA","pos":"PG","rank":422},{"name":"Zeke Nnaji","nba":"DEN","pos":"PF","rank":426},{"name":"Malevy Leons","nba":"GSW","pos":"SF","rank":427},{"name":"Gary Trent","nba":"MIL","pos":"SG","rank":429},{"name":"Marcus Sasser","nba":"DET","pos":"PG","rank":430},{"name":"Kam Jones","nba":"IND","pos":"PG","rank":431},{"name":"Patrick Baldwin","nba":"SAC","pos":"SF","rank":433},{"name":"Dalano Banton","nba":"BOS","pos":"PG/SG/SF","rank":434},{"name":"Tyrese Proctor","nba":"CLE","pos":"SG","rank":435},{"name":"Jaden Hardy","nba":"WAS","pos":"SG","rank":436},{"name":"Payton Sandfort","nba":"OKC","pos":"SG","rank":437},{"name":"Garrison Mathews","nba":"FA","pos":"SG/SF","rank":439},{"name":"Chris Boucher","nba":"FA","pos":"PF/C","rank":440},{"name":"Gary Harris","nba":"MIL","pos":"SG","rank":441},{"name":"Dalen Terry","nba":"PHI","pos":"SG/SF","rank":442},{"name":"Jamal Cain","nba":"ORL","pos":"SF","rank":443},{"name":"Jabari Walker","nba":"PHI","pos":"PF","rank":444},{"name":"Micah Peavy","nba":"NOR","pos":"SG/SF","rank":445},{"name":"Taelon Peter","nba":"IND","pos":"SG","rank":446},{"name":"Ron Harper Jr.","nba":"BOS","pos":"SG/SF","rank":448},{"name":"Ariel Hukporti","nba":"NYK","pos":"C","rank":449},{"name":"Jett Howard","nba":"ORL","pos":"SG/SF","rank":452},{"name":"Keshad Johnson","nba":"MIA","pos":"PF","rank":454},{"name":"Tyus Jones","nba":"DEN","pos":"PG","rank":455},{"name":"Malaki Branham","nba":"FA","pos":"SG","rank":456},{"name":"Tyler Smith","nba":"DAL","pos":"SF","rank":457},{"name":"Tristan Enaruna","nba":"CLE","pos":"SF","rank":458},{"name":"Doug McDermott","nba":"SAC","pos":"SF","rank":459},{"name":"Gabe Vincent","nba":"ATL","pos":"PG","rank":460},{"name":"Jaylen Clark","nba":"MIN","pos":"SG","rank":461},{"name":"Taj Gibson","nba":"MEM","pos":"PF","rank":462},{"name":"Mason Plumlee","nba":"SAS","pos":"C","rank":464},{"name":"Tony Bradley","nba":"ATL","pos":"C","rank":465},{"name":"Keaton Wallace","nba":"ATL","pos":"PG","rank":467},{"name":"A.J. Lawson","nba":"TOR","pos":"SG","rank":468},{"name":"David Jones Garcia","nba":"SAS","pos":"SF","rank":470},{"name":"Riley Minix","nba":"CLE","pos":"SF","rank":471},{"name":"Luke Travers","nba":"FA","pos":"SG","rank":472},{"name":"Liam McNeeley","nba":"CHA","pos":"SG/SF","rank":473},{"name":"Wendell Moore Jr","nba":"DET","pos":"SF","rank":475},{"name":"KJ Simpson","nba":"DEN","pos":"PG","rank":478},{"name":"Nick Smith Jr.","nba":"LAL","pos":"SG","rank":479},{"name":"Tolu Smith","nba":"DET","pos":"PF","rank":483},{"name":"Jordan Hawkins","nba":"NOR","pos":"SG","rank":486},{"name":"Norchad Omier","nba":"LAC","pos":"PF","rank":487},{"name":"Colby Jones","nba":"FA","pos":"SG","rank":489},{"name":"RayJ Dennis","nba":"ATL","pos":"PG","rank":490},{"name":"Chris Livingston","nba":"FA","pos":"SF","rank":491},{"name":"Maxi Kleber","nba":"LAL","pos":"PF","rank":492},{"name":"Duop Reath","nba":"FA","pos":"C","rank":493},{"name":"Julian Phillips","nba":"MIN","pos":"SF","rank":494},{"name":"Joe Ingles","nba":"MIN","pos":"SF","rank":495},{"name":"Drew Timme","nba":"LAL","pos":"C","rank":497},{"name":"Mohamed Diawara","nba":"NYK","pos":"PF","rank":498},{"name":"Miles Kelly","nba":"FA","pos":"PG","rank":499},{"name":"Isaiah Livers","nba":"PHO","pos":"PF","rank":501},{"name":"Blake Wesley","nba":"POR","pos":"SG","rank":502},{"name":"Curtis Jones","nba":"DEN","pos":"SG","rank":503},{"name":"TyTy Washington","nba":"LAC","pos":"PG","rank":504},{"name":"Jordan McLaughlin","nba":"SAS","pos":"PG","rank":505},{"name":"Jonathan Mogbo","nba":"TOR","pos":"PF","rank":506},{"name":"Chris Manon","nba":"LAL","pos":"SG","rank":508},{"name":"Amari Williams","nba":"BOS","pos":"C","rank":509},{"name":"Orlando Robinson","nba":"FA","pos":"C","rank":510},{"name":"Jamison Battle","nba":"TOR","pos":"SF","rank":511},{"name":"CJ Huntley","nba":"PHO","pos":"SF","rank":512},{"name":"Amir Coffey","nba":"PHO","pos":"SG","rank":513},{"name":"Jayson Kent","nba":"POR","pos":"SG","rank":514},{"name":"Jae'Sean Tate","nba":"HOU","pos":"SF","rank":515},{"name":"Kevin McCullar Jr","nba":"NYK","pos":"SF","rank":517},{"name":"J.D. Davison","nba":"HOU","pos":"PG","rank":518},{"name":"Brooks Barnhizer","nba":"OKC","pos":"SF","rank":519},{"name":"James Wiseman","nba":"FA","pos":"C","rank":520},{"name":"Pat Connaughton","nba":"CHA","pos":"SG/SF","rank":521},{"name":"Emanuel Miller","nba":"SAS","pos":"PF","rank":522},{"name":"Dillon Jones","nba":"NYK","pos":"SF","rank":523},{"name":"Lachlan Olbrich","nba":"CHI","pos":"PF","rank":524},{"name":"John Tonje","nba":"BOS","pos":"SF","rank":525},{"name":"Caleb Houstan","nba":"FA","pos":"SF","rank":526},{"name":"Omer Yurtseven","nba":"FA","pos":"C","rank":527},{"name":"Antonio Reeves","nba":"CHA","pos":"SG","rank":528},{"name":"Hunter Dickinson","nba":"NOR","pos":"C","rank":530},{"name":"Isaiah Crawford","nba":"HOU","pos":"SF","rank":531},{"name":"N'Faly Dante","nba":"FA","pos":"C","rank":532},{"name":"Colin Castleton","nba":"ORL","pos":"C","rank":533},{"name":"Cam Christie","nba":"LAC","pos":"SG","rank":534},{"name":"Vladislav Goldin","nba":"MIA","pos":"C","rank":535},{"name":"Stanley Umude","nba":"FA","pos":"SG/SF","rank":536},{"name":"Andre Jackson Jr.","nba":"MIL","pos":"SG/SF","rank":537},{"name":"Toby Okani","nba":"MEM","pos":"SF","rank":539},{"name":"Trey Jemison","nba":"NYK","pos":"C","rank":540},{"name":"Chris Youngblood","nba":"POR","pos":"SG","rank":541},{"name":"Lindy Waters III","nba":"SAS","pos":"SG/SF","rank":542},{"name":"A.J. Johnson","nba":"DAL","pos":"SG","rank":543},{"name":"Adou Thiero","nba":"LAL","pos":"SF","rank":544},{"name":"Hunter Tyson","nba":"FA","pos":"SF","rank":545},{"name":"Kobe Bufkin","nba":"FA","pos":"PG/SG","rank":546},{"name":"Thanasis Antetokounmpo","nba":"MIL","pos":"SF","rank":547},{"name":"Monte Morris","nba":"FA","pos":"PG","rank":548},{"name":"Brandon Clarke","nba":"MEM","pos":"PF/C","rank":549},{"name":"Jacob Toppin","nba":"FA","pos":"SF/PF","rank":550},{"name":"Bismack Biyombo","nba":"SAS","pos":"C","rank":551},{"name":"Trentyn Flowers","nba":"FA","pos":"SF","rank":552},{"name":"Harrison Ingram","nba":"SAS","pos":"SF","rank":553},{"name":"Jeff Green","nba":"HOU","pos":"PF","rank":555},{"name":"Chaz Lanier","nba":"DET","pos":"SG","rank":556},{"name":"Alex Morales","nba":"ORL","pos":"SG","rank":557},{"name":"Nigel Hayes-Davis","nba":"FA","pos":"SF","rank":558},{"name":"Pacome Dadiet","nba":"NYK","pos":"SF","rank":559},{"name":"Johnny Juzang","nba":"FA","pos":"SG/SF","rank":560},{"name":"Jahmir Young","nba":"MIA","pos":"PG","rank":561},{"name":"Mark Sears","nba":"FA","pos":"PG","rank":562},{"name":"Alex Antetokounmpo","nba":"MIL","pos":"SF","rank":563},{"name":"Kyle Lowry","nba":"PHI","pos":"PG","rank":564},{"name":"Bobi Klintman","nba":"FA","pos":"PF","rank":565},{"name":"Isaac Jones","nba":"DET","pos":"PF","rank":566},{"name":"Garrett Temple","nba":"TOR","pos":"SG","rank":567},{"name":"Sean Pedulla","nba":"LAC","pos":"PG","rank":568},{"name":"Javonte Cooke","nba":"FA","pos":"SG","rank":569},{"name":"Dario Saric","nba":"FA","pos":"PF","rank":570},{"name":"Markelle Fultz","nba":"FA","pos":"PG/SG","rank":571},{"name":"Hunter Sallis","nba":"FA","pos":"SG","rank":572},{"name":"Drew Peterson","nba":"FA","pos":"SF","rank":573},{"name":"Max Shulga","nba":"BOS","pos":"PG/SG","rank":574},{"name":"Buddy Boeheim","nba":"FA","pos":"SF","rank":575},{"name":"Trevor Keels","nba":"MIA","pos":"SG","rank":576},{"name":"Tosan Evbuomwan","nba":"CHA","pos":"SF","rank":577},{"name":"Darius Brown II","nba":"FA","pos":"PG","rank":580},{"name":"Chucky Hepburn","nba":"TOR","pos":"PG","rank":581},{"name":"Jahmyl Telfort","nba":"FA","pos":"PF","rank":582}];
+const FA_PLAYERS = [{"name":"Kadary Richmond","nba":"FA","pos":"SG","rank":40},{"name":"Alondes Williams","nba":"FA","pos":"SG","rank":62},{"name":"Bez Mbeng","nba":"UTA","pos":"SG","rank":109},{"name":"Cormac Ryan","nba":"MIL","pos":"SG","rank":113},{"name":"Jalen Slawson","nba":"IND","pos":"SF","rank":125},{"name":"Andersson Garcia","nba":"FA","pos":"SF","rank":150},{"name":"Lucas Williamson","nba":"MEM","pos":"SG","rank":181},{"name":"Chaney Johnson","nba":"BKN","pos":"SF","rank":193},{"name":"Malachi Smith","nba":"BKN","pos":"SG","rank":196},{"name":"Adama Bal","nba":"MEM","pos":"SG","rank":199},{"name":"Sam Merrill","nba":"CLE","pos":"SG","rank":201},{"name":"Tre Scott","nba":"BKN","pos":"SF","rank":213},{"name":"Mouhamadou Gueye","nba":"CHI","pos":"PF","rank":214},{"name":"Hayden Gray","nba":"UTA","pos":"SG","rank":215},{"name":"Leaky Black","nba":"WAS","pos":"SF","rank":223},{"name":"Matisse Thybulle","nba":"POR","pos":"SG/SF","rank":226},{"name":"DaQuan Jeffries","nba":"FA","pos":"SG","rank":238},{"name":"Dominick Barlow","nba":"PHI","pos":"PF/C","rank":241},{"name":"David Roddy","nba":"DEN","pos":"PF","rank":242},{"name":"Isaiah Stevens","nba":"SAC","pos":"PG","rank":247},{"name":"Bruce Brown","nba":"DEN","pos":"SG/SF","rank":252},{"name":"Lawson Lovering","nba":"FA","pos":"C","rank":253},{"name":"Blake Hinson","nba":"UTA","pos":"SF","rank":257},{"name":"Taurean Prince","nba":"MIL","pos":"SF","rank":259},{"name":"DeJon Jarreau","nba":"FA","pos":"PG/SG","rank":260},{"name":"Keshon Gilbert","nba":"ATL","pos":"SF","rank":265},{"name":"Javonte Green","nba":"DET","pos":"SF","rank":266},{"name":"Tyler Burton","nba":"FA","pos":"SF","rank":272},{"name":"Daeqwon Plowden","nba":"SAC","pos":"SG","rank":274},{"name":"Jamir Watkins","nba":"WAS","pos":"SG/SF","rank":275},{"name":"Cam Payne","nba":"FA","pos":"PG/SG","rank":276},{"name":"DeAndre Jordan","nba":"NOR","pos":"C","rank":293},{"name":"Kevin Love","nba":"UTA","pos":"PF/C","rank":294},{"name":"Oscar Tshiebwe","nba":"UTA","pos":"C","rank":301},{"name":"John Poulakidas","nba":"DAL","pos":"SG","rank":313},{"name":"Adem Bona","nba":"PHI","pos":"C","rank":315},{"name":"Grant Williams","nba":"CHA","pos":"PF","rank":318},{"name":"Skal Labissiere","nba":"FA","pos":"PF","rank":326},{"name":"Charles Bassey","nba":"GSW","pos":"C","rank":327},{"name":"Spencer Jones","nba":"DEN","pos":"SF","rank":329},{"name":"Simone Fontecchio","nba":"MIA","pos":"SF","rank":334},{"name":"Bryce McGowens","nba":"NOR","pos":"SG","rank":341},{"name":"EJ Harkless","nba":"UTA","pos":"SG","rank":347},{"name":"Killian Hayes","nba":"SAC","pos":"PG","rank":348},{"name":"Tristen Newton","nba":"HOU","pos":"PG","rank":349},{"name":"Nae'Qwan Tomlin","nba":"CLE","pos":"PF","rank":351},{"name":"Josh Oduro","nba":"NOR","pos":"C","rank":356},{"name":"Jahmai Mashack","nba":"MEM","pos":"SG","rank":358},{"name":"Mike Conley","nba":"MIN","pos":"PG","rank":359},{"name":"Rocco Zikarsky","nba":"MIN","pos":"C","rank":363},{"name":"Jevon Carter","nba":"ORL","pos":"PG","rank":365},{"name":"Moussa Cisse","nba":"DAL","pos":"C","rank":366},{"name":"Enrique Freeman","nba":"MIN","pos":"PF","rank":369},{"name":"Branden Carlson","nba":"OKC","pos":"C","rank":370},{"name":"D'Angelo Russell","nba":"WAS","pos":"PG/SG","rank":372},{"name":"Kenrich Williams","nba":"OKC","pos":"SF","rank":375},{"name":"Dwight Powell","nba":"DAL","pos":"C","rank":377},{"name":"Ethan Thompson","nba":"IND","pos":"PG/SG","rank":378},{"name":"Bogdan Bogdanovic","nba":"LAC","pos":"SG/SF","rank":379},{"name":"Pete Nance","nba":"MIL","pos":"PF","rank":380},{"name":"Rayan Rupert","nba":"MEM","pos":"SG","rank":381},{"name":"Olivier Sarr","nba":"CLE","pos":"C","rank":382},{"name":"MarJon Beauchamp","nba":"PHI","pos":"SG","rank":383},{"name":"E.J. Liddell","nba":"BKN","pos":"PF","rank":384},{"name":"Jeenathan Williams Jr","nba":"GSW","pos":"SG","rank":385},{"name":"Christian Koloko","nba":"ATL","pos":"C","rank":386},{"name":"Tyson Etienne","nba":"BKN","pos":"PG","rank":387},{"name":"Jamaree Bouyea","nba":"PHO","pos":"PG","rank":390},{"name":"Eric Gordon","nba":"FA","pos":"SG/SF","rank":392},{"name":"Mo Bamba","nba":"FA","pos":"C","rank":393},{"name":"Grant Nelson","nba":"FA","pos":"SF","rank":394},{"name":"PJ Hall","nba":"CHA","pos":"PF","rank":395},{"name":"Jordan Clarkson","nba":"NYK","pos":"SG/SF","rank":398},{"name":"Trey Alexander","nba":"NOR","pos":"SG","rank":400},{"name":"Haywood Highsmith","nba":"PHO","pos":"SF","rank":402},{"name":"Josh Okogie","nba":"HOU","pos":"SG/SF","rank":404},{"name":"Tyrese Martin","nba":"PHI","pos":"SF","rank":405},{"name":"Josh Green","nba":"CHA","pos":"SG/SF","rank":406},{"name":"Zyon Pullin","nba":"MIN","pos":"SG","rank":407},{"name":"Seth Curry","nba":"GSW","pos":"PG/SG","rank":408},{"name":"Jeremiah Robinson-Earl","nba":"FA","pos":"PF/C","rank":409},{"name":"Myron Gardner","nba":"MIA","pos":"SF","rank":410},{"name":"Drew Eubanks","nba":"SAC","pos":"C","rank":413},{"name":"Mac McClung","nba":"CHI","pos":"SG","rank":414},{"name":"Yuki Kawamura","nba":"CHI","pos":"PG","rank":416},{"name":"L.J. Cryer","nba":"GSW","pos":"PG","rank":421},{"name":"Chris Paul","nba":"FA","pos":"PG","rank":423},{"name":"Zeke Nnaji","nba":"DEN","pos":"PF","rank":426},{"name":"Malevy Leons","nba":"GSW","pos":"SF","rank":427},{"name":"Gary Trent","nba":"MIL","pos":"SG","rank":429},{"name":"Marcus Sasser","nba":"DET","pos":"PG","rank":430},{"name":"Kam Jones","nba":"IND","pos":"PG","rank":432},{"name":"Patrick Baldwin","nba":"SAC","pos":"SF","rank":433},{"name":"Dalano Banton","nba":"BOS","pos":"PG/SG/SF","rank":434},{"name":"Tyrese Proctor","nba":"CLE","pos":"SG","rank":435},{"name":"Payton Sandfort","nba":"OKC","pos":"SG","rank":436},{"name":"Jaden Hardy","nba":"WAS","pos":"SG","rank":437},{"name":"Garrison Mathews","nba":"FA","pos":"SG/SF","rank":439},{"name":"Chris Boucher","nba":"FA","pos":"PF/C","rank":440},{"name":"Gary Harris","nba":"MIL","pos":"SG","rank":441},{"name":"Dalen Terry","nba":"PHI","pos":"SG/SF","rank":442},{"name":"Jamal Cain","nba":"ORL","pos":"SF","rank":443},{"name":"Jabari Walker","nba":"PHI","pos":"PF","rank":444},{"name":"Micah Peavy","nba":"NOR","pos":"SG/SF","rank":445},{"name":"Taelon Peter","nba":"IND","pos":"SG","rank":446},{"name":"Ron Harper Jr.","nba":"BOS","pos":"SG/SF","rank":448},{"name":"Ariel Hukporti","nba":"NYK","pos":"C","rank":449},{"name":"Jett Howard","nba":"ORL","pos":"SG/SF","rank":451},{"name":"Keshad Johnson","nba":"MIA","pos":"PF","rank":454},{"name":"Tyus Jones","nba":"DEN","pos":"PG","rank":455},{"name":"Malaki Branham","nba":"FA","pos":"SG","rank":456},{"name":"Tyler Smith","nba":"DAL","pos":"SF","rank":458},{"name":"Tristan Enaruna","nba":"CLE","pos":"SF","rank":459},{"name":"Doug McDermott","nba":"SAC","pos":"SF","rank":460},{"name":"Gabe Vincent","nba":"ATL","pos":"PG","rank":461},{"name":"Jaylen Clark","nba":"MIN","pos":"SG","rank":462},{"name":"Taj Gibson","nba":"MEM","pos":"PF","rank":463},{"name":"Mason Plumlee","nba":"SAS","pos":"C","rank":464},{"name":"Tony Bradley","nba":"ATL","pos":"C","rank":465},{"name":"Keaton Wallace","nba":"ATL","pos":"PG","rank":466},{"name":"A.J. Lawson","nba":"TOR","pos":"SG","rank":467},{"name":"David Jones Garcia","nba":"SAS","pos":"SF","rank":469},{"name":"Riley Minix","nba":"CLE","pos":"SF","rank":470},{"name":"Luke Travers","nba":"FA","pos":"SG","rank":472},{"name":"Liam McNeeley","nba":"CHA","pos":"SG/SF","rank":473},{"name":"Wendell Moore Jr","nba":"DET","pos":"SF","rank":475},{"name":"KJ Simpson","nba":"DEN","pos":"PG","rank":478},{"name":"Nick Smith Jr.","nba":"LAL","pos":"SG","rank":481},{"name":"Tolu Smith","nba":"DET","pos":"PF","rank":483},{"name":"DaRon Holmes II","nba":"DEN","pos":"PF","rank":484},{"name":"Jordan Hawkins","nba":"NOR","pos":"SG","rank":486},{"name":"Norchad Omier","nba":"LAC","pos":"PF","rank":487},{"name":"Colby Jones","nba":"FA","pos":"SG","rank":489},{"name":"RayJ Dennis","nba":"ATL","pos":"PG","rank":490},{"name":"Chris Livingston","nba":"FA","pos":"SF","rank":491},{"name":"Maxi Kleber","nba":"LAL","pos":"PF","rank":492},{"name":"Duop Reath","nba":"FA","pos":"C","rank":493},{"name":"Julian Phillips","nba":"MIN","pos":"SF","rank":494},{"name":"Joe Ingles","nba":"MIN","pos":"SF","rank":495},{"name":"Drew Timme","nba":"LAL","pos":"C","rank":497},{"name":"Mohamed Diawara","nba":"NYK","pos":"PF","rank":498},{"name":"Miles Kelly","nba":"FA","pos":"PG","rank":500},{"name":"Isaiah Livers","nba":"PHO","pos":"PF","rank":501},{"name":"Curtis Jones","nba":"DEN","pos":"SG","rank":502},{"name":"TyTy Washington","nba":"LAC","pos":"PG","rank":503},{"name":"Jordan McLaughlin","nba":"SAS","pos":"PG","rank":504},{"name":"Jonathan Mogbo","nba":"TOR","pos":"PF","rank":505},{"name":"Blake Wesley","nba":"POR","pos":"SG","rank":507},{"name":"Chris Manon","nba":"LAL","pos":"SG","rank":508},{"name":"Amari Williams","nba":"BOS","pos":"C","rank":509},{"name":"Orlando Robinson","nba":"FA","pos":"C","rank":510},{"name":"Jamison Battle","nba":"TOR","pos":"SF","rank":511},{"name":"CJ Huntley","nba":"PHO","pos":"SF","rank":512},{"name":"Amir Coffey","nba":"PHO","pos":"SG","rank":513},{"name":"Jayson Kent","nba":"POR","pos":"SG","rank":514},{"name":"Kevin McCullar Jr","nba":"NYK","pos":"SF","rank":516},{"name":"Jae'Sean Tate","nba":"HOU","pos":"SF","rank":517},{"name":"J.D. Davison","nba":"HOU","pos":"PG","rank":518},{"name":"Brooks Barnhizer","nba":"OKC","pos":"SF","rank":519},{"name":"James Wiseman","nba":"FA","pos":"C","rank":520},{"name":"Pat Connaughton","nba":"CHA","pos":"SG/SF","rank":521},{"name":"Emanuel Miller","nba":"SAS","pos":"PF","rank":522},{"name":"Dillon Jones","nba":"NYK","pos":"SF","rank":523},{"name":"Lachlan Olbrich","nba":"CHI","pos":"PF","rank":524},{"name":"John Tonje","nba":"BOS","pos":"SF","rank":525},{"name":"Caleb Houstan","nba":"FA","pos":"SF","rank":526},{"name":"Antonio Reeves","nba":"CHA","pos":"SG","rank":528},{"name":"Hunter Dickinson","nba":"NOR","pos":"C","rank":530},{"name":"Isaiah Crawford","nba":"HOU","pos":"SF","rank":531},{"name":"N'Faly Dante","nba":"FA","pos":"C","rank":532},{"name":"Colin Castleton","nba":"ORL","pos":"C","rank":533},{"name":"Cam Christie","nba":"LAC","pos":"SG","rank":534},{"name":"Vladislav Goldin","nba":"MIA","pos":"C","rank":535},{"name":"Stanley Umude","nba":"FA","pos":"SG/SF","rank":536},{"name":"Andre Jackson Jr.","nba":"MIL","pos":"SG/SF","rank":537},{"name":"Alijah Martin","nba":"TOR","pos":"SG","rank":538},{"name":"Toby Okani","nba":"MEM","pos":"SF","rank":539},{"name":"Trey Jemison","nba":"NYK","pos":"C","rank":540},{"name":"Chris Youngblood","nba":"POR","pos":"SG","rank":541},{"name":"Lindy Waters III","nba":"SAS","pos":"SG/SF","rank":542},{"name":"A.J. Johnson","nba":"DAL","pos":"SG","rank":543},{"name":"Adou Thiero","nba":"LAL","pos":"SF","rank":544},{"name":"Hunter Tyson","nba":"FA","pos":"SF","rank":545},{"name":"Kobe Bufkin","nba":"FA","pos":"PG/SG","rank":546},{"name":"Thanasis Antetokounmpo","nba":"MIL","pos":"SF","rank":547},{"name":"Monte Morris","nba":"FA","pos":"PG","rank":548},{"name":"Brandon Clarke","nba":"MEM","pos":"PF/C","rank":549},{"name":"Jacob Toppin","nba":"FA","pos":"SF/PF","rank":550},{"name":"Bismack Biyombo","nba":"SAS","pos":"C","rank":551},{"name":"Trentyn Flowers","nba":"FA","pos":"SF","rank":552},{"name":"Harrison Ingram","nba":"SAS","pos":"SF","rank":553},{"name":"Chaz Lanier","nba":"DET","pos":"SG","rank":555},{"name":"Alex Morales","nba":"ORL","pos":"SG","rank":556},{"name":"Nigel Hayes-Davis","nba":"FA","pos":"SF","rank":557},{"name":"Jeff Green","nba":"HOU","pos":"PF","rank":558},{"name":"Pacome Dadiet","nba":"NYK","pos":"SF","rank":559},{"name":"Johnny Juzang","nba":"FA","pos":"SG/SF","rank":560},{"name":"Jahmir Young","nba":"MIA","pos":"PG","rank":561},{"name":"Mark Sears","nba":"FA","pos":"PG","rank":562},{"name":"Alex Antetokounmpo","nba":"MIL","pos":"SF","rank":563},{"name":"Kyle Lowry","nba":"PHI","pos":"PG","rank":564},{"name":"Bobi Klintman","nba":"FA","pos":"PF","rank":565},{"name":"Isaac Jones","nba":"DET","pos":"PF","rank":566},{"name":"Garrett Temple","nba":"TOR","pos":"SG","rank":567},{"name":"Sean Pedulla","nba":"LAC","pos":"PG","rank":568},{"name":"Javonte Cooke","nba":"FA","pos":"SG","rank":569},{"name":"Dario Saric","nba":"FA","pos":"PF","rank":570},{"name":"Markelle Fultz","nba":"FA","pos":"PG/SG","rank":571},{"name":"Hunter Sallis","nba":"FA","pos":"SG","rank":572},{"name":"Drew Peterson","nba":"FA","pos":"SF","rank":573},{"name":"Max Shulga","nba":"BOS","pos":"PG/SG","rank":574},{"name":"Buddy Boeheim","nba":"FA","pos":"SF","rank":575},{"name":"Trevor Keels","nba":"MIA","pos":"SG","rank":576},{"name":"Tosan Evbuomwan","nba":"CHA","pos":"SF","rank":577},{"name":"Darius Brown II","nba":"FA","pos":"PG","rank":580},{"name":"Chucky Hepburn","nba":"TOR","pos":"PG","rank":581},{"name":"Jahmyl Telfort","nba":"FA","pos":"PF","rank":582}];
 
-const BA_COLLEGE_TEAMS = ["Kansas", "Duke", "BYU", "Houston", "Arizona", "Kentucky", "North Carolina", "Louisville", "Auburn", "Michigan", "Florida", "Tennessee", "UConn", "Connecticut", "Gonzaga", "Texas", "Arkansas", "Indiana", "Marquette"];
+// Whitelist of valid NBA team abbreviations — anything else is a college/prospect
+const BA_NBA_TEAMS = new Set(['ATL','BOS','BKN','CHA','CHI','CLE','DAL','DEN','DET',
+  'GSW','HOU','IND','LAC','LAL','MEM','MIA','MIL','MIN','NOR','NYK','OKC','ORL',
+  'PHI','PHO','POR','SAC','SAS','TOR','UTA','WAS','FA']);
 
 function buildBestAvail() {
   const allRosteredNames = new Set();
   Object.values(ROSTERS).forEach(roster => {
-    roster.forEach(p => allRosteredNames.add(normalizeName(p.name).toLowerCase()));
+    roster.forEach(p => allRosteredNames.add(normalizeName(p.name)));
   });
 
-  // Dynasty players: exclude rostered AND exclude rookies (college teams)
+  // Dynasty players: exclude rostered AND exclude anyone without a real NBA team
   const dynastyFAs = DYNASTY_PLAYERS.filter(p => {
-    const key = normalizeName(p[1]).toLowerCase();
-    if (allRosteredNames.has(key)) return false;
-    if (BA_COLLEGE_TEAMS.some(c => p[2].toLowerCase().includes(c.toLowerCase()))) return false;
+    if (allRosteredNames.has(normalizeName(p[1]))) return false;
+    if (!BA_NBA_TEAMS.has(p[2])) return false;  // college/prospect = no NBA team code
     return true;
   }).map(p => ({
     rank: p[0], name: p[1], nba: p[2], pos: p[3],
     dob: p[4] || null, source: 'dynasty'
   }));
 
-  // FA players from BBM (already filtered to not be rostered)
-  const faRostered = new Set([...allRosteredNames]);
+  // FA_PLAYERS already verified by BBM Owner column
+  const dynastyNames = new Set(dynastyFAs.map(p => normalizeName(p.name)));
   const bbmFAs = FA_PLAYERS
-    .filter(p => !faRostered.has(normalizeName(p.name).toLowerCase()))
+    .filter(p => !dynastyNames.has(normalizeName(p.name)))
     .map(p => ({
       rank: p.rank, name: p.name, nba: p.nba, pos: p.pos,
       dob: null, source: 'fa'
     }));
 
-  // Merge: combine, deduplicate by name, sort by rank
-  const seen = new Set();
-  const merged = [];
-  for (const p of [...dynastyFAs, ...bbmFAs]) {
-    const key = normalizeName(p.name).toLowerCase();
-    if (!seen.has(key)) { seen.add(key); merged.push(p); }
-  }
-  return merged.sort((a, b) => a.rank - b.rank);
+  return [...dynastyFAs, ...bbmFAs].sort((a, b) => a.rank - b.rank);
 }
 
 function renderBestAvail(data) {
