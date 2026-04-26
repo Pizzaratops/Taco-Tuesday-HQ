@@ -1143,8 +1143,8 @@
       <div style="display:flex;flex-direction:column;gap:14px;font-size:13px;line-height:1.6;color:var(--muted);">
 
         <div style="background:var(--surface2);border-radius:12px;padding:14px;">
-          <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;">📥 Datenquelle: BBM Z-Scores · <strong style="color:var(--accent);">Saison 2025–26</strong></div>
-          Die Rohdaten kommen von <strong style="color:var(--text);">Basketball Monster (BBM)</strong> und enthalten für jeden Spieler einen Z-Score pro Kategorie — also wie weit er vom Liga-Durchschnitt aller ~580 relevanten NBA-Spieler entfernt ist. Ein Wert von +2.0 bedeutet zwei Standardabweichungen über dem Schnitt, 0.0 ist Durchschnitt, negative Werte liegen darunter.<br><br><strong style="color:var(--accent);">⚠️ Nur aktuelle Saison:</strong> Diese Ansicht zeigt ausschließlich Stats der Saison 2025–26. Keine Vorhersagen, keine historischen Vergleiche.
+          <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;">📥 Datenquelle: BBM Z-Scores</div>
+          Die Rohdaten kommen von <strong style="color:var(--text);">Basketball Monster (BBM)</strong> und enthalten für jeden Spieler einen Z-Score pro Kategorie — also wie weit er vom Liga-Durchschnitt aller ~580 relevanten NBA-Spieler entfernt ist. Ein Wert von +2.0 bedeutet zwei Standardabweichungen über dem Schnitt, 0.0 ist Durchschnitt, negative Werte liegen darunter.
         </div>
 
         <div style="background:var(--surface2);border-radius:12px;padding:14px;">
@@ -1217,10 +1217,7 @@
         <tbody id="anHeatmapBody"></tbody>
       </table>
     </div>
-    <p style="color:var(--muted);font-size:11px;text-align:center;margin-top:10px;">
-    Klick auf ein Team für Details &nbsp;·&nbsp; 
-    <span style="background:rgba(108,99,255,0.12);color:var(--accent);font-weight:700;padding:2px 8px;border-radius:10px;font-size:10px;">Saison 2025–26</span>
-  </p>
+    <p style="color:var(--muted);font-size:11px;text-align:center;margin-top:10px;">Klick auf ein Team für Details</p>
   </div>
 
   <!-- RADAR VIEW -->
@@ -1290,8 +1287,10 @@
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-          <input type="text" id="tradeSearchA" placeholder="Spieler, Jahr oder Team suchen…" oninput="filterTradePlayers('A')"/>
+          <input type="text" id="tradeSearchA" placeholder="Search player…" oninput="filterTradePlayers('A')"/>
         </div>
+
+<button class="pick-pool-btn" id="pickBtnA" onclick="togglePickMode('A')">📋 Picks anzeigen</button>
 
         <div class="trade-player-list" id="tradeListA"></div>
 
@@ -1326,8 +1325,10 @@
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-          <input type="text" id="tradeSearchB" placeholder="Spieler, Jahr oder Team suchen…" oninput="filterTradePlayers('B')"/>
+          <input type="text" id="tradeSearchB" placeholder="Search player…" oninput="filterTradePlayers('B')"/>
         </div>
+
+<button class="pick-pool-btn" id="pickBtnB" onclick="togglePickMode('B')">📋 Picks anzeigen</button>
 
         <div class="trade-player-list" id="tradeListB"></div>
 
@@ -1820,7 +1821,7 @@ window.addEventListener('DOMContentLoaded', function() {
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
-        <input type="text" id="tfGiveSearch" placeholder="Spieler, Jahr (z.B. 2027) oder Team…" oninput="renderTFGiveList()"/>
+        <input type="text" id="tfGiveSearch" placeholder="Spieler oder Pick suchen…" oninput="renderTFGiveList()"/>
       </div>
       <div class="tf-give-list" id="tfGiveList">
         <div style="text-align:center;padding:24px;color:var(--muted);font-size:12px;">Tippe zum Suchen…</div>
@@ -1864,21 +1865,12 @@ window.addEventListener('DOMContentLoaded', function() {
       <p style="color:var(--muted);font-size:13px;">Alle gespeicherten Trades · Werte eingefroren zum Zeitpunkt des Trades</p>
     </div>
     <div style="display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px;flex-shrink:0;">
-      <button id="thModeDynasty" onclick="setTHMode('dynasty')"
-        style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:var(--accent);color:white;transition:all 0.15s;">🏗️ Dynasty</button>
-      <button id="thModeRaw" onclick="setTHMode('raw')"
-        style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">📊 Raw</button>
-      <button id="thModeWinnow" onclick="setTHMode('winnow')"
-        style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">🏆 Win-Now</button>
+      <button id="thModeDynasty" onclick="setTHMode('dynasty')" style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:var(--accent);color:white;transition:all 0.15s;">🏗️ Dynasty</button>
+      <button id="thModeRaw" onclick="setTHMode('raw')" style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">📊 Raw</button>
+      <button id="thModeWinnow" onclick="setTHMode('winnow')" style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">🏆 Win-Now</button>
     </div>
   </div>
-  <div id="tradeHistoryList">
-    <div style="text-align:center;padding:60px 20px;color:var(--muted);border:2px dashed var(--border);border-radius:16px;margin-top:20px;">
-      <div style="font-size:40px;margin-bottom:12px;">📋</div>
-      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Noch keine Trades gespeichert</div>
-      <div style="font-size:13px;">Analysiere einen Trade und klicke "✅ Done – Trade speichern"</div>
-    </div>
-  </div>
+  <div id="tradeHistoryList"></div>
 </div>
 
 <!-- SCOUT MODAL -->
@@ -4861,27 +4853,56 @@ const TRADE_VALUE_TABLE = {"1": 2107.0, "2": 1873.5, "3": 1857.0, "4": 1792.0, "
 
 // Pick values calibrated so 2026 R1 early = 1016 = Cameron Boozer dynasty value
 const PICK_VALUES = {
-  // 2026 — strong draft (24+ rosterable), R1 early anchored to Boozer
-  "2026_R1_early": 1016, "2026_R1_mid":  720, "2026_R1_late":  480,
+  "2026_R1_early": 1016, "2026_R1_mid":  610, "2026_R1_late":  366,
   "2026_R2_early":  244, "2026_R2_mid":  163, "2026_R2_late":  112,
   "2026_R3_early":   81, "2026_R3_mid":   61, "2026_R3_late":   46,
   "2026_R4_early":   36, "2026_R4_mid":   25, "2026_R4_late":   15,
-  // 2027 — weak draft, many players staying in college via NIL
-  "2027_R1_early":  240, "2027_R1_mid":  210, "2027_R1_late":  180,
-  "2027_R2_early":   90, "2027_R2_mid":   75, "2027_R2_late":   60,
-  "2027_R3_early":   42, "2027_R3_mid":   30, "2027_R3_late":   18,
-  "2027_R4_early":   18, "2027_R4_mid":   10, "2027_R4_late":    4,
-  // 2028 — also weak (NBA teams trading 27+28 picks together)
-  "2028_R1_early":  250, "2028_R1_mid":  220, "2028_R1_late":  190,
-  "2028_R2_early":   95, "2028_R2_mid":   82, "2028_R2_late":   70,
-  "2028_R3_early":   44, "2028_R3_mid":   32, "2028_R3_late":   20,
-  "2028_R4_early":   20, "2028_R4_mid":   12, "2028_R4_late":    4,
-  // 2029 — too far out to know, slight premium over 2028
-  "2029_R1_early":  265, "2029_R1_mid":  245, "2029_R1_late":  225,
-  "2029_R2_early":  100, "2029_R2_mid":   88, "2029_R2_late":   76,
-  "2029_R3_early":   48, "2029_R3_mid":   35, "2029_R3_late":   22,
-  "2029_R4_early":   22, "2029_R4_mid":   13, "2029_R4_late":    5,
+  "2027_R1_early":  300, "2027_R1_mid":  275, "2027_R1_late":  250,
+  "2027_R2_early":   85, "2027_R2_mid":   70, "2027_R2_late":   55,
+  "2027_R3_early":   35, "2027_R3_mid":   27, "2027_R3_late":   18,
+  "2027_R4_early":    5, "2027_R4_mid":    3, "2027_R4_late":    2,
+  "2028_R1_early":  285, "2028_R1_mid":  265, "2028_R1_late":  245,
+  "2028_R2_early":   78, "2028_R2_mid":   65, "2028_R2_late":   52,
+  "2028_R3_early":   30, "2028_R3_mid":   23, "2028_R3_late":   15,
+  "2028_R4_early":    4, "2028_R4_mid":    3, "2028_R4_late":    1,
+  "2029_R1_early":  270, "2029_R1_mid":  255, "2029_R1_late":  240,
+  "2029_R2_early":   72, "2029_R2_mid":   60, "2029_R2_late":   49,
+  "2029_R3_early":   26, "2029_R3_mid":   20, "2029_R3_late":   13,
+  "2029_R4_early":    3, "2029_R4_mid":    2, "2029_R4_late":    1,
 };
+
+
+// ============================================================
+//  SEASON STATS 2025-26  (per week = total / 20 matchup weeks)
+//  FG% and FT% are season averages (not per-week)
+//  Cats: fg, ft, 3pm, reb, ast, stl, blk, to, pts
+// ============================================================
+const SEASON_STATS = {
+  1:  {fg:0.4959,ft:0.7928,"3pm":85.3,reb:404.9,ast:287.1,stl:72.4,blk:38.0,to:132.5,pts:1058.2},
+  2:  {fg:0.4755,ft:0.7889,"3pm":95.6,reb:290.8,ast:201.3,stl:55.6,blk:34.1,to:109.0,pts:834.2},
+  3:  {fg:0.4801,ft:0.8095,"3pm":82.8,reb:269.8,ast:169.2,stl:46.1,blk:28.5,to:82.2, pts:771.5},
+  4:  {fg:0.4746,ft:0.7921,"3pm":79.6,reb:256.6,ast:163.8,stl:51.4,blk:24.7,to:78.3, pts:729.0},
+  5:  {fg:0.4626,ft:0.8056,"3pm":89.8,reb:260.5,ast:147.1,stl:50.4,blk:29.4,to:82.5, pts:706.9},
+  6:  {fg:0.4762,ft:0.7550,"3pm":71.8,reb:264.1,ast:133.8,stl:41.4,blk:31.7,to:74.4, pts:637.4},
+  7:  {fg:0.4773,ft:0.7668,"3pm":72.0,reb:246.7,ast:150.2,stl:42.2,blk:32.7,to:72.3, pts:643.9},
+  8:  {fg:0.4644,ft:0.8127,"3pm":90.2,reb:257.7,ast:175.9,stl:40.2,blk:24.6,to:90.6, pts:792.2},
+  9:  {fg:0.4697,ft:0.7732,"3pm":74.6,reb:252.2,ast:116.0,stl:47.2,blk:34.4,to:78.6, pts:665.5},
+  10: {fg:0.4702,ft:0.8114,"3pm":70.3,reb:198.8,ast:136.1,stl:49.0,blk:18.2,to:67.2, pts:605.4},
+  11: {fg:0.4648,ft:0.7745,"3pm":58.0,reb:169.6,ast:111.7,stl:35.6,blk:22.3,to:57.7, pts:474.9},
+  12: {fg:0.4681,ft:0.7494,"3pm":60.8,reb:167.7,ast:123.1,stl:37.0,blk:17.9,to:62.8, pts:487.6},
+};
+
+// Maps AN_CATS keys to SEASON_STATS keys
+const AN_CAT_TO_SEASON = {
+  pV:'pts', '3V':'3pm', rV:'reb', aV:'ast', sV:'stl', bV:'blk', fgV:'fg', ftV:'ft', toV:'to'
+};
+
+// Format a season stat value nicely for display
+function fmtSeasonStat(cat, val) {
+  if (cat === 'fgV' || cat === 'ftV') return (val * 100).toFixed(1) + '%';
+  if (cat === 'toV') return val.toFixed(1) + ' TO/wk'; // lower is better
+  return val.toFixed(1) + '/wk';
+}
 
 const PICK_POS_LABELS = {
   early: { label: 'Early', picks: 'Picks 1–4'  },
@@ -4937,7 +4958,22 @@ function pickTradeValue(pick, mode) {
 }
 
 // Pick-Mode Toggle
-// togglePickMode removed - picks now inline
+function togglePickMode(side) {
+  TRADE_STATE[side].showPicks = !TRADE_STATE[side].showPicks;
+  const btn = document.getElementById('pickBtn' + side);
+  if (btn) {
+    btn.classList.toggle('active', TRADE_STATE[side].showPicks);
+    btn.textContent = TRADE_STATE[side].showPicks ? '👤 Spieler anzeigen' : '📋 Picks anzeigen';
+  }
+  // Filter beim Wechsel zurücksetzen
+  TRADE_STATE[side].nbaFilter = '';
+  TRADE_STATE[side].ttFilter  = '';
+  TRADE_STATE[side].search    = '';
+  document.getElementById('tradeNbaFilter' + side).value = '';
+  document.getElementById('tradeTTFilter'  + side).value = '';
+  document.getElementById('tradeSearch'    + side).value = '';
+  renderTradeList(side);
+}
 
 // Toggle für Pick-Auswahl
 function toggleTradePick(side, pickKey) {
@@ -5009,6 +5045,11 @@ function setTradeMode(mode) {
   document.querySelectorAll('.trade-mode-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('modeBtn-' + mode).classList.add('active');
   document.getElementById('tradeModeDesc').innerHTML = MODE_DESCRIPTIONS[mode];
+  // Re-render everything so value badges update immediately without re-clicking
+  renderTradeList('A');
+  renderTradeList('B');
+  renderSelectedPills('A');
+  renderSelectedPills('B');
   renderTradeResult();
 }
 
@@ -5033,16 +5074,16 @@ function ageMultiplier(dobStr, mode) {
   if (mode === 'raw') return 1.0;
   const age = playerAgeToday(dobStr);
   if (mode === 'dynasty') {
-     if (age <= 19) return 1.25;
-    if (age <= 21) return 1.18;
-    if (age <= 23) return 1.10;
-    if (age <= 25) return 1.05;
+    if (age <= 19) return 1.50;
+    if (age <= 21) return 1.35;
+    if (age <= 23) return 1.20;
+    if (age <= 25) return 1.08;
     if (age <= 27) return 1.00;
-    if (age <= 29) return 0.80;
-    if (age <= 31) return 0.60;
-    if (age <= 33) return 0.38;
-    if (age <= 35) return 0.18;
-    return 0.06;
+    if (age <= 29) return 0.82;
+    if (age <= 31) return 0.62;
+    if (age <= 33) return 0.42;
+    if (age <= 35) return 0.22;
+    return 0.08;
   }
   if (mode === 'winnow') {
     if (age <= 19) return 0.70;
@@ -5076,9 +5117,9 @@ const REPLACEMENT_VALUE = (() => {
 // Rank 100 is still a real asset; zero past rank 175.
 function dynastyCliff(rank) {
   if (rank <= 50)  return 1.00;
-  if (rank <= 100) return 0.90;
-  if (rank <= 150) return 0.75;
-  if (rank <= 175) return 0.50;
+  if (rank <= 100) return 0.85;
+  if (rank <= 150) return 0.65;
+  if (rank <= 175) return 0.35;
   return 0.00;
 }
 
@@ -5097,24 +5138,16 @@ function dynastyValue(rank, dob) {
   return Math.max(0, Math.round(baseValue * ageMultiplier(dob, TRADE_MODE)));
 }
 
-// Aggregate trade value: picks always at 100%, only players get diminishing returns.
-// Each additional packaged player counts at 70% of their value (diminishing returns).
-// Picks are raw assets with fixed sheet values — no depth haircut applies.
+// Aggregate trade value with diminishing returns per additional player.
+// Because deep prospects are already near-zero after the cliff + replacement floor,
+// stacking many fringe players cannot manufacture value equal to one real asset.
 function tradeSideValue(players) {
   if (!players.length) return 0;
-  const picks   = players.filter(p =>  p.isPick);
-  const nonPick = players.filter(p => !p.isPick);
-
-  // Player values sorted descending — each additional counts at 70% of prior
-  const playerVals = nonPick
-    .map(p => dynastyValue(p.rank, p.dob))
+  const withValues = players
+    .map(p => p.isPick ? pickTradeValue(p, TRADE_MODE) : dynastyValue(p.rank, p.dob))
     .sort((a, b) => b - a);
   let total = 0;
-  playerVals.forEach((val, i) => { total += val * Math.pow(0.70, i); });
-
-  // Picks: full face value, no diminishing returns
-  picks.forEach(p => { total += pickTradeValue(p, TRADE_MODE); });
-
+  withValues.forEach((val, i) => { total += val * Math.pow(0.70, i); });
   return Math.round(total);
 }
 
@@ -5219,124 +5252,9 @@ function filterTradePlayers(side) {
 function renderTradeList(side) {
   const st   = TRADE_STATE[side];
   const list = document.getElementById('tradeList' + side);
-  const q    = (st.search || '').toLowerCase().trim();
-  const isLight = document.body.classList.contains('light');
 
-  // Determine if query looks like a year
-  const yearMatch = q.match(/^(202[6-9])$/);
-  const filterYear = yearMatch ? parseInt(yearMatch[1]) : null;
-  const ttFilterId = st.ttFilter && st.ttFilter !== 'unowned' ? parseInt(st.ttFilter) : null;
-
-  // ── BUILD PICKS SECTION ─────────────────────────────────────
-  let picksHtml = '';
-  {
-    let relevantPicks = PICKS;
-    if (filterYear) relevantPicks = relevantPicks.filter(p => p.year === filterYear);
-    if (ttFilterId) relevantPicks = relevantPicks.filter(p => p.currentOwner === ttFilterId);
-    if (!filterYear && !ttFilterId && q) {
-      // text search: match year, round, team name
-      relevantPicks = relevantPicks.filter(p => {
-        const orig = teamMap[p.originalOwner];
-        const curr = teamMap[p.currentOwner];
-        return String(p.year).includes(q) ||
-               orig.name.toLowerCase().includes(q) ||
-               curr.name.toLowerCase().includes(q);
-      });
-    }
-    if (!filterYear && !ttFilterId && !q) relevantPicks = []; // don't show all picks by default unless filtered
-
-    if (relevantPicks.length > 0) {
-      const selectedKeys = st.selected.filter(s => s.isPick).map(s => s.pickKey);
-      // Group by year
-      const byYear = {};
-      relevantPicks.forEach(p => { if (!byYear[p.year]) byYear[p.year] = []; byYear[p.year].push(p); });
-
-      picksHtml += `<div style="padding:5px 12px 3px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#c58f32;background:rgba(197,143,50,0.08);border-bottom:1px solid var(--border);">📋 Draft Picks</div>`;
-
-      Object.keys(byYear).sort().forEach(year => {
-        const picks = byYear[year].sort((a, b) => a.round - b.round || a.originalOwner - b.originalOwner);
-        if (Object.keys(byYear).length > 1) {
-          picksHtml += `<div style="padding:4px 12px 2px;font-size:10px;font-weight:700;color:var(--muted);background:var(--surface2);border-bottom:1px solid var(--border);">${year}</div>`;
-        }
-        picks.forEach(p => {
-          const orig   = teamMap[p.originalOwner];
-          const curr   = teamMap[p.currentOwner];
-          const traded = p.originalOwner !== p.currentOwner;
-          const key    = `${p.year}_R${p.round}_T${p.originalOwner}`;
-          const isSel  = selectedKeys.includes(key);
-          const val    = PICK_VALUES[`${p.year}_R${p.round}_mid`] || 0;
-          const statusColor = traded ? (isLight?'#b43c64':'#ff8fa3') : (isLight?'#c0622f':'#6c63ff');
-          const statusBg    = traded ? (isLight?'rgba(180,60,100,0.1)':'rgba(255,101,132,0.1)') : (isLight?'rgba(192,98,47,0.1)':'rgba(108,99,255,0.12)');
-          const statusTxt   = traded ? `→ von ${orig.name}` : `${curr.name}`;
-          picksHtml += `<div class="pick-item ${isSel?'selected':''}"
-            onclick="toggleTradePickDirect('${side}','${key}',${p.year},${p.round},${p.originalOwner},${p.currentOwner},${val},'${traded}')">
-            <div class="tp-check" style="margin-top:2px;flex-shrink:0;">${isSel?'<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>':''}</div>
-            <div style="flex:1;min-width:0;">
-              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-                <span style="font-family:'Playfair Display',serif;font-size:13px;font-weight:800;color:#c58f32;">${year}</span>
-                <span class="pick-round-pos">R${p.round}</span>
-                ${p.note?`<span style="font-size:9px;background:rgba(245,200,66,0.15);color:#f5c842;padding:1px 5px;border-radius:3px;">${p.note}</span>`:''}
-              </div>
-              <div style="margin-top:3px;"><span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;background:${statusBg};color:${statusColor};">${statusTxt}</span></div>
-            </div>
-            <span class="pick-value-badge">~${val.toLocaleString()}</span>
-          </div>`;
-        });
-      });
-    }
-  }
-
-  // ── BUILD PLAYERS SECTION ───────────────────────────────────
-  // If only a year was typed, don't show players (just picks)
-  let playersHtml = '';
-  if (!filterYear) {
-    const pool = buildTradePlayerPool().filter(p => !p.isPick);
-    const filtered = pool.filter(p => {
-      if (st.nbaFilter && p.nba !== st.nbaFilter) return false;
-      if (st.ttFilter === 'unowned' && p.ownerId !== null) return false;
-      if (ttFilterId && p.ownerId !== ttFilterId) return false;
-      if (q && !(p.name.toLowerCase().includes(q) || p.nba.toLowerCase().includes(q) ||
-                 (p.owner && p.owner.name.toLowerCase().includes(q)))) return false;
-      return true;
-    });
-    const selectedNames = st.selected.filter(s => !s.isPick).map(s => s.name);
-    if (filtered.length > 0) {
-      if (picksHtml) playersHtml += `<div style="padding:5px 12px 3px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);background:var(--surface2);border-bottom:1px solid var(--border);">👤 Spieler</div>`;
-      playersHtml += filtered.map(p => {
-        const isSel = selectedNames.includes(p.name);
-        const ownerLabel = p.owner ? p.owner.name : 'Unowned';
-        const val = dynastyValue(p.rank, p.dob);
-        const mRank = mattRank(p.name);
-        const hRank = hashtagRank(p.name);
-        return `<div class="trade-player-item ${isSel?'selected':''}" onclick="toggleTradePlayer('${side}', ${p.rank})">
-          <div class="tp-check">${isSel?'<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>':''}</div>
-          <div class="tp-name">${p.name}
-            <div class="tp-detail" style="font-size:11px;color:var(--muted);font-weight:400;margin-top:1px;">${p.nba} · ${ownerLabel}</div>
-            <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;">
-              ${rankBadgeHtml('MFHFBs', p.rank, rankStyle(p.rank))}
-              ${rankBadgeHtml('Matt', mRank, rankStyle(mRank))}
-              ${rankBadgeHtml('#️⃣', hRank, rankStyle(hRank))}
-            </div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
-            <span style="font-size:10px;font-weight:700;${valueBadgeStyle(val)}padding:1px 5px;border-radius:4px;">${val.toLocaleString()}</span>
-          </div>
-        </div>`;
-      }).join('');
-    }
-  }
-
-  const combined = picksHtml + playersHtml;
-  if (!combined) {
-    list.innerHTML = q
-      ? '<div class="trade-no-players">Keine Ergebnisse.</div>'
-      : '<div class="trade-no-players" style="padding:20px;text-align:center;color:var(--muted);font-size:12px;">Tippe einen Namen, ein Jahr (z.B. 2027) oder wähle ein Team</div>';
-    return;
-  }
-  list.innerHTML = combined;
-
-  // dead code kept for compatibility – never reached now
-  if (false) {
+  // ── PICK MODE ──────────────────────────────────────────────
+  if (st.showPicks) {
     const ttFilterId = st.ttFilter ? parseInt(st.ttFilter) : null;
     const isLight    = document.body.classList.contains('light');
 
@@ -5424,7 +5342,47 @@ function renderTradeList(side) {
       });
     });
 
-  } // end dead code
+    list.innerHTML = html || '<div class="trade-no-players">Keine Picks gefunden.</div>';
+    return;
+  }
+
+  // ── PLAYER MODE ────────────────────────────────────────────
+  const pool = buildTradePlayerPool().filter(p => !p.isPick);
+  const q    = st.search.toLowerCase().trim();
+
+  const filtered = pool.filter(p => {
+    if (st.nbaFilter && p.nba !== st.nbaFilter) return false;
+    if (st.ttFilter === 'unowned' && p.ownerId !== null) return false;
+    if (st.ttFilter && st.ttFilter !== 'unowned' && p.ownerId !== parseInt(st.ttFilter)) return false;
+    if (q && !(p.name.toLowerCase().includes(q) || p.nba.toLowerCase().includes(q) ||
+               (p.owner && p.owner.name.toLowerCase().includes(q)))) return false;
+    return true;
+  });
+
+  const selectedNames = st.selected.filter(s => !s.isPick).map(s => s.name);
+  if (!filtered.length) { list.innerHTML = '<div class="trade-no-players">No players found.</div>'; return; }
+
+  list.innerHTML = filtered.map(p => {
+    const isSel       = selectedNames.includes(p.name);
+    const ownerLabel  = p.owner ? p.owner.name : 'Unowned';
+    const val         = dynastyValue(p.rank, p.dob);
+    const mRank       = mattRank(p.name);
+    const hRank       = hashtagRank(p.name);
+    return `<div class="trade-player-item ${isSel ? 'selected' : ''}" onclick="toggleTradePlayer('${side}', ${p.rank})">
+      <div class="tp-check">${isSel ? '<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</div>
+      <div class="tp-name">${p.name}
+        <div class="tp-detail" style="font-size:11px;color:var(--muted);font-weight:400;margin-top:1px;">${p.nba} · ${ownerLabel}</div>
+        <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;">
+          ${rankBadgeHtml('MFHFBs', p.rank, rankStyle(p.rank))}
+          ${rankBadgeHtml('Matt', mRank, rankStyle(mRank))}
+          ${rankBadgeHtml('#️⃣', hRank, rankStyle(hRank))}
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
+        <span style="font-size:10px;font-weight:700;${valueBadgeStyle(val)}padding:1px 5px;border-radius:4px;">${val.toLocaleString()}</span>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 function toggleTradePlayer(side, rank) {
@@ -5620,7 +5578,8 @@ const sorted = [...players].sort((a, b) => {
 
 function showTrade() {
   TRADE_STATE.A.selected = []; TRADE_STATE.B.selected = [];
-  // showPicks removed
+  TRADE_STATE.A.showPicks = false;
+  TRADE_STATE.B.showPicks = false;
   TRADE_STATE.A.nbaFilter = ''; TRADE_STATE.B.nbaFilter = '';
   TRADE_STATE.A.search    = ''; TRADE_STATE.B.search    = '';
 
@@ -5636,7 +5595,9 @@ function showTrade() {
     document.getElementById('tradeTTFilter'+side).value  = TRADE_STATE[side].ttFilter || '';
     document.getElementById('tradeSearch'+side).value    = '';
     document.getElementById('tradeNbaFilter'+side).classList.remove('has-filter');
-const ttEl = document.getElementById('tradeTTFilter'+side);
+const pickBtn = document.getElementById('pickBtn' + side);
+    if (pickBtn) { pickBtn.classList.remove('active'); pickBtn.textContent = '📋 Picks anzeigen'; }
+    const ttEl = document.getElementById('tradeTTFilter'+side);
     ttEl.classList.toggle('has-filter', !!TRADE_STATE[side].ttFilter);
   });
 
@@ -5846,10 +5807,17 @@ function renderAnHeatmap() {
   }).sort((a,b) => b.avg - a.avg);
   tbody.innerHTML = sorted.map(({tid, avg, s}, ri) => {
     const team = TEAMS.find(t => t.id === tid);
-    const cells = AN_CATS.map(c => {
-      const v = s[c]; const {bg,tx} = anCellColor(v);
+    const seasonRow = SEASON_STATS[tid] || null;
+    const cells = AN_CATS.map(cat => {
+      const v = s[cat]; const {bg,tx} = anCellColor(v);
       const label = v > 0.05 ? '+'+v.toFixed(2) : v.toFixed(2);
-      return '<td style="padding:7px 4px;text-align:center;background:'+bg+';border:none;border-bottom:1px solid var(--border);"><span style="font-size:11px;font-weight:800;color:'+tx+';">'+label+'</span></td>';
+      const sk = AN_CAT_TO_SEASON[cat];
+      const sv = seasonRow && sk ? seasonRow[sk] : null;
+      const tooltip = sv !== null ? fmtSeasonStat(cat, sv) : '';
+      // For TO: invert season stat color (more TO = worse = red tint)
+      // For all cats: use white/near-white for sub-label so it's readable on colored bg in dark mode
+      const subColor = 'rgba(255,255,255,0.82)';
+      return '<td style="padding:7px 4px;text-align:center;background:'+bg+';border:none;border-bottom:1px solid var(--border);" title="'+tooltip+'"><span style="font-size:11px;font-weight:800;color:'+tx+';">'+label+'</span>'+(tooltip?'<div style="font-size:9px;color:'+subColor+';margin-top:1px;line-height:1.1;">'+tooltip+'</div>':'')+'</td>';
     }).join('');
     const avgColor = avg>0.3?'#4caf81':avg>-0.1?'var(--text)':avg>-0.4?'#f5c842':'#ff6584';
     return '<tr style="cursor:pointer;transition:filter 0.1s;'+(ri%2?'background:var(--surface2);':'')+'" onclick="openAnModal('+tid+')" onmouseenter="this.style.filter=\'brightness(1.08)\'" onmouseleave="this.style.filter=\'\'"><td style="padding:10px 14px;border:none;border-bottom:1px solid var(--border);white-space:nowrap;"><div style="display:flex;align-items:center;gap:8px;"><div style="width:10px;height:10px;border-radius:50%;background:'+(team?.color||'#888')+';flex-shrink:0;"></div><div><div style="font-size:12px;font-weight:700;color:var(--text);">'+(team?.name||'Team '+tid)+'</div><div style="font-size:10px;color:var(--muted);">'+(team?.owner||'')+'</div></div></div></td>'+cells+'<td style="padding:10px 14px;text-align:center;border:none;border-bottom:1px solid var(--border);"><span style="font-family:\'Playfair Display\',serif;font-size:14px;font-weight:800;color:'+avgColor+';">'+(avg>=0?'+':'')+avg.toFixed(2)+'</span></td></tr>';
@@ -5882,10 +5850,18 @@ function openAnModal(tid) {
   const avgColor = avg>0.3?'#4caf81':avg>-0.1?'var(--text)':avg>-0.4?'#f5c842':'#ff6584';
   const sc = AN_CATS.map((c,i)=>({c,label:AN_LABELS[i],emoji:AN_EMOJIS[i],v:s[c]})).sort((a,b)=>b.v-a.v);
   const best=sc[0], worst=sc[sc.length-1];
+  const seasonData = SEASON_STATS[tid] || null;
   const catBars = sc.map(({c,label,emoji,v}) => {
     const pct=Math.round((v+1)/2*100), disp=v>=0?'+'+v.toFixed(2):v.toFixed(2);
     const col=v>=0.5?'#4caf81':v>=0.1?'#a0d4b8':v>=-0.1?'var(--border)':v>=-0.5?'#ff9999':'#ff6584';
-    return '<div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:12px;font-weight:700;color:var(--text);">'+emoji+' '+label+'</span><span style="font-size:12px;font-weight:800;color:'+col+';">'+disp+'</span></div><div style="background:var(--surface2);border-radius:4px;height:8px;overflow:hidden;"><div style="width:'+pct+'%;height:100%;background:'+col+';border-radius:4px;"></div></div></div>';
+    const seasonKey = AN_CAT_TO_SEASON[c];
+    const seasonVal = seasonData && seasonKey ? seasonData[seasonKey] : null;
+    // For TO: season stat color should reflect that high TO = bad (inverted)
+    const seasonColor = (c === 'toV')
+      ? (seasonVal > 90 ? '#ff6584' : seasonVal > 75 ? '#ff9999' : '#a0d4b8')  // > liga avg ~82 = bad
+      : 'var(--muted)';
+    const seasonStr = seasonVal !== null ? '<span style="font-size:10px;font-weight:600;color:'+seasonColor+';margin-left:6px;">'+fmtSeasonStat(c, seasonVal)+'</span>' : '';
+    return '<div style="margin-bottom:7px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;"><span style="font-size:12px;font-weight:700;color:var(--text);">'+emoji+' '+label+seasonStr+'</span><span style="font-size:12px;font-weight:800;color:'+col+';">'+disp+'</span></div><div style="background:var(--surface2);border-radius:4px;height:8px;overflow:hidden;"><div style="width:'+pct+'%;height:100%;background:'+col+';border-radius:4px;"></div></div></div>';
   }).join('');
   const mLabel = AN_STATE.method==='value'?'Per-Game Value':'Durability (BZ)';
   const topP = r.players.slice(0,8).map(p=>'<span style="font-size:10px;font-weight:600;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:2px 7px;color:var(--muted);">'+p.name+'</span>').join(' ');
@@ -6093,8 +6069,15 @@ function setTFMode(mode) {
   document.querySelectorAll('[id^="tfModeBtn-"]').forEach(b => b.classList.remove('active'));
   document.getElementById('tfModeBtn-' + mode).classList.add('active');
   document.getElementById('tfModeDesc').innerHTML = TF_MODE_DESCRIPTIONS[mode];
-  // Refresh give value display with new mode
+  // Refresh give value and re-run results if already computed
   updateTFGiveUI();
+  if (window._tfLastResults && window._tfLastResults.length) {
+    const giveTotal = (() => {
+      const sorted = [...TF_STATE.give].sort((a, b) => b.dynVal - a.dynVal);
+      return sorted.reduce((s, p, i) => s + Math.round(p.dynVal * Math.pow(0.70, i)), 0);
+    })();
+    _renderTFResults(window._tfLastResults, giveTotal);
+  }
 }
 
 
@@ -6180,9 +6163,7 @@ function renderTFGiveList() {
   const listEl = document.getElementById('tfGiveList');
   if (!listEl) return;
 
-  // give_picks mode OR with_picks: give section can show picks
-  // In with_picks mode the GIVE side still shows players; picks appear on the RECEIVE side
-  // We keep give_picks for explicit pick-giving – not needed now, but kept for compat
+  // give_picks mode: give section shows PICKS to trade away
   if (TF_STATE.pickMode === 'give_picks') {
     const pickPool = buildTFPickPool().filter(p =>
       TF_STATE.giveTeam ? p.currentOwner === TF_STATE.giveTeam : true
@@ -6763,8 +6744,8 @@ function showTradeFinder() {
 
   // Reset pick mode buttons
   document.querySelectorAll('[id^="tfPickModeBtn-"]').forEach(b => b.classList.remove('active'));
-  const pmWith = document.getElementById('tfPickModeBtn-with_picks');
-  if (pmWith) pmWith.classList.add('active');
+  const pmNone = document.getElementById('tfPickModeBtn-none');
+  if (pmNone) pmNone.classList.add('active');
 
   // Reset valuation mode buttons
   document.querySelectorAll('[id^="tfModeBtn-"]').forEach(b => b.classList.remove('active'));
@@ -6863,40 +6844,39 @@ function openTFShareModal() {
 // ============================================================
 
 const TH_STORAGE_KEY = 'taco_trade_history';
-let TH_MODE = 'dynasty'; // current display mode for trade history
+let TH_MODE = 'dynasty';
 
-// ── Hardcoded base trades – always visible, independent of localStorage ──────
+// Hardcoded base trades - always visible, independent of localStorage
 const HARDCODED_TRADES = [
-  {"id":1700000002,"date":"2025-26","savedMode":"dynasty","sideA":[{"isPick":false,"rank":109,"name":"Devin Vassell","nba":"SAS","pos":"SG","dob":"2001-04-13","ownerName":"S-Town Grizzlies"},{"isPick":false,"rank":123,"name":"Ron Holland II","nba":"DET","pos":"SF","dob":"2005-07-07","ownerName":"S-Town Grizzlies"}],"sideB":[{"isPick":true,"pickKey":"2027_R1_T9","year":2027,"round":1,"name":"2027 R1 · Cooking Show","baseValue":275,"origName":"Cooking Show","currName":"Cooking Show","traded":false},{"isPick":false,"rank":304,"name":"Kasparas Jakucionis","nba":"MIA","pos":"PG","dob":"2005-01-01","ownerName":"Cooking Show"}],"frozen":{"dynasty":{"valA":83,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"23.2","pctB":"76.8"},"raw":{"valA":86,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"23.8","pctB":"76.2"},"winnow":{"valA":82,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"23.0","pctB":"77.0"}}},
-  {"id":1700000001,"date":"2025-26","savedMode":"dynasty","sideA":[{"isPick":false,"rank":96,"name":"Collin Murray-Boyles","nba":"TOR","pos":"PF","dob":"2005-06-10","ownerName":"Cooking Show"}],"sideB":[{"isPick":true,"pickKey":"2026_R3_T2","year":2026,"round":3,"name":"2026 R3 · Seagulls","baseValue":40,"origName":"Seagulls","currName":"Seagulls","traded":false},{"isPick":true,"pickKey":"2026_R4_T2","year":2026,"round":4,"name":"2026 R4 · Seagulls","baseValue":25,"origName":"Seagulls","currName":"Seagulls","traded":false},{"isPick":true,"pickKey":"2027_R3_T2","year":2027,"round":3,"name":"2027 R3 · Seagulls","baseValue":25,"origName":"Seagulls","currName":"Seagulls","traded":false}],"frozen":{"dynasty":{"valA":108,"valB":87,"verdict":"Slight Edge: Side A","cls":"slight","pctA":"55.4","pctB":"44.6"},"raw":{"valA":98,"valB":90,"verdict":"Fair Trade","cls":"fair","pctA":"52.1","pctB":"47.9"},"winnow":{"valA":80,"valB":100,"verdict":"Slight Edge: Side B","cls":"slight","pctA":"44.4","pctB":"55.6"}}}
+  {"id":1700000002,"date":"April 2026","savedMode":"dynasty",
+   "sideA":[{"isPick":false,"rank":109,"name":"Devin Vassell","nba":"SAS","pos":"SG","dob":"2001-04-13","ownerName":"S-Town Grizzlies"},{"isPick":false,"rank":317,"name":"Ron Holland II","nba":"DET","pos":"SF","dob":"2005-07-07","ownerName":"S-Town Grizzlies"}],
+   "sideB":[{"isPick":true,"pickKey":"2027_R1_T9","year":2027,"round":1,"name":"2027 R1 · Cooking Show","baseValue":275,"origName":"Cooking Show","currName":"Cooking Show","traded":false},{"isPick":false,"rank":304,"name":"Kasparas Jakucionis","nba":"MIA","pos":"PG","dob":"2005-01-01","ownerName":"Cooking Show"}],
+   "frozen":{"dynasty":{"valA":74,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"21.2","pctB":"78.8"},"raw":{"valA":70,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"20.3","pctB":"79.7"},"winnow":{"valA":70,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"20.3","pctB":"79.7"}}},
+  {"id":1700000001,"date":"April 2026","savedMode":"dynasty",
+   "sideA":[{"isPick":false,"rank":86,"name":"Collin Murray-Boyles","nba":"TOR","pos":"PF","dob":"2005-06-10","ownerName":"Cooking Show"}],
+   "sideB":[{"isPick":true,"pickKey":"2026_R3_T2","year":2026,"round":3,"name":"2026 R3 · Seagulls","baseValue":61,"origName":"Seagulls","currName":"Seagulls","traded":false},{"isPick":true,"pickKey":"2026_R4_T2","year":2026,"round":4,"name":"2026 R4 · Seagulls","baseValue":25,"origName":"Seagulls","currName":"Seagulls","traded":false},{"isPick":true,"pickKey":"2027_R3_T2","year":2027,"round":3,"name":"2027 R3 · Seagulls","baseValue":27,"origName":"Seagulls","currName":"Seagulls","traded":false}],
+   "frozen":{"dynasty":{"valA":151,"valB":89,"verdict":"Side A Wins Big","cls":"lopsided","pctA":"62.9","pctB":"37.1"},"raw":{"valA":128,"valB":92,"verdict":"Slight Edge: Side A","cls":"slight","pctA":"58.2","pctB":"41.8"},"winnow":{"valA":105,"valB":104,"verdict":"Fair Trade","cls":"fair","pctA":"50.2","pctB":"49.8"}}}
 ];
-// ─────────────────────────────────────────────────────────────────────────────
 
 function setTHMode(mode) {
   TH_MODE = mode;
   ['Dynasty','Raw','Winnow'].forEach(m => {
     const btn = document.getElementById('thMode' + m);
     if (!btn) return;
-    const active = m.toLowerCase() === mode;
-    btn.style.background = active ? 'var(--accent)' : 'transparent';
-    btn.style.color = active ? 'white' : 'var(--muted)';
+    btn.style.background = m.toLowerCase() === mode ? 'var(--accent)' : 'transparent';
+    btn.style.color = m.toLowerCase() === mode ? 'white' : 'var(--muted)';
   });
   renderTradeHistory();
 }
 
-// Returns hardcoded trades + any user-saved trades from localStorage (newest first).
-// Hardcoded IDs always win — stale localStorage copies with the same ID are dropped.
 function loadTradeHistory() {
   const hardcodedIds = new Set(HARDCODED_TRADES.map(t => t.id));
   let saved = [];
   try { saved = JSON.parse(localStorage.getItem(TH_STORAGE_KEY) || '[]'); } catch(e) {}
-  // Strip any old localStorage copies of hardcoded trades so they don't shadow the updated ones
   const userTrades = saved.filter(t => !hardcodedIds.has(t.id));
-  // User trades first (newest), hardcoded base trades at the end
   return [...userTrades, ...HARDCODED_TRADES];
 }
 
-// Only saves user-added trades (not hardcoded ones) to localStorage
 function saveTradeHistory(trades) {
   const hardcodedIds = new Set(HARDCODED_TRADES.map(t => t.id));
   const userTrades = trades.filter(t => !hardcodedIds.has(t.id));
@@ -6911,17 +6891,6 @@ function saveTradeToHistory() {
     alert('Bitte zuerst einen Trade analysieren!');
     return;
   }
-
-  const valA = tradeSideValue(selA);
-  const valB = tradeSideValue(selB);
-  const total = valA + valB;
-  const pctA = total > 0 ? (valA / total * 100) : 50;
-  const diff = Math.abs(pctA - 50);
-  let verdict, cls;
-  if (diff < 5)       { verdict = 'Fair Trade';          cls = 'fair'; }
-  else if (diff < 12) { verdict = valA > valB ? 'Slight Edge: Side A' : 'Slight Edge: Side B'; cls = 'slight'; }
-  else                { verdict = valA > valB ? 'Side A Wins Big'     : 'Side B Wins Big';     cls = 'lopsided'; }
-
   const serializePlayer = p => p.isPick
     ? { isPick: true, pickKey: p.pickKey, year: p.year, round: p.round,
         name: p.name, baseValue: p.baseValue,
@@ -6929,7 +6898,6 @@ function saveTradeToHistory() {
     : { isPick: false, rank: p.rank, name: p.name, nba: p.nba, pos: p.pos,
         dob: p.dob || null, ownerName: p.owner?.name || 'Unowned' };
 
-  // Freeze values for all 3 modes at time of saving
   const computeForMode = (mode) => {
     const origMode = TRADE_MODE;
     TRADE_MODE = mode;
@@ -6938,40 +6906,32 @@ function saveTradeToHistory() {
     TRADE_MODE = origMode;
     const tot = vA + vB;
     const pA = tot > 0 ? (vA / tot * 100) : 50;
-    const diff2 = Math.abs(pA - 50);
+    const d = Math.abs(pA - 50);
     let v, cls2;
-    if (diff2 < 5)       { v = 'Fair Trade';          cls2 = 'fair'; }
-    else if (diff2 < 12) { v = vA > vB ? 'Slight Edge: Side A' : 'Slight Edge: Side B'; cls2 = 'slight'; }
-    else                 { v = vA > vB ? 'Side A Wins Big'     : 'Side B Wins Big';     cls2 = 'lopsided'; }
+    if (d < 5)      { v = 'Fair Trade'; cls2 = 'fair'; }
+    else if (d < 12){ v = vA > vB ? 'Slight Edge: Side A' : 'Slight Edge: Side B'; cls2 = 'slight'; }
+    else            { v = vA > vB ? 'Side A Wins Big' : 'Side B Wins Big'; cls2 = 'lopsided'; }
     return { valA: vA, valB: vB, verdict: v, cls: cls2, pctA: pA.toFixed(1), pctB: (100-pA).toFixed(1) };
   };
 
   const trade = {
     id: Date.now(),
-    date: new Date().toLocaleDateString('de-DE', { day:'2-digit', month:'2-digit', year:'numeric' }),
+    date: new Date().toLocaleDateString('de-DE', { month: 'long', year: 'numeric' }),
     savedMode: TRADE_MODE,
     sideA: selA.map(serializePlayer),
     sideB: selB.map(serializePlayer),
-    frozen: {
-      dynasty: computeForMode('dynasty'),
-      raw:     computeForMode('raw'),
-      winnow:  computeForMode('winnow'),
-    },
+    frozen: { dynasty: computeForMode('dynasty'), raw: computeForMode('raw'), winnow: computeForMode('winnow') },
   };
 
   const trades = loadTradeHistory();
-  trades.unshift(trade); // newest first
+  trades.unshift(trade);
   saveTradeHistory(trades);
 
-  // Visual feedback
   const btn = document.getElementById('tradeSaveBtn');
   if (btn) {
     btn.textContent = '✅ Gespeichert!';
     btn.style.background = 'linear-gradient(135deg,#4caf81,#4caf81)';
-    setTimeout(() => {
-      btn.textContent = '✅ Done – Trade speichern';
-      btn.style.background = 'linear-gradient(135deg,#4caf81,#29b6f6)';
-    }, 2000);
+    setTimeout(() => { btn.textContent = '✅ Done – Trade speichern'; btn.style.background = 'linear-gradient(135deg,#4caf81,#29b6f6)'; }, 2000);
   }
 }
 
@@ -6980,18 +6940,9 @@ function showTradeHistory() {
   navigate('tradeHistoryPage');
 }
 
-function clearTradeHistory() {
-  if (!confirm('Alle Trade-History Einträge löschen?')) return;
-  saveTradeHistory([]);
-  renderTradeHistory();
-}
-
 function deleteTradeEntry(id) {
   const hardcodedIds = new Set(HARDCODED_TRADES.map(t => t.id));
-  if (hardcodedIds.has(id)) {
-    alert('Dieser Trade ist ein Beispiel-Eintrag und kann nicht gelöscht werden.');
-    return;
-  }
+  if (hardcodedIds.has(id)) { alert('Basis-Trades können nicht gelöscht werden.'); return; }
   const trades = loadTradeHistory().filter(t => t.id !== id);
   saveTradeHistory(trades);
   renderTradeHistory();
@@ -7001,94 +6952,61 @@ function renderTradeHistory() {
   const trades = loadTradeHistory();
   const container = document.getElementById('tradeHistoryList');
   if (!container) return;
-
   if (!trades.length) {
-    container.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--muted);border:2px dashed var(--border);border-radius:16px;margin-top:20px;">
-      <div style="font-size:40px;margin-bottom:12px;">📋</div>
-      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Noch keine Trades gespeichert</div>
-      <div style="font-size:13px;">Analysiere einen Trade und klicke "✅ Done – Trade speichern"</div>
-    </div>`;
+    container.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--muted);border:2px dashed var(--border);border-radius:16px;margin-top:20px;"><div style="font-size:40px;margin-bottom:12px;">📋</div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Noch keine Trades gespeichert</div><div style="font-size:13px;">Analysiere einen Trade und klicke "✅ Done – Trade speichern"</div></div>`;
     return;
   }
-
   const isLight = document.body.classList.contains('light');
-
   container.innerHTML = trades.map(t => {
-    // Use frozen values for current display mode, fallback for old entries without frozen data
-    const modeData = (t.frozen && t.frozen[TH_MODE]) || { valA: t.valA, valB: t.valB, verdict: t.verdict, cls: t.cls, pctA: t.pctA, pctB: t.pctB };
-    const { valA, valB, verdict, cls, pctA, pctB } = modeData;
-
-    const verdictColor = isLight
-      ? (cls === 'fair' ? '#3d8a5c' : cls === 'slight' ? '#9a6e10' : '#b43c64')
-      : (cls === 'fair' ? '#4caf81' : cls === 'slight' ? '#f5c842' : '#ff6584');
-    const borderColor = verdictColor;
-
-    const savedModeLabel = {dynasty:'🏗️ Dynasty', raw:'📊 Raw', winnow:'🏆 Win-Now'}[t.savedMode || t.mode] || '';
-    const modeLabel = {dynasty:'🏗️ Dynasty', raw:'📊 Raw', winnow:'🏆 Win-Now'}[TH_MODE];
+    const d = (t.frozen && t.frozen[TH_MODE]) || { valA: t.valA||0, valB: t.valB||0, verdict: t.verdict||'', cls: t.cls||'fair', pctA: t.pctA||'50', pctB: t.pctB||'50' };
+    const { valA, valB, verdict, cls, pctA, pctB } = d;
+    const verdictColor = isLight ? (cls==='fair'?'#3d8a5c':cls==='slight'?'#9a6e10':'#b43c64') : (cls==='fair'?'#4caf81':cls==='slight'?'#f5c842':'#ff6584');
+    const barColor = cls==='fair'?'#4caf81':cls==='slight'?'#f5c842':'#ff6584';
+    const savedModeLabel = {dynasty:'🏗️ Dynasty',raw:'📊 Raw',winnow:'🏆 Win-Now'}[t.savedMode||t.mode]||'';
+    const hardcodedIds = new Set(HARDCODED_TRADES.map(x=>x.id));
+    const isHardcoded = hardcodedIds.has(t.id);
 
     const renderSide = (players, label, val) => {
       const rows = players.map(p => {
-        if (p.isPick) {
-          const statusTxt = p.traded ? `→ von ${p.origName}` : p.currName;
-          return `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);">
-            <span style="font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;background:rgba(197,143,50,0.15);color:#c58f32;flex-shrink:0;">📋 R${p.round}</span>
-            <div style="flex:1;">
-              <div style="font-weight:600;font-size:12px;color:var(--text);">${p.year} · Round ${p.round}</div>
-              <div style="font-size:11px;color:var(--muted);">${statusTxt}</div>
-            </div>
-            <div style="font-size:11px;font-weight:700;color:#c58f32;">~${p.baseValue?.toLocaleString()}</div>
-          </div>`;
-        }
+        if (p.isPick) return `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);">
+          <span style="font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;background:rgba(197,143,50,0.15);color:#c58f32;flex-shrink:0;">📋 R${p.round}</span>
+          <div style="flex:1;"><div style="font-weight:600;font-size:12px;color:var(--text);">${p.year} · Round ${p.round}</div><div style="font-size:11px;color:var(--muted);">${p.traded?'→ von '+p.origName:p.currName}</div></div>
+          <div style="font-size:11px;font-weight:700;color:#c58f32;">~${(p.baseValue||0).toLocaleString()}</div></div>`;
         return `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);">
           <span style="font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;background:${dynastyRankBg(p.rank)};color:${dynastyRankColor(p.rank)};flex-shrink:0;">#${p.rank}</span>
-          <div style="flex:1;">
-            <div style="font-weight:600;font-size:12px;color:var(--text);">${p.name}</div>
-            <div style="font-size:11px;color:var(--muted);">${p.nba} · ${p.ownerName}</div>
-          </div>
-        </div>`;
+          <div style="flex:1;"><div style="font-weight:600;font-size:12px;color:var(--text);">${p.name}</div><div style="font-size:11px;color:var(--muted);">${p.nba} · ${p.ownerName}</div></div></div>`;
       }).join('');
-
       return `<div style="flex:1;min-width:140px;background:var(--surface2);border-radius:10px;padding:10px 12px;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
           <span style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">${label}</span>
           <span style="font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:var(--accent);">${val.toLocaleString()}</span>
-        </div>
-        ${rows}
-      </div>`;
+        </div>${rows}</div>`;
     };
 
-    const barFill = t.valA > t.valB ? t.pctA : t.pctB;
-    const barColor = cls === 'fair' ? '#4caf81' : cls === 'slight' ? '#f5c842' : '#ff6584';
-
-    return `<div style="background:var(--surface);border:1px solid ${borderColor}55;border-left:3px solid ${borderColor};border-radius:14px;padding:16px 18px;margin-bottom:12px;animation:fadeSlideIn 0.25s ease;">
-      <!-- Header -->
+    return `<div style="background:var(--surface);border:1px solid ${verdictColor}55;border-left:3px solid ${verdictColor};border-radius:14px;padding:16px 18px;margin-bottom:12px;animation:fadeSlideIn 0.25s ease;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
           <span style="font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:${verdictColor};">${verdict}</span>
           <span style="font-size:10px;font-weight:700;background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:2px 8px;border-radius:10px;">gespeichert: ${savedModeLabel}</span>
           <span style="font-size:11px;color:var(--muted);">${t.date}</span>
         </div>
-        <button onclick="deleteTradeEntry(${t.id})" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.15s;"
-          onmouseover="this.style.color='#ff6584'" onmouseout="this.style.color='var(--muted)'">✕</button>
+        ${isHardcoded ? '<span style="font-size:10px;color:var(--muted);">📌</span>' : `<button onclick="deleteTradeEntry(${t.id})" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.15s;" onmouseover="this.style.color='#ff6584'" onmouseout="this.style.color='var(--muted)'">✕</button>`}
       </div>
-      <!-- Value bar -->
       <div style="background:var(--surface2);border-radius:20px;height:6px;overflow:hidden;margin-bottom:5px;">
-        <div style="width:${pctA}%;height:100%;border-radius:20px;background:${valA>=valB?barColor:'var(--muted)'};"></div>
+        <div style="width:${pctA}%;height:100%;border-radius:20px;background:${parseFloat(pctA)>=50?barColor:'var(--muted)'};"></div>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-weight:600;margin-bottom:12px;">
         <span>Side A <strong style="color:var(--text);">${valA.toLocaleString()}</strong> (${pctA}%)</span>
         <span><strong style="color:var(--text);">${valB.toLocaleString()}</strong> Side B (${pctB}%)</span>
       </div>
-      <!-- Sides -->
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        ${renderSide(t.sideA, 'Side A', valA)}
+        ${renderSide(t.sideA,'Side A',valA)}
         <div style="display:flex;align-items:center;color:var(--muted);font-weight:800;font-family:'Playfair Display',serif;font-size:14px;">⟷</div>
-        ${renderSide(t.sideB, 'Side B', valB)}
+        ${renderSide(t.sideB,'Side B',valB)}
       </div>
     </div>`;
   }).join('');
 }
-
 
 </script>
 </body>
