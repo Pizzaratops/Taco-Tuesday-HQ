@@ -4861,21 +4861,25 @@ const TRADE_VALUE_TABLE = {"1": 2107.0, "2": 1873.5, "3": 1857.0, "4": 1792.0, "
 
 // Pick values calibrated so 2026 R1 early = 1016 = Cameron Boozer dynasty value
 const PICK_VALUES = {
-  "2026_R1_early": 1016, "2026_R1_mid":  610, "2026_R1_late":  366,
+  // 2026 — strong draft (24+ rosterable), R1 early anchored to Boozer
+  "2026_R1_early": 1016, "2026_R1_mid":  720, "2026_R1_late":  480,
   "2026_R2_early":  244, "2026_R2_mid":  163, "2026_R2_late":  112,
   "2026_R3_early":   81, "2026_R3_mid":   61, "2026_R3_late":   46,
   "2026_R4_early":   36, "2026_R4_mid":   25, "2026_R4_late":   15,
-  "2027_R1_early":  300, "2027_R1_mid":  275, "2027_R1_late":  250,
-  "2027_R2_early":  105, "2027_R2_mid":   90, "2027_R2_late":   75,
-  "2027_R3_early":   55, "2027_R3_mid":   40, "2027_R3_late":   25,
-  "2027_R4_early":   25, "2027_R4_mid":   15, "2027_R4_late":    5,
-  "2028_R1_early":  285, "2028_R1_mid":  265, "2028_R1_late":  245,
-  "2028_R2_early":  100, "2028_R2_mid":   87, "2028_R2_late":   75,
-  "2028_R3_early":   52, "2028_R3_mid":   38, "2028_R3_late":   25,
-  "2028_R4_early":   23, "2028_R4_mid":   14, "2028_R4_late":    5,
-  "2029_R1_early":  270, "2029_R1_mid":  255, "2029_R1_late":  240,
-  "2029_R2_early":   95, "2029_R2_mid":   85, "2029_R2_late":   75,
-  "2029_R3_early":   50, "2029_R3_mid":   37, "2029_R3_late":   25,
+  // 2027 — weak draft, many players staying in college via NIL
+  "2027_R1_early":  240, "2027_R1_mid":  210, "2027_R1_late":  180,
+  "2027_R2_early":   90, "2027_R2_mid":   75, "2027_R2_late":   60,
+  "2027_R3_early":   42, "2027_R3_mid":   30, "2027_R3_late":   18,
+  "2027_R4_early":   18, "2027_R4_mid":   10, "2027_R4_late":    4,
+  // 2028 — also weak (NBA teams trading 27+28 picks together)
+  "2028_R1_early":  250, "2028_R1_mid":  220, "2028_R1_late":  190,
+  "2028_R2_early":   95, "2028_R2_mid":   82, "2028_R2_late":   70,
+  "2028_R3_early":   44, "2028_R3_mid":   32, "2028_R3_late":   20,
+  "2028_R4_early":   20, "2028_R4_mid":   12, "2028_R4_late":    4,
+  // 2029 — too far out to know, slight premium over 2028
+  "2029_R1_early":  265, "2029_R1_mid":  245, "2029_R1_late":  225,
+  "2029_R2_early":  100, "2029_R2_mid":   88, "2029_R2_late":   76,
+  "2029_R3_early":   48, "2029_R3_mid":   35, "2029_R3_late":   22,
   "2029_R4_early":   22, "2029_R4_mid":   13, "2029_R4_late":    5,
 };
 
@@ -5029,16 +5033,16 @@ function ageMultiplier(dobStr, mode) {
   if (mode === 'raw') return 1.0;
   const age = playerAgeToday(dobStr);
   if (mode === 'dynasty') {
-    if (age <= 19) return 1.50;
-    if (age <= 21) return 1.35;
-    if (age <= 23) return 1.20;
-    if (age <= 25) return 1.08;
+     if (age <= 19) return 1.25;
+    if (age <= 21) return 1.18;
+    if (age <= 23) return 1.10;
+    if (age <= 25) return 1.05;
     if (age <= 27) return 1.00;
-    if (age <= 29) return 0.82;
-    if (age <= 31) return 0.62;
-    if (age <= 33) return 0.42;
-    if (age <= 35) return 0.22;
-    return 0.08;
+    if (age <= 29) return 0.80;
+    if (age <= 31) return 0.60;
+    if (age <= 33) return 0.38;
+    if (age <= 35) return 0.18;
+    return 0.06;
   }
   if (mode === 'winnow') {
     if (age <= 19) return 0.70;
@@ -5072,9 +5076,9 @@ const REPLACEMENT_VALUE = (() => {
 // Rank 100 is still a real asset; zero past rank 175.
 function dynastyCliff(rank) {
   if (rank <= 50)  return 1.00;
-  if (rank <= 100) return 0.85;
-  if (rank <= 150) return 0.65;
-  if (rank <= 175) return 0.35;
+  if (rank <= 100) return 0.90;
+  if (rank <= 150) return 0.75;
+  if (rank <= 175) return 0.50;
   return 0.00;
 }
 
