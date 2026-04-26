@@ -815,6 +815,7 @@
         <div class="snav-dropdown">
           <button class="snav-dropdown-item" data-page="trade"       onclick="showTrade()">⚖️ Trade Analyzer</button>
           <button class="snav-dropdown-item" data-page="tradefinder" onclick="showTradeFinder()">🔍 Trade Finder</button>
+          <button class="snav-dropdown-item" data-page="tradehistory" onclick="showTradeHistory()">📜 Trade History</button>
         </div>
       </div>
 
@@ -854,6 +855,7 @@
         <div class="subnav-mobile-label">Trade Tools</div>
         <button class="subnav-mobile-btn" data-page="trade"       onclick="showTrade();closeMobileNav()">⚖️ Trade Analyzer</button>
         <button class="subnav-mobile-btn" data-page="tradefinder" onclick="showTradeFinder();closeMobileNav()">🔍 Trade Finder</button>
+        <button class="subnav-mobile-btn" data-page="tradehistory" onclick="showTradeHistory();closeMobileNav()">📜 Trade History</button>
       </div>
     </div>
   </div>
@@ -1114,7 +1116,7 @@
   <div style="margin-bottom:16px;">
     <h2 style="margin-bottom:4px;">📊 Team Analytics</h2>
     <div style="display:flex;align-items:center;gap:8px;">
-      <p style="color:var(--muted);font-size:13px;">Cat-Stärken & -Schwächen aller Teams · Quelle: BBM Z-Scores</p>
+      <p style="color:var(--muted);font-size:13px;">Cat-Stärken & -Schwächen aller Teams · Quelle: BBM Z-Scores · <strong style="color:var(--accent);">Saison 2025–26</strong></p>
       <button onclick="document.getElementById('anInfoModal').style.display='flex'"
         style="width:20px;height:20px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);
                color:var(--muted);font-size:11px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;
@@ -1141,8 +1143,8 @@
       <div style="display:flex;flex-direction:column;gap:14px;font-size:13px;line-height:1.6;color:var(--muted);">
 
         <div style="background:var(--surface2);border-radius:12px;padding:14px;">
-          <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;">📥 Datenquelle: BBM Z-Scores</div>
-          Die Rohdaten kommen von <strong style="color:var(--text);">Basketball Monster (BBM)</strong> und enthalten für jeden Spieler einen Z-Score pro Kategorie — also wie weit er vom Liga-Durchschnitt aller ~580 relevanten NBA-Spieler entfernt ist. Ein Wert von +2.0 bedeutet zwei Standardabweichungen über dem Schnitt, 0.0 ist Durchschnitt, negative Werte liegen darunter.
+          <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;">📥 Datenquelle: BBM Z-Scores · <strong style="color:var(--accent);">Saison 2025–26</strong></div>
+          Die Rohdaten kommen von <strong style="color:var(--text);">Basketball Monster (BBM)</strong> und enthalten für jeden Spieler einen Z-Score pro Kategorie — also wie weit er vom Liga-Durchschnitt aller ~580 relevanten NBA-Spieler entfernt ist. Ein Wert von +2.0 bedeutet zwei Standardabweichungen über dem Schnitt, 0.0 ist Durchschnitt, negative Werte liegen darunter.<br><br><strong style="color:var(--accent);">⚠️ Nur aktuelle Saison:</strong> Diese Ansicht zeigt ausschließlich Stats der Saison 2025–26. Keine Vorhersagen, keine historischen Vergleiche.
         </div>
 
         <div style="background:var(--surface2);border-radius:12px;padding:14px;">
@@ -1215,7 +1217,10 @@
         <tbody id="anHeatmapBody"></tbody>
       </table>
     </div>
-    <p style="color:var(--muted);font-size:11px;text-align:center;margin-top:10px;">Klick auf ein Team für Details</p>
+    <p style="color:var(--muted);font-size:11px;text-align:center;margin-top:10px;">
+    Klick auf ein Team für Details &nbsp;·&nbsp; 
+    <span style="background:rgba(108,99,255,0.12);color:var(--accent);font-weight:700;padding:2px 8px;border-radius:10px;font-size:10px;">Saison 2025–26</span>
+  </p>
   </div>
 
   <!-- RADAR VIEW -->
@@ -1285,10 +1290,8 @@
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-          <input type="text" id="tradeSearchA" placeholder="Search player…" oninput="filterTradePlayers('A')"/>
+          <input type="text" id="tradeSearchA" placeholder="Spieler, Jahr oder Team suchen…" oninput="filterTradePlayers('A')"/>
         </div>
-
-<button class="pick-pool-btn" id="pickBtnA" onclick="togglePickMode('A')">📋 Picks anzeigen</button>
 
         <div class="trade-player-list" id="tradeListA"></div>
 
@@ -1323,10 +1326,8 @@
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-          <input type="text" id="tradeSearchB" placeholder="Search player…" oninput="filterTradePlayers('B')"/>
+          <input type="text" id="tradeSearchB" placeholder="Spieler, Jahr oder Team suchen…" oninput="filterTradePlayers('B')"/>
         </div>
-
-<button class="pick-pool-btn" id="pickBtnB" onclick="togglePickMode('B')">📋 Picks anzeigen</button>
 
         <div class="trade-player-list" id="tradeListB"></div>
 
@@ -1348,9 +1349,14 @@
     </div>
 
     <!-- BUTTON -->
-    <button id="tradeScreenshotBtn" class="draftboard-btn" style="margin-top:16px;background:linear-gradient(135deg,#6c63ff,#ff6584);box-shadow:0 4px 14px rgba(108,99,255,0.3);">
-      📤 Share Trade
-    </button>
+    <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+      <button id="tradeScreenshotBtn" class="draftboard-btn" style="flex:1;background:linear-gradient(135deg,#6c63ff,#ff6584);box-shadow:0 4px 14px rgba(108,99,255,0.3);">
+        📤 Share Trade
+      </button>
+      <button id="tradeSaveBtn" class="draftboard-btn" style="flex:1;background:linear-gradient(135deg,#4caf81,#29b6f6);box-shadow:0 4px 14px rgba(76,175,129,0.3);" onclick="saveTradeToHistory()">
+        ✅ Done – Trade speichern
+      </button>
+    </div>
 
   </div> <!-- END tradeCapture -->
 </div>
@@ -1786,12 +1792,10 @@ window.addEventListener('DOMContentLoaded', function() {
         </style>
       </div>
       <div style="flex:1;min-width:160px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Picks einbeziehen</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;" id="tfPickModeGrid">
-          <button class="tf-format-btn active" onclick="setTFPickMode('none')" id="tfPickModeBtn-none" style="font-size:11px;padding:7px 6px;">🚫 Keine</button>
-          <button class="tf-format-btn" onclick="setTFPickMode('give_picks')" id="tfPickModeBtn-give_picks" style="font-size:11px;padding:7px 6px;">📤 Du gibst</button>
-          <button class="tf-format-btn" onclick="setTFPickMode('for_picks')" id="tfPickModeBtn-for_picks" style="font-size:11px;padding:7px 6px;">📥 Du bekommst</button>
-          <button class="tf-format-btn" onclick="setTFPickMode('with_picks')" id="tfPickModeBtn-with_picks" style="font-size:11px;padding:7px 6px;">⚡ Gemischt</button>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Picks</div>
+        <div style="display:flex;gap:8px;" id="tfPickModeGrid">
+          <button class="tf-format-btn active" onclick="setTFPickMode('with_picks')" id="tfPickModeBtn-with_picks" style="font-size:12px;padding:8px 14px;flex:1;">⚡ Mit Picks</button>
+          <button class="tf-format-btn" onclick="setTFPickMode('none')" id="tfPickModeBtn-none" style="font-size:12px;padding:8px 14px;flex:1;">🚫 Keine Picks</button>
         </div>
       </div>
     </div>
@@ -1816,7 +1820,7 @@ window.addEventListener('DOMContentLoaded', function() {
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
-        <input type="text" id="tfGiveSearch" placeholder="Spieler oder Pick suchen…" oninput="renderTFGiveList()"/>
+        <input type="text" id="tfGiveSearch" placeholder="Spieler, Jahr (z.B. 2027) oder Team…" oninput="renderTFGiveList()"/>
       </div>
       <div class="tf-give-list" id="tfGiveList">
         <div style="text-align:center;padding:24px;color:var(--muted);font-size:12px;">Tippe zum Suchen…</div>
@@ -1848,6 +1852,25 @@ window.addEventListener('DOMContentLoaded', function() {
       </div>
     </div>
 
+  </div>
+</div>
+
+
+<!-- TRADE HISTORY PAGE -->
+<div class="page" id="tradeHistoryPage">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:6px;">
+    <div>
+      <h2 style="margin-bottom:4px;">📜 Trade History</h2>
+      <p style="color:var(--muted);font-size:13px;">Alle gespeicherten Trades der Taco Tuesday Liga</p>
+    </div>
+
+  </div>
+  <div id="tradeHistoryList">
+    <div style="text-align:center;padding:60px 20px;color:var(--muted);border:2px dashed var(--border);border-radius:16px;margin-top:20px;">
+      <div style="font-size:40px;margin-bottom:12px;">📋</div>
+      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Noch keine Trades gespeichert</div>
+      <div style="font-size:13px;">Analysiere einen Trade und klicke "✅ Done – Trade speichern"</div>
+    </div>
   </div>
 </div>
 
@@ -2067,417 +2090,593 @@ const DRAFT_NOTES = {
 const DYNASTY_PLAYERS = [
   [1,"Victor Wembanyama","SAS","PF/C","2004-01-04"],
   [2,"Shai Gilgeous-Alexander","OKC","PG/SG","1998-07-12"],
-  [3,"Luka Doncic","LAL","PG/SG","1999-02-28"],
-  [4,"Nikola Jokic","DEN","C","1995-02-19"],
+  [3,"Nikola Jokic","DEN","C","1995-02-19"],
+  [4,"Luka Doncic","LAL","PG/SG","1999-02-28"],
   [5,"Cade Cunningham","DET","PG/SG","2001-09-25"],
-  [6,"Tyrese Maxey","PHI","PG/SG","2000-11-04"],
-  [7,"Anthony Edwards","MIN","SG/SF","2001-08-05"],
+  [6,"Anthony Edwards","MIN","SG/SF","2001-08-05"],
+  [7,"Cooper Flagg","DAL","SF/PF","2006-12-21"],
   [8,"Jalen Johnson","ATL","SF/PF","2001-12-08"],
-  [9,"Jayson Tatum","BOS","SF/PF","1998-03-03"],
-  [10,"Cooper Flagg","DAL","SF/PF","2006-12-21"],
-  [11,"Tyrese Haliburton","IND","PG/SG","2000-02-29"],
-  [12,"Alperen Sengun","HOU","C","2002-07-25"],
-  [13,"Chet Holmgren","OKC","PF/C","2002-05-01"],
-  [14,"Evan Mobley","CLE","PF/C","2001-06-18"],
+  [9,"Evan Mobley","CLE","PF/C","2001-06-18"],
+  [10,"Tyrese Haliburton","IND","PG/SG","2000-02-29"],
+  [11,"Jayson Tatum","BOS","SF/PF","1998-03-03"],
+  [12,"Amen Thompson","HOU","PG/SG/SF","2003-01-30"],
+  [13,"Jalen Williams","OKC","SG/SF/PF","2001-04-14"],
+  [14,"Giannis Antetokounmpo","MIL","PF/C","1994-12-06"],
   [15,"Scottie Barnes","TOR","SF/PF","2001-08-01"],
-  [16,"Jalen Williams","OKC","SG/SF/PF","2001-04-14"],
-  [17,"Giannis Antetokounmpo","MIL","PF/C","1994-12-06"],
-  [18,"Amen Thompson","HOU","PG/SG/SF","2003-01-30"],
-  [19,"Franz Wagner","ORL","SG/SF/PF","2001-08-27"],
+  [16,"Tyrese Maxey","PHI","PG/SG","2000-11-04"],
+  [17,"Alperen Sengun","HOU","C","2002-07-25"],
+  [18,"Franz Wagner","ORL","SG/SF/PF","2001-08-27"],
+  [19,"Chet Holmgren","OKC","PF/C","2002-05-01"],
   [20,"Cameron Boozer","Duke","PF/C","2007-07-18"],
-  [21,"Austin Reaves","LAL","PG/SG","1998-05-29"],
-  [22,"Donovan Mitchell","CLE","PG/SG","1996-09-07"],
-  [23,"Darryn Peterson","Kansas","PG/SG","2007-01-17"],
-  [24,"Deni Avdija","POR","SF/PF","2001-01-03"],
-  [25,"Dylan Harper","SAS","PG/SG","2006-05-02"],
-  [26,"Darius Garland","LAC","PG/SG","2000-01-26"],
-  [27,"Devin Booker","PHO","SG/SF","1996-10-30"],
-  [28,"Josh Giddey","CHI","PG/SG/SF","2002-10-10"],
-  [29,"Jalen Brunson","NYK","PG/SG","1996-08-31"],
-  [30,"Jalen Duren","DET","C","2003-11-18"],
-  [31,"Trey Murphy III","NOR","SG/SF/PF","2000-06-18"],
-  [32,"Jamal Murray","DEN","PG/SG","1997-02-23"],
-  [33,"Paolo Banchero","ORL","SF/PF","2002-12-12"],
-  [34,"Alex Sarr","WAS","PF/C","2005-04-26"],
-  [35,"Donovan Clingan","POR","C","2004-02-23"],
-  [36,"Jaren Jackson Jr.","UTA","PF/C","1999-09-15"],
-  [37,"Jaylen Brown","BOS","SG/SF","1996-10-24"],
-  [38,"Karl-Anthony Towns","NYK","PF/C","1995-11-15"],
-  [39,"AJ Dybantsa","BYU","SG/SF","2007-01-29"],
+  [21,"Darryn Peterson","Kansas","PG/SG","2007-01-17"],
+  [22,"LaMelo Ball","CHA","PG/SG","2001-08-22"],
+  [23,"Devin Booker","PHO","SG/SF","1996-10-30"],
+  [24,"Donovan Mitchell","CLE","PG/SG","1996-09-07"],
+  [25,"Paolo Banchero","ORL","SF/PF","2002-12-12"],
+  [26,"Trey Murphy III","NOR","SG/SF/PF","2000-06-18"],
+  [27,"Trae Young","WAS","PG/SG","1998-09-19"],
+  [28,"Jalen Brunson","NYK","PG/SG","1996-08-31"],
+  [29,"Dylan Harper","SAS","PG/SG","2006-05-02"],
+  [30,"Karl-Anthony Towns","NYK","PF/C","1995-11-15"],
+  [31,"Austin Reaves","LAL","PG/SG","1998-05-29"],
+  [32,"Jaren Jackson Jr.","UTA","PF/C","1999-09-15"],
+  [33,"Darius Garland","LAC","PG/SG","2000-01-26"],
+  [34,"Deni Avdija","POR","SF/PF","2001-01-03"],
+  [35,"Jamal Murray","DEN","PG/SG","1997-02-23"],
+  [36,"Jaylen Brown","BOS","SG/SF","1996-10-24"],
+  [37,"AJ Dybantsa","BYU","SG/SF","2007-01-29"],
+  [38,"Josh Giddey","CHI","PG/SG/SF","2002-10-10"],
+  [39,"Alexandre Sarr","WAS","C","2005-04-26"],
   [40,"Bam Adebayo","MIA","PF/C","1997-07-18"],
-  [41,"VJ Edgecombe","PHI","PG/SG","2005-07-30"],
-  [42,"LaMelo Ball","CHA","PG/SG","2001-08-22"],
-  [43,"Trae Young","WAS","PG/SG","1998-09-19"],
-  [44,"De'Aaron Fox","SAS","PG/SG","1997-12-20"],
-  [45,"Desmond Bane","ORL","SG/SF","1998-06-25"],
-  [46,"Lauri Markkanen","UTA","SF/PF","1997-05-22"],
-  [47,"James Harden","CLE","PG/SG","1989-08-26"],
-  [48,"Domantas Sabonis","SAC","PF/C","1996-05-03"],
-  [49,"Kevin Durant","HOU","SF/PF","1988-09-29"],
-  [50,"Tyler Herro","MIA","PG/SG","2000-01-20"],
-  [51,"Kon Knueppel","CHA","SG/SF","2005-08-03"],
-  [52,"Caleb Wilson","North Carolina","SF/PF","2006-07-18"],
-  [53,"Zach Edey","MEM","C","2002-05-14"],
-  [54,"Brandon Miller","CHA","SF/PF","2002-11-22"],
-  [55,"Stephen Curry","GSW","PG/SG","1988-03-14"],
-  [56,"Stephon Castle","SAS","PG/SG/SF","2004-11-01"],
-  [57,"Ivica Zubac","IND","C","1997-03-18"],
-  [58,"Derrick White","BOS","PG/SG","1994-07-02"],
-  [59,"Derik Queen","NOR","PF/C","2004-12-27"],
-  [60,"Onyeka Okongwu","ATL","PF/C","2000-12-11"],
-  [61,"Reed Sheppard","HOU","PG/SG","2004-06-24"],
-  [62,"Anthony Davis","WAS","PF/C","1993-03-11"],
-  [63,"Jalen Suggs","ORL","PG/SG","2001-06-03"],
-  [64,"Kyrie Irving","DAL","PG/SG","1992-03-23"],
-  [66,"OG Anunoby","NYK","SF","1997-07-17"],
-  [67,"Isaiah Hartenstein","OKC","C","1998-05-05"],
-  [68,"Ausar Thompson","DET","SF","2003-01-31"],
-  [69,"Mikal Bridges","NYK","SF","1996-08-30"],
-  [70,"Walker Kessler","UTA","C","2001-07-26"],
-  [71,"Collin Murray-Boyles","TOR","PF","2005-06-10"],
-  [72,"Ja Morant","MEM","PG","1999-08-10"],
-  [73,"Matas Buzelis","CHI","SF","2004-10-13"],
-  [74,"Kel'el Ware","MIA","C","2004-04-20"],
-  [75,"Mikel Brown Jr.","","PG","2006-04-03"],
-  [76,"Kawhi Leonard","LAC","SF","1991-06-29"],
-  [77,"Joel Embiid","PHI","C","1994-03-16"],
-  [78,"Zion Williamson","NOR","PF","2000-07-06"],
-  [79,"Nickeil Alexander-Walker","ATL","SG","1998-09-02"],
-  [80,"Jaden McDaniels","MIN","PF","2000-09-29"],
-  [81,"Keegan Murray","SAC","PF","2000-08-19"],
-  [82,"Immanuel Quickley","TOR","PG","1999-06-17"],
-  [83,"Dyson Daniels","ATL","PG","2003-03-17"],
-  [84,"Pascal Siakam","IND","PF","1994-04-02"],
-  [85,"Scoot Henderson","POR","PG","2004-02-03"],
-  [86,"Brandon Ingram","TOR","SF","1997-09-02"],
-  [87,"Tari Eason","HOU","PF","2001-05-10"],
-  [88,"Ryan Rollins","MIL","SG","2002-07-03"],
-  [89,"Jeremiah Fears","NOR","PG","2006-10-14"],
-  [90,"Jabari Smith Jr.","HOU","PF","2003-05-13"],
-  [91,"Mark Williams","PHO","C","2001-12-16"],
-  [92,"Julius Randle","MIN","PF","1994-11-29"],
-  [93,"Jarrett Allen","CLE","C","1998-04-21"],
-  [94,"Peyton Watson","DEN","PF","2002-09-11"],
-  [95,"Anthony Black","ORL","SF","2004-01-20"],
-  [96,"Naz Reid","MIN","PF","1999-08-26"],
-  [97,"Michael Porter Jr.","BKN","PF","1998-06-29"],
-  [98,"Myles Turner","MIL","C","1996-03-24"],
-  [99,"Cason Wallace","OKC","PG/SG","2003-11-07"],
-  [100,"Donte DiVincenzo","MIN","SG","1997-01-31"],
-  [101,"Josh Hart","NYK","SF","1995-03-06"],
-  [102,"Ace Bailey","UTA","PF","2006-08-13"],
-  [103,"Tre Johnson","WAS","SG","2006-03-07"],
-  [104,"Dejounte Murray","NOR","PG","1996-09-19"],
-  [105,"Koa Peat","","PF","2007-01-20"],
-  [106,"LeBron James","LAL","SF","1984-12-30"],
-  [107,"Nic Claxton","BKN","C","1999-04-17"],
-  [108,"Dereck Lively II","DAL","C","2004-02-12"],
-  [109,"Shaedon Sharpe","POR","SF","2003-05-30"],
-  [110,"Egor Demin","BKN","PG","2006-03-03"],
-  [111,"Payton Pritchard","BOS","PG","1998-01-28"],
-  [112,"Miles Bridges","CHA","SF","1998-03-21"],
-  [113,"Santi Aldama","MEM","PF","2001-01-10"],
-  [114,"Jalen Green","PHO","SG","2002-02-09"],
-  [115,"Andrew Nembhard","IND","PG","2000-01-16"],
+  [41,"Brandon Miller","CHA","SF/PF","2002-11-22"],
+  [42,"Kon Knueppel","CHA","SG/SF",""],
+  [43,"De'Aaron Fox","SAS","PG/SG","1997-12-20"],
+  [44,"Lauri Markkanen","UTA","SF/PF","1997-05-22"],
+  [45,"Keyonte George","UTA","PG,SG","2003-08-16"],
+  [46,"VJ Edgecombe","PHI","PG/SG","2005-07-30"],
+  [47,"Desmond Bane","ORL","SG/SF","1998-06-25"],
+  [48,"Tyler Herro","MIA","PG/SG","2000-01-20"],
+  [49,"Jalen Duren","DET","C","2003-11-18"],
+  [50,"Donovan Clingan","POR","C","2004-02-23"],
+  [51,"Kevin Durant","HOU","SF/PF","1988-09-29"],
+  [52,"Stephen Curry","GSW","PG/SG","1988-03-14"],
+  [53,"Stephon Castle","SAS","PG/SG/SF",""],
+  [54,"Dyson Daniels","ATL","PG","2003-03-17"],
+  [55,"Caleb Wilson","North Carolina","SF/PF","2006-07-18"],
+  [56,"Anthony Davis","WAS","PF/C","1993-03-11"],
+  [57,"James Harden","CLE","PG/SG","1989-08-26"],
+  [58,"Walker Kessler","UTA","C","2001-07-26"],
+  [59,"Onyeka Okongwu","ATL","PF/C","2000-12-11"],
+  [60,"Matas Buzelis","CHI","SF","2004-10-13"],
+  [61,"Alex Sarr","WAS","PF/C","2005-04-26"],
+  [62,"Ivica Zubac","IND","C","1997-03-18"],
+  [63,"Ausar Thompson","DET","SF","2003-01-31"],
+  [64,"Zion Williamson","NOR","PF","2000-07-06"],
+  [65,"Reed Sheppard","HOU","PG/SG","2004-06-24"],
+  [66,"Ace Bailey","UTA","PF","2006-08-13"],
+  [67,"Brandon Ingram","TOR","SF","1997-09-02"],
+  [68,"Domantas Sabonis","SAC","PF/C","1996-05-03"],
+  [69,"Jalen Suggs","ORL","PG/SG","2001-06-03"],
+  [70,"Derrick White","BOS","PG/SG","1994-07-02"],
+  [71,"Kel'el Ware","MIA","C","2004-04-20"],
+  [72,"Pascal Siakam","IND","PF","1994-04-02"],
+  [73,"Cedric Coward","MEM","SG,SF","2002-01-01"],
+  [74,"Mikal Bridges","NYK","SF","1996-08-30"],
+  [75,"OG Anunoby","NYK","SF","1997-07-17"],
+  [76,"Derik Queen","NOR","PF/C","2004-12-27"],
+  [77,"Isaiah Hartenstein","OKC","C","1998-05-05"],
+  [78,"Scoot Henderson","POR","PG","2004-02-03"],
+  [79,"Jaden McDaniels","MIN","PF","2000-09-29"],
+  [80,"Immanuel Quickley","TOR","PG","1999-06-17"],
+  [81,"Jarrett Allen","CLE","C","1998-04-21"],
+  [82,"Dejounte Murray","NOR","PG","1996-09-19"],
+  [83,"Kawhi Leonard","LAC","SF","1991-06-29"],
+  [84,"Zach Edey","MEM","C","2002-05-14"],
+  [85,"Ja Morant","MEM","PG","1999-08-10"],
+  [86,"Collin Murray-Boyles","TOR","PF","2005-06-10"],
+  [87,"Jalen Green","PHO","SG","2002-02-09"],
+  [88,"Ayo Dosunmu","MIN","PG","2000-01-17"],
+  [89,"Michael Porter Jr.","BKN","PF","1998-06-29"],
+  [90,"Anthony Black","ORL","SF","2004-01-20"],
+  [91,"Joel Embiid","PHI","C","1994-03-16"],
+  [92,"Shaedon Sharpe","POR","SF","2003-05-30"],
+  [93,"Keegan Murray","SAC","PF","2000-08-19"],
+  [94,"Jeremiah Fears","NOR","PG","2006-10-14"],
+  [95,"Jabari Smith Jr.","HOU","PF","2003-05-13"],
+  [96,"Dereck Lively II","DAL","C",""],
+  [97,"Kyshawn George","WAS","SG,SF,PF","2003-01-01"],
+  [98,"LeBron James","LAL","SF","1984-12-30"],
+  [99,"Tre Johnson","WAS","SG","2006-03-07"],
+  [100,"Kyrie Irving","DAL","PG/SG","1992-03-23"],
+  [101,"Egor Demin","BKN","PG","2006-03-03"],
+  [102,"Bilal Coulibaly","WAS","SG/SF","2004-07-26"],
+  [103,"RJ Barrett","TOR","SG/SF","2000-06-14"],
+  [104,"Mark Williams","PHO","C","2001-12-16"],
+  [105,"Miles Bridges","CHA","SF","1998-03-21"],
+  [106,"Coby White","CHA","PG,SG","2000-02-16"],
+  [107,"Julius Randle","MIN","PF","1994-11-29"],
+  [108,"Tari Eason","HOU","PF","2001-05-10"],
+  [109,"Devin Vassell","SA","SG,SF","2001-04-13"],
+  [110,"Brandin Podziemski","GSW","PG/SG/SF","2003-02-25"],
+  [111,"Nic Claxton","BKN","C","1999-04-17"],
+  [112,"Josh Hart","NYK","SF","1995-03-06"],
+  [113,"Myles Turner","MIL","C","1996-03-24"],
+  [114,"Nickeil Alexander-Walker","ATL","SG","1998-09-02"],
+  [115,"Cason Wallace","OKC","PG/SG","2003-11-07"],
   [116,"PJ Washington","DAL","PF","1998-08-23"],
-  [119,"Ajay Mitchell","OKC","PG/SG","2002-06-25"],
-  [120,"Aday Mara","Michigan","C","2005-01-01"],
-  [124,"Jonathan Kuminga","ATL","SF/PF","2002-10-06"],
-  [125,"Bilal Coulibaly","WAS","SG/SF","2004-07-26"],
-  [126,"Jared McCain","OKC","PG/SG","2004-02-20"],
-  [127,"Kristaps Porzingis","GSW","PF/C","1995-08-02"],
-  [128,"Khaman Maluach","PHO","C","2006-09-14"],
-  [129,"Toumani Camara","POR","SF/PF","2000-05-08"],
-  [132,"Rudy Gobert","MIN","C","1992-06-26"],
-  [134,"Norman Powell","MIA","SG/SF","1993-05-25"],
-  [135,"Christian Braun","DEN","SG/SF","2001-04-17"],
-  [136,"Dailyn Swain","Texas","SF/PF","1999-01-01"],
-  [137,"Ty Jerome","MEM","PG/SG","1997-07-08"],
-  [138,"Deandre Ayton","LAL","C","1998-07-23"],
-  [139,"Daniel Gafford","DAL","C","1998-10-01"],
-  [140,"Nikola Topic","OKC","PG/SG","2005-08-10"],
-  [141,"Jaime Jaquez Jr.","MIA","SG/SF","2001-02-18"],
-  [142,"Jaylon Tyson","CLE","SG/SF","2002-12-02"],
-  [144,"Brandin Podziemski","GSW","PG/SG/SF","2003-02-25"],
-  [145,"Yaxel Lendeborg","Michigan","PF","1999-01-01"],
-  [146,"John Collins","LAC","PF/C","1997-09-23"],
-  [148,"Kevin Porter Jr.","MIL","PG/SG","2000-05-04"],
-  [149,"Ronald Holland II","DET","SF/PF","2005-07-07"],
-  [150,"Labaron Philon","Alabama","PG/SG","2004-01-01"],
-  [151,"Nate Ament","Tennessee","SF/PF","2003-01-01"],
-  [152,"Aaron Gordon","DEN","SF/PF","1995-09-16"],
-  [153,"Moussa Diabate","CHA","PF","2002-01-21"],
-  [154,"RJ Barrett","TOR","SG/SF","2000-06-14"],
-  [155,"Aaron Nesmith","IND","SF","1999-10-16"],
-  [156,"Thomas Sorber","OKC","C","2005-12-25"],
-  [157,"Cam Johnson","DEN","SF","1996-03-03"],
-  [158,"Malik Monk","SAC","SG","1998-02-04"],
-  [159,"Neemias Queta","BOS","C","1999-07-13"],
-  [160,"Will Riley","WAS","SF","2006-02-10"],
-  [161,"Quentin Grimes","PHI","SG/SF","2000-05-08"],
-  [162,"Bennedict Mathurin","LAC","SG/SF","2002-06-19"],
+  [117,"Rudy Gobert","MIN","C","1992-06-26"],
+  [118,"Andrew Nembhard","IND","PG","2000-01-16"],
+  [119,"Isaiah Collier","UTA","PG",""],
+  [120,"Peyton Watson","DEN","PF","2002-09-11"],
+  [121,"Nikola Topic","OKC","PG/SG","2005-08-10"],
+  [122,"Javon Small","MEM","PG,SG",""],
+  [123,"Nicolas Claxton","BKN","C",""],
+  [124,"Aday Mara","Michigan","C",""],
+  [125,"Santi Aldama","MEM","PF","2001-01-10"],
+  [126,"Naz Reid","MIN","PF","1999-08-26"],
+  [127,"Bennedict Mathurin","LAC","SG/SF","2002-06-19"],
+  [128,"Dailyn Swain","Texas","SF/PF",""],
+  [129,"Moussa Cisse","DAL","C",""],
+  [130,"Mason Jones","SAC","SG,SF",""],
+  [131,"Jacob Toppin","ATL","",""],
+  [132,"Isaiah Crawford","HOU","",""],
+  [133,"Darius Bazley","FA","PF",""],
+  [134,"Yaxel Lendeborg","Michigan","PF",""],
+  [135,"Robin Lopez","FA","C",""],
+  [136,"R.J. Hampton","FA","PG,SG",""],
+  [137,"Ronald Holland II","DET","SF/PF",""],
+  [138,"Chris Youngblood","POR","SG",""],
+  [139,"Labaron Philon","Alabama","PG/SG",""],
+  [140,"Jaime Jaquez Jr.","MIA","SG/SF","2001-02-18"],
+  [141,"Deandre Ayton","LAL","C",""],
+  [142,"Kristaps Porzingis","GSW","PF/C",""],
+  [143,"Zaccharie Risacher","ATL","SF",""],
+  [144,"Nate Ament","Tennessee","SF/PF",""],
+  [145,"Jazian Gortman","DAL","",""],
+  [146,"Fred VanVleet","HOU","PG",""],
+  [147,"John Collins","LAC","PF/C",""],
+  [148,"Boo Buie","NY","",""],
+  [149,"Isaiah Stevens","SAC","PG",""],
+  [150,"Payton Pritchard","BOS","PG","1998-01-28"],
+  [151,"Doug McDermott","SAC","SF,PF",""],
+  [152,"Christian Braun","DEN","SG/SF",""],
+  [153,"Toumani Camara","POR","SF/PF","2000-05-08"],
+  [154,"Chimezie Metu","FA","PF,C",""],
+  [155,"Kobi Simmons","FA","PG",""],
+  [156,"Cam Johnson","DEN","SF",""],
+  [157,"Kevin Knox II","GS","SF,PF",""],
+  [158,"Nate Hinton","HOU","SG,SF",""],
+  [159,"Ulrich Chomche","TOR","C",""],
+  [160,"Trey Alexander","NO","SG",""],
+  [161,"Tosan Evbuomwan","CHA","SF,PF",""],
+  [162,"Kyle Filipowski","UTA","PF","2003-11-07"],
   [163,"Maxime Raynaud","SAC","C","2003-04-07"],
-  [164,"Joan Beringer","MIN","C","2006-11-11"],
-  [165,"Wendell Carter Jr.","ORL","C","1999-04-16"],
-  [166,"Ryan Kalkbrenner","CHA","C","2002-01-17"],
-  [168,"Max Christie","DAL","SG","2003-02-10"],
-  [169,"Fred VanVleet","HOU","PG","1994-02-25"],
-  [170,"Paul George","PHI","SF/PF","1990-05-20"],
-  [171,"Herbert Jones","NOR","SF","1998-10-06"],
-  [172,"Carter Bryant","SAS","SF","2005-11-26"],
-  [173,"Kyle Filipowski","UTA","PF","2003-11-07"],
-  [174,"Jrue Holiday","POR","PG/SG","1990-06-12"],
-  [175,"CJ McCollum","ATL","PG/SG","1991-09-19"],
-  [176,"Andrew Wiggins","MIA","SF","1995-02-23"],
-  [177,"Keon Ellis","CLE","SG","2000-01-08"],
-  [178,"Jaden Ivey","CHI","SG","2002-02-13"],
-  [179,"Zaccharie Risacher","ATL","SF","2005-04-08"],
-  [180,"Jase Richardson","ORL","SG","2005-10-15"],
-  [181,"Noah Clowney","BKN","PF","2004-07-14"],
-  [182,"Aaron Wiggins","OKC","SF","1999-01-02"],
-  [183,"De'Andre Hunter","SAC","SF","1997-12-02"],
-  [184,"Egor Demin","BKN","PG/SG/SF","2006-03-03"],
-  [187,"Ayo Dosunmu","MIN","PG","2000-01-17"],
-  [188,"Cam Spencer","MEM","SG","2000-04-06"],
-  [189,"Dillon Brooks","PHO","SF","1996-01-22"],
-  [190,"Luke Kornet","SAS","C","1995-07-15"],
-  [191,"Grayson Allen","PHO","SG","1995-10-08"],
-  [192,"Nique Clifford","SAC","SF","2002-02-09"],
-  [193,"Jaylen Wells","MEM","SF","2003-08-26"],
-  [194,"Jordan Poole","NOR","SG","1999-06-19"],
-  [196,"Scotty Pippen Jr.","MEM","PG","2000-10-10"],
-  [197,"Tobias Harris","DET","PF","1992-07-15"],
-  [198,"Isaiah Collier","UTA","PG","2004-10-08"],
-  [200,"Bub Carrington","WAS","PG","2005-07-21"],
-  [201,"Davion Mitchell","MIA","PG","1998-09-05"],
-  [202,"Devin Carter","SAC","SG","2002-03-18"],
-  [203,"Cam Thomas","MIL","SG","2001-10-13"],
-  [204,"Naji Marshall","DAL","PF","1998-01-24"],
-  [205,"Dominick Barlow","PHI","PF","2003-05-26"],
-  [206,"Draymond Green","GSW","PF","1990-03-04"],
-  [207,"Justin Champagnie","WAS","SF","2001-06-29"],
-  [208,"DeMar DeRozan","SAC","SF","1989-08-07"],
-  [209,"GG Jackson","MEM","PF","2004-12-17"],
-  [210,"Jarace Walker","IND","PF","2003-09-04"],
-  [211,"Jake LaRavia","LAL","SF","2001-11-03"],
-  [212,"De'Anthony Melton","GSW","SG","1998-05-28"],
-  [213,"Sam Merrill","CLE","SG","1996-05-15"],
-  [214,"Kelly Oubre Jr.","PHI","SF","1995-12-09"],
-  [215,"Noa Essengue","CHI","PF","2006-12-18"],
-  [216,"Jalen Smith","CHI","PF","2000-03-16"],
-  [217,"Alex Caruso","OKC","SG","1994-02-28"],
-  [218,"Nikola Jovic","MIA","SF","2003-06-09"],
-  [219,"Collin Sexton","CHI","PG","1999-01-04"],
-  [220,"Obi Toppin","IND","PF","1998-03-04"],
-  [221,"Rui Hachimura","LAL","PF","1998-02-08"],
-  [222,"Julian Champagnie","SAS","SF","2001-06-29"],
-  [223,"Sandro Mamukelashvili","TOR","C","1999-05-23"],
-  [224,"Miles McBride","NYK","PG","2000-09-08"],
-  [225,"Robert Williams III","POR","C","1997-10-17"],
-  [226,"Jusuf Nurkic","UTA","C","1994-08-23"],
-  [227,"Derrick Jones Jr.","LAC","SF","1997-02-15"],
-  [228,"Saddiq Bey","NOR","SF","1999-04-09"],
-  [229,"Josh Minott","BKN","PF","2002-11-25"],
-  [230,"Kris Dunn","LAC","SG","1994-03-18"],
-  [231,"Bradley Beal","LAC","SG","1993-06-28"],
-  [233,"Nikola Vucevic","BOS","C","1990-10-24"],
-  [237,"Luguentz Dort","OKC","SG","1999-04-19"],
-  [238,"Yves Missi","NOR","C","2004-05-14"],
-  [239,"Brice Sensabaugh","UTA","SF","2003-10-31"],
-  [240,"Taylor Hendricks","MEM","PF","2003-11-22"],
-  [241,"Jamal Shead","TOR","PG","2001-07-24"],
-  [242,"Dennis Schroder","CLE","PG","1993-09-15"],
-  [243,"Bobby Portis","MIL","C","1995-02-10"],
-  [244,"Isaiah Joe","OKC","SG","1999-07-02"],
-  [245,"Keldon Johnson","SAS","SF","1999-10-11"],
-  [246,"Craig Porter Jr.","CLE","SG","2000-02-26"],
-  [247,"Daniss Jenkins","DET","PG","2001-08-17"],
-  [248,"Dylan Cardwell","SAC","C","2001-12-16"],
-  [249,"Brandon Williams","DAL","PG","1999-11-22"],
-  [250,"Hugo Gonzalez","BOS","SF","2006-02-05"],
-  [251,"Tristan Vukcevic","WAS","C","2003-03-11"],
-  [252,"Jay Huff","IND","C","1998-08-25"],
-  [253,"Marcus Smart","LAL","SG","1994-03-06"],
-  [254,"Tristan da Silva","ORL","SF","2001-05-15"],
-  [255,"Jose Alvarado","NYK","PG","1998-04-12"],
-  [256,"Quinten Post","GSW","C","2000-03-21"],
-  [257,"Rasheer Fleming","PHO","PF","2004-07-10"],
-  [258,"Yanic Konan Niederhauser","LAC","C","2003-03-14"],
-  [259,"Jaylin Williams","OKC","C","2002-06-29"],
-  [260,"Asa Newell","ATL","PF","2005-10-05"],
-  [261,"TJ McConnell","IND","PG","1992-03-25"],
-  [262,"Vit Krejci","POR","PG","2000-06-19"],
-  [263,"Jordan Goodwin","PHO","SG","1998-10-23"],
-  [264,"Gui Santos","GSW","SG","2002-06-22"],
-  [265,"Jordan Walsh","BOS","SF","2004-03-03"],
-  [266,"Royce O'Neale","PHO","SF","1993-06-05"],
-  [267,"Dru Smith","MIA","PG","1997-12-30"],
-  [268,"Brook Lopez","LAC","C","1988-04-01"],
-  [269,"Al Horford","GSW","C","1986-06-03"],
-  [270,"Vince Williams Jr.","UTA","SF","2000-08-30"],
-  [271,"Tidjane Salaun","CHA","PF","2005-08-10"],
-  [272,"Mouhamed Gueye","ATL","PF","2002-11-09"],
-  [273,"Karlo Matkovic","NOR","C","2001-03-30"],
-  [274,"Lonzo Ball","FA","PG","1997-10-27"],
-  [275,"Bruce Brown Jr.","DEN","SG","1996-08-15"],
-  [276,"Adem Bona","PHI","C","2003-03-28"],
-  [277,"Cam Whitmore","WAS","SF","2004-07-08"],
-  [278,"Tre Mann","CHA","SG","2001-02-03"],
-  [279,"Kyle Kuzma","MIL","PF","1995-07-24"],
-  [280,"Max Strus","CLE","SG","1996-03-28"],
-  [281,"Trendon Watford","PHI","PF","2000-11-09"],
-  [282,"Liam McNeeley","CHA","SF","2005-10-10"],
-  [283,"Sion James","CHA","SF","2002-12-04"],
-  [284,"Adou Thiero","LAL","SF","2004-05-08"],
-  [285,"Ryan Dunn","PHO","PF","2003-01-07"],
-  [286,"Pelle Larsson","MIA","SG","2001-02-23"],
-  [287,"Andre Drummond","PHI","C","1993-08-10"],
-  [288,"Steven Adams","HOU","C","1993-07-20"],
-  [289,"Tyler Kolek","NYK","PG","2001-03-27"],
-  [290,"Brandon Clarke","MEM","C","1996-09-19"],
-  [291,"Ryan Nembhard","DAL","PG","2003-03-10"],
-  [292,"Harrison Barnes","SAS","PF","1992-05-30"],
-  [293,"Khris Middleton","DAL","SF","1991-08-12"],
-  [294,"Bones Hyland","MIN","SG","2000-09-14"],
-  [295,"Noah Penda","ORL","PF","2005-01-07"],
-  [296,"Will Richard","GSW","SG","2002-12-24"],
-  [297,"Ja'Kobe Walter","TOR","SG","2004-09-04"],
-  [298,"DaRon Holmes II","DEN","C","2002-08-15"],
-  [299,"AJ Green","MIL","SG","1999-09-27"],
-  [300,"Clint Capela","HOU","C","1994-05-18"],
-  [301,"Cody Williams","UTA","SF","2004-11-20"],
-  [302,"Jock Landale","ATL","C","1995-10-25"],
-  [303,"Paul Reed","DET","PF","1999-06-14"],
-  [304,"Nick Richards","CHI","C","1997-11-29"],
-  [305,"Pat Spencer","GSW","PG","1996-07-04"],
-  [306,"Kam Jones","IND","SG","2002-02-25"],
-  [307,"Jonathan Mogbo","TOR","PF","2001-10-29"],
-  [308,"Moritz Wagner","ORL","C","1997-04-26"],
-  [309,"Johnny Furphy","IND","SF","2004-12-07"],
-  [310,"Leonard Miller","CHI","PF","2003-11-26"],
-  [311,"Corey Kispert","ATL","SF","1999-03-03"],
-  [312,"Trayce Jackson-Davis","TOR","C","2000-02-22"],
-  [313,"Kevin Huerter","DET","SG","1998-08-27"],
-  [314,"Oso Ighodaro","PHO","C","2002-07-02"],
-  [315,"Gradey Dick","TOR","SF","2003-11-20"],
-  [316,"Micah Peavy","NOR","SF","2001-07-16"],
-  [317,"Patrick Williams","CHI","PF","2001-08-26"],
-  [318,"Tyrese Proctor","CLE","SG","2004-01-04"],
-  [319,"Chaz Lanier","DET","SG","2000-12-19"],
-  [320,"Ben Saraf","BKN","PG","2006-04-14"],
-  [321,"Gary Trent Jr.","MIL","SG","1999-01-18"],
-  [322,"Luke Kennard","LAL","SG","1996-06-24"],
-  [323,"Ochai Agbaji","BKN","SG","2000-04-20"],
-  [324,"Josh Okogie","HOU","SG","1998-09-01"],
-  [325,"Spencer Jones","DEN","SF","2001-06-14"],
-  [326,"Baylor Scheierman","BOS","SF","2000-09-26"],
-  [327,"Rocco Zikarsky","MIN","C","2006-07-11"],
-  [328,"Terance Mann","BKN","SG","1996-10-18"],
-  [330,"Caris LeVert","DET","SG","1994-08-25"],
-  [331,"Ben Sheppard","IND","SF","2001-07-16"],
-  [333,"Ziaire Williams","BKN","SF","2001-09-12"],
-  [335,"Johni Broome","PHI","C","2002-07-19"],
-  [336,"Jordan Goodwin","PHO","SG","1998-10-23"],
-  [337,"Tim Hardaway Jr.","DEN","SG","1992-03-16"],
-  [338,"Cam Whitmore","WAS","SF","2004-07-08"],
-  [339,"Marvin Bagley III","DAL","C","1999-03-14"],
-  [340,"Ja'Kobe Walter","TOR","SG","2004-09-04"],
-  [341,"Kentavious Caldwell-Pope","MEM","SG","1993-02-18"],
-  [342,"Simone Fontecchio","MIA","SF","1995-12-09"],
-  [343,"Sion James","CHA","SF","2002-12-04"],
-  [344,"Johnny Furphy","IND","SF","2004-12-07"],
-  [345,"Malik Beasley","FA","SG","1996-11-26"],
-  [346,"Isaac Okoro","CHI","SF","2001-01-26"],
-  [348,"D'Angelo Russell","WAS","PG","1996-02-23"],
-  [349,"Lonzo Ball","FA","PG","1997-10-27"],
-  [350,"Klay Thompson","DAL","SG","1990-02-08"],
-  [351,"Caleb Love","POR","SG","2001-09-27"],
-  [352,"Trendon Watford","PHI","PF","2000-11-09"],
-  [353,"Brook Lopez","LAC","C","1988-04-01"],
-  [356,"Steven Adams","HOU","C","1993-07-20"],
-  [357,"Brandon Clarke","MEM","PF","1996-09-19"],
-  [358,"Matisse Thybulle","POR","SF","1997-03-04"],
-  [362,"Elijah Harkless","PHI","SF","2000-02-03"],
-  [363,"Ron Harper Jr.","BOS","SF","2000-04-12"],
-  [364,"Tre Mann","CHA","PG","2001-02-03"],
-  [365,"Svi Mykhailuk","UTA","SG","1997-06-10"],
-  [366,"Jordan Hawkins","NOR","SG","2002-04-29"],
-  [367,"Grant Williams","CHA","PF","1998-11-30"],
-  [368,"Brooks Barnhizer","OKC","SG","2002-03-02"],
-  [369,"Dean Wade","CLE","PF","1996-11-20"],
-  [370,"Jaxson Hayes","LAL","C","2000-05-23"],
-  [372,"Cole Anthony","FA","PG","2000-05-15"],
-  [373,"Dorian Finney-Smith","HOU","SF","1993-05-04"],
-  [375,"Nae'Qwan Tomlin","CLE","PF","2000-12-19"],
-  [376,"Buddy Hield","ATL","SG","1992-12-17"],
-  [377,"AJ Johnson","PHO","SF","2004-12-01"],
-  [378,"Tyus Jones","DEN","PG","1996-05-10"],
-  [379,"Haywood Highsmith","PHO","SF","1996-12-09"],
-  [380,"Dalton Knecht","LAL","SG","2001-04-19"],
-  [382,"Pacome Dadiet","NYK","SF","2005-07-27"],
-  [383,"Julian Reese","WAS","C","2003-01-01"],
-  [384,"Josh Green","CHA","SF","2000-11-16"],
-  [386,"Gary Payton II","GSW","SG","1992-12-01"],
-  [387,"Jaden Hardy","WAS","SG","2002-07-05"],
-  [388,"Jarred Vanderbilt","LAL","PF","1999-04-03"],
-  [389,"Kelly Olynyk","SAS","C","1991-04-19"],
-  [390,"Koby Brea","PHO","SG","2002-11-06"],
-  [391,"Mike Conley","MIN","PG","1987-10-11"],
-  [392,"Jonathan Isaac","ORL","PF","1997-10-03"],
-  [393,"Jordan Clarkson","NYK","SG","1992-06-07"],
-  [395,"Alijah Martin","TOR","SG","2001-12-26"],
-  [396,"Bronny James","LAL","PG","2004-10-06"],
-  [397,"Quenton Jackson","IND","PG","1998-09-15"],
-  [398,"Bogoljub Markovic","ORL","PF","2005-07-12"],
-  [399,"Rayan Rupert","MEM","SF","2004-05-31"],
-  [400,"Alex Toohey","LAL","SF","2000-01-01"],
-  [401,"John Tonje","BOS","SG","2001-04-23"],
-  [402,"Precious Achiuwa","SAC","PF","1999-09-19"],
-  [404,"Kevon Looney","NOR","C","1996-02-06"],
-  [405,"Jericho Sims","MIL","C","1998-10-20"],
-  [406,"Taurean Prince","MIL","SF","1994-03-22"],
-  [407,"Pete Nance","MIL","PF","2000-02-19"],
-  [408,"Zach Collins","CHI","PF","1997-11-19"],
-  [409,"Tyrese Martin","PHI","SF","1999-03-07"],
-  [410,"Javonte Green","DET","SF","1993-07-23"],
-  [411,"Kyle Anderson","MIN","SF","1993-09-20"],
-  [412,"Tyler Smith","DAL","PF","2001-01-01"],
-  [413,"Jett Howard","ORL","SG","2003-09-14"],
-  [414,"Sidy Cissoko","POR","SG","2004-04-02"],
-  [415,"Aaron Holiday","HOU","PG","1996-09-30"],
-  [416,"Jamal Cain","ORL","SF","1999-03-20"],
-  [417,"Kris Murray","POR","PF","2000-08-19"],
-  [418,"Blake Wesley","POR","SG","2003-03-16"],
-  [419,"KJ Simpson","DEN","PG","2001-01-01"],
-  [421,"PJ Hall","CHA","PF","2002-02-21"],
-  [422,"John Konchar","UTA","SG","1996-03-22"],
-  [424,"Caleb Martin","DAL","SG","1995-09-28"],
-  [425,"Jabari Walker","PHI","PF","2002-07-30"],
-  [426,"Jalen Wilson","BKN","PF","2000-11-04"],
-  [427,"Marcus Sasser","DET","SG","2000-09-21"],
-  [428,"Myron Gardner","MIA","SF","2001-05-21"],
-  [429,"Kevin Love","UTA","PF","1988-09-07"],
-  [430,"Ariel Hukporti","NYK","C","2002-04-12"],
-  [431,"Tyler Burton","FA","PF","2000-01-01"],
-  [432,"Olivier Maxence-Prosper","MEM","PF","2002-07-03"],
-  [433,"Jalen Slawson","IND","PF","2000-01-01"],
-  [434,"Dru Smith","MIA","PG","1997-12-30"],
-  [435,"Kennedy Chandler","FA","PG","2002-01-01"],
-  [436,"Jalen Pickett","DEN","PG","1999-10-22"],
-  [437,"Kenrich Williams","OKC","SF","1994-12-02"],
-  [438,"Thomas Bryant","CLE","C","1997-07-31"],
-  [439,"Keshad Johnson","MIA","SF","2000-06-23"],
-  [440,"Taelon Peter","IND","SF","2002-02-27"],
-  [441,"Jahmai Mashack","MEM","SG","2002-11-10"],
-  [442,"Lachlan Olbrich","CHI","C","2003-12-29"],
-  [443,"Sharife Cooper","WAS","PG","2001-06-11"],
-  [444,"Max Shulga","BOS","PG","2002-06-25"],
-  [445,"Dillon Jones","NYK","SF","2001-10-29"],
-  [446,"Killian Hayes","SAC","PG","2001-07-27"],
-  [447,"Dalen Terry","PHI","SF","2002-12-12"],
-  [448,"Juan Nunez","DEN","PG","2003-01-01"],
-  [449,"Larry Nance Jr.","CLE","PF","1993-01-01"],
-  [450,"Branden Carlson","OKC","C","1999-06-14"],
+  [164,"DJ Steward","CHI","",""],
+  [165,"Noah Clowney","BKN","PF","2004-07-14"],
+  [166,"Daeqwon Plowden","SAC","SF,PF",""],
+  [167,"Ryan Kalkbrenner","CHA","C","2002-01-17"],
+  [168,"Kobe Sanders","LAC","SG,SF",""],
+  [169,"Jarace Walker","IND","PF","2003-09-04"],
+  [170,"Isaiah Roby","FA","PF,C",""],
+  [171,"Theo Maledon","FA","PG",""],
+  [172,"Dylan Cardwell","SAC","C","2001-12-16"],
+  [173,"Isaiah Todd","FA","PF,C",""],
+  [174,"Miles Kelly","DAL","",""],
+  [175,"Tristan Enaruna","CLE","",""],
+  [176,"Blake Hinson","UTA","",""],
+  [177,"Luke Travers","CLE","SF",""],
+  [178,"Oso Ighodaro","PHO","C","2002-07-02"],
+  [179,"Tobias Harris","DET","PF",""],
+  [180,"Aaron Nesmith","IND","SF",""],
+  [181,"Carter Bryant","SAS","SF","2005-11-26"],
+  [182,"Jonathan Kuminga","ATL","SF/PF","2002-10-06"],
+  [183,"Paul George","PHI","SF/PF","1990-05-20"],
+  [184,"Kevin Porter Jr.","MIL","PG/SG","2000-05-04"],
+  [185,"Jordan Poole","NOR","SG",""],
+  [186,"Donte DiVincenzo","MIN","SG","1997-01-31"],
+  [187,"Davion Mitchell","MIA","PG","1998-09-05"],
+  [188,"Victor Oladipo","FA","PG,SG",""],
+  [189,"Otto Porter Jr.","FA","SG,SF",""],
+  [190,"Jaylen Wells","MEM","SF","2003-08-26"],
+  [191,"Tristan Thompson","CLE","C",""],
+  [192,"Daniss Jenkins","DET","PG","2001-08-17"],
+  [193,"Herbert Jones","NOR","SF","1998-10-06"],
+  [194,"Hamidou Diallo","FA","SG",""],
+  [195,"Daniel Gafford","DAL","C","1998-10-01"],
+  [196,"Jaden Ivey","CHI","SG","2002-02-13"],
+  [197,"Bruno Fernando","TOR","C",""],
+  [198,"Jared McCain","OKC","PG/SG","2004-02-20"],
+  [199,"Josh Christopher","MIA","PG,SG",""],
+  [200,"Jordan Nwora","FA","SF,PF",""],
+  [201,"Thomas Sorber","OKC","C","2005-12-25"],
+  [202,"Amari Williams","BOS","",""],
+  [203,"Nikola Vucevic","BOS","C","1990-10-24"],
+  [204,"Nique Clifford","SAC","SF",""],
+  [205,"Cam Thomas","MIL","SG","2001-10-13"],
+  [206,"Josh Oduro","NO","",""],
+  [207,"Leaky Black","WAS","SF,PF",""],
+  [208,"Malcolm Hill","NO","",""],
+  [209,"Ty Jerome","MEM","PG/SG",""],
+  [210,"Mohamed Diawara","NY","",""],
+  [211,"DeMar DeRozan","SAC","SF","1989-08-07"],
+  [212,"Moussa Diabate","CHA","PF",""],
+  [213,"Chris Mañon","LAL","",""],
+  [214,"Aaron Gordon","DEN","SF/PF",""],
+  [215,"Bruce Brown Jr.","DEN","SG","1996-08-15"],
+  [216,"Joe Harris","FA","SG,SF",""],
+  [217,"Justin Champagnie","WAS","SF",""],
+  [218,"Mark Sears","MIL","",""],
+  [219,"Bub Carrington","WAS","PG",""],
+  [220,"Jeff Dowtin Jr.","PHI","PG,SG",""],
+  [221,"Taylor Hendricks","MEM","PF",""],
+  [222,"Jaylin Galloway","MIL","",""],
+  [223,"Max Fiedler","PHI","",""],
+  [224,"Hunter Sallis","PHI","",""],
+  [225,"CJ McCollum","ATL","PG/SG",""],
+  [226,"Jamir Watkins","WAS","SG,SF",""],
+  [227,"Khem Birch","FA","C",""],
+  [228,"Montrezl Harrell","FA","C",""],
+  [229,"Thanasis Antetokounmpo","MIL","PF",""],
+  [230,"Braxton Key","GS","SF,PF",""],
+  [231,"D.J. Carton","TOR","",""],
+  [232,"Jaylen Martin","WAS","",""],
+  [233,"Alex O'Connell","NY","",""],
+  [234,"Collin Sexton","CHI","PG",""],
+  [235,"Christian Koloko","ATL","C",""],
+  [236,"Brandon Boston Jr","NO","SF,PF",""],
+  [237,"Jordan Miller","LAC","SG,SF",""],
+  [238,"Devin Carter","SAC","SG","2002-03-18"],
+  [239,"Alex Ducas","OKC","",""],
+  [240,"Wendell Moore Jr.","DET","SF",""],
+  [241,"Cam Whitmore","WAS","SF",""],
+  [242,"Anfernee Simons","CHI","PG,SG",""],
+  [243,"Keon Ellis","CLE","SG",""],
+  [244,"Nikola Jovic","MIA","SF","2003-06-09"],
+  [245,"Anton Watson","NY","",""],
+  [246,"Noa Essengue","CHI","PF","2006-12-18"],
+  [247,"Yves Missi","NOR","C","2004-05-14"],
+  [248,"Juan Toscano-Anderson","FA","SF",""],
+  [249,"Jaylin Williams","OKC","C","2002-06-29"],
+  [250,"Jesse Edwards","MIN","C",""],
+  [251,"Norman Powell","MIA","SG/SF","1993-05-25"],
+  [252,"Jalen Bridges","PHO","SF",""],
+  [253,"Jamaree Bouyea","PHO","PG",""],
+  [254,"Scotty Pippen Jr.","MEM","PG","2000-10-10"],
+  [255,"Colin Castleton","ORL","PF,C",""],
+  [256,"Tolu Smith","DET","",""],
+  [257,"Khaman Maluach","PHO","C","2006-09-14"],
+  [258,"Hunter Dickinson","NO","",""],
+  [259,"Malik Monk","SAC","SG","1998-02-04"],
+  [260,"Gabe McGlothan","DEN","",""],
+  [261,"Gradey Dick","TOR","SF","2003-11-20"],
+  [262,"Danny Wolf","BKN","PF,C",""],
+  [263,"Mouhamed Gueye","ATL","PF",""],
+  [264,"Justin Minaya","POR","SG,SF",""],
+  [265,"Mac McClung","CHI","PG,SG",""],
+  [266,"Jimmy Butler","GS","SG,SF,PF",""],
+  [267,"Joan Beringer","MIN","C","2006-11-11"],
+  [268,"Furkan Korkmaz","FA","SG,SF",""],
+  [269,"Chris Livingston","CLE","SF",""],
+  [270,"Antonio Reeves","CHA","SG,SF",""],
+  [271,"Reece Beekman","BKN","PG",""],
+  [272,"Saben Lee","FA","PG",""],
+  [273,"Cam Spencer","MEM","SG",""],
+  [274,"Adam Flagler","OKC","",""],
+  [275,"David Duke Jr.","SA","",""],
+  [276,"Bradley Beal","LAC","SG",""],
+  [277,"Javonte Green","DET","SF","1993-07-23"],
+  [278,"Oscar Tshiebwe","UTA","PF,C",""],
+  [279,"Tyrese Proctor","CLE","SG",""],
+  [280,"Drew Peterson","CHA","",""],
+  [281,"Brandon Williams","DAL","PG",""],
+  [282,"Tyrese Martin","PHI","SF","1999-03-07"],
+  [283,"Walter Clayton Jr.","MEM","PG,SG",""],
+  [284,"Asa Newell","ATL","PF",""],
+  [285,"Carlton Carrington","WAS","PG,SG",""],
+  [286,"Jamison Battle","TOR","",""],
+  [287,"Cameron Johnson","DEN","SG,SF,PF",""],
+  [288,"Damian Lillard","POR","PG",""],
+  [289,"Grayson Allen","PHO","SG",""],
+  [290,"Yanic Konan Niederhauser","LAC","C",""],
+  [291,"Jase Richardson","ORL","SG",""],
+  [292,"Rasheer Fleming","PHO","PF",""],
+  [293,"Pat Spencer","GSW","PG","1996-07-04"],
+  [294,"Myron Gardner","MIA","SF",""],
+  [295,"Ryan Nembhard","DAL","PG","2003-03-10"],
+  [296,"GG Jackson","MEM","PF","2004-12-17"],
+  [297,"Jakob Poeltl","TOR","C",""],
+  [298,"Lonzo Ball","FA","PG",""],
+  [299,"Ryan Dunn","PHO","PF",""],
+  [300,"Justin Edwards","PHI","SF,PF",""],
+  [301,"Kam Jones","IND","SG","2002-02-25"],
+  [302,"De'Anthony Melton","GSW","SG",""],
+  [303,"Vit Krejci","POR","PG",""],
+  [304,"DaRon Holmes II","DEN","C","2002-08-15"],
+  [305,"Branden Carlson","OKC","C","1999-06-14"],
+  [306,"Jrue Holiday","POR","PG/SG","1990-06-12"],
+  [307,"Wendell Carter Jr.","ORL","C",""],
+  [308,"Tristan da Silva","ORL","SF",""],
+  [309,"AJ Johnson","PHO","SF","2001-06-23"],
+  [310,"P.J. Washington","DAL","SF,PF,C",""],
+  [311,"Kasparas Jakucionis","MIA","PG",""],
+  [312,"Johni Broome","PHI","C","2002-07-19"],
+  [313,"Spencer Jones","DEN","SF","2001-06-14"],
+  [314,"Kyle Kuzma","MIL","PF",""],
+  [315,"Sharife Cooper","WAS","PG","2001-06-11"],
+  [316,"Rob Dillingham","CHI","PG",""],
+  [317,"Ron Holland II","DET","SF,PF","2005-07-07"],
+  [318,"Liam McNeeley","CHA","SF",""],
+  [319,"Jonathan Mogbo","TOR","PF","2001-10-29"],
+  [320,"James Johnson","IND","PF",""],
+  [321,"Noah Penda","ORL","PF",""],
+  [322,"Sam Hauser","BOS","SF,PF",""],
+  [323,"RayJ Dennis","ATL","PG",""],
+  [324,"Tre Mann","CHA","SG",""],
+  [325,"Sion James","CHA","SF",""],
+  [326,"Vince Williams Jr.","UTA","SF",""],
+  [327,"Nolan Traoré","BKN","PG",""],
+  [328,"Adem Bona","PHI","C",""],
+  [329,"Hugo Gonzalez","BOS","SF","2006-02-05"],
+  [330,"D'Angelo Russell","WAS","PG",""],
+  [331,"Tidjane Salaun","CHA","PF","2005-08-10"],
+  [332,"Ben Saraf","BKN","PG","2006-04-14"],
+  [333,"Cody Williams","UTA","SF","2004-11-20"],
+  [334,"Tristan Vukcevic","WAS","C","2003-03-11"],
+  [335,"Justin Holiday","FA","SG,SF",""],
+  [336,"Jaylon Tyson","CLE","SG/SF","2002-12-02"],
+  [337,"Will Riley","WAS","SF","2006-02-10"],
+  [338,"Pete Nance","MIL","PF","2000-02-19"],
+  [339,"TJ McConnell","IND","PG","1992-03-25"],
+  [340,"Patrick Williams","CHI","PF","2001-08-26"],
+  [341,"Adou Thiero","LAL","SF",""],
+  [342,"Keshad Johnson","MIA","SF","2001-06-23"],
+  [343,"Ajay Mitchell","OKC","PG/SG","2002-06-25"],
+  [344,"Gary Trent Jr.","MIL","SG","1999-01-18"],
+  [345,"Miles McBride","NYK","PG","2000-09-08"],
+  [346,"Cole Swider","DET","PF",""],
+  [347,"Micah Peavy","NOR","SF","2001-07-16"],
+  [348,"Zach LaVine","SAC","PG,SG,SF","1996-11-17"],
+  [349,"Max Christie","DAL","SG","2003-02-10"],
+  [350,"Craig Porter Jr.","CLE","SG","2000-02-26"],
+  [351,"Karlo Matkovic","NOR","C","2001-03-30"],
+  [352,"Dylan Windler","FA","SF",""],
+  [353,"Chaz Lanier","DET","SG","2000-12-19"],
+  [354,"Jordan Hawkins","NOR","SG","2002-04-29"],
+  [355,"Ron Harper Jr.","BOS","SF","2000-04-12"],
+  [356,"Svi Mykhailiuk","UTA","SG,SF",""],
+  [357,"Trayce Jackson-Davis","TOR","C","2000-02-22"],
+  [358,"Bobby Portis","MIL","C","1995-02-10"],
+  [359,"Brooks Barnhizer","OKC","SG",""],
+  [360,"Keisei Tominaga","IND","",""],
+  [361,"Alex Caruso","OKC","SG","1994-02-28"],
+  [362,"Tyler Wahl","MIN","",""],
+  [363,"Elijah Harkless","PHI","SF","2000-02-03"],
+  [364,"Trevelin Queen","ORL","SG,SF",""],
+  [365,"Max Strus","CLE","SG",""],
+  [366,"Mamadi Diakite","PHO","PF",""],
+  [367,"Luke Kornet","SAS","C","1995-07-15"],
+  [368,"Joshua Primo","FA","SG",""],
+  [369,"Brice Sensabaugh","UTA","SF","2003-10-31"],
+  [370,"Ja'Kobe Walter","TOR","SG","2004-09-04"],
+  [371,"Tyus Jones","DEN","PG",""],
+  [372,"Jalen Smith","CHI","PF","2000-03-16"],
+  [373,"Drake Powell","BKN","SG","2004-01-01"],
+  [374,"Rui Hachimura","LAL","PF","1998-02-08"],
+  [375,"Dalton Knecht","LAL","SG","2001-04-19"],
+  [376,"Xavier Johnson","DAL","",""],
+  [377,"Luguentz Dort","OKC","SG","1999-04-19"],
+  [378,"Keldon Johnson","SAS","SF","1999-10-11"],
+  [379,"Jamal Shead","TOR","PG","2001-07-24"],
+  [380,"Alijah Martin","TOR","SG","2001-12-26"],
+  [381,"Clint Capela","HOU","C","1994-05-18"],
+  [382,"Jae Crowder","SAC","SF,PF",""],
+  [383,"Jusuf Nurkic","UTA","C","1994-08-23"],
+  [384,"Quentin Grimes","PHI","SG/SF","2000-05-08"],
+  [385,"Nikola Djurisic","ATL","SF",""],
+  [386,"De'Andre Hunter","SAC","SF","1997-12-02"],
+  [387,"Jonathan Isaac","ORL","PF","1997-10-03"],
+  [388,"Nate Williams","GS","SG,SF",""],
+  [389,"Khris Middleton","DAL","SF","1991-08-12"],
+  [390,"Udoka Azubuike","FA","C",""],
+  [391,"Jake LaRavia","LAL","SF","2001-11-03"],
+  [392,"Armando Bacot","MEM","",""],
+  [393,"Taelon Peter","IND","SF",""],
+  [394,"Marcus Domask","CHI","",""],
+  [395,"Malevy Leons","GS","","2003-01-01"],
+  [396,"Andrew Wiggins","MIA","SF","1995-02-23"],
+  [397,"Malachi Flynn","SA","PG",""],
+  [398,"Kelly Oubre Jr.","PHI","SF","1995-12-09"],
+  [399,"Aaron Wiggins","OKC","SF","1999-01-02"],
+  [400,"N'Faly Dante","ATL","C",""],
+  [401,"Draymond Green","GSW","PF","1990-03-04"],
+  [402,"Baylor Scheierman","BOS","SF","2000-09-26"],
+  [403,"Tristen Newton","HOU","PG","2000-04-01"],
+  [404,"Cole Anthony","FA","PG","2000-05-15"],
+  [405,"Emanuel Miller","SA","","2000-01-01"],
+  [406,"Trendon Watford","PHI","PF","2000-11-09"],
+  [407,"Samkelo Cele","NY","","2004-01-01"],
+  [408,"Naji Marshall","DAL","PF","1998-01-24"],
+  [409,"Yang Hansen","POR","C","2002-01-01"],
+  [410,"Moses Moody","GS","SG,SF,PF","2002-03-06"],
+  [411,"Danilo Gallinari","FA","SF","1988-08-20"],
+  [412,"Kevon Harris","HOU","SG",""],
+  [413,"Dennis Schroder","CLE","PG","1993-09-15"],
+  [414,"Hunter Tyson","BKN","SF,PF",""],
+  [415,"Obi Toppin","IND","PF","1998-03-04"],
+  [416,"Dillon Brooks","PHO","SF","1996-01-22"],
+  [417,"Kendall Brown","IND","SF",""],
+  [418,"Isaiah Joe","OKC","SG","1999-07-02"],
+  [419,"Kobe Bufkin","LAL","PG,SG",""],
+  [420,"Robert Williams III","POR","C","1997-10-17"],
+  [421,"Corey Kispert","ATL","SF","1999-03-03"],
+  [422,"Melvin Ajinca","DAL","SF",""],
+  [423,"Kevin Huerter","DET","SG","1998-08-27"],
+  [424,"Jay Huff","IND","C","1998-08-25"],
+  [425,"Seth Lundy","LAC","SF",""],
+  [426,"Eugene Omoruyi","MIN","SF,PF",""],
+  [427,"Stanley Umude","SA","SF",""],
+  [428,"Oshae Brissett","PHI","SF,PF",""],
+  [429,"Ricky Council IV","BKN","SG,SF",""],
+  [430,"Sam Merrill","CLE","SG","1996-05-15"],
+  [431,"Tyler Kolek","NYK","PG","2001-03-27"],
+  [432,"Jeremy Sochan","NY","PF,C",""],
+  [433,"Svi Mykhailuk","UTA","SG",""],
+  [434,"Steven Adams","HOU","C","1993-07-20"],
+  [435,"Sandro Mamukelashvili","TOR","C","1999-05-23"],
+  [436,"Caris LeVert","DET","SG","1994-08-25"],
+  [437,"JaVale McGee","FA","C",""],
+  [438,"Josh Green","CHA","SF",""],
+  [439,"Leonard Miller","CHI","PF","2003-11-26"],
+  [440,"Royce O'Neale","PHO","SF","1993-06-05"],
+  [441,"Evan Fournier","FA","SG,SF",""],
+  [442,"Julian Phillips","MIN","SF,PF",""],
+  [443,"Dillon Jones","NYK","SF",""],
+  [444,"Josh Minott","BKN","PF","2002-11-25"],
+  [445,"Luke Kennard","LAL","SG","1996-06-24"],
+  [446,"Aaron Estrada","DET","",""],
+  [447,"Quincy Guerrier","TOR","",""],
+  [448,"Nick Richards","CHI","C","1997-11-29"],
+  [449,"Jermaine Samuels Jr.","HOU","",""],
+  [450,"Isaiah Stewart","DET","PF,C","1999-05-22"],
+  [451,"Alex Fudge","DAL","",""],
+  [452,"Cam Christie","LAC","SG,SF",""],
+  [453,"Saddiq Bey","NOR","SF","1999-04-09"],
+  [454,"Derrick Jones Jr.","LAC","SF","1997-02-15"],
+  [455,"Bismack Biyombo","SA","C",""],
+  [456,"Brook Lopez","LAC","C","1988-04-01"],
+  [457,"Danuel House Jr.","FA","SF",""],
+  [458,"Pelle Larsson","MIA","SG","2001-02-23"],
+  [459,"Thaddeus Young","FA","PF,C",""],
+  [460,"Paul Reed","DET","PF","1999-06-14"],
+  [461,"Kris Dunn","LAC","SG","1994-03-18"],
+  [462,"Lindy Waters III","SA","SG,SF",""],
+  [463,"Koby Brea","PHO","SG",""],
+  [464,"Johnny Furphy","IND","SF","2004-12-07"],
+  [465,"Mark Armstrong","BKN","",""],
+  [466,"Ziaire Williams","BKN","SF","2001-09-12"],
+  [467,"Trentyn Flowers","CHI","",""],
+  [468,"Kevin McCullar Jr.","NY","SF,PF",""],
+  [469,"Julian Champagnie","SAS","SF",""],
+  [470,"Alondes Williams","WAS","SG","2000-01-01"],
+  [471,"Julian Reese","WAS","C",""],
+  [472,"Reggie Bullock","FA","SF,PF","1994-10-16"],
+  [473,"Tyrese Samuel","PHO","","2001-01-01"],
+  [474,"Brandon Clarke","MEM","C",""],
+  [475,"KJ Jones II","BKN","",""],
+  [476,"Jared Butler","PHO","PG,SG",""],
+  [477,"Buddy Hield","ATL","SG","1992-12-17"],
+  [478,"Duane Washington Jr.","FA","SG",""],
+  [479,"Usman Garuba","FA","PF,C",""],
+  [480,"Jose Alvarado","NYK","PG",""],
+  [481,"Damian Jones","FA","C",""],
+  [482,"Dominick Barlow","PHI","PF",""],
+  [483,"Klay Thompson","DAL","SG","1990-02-08"],
+  [484,"James Nnaji","FA","C",""],
+  [485,"Tre Jones","CHI","PG,SG",""],
+  [486,"Tyler Smith","DAL","PF",""],
+  [487,"Bogoljub Markovic","ORL","PF",""],
+  [488,"Nerlens Noel","FA","C",""],
+  [489,"Jordan Walsh","BOS","SF","2004-03-03"],
+  [490,"Quinten Post","GSW","C",""],
+  [491,"Danny Green","FA","SG",""],
+  [492,"Caleb Martin","DAL","SG","1995-09-28"],
+  [493,"Jerami Grant","POR","SF,PF",""],
+  [494,"Max Abmas","UTA","",""],
+  [495,"Jalen Wilson","BKN","PF","2000-11-04"],
+  [496,"Kentavious Caldwell-Pope","MEM","SG",""],
+  [497,"Ryan Rollins","MIL","SG","2002-07-03"],
+  [498,"Andre Drummond","PHI","C","1993-08-10"],
+  [499,"Will Richard","GSW","SG","2002-12-24"],
+  [500,"Day'Ron Sharpe","BKN","C",""],
+  [501,"Malik Beasley","FA","SG",""],
+  [502,"GG Jackson II","MEM","SF,PF,C",""],
+  [503,"Precious Achiuwa","SAC","PF","1999-09-19"],
+  [504,"Al Horford","GSW","C","1986-06-03"],
+  [505,"Terance Mann","BKN","SG","1996-10-18"],
+  [506,"Kelly Olynyk","SAS","C",""],
+  [507,"Grant Williams","CHA","PF","1998-11-30"],
+  [508,"Dean Wade","CLE","PF","1996-11-20"],
+  [509,"Jordan Clarkson","NYK","SG","1992-06-07"],
+  [510,"Jabari Walker","PHI","PF",""],
+  [511,"Jarred Vanderbilt","LAL","PF",""],
+  [512,"Zach Collins","CHI","PF","1997-11-19"],
+  [513,"Isaiah Jackson","LAC","C",""],
+  [514,"Matisse Thybulle","POR","SF",""],
+  [515,"John Tonje","BOS","SG",""],
+  [516,"Marcus Sasser","DET","SG",""],
+  [517,"Dorian Finney-Smith","HOU","SF","1993-05-04"],
+  [518,"Jaden Hardy","WAS","SG",""],
+  [519,"Jahmir Young","MIA","",""],
+  [520,"Keaton Wallace","ATL","PG,SG",""],
+  [521,"Moritz Wagner","ORL","C","1997-04-26"],
+  [522,"Ariel Hukporti","NYK","C","2002-04-12"],
+  [523,"Taurean Prince","MIL","SF","1994-03-22"],
+  [524,"Caleb Love","POR","SG","2001-09-27"],
+  [525,"Tyler Burton","FA","PF",""],
+  [526,"Jack McVeigh","HOU","",""],
+  [527,"Olivier Maxence-Prosper","MEM","PF",""],
+  [528,"Pacome Dadiet","NYK","SF",""],
+  [529,"Ochai Agbaji","BKN","SG","2000-04-20"],
+  [530,"Aaron Holiday","HOU","PG",""],
+  [531,"Davis Bertans","FA","PF,C",""],
+  [532,"Mitchell Robinson","NY","C",""],
+  [533,"Neemias Queta","BOS","C","1999-07-13"],
+  [534,"Marcus Smart","LAL","SG","1994-03-06"],
+  [535,"Kennedy Chandler","FA","PG",""],
+  [536,"Isaac Okoro","CHI","SF",""],
+  [537,"Keon Johnson","BKN","PG,SG",""],
+  [538,"Alex Toohey","LAL","SF",""],
+  [539,"Rocco Zikarsky","MIN","C",""],
+  [540,"Ben Sheppard","IND","SF","2001-07-16"],
+  [541,"Max Shulga","BOS","PG",""],
+  [542,"Armel Traore","LAL","",""],
+  [543,"Josh Okogie","HOU","SG",""],
+  [544,"Mike Conley","MIN","PG","1987-10-11"],
+  [545,"Gui Santos","GSW","SG","2002-06-22"],
+  [546,"Harrison Barnes","SAS","PF","1992-05-30"],
+  [547,"James Bouknight","FA","SG",""],
+  [548,"Frank Ntilikina","FA","PG",""],
+  [549,"Jamal Cain","ORL","SF",""],
+  [550,"Daishen Nix","SAC","PG",""],
+  [551,"Blake Wesley","POR","SG",""],
+  [552,"Jett Howard","ORL","SG",""],
+  [553,"Josiah-Jordan James","IND","",""],
+  [554,"Jaxson Hayes","LAL","C","2000-05-23"],
+  [555,"Jacky Cui","BKN","",""],
+  [556,"AJ Green","MIL","SG","1999-09-27"],
+  [557,"KJ Simpson","DEN","PG",""],
+  [558,"Tim Hardaway Jr.","DEN","SG","1992-03-16"],
+  [559,"Lachlan Olbrich","CHI","C",""],
+  [560,"Nae'Qwan Tomlin","CLE","PF",""],
+  [561,"PJ Hall","CHA","PF",""],
+  [562,"Jordan Goodwin","PHO","SG","1998-10-23"],
+  [563,"Larry Nance Jr.","CLE","PF",""],
+  [564,"Kyle Anderson","MIN","SF",""],
+  [565,"Jock Landale","ATL","C","1995-10-25"],
+  [566,"Jahmai Mashack","MEM","SG",""],
+  [567,"Simone Fontecchio","MIA","SF",""],
+  [568,"Dru Smith","MIA","PG","1997-12-30"],
+  [569,"Bones Hyland","MIN","SG","2000-09-14"],
+  [570,"Juan Nunez","DEN","PG",""],
+  [571,"Kris Murray","POR","PF","2000-08-19"],
+  [572,"Bronny James","LAL","PG","2004-10-06"],
+  [573,"Quenton Jackson","IND","PG","1998-09-15"],
+  [574,"Dalen Terry","PHI","SF",""],
+  [575,"Kevin Love","UTA","PF",""],
+  [576,"Haywood Highsmith","PHO","SF",""],
+  [577,"Marvin Bagley III","DAL","C","1999-03-14"],
+  [578,"Gary Payton II","GSW","SG","1992-12-01"],
+  [579,"Thomas Bryant","CLE","C","1997-07-31"],
+  [580,"Jalen Pickett","DEN","PG","1999-10-22"],
+  [581,"Jericho Sims","MIL","C","1998-10-20"],
+  [582,"Rayan Rupert","MEM","SF",""],
+  [583,"John Konchar","UTA","SG","1996-03-22"],
+  [584,"Kevon Looney","NOR","C","1996-02-06"],
+  [585,"Kenrich Williams","OKC","SF",""],
+  [586,"Sidy Cissoko","POR","SG",""],
+  [587,"Jalen Slawson","IND","PF",""],
+  [588,"Killian Hayes","SAC","PG",""],
+  [589,"Terry Rozier","MIA","PG","1994-01-17"]
 ];
 
 // ============================================================
@@ -4453,13 +4652,13 @@ const SUBNAV_PAGES = {
   homePage:'home', draftboardPage:'draftboard', draft26Page:'draft26',
   lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings',
   bestAvailPage:'bestavail', analyticsPage:'analytics', tradePage:'trade',
-  tradeFinderPage:'tradefinder', standingsPage:'standings', rulesPage:'rules',
+  tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', standingsPage:'standings', rulesPage:'rules',
 };
 
 const SNAV_GROUP = {
   draftboard: 'snavDraft', draft26: 'snavDraft', lottery: 'snavDraft',
   rankings:   'snavAnalytics', bestavail: 'snavAnalytics', analytics: 'snavAnalytics',
-  trade:      'snavTrade', tradefinder: 'snavTrade',
+  trade:      'snavTrade', tradefinder: 'snavTrade', tradehistory: 'snavTrade',
 };
 
 function navigate(pageId){
@@ -4639,7 +4838,7 @@ function showNBATeam(abbr) {
 // ============================================================
 
 // Trade values from MFHFBs spreadsheet (rank → value lookup).
-const TRADE_VALUE_TABLE = {"1": 2107.0, "2": 1873.5, "3": 1857.0, "4": 1792.0, "5": 1564.5, "6": 1555.0, "7": 1517.0, "8": 1492.5, "9": 1486.5, "10": 1435.5, "11": 1416.0, "12": 1409.0, "13": 1397.0, "14": 1376.5, "15": 1370.0, "16": 1358.0, "17": 1338.0, "18": 1324.5, "19": 1287.5, "20": 1274.0, "21": 1258.5, "22": 1222.5, "23": 1193.0, "24": 1182.5, "25": 1164.5, "26": 1156.5, "27": 1146.5, "28": 1135.5, "29": 1118.0, "30": 1099.5, "31": 1089.0, "32": 1078.5, "33": 1063.5, "34": 1048.0, "35": 1038.0, "36": 1025.0, "37": 1015.0, "38": 994.5, "39": 976.0, "40": 966.0, "41": 955.5, "42": 949.0, "43": 930.5, "44": 922.0, "45": 916.0, "46": 904.0, "47": 897.0, "48": 880.0, "49": 878.0, "50": 872.0, "51": 867.5, "52": 865.5, "53": 864.0, "54": 862.0, "55": 844.0, "56": 826.5, "57": 823.0, "58": 813.0, "59": 808.5, "60": 805.5, "61": 803.0, "62": 801.0, "63": 799.0, "64": 793.5, "65": 789.0, "66": 787.5, "67": 782.0, "68": 781.75, "69": 780.5, "70": 772.25, "71": 770.5, "72": 769.75, "73": 768.5, "74": 768.25, "75": 767.5, "76": 766.75, "77": 765.5, "78": 758.25, "79": 757.0, "80": 756.75, "81": 755.0, "82": 751.25, "83": 744.5, "84": 743.25, "85": 742.0, "86": 739.75, "87": 739.0, "88": 736.75, "89": 735.0, "90": 730.75, "91": 723.0, "92": 721.75, "93": 720.0, "94": 719.25, "95": 717.0, "96": 712.75, "97": 711.5, "98": 710.75, "99": 708.5, "100": 707.75, "101": 705.0, "102": 703.25, "103": 702.0, "104": 701.75, "105": 701.5, "106": 700.75, "107": 697.5, "108": 693.25, "109": 691.0, "110": 686.75, "111": 680.5, "112": 680.25, "113": 677.0, "114": 672.25, "115": 670.0, "116": 668.75, "117": 666.5, "118": 665.25, "119": 662.0, "120": 659.75, "124": 652.5, "125": 652.25, "126": 651.0, "129": 644.25, "130": 642.0, "131": 641.75, "132": 641.0, "133": 640.25, "134": 637.0, "135": 636.25, "136": 635.0, "137": 632.75, "138": 630.5, "139": 629.75, "140": 629.5, "141": 628.25, "142": 628.0, "143": 627.75, "144": 627.0, "145": 626.75, "146": 626.5, "147": 625.75, "148": 625.5, "149": 625.25, "150": 625.0, "151": 624.75, "152": 621.0, "153": 620.75, "154": 620.0, "155": 619.75, "156": 619.5, "157": 619.25, "158": 619.0, "159": 618.25, "160": 618.0, "161": 617.25, "162": 617.0, "163": 616.25, "164": 616.0, "165": 615.75, "166": 615.5, "167": 614.75, "168": 614.5, "169": 614.25, "170": 614.0, "171": 613.75, "172": 613.5, "173": 612.75, "174": 612.0, "175": 611.75, "176": 611.5, "177": 611.25, "178": 611.0, "179": 610.75, "180": 610.5, "181": 610.25, "182": 610.0, "183": 609.75, "184": 609.0, "185": 608.75, "186": 608.5, "187": 608.25, "188": 608.0, "189": 607.0, "190": 606.25, "191": 606.0, "192": 605.75, "193": 605.5, "194": 605.25, "195": 605.0, "196": 604.75, "197": 604.5, "198": 603.75, "199": 603.5, "200": 603.25, "201": 603.0, "202": 602.75, "203": 602.5, "204": 602.25, "205": 601.5, "206": 601.25, "207": 601.0, "208": 600.25, "209": 600.0, "210": 599.75, "211": 599.0, "212": 598.75, "213": 598.5, "214": 598.25, "215": 597.5, "216": 597.25, "217": 596.5, "218": 596.25, "219": 596.0, "220": 595.25, "221": 595.0, "222": 594.75, "223": 594.5, "224": 594.25, "225": 592.5, "226": 592.35, "227": 592.2, "228": 592.05, "229": 591.9, "230": 591.25, "231": 591.1, "232": 590.95, "233": 590.3, "234": 590.15, "235": 590.0, "236": 589.35, "237": 588.7, "238": 588.55, "239": 588.4, "240": 586.75, "241": 585.6, "242": 583.95, "243": 583.3, "244": 581.65, "245": 581.5, "246": 579.85, "247": 579.2, "248": 579.05, "249": 578.4, "250": 577.75, "251": 574.1, "252": 573.45, "253": 572.8, "254": 572.15, "255": 572.0, "256": 568.85, "257": 568.7, "258": 567.55, "259": 565.9, "260": 565.75, "261": 564.1, "262": 562.45, "263": 559.8, "264": 558.65, "265": 557.5, "266": 556.85, "267": 554.7, "268": 554.55, "269": 553.9, "270": 553.75, "271": 552.5, "272": 551.9, "273": 550.8, "274": 550.2, "275": 549.6, "276": 549.5, "277": 548.9, "278": 547.8, "279": 546.7, "280": 546.1, "281": 544.5, "282": 543.9, "283": 543.3, "284": 542.7, "285": 542.1, "286": 541.5, "287": 541.4, "288": 539.8, "289": 538.7, "290": 538.6, "291": 538.0, "292": 537.9, "293": 536.8, "294": 536.7, "295": 536.1, "296": 535.0, "297": 534.9, "298": 533.3, "299": 533.2, "300": 531.6, "301": 531.0, "302": 530.4, "303": 530.3, "304": 530.2, "305": 529.6, "306": 529.5, "307": 528.9, "308": 528.8, "309": 527.7, "310": 527.6, "311": 527.5, "312": 527.4, "313": 526.8, "314": 526.2, "315": 526.1, "316": 526.0, "317": 525.4, "318": 525.3, "319": 525.2, "320": 525.1, "321": 525.0, "322": 524.4, "323": 524.3, "324": 524.2, "325": 524.1, "326": 524.0, "327": 523.9, "328": 523.5, "329": 522.95, "330": 522.9, "331": 522.85, "332": 522.8, "333": 522.25, "334": 522.2, "335": 522.15, "336": 522.1, "337": 522.05, "338": 521.5, "339": 521.45, "340": 521.4, "341": 520.85, "342": 520.8, "343": 520.75, "344": 520.2, "345": 520.15, "346": 520.1, "347": 520.05, "348": 520.0, "349": 519.45, "350": 519.4, "351": 519.35, "352": 519.3, "353": 518.75, "354": 518.7, "355": 518.65, "356": 518.6, "357": 518.05, "358": 517.5, "359": 517.45, "360": 516.9, "361": 516.85, "362": 516.8, "363": 516.25, "364": 516.2, "365": 516.15, "366": 516.1, "367": 515.55, "368": 515.5, "369": 514.45, "370": 514.4, "371": 513.85, "372": 513.8, "373": 513.75, "374": 513.5, "375": 513.45, "376": 513.4, "377": 512.85, "378": 512.8, "379": 512.25, "380": 511.2, "381": 511.15, "382": 511.1, "383": 511.05, "384": 510.0, "385": 509.95, "386": 509.9, "387": 508.85, "388": 508.8, "389": 508.75, "390": 508.2, "391": 507.65, "392": 507.1, "393": 507.05, "394": 507.0, "395": 505.95, "396": 505.4, "397": 505.35, "398": 505.3, "399": 504.75, "400": 504.7, "401": 504.65, "402": 503.6, "403": 503.05, "404": 502.5, "405": 502.45, "406": 502.4, "407": 502.35, "408": 501.8, "409": 501.75, "410": 501.2, "411": 501.15, "412": 500.6, "413": 499.5, "414": 499.45, "415": 499.4, "416": 499.35, "417": 499.3, "418": 499.25, "419": 499.2, "420": 498.65, "421": 498.1, "422": 498.05, "423": 498.0, "424": 497.95, "425": 497.9, "426": 497.35, "427": 497.3, "428": 497.25, "429": 496.7, "430": 496.65, "431": 495.6, "432": 494.55, "433": 494.0, "434": 493.45, "435": 492.4, "436": 492.35, "437": 492.3, "438": 491.75, "439": 491.2, "440": 491.15, "441": 489.6, "442": 489.55, "443": 489.0, "444": 487.45, "445": 485.4, "446": 484.35, "447": 483.8, "448": 482.75, "449": 482.2, "450": 482.15, "451": 480.1, "452": 479.55, "453": 477.5, "454": 477.45, "455": 475.9, "456": 475.35, "457": 472.3, "458": 471.75, "459": 471.7, "460": 471.65, "461": 470.1, "462": 469.55, "463": 464.0, "464": 463.45, "465": 462.9, "466": 462.0, "467": 461.45, "468": 460.9, "469": 460.85, "470": 460.3, "471": 460.25, "472": 459.2, "473": 459.15, "474": 458.6, "475": 458.55, "476": 458.5, "477": 457.95, "478": 457.4, "479": 456.85, "480": 455.8, "481": 455.25, "482": 455.2, "483": 453.65, "484": 453.6, "485": 453.05, "486": 453.0, "487": 451.95, "488": 451.9, "489": 451.85, "490": 451.3, "491": 451.25, "492": 451.2, "493": 451.15, "494": 451.1, "495": 451.05, "496": 451.0, "497": 450.45, "498": 449.4, "499": 449.35, "500": 448.8, "501": 448.75, "502": 447.7, "503": 447.65, "504": 447.6, "505": 445.55, "506": 445.5, "507": 445.45, "508": 444.4, "509": 443.85, "510": 443.3, "511": 443.25, "512": 443.2, "513": 442.65, "514": 442.6, "515": 442.05, "516": 442.0, "517": 441.45, "518": 440.9, "519": 440.85, "520": 439.8, "521": 439.75, "522": 439.7, "523": 439.15, "524": 439.1, "525": 438.55, "526": 437.5, "527": 435.95, "528": 435.9, "529": 435.35, "530": 434.8, "531": 433.75, "532": 433.2, "533": 433.15, "534": 433.1, "535": 432.05, "536": 432.0, "537": 429.95, "538": 429.4, "539": 428.35};
+const TRADE_VALUE_TABLE = {"1": 2107.0, "2": 1873.5, "3": 1857.0, "4": 1792.0, "5": 1564.5, "6": 1555.0, "7": 1517.0, "8": 1492.5, "9": 1486.5, "10": 1435.5, "11": 1416.0, "12": 1409.0, "13": 1397.0, "14": 1376.5, "15": 1370.0, "16": 1358.0, "17": 1338.0, "18": 1324.5, "19": 1287.5, "20": 1274.0, "21": 1258.5, "22": 1222.5, "23": 1193.0, "24": 1182.5, "25": 1164.5, "26": 1156.5, "27": 1146.5, "28": 1135.5, "29": 1118.0, "30": 1099.5, "31": 1089.0, "32": 1078.5, "33": 1063.5, "34": 1048.0, "35": 1038.0, "36": 1025.0, "37": 1015.0, "38": 994.5, "39": 976.0, "40": 966.0, "41": 955.5, "42": 949.0, "43": 930.5, "44": 922.0, "45": 916.0, "46": 904.0, "47": 897.0, "48": 880.0, "49": 878.0, "50": 872.0, "51": 867.5, "52": 865.5, "53": 864.0, "54": 862.0, "55": 844.0, "56": 826.5, "57": 823.0, "58": 813.0, "59": 808.5, "60": 805.5, "61": 803.0, "62": 801.0, "63": 799.0, "64": 793.5, "65": 789.0, "66": 787.5, "67": 782.0, "68": 781.75, "69": 780.5, "70": 772.25, "71": 770.5, "72": 769.75, "73": 768.5, "74": 768.25, "75": 767.5, "76": 766.75, "77": 765.5, "78": 758.25, "79": 757.0, "80": 756.75, "81": 755.0, "82": 751.25, "83": 744.5, "84": 743.25, "85": 742.0, "86": 739.75, "87": 739.0, "88": 736.75, "89": 735.0, "90": 730.75, "91": 723.0, "92": 721.75, "93": 720.0, "94": 719.25, "95": 717.0, "96": 712.75, "97": 711.5, "98": 710.75, "99": 708.5, "100": 707.75, "101": 705.0, "102": 703.25, "103": 702.0, "104": 701.75, "105": 701.5, "106": 700.75, "107": 697.5, "108": 693.25, "109": 691.0, "110": 686.75, "111": 680.5, "112": 680.25, "113": 677.0, "114": 672.25, "115": 670.0, "116": 668.75, "117": 666.5, "118": 665.25, "119": 662.0, "120": 659.75, "124": 652.5, "125": 652.25, "126": 651.0, "129": 644.25, "130": 642.0, "131": 641.75, "132": 641.0, "133": 640.25, "134": 637.0, "135": 636.25, "136": 635.0, "137": 632.75, "138": 630.5, "139": 629.75, "140": 629.5, "141": 628.25, "142": 628.0, "143": 627.75, "144": 627.0, "145": 626.75, "146": 626.5, "147": 625.75, "148": 625.5, "149": 625.25, "150": 625.0, "151": 624.75, "152": 621.0, "153": 620.75, "154": 620.0, "155": 619.75, "156": 619.5, "157": 619.25, "158": 619.0, "159": 618.25, "160": 618.0, "161": 617.25, "162": 617.0, "163": 616.25, "164": 616.0, "165": 615.75, "166": 615.5, "167": 614.75, "168": 614.5, "169": 614.25, "170": 614.0, "171": 613.75, "172": 613.5, "173": 612.75, "174": 612.0, "175": 611.75, "176": 611.5, "177": 611.25, "178": 611.0, "179": 610.75, "180": 610.5, "181": 610.25, "182": 610.0, "183": 609.75, "184": 609.0, "185": 608.75, "186": 608.5, "187": 608.25, "188": 608.0, "189": 607.0, "190": 606.25, "191": 606.0, "192": 605.75, "193": 605.5, "194": 605.25, "195": 605.0, "196": 604.75, "197": 604.5, "198": 603.75, "199": 603.5, "200": 603.25, "201": 603.0, "202": 602.75, "203": 602.5, "204": 602.25, "205": 601.5, "206": 601.25, "207": 601.0, "208": 600.25, "209": 600.0, "210": 599.75, "211": 599.0, "212": 598.75, "213": 598.5, "214": 598.25, "215": 597.5, "216": 597.25, "217": 596.5, "218": 596.25, "219": 596.0, "220": 595.25, "221": 595.0, "222": 594.75, "223": 594.5, "224": 594.25, "225": 592.5, "226": 592.35, "227": 592.2, "228": 592.05, "229": 591.9, "230": 591.25, "231": 591.1, "232": 590.95, "233": 590.3, "234": 590.15, "235": 590.0, "236": 589.35, "237": 588.7, "238": 588.55, "239": 588.4, "240": 586.75, "241": 585.6, "242": 583.95, "243": 583.3, "244": 581.65, "245": 581.5, "246": 579.85, "247": 579.2, "248": 579.05, "249": 578.4, "250": 577.75, "251": 574.1, "252": 573.45, "253": 572.8, "254": 572.15, "255": 572.0, "256": 568.85, "257": 568.7, "258": 567.55, "259": 565.9, "260": 565.75, "261": 564.1, "262": 562.45, "263": 559.8, "264": 558.65, "265": 557.5, "266": 556.85, "267": 554.7, "268": 554.55, "269": 553.9, "270": 553.75, "271": 552.5, "272": 551.9, "273": 550.8, "274": 550.2, "275": 549.6, "276": 549.5, "277": 548.9, "278": 547.8, "279": 546.7, "280": 546.1, "281": 544.5, "282": 543.9, "283": 543.3, "284": 542.7, "285": 542.1, "286": 541.5, "287": 541.4, "288": 539.8, "289": 538.7, "290": 538.6, "291": 538.0, "292": 537.9, "293": 536.8, "294": 536.7, "295": 536.1, "296": 535.0, "297": 534.9, "298": 533.3, "299": 533.2, "300": 531.6, "301": 531.0, "302": 530.4, "303": 530.3, "304": 530.2, "305": 529.6, "306": 529.5, "307": 528.9, "308": 528.8, "309": 527.7, "310": 527.6, "311": 527.5, "312": 527.4, "313": 526.8, "314": 526.2, "315": 526.1, "316": 526.0, "317": 525.4, "318": 525.3, "319": 525.2, "320": 525.1, "321": 525.0, "322": 524.4, "323": 524.3, "324": 524.2, "325": 524.1, "326": 524.0, "327": 523.9, "328": 523.5, "329": 522.95, "330": 522.9, "331": 522.85, "332": 522.8, "333": 522.25, "334": 522.2, "335": 522.15, "336": 522.1, "337": 522.05, "338": 521.5, "339": 521.45, "340": 521.4, "341": 520.85, "342": 520.8, "343": 520.75, "344": 520.2, "345": 520.15, "346": 520.1, "347": 520.05, "348": 520.0, "349": 519.45, "350": 519.4, "351": 519.35, "352": 519.3, "353": 518.75, "354": 518.7, "355": 518.65, "356": 518.6, "357": 518.05, "358": 517.5, "359": 517.45, "360": 516.9, "361": 516.85, "362": 516.8, "363": 516.25, "364": 516.2, "365": 516.15, "366": 516.1, "367": 515.55, "368": 515.5, "369": 514.45, "370": 514.4, "371": 513.85, "372": 513.8, "373": 513.75, "374": 513.5, "375": 513.45, "376": 513.4, "377": 512.85, "378": 512.8, "379": 512.25, "380": 511.2, "381": 511.15, "382": 511.1, "383": 511.05, "384": 510.0, "385": 509.95, "386": 509.9, "387": 508.85, "388": 508.8, "389": 508.75, "390": 508.2, "391": 507.65, "392": 507.1, "393": 507.05, "394": 507.0, "395": 505.95, "396": 505.4, "397": 505.35, "398": 505.3, "399": 504.75, "400": 504.7, "401": 504.65, "402": 503.6, "403": 503.05, "404": 502.5, "405": 502.45, "406": 502.4, "407": 502.35, "408": 501.8, "409": 501.75, "410": 501.2, "411": 501.15, "412": 500.6, "413": 499.5, "414": 499.45, "415": 499.4, "416": 499.35, "417": 499.3, "418": 499.25, "419": 499.2, "420": 498.65, "421": 498.1, "422": 498.05, "423": 498.0, "424": 497.95, "425": 497.9, "426": 497.35, "427": 497.3, "428": 497.25, "429": 496.7, "430": 496.65, "431": 495.6, "432": 494.55, "433": 494.0, "434": 493.45, "435": 492.4, "436": 492.35, "437": 492.3, "438": 491.75, "439": 491.2, "440": 491.15, "441": 489.6, "442": 489.55, "443": 489.0, "444": 487.45, "445": 485.4, "446": 484.35, "447": 483.8, "448": 482.75, "449": 482.2, "450": 482.15, "451": 480.1, "452": 479.55, "453": 477.5, "454": 477.45, "455": 475.9, "456": 475.35, "457": 472.3, "458": 471.75, "459": 471.7, "460": 471.65, "461": 470.1, "462": 469.55, "463": 464.0, "464": 463.45, "465": 462.9, "466": 462.0, "467": 461.45, "468": 460.9, "469": 460.85, "470": 460.3, "471": 460.25, "472": 459.2, "473": 459.15, "474": 458.6, "475": 458.55, "476": 458.5, "477": 457.95, "478": 457.4, "479": 456.85, "480": 455.8, "481": 455.25, "482": 455.2, "483": 453.65, "484": 453.6, "485": 453.05, "486": 453.0, "487": 451.95, "488": 451.9, "489": 451.85, "490": 451.3, "491": 451.25, "492": 451.2, "493": 451.15, "494": 451.1, "495": 451.05, "496": 451.0, "497": 450.45, "498": 449.4, "499": 449.35, "500": 448.8, "501": 448.75, "502": 447.7, "503": 447.65, "504": 447.6, "505": 445.55, "506": 445.5, "507": 445.45, "508": 444.4, "509": 443.85, "510": 443.3, "511": 443.25, "512": 443.2, "513": 442.65, "514": 442.6, "515": 442.05, "516": 442.0, "517": 441.45, "518": 440.9, "519": 440.85, "520": 439.8, "521": 439.75, "522": 439.7, "523": 439.15, "524": 439.1, "525": 438.55, "526": 437.5, "527": 435.95, "528": 435.9, "529": 435.35, "530": 434.8, "531": 433.75, "532": 433.2, "533": 433.15, "534": 433.1, "535": 432.05, "536": 432.0, "537": 429.95, "538": 429.4, "539": 428.35,"540": 427.8,"541": 427.25,"542": 426.7,"543": 426.15,"544": 425.6,"545": 425.05,"546": 424.5,"547": 423.95,"548": 423.4,"549": 422.85,"550": 422.3,"551": 421.75,"552": 421.2,"553": 420.65,"554": 420.1,"555": 419.55,"556": 419.0,"557": 418.45,"558": 417.9,"559": 417.35,"560": 416.8,"561": 416.25,"562": 415.7,"563": 415.15,"564": 414.6,"565": 414.05,"566": 413.5,"567": 412.95,"568": 412.4,"569": 411.85,"570": 411.3,"571": 410.75,"572": 410.2,"573": 409.65,"574": 409.1,"575": 408.55,"576": 408.0,"577": 407.45,"578": 406.9,"579": 406.35,"580": 405.8,"581": 405.25,"582": 404.7,"583": 404.15,"584": 403.6,"585": 403.05,"586": 402.5,"587": 401.95,"588": 401.4,"589": 400.85};
 
 // ============================================================
 //  DRAFT PICK VALUES
@@ -4659,18 +4858,18 @@ const PICK_VALUES = {
   "2026_R2_early":  244, "2026_R2_mid":  163, "2026_R2_late":  112,
   "2026_R3_early":   81, "2026_R3_mid":   61, "2026_R3_late":   46,
   "2026_R4_early":   36, "2026_R4_mid":   27, "2026_R4_late":   20,
-  "2027_R1_early":  813, "2027_R1_mid":  488, "2027_R1_late":  293,
-  "2027_R2_early":  195, "2027_R2_mid":  130, "2027_R2_late":   89,
-  "2027_R3_early":   65, "2027_R3_mid":   49, "2027_R3_late":   37,
-  "2027_R4_early":   28, "2027_R4_mid":   22, "2027_R4_late":   16,
-  "2028_R1_early":  660, "2028_R1_mid":  396, "2028_R1_late":  238,
-  "2028_R2_early":  158, "2028_R2_mid":  106, "2028_R2_late":   73,
-  "2028_R3_early":   53, "2028_R3_mid":   40, "2028_R3_late":   30,
-  "2028_R4_early":   23, "2028_R4_mid":   18, "2028_R4_late":   13,
-  "2029_R1_early":  538, "2029_R1_mid":  323, "2029_R1_late":  194,
-  "2029_R2_early":  129, "2029_R2_mid":   86, "2029_R2_late":   59,
-  "2029_R3_early":   43, "2029_R3_mid":   32, "2029_R3_late":   24,
-  "2029_R4_early":   19, "2029_R4_mid":   15, "2029_R4_late":   11,
+  "2027_R1_early":  300, "2027_R1_mid":  275, "2027_R1_late":  250,
+  "2027_R2_early":   85, "2027_R2_mid":   70, "2027_R2_late":   55,
+  "2027_R3_early":   35, "2027_R3_mid":   27, "2027_R3_late":   18,
+  "2027_R4_early":    5, "2027_R4_mid":    3, "2027_R4_late":    2,
+  "2028_R1_early":  285, "2028_R1_mid":  265, "2028_R1_late":  245,
+  "2028_R2_early":   78, "2028_R2_mid":   65, "2028_R2_late":   52,
+  "2028_R3_early":   30, "2028_R3_mid":   23, "2028_R3_late":   15,
+  "2028_R4_early":    4, "2028_R4_mid":    3, "2028_R4_late":    1,
+  "2029_R1_early":  270, "2029_R1_mid":  255, "2029_R1_late":  240,
+  "2029_R2_early":   72, "2029_R2_mid":   60, "2029_R2_late":   49,
+  "2029_R3_early":   26, "2029_R3_mid":   20, "2029_R3_late":   13,
+  "2029_R4_early":    3, "2029_R4_mid":    2, "2029_R4_late":    1,
 };
 
 const PICK_POS_LABELS = {
@@ -4727,22 +4926,7 @@ function pickTradeValue(pick, mode) {
 }
 
 // Pick-Mode Toggle
-function togglePickMode(side) {
-  TRADE_STATE[side].showPicks = !TRADE_STATE[side].showPicks;
-  const btn = document.getElementById('pickBtn' + side);
-  if (btn) {
-    btn.classList.toggle('active', TRADE_STATE[side].showPicks);
-    btn.textContent = TRADE_STATE[side].showPicks ? '👤 Spieler anzeigen' : '📋 Picks anzeigen';
-  }
-  // Filter beim Wechsel zurücksetzen
-  TRADE_STATE[side].nbaFilter = '';
-  TRADE_STATE[side].ttFilter  = '';
-  TRADE_STATE[side].search    = '';
-  document.getElementById('tradeNbaFilter' + side).value = '';
-  document.getElementById('tradeTTFilter'  + side).value = '';
-  document.getElementById('tradeSearch'    + side).value = '';
-  renderTradeList(side);
-}
+// togglePickMode removed - picks now inline
 
 // Toggle für Pick-Auswahl
 function toggleTradePick(side, pickKey) {
@@ -5016,9 +5200,124 @@ function filterTradePlayers(side) {
 function renderTradeList(side) {
   const st   = TRADE_STATE[side];
   const list = document.getElementById('tradeList' + side);
+  const q    = (st.search || '').toLowerCase().trim();
+  const isLight = document.body.classList.contains('light');
 
-  // ── PICK MODE ──────────────────────────────────────────────
-  if (st.showPicks) {
+  // Determine if query looks like a year
+  const yearMatch = q.match(/^(202[6-9])$/);
+  const filterYear = yearMatch ? parseInt(yearMatch[1]) : null;
+  const ttFilterId = st.ttFilter && st.ttFilter !== 'unowned' ? parseInt(st.ttFilter) : null;
+
+  // ── BUILD PICKS SECTION ─────────────────────────────────────
+  let picksHtml = '';
+  {
+    let relevantPicks = PICKS;
+    if (filterYear) relevantPicks = relevantPicks.filter(p => p.year === filterYear);
+    if (ttFilterId) relevantPicks = relevantPicks.filter(p => p.currentOwner === ttFilterId);
+    if (!filterYear && !ttFilterId && q) {
+      // text search: match year, round, team name
+      relevantPicks = relevantPicks.filter(p => {
+        const orig = teamMap[p.originalOwner];
+        const curr = teamMap[p.currentOwner];
+        return String(p.year).includes(q) ||
+               orig.name.toLowerCase().includes(q) ||
+               curr.name.toLowerCase().includes(q);
+      });
+    }
+    if (!filterYear && !ttFilterId && !q) relevantPicks = []; // don't show all picks by default unless filtered
+
+    if (relevantPicks.length > 0) {
+      const selectedKeys = st.selected.filter(s => s.isPick).map(s => s.pickKey);
+      // Group by year
+      const byYear = {};
+      relevantPicks.forEach(p => { if (!byYear[p.year]) byYear[p.year] = []; byYear[p.year].push(p); });
+
+      picksHtml += `<div style="padding:5px 12px 3px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#c58f32;background:rgba(197,143,50,0.08);border-bottom:1px solid var(--border);">📋 Draft Picks</div>`;
+
+      Object.keys(byYear).sort().forEach(year => {
+        const picks = byYear[year].sort((a, b) => a.round - b.round || a.originalOwner - b.originalOwner);
+        if (Object.keys(byYear).length > 1) {
+          picksHtml += `<div style="padding:4px 12px 2px;font-size:10px;font-weight:700;color:var(--muted);background:var(--surface2);border-bottom:1px solid var(--border);">${year}</div>`;
+        }
+        picks.forEach(p => {
+          const orig   = teamMap[p.originalOwner];
+          const curr   = teamMap[p.currentOwner];
+          const traded = p.originalOwner !== p.currentOwner;
+          const key    = `${p.year}_R${p.round}_T${p.originalOwner}`;
+          const isSel  = selectedKeys.includes(key);
+          const val    = PICK_VALUES[`${p.year}_R${p.round}_mid`] || 0;
+          const statusColor = traded ? (isLight?'#b43c64':'#ff8fa3') : (isLight?'#c0622f':'#6c63ff');
+          const statusBg    = traded ? (isLight?'rgba(180,60,100,0.1)':'rgba(255,101,132,0.1)') : (isLight?'rgba(192,98,47,0.1)':'rgba(108,99,255,0.12)');
+          const statusTxt   = traded ? `→ von ${orig.name}` : `${curr.name}`;
+          picksHtml += `<div class="pick-item ${isSel?'selected':''}"
+            onclick="toggleTradePickDirect('${side}','${key}',${p.year},${p.round},${p.originalOwner},${p.currentOwner},${val},'${traded}')">
+            <div class="tp-check" style="margin-top:2px;flex-shrink:0;">${isSel?'<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>':''}</div>
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <span style="font-family:'Playfair Display',serif;font-size:13px;font-weight:800;color:#c58f32;">${year}</span>
+                <span class="pick-round-pos">R${p.round}</span>
+                ${p.note?`<span style="font-size:9px;background:rgba(245,200,66,0.15);color:#f5c842;padding:1px 5px;border-radius:3px;">${p.note}</span>`:''}
+              </div>
+              <div style="margin-top:3px;"><span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;background:${statusBg};color:${statusColor};">${statusTxt}</span></div>
+            </div>
+            <span class="pick-value-badge">~${val.toLocaleString()}</span>
+          </div>`;
+        });
+      });
+    }
+  }
+
+  // ── BUILD PLAYERS SECTION ───────────────────────────────────
+  // If only a year was typed, don't show players (just picks)
+  let playersHtml = '';
+  if (!filterYear) {
+    const pool = buildTradePlayerPool().filter(p => !p.isPick);
+    const filtered = pool.filter(p => {
+      if (st.nbaFilter && p.nba !== st.nbaFilter) return false;
+      if (st.ttFilter === 'unowned' && p.ownerId !== null) return false;
+      if (ttFilterId && p.ownerId !== ttFilterId) return false;
+      if (q && !(p.name.toLowerCase().includes(q) || p.nba.toLowerCase().includes(q) ||
+                 (p.owner && p.owner.name.toLowerCase().includes(q)))) return false;
+      return true;
+    });
+    const selectedNames = st.selected.filter(s => !s.isPick).map(s => s.name);
+    if (filtered.length > 0) {
+      if (picksHtml) playersHtml += `<div style="padding:5px 12px 3px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);background:var(--surface2);border-bottom:1px solid var(--border);">👤 Spieler</div>`;
+      playersHtml += filtered.map(p => {
+        const isSel = selectedNames.includes(p.name);
+        const ownerLabel = p.owner ? p.owner.name : 'Unowned';
+        const val = dynastyValue(p.rank, p.dob);
+        const mRank = mattRank(p.name);
+        const hRank = hashtagRank(p.name);
+        return `<div class="trade-player-item ${isSel?'selected':''}" onclick="toggleTradePlayer('${side}', ${p.rank})">
+          <div class="tp-check">${isSel?'<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>':''}</div>
+          <div class="tp-name">${p.name}
+            <div class="tp-detail" style="font-size:11px;color:var(--muted);font-weight:400;margin-top:1px;">${p.nba} · ${ownerLabel}</div>
+            <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;">
+              ${rankBadgeHtml('MFHFBs', p.rank, rankStyle(p.rank))}
+              ${rankBadgeHtml('Matt', mRank, rankStyle(mRank))}
+              ${rankBadgeHtml('#️⃣', hRank, rankStyle(hRank))}
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
+            <span style="font-size:10px;font-weight:700;${valueBadgeStyle(val)}padding:1px 5px;border-radius:4px;">${val.toLocaleString()}</span>
+          </div>
+        </div>`;
+      }).join('');
+    }
+  }
+
+  const combined = picksHtml + playersHtml;
+  if (!combined) {
+    list.innerHTML = q
+      ? '<div class="trade-no-players">Keine Ergebnisse.</div>'
+      : '<div class="trade-no-players" style="padding:20px;text-align:center;color:var(--muted);font-size:12px;">Tippe einen Namen, ein Jahr (z.B. 2027) oder wähle ein Team</div>';
+    return;
+  }
+  list.innerHTML = combined;
+
+  // dead code kept for compatibility – never reached now
+  if (false) {
     const ttFilterId = st.ttFilter ? parseInt(st.ttFilter) : null;
     const isLight    = document.body.classList.contains('light');
 
@@ -5106,47 +5405,7 @@ function renderTradeList(side) {
       });
     });
 
-    list.innerHTML = html || '<div class="trade-no-players">Keine Picks gefunden.</div>';
-    return;
-  }
-
-  // ── PLAYER MODE ────────────────────────────────────────────
-  const pool = buildTradePlayerPool().filter(p => !p.isPick);
-  const q    = st.search.toLowerCase().trim();
-
-  const filtered = pool.filter(p => {
-    if (st.nbaFilter && p.nba !== st.nbaFilter) return false;
-    if (st.ttFilter === 'unowned' && p.ownerId !== null) return false;
-    if (st.ttFilter && st.ttFilter !== 'unowned' && p.ownerId !== parseInt(st.ttFilter)) return false;
-    if (q && !(p.name.toLowerCase().includes(q) || p.nba.toLowerCase().includes(q) ||
-               (p.owner && p.owner.name.toLowerCase().includes(q)))) return false;
-    return true;
-  });
-
-  const selectedNames = st.selected.filter(s => !s.isPick).map(s => s.name);
-  if (!filtered.length) { list.innerHTML = '<div class="trade-no-players">No players found.</div>'; return; }
-
-  list.innerHTML = filtered.map(p => {
-    const isSel       = selectedNames.includes(p.name);
-    const ownerLabel  = p.owner ? p.owner.name : 'Unowned';
-    const val         = dynastyValue(p.rank, p.dob);
-    const mRank       = mattRank(p.name);
-    const hRank       = hashtagRank(p.name);
-    return `<div class="trade-player-item ${isSel ? 'selected' : ''}" onclick="toggleTradePlayer('${side}', ${p.rank})">
-      <div class="tp-check">${isSel ? '<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</div>
-      <div class="tp-name">${p.name}
-        <div class="tp-detail" style="font-size:11px;color:var(--muted);font-weight:400;margin-top:1px;">${p.nba} · ${ownerLabel}</div>
-        <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;">
-          ${rankBadgeHtml('MFHFBs', p.rank, rankStyle(p.rank))}
-          ${rankBadgeHtml('Matt', mRank, rankStyle(mRank))}
-          ${rankBadgeHtml('#️⃣', hRank, rankStyle(hRank))}
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
-        <span style="font-size:10px;font-weight:700;${valueBadgeStyle(val)}padding:1px 5px;border-radius:4px;">${val.toLocaleString()}</span>
-      </div>
-    </div>`;
-  }).join('');
+  } // end dead code
 }
 
 function toggleTradePlayer(side, rank) {
@@ -5342,8 +5601,7 @@ const sorted = [...players].sort((a, b) => {
 
 function showTrade() {
   TRADE_STATE.A.selected = []; TRADE_STATE.B.selected = [];
-  TRADE_STATE.A.showPicks = false;
-  TRADE_STATE.B.showPicks = false;
+  // showPicks removed
   TRADE_STATE.A.nbaFilter = ''; TRADE_STATE.B.nbaFilter = '';
   TRADE_STATE.A.search    = ''; TRADE_STATE.B.search    = '';
 
@@ -5359,9 +5617,7 @@ function showTrade() {
     document.getElementById('tradeTTFilter'+side).value  = TRADE_STATE[side].ttFilter || '';
     document.getElementById('tradeSearch'+side).value    = '';
     document.getElementById('tradeNbaFilter'+side).classList.remove('has-filter');
-const pickBtn = document.getElementById('pickBtn' + side);
-    if (pickBtn) { pickBtn.classList.remove('active'); pickBtn.textContent = '📋 Picks anzeigen'; }
-    const ttEl = document.getElementById('tradeTTFilter'+side);
+const ttEl = document.getElementById('tradeTTFilter'+side);
     ttEl.classList.toggle('has-filter', !!TRADE_STATE[side].ttFilter);
   });
 
@@ -5905,7 +6161,9 @@ function renderTFGiveList() {
   const listEl = document.getElementById('tfGiveList');
   if (!listEl) return;
 
-  // give_picks mode: give section shows PICKS to trade away
+  // give_picks mode OR with_picks: give section can show picks
+  // In with_picks mode the GIVE side still shows players; picks appear on the RECEIVE side
+  // We keep give_picks for explicit pick-giving – not needed now, but kept for compat
   if (TF_STATE.pickMode === 'give_picks') {
     const pickPool = buildTFPickPool().filter(p =>
       TF_STATE.giveTeam ? p.currentOwner === TF_STATE.giveTeam : true
@@ -6475,7 +6733,7 @@ function showTradeFinder() {
   TF_STATE.format      = '2for1';
   TF_STATE.sameTeam    = true;
   TF_STATE.mode        = 'dynasty';
-  TF_STATE.pickMode    = 'none';
+  TF_STATE.pickMode    = 'with_picks';
   TRADE_MODE           = 'dynasty';
 
   // Reset format inputs
@@ -6486,8 +6744,8 @@ function showTradeFinder() {
 
   // Reset pick mode buttons
   document.querySelectorAll('[id^="tfPickModeBtn-"]').forEach(b => b.classList.remove('active'));
-  const pmNone = document.getElementById('tfPickModeBtn-none');
-  if (pmNone) pmNone.classList.add('active');
+  const pmWith = document.getElementById('tfPickModeBtn-with_picks');
+  if (pmWith) pmWith.classList.add('active');
 
   // Reset valuation mode buttons
   document.querySelectorAll('[id^="tfModeBtn-"]').forEach(b => b.classList.remove('active'));
@@ -6580,6 +6838,190 @@ function openTFShareModal() {
   document.getElementById('shareCardContent').innerHTML = cardHtml;
   document.getElementById('shareModalOverlay').style.display = 'flex';
 }
+
+// ============================================================
+//  TRADE HISTORY
+// ============================================================
+
+const TH_STORAGE_KEY = 'taco_trade_history';
+
+function loadTradeHistory() {
+  try {
+    return JSON.parse(localStorage.getItem(TH_STORAGE_KEY) || '[]');
+  } catch(e) { return []; }
+}
+
+function saveTradeHistory(trades) {
+  try { localStorage.setItem(TH_STORAGE_KEY, JSON.stringify(trades)); } catch(e) {}
+}
+
+function saveTradeToHistory() {
+  const selA = TRADE_STATE.A.selected;
+  const selB = TRADE_STATE.B.selected;
+  const resultBox = document.querySelector('.trade-result-box');
+  if (!selA.length || !selB.length || !resultBox) {
+    alert('Bitte zuerst einen Trade analysieren!');
+    return;
+  }
+
+  const valA = tradeSideValue(selA);
+  const valB = tradeSideValue(selB);
+  const total = valA + valB;
+  const pctA = total > 0 ? (valA / total * 100) : 50;
+  const diff = Math.abs(pctA - 50);
+  let verdict, cls;
+  if (diff < 5)       { verdict = 'Fair Trade';          cls = 'fair'; }
+  else if (diff < 12) { verdict = valA > valB ? 'Slight Edge: Side A' : 'Slight Edge: Side B'; cls = 'slight'; }
+  else                { verdict = valA > valB ? 'Side A Wins Big'     : 'Side B Wins Big';     cls = 'lopsided'; }
+
+  const serializePlayer = p => p.isPick
+    ? { isPick: true, pickKey: p.pickKey, year: p.year, round: p.round,
+        name: p.name, baseValue: p.baseValue,
+        origName: p.orig?.name || '', currName: p.curr?.name || '', traded: p.traded }
+    : { isPick: false, rank: p.rank, name: p.name, nba: p.nba, pos: p.pos,
+        dob: p.dob || null, ownerName: p.owner?.name || 'Unowned' };
+
+  const trade = {
+    id: Date.now(),
+    date: new Date().toLocaleDateString('de-DE', { day:'2-digit', month:'2-digit', year:'numeric' }),
+    mode: TRADE_MODE,
+    sideA: selA.map(serializePlayer),
+    sideB: selB.map(serializePlayer),
+    valA, valB, verdict, cls,
+    pctA: pctA.toFixed(1),
+    pctB: (100 - pctA).toFixed(1),
+  };
+
+  const trades = loadTradeHistory();
+  trades.unshift(trade); // newest first
+  saveTradeHistory(trades);
+
+  // Visual feedback
+  const btn = document.getElementById('tradeSaveBtn');
+  if (btn) {
+    btn.textContent = '✅ Gespeichert!';
+    btn.style.background = 'linear-gradient(135deg,#4caf81,#4caf81)';
+    setTimeout(() => {
+      btn.textContent = '✅ Done – Trade speichern';
+      btn.style.background = 'linear-gradient(135deg,#4caf81,#29b6f6)';
+    }, 2000);
+  }
+}
+
+function showTradeHistory() {
+  // Seed initial trades if history is empty
+  _seedTradeHistory();
+  renderTradeHistory();
+  navigate('tradeHistoryPage');
+}
+
+function _seedTradeHistory() {
+  const existing = loadTradeHistory();
+  if (existing.length > 0) return; // already has entries
+  const seed = [{"id": 1700000002, "date": "2025-26", "mode": "dynasty", "sideA": [{"isPick": false, "rank": 109, "name": "Devin Vassell", "nba": "SAS", "pos": "SG", "dob": "2001-04-13", "ownerName": "S-Town Grizzlies"}, {"isPick": false, "rank": 123, "name": "Ron Holland II", "nba": "DET", "pos": "SF", "dob": "2005-07-07", "ownerName": "S-Town Grizzlies"}], "sideB": [{"isPick": true, "pickKey": "2027_R1_T9", "year": 2027, "round": 1, "name": "2027 R1 \u00b7 Cooking Show", "baseValue": 275, "origName": "Cooking Show", "currName": "Cooking Show", "traded": false}, {"isPick": false, "rank": 304, "name": "Kasparas Jakucionis", "nba": "MIA", "pos": "PG", "dob": "2005-01-01", "ownerName": "Cooking Show"}], "valA": 210, "valB": 285, "verdict": "Side B Wins Big", "cls": "lopsided", "pctA": "42.4", "pctB": "57.6"}, {"id": 1700000001, "date": "2025-26", "mode": "dynasty", "sideA": [{"isPick": false, "rank": 86, "name": "Collin Murray-Boyles", "nba": "TOR", "pos": "PF", "dob": "2005-06-10", "ownerName": "Cooking Show"}], "sideB": [{"isPick": true, "pickKey": "2026_R3_T2", "year": 2026, "round": 3, "name": "2026 R3 \u00b7 Seagulls", "baseValue": 61, "origName": "Seagulls", "currName": "Seagulls", "traded": false}, {"isPick": true, "pickKey": "2026_R4_T2", "year": 2026, "round": 4, "name": "2026 R4 \u00b7 Seagulls", "baseValue": 27, "origName": "Seagulls", "currName": "Seagulls", "traded": false}, {"isPick": true, "pickKey": "2027_R3_T2", "year": 2027, "round": 3, "name": "2027 R3 \u00b7 Seagulls", "baseValue": 27, "origName": "Seagulls", "currName": "Seagulls", "traded": false}], "valA": 220, "valB": 104, "verdict": "Side A Wins Big", "cls": "lopsided", "pctA": "67.9", "pctB": "32.1"}];
+  saveTradeHistory(seed);
+}
+
+function clearTradeHistory() {
+  if (!confirm('Alle Trade-History Einträge löschen?')) return;
+  saveTradeHistory([]);
+  renderTradeHistory();
+}
+
+function deleteTradeEntry(id) {
+  const trades = loadTradeHistory().filter(t => t.id !== id);
+  saveTradeHistory(trades);
+  renderTradeHistory();
+}
+
+function renderTradeHistory() {
+  const trades = loadTradeHistory();
+  const container = document.getElementById('tradeHistoryList');
+  if (!container) return;
+
+  if (!trades.length) {
+    container.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--muted);border:2px dashed var(--border);border-radius:16px;margin-top:20px;">
+      <div style="font-size:40px;margin-bottom:12px;">📋</div>
+      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Noch keine Trades gespeichert</div>
+      <div style="font-size:13px;">Analysiere einen Trade und klicke "✅ Done – Trade speichern"</div>
+    </div>`;
+    return;
+  }
+
+  const isLight = document.body.classList.contains('light');
+
+  container.innerHTML = trades.map(t => {
+    const verdictColor = isLight
+      ? (t.cls === 'fair' ? '#3d8a5c' : t.cls === 'slight' ? '#9a6e10' : '#b43c64')
+      : (t.cls === 'fair' ? '#4caf81' : t.cls === 'slight' ? '#f5c842' : '#ff6584');
+    const borderColor = verdictColor;
+
+    const modeLabel = {dynasty:'🏗️ Dynasty', raw:'📊 Raw', winnow:'🏆 Win-Now'}[t.mode] || t.mode;
+
+    const renderSide = (players, label, val) => {
+      const rows = players.map(p => {
+        if (p.isPick) {
+          const statusTxt = p.traded ? `→ von ${p.origName}` : p.currName;
+          return `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);">
+            <span style="font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;background:rgba(197,143,50,0.15);color:#c58f32;flex-shrink:0;">📋 R${p.round}</span>
+            <div style="flex:1;">
+              <div style="font-weight:600;font-size:12px;color:var(--text);">${p.year} · Round ${p.round}</div>
+              <div style="font-size:11px;color:var(--muted);">${statusTxt}</div>
+            </div>
+            <div style="font-size:11px;font-weight:700;color:#c58f32;">~${p.baseValue?.toLocaleString()}</div>
+          </div>`;
+        }
+        return `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);">
+          <span style="font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;background:${dynastyRankBg(p.rank)};color:${dynastyRankColor(p.rank)};flex-shrink:0;">#${p.rank}</span>
+          <div style="flex:1;">
+            <div style="font-weight:600;font-size:12px;color:var(--text);">${p.name}</div>
+            <div style="font-size:11px;color:var(--muted);">${p.nba} · ${p.ownerName}</div>
+          </div>
+        </div>`;
+      }).join('');
+
+      return `<div style="flex:1;min-width:140px;background:var(--surface2);border-radius:10px;padding:10px 12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">${label}</span>
+          <span style="font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:var(--accent);">${val.toLocaleString()}</span>
+        </div>
+        ${rows}
+      </div>`;
+    };
+
+    const barFill = t.valA > t.valB ? t.pctA : t.pctB;
+    const barColor = t.cls === 'fair' ? '#4caf81' : t.cls === 'slight' ? '#f5c842' : '#ff6584';
+
+    return `<div style="background:var(--surface);border:1px solid ${borderColor}55;border-left:3px solid ${borderColor};border-radius:14px;padding:16px 18px;margin-bottom:12px;animation:fadeSlideIn 0.25s ease;">
+      <!-- Header -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:${verdictColor};">${t.verdict}</span>
+          <span style="font-size:10px;font-weight:700;background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:2px 8px;border-radius:10px;">${modeLabel}</span>
+          <span style="font-size:11px;color:var(--muted);">${t.date}</span>
+        </div>
+        <button onclick="deleteTradeEntry(${t.id})" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.15s;"
+          onmouseover="this.style.color='#ff6584'" onmouseout="this.style.color='var(--muted)'">✕</button>
+      </div>
+      <!-- Value bar -->
+      <div style="background:var(--surface2);border-radius:20px;height:6px;overflow:hidden;margin-bottom:5px;">
+        <div style="width:${t.pctA}%;height:100%;border-radius:20px;background:${t.valA>=t.valB?barColor:'var(--muted)'};"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-weight:600;margin-bottom:12px;">
+        <span>Side A <strong style="color:var(--text);">${t.valA.toLocaleString()}</strong> (${t.pctA}%)</span>
+        <span><strong style="color:var(--text);">${t.valB.toLocaleString()}</strong> Side B (${t.pctB}%)</span>
+      </div>
+      <!-- Sides -->
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        ${renderSide(t.sideA, 'Side A', t.valA)}
+        <div style="display:flex;align-items:center;color:var(--muted);font-weight:800;font-family:'Playfair Display',serif;font-size:14px;">⟷</div>
+        ${renderSide(t.sideB, 'Side B', t.valB)}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+
 </script>
 </body>
 </html>
