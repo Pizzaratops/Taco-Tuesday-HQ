@@ -1858,12 +1858,19 @@ window.addEventListener('DOMContentLoaded', function() {
 
 <!-- TRADE HISTORY PAGE -->
 <div class="page" id="tradeHistoryPage">
-  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:6px;">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
     <div>
       <h2 style="margin-bottom:4px;">📜 Trade History</h2>
-      <p style="color:var(--muted);font-size:13px;">Alle gespeicherten Trades der Taco Tuesday Liga</p>
+      <p style="color:var(--muted);font-size:13px;">Alle gespeicherten Trades · Werte eingefroren zum Zeitpunkt des Trades</p>
     </div>
-
+    <div style="display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px;flex-shrink:0;">
+      <button id="thModeDynasty" onclick="setTHMode('dynasty')"
+        style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:var(--accent);color:white;transition:all 0.15s;">🏗️ Dynasty</button>
+      <button id="thModeRaw" onclick="setTHMode('raw')"
+        style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">📊 Raw</button>
+      <button id="thModeWinnow" onclick="setTHMode('winnow')"
+        style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">🏆 Win-Now</button>
+    </div>
   </div>
   <div id="tradeHistoryList">
     <div style="text-align:center;padding:60px 20px;color:var(--muted);border:2px dashed var(--border);border-radius:16px;margin-top:20px;">
@@ -4857,19 +4864,19 @@ const PICK_VALUES = {
   "2026_R1_early": 1016, "2026_R1_mid":  610, "2026_R1_late":  366,
   "2026_R2_early":  244, "2026_R2_mid":  163, "2026_R2_late":  112,
   "2026_R3_early":   81, "2026_R3_mid":   61, "2026_R3_late":   46,
-  "2026_R4_early":   36, "2026_R4_mid":   27, "2026_R4_late":   20,
+  "2026_R4_early":   36, "2026_R4_mid":   25, "2026_R4_late":   15,
   "2027_R1_early":  300, "2027_R1_mid":  275, "2027_R1_late":  250,
-  "2027_R2_early":   85, "2027_R2_mid":   70, "2027_R2_late":   55,
-  "2027_R3_early":   35, "2027_R3_mid":   27, "2027_R3_late":   18,
-  "2027_R4_early":    5, "2027_R4_mid":    3, "2027_R4_late":    2,
+  "2027_R2_early":  105, "2027_R2_mid":   90, "2027_R2_late":   75,
+  "2027_R3_early":   55, "2027_R3_mid":   40, "2027_R3_late":   25,
+  "2027_R4_early":   25, "2027_R4_mid":   15, "2027_R4_late":    5,
   "2028_R1_early":  285, "2028_R1_mid":  265, "2028_R1_late":  245,
-  "2028_R2_early":   78, "2028_R2_mid":   65, "2028_R2_late":   52,
-  "2028_R3_early":   30, "2028_R3_mid":   23, "2028_R3_late":   15,
-  "2028_R4_early":    4, "2028_R4_mid":    3, "2028_R4_late":    1,
+  "2028_R2_early":  100, "2028_R2_mid":   87, "2028_R2_late":   75,
+  "2028_R3_early":   52, "2028_R3_mid":   38, "2028_R3_late":   25,
+  "2028_R4_early":   23, "2028_R4_mid":   14, "2028_R4_late":    5,
   "2029_R1_early":  270, "2029_R1_mid":  255, "2029_R1_late":  240,
-  "2029_R2_early":   72, "2029_R2_mid":   60, "2029_R2_late":   49,
-  "2029_R3_early":   26, "2029_R3_mid":   20, "2029_R3_late":   13,
-  "2029_R4_early":    3, "2029_R4_mid":    2, "2029_R4_late":    1,
+  "2029_R2_early":   95, "2029_R2_mid":   85, "2029_R2_late":   75,
+  "2029_R3_early":   50, "2029_R3_mid":   37, "2029_R3_late":   25,
+  "2029_R4_early":   22, "2029_R4_mid":   13, "2029_R4_late":    5,
 };
 
 const PICK_POS_LABELS = {
@@ -5086,16 +5093,24 @@ function dynastyValue(rank, dob) {
   return Math.max(0, Math.round(baseValue * ageMultiplier(dob, TRADE_MODE)));
 }
 
-// Aggregate trade value with diminishing returns per additional player.
-// Because deep prospects are already near-zero after the cliff + replacement floor,
-// stacking many fringe players cannot manufacture value equal to one real asset.
+// Aggregate trade value: picks always at 100%, only players get diminishing returns.
+// Each additional packaged player counts at 70% of their value (diminishing returns).
+// Picks are raw assets with fixed sheet values — no depth haircut applies.
 function tradeSideValue(players) {
   if (!players.length) return 0;
-  const withValues = players
-    .map(p => p.isPick ? pickTradeValue(p, TRADE_MODE) : dynastyValue(p.rank, p.dob))
+  const picks   = players.filter(p =>  p.isPick);
+  const nonPick = players.filter(p => !p.isPick);
+
+  // Player values sorted descending — each additional counts at 70% of prior
+  const playerVals = nonPick
+    .map(p => dynastyValue(p.rank, p.dob))
     .sort((a, b) => b - a);
   let total = 0;
-  withValues.forEach((val, i) => { total += val * Math.pow(0.70, i); });
+  playerVals.forEach((val, i) => { total += val * Math.pow(0.70, i); });
+
+  // Picks: full face value, no diminishing returns
+  picks.forEach(p => { total += pickTradeValue(p, TRADE_MODE); });
+
   return Math.round(total);
 }
 
@@ -6844,15 +6859,44 @@ function openTFShareModal() {
 // ============================================================
 
 const TH_STORAGE_KEY = 'taco_trade_history';
+let TH_MODE = 'dynasty'; // current display mode for trade history
 
-function loadTradeHistory() {
-  try {
-    return JSON.parse(localStorage.getItem(TH_STORAGE_KEY) || '[]');
-  } catch(e) { return []; }
+// ── Hardcoded base trades – always visible, independent of localStorage ──────
+const HARDCODED_TRADES = [
+  {"id":1700000002,"date":"2025-26","savedMode":"dynasty","sideA":[{"isPick":false,"rank":109,"name":"Devin Vassell","nba":"SAS","pos":"SG","dob":"2001-04-13","ownerName":"S-Town Grizzlies"},{"isPick":false,"rank":123,"name":"Ron Holland II","nba":"DET","pos":"SF","dob":"2005-07-07","ownerName":"S-Town Grizzlies"}],"sideB":[{"isPick":true,"pickKey":"2027_R1_T9","year":2027,"round":1,"name":"2027 R1 · Cooking Show","baseValue":275,"origName":"Cooking Show","currName":"Cooking Show","traded":false},{"isPick":false,"rank":304,"name":"Kasparas Jakucionis","nba":"MIA","pos":"PG","dob":"2005-01-01","ownerName":"Cooking Show"}],"frozen":{"dynasty":{"valA":83,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"23.2","pctB":"76.8"},"raw":{"valA":86,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"23.8","pctB":"76.2"},"winnow":{"valA":82,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"23.0","pctB":"77.0"}}},
+  {"id":1700000001,"date":"2025-26","savedMode":"dynasty","sideA":[{"isPick":false,"rank":96,"name":"Collin Murray-Boyles","nba":"TOR","pos":"PF","dob":"2005-06-10","ownerName":"Cooking Show"}],"sideB":[{"isPick":true,"pickKey":"2026_R3_T2","year":2026,"round":3,"name":"2026 R3 · Seagulls","baseValue":25,"origName":"Seagulls","currName":"Seagulls","traded":false},{"isPick":true,"pickKey":"2026_R4_T2","year":2026,"round":4,"name":"2026 R4 · Seagulls","baseValue":25,"origName":"Seagulls","currName":"Seagulls","traded":false},{"isPick":true,"pickKey":"2027_R3_T2","year":2027,"round":3,"name":"2027 R3 · Seagulls","baseValue":40,"origName":"Seagulls","currName":"Seagulls","traded":false}],"frozen":{"dynasty":{"valA":108,"valB":88,"verdict":"Slight Edge: Side A","cls":"slight","pctA":"55.1","pctB":"44.9"},"raw":{"valA":98,"valB":90,"verdict":"Fair Trade","cls":"fair","pctA":"52.1","pctB":"47.9"},"winnow":{"valA":80,"valB":98,"verdict":"Slight Edge: Side B","cls":"slight","pctA":"44.9","pctB":"55.1"}}}
+];
+// ─────────────────────────────────────────────────────────────────────────────
+
+function setTHMode(mode) {
+  TH_MODE = mode;
+  ['Dynasty','Raw','Winnow'].forEach(m => {
+    const btn = document.getElementById('thMode' + m);
+    if (!btn) return;
+    const active = m.toLowerCase() === mode;
+    btn.style.background = active ? 'var(--accent)' : 'transparent';
+    btn.style.color = active ? 'white' : 'var(--muted)';
+  });
+  renderTradeHistory();
 }
 
+// Returns hardcoded trades + any user-saved trades from localStorage (newest first).
+// Hardcoded IDs always win — stale localStorage copies with the same ID are dropped.
+function loadTradeHistory() {
+  const hardcodedIds = new Set(HARDCODED_TRADES.map(t => t.id));
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem(TH_STORAGE_KEY) || '[]'); } catch(e) {}
+  // Strip any old localStorage copies of hardcoded trades so they don't shadow the updated ones
+  const userTrades = saved.filter(t => !hardcodedIds.has(t.id));
+  // User trades first (newest), hardcoded base trades at the end
+  return [...userTrades, ...HARDCODED_TRADES];
+}
+
+// Only saves user-added trades (not hardcoded ones) to localStorage
 function saveTradeHistory(trades) {
-  try { localStorage.setItem(TH_STORAGE_KEY, JSON.stringify(trades)); } catch(e) {}
+  const hardcodedIds = new Set(HARDCODED_TRADES.map(t => t.id));
+  const userTrades = trades.filter(t => !hardcodedIds.has(t.id));
+  try { localStorage.setItem(TH_STORAGE_KEY, JSON.stringify(userTrades)); } catch(e) {}
 }
 
 function saveTradeToHistory() {
@@ -6881,15 +6925,34 @@ function saveTradeToHistory() {
     : { isPick: false, rank: p.rank, name: p.name, nba: p.nba, pos: p.pos,
         dob: p.dob || null, ownerName: p.owner?.name || 'Unowned' };
 
+  // Freeze values for all 3 modes at time of saving
+  const computeForMode = (mode) => {
+    const origMode = TRADE_MODE;
+    TRADE_MODE = mode;
+    const vA = tradeSideValue(selA);
+    const vB = tradeSideValue(selB);
+    TRADE_MODE = origMode;
+    const tot = vA + vB;
+    const pA = tot > 0 ? (vA / tot * 100) : 50;
+    const diff2 = Math.abs(pA - 50);
+    let v, cls2;
+    if (diff2 < 5)       { v = 'Fair Trade';          cls2 = 'fair'; }
+    else if (diff2 < 12) { v = vA > vB ? 'Slight Edge: Side A' : 'Slight Edge: Side B'; cls2 = 'slight'; }
+    else                 { v = vA > vB ? 'Side A Wins Big'     : 'Side B Wins Big';     cls2 = 'lopsided'; }
+    return { valA: vA, valB: vB, verdict: v, cls: cls2, pctA: pA.toFixed(1), pctB: (100-pA).toFixed(1) };
+  };
+
   const trade = {
     id: Date.now(),
     date: new Date().toLocaleDateString('de-DE', { day:'2-digit', month:'2-digit', year:'numeric' }),
-    mode: TRADE_MODE,
+    savedMode: TRADE_MODE,
     sideA: selA.map(serializePlayer),
     sideB: selB.map(serializePlayer),
-    valA, valB, verdict, cls,
-    pctA: pctA.toFixed(1),
-    pctB: (100 - pctA).toFixed(1),
+    frozen: {
+      dynasty: computeForMode('dynasty'),
+      raw:     computeForMode('raw'),
+      winnow:  computeForMode('winnow'),
+    },
   };
 
   const trades = loadTradeHistory();
@@ -6909,17 +6972,8 @@ function saveTradeToHistory() {
 }
 
 function showTradeHistory() {
-  // Seed initial trades if history is empty
-  _seedTradeHistory();
   renderTradeHistory();
   navigate('tradeHistoryPage');
-}
-
-function _seedTradeHistory() {
-  const existing = loadTradeHistory();
-  if (existing.length > 0) return; // already has entries
-  const seed = [{"id": 1700000002, "date": "2025-26", "mode": "dynasty", "sideA": [{"isPick": false, "rank": 109, "name": "Devin Vassell", "nba": "SAS", "pos": "SG", "dob": "2001-04-13", "ownerName": "S-Town Grizzlies"}, {"isPick": false, "rank": 123, "name": "Ron Holland II", "nba": "DET", "pos": "SF", "dob": "2005-07-07", "ownerName": "S-Town Grizzlies"}], "sideB": [{"isPick": true, "pickKey": "2027_R1_T9", "year": 2027, "round": 1, "name": "2027 R1 \u00b7 Cooking Show", "baseValue": 275, "origName": "Cooking Show", "currName": "Cooking Show", "traded": false}, {"isPick": false, "rank": 304, "name": "Kasparas Jakucionis", "nba": "MIA", "pos": "PG", "dob": "2005-01-01", "ownerName": "Cooking Show"}], "valA": 210, "valB": 285, "verdict": "Side B Wins Big", "cls": "lopsided", "pctA": "42.4", "pctB": "57.6"}, {"id": 1700000001, "date": "2025-26", "mode": "dynasty", "sideA": [{"isPick": false, "rank": 86, "name": "Collin Murray-Boyles", "nba": "TOR", "pos": "PF", "dob": "2005-06-10", "ownerName": "Cooking Show"}], "sideB": [{"isPick": true, "pickKey": "2026_R3_T2", "year": 2026, "round": 3, "name": "2026 R3 \u00b7 Seagulls", "baseValue": 61, "origName": "Seagulls", "currName": "Seagulls", "traded": false}, {"isPick": true, "pickKey": "2026_R4_T2", "year": 2026, "round": 4, "name": "2026 R4 \u00b7 Seagulls", "baseValue": 27, "origName": "Seagulls", "currName": "Seagulls", "traded": false}, {"isPick": true, "pickKey": "2027_R3_T2", "year": 2027, "round": 3, "name": "2027 R3 \u00b7 Seagulls", "baseValue": 27, "origName": "Seagulls", "currName": "Seagulls", "traded": false}], "valA": 220, "valB": 104, "verdict": "Side A Wins Big", "cls": "lopsided", "pctA": "67.9", "pctB": "32.1"}];
-  saveTradeHistory(seed);
 }
 
 function clearTradeHistory() {
@@ -6929,6 +6983,11 @@ function clearTradeHistory() {
 }
 
 function deleteTradeEntry(id) {
+  const hardcodedIds = new Set(HARDCODED_TRADES.map(t => t.id));
+  if (hardcodedIds.has(id)) {
+    alert('Dieser Trade ist ein Beispiel-Eintrag und kann nicht gelöscht werden.');
+    return;
+  }
   const trades = loadTradeHistory().filter(t => t.id !== id);
   saveTradeHistory(trades);
   renderTradeHistory();
@@ -6951,12 +7010,17 @@ function renderTradeHistory() {
   const isLight = document.body.classList.contains('light');
 
   container.innerHTML = trades.map(t => {
+    // Use frozen values for current display mode, fallback for old entries without frozen data
+    const modeData = (t.frozen && t.frozen[TH_MODE]) || { valA: t.valA, valB: t.valB, verdict: t.verdict, cls: t.cls, pctA: t.pctA, pctB: t.pctB };
+    const { valA, valB, verdict, cls, pctA, pctB } = modeData;
+
     const verdictColor = isLight
-      ? (t.cls === 'fair' ? '#3d8a5c' : t.cls === 'slight' ? '#9a6e10' : '#b43c64')
-      : (t.cls === 'fair' ? '#4caf81' : t.cls === 'slight' ? '#f5c842' : '#ff6584');
+      ? (cls === 'fair' ? '#3d8a5c' : cls === 'slight' ? '#9a6e10' : '#b43c64')
+      : (cls === 'fair' ? '#4caf81' : cls === 'slight' ? '#f5c842' : '#ff6584');
     const borderColor = verdictColor;
 
-    const modeLabel = {dynasty:'🏗️ Dynasty', raw:'📊 Raw', winnow:'🏆 Win-Now'}[t.mode] || t.mode;
+    const savedModeLabel = {dynasty:'🏗️ Dynasty', raw:'📊 Raw', winnow:'🏆 Win-Now'}[t.savedMode || t.mode] || '';
+    const modeLabel = {dynasty:'🏗️ Dynasty', raw:'📊 Raw', winnow:'🏆 Win-Now'}[TH_MODE];
 
     const renderSide = (players, label, val) => {
       const rows = players.map(p => {
@@ -6990,14 +7054,14 @@ function renderTradeHistory() {
     };
 
     const barFill = t.valA > t.valB ? t.pctA : t.pctB;
-    const barColor = t.cls === 'fair' ? '#4caf81' : t.cls === 'slight' ? '#f5c842' : '#ff6584';
+    const barColor = cls === 'fair' ? '#4caf81' : cls === 'slight' ? '#f5c842' : '#ff6584';
 
     return `<div style="background:var(--surface);border:1px solid ${borderColor}55;border-left:3px solid ${borderColor};border-radius:14px;padding:16px 18px;margin-bottom:12px;animation:fadeSlideIn 0.25s ease;">
       <!-- Header -->
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-          <span style="font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:${verdictColor};">${t.verdict}</span>
-          <span style="font-size:10px;font-weight:700;background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:2px 8px;border-radius:10px;">${modeLabel}</span>
+          <span style="font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:${verdictColor};">${verdict}</span>
+          <span style="font-size:10px;font-weight:700;background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:2px 8px;border-radius:10px;">gespeichert: ${savedModeLabel}</span>
           <span style="font-size:11px;color:var(--muted);">${t.date}</span>
         </div>
         <button onclick="deleteTradeEntry(${t.id})" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.15s;"
@@ -7005,17 +7069,17 @@ function renderTradeHistory() {
       </div>
       <!-- Value bar -->
       <div style="background:var(--surface2);border-radius:20px;height:6px;overflow:hidden;margin-bottom:5px;">
-        <div style="width:${t.pctA}%;height:100%;border-radius:20px;background:${t.valA>=t.valB?barColor:'var(--muted)'};"></div>
+        <div style="width:${pctA}%;height:100%;border-radius:20px;background:${valA>=valB?barColor:'var(--muted)'};"></div>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-weight:600;margin-bottom:12px;">
-        <span>Side A <strong style="color:var(--text);">${t.valA.toLocaleString()}</strong> (${t.pctA}%)</span>
-        <span><strong style="color:var(--text);">${t.valB.toLocaleString()}</strong> Side B (${t.pctB}%)</span>
+        <span>Side A <strong style="color:var(--text);">${valA.toLocaleString()}</strong> (${pctA}%)</span>
+        <span><strong style="color:var(--text);">${valB.toLocaleString()}</strong> Side B (${pctB}%)</span>
       </div>
       <!-- Sides -->
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        ${renderSide(t.sideA, 'Side A', t.valA)}
+        ${renderSide(t.sideA, 'Side A', valA)}
         <div style="display:flex;align-items:center;color:var(--muted);font-weight:800;font-family:'Playfair Display',serif;font-size:14px;">⟷</div>
-        ${renderSide(t.sideB, 'Side B', t.valB)}
+        ${renderSide(t.sideB, 'Side B', valB)}
       </div>
     </div>`;
   }).join('');
