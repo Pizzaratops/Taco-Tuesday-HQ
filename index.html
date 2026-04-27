@@ -5789,21 +5789,21 @@ function anComputeScores(cutoff, method) {
 
 function anCellColor(v) {
   const isLight = document.body.classList.contains('light');
-  if (v >= 0.6)  return isLight
+if (v >= 0.6)  return isLight
     ? {bg:'rgba(61,138,92,0.55)',   tx:'#0d3d20',      subTx:'rgba(0,0,0,0.55)'}
-    : {bg:'rgba(76,175,129,0.50)',  tx:'#ffffff',       subTx:'rgba(255,255,255,0.75)'};
+    : {bg:'rgba(76,175,129,0.38)',  tx:'#c8f5e0',      subTx:'rgba(200,245,224,0.65)'};
   if (v >= 0.2)  return isLight
     ? {bg:'rgba(61,138,92,0.2)',    tx:'#1a5c30',      subTx:'rgba(0,0,0,0.45)'}
-    : {bg:'rgba(76,175,129,0.22)',  tx:'#5dcc9a',      subTx:'rgba(93,204,154,0.75)'};
+    : {bg:'rgba(76,175,129,0.18)',  tx:'#6dddaa',      subTx:'rgba(109,221,170,0.65)'};
   if (v >= -0.2) return isLight
     ? {bg:'rgba(150,150,150,0.08)', tx:'#555555',      subTx:'rgba(0,0,0,0.35)'}
-    : {bg:'rgba(120,120,140,0.12)', tx:'var(--muted)', subTx:'rgba(123,127,158,0.7)'};
+    : {bg:'rgba(120,120,140,0.10)', tx:'#9ba0c0',      subTx:'rgba(155,160,192,0.6)'};
   if (v >= -0.6) return isLight
     ? {bg:'rgba(180,60,60,0.15)',   tx:'#8a1515',      subTx:'rgba(0,0,0,0.4)'}
-    : {bg:'rgba(255,101,132,0.22)', tx:'#ff7090',      subTx:'rgba(255,112,144,0.75)'};
+    : {bg:'rgba(255,101,132,0.22)', tx:'#ff8fa8',      subTx:'rgba(255,143,168,0.65)'};
   return           isLight
     ? {bg:'rgba(180,60,60,0.48)',   tx:'#5a0000',      subTx:'rgba(0,0,0,0.5)'}
-    : {bg:'rgba(255,101,132,0.52)', tx:'#ffffff',       subTx:'rgba(255,255,255,0.75)'};
+    : {bg:'rgba(255,101,132,0.45)', tx:'#ffe0e8',      subTx:'rgba(255,224,232,0.65)'};
 }
 
 function renderAnHeatmap() {
