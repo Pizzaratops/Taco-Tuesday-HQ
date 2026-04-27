@@ -5789,11 +5789,21 @@ function anComputeScores(cutoff, method) {
 
 function anCellColor(v) {
   const isLight = document.body.classList.contains('light');
-  if (v >= 0.6)  return isLight ? {bg:'rgba(61,138,92,0.5)',tx:'#1a5c30'} : {bg:'rgba(76,175,129,0.45)',tx:'#fff'};
-  if (v >= 0.2)  return isLight ? {bg:'rgba(61,138,92,0.2)',tx:'#2d7a50'} : {bg:'rgba(76,175,129,0.22)',tx:'#6dddaa'};
-  if (v >= -0.2) return isLight ? {bg:'rgba(150,150,150,0.1)',tx:'#888'}  : {bg:'rgba(120,120,140,0.15)',tx:'var(--muted)'};
-  if (v >= -0.6) return isLight ? {bg:'rgba(180,60,60,0.15)',tx:'#a03030'}: {bg:'rgba(255,101,132,0.2)',tx:'#ff8fa3'};
-  return           isLight ? {bg:'rgba(180,60,60,0.4)',tx:'#7a1020'}      : {bg:'rgba(255,101,132,0.45)',tx:'#fff'};
+  if (v >= 0.6)  return isLight
+    ? {bg:'rgba(61,138,92,0.55)',   tx:'#0d3d20',      subTx:'rgba(0,0,0,0.55)'}
+    : {bg:'rgba(76,175,129,0.50)',  tx:'#ffffff',       subTx:'rgba(255,255,255,0.75)'};
+  if (v >= 0.2)  return isLight
+    ? {bg:'rgba(61,138,92,0.2)',    tx:'#1a5c30',      subTx:'rgba(0,0,0,0.45)'}
+    : {bg:'rgba(76,175,129,0.22)',  tx:'#5dcc9a',      subTx:'rgba(93,204,154,0.75)'};
+  if (v >= -0.2) return isLight
+    ? {bg:'rgba(150,150,150,0.08)', tx:'#555555',      subTx:'rgba(0,0,0,0.35)'}
+    : {bg:'rgba(120,120,140,0.12)', tx:'var(--muted)', subTx:'rgba(123,127,158,0.7)'};
+  if (v >= -0.6) return isLight
+    ? {bg:'rgba(180,60,60,0.15)',   tx:'#8a1515',      subTx:'rgba(0,0,0,0.4)'}
+    : {bg:'rgba(255,101,132,0.22)', tx:'#ff7090',      subTx:'rgba(255,112,144,0.75)'};
+  return           isLight
+    ? {bg:'rgba(180,60,60,0.48)',   tx:'#5a0000',      subTx:'rgba(0,0,0,0.5)'}
+    : {bg:'rgba(255,101,132,0.52)', tx:'#ffffff',       subTx:'rgba(255,255,255,0.75)'};
 }
 
 function renderAnHeatmap() {
@@ -5809,18 +5819,20 @@ function renderAnHeatmap() {
     const team = TEAMS.find(t => t.id === tid);
     const seasonRow = SEASON_STATS[tid] || null;
     const cells = AN_CATS.map(cat => {
-      const v = s[cat]; const {bg,tx} = anCellColor(v);
+      const v = s[cat]; const {bg, tx, subTx} = anCellColor(v);
       const label = v > 0.05 ? '+'+v.toFixed(2) : v.toFixed(2);
       const sk = AN_CAT_TO_SEASON[cat];
       const sv = seasonRow && sk ? seasonRow[sk] : null;
       const tooltip = sv !== null ? fmtSeasonStat(cat, sv) : '';
       // For TO: invert season stat color (more TO = worse = red tint)
       // For all cats: use white/near-white for sub-label so it's readable on colored bg in dark mode
-      const subColor = 'rgba(255,255,255,0.82)';
-      return '<td style="padding:7px 4px;text-align:center;background:'+bg+';border:none;border-bottom:1px solid var(--border);" title="'+tooltip+'"><span style="font-size:11px;font-weight:800;color:'+tx+';">'+label+'</span>'+(tooltip?'<div style="font-size:9px;color:'+subColor+';margin-top:1px;line-height:1.1;">'+tooltip+'</div>':'')+'</td>';
+return '<td style="padding:7px 4px;text-align:center;background:'+bg+';border:none;border-bottom:1px solid var(--border);" title="'+tooltip+'">'
+  + '<span style="font-size:11px;font-weight:800;color:'+tx+';">'+label+'</span>'
+  + (tooltip ? '<div style="font-size:9px;color:'+(subTx||tx)+';margin-top:1px;line-height:1.1;opacity:0.85;">'+tooltip+'</div>' : '')
+  + '</td>';      return '<td style="padding:7px 4px;text-align:center;background:'+bg+';border:none;border-bottom:1px solid var(--border);" title="'+tooltip+'"><span style="font-size:11px;font-weight:800;color:'+tx+';">'+label+'</span>'+(tooltip?'<div style="font-size:9px;color:'+subColor+';margin-top:1px;line-height:1.1;">'+tooltip+'</div>':'')+'</td>';
     }).join('');
     const avgColor = avg>0.3?'#4caf81':avg>-0.1?'var(--text)':avg>-0.4?'#f5c842':'#ff6584';
-    return '<tr style="cursor:pointer;transition:filter 0.1s;'+(ri%2?'background:var(--surface2);':'')+'" onclick="openAnModal('+tid+')" onmouseenter="this.style.filter=\'brightness(1.08)\'" onmouseleave="this.style.filter=\'\'"><td style="padding:10px 14px;border:none;border-bottom:1px solid var(--border);white-space:nowrap;"><div style="display:flex;align-items:center;gap:8px;"><div style="width:10px;height:10px;border-radius:50%;background:'+(team?.color||'#888')+';flex-shrink:0;"></div><div><div style="font-size:12px;font-weight:700;color:var(--text);">'+(team?.name||'Team '+tid)+'</div><div style="font-size:10px;color:var(--muted);">'+(team?.owner||'')+'</div></div></div></td>'+cells+'<td style="padding:10px 14px;text-align:center;border:none;border-bottom:1px solid var(--border);"><span style="font-family:\'Playfair Display\',serif;font-size:14px;font-weight:800;color:'+avgColor+';">'+(avg>=0?'+':'')+avg.toFixed(2)+'</span></td></tr>';
+    return '<tr style="cursor:pointer;transition:filter 0.1s;'+(ri%2?'background:var(--surface2);':'')+'" onclick="openAnModal('+tid+')" onmouseenter="this.style.filter=\'brightness(1.08)\'" onmouseleave="this.style.filter=\'\'"><td style="padding:10px 14px;border:none;border-bottom:1px solid var(--border);white-space:nowrap;"><div style="display:flex;align-items:center;gap:8px;"><div style="width:10px;height:10px;border-radius:50%;background:'+(team?.color||'#888')+';flex-shrink:0;"></div><div><div style="font-size:12px;font-weight:700;color:var(--text);">'+(team?.name||'Team '+tid)+'</div><div style="font-size:10px;color:var(--muted);margin-top:3px;font-weight:500;">'+(team?.owner||'')+'</div></div></div></td>'+cells+'<td style="padding:10px 14px;text-align:center;border:none;border-bottom:1px solid var(--border);"><span style="font-family:\'Playfair Display\',serif;font-size:14px;font-weight:800;color:'+avgColor+';">'+(avg>=0?'+':'')+avg.toFixed(2)+'</span></td></tr>';
   }).join('');
 }
 
