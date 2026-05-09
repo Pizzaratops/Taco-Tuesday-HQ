@@ -769,6 +769,154 @@
 }
 .tf-progress { height: 3px; background: var(--border); border-radius: 2px; margin-top: 12px; overflow: hidden; }
 .tf-progress-bar { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.15s; }
+
+  /* ===== TRADE CONFIRM MODAL ===== */
+  #tradeConfirmOverlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 700;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  #tradeConfirmOverlay.open { display: flex; }
+  #tradeConfirmBox {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    width: 100%; max-width: 520px;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    animation: modalIn 0.22s ease;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  .tcm-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 800;
+    color: var(--text); margin-bottom: 6px;
+  }
+  .tcm-sub {
+    font-size: 12px; color: var(--muted); margin-bottom: 20px;
+  }
+  .tcm-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .tcm-row:last-of-type { border-bottom: none; }
+  .tcm-name {
+    flex: 1; min-width: 120px;
+    font-size: 13px; font-weight: 700; color: var(--text);
+  }
+  .tcm-name span {
+    display: block; font-size: 11px;
+    font-weight: 400; color: var(--muted); margin-top: 2px;
+  }
+  .tcm-arrow {
+    font-size: 16px; color: var(--muted); flex-shrink: 0;
+  }
+  .tcm-select {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 600;
+    padding: 6px 24px 6px 10px; border-radius: 9px;
+    outline: none; cursor: pointer;
+    appearance: none; -webkit-appearance: none;
+    transition: border-color 0.2s; min-width: 130px;
+  }
+  .tcm-select:focus, .tcm-select:hover { border-color: var(--accent); }
+  .tcm-select-wrap { position: relative; }
+  .tcm-select-wrap::after {
+    content: '▾'; position: absolute; right: 8px; top: 50%;
+    transform: translateY(-50%); font-size: 10px;
+    color: var(--muted); pointer-events: none;
+  }
+  .tcm-btn-row {
+    display: flex; gap: 10px; margin-top: 20px;
+  }
+  .tcm-btn {
+    flex: 1; padding: 12px; border-radius: 12px;
+    font-size: 13px; font-weight: 700;
+    font-family: 'DM Sans', sans-serif; cursor: pointer;
+    border: none; transition: opacity 0.15s;
+  }
+  .tcm-btn.cancel {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .tcm-btn.confirm {
+    background: linear-gradient(135deg, #4caf81, #29b6f6);
+    color: white; box-shadow: 0 4px 14px rgba(76,175,129,0.3);
+  }
+  .tcm-btn:hover { opacity: 0.85; }
+  .tcm-admin-lock {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: var(--muted);
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 8px 14px; margin-top: 8px;
+  }
+
+
+  /* ===== GLOBAL ADMIN BUTTON ===== */
+  .global-admin-btn {
+    position: relative;
+    display: flex; align-items: center; gap: 6px;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); padding: 5px 12px; border-radius: 20px;
+    cursor: pointer; font-size: 12px; font-weight: 700;
+    font-family: 'DM Sans', sans-serif; transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .global-admin-btn:hover { border-color: var(--accent); color: var(--text); }
+  .global-admin-btn.active {
+    background: rgba(245,200,66,0.15);
+    border-color: rgba(245,200,66,0.4);
+    color: #f5c842;
+  }
+  .admin-dropdown {
+    display: none;
+    position: absolute; top: calc(100% + 8px); right: 0;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 14px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+    z-index: 300; min-width: 220px;
+    animation: dropIn 0.15s ease;
+  }
+  .global-admin-btn.open .admin-dropdown { display: block; }
+  .admin-dropdown-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+  }
+  .admin-pin-row {
+    display: flex; gap: 6px;
+  }
+  .admin-pin-input {
+    flex: 1; background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13px;
+    padding: 7px 10px; border-radius: 8px; outline: none;
+    transition: border-color 0.2s;
+  }
+  .admin-pin-input:focus { border-color: var(--accent); }
+  .admin-pin-btn {
+    background: var(--accent); border: none; color: white;
+    padding: 7px 12px; border-radius: 8px; font-size: 12px;
+    font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer;
+  }
+  .admin-status-row {
+    margin-top: 10px; padding-top: 10px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11px; color: var(--muted);
+  }
+  .admin-logout-btn {
+    background: none; border: none; color: var(--muted);
+    font-size: 11px; font-weight: 700; font-family: 'DM Sans', sans-serif;
+    cursor: pointer; text-decoration: underline; padding: 0;
+  }
+  .admin-logout-btn:hover { color: #ff6584; }
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
@@ -778,7 +926,31 @@
   <button class="back-btn" id="backBtn" onclick="goHome()">← Back</button>
   <div class="logo">🌮 Taco Tuesday <span>HQ</span></div>
   <div class="header-right">
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">☀️ Light</button>
+    <!-- Global Admin Button -->
+    <div class="global-admin-btn" id="globalAdminBtn" onclick="toggleAdminDropdown(event)">
+      <span id="globalAdminIcon">&#128274;</span>
+      <span id="globalAdminLabel">Admin</span>
+      <div class="admin-dropdown" id="adminDropdown" onclick="event.stopPropagation()">
+        <div class="admin-dropdown-title">&#128272; Admin Login</div>
+        <div id="adminLoginForm">
+          <div class="admin-pin-row">
+            <input type="password" class="admin-pin-input" id="globalPinInput"
+              placeholder="PIN eingeben…" maxlength="8"
+              onkeydown="if(event.key==='Enter')globalCheckPin()"/>
+            <button class="admin-pin-btn" onclick="globalCheckPin()">OK</button>
+          </div>
+        </div>
+        <div class="admin-status-row" id="adminStatusRow" style="display:none;">
+          <span style="color:#f5c842;font-weight:700;">&#11088; Admin aktiv</span>
+          <button class="admin-logout-btn" onclick="globalLogout()">Logout</button>
+        </div>
+        <div style="font-size:10px;color:var(--muted);margin-top:8px;line-height:1.5;">
+          Draft Duel: 3&#215; Vote-Gewicht<br>
+          Trade: Speichern &amp; Roster-Update
+        </div>
+      </div>
+    </div>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">&#9728;&#65039; Light</button>
   </div>
 </div>
 
@@ -1371,7 +1543,7 @@
       <button id="tradeScreenshotBtn" class="draftboard-btn" style="flex:1;background:linear-gradient(135deg,#6c63ff,#ff6584);box-shadow:0 4px 14px rgba(108,99,255,0.3);">
         📤 Share Trade
       </button>
-      <button id="tradeSaveBtn" class="draftboard-btn" style="flex:1;background:linear-gradient(135deg,#4caf81,#29b6f6);box-shadow:0 4px 14px rgba(76,175,129,0.3);" onclick="saveTradeToHistory()">
+      <button id="tradeSaveBtn" class="draftboard-btn" style="flex:1;background:linear-gradient(135deg,#4caf81,#29b6f6);box-shadow:0 4px 14px rgba(76,175,129,0.3);" onclick="openTradeConfirmModal()">
         ✅ Done – Trade speichern
       </button>
     </div>
@@ -4719,6 +4891,8 @@ function renderHome() {
 
 function showTeam(id){
   currentTeamId=id; currentTab='roster';
+  // Apply localStorage roster overrides
+  _applyRosterOverrides();
   currentRosterSort = 'pos';
   const sortBtn = document.getElementById('rosterSortBtn');
   if (sortBtn) {
@@ -6446,6 +6620,374 @@ function showDuelSettings() {
   navigate('duelSettingsPage');
 }
 
+
+// ============================================================
+//  TRADE ADMIN — Admin-gated saving + Roster update modal
+// ============================================================
+
+// localStorage key for roster overrides
+const ROSTER_OVERRIDE_KEY = 'taco_roster_overrides_v1';
+
+// Load roster overrides from localStorage
+function loadRosterOverrides() {
+  try {
+    const raw = localStorage.getItem(ROSTER_OVERRIDE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch(e) { return {}; }
+}
+
+// Save roster overrides to localStorage
+function saveRosterOverrides(overrides) {
+  try {
+    localStorage.setItem(ROSTER_OVERRIDE_KEY, JSON.stringify(overrides));
+  } catch(e) {}
+}
+
+// Get effective roster for a team (hardcoded + overrides)
+function getEffectiveRoster(teamId) {
+  const base      = ROSTERS[teamId] ? [...ROSTERS[teamId]] : [];
+  const overrides = loadRosterOverrides();
+  const teamOvr   = overrides[teamId] || {};
+
+  // Apply additions
+  const additions = teamOvr.add || [];
+  additions.forEach(p => {
+    if (!base.find(b => b.name === p.name)) base.push(p);
+  });
+
+  // Apply removals
+  const removals = teamOvr.remove || [];
+  return base.filter(b => !removals.includes(b.name));
+}
+
+// Update the save button state based on admin status
+function updateTradeSaveBtnState() {
+  const btn = document.getElementById('tradeSaveBtn');
+  if (!btn) return;
+  if (isTradeAdmin()) {
+    btn.style.opacity = '1';
+    btn.style.cursor  = 'pointer';
+    btn.title = '';
+    btn.onclick = openTradeConfirmModal;
+  } else {
+    btn.style.opacity = '0.4';
+    btn.style.cursor  = 'not-allowed';
+    btn.title = 'Nur für Admins — bitte zuerst einloggen';
+    btn.onclick = () => {
+      if (typeof toast === 'function') toast('Nur für Admins. Bitte PIN eingeben.');
+    };
+  }
+}
+
+// Check if current user is admin (reuse existing isAdmin flag)
+function isTradeAdmin() {
+  return typeof isAdmin !== 'undefined' ? isAdmin : false;
+}
+
+// Build team options HTML for selects
+function buildTeamOptions(selectedId) {
+  return TEAMS.map(t =>
+    '<option value="' + t.id + '"' + (t.id === selectedId ? ' selected' : '') + '>'
+    + t.name + '</option>'
+  ).join('');
+}
+
+// Open the trade confirm modal
+function openTradeConfirmModal() {
+  const selA = TRADE_STATE.A.selected;
+  const selB = TRADE_STATE.B.selected;
+
+  if (!selA.length || !selB.length) {
+    if (typeof toast === 'function') toast('Bitte zuerst Spieler auf beiden Seiten auswählen.');
+    return;
+  }
+
+  // Build rows: for each player, show name + FROM team + arrow + TO team dropdown
+  // FROM = current owner, TO = the other side's team (best guess)
+  // We guess "TO" by finding the most common team on the other side
+  function guessTargetTeam(items) {
+    const ids = items
+      .filter(p => !p.isPick && p.ownerId)
+      .map(p => p.ownerId);
+    if (!ids.length) return null;
+    const counts = {};
+    ids.forEach(id => { counts[id] = (counts[id] || 0) + 1; });
+    return parseInt(Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0]);
+  }
+
+  const toTeamA = guessTargetTeam(selB); // Side A receives from B's team
+  const toTeamB = guessTargetTeam(selA); // Side B receives from A's team
+
+  function buildRows(items, defaultToTeam) {
+    return items.map((p, i) => {
+      const name     = p.isPick ? (p.year + ' R' + p.round + ' (' + (p.orig?.name || '?') + ')') : p.name;
+      const subLabel = p.isPick ? 'Draft Pick' : (p.nba || '') + (p.owner ? ' · ' + p.owner.name : ' · Unowned');
+      const fromId   = p.isPick ? (p.currentOwner || null) : (p.ownerId || null);
+      const toId     = defaultToTeam;
+
+      return '<div class="tcm-row" data-item-idx="' + i + '">'
+        + '<div class="tcm-name">' + name + '<span>' + subLabel + '</span></div>'
+        + '<div class="tcm-arrow">&#8594;</div>'
+        + '<div class="tcm-select-wrap">'
+          + '<select class="tcm-select tcm-to-select">'
+          + buildTeamOptions(toId)
+          + '</select>'
+        + '</div>'
+        + '</div>';
+    }).join('');
+  }
+
+  const rowsA = buildRows(selA, toTeamA);
+  const rowsB = buildRows(selB, toTeamB);
+
+  document.getElementById('tcmRows').innerHTML =
+    '<div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Side A gibt ab</div>'
+    + '<div id="tcmRowsA">' + rowsA + '</div>'
+    + '<div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:14px 0 6px;">Side B gibt ab</div>'
+    + '<div id="tcmRowsB">' + rowsB + '</div>';
+
+  // Store references for confirmTradeAndSave
+  window._tcmSelA = selA;
+  window._tcmSelB = selB;
+
+  document.getElementById('tradeConfirmOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTradeConfirm() {
+  document.getElementById('tradeConfirmOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Read the TO-team selections from the modal and apply roster changes
+function confirmTradeAndSave() {
+  const overrides = loadRosterOverrides();
+
+  function applyTransfer(items, rowsContainerId) {
+    const rows    = document.querySelectorAll('#' + rowsContainerId + ' .tcm-row');
+    rows.forEach((row, i) => {
+      const p      = items[i];
+      if (!p) return;
+      const toId   = parseInt(row.querySelector('.tcm-to-select').value);
+      const fromId = p.isPick ? p.currentOwner : p.ownerId;
+
+      if (!toId) return;
+
+      // Build the player object to add to the new team
+      const playerObj = p.isPick
+        ? { name: p.year + ' R' + p.round + ' (' + (p.orig?.name || '') + ')', pos: 'PK', team: 'PICK', isPick: true }
+        : { name: p.name, pos: p.pos || '', team: p.nba || '' };
+
+      // Add to TO team
+      if (!overrides[toId]) overrides[toId] = { add: [], remove: [] };
+      if (!overrides[toId].add) overrides[toId].add = [];
+      if (!overrides[toId].remove) overrides[toId].remove = [];
+      if (!overrides[toId].add.find(x => x.name === playerObj.name)) {
+        overrides[toId].add.push(playerObj);
+      }
+
+      // Remove from FROM team (if we know it)
+      if (fromId && fromId !== toId) {
+        if (!overrides[fromId]) overrides[fromId] = { add: [], remove: [] };
+        if (!overrides[fromId].remove) overrides[fromId].remove = [];
+        if (!overrides[fromId].remove.includes(playerObj.name)) {
+          overrides[fromId].remove.push(playerObj.name);
+        }
+      }
+    });
+  }
+
+  applyTransfer(window._tcmSelA || [], 'tcmRowsA');
+  applyTransfer(window._tcmSelB || [], 'tcmRowsB');
+
+  saveRosterOverrides(overrides);
+
+  // Also save trade to history (existing function logic)
+  _doSaveTradeToHistory();
+
+  closeTradeConfirm();
+  if (typeof toast === 'function') toast('✅ Trade gespeichert & Roster aktualisiert!');
+}
+
+// Extracted trade-history save logic (called after modal confirm)
+function _doSaveTradeToHistory() {
+  const selA = TRADE_STATE.A.selected;
+  const selB = TRADE_STATE.B.selected;
+  if (!selA.length || !selB.length) return;
+
+  const serializePlayer = p => p.isPick
+    ? { isPick: true, pickKey: p.pickKey, year: p.year, round: p.round,
+        name: p.name, baseValue: p.baseValue,
+        origName: p.orig?.name || '', currName: p.curr?.name || '', traded: p.traded }
+    : { isPick: false, rank: p.rank, name: p.name, nba: p.nba, pos: p.pos,
+        dob: p.dob || null, ownerName: p.owner?.name || 'Unowned' };
+
+  const computeForMode = (mode) => {
+    const orig = TRADE_MODE; TRADE_MODE = mode;
+    const vA = tradeSideValue(selA), vB = tradeSideValue(selB);
+    TRADE_MODE = orig;
+    const tot = vA + vB, pA = tot > 0 ? (vA/tot*100) : 50;
+    const d = Math.abs(pA-50);
+    let v, cls2;
+    if (d < 5)       { v='Fair Trade'; cls2='fair'; }
+    else if (d < 12) { v=vA>vB?'Slight Edge: Side A':'Slight Edge: Side B'; cls2='slight'; }
+    else             { v=vA>vB?'Side A Wins Big':'Side B Wins Big'; cls2='lopsided'; }
+    return { valA:vA, valB:vB, verdict:v, cls:cls2, pctA:pA.toFixed(1), pctB:(100-pA).toFixed(1) };
+  };
+
+  const trade = {
+    id: Date.now(),
+    date: new Date().toLocaleDateString('de-DE', { month:'long', year:'numeric' }),
+    savedMode: TRADE_MODE,
+    sideA: selA.map(serializePlayer),
+    sideB: selB.map(serializePlayer),
+    frozen: {
+      dynasty: computeForMode('dynasty'),
+      raw:     computeForMode('raw'),
+      winnow:  computeForMode('winnow'),
+    },
+  };
+
+  const trades = loadTradeHistory();
+  trades.unshift(trade);
+  saveTradeHistory(trades);
+}
+
+/* showTeam override removed — see _applyRosterOverrides() */
+
+// Update save button state whenever trade page is shown
+// We patch the snav-dropdown-item onclick instead of overriding showTrade()
+document.addEventListener('DOMContentLoaded', function() {
+  // Wire all "Trade Analyzer" nav buttons to also update the save btn
+  document.querySelectorAll('[data-page="trade"]').forEach(btn => {
+    const orig = btn.getAttribute('onclick') || '';
+    btn.setAttribute('onclick', orig + '; setTimeout(updateTradeSaveBtnState, 80);');
+  });
+  // Initial state
+  updateTradeSaveBtnState();
+});
+
+
+// ============================================================
+//  GLOBAL ADMIN SYSTEM
+// ============================================================
+const GLOBAL_ADMIN_PIN = '0815';
+
+// Shared admin state — replaces isAdmin used by Draft Duel
+// We keep isAdmin as the canonical flag so all existing code works
+function globalCheckPin() {
+  const val = document.getElementById('globalPinInput')?.value?.trim();
+  if (val === GLOBAL_ADMIN_PIN) {
+    // Set global admin flag (used by Draft Duel + Trade)
+    isAdmin = true;
+
+    // Update header UI
+    _updateAdminUI(true);
+
+    // Also sync Draft Duel badge if visible
+    const duelBadge = document.getElementById('duelAdminBadge');
+    if (duelBadge) {
+      duelBadge.textContent = '\u2B50 Admin (3\u00d7)';
+      duelBadge.style.background = 'rgba(245,200,66,.15)';
+      duelBadge.style.borderColor = 'rgba(245,200,66,.4)';
+      duelBadge.style.color = '#f5c842';
+    }
+
+    // Update trade save button
+    if (typeof updateTradeSaveBtnState === 'function') updateTradeSaveBtnState();
+
+    if (typeof toast === 'function') toast('\u2B50 Admin aktiv!');
+    document.getElementById('globalPinInput').value = '';
+    // Close dropdown after short delay
+    setTimeout(() => {
+      const btn = document.getElementById('globalAdminBtn');
+      if (btn) btn.classList.remove('open');
+    }, 800);
+  } else {
+    if (typeof toast === 'function') toast('Falscher PIN.');
+    const input = document.getElementById('globalPinInput');
+    if (input) { input.style.borderColor = '#ff6584'; setTimeout(() => input.style.borderColor = '', 1000); }
+  }
+}
+
+function globalLogout() {
+  isAdmin = false;
+  _updateAdminUI(false);
+  const duelBadge = document.getElementById('duelAdminBadge');
+  if (duelBadge) {
+    duelBadge.textContent = 'User';
+    duelBadge.style.background = '';
+    duelBadge.style.borderColor = '';
+    duelBadge.style.color = '';
+  }
+  if (typeof updateTradeSaveBtnState === 'function') updateTradeSaveBtnState();
+  if (typeof toast === 'function') toast('Admin-Modus deaktiviert.');
+  document.getElementById('globalAdminBtn')?.classList.remove('open');
+}
+
+function _updateAdminUI(active) {
+  const btn   = document.getElementById('globalAdminBtn');
+  const icon  = document.getElementById('globalAdminIcon');
+  const label = document.getElementById('globalAdminLabel');
+  const form  = document.getElementById('adminLoginForm');
+  const status = document.getElementById('adminStatusRow');
+  if (!btn) return;
+  if (active) {
+    btn.classList.add('active');
+    if (icon)   icon.textContent   = '\u2B50';
+    if (label)  label.textContent  = 'Admin (3\u00d7)';
+    if (form)   form.style.display = 'none';
+    if (status) status.style.display = '';
+  } else {
+    btn.classList.remove('active');
+    if (icon)   icon.innerHTML    = '&#128274;';
+    if (label)  label.textContent = 'Admin';
+    if (form)   form.style.display = '';
+    if (status) status.style.display = 'none';
+  }
+}
+
+function toggleAdminDropdown(e) {
+  e.stopPropagation();
+  const btn = document.getElementById('globalAdminBtn');
+  if (!btn) return;
+  btn.classList.toggle('open');
+  if (btn.classList.contains('open')) {
+    // Close on outside click
+    setTimeout(() => {
+      document.addEventListener('click', _closeAdminOnOutside, { once: true });
+    }, 10);
+  }
+}
+
+function _closeAdminOnOutside() {
+  document.getElementById('globalAdminBtn')?.classList.remove('open');
+}
+
+// Apply localStorage roster overrides into ROSTERS (called on every showTeam)
+function _applyRosterOverrides() {
+  const overrides = loadRosterOverrides();
+  if (!overrides || !Object.keys(overrides).length) return;
+  // Store base rosters once
+  if (!window._baseRosters) {
+    window._baseRosters = {};
+    Object.keys(ROSTERS).forEach(tid => {
+      window._baseRosters[tid] = [...ROSTERS[tid]];
+    });
+  }
+  Object.keys(overrides).forEach(tid => {
+    if (!window._baseRosters[tid]) return;
+    let roster = [...window._baseRosters[tid]];
+    const removals  = overrides[tid].remove || [];
+    const additions = overrides[tid].add    || [];
+    roster = roster.filter(p => !removals.includes(p.name));
+    additions.forEach(p => {
+      if (!roster.find(r => r.name === p.name)) roster.push(p);
+    });
+    ROSTERS[parseInt(tid)] = roster;
+  });
+}
+
 renderHome();
 
 // ============================================================
@@ -7696,7 +8238,7 @@ function renderTradeHistory() {
           <span style="font-size:10px;font-weight:700;background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:2px 8px;border-radius:10px;">gespeichert: ${savedModeLabel}</span>
           <span style="font-size:11px;color:var(--muted);">${t.date}</span>
         </div>
-        ${isHardcoded ? '<span style="font-size:10px;color:var(--muted);">📌</span>' : `<button onclick="deleteTradeEntry(${t.id})" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.15s;" onmouseover="this.style.color='#ff6584'" onmouseout="this.style.color='var(--muted)'">✕</button>`}
+        ${isHardcoded ? '<span style="font-size:10px;color:var(--muted);">📌</span>' : isAdmin ? `<button onclick="deleteTradeEntry(${t.id})" style="background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.15s;" onmouseover="this.style.color='#ff6584'" onmouseout="this.style.color='var(--muted)'">✕</button>` : ''}
       </div>
       <div style="background:var(--surface2);border-radius:20px;height:6px;overflow:hidden;margin-bottom:5px;">
         <div style="width:${pctA}%;height:100%;border-radius:20px;background:${parseFloat(pctA)>=50?barColor:'var(--muted)'};"></div>
@@ -7715,5 +8257,19 @@ function renderTradeHistory() {
 }
 
 </script>
+
+<!-- TRADE CONFIRM MODAL -->
+<div id="tradeConfirmOverlay" onclick="if(event.target===this)closeTradeConfirm()">
+  <div id="tradeConfirmBox">
+    <div class="tcm-title">&#128203; Trade bestätigen</div>
+    <div class="tcm-sub">Prüfe die Roster-Änderungen und bestätige den Transfer</div>
+    <div id="tcmRows"></div>
+    <div class="tcm-btn-row">
+      <button class="tcm-btn cancel" onclick="closeTradeConfirm()">Abbrechen</button>
+      <button class="tcm-btn confirm" onclick="confirmTradeAndSave()">&#10003; Speichern &amp; Roster updaten</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
