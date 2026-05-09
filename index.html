@@ -981,6 +981,8 @@
   <button class="back-btn" id="backBtn" onclick="goHome()">← Back</button>
   <div class="logo">🌮 Taco Tuesday <span>HQ</span></div>
   <div class="header-right">
+    <!-- ESPN Sync Button -->
+    <button id="espnSyncBtn" onclick="espnSync()" style="background:rgba(0,104,183,0.12);border:1.5px solid rgba(0,104,183,0.35);color:#0068b7;border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:6px;" onmouseover="this.style.background='rgba(0,104,183,0.22)'" onmouseout="this.style.background='rgba(0,104,183,0.12)'">🔄 ESPN Sync</button>
     <!-- Global Admin Button -->
     <div class="global-admin-btn" id="globalAdminBtn" onclick="toggleAdminDropdown(event)">
       <span id="globalAdminIcon">&#128274;</span>
@@ -1043,6 +1045,7 @@
           <button class="snav-dropdown-item" data-page="trade"       onclick="showTrade()">⚖️ Trade Analyzer</button>
           <button class="snav-dropdown-item" data-page="tradefinder" onclick="showTradeFinder()">🔍 Trade Finder</button>
           <button class="snav-dropdown-item" data-page="tradehistory" onclick="showTradeHistory()">📜 Trade History</button>
+          <button class="snav-dropdown-item" data-page="nbatrades" onclick="showNbaTrades()">🏀 NBA Trades</button>
         </div>
       </div>
 
@@ -1100,6 +1103,7 @@
         <button class="subnav-mobile-btn" data-page="trade"       onclick="showTrade();closeMobileNav()">⚖️ Trade Analyzer</button>
         <button class="subnav-mobile-btn" data-page="tradefinder" onclick="showTradeFinder();closeMobileNav()">🔍 Trade Finder</button>
         <button class="subnav-mobile-btn" data-page="tradehistory" onclick="showTradeHistory();closeMobileNav()">📜 Trade History</button>
+        <button class="subnav-mobile-btn" data-page="nbatrades" onclick="showNbaTrades();closeMobileNav()">🏀 NBA Trades</button>
       </div>
     </div>
   </div>
@@ -2117,6 +2121,24 @@ window.addEventListener('DOMContentLoaded', function() {
   <div id="tradeHistoryList"></div>
 </div>
 
+
+
+<div class="page" id="nbaTradesPage">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
+    <div>
+      <h2 style="margin-bottom:4px;">🏀 NBA Trades 2025/26</h2>
+      <p style="color:var(--muted);font-size:13px;">Aktuelle NBA Trades via Balldontlie · Spieler in deiner Liga sind markiert</p>
+    </div>
+    <button onclick="fetchNbaTrades().then(renderNbaTrades)" style="background:rgba(0,104,183,0.12);border:1.5px solid rgba(0,104,183,0.35);color:#0068b7;border-radius:20px;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">🔄 Aktualisieren</button>
+  </div>
+  <div id="nbaTradesList">
+    <div style="text-align:center;padding:60px 20px;color:var(--muted);">
+      <div style="font-size:36px;margin-bottom:12px;">🏀</div>
+      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Lade NBA Trades…</div>
+      <div style="font-size:13px;">Klicke Aktualisieren oder ESPN Sync</div>
+    </div>
+  </div>
+</div>
 
 <!-- DRAFT DUEL PAGES -->
 
@@ -5060,9 +5082,13 @@ function renderRoster(id) {
       })
     : roster;
 
+  const knownPos = ['PG','SG','SF','PF','C'];
   const posGroups = currentRosterSort === 'rank'
     ? [{ pos: null, players: sorted }]
-    : ['PG','SG','SF','PF','C'].map(pos => ({ pos, players: sorted.filter(p => p.pos === pos) }));
+    : [
+        ...knownPos.map(pos => ({ pos, players: sorted.filter(p => p.pos && p.pos.split('/')[0] === pos) })),
+        { pos: '?', players: sorted.filter(p => !p.pos || !knownPos.includes(p.pos.split('/')[0])) }
+      ];
 
   posGroups.forEach(({ pos, players }) => {
     if (!players.length) return;
@@ -5084,13 +5110,23 @@ function renderRoster(id) {
         : '<span style="font-size:11px;color:var(--border);font-weight:600;min-width:48px;text-align:right;padding:3px 8px;">—</span>';
       const dynBadge = dynastyRankBadge(rank);
 
+      const _isAdm = typeof isAdmin !== 'undefined' && isAdmin;
+      const _posKey = p.pos ? p.pos.split('/')[0] : 'PG';
+      const _posStyle = _isAdm ? 'cursor:pointer;outline:2px dashed var(--accent);outline-offset:2px;border-radius:4px;' : '';
+      const _teamStyle = _isAdm ? 'font-size:12px;width:42px;text-align:center;cursor:pointer;text-decoration:underline dotted var(--accent);' : 'font-size:12px;width:42px;text-align:center;';
       html += `<div class="player-row">
-        <div class="pos-badge pos-${p.pos}">${p.pos}</div>
+        <div class="pos-badge pos-${_posKey}"
+          onclick="if(window.isAdmin)adminEditPlayerField(event,this,'${p.name}',${id},'pos','${_posKey}')"
+          style="${_posStyle}"
+        >${_posKey}</div>
         <div style="flex:1;min-width:0;">
           <!-- Desktop: single line -->
           <div class="roster-desktop-row">
             <div class="player-name" style="flex:1;">${p.name}${ageStr}</div>
-            <span class="roster-col-nba player-team r-team-link" onclick="showNBATeam('${p.team}')" style="font-size:12px;width:42px;text-align:center;">${p.team}</span>
+            <span class="roster-col-nba player-team r-team-link"
+              onclick="window.isAdmin?adminEditPlayerField(event,this,'${p.name}',${id},'team','${p.team}'):showNBATeam('${p.team}')"
+              style="${_teamStyle}"
+            >${p.team}</span>
             <span class="roster-col-rank">${dynBadge}</span>
             <span class="roster-col-rank">${mattBadge}</span>
             <span class="roster-col-rank">${hashBadge}</span>
@@ -5201,7 +5237,7 @@ const SUBNAV_PAGES = {
   duelPage:'duel', duelBoardPage:'duelboard', duelSettingsPage:'duelsettings',
   lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings',
   bestAvailPage:'bestavail', analyticsPage:'analytics', tradePage:'trade',
-  tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', standingsPage:'standings', rulesPage:'rules',
+  tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', nbaTradesPage:'nbatrades', standingsPage:'standings', rulesPage:'rules',
 };
 
 const SNAV_GROUP = {
@@ -6809,6 +6845,10 @@ function openTradeConfirmModal() {
       const fromId   = p.isPick ? (p.currentOwner || null) : (p.ownerId || null);
       const toId     = defaultToTeam;
 
+      // Guess primary position for non-pick players
+      const primaryPos = p.isPick ? '' : (p.pos || '').split('/')[0] || 'PG';
+      const posOpts = ['PG','SG','SF','PF','C'].map(po =>
+        '<option value="'+po+'"'+(po===primaryPos?' selected':'')+'>'+po+'</option>').join('');
       return '<div class="tcm-row" data-item-idx="' + i + '">'
         + '<div class="tcm-name">' + name + '<span>' + subLabel + '</span></div>'
         + '<div class="tcm-arrow">&#8594;</div>'
@@ -6817,6 +6857,11 @@ function openTradeConfirmModal() {
           + buildTeamOptions(toId)
           + '</select>'
         + '</div>'
+        + (p.isPick ? '' :
+          '<div class="tcm-select-wrap" style="margin-left:6px;">'
+          + '<select class="tcm-select tcm-pos-select" title="Position im neuen Team">'
+          + posOpts
+          + '</select></div>')
         + '</div>';
     }).join('');
   }
@@ -6860,7 +6905,9 @@ function confirmTradeAndSave() {
       // Build the player object to add to the new team
       const playerObj = p.isPick
         ? { name: p.year + ' R' + p.round + ' (' + (p.orig?.name || '') + ')', pos: 'PK', team: 'PICK', isPick: true }
-        : { name: p.name, pos: p.pos || '', team: p.nba || '' };
+        : { name: p.name,
+            pos: (row.querySelector('.tcm-pos-select')?.value || p.pos || '').split('/')[0] || (p.pos||'').split('/')[0] || '',
+            team: p.nba || '' };
 
       // Add to TO team
       if (!overrides[toId]) overrides[toId] = { add: [], remove: [] };
@@ -6955,6 +7002,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================================
 //  GLOBAL ADMIN SYSTEM
 // ============================================================
+var isAdmin = false; // declared globally so renderTradeHistory never throws ReferenceError
 const GLOBAL_ADMIN_PIN = '0815';
 
 // Shared admin state — replaces isAdmin used by Draft Duel
@@ -7087,11 +7135,225 @@ function _applyRosterOverrides() {
   });
 }
 
+// ============================================================
+//  ADMIN INLINE EDIT: pos & team on roster rows
+// ============================================================
+function adminEditPlayerField(evt, el, playerName, teamId, field, currentVal) {
+  evt.stopPropagation();
+  if (typeof isAdmin === 'undefined' || !isAdmin) return;
+
+  const target = evt.currentTarget;
+  const rect   = target.getBoundingClientRect();
+
+  // Remove any existing popup
+  document.querySelectorAll('.admin-inline-popup').forEach(el => el.remove());
+
+  const popup = document.createElement('div');
+  popup.className = 'admin-inline-popup';
+  popup.style.cssText = [
+    'position:fixed',
+    'z-index:9999',
+    'background:var(--surface)',
+    'border:1.5px solid var(--accent)',
+    'border-radius:10px',
+    'box-shadow:0 4px 20px rgba(0,0,0,.18)',
+    'padding:12px 14px',
+    'min-width:180px',
+    'font-family:DM Sans,sans-serif',
+  ].join(';');
+  popup.style.top  = (rect.bottom + 6 + window.scrollY) + 'px';
+  popup.style.left = Math.min(rect.left, window.innerWidth - 210) + 'px';
+
+  const label = field === 'pos' ? 'Position' : 'NBA Team';
+
+  let inputHtml;
+  if (field === 'pos') {
+    const POS = ['PG','SG','SF','PF','C'];
+    inputHtml = '<select id="aie-input" style="width:100%;padding:6px 8px;border-radius:7px;border:1.5px solid var(--border);background:var(--surface2);color:var(--text);font-size:13px;font-weight:700;">'
+      + POS.map(p => '<option value="'+p+'"'+(p===currentVal?' selected':'')+'>'+p+'</option>').join('')
+      + '</select>';
+  } else {
+    // NBA team: free text (3-letter code)
+    inputHtml = '<input id="aie-input" type="text" maxlength="4" value="'+currentVal+'" '
+      + 'style="width:100%;padding:6px 8px;border-radius:7px;border:1.5px solid var(--border);background:var(--surface2);color:var(--text);font-size:13px;font-weight:700;box-sizing:border-box;">';
+  }
+
+  const _pn = playerName.replace(/'/g, "\\'");
+  const _fi = field.replace(/'/g, "\\'");
+  popup.innerHTML = '<div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">' + label + ' \u00e4ndern</div>'
+    + inputHtml
+    + '<div style="display:flex;gap:8px;margin-top:10px;">'
+    + '<button onclick="adminInlineSave(\'' + _pn + '\',' + teamId + ',\'' + _fi + '\')" '
+    +   'style="flex:1;padding:6px;border-radius:7px;border:none;background:var(--accent);color:#fff;font-weight:700;font-size:12px;cursor:pointer;">Speichern</button>'
+    + '<button onclick="document.querySelectorAll(\'.admin-inline-popup\').forEach(function(e){e.remove()})" '
+    +   'style="flex:1;padding:6px;border-radius:7px;border:1.5px solid var(--border);background:var(--surface2);color:var(--text);font-weight:600;font-size:12px;cursor:pointer;">Abbrechen</button>'
+    + '</div>';
+
+  document.body.appendChild(popup);
+  setTimeout(() => {
+    document.getElementById('aie-input')?.focus();
+    document.addEventListener('click', function closeAIE(e) {
+      if (!popup.contains(e.target)) { popup.remove(); document.removeEventListener('click', closeAIE); }
+    });
+  }, 10);
+}
+
+function adminInlineSave(playerName, teamId, field) {
+  const val = document.getElementById('aie-input')?.value?.trim();
+  if (!val) return;
+
+  const overrides = loadRosterOverrides();
+  const tid = parseInt(teamId);
+
+  // Find the player in current ROSTERS and update in-memory
+  const roster = ROSTERS[tid] || [];
+  const player  = roster.find(p => p.name === playerName);
+
+  if (player) {
+    // Update in-memory
+    player[field] = val;
+
+    // Persist via overrides: remove old entry, add updated
+    if (!overrides[tid]) overrides[tid] = { add: [], remove: [] };
+    // Remove from adds if already there, then re-add updated
+    overrides[tid].add = (overrides[tid].add || []).filter(p => p.name !== playerName);
+    // Check if this is an override player (not in original roster)
+    const origRoster = _ORIGINAL_ROSTERS[tid] || [];
+    const isOriginal = origRoster.find(p => p.name === playerName);
+    if (!isOriginal) {
+      // Override-only player: update add entry
+      overrides[tid].add.push({ name: playerName, pos: player.pos, team: player.team });
+    } else {
+      // Original player: store field override by adding a modified copy
+      // and removing the original name so _applyRosterOverrides re-adds updated
+      const updatedPlayer = { ...player, [field]: val };
+      if (!(overrides[tid].remove || []).includes(playerName)) {
+        overrides[tid].remove = [...(overrides[tid].remove || []), playerName];
+      }
+      overrides[tid].add = overrides[tid].add.filter(p => p.name !== playerName);
+      overrides[tid].add.push(updatedPlayer);
+    }
+
+    saveRosterOverrides(overrides);
+    _applyRosterOverrides();
+    renderTab(); // re-render current view
+    if (typeof toast === 'function') toast('✅ ' + playerName + ' → ' + field.toUpperCase() + ': ' + val);
+  } else {
+    if (typeof toast === 'function') toast('⚠️ Spieler nicht gefunden');
+  }
+  document.querySelectorAll('.admin-inline-popup').forEach(e => e.remove());
+}
+
+// ============================================================
+//  ESPN FANTASY SYNC
+// ============================================================
+const ESPN_LEAGUE_ID = 44361109;
+const ESPN_SEASON    = 2025;
+
+const ESPN_POS_MAP = {
+  1:'PG', 2:'SG', 3:'SF', 4:'PF', 5:'C', 6:'C', 11:'PG',
+  12:'SG', 13:'SF', 14:'PF', 15:'C', 0:'SF'
+};
+
+const ESPN_NBA_MAP = {
+  1:'ATL',2:'BOS',3:'NOR',4:'CHI',5:'CLE',6:'DAL',7:'DEN',8:'DET',
+  9:'GSW',10:'HOU',11:'IND',12:'LAC',13:'LAL',14:'MIA',15:'MIL',
+  16:'MIN',17:'BKN',18:'NYK',19:'ORL',20:'PHI',21:'PHO',22:'POR',
+  23:'SAC',24:'SAS',25:'OKC',26:'UTA',27:'WAS',28:'TOR',29:'MEM',
+  33:'UTA',38:'NOR',40:'WAS',41:'CHA',
+};
+
+const SYNC_INTERVAL_MS = 6 * 60 * 60 * 1000;
+
+async function espnSync(auto = false) {
+  const btn = document.getElementById('espnSyncBtn');
+  if (auto) {
+    const last = parseInt(localStorage.getItem('espnLastSyncTs') || '0');
+    if (Date.now() - last < SYNC_INTERVAL_MS) return;
+  }
+  if (btn) { btn.textContent = '⏳ Syncing…'; btn.disabled = true; }
+  try {
+    const url = `https://fantasy.espn.com/apis/v3/games/fba/seasons/${ESPN_SEASON}/segments/0/leagues/${ESPN_LEAGUE_ID}?view=mRoster&view=mTeam`;
+    const res  = await fetch(url, { credentials: 'omit' });
+    if (!res.ok) throw new Error('ESPN API ' + res.status);
+    const data = await res.json();
+    const teams = data.teams || [];
+    if (!teams.length) throw new Error('Keine Teams in ESPN-Antwort');
+
+    const newRosters = {};
+    teams.forEach(espnTeam => {
+      const tid     = espnTeam.id;
+      const entries = espnTeam.roster?.entries || [];
+      newRosters[tid] = entries.map(entry => {
+        const pi     = entry.playerPoolEntry || {};
+        const p      = pi.player || {};
+        const name   = p.fullName || null;
+        const posId  = (p.eligibleSlots || [])[0] ?? 0;
+        const pos    = ESPN_POS_MAP[posId] || 'SF';
+        const nbaTeam = ESPN_NBA_MAP[p.proTeamId] || 'FA';
+        return name ? { name, pos, team: nbaTeam } : null;
+      }).filter(Boolean);
+    });
+
+    Object.keys(newRosters).forEach(tid => {
+      const t = parseInt(tid);
+      ROSTERS[t] = newRosters[tid];
+      _ORIGINAL_ROSTERS[t] = newRosters[tid].map(p => ({...p}));
+    });
+
+    saveRosterOverrides({});
+    const total = Object.values(newRosters).reduce((s,r) => s + r.length, 0);
+    const now   = new Date().toLocaleString('de-DE', {dateStyle:'short', timeStyle:'short'});
+    localStorage.setItem('espnLastSync', now);
+
+    _applyRosterOverrides();
+    if (typeof renderHome === 'function') renderHome();
+initEspnSyncBtn();
+    if (typeof renderTab  === 'function') renderTab();
+
+    if (btn) { btn.textContent = '✅ ' + now; btn.disabled = false; }
+    if (!auto && typeof toast === 'function') toast('✅ Sync: ' + total + ' Spieler (' + now + ')');
+    fetchNbaTrades().catch(e => console.warn('NBA trades:', e));
+  } catch(err) {
+    console.error('ESPN Sync:', err);
+    if (btn) { btn.textContent = '🔄 ESPN Sync'; btn.disabled = false; }
+    if (!auto && typeof toast === 'function') toast('❌ Sync: ' + err.message);
+  }
+}
+
+async function fetchNbaTrades() {
+  try {
+    const r = await fetch('https://api.balldontlie.io/v1/trades?per_page=25&season=2025');
+    if (!r.ok) return;
+    const data = await r.json();
+    const trades = (data.data || []).map(t => ({
+      id:   t.id,
+      date: t.traded_at ? t.traded_at.split('T')[0] : '?',
+      players: (t.players || []).map(p => ({
+        name:     (p.first_name||'') + ' ' + (p.last_name||''),
+        fromTeam: t.from_team?.abbreviation || '?',
+        toTeam:   t.to_team?.abbreviation   || '?',
+      }))
+    })).filter(t => t.players.length);
+    localStorage.setItem('nbaTrades', JSON.stringify(trades));
+    localStorage.setItem('nbaTradesTs', Date.now().toString());
+    if (typeof renderNbaTrades === 'function') renderNbaTrades();
+  } catch(e) { console.warn('fetchNbaTrades:', e); }
+}
+
+function initEspnSyncBtn() {
+  const last = localStorage.getItem('espnLastSync');
+  const btn  = document.getElementById('espnSyncBtn');
+  if (btn && last) btn.textContent = '🔄 ESPN (' + last + ')';
+}
+
 // Apply on page load so home screen team strength badges are correct
 _applyRosterOverrides();
 
 
 renderHome();
+initEspnSyncBtn();
+espnSync(true);
 
 // ============================================================
 //  TEAM ANALYTICS — Dynamic, roster-based, H2H aware
@@ -7168,7 +7430,7 @@ function renderAnHeatmap() {
 return '<td style="padding:7px 4px;text-align:center;background:'+bg+';border:none;border-bottom:1px solid var(--border);" title="'+tooltip+'">'
   + '<span style="font-size:11px;font-weight:800;color:'+tx+';">'+label+'</span>'
   + (tooltip ? '<div style="font-size:9px;color:'+(subTx||tx)+';margin-top:1px;line-height:1.1;opacity:0.85;">'+tooltip+'</div>' : '')
-  + '</td>';      return '<td style="padding:7px 4px;text-align:center;background:'+bg+';border:none;border-bottom:1px solid var(--border);" title="'+tooltip+'"><span style="font-size:11px;font-weight:800;color:'+tx+';">'+label+'</span>'+(tooltip?'<div style="font-size:9px;color:'+subColor+';margin-top:1px;line-height:1.1;">'+tooltip+'</div>':'')+'</td>';
+  + '</td>';
     }).join('');
     const avgColor = avg>0.3?'#4caf81':avg>-0.1?'var(--text)':avg>-0.4?'#f5c842':'#ff6584';
     return '<tr style="cursor:pointer;transition:filter 0.1s;'+(ri%2?'background:var(--surface2);':'')+'" onclick="openAnModal('+tid+')" onmouseenter="this.style.filter=\'brightness(1.08)\'" onmouseleave="this.style.filter=\'\'"><td style="padding:10px 14px;border:none;border-bottom:1px solid var(--border);white-space:nowrap;"><div style="display:flex;align-items:center;gap:8px;"><div style="width:10px;height:10px;border-radius:50%;background:'+(team?.color||'#888')+';flex-shrink:0;"></div><div><div style="font-size:12px;font-weight:700;color:var(--text);">'+(team?.name||'Team '+tid)+'</div><div style="font-size:10px;color:var(--muted);margin-top:3px;font-weight:500;">'+(team?.owner||'')+'</div></div></div></td>'+cells+'<td style="padding:10px 14px;text-align:center;border:none;border-bottom:1px solid var(--border);"><span style="font-family:\'Playfair Display\',serif;font-size:14px;font-weight:800;color:'+avgColor+';">'+(avg>=0?'+':'')+avg.toFixed(2)+'</span></td></tr>';
@@ -8289,6 +8551,48 @@ function saveTradeToHistory() {
 function showTradeHistory() {
   renderTradeHistory();
   navigate('tradeHistoryPage');
+}
+
+function showNbaTrades() {
+  navigate('nbaTradesPage');
+  renderNbaTrades();
+  const lastTs = parseInt(localStorage.getItem('nbaTradesTs') || '0');
+  if (Date.now() - lastTs > 60 * 60 * 1000) fetchNbaTrades().then(renderNbaTrades);
+}
+
+function renderNbaTrades() {
+  const container = document.getElementById('nbaTradesList');
+  if (!container) return;
+  const fantasyNames = new Set();
+  Object.values(ROSTERS).forEach(roster => roster.forEach(p => fantasyNames.add(p.name)));
+  const raw = localStorage.getItem('nbaTrades');
+  if (!raw) {
+    container.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--muted);"><div style="font-size:36px;margin-bottom:12px;">📡</div><div style="font-size:14px;font-weight:600;color:var(--text);">Noch keine Daten — klicke Aktualisieren</div></div>';
+    return;
+  }
+  let trades = [];
+  try { trades = JSON.parse(raw); } catch(e) { return; }
+  if (!trades.length) {
+    container.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted);font-size:14px;">Keine Trades gefunden</div>';
+    return;
+  }
+  const isLight = document.body.classList.contains('light');
+  container.innerHTML = trades.map(t => {
+    const rows = t.players.map(p => {
+      const inLeague = fantasyNames.has(p.name);
+      const bg = inLeague ? (isLight ? 'rgba(76,175,129,0.12)' : 'rgba(76,175,129,0.18)') : 'transparent';
+      const badge = inLeague ? '<span style="font-size:10px;font-weight:800;padding:2px 7px;border-radius:10px;background:rgba(76,175,129,0.2);color:#4caf81;margin-left:8px;">In Liga ✓</span>' : '';
+      return '<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:' + bg + ';margin-bottom:3px;">'
+        + '<span style="font-size:11px;font-weight:800;padding:2px 7px;border-radius:5px;background:var(--surface2);color:var(--muted);min-width:34px;text-align:center;">' + p.fromTeam + '</span>'
+        + '<span style="color:var(--muted);font-size:13px;">' + String.fromCharCode(8594) + '</span>'
+        + '<span style="font-size:11px;font-weight:800;padding:2px 7px;border-radius:5px;background:var(--surface2);color:var(--accent);min-width:34px;text-align:center;">' + p.toTeam + '</span>'
+        + '<span style="flex:1;font-size:13px;font-weight:' + (inLeague ? '700' : '500') + ';color:var(--text);">' + p.name + badge + '</span>'
+        + '</div>';
+    }).join('');
+    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:10px;animation:fadeSlideIn 0.2s ease;">'
+      + '<div style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:0.5px;margin-bottom:10px;">📅 ' + t.date + '</div>'
+      + rows + '</div>';
+  }).join('');
 }
 
 function deleteTradeEntry(id) {
