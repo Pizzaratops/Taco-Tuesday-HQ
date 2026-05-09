@@ -7048,29 +7048,48 @@ function _closeAdminOnOutside() {
   document.getElementById('globalAdminBtn')?.classList.remove('open');
 }
 
-// Apply localStorage roster overrides into ROSTERS (called on every showTeam)
+// ── ROSTER OVERRIDE SYSTEM (rewritten) ──────────────────────────────────────
+
+// Deep-copy of original hardcoded rosters — set once at startup, never modified
+const _ORIGINAL_ROSTERS = {};
+Object.keys(ROSTERS).forEach(tid => {
+  _ORIGINAL_ROSTERS[parseInt(tid)] = ROSTERS[tid].map(p => ({...p}));
+});
+
+// Apply localStorage overrides on top of original rosters
+// Called on every showTeam() and on page load
 function _applyRosterOverrides() {
   const overrides = loadRosterOverrides();
+
+  // Always start fresh from originals
+  Object.keys(_ORIGINAL_ROSTERS).forEach(tid => {
+    ROSTERS[parseInt(tid)] = _ORIGINAL_ROSTERS[parseInt(tid)].map(p => ({...p}));
+  });
+
   if (!overrides || !Object.keys(overrides).length) return;
-  // Store base rosters once
-  if (!window._baseRosters) {
-    window._baseRosters = {};
-    Object.keys(ROSTERS).forEach(tid => {
-      window._baseRosters[tid] = [...ROSTERS[tid]];
-    });
-  }
-  Object.keys(overrides).forEach(tid => {
-    if (!window._baseRosters[tid]) return;
-    let roster = [...window._baseRosters[tid]];
-    const removals  = overrides[tid].remove || [];
-    const additions = overrides[tid].add    || [];
-    roster = roster.filter(p => !removals.includes(p.name));
+
+  Object.keys(overrides).forEach(tidStr => {
+    const tid      = parseInt(tidStr);
+    const removals = overrides[tidStr].remove || [];
+    const additions = overrides[tidStr].add   || [];
+
+    if (!ROSTERS[tid]) ROSTERS[tid] = [];
+
+    // Remove traded-away players
+    ROSTERS[tid] = ROSTERS[tid].filter(p => !removals.includes(p.name));
+
+    // Add incoming players (avoid duplicates)
     additions.forEach(p => {
-      if (!roster.find(r => r.name === p.name)) roster.push(p);
+      if (!ROSTERS[tid].find(r => r.name === p.name)) {
+        ROSTERS[tid].push(p);
+      }
     });
-    ROSTERS[parseInt(tid)] = roster;
   });
 }
+
+// Apply on page load so home screen team strength badges are correct
+_applyRosterOverrides();
+
 
 renderHome();
 
