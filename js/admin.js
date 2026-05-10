@@ -1,0 +1,150 @@
+//  GLOBAL ADMIN SYSTEM
+// ============================================================
+var isAdmin = false; // declared globally so renderTradeHistory never throws ReferenceError
+const GLOBAL_ADMIN_PIN = '0815';
+
+// Shared admin state — replaces isAdmin used by Draft Duel
+// We keep isAdmin as the canonical flag so all existing code works
+function globalCheckPin() {
+  const val = document.getElementById('globalPinInput')?.value?.trim();
+  if (val === GLOBAL_ADMIN_PIN) {
+    // Set global admin flag (used by Draft Duel + Trade)
+    isAdmin = true;
+
+    // Update header UI
+    _updateAdminUI(true);
+
+    // Also sync Draft Duel badge if visible
+    const duelBadge = document.getElementById('duelAdminBadge');
+    if (duelBadge) {
+      duelBadge.textContent = '\u2B50 Admin (3\u00d7)';
+      duelBadge.style.background = 'rgba(245,200,66,.15)';
+      duelBadge.style.borderColor = 'rgba(245,200,66,.4)';
+      duelBadge.style.color = '#f5c842';
+    }
+
+    // Update trade save button
+    if (typeof updateTradeSaveBtnState === 'function') updateTradeSaveBtnState();
+
+    if (typeof toast === 'function') toast('\u2B50 Admin aktiv!');
+    document.getElementById('globalPinInput').value = '';
+    // Close dropdown after short delay
+    setTimeout(() => {
+      const btn = document.getElementById('globalAdminBtn');
+      if (btn) btn.classList.remove('open');
+    }, 800);
+  } else {
+    if (typeof toast === 'function') toast('Falscher PIN.');
+    const input = document.getElementById('globalPinInput');
+    if (input) { input.style.borderColor = '#ff6584'; setTimeout(() => input.style.borderColor = '', 1000); }
+  }
+}
+
+function globalLogout() {
+  isAdmin = false;
+  _updateAdminUI(false);
+  const duelBadge = document.getElementById('duelAdminBadge');
+  if (duelBadge) {
+    duelBadge.textContent = 'User';
+    duelBadge.style.background = '';
+    duelBadge.style.borderColor = '';
+    duelBadge.style.color = '';
+  }
+  if (typeof updateTradeSaveBtnState === 'function') updateTradeSaveBtnState();
+  if (typeof toast === 'function') toast('Admin-Modus deaktiviert.');
+  document.getElementById('globalAdminBtn')?.classList.remove('open');
+}
+
+function _updateAdminUI(active) {
+  const settBtn = document.getElementById('adminSettingsBtn');
+  if (settBtn) settBtn.style.display = active ? 'block' : 'none';
+  const syncBtn = document.getElementById('espnSyncBtn');
+  if (syncBtn) {
+    if (active) {
+      syncBtn.style.background = 'rgba(0,104,183,0.12)';
+      syncBtn.style.border     = '1.5px solid rgba(0,104,183,0.35)';
+      syncBtn.style.color      = '#0068b7';
+      syncBtn.style.cursor     = 'pointer';
+    } else {
+      syncBtn.style.background = 'rgba(128,128,128,0.08)';
+      syncBtn.style.border     = '1.5px solid rgba(128,128,128,0.2)';
+      syncBtn.style.color      = 'var(--muted)';
+      syncBtn.style.cursor     = 'default';
+    }
+  }
+  const btn   = document.getElementById('globalAdminBtn');
+  const icon  = document.getElementById('globalAdminIcon');
+  const label = document.getElementById('globalAdminLabel');
+  const form  = document.getElementById('adminLoginForm');
+  const status = document.getElementById('adminStatusRow');
+  if (!btn) return;
+  if (active) {
+    btn.classList.add('active');
+    if (icon)   icon.textContent   = '\u2B50';
+    if (label)  label.textContent  = 'Admin (3\u00d7)';
+    if (form)   form.style.display = 'none';
+    if (status) status.style.display = '';
+  } else {
+    btn.classList.remove('active');
+    if (icon)   icon.innerHTML    = '&#128274;';
+    if (label)  label.textContent = 'Admin';
+    if (form)   form.style.display = '';
+    if (status) status.style.display = 'none';
+  }
+}
+
+function toggleAdminDropdown(e) {
+  e.stopPropagation();
+  const btn = document.getElementById('globalAdminBtn');
+  if (!btn) return;
+  btn.classList.toggle('open');
+  if (btn.classList.contains('open')) {
+    // Close on outside click
+    setTimeout(() => {
+      document.addEventListener('click', _closeAdminOnOutside, { once: true });
+    }, 10);
+  }
+}
+
+function _closeAdminOnOutside() {
+  document.getElementById('globalAdminBtn')?.classList.remove('open');
+}
+
+// ── ROSTER OVERRIDE SYSTEM (rewritten) ──────────────────────────────────────
+
+// Deep-copy of original hardcoded rosters — set once at startup, never modified
+const _ORIGINAL_ROSTERS = {};
+Object.keys(ROSTERS).forEach(tid => {
+  _ORIGINAL_ROSTERS[parseInt(tid)] = ROSTERS[tid].map(p => ({...p}));
+});
+
+// Apply localStorage overrides on top of original rosters
+// Called on every showTeam() and on page load
+function _applyRosterOverrides() {
+  const overrides = loadRosterOverrides();
+
+  // Always start fresh from originals
+  Object.keys(_ORIGINAL_ROSTERS).forEach(tid => {
+    ROSTERS[parseInt(tid)] = _ORIGINAL_ROSTERS[parseInt(tid)].map(p => ({...p}));
+  });
+
+  if (!overrides || !Object.keys(overrides).length) return;
+
+  Object.keys(overrides).forEach(tidStr => {
+    const tid      = parseInt(tidStr);
+    const removals = overrides[tidStr].remove || [];
+    const additions = overrides[tidStr].add   || [];
+
+    if (!ROSTERS[tid]) ROSTERS[tid] = [];
+
+    // Remove traded-away players
+    ROSTERS[tid] = ROSTERS[tid].filter(p => !removals.includes(p.name));
+
+    // Add incoming players (avoid duplicates)
+    additions.forEach(p => {
+      if (!ROSTERS[tid].find(r => r.name === p.name)) {
+        ROSTERS[tid].push(p);
+      }
+    });
+  });
+}
