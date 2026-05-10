@@ -5414,12 +5414,24 @@ const SNAV_GROUP = {
   trade:      'snavTrade', tradefinder: 'snavTrade', tradehistory: 'snavTrade',
 };
 
-function navigate(pageId){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
-  document.getElementById('backBtn').style.display=pageId!=='homePage'?'flex':'none';
+// Reverse map: hash value → pageId
+const HASH_TO_PAGE = Object.fromEntries(
+  Object.entries(SUBNAV_PAGES).map(([pageId, hash]) => [hash, pageId])
+);
+// Pages not in SUBNAV_PAGES that still need hash routing
+const EXTRA_HASH_TO_PAGE = {
+  'home': 'homePage',
+  'adminsettings': 'adminSettingsPage',
+  'nbatrades': 'nbaTradesPage',
+};
+
+function _applyPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById(pageId);
+  if (!el) { document.getElementById('homePage').classList.add('active'); return; }
+  el.classList.add('active');
+  document.getElementById('backBtn').style.display = pageId !== 'homePage' ? 'flex' : 'none';
   const pageKey = SUBNAV_PAGES[pageId] || '';
-  // Desktop: highlight single items and group buttons
   document.querySelectorAll('.snav-single').forEach(el =>
     el.classList.toggle('active', el.dataset.page === pageKey));
   document.querySelectorAll('.snav-group-btn').forEach(el => el.classList.remove('active'));
@@ -5427,12 +5439,42 @@ function navigate(pageId){
     el.classList.toggle('active', el.dataset.page === pageKey));
   const groupId = SNAV_GROUP[pageKey];
   if (groupId) { const g = document.getElementById(groupId); if (g) g.classList.add('active'); }
-  // Mobile: update label
   const activeBtn = document.querySelector('.subnav-mobile-btn[data-page="'+pageKey+'"]');
   const label = document.getElementById('mobileNavLabel');
   if (label) label.textContent = activeBtn ? activeBtn.textContent : '🌮 League Tools';
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
+
+function navigate(pageId, opts = {}) {
+  const hash = SUBNAV_PAGES[pageId] || pageId.replace('Page','').toLowerCase();
+  try {
+    if (window.location.hash !== '#' + hash) {
+      if (opts.replace) {
+        history.replaceState({ pageId }, '', '#' + hash);
+      } else {
+        history.pushState({ pageId }, '', '#' + hash);
+      }
+    }
+  } catch(e) { /* iframe preview — history API blocked, no-op */ }
+  _applyPage(pageId);
+}
+
+function _pageIdFromHash(hash) {
+  const key = (hash || '').replace('#', '');
+  if (!key || key === 'home') return 'homePage';
+  return HASH_TO_PAGE[key] || EXTRA_HASH_TO_PAGE[key] || 'homePage';
+}
+
+// Browser back/forward
+window.addEventListener('popstate', (e) => {
+  const pageId = e.state?.pageId || _pageIdFromHash(window.location.hash);
+  _applyPage(pageId);
+  // Re-run page-specific renderers
+  if (pageId === 'standingsPage') setTimeout(renderStandingsChart, 50);
+  if (pageId === 'nbaTradesPage') renderNbaTrades();
+  if (pageId === 'adminSettingsPage') _asInit();
+  if (pageId === 'tradeHistoryPage') renderTradeHistory();
+});
 
 function toggleMobileNav() {
   const dd = document.getElementById('mobileNavDropdown');
@@ -7894,7 +7936,24 @@ function initEspnSyncBtn() {
 _applyRosterOverrides();
 
 
-renderHome();
+// On load: read hash and navigate to correct page
+(function() {
+  const initHash = window.location.hash;
+  const initPageId = _pageIdFromHash(initHash);
+  // Replace current history entry with proper state
+  try { history.replaceState({ pageId: initPageId }, '', initHash || '#home'); } catch(e) {}
+  if (initPageId === 'homePage' || !initHash) {
+    renderHome();
+  } else {
+    renderHome(); // always render home data in background
+    _applyPage(initPageId);
+    // Run page-specific init
+    if (initPageId === 'standingsPage') setTimeout(renderStandingsChart, 50);
+    if (initPageId === 'nbaTradesPage') renderNbaTrades();
+    if (initPageId === 'adminSettingsPage') _asInit();
+    if (initPageId === 'tradeHistoryPage') renderTradeHistory();
+  }
+})();
 initEspnSyncBtn();
 espnSync(true);
 
