@@ -343,7 +343,7 @@ if(year===2026 && typeof DRAFT_2026_SLOT_ORDER!=='undefined') {
           if(!pick){html+=`<td><span class="pick-empty">—</span></td>`;return;}
           const traded=pick.currentOwner!==pick.originalOwner;
           const holder=teamMap[pick.currentOwner];
-          html+=`<td><div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}">${traded?'→ '+holder.name.split(' ')[0]:'Keep'}</div></td>`;
+html+=`<td><div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}">${traded?'→ '+holder.name.split(' ')[0]:'Keep'}<span style="display:block;font-size:9px;color:var(--muted);margin-top:2px;">${round}.${s.slot}</span></div></td>`;
         });
         html+='</tr>';
       });
