@@ -326,46 +326,27 @@ function showDraftboard(){
       html+='</tbody></table></div>';
     }
 
-if(year===2026 && typeof DRAFT_2026_SLOT_ORDER!=='undefined') {
-      // 2026: Spalten = Slots in Slot-Reihenfolge
-     const r1Slots = DRAFT_2026_SLOT_ORDER.filter(s=>s.round===1).sort((a,b)=>a.slot-b.slot);
-      html+=`<table><thead><tr><th class="round-label">Rnd</th>`;
-      r1Slots.forEach(s=>{
-        const orig=TEAMS.find(t=>t.id===s.originalOwner);
-        const holder=TEAMS.find(t=>t.id===s.currentOwner);
-        const traded=s.originalOwner!==s.currentOwner;
-        html+=`<th title="${orig?.owner||''}">${orig?.name.split(' ')[0]||'?'}<span style="display:block;font-size:9px;font-weight:400;color:${traded?'var(--accent)':'var(--muted)'};">#${s.slot}${traded?' →'+holder?.name.split(' ')[0]:''}</span></th>`;
+    html+=`<table><thead><tr><th class="round-label">Rnd</th>`;
+    TEAMS.forEach(t=>{html+=`<th title="${t.owner}">${t.name.split(' ')[0]}</th>`;});
+    html+='</tr></thead><tbody>';
+    rounds.forEach(round=>{
+      html+=`<tr><td style="font-weight:700;color:var(--muted);white-space:nowrap;background:var(--surface);">R${round}</td>`;
+      TEAMS.forEach(t=>{
+        const pick=PICKS.find(p=>p.year===year&&p.round===round&&p.originalOwner===t.id);
+        if(!pick){html+=`<td><span class="pick-empty">—</span></td>`;return;}
+        const traded=pick.currentOwner!==pick.originalOwner;
+        const holder=teamMap[pick.currentOwner];
+        // For 2026 R1: show slot number
+        let slotLabel = '';
+        if(year===2026&&round===1&&typeof DRAFT_2026_SLOT_ORDER!=='undefined') {
+          const slot=DRAFT_2026_SLOT_ORDER.find(s=>s.originalOwner===t.id&&s.round===1);
+          if(slot) slotLabel=`<span style="font-size:9px;color:var(--muted);display:block;">#${slot.slot}</span>`;
+        }
+        html+=`<td><div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}">${traded?'→ '+holder.name.split(' ')[0]:'Keep'}${slotLabel}</div></td>`;
       });
-      html+='</tr></thead><tbody>';
-      rounds.forEach(round=>{
-        html+=`<tr><td style="font-weight:700;color:var(--muted);white-space:nowrap;background:var(--surface);">R${round}</td>`;
-        r1Slots.forEach(s=>{
-          const pick=PICKS.find(p=>p.year===2026&&p.round===round&&p.originalOwner===s.originalOwner);
-          if(!pick){html+=`<td><span class="pick-empty">—</span></td>`;return;}
-          const traded=pick.currentOwner!==pick.originalOwner;
-          const holder=teamMap[pick.currentOwner];
-          html+=`<td><div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}">${traded?'→ '+holder.name.split(' ')[0]:'Keep'}</div></td>`;
-        });
-        html+='</tr>';
-      });
-      html+='</tbody></table>';
-    } else {
-      html+=`<table><thead><tr><th class="round-label">Rnd</th>`;
-      TEAMS.forEach(t=>{html+=`<th title="${t.owner}">${t.name.split(' ')[0]}</th>`;});
-      html+='</tr></thead><tbody>';
-      rounds.forEach(round=>{
-        html+=`<tr><td style="font-weight:700;color:var(--muted);white-space:nowrap;background:var(--surface);">R${round}</td>`;
-        TEAMS.forEach(t=>{
-          const pick=PICKS.find(p=>p.year===year&&p.round===round&&p.originalOwner===t.id);
-          if(!pick){html+=`<td><span class="pick-empty">—</span></td>`;return;}
-          const traded=pick.currentOwner!==pick.originalOwner;
-          const holder=teamMap[pick.currentOwner];
-          html+=`<td><div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}">${traded?'→ '+holder.name.split(' ')[0]:'Keep'}</div></td>`;
-        });
-        html+='</tr>';
-      });
-      html+='</tbody></table>';
-    }
+      html+='</tr>';
+    });
+    html+='</tbody></table>';
   });
   document.getElementById('draftboardContent').innerHTML=html;
   navigate('draftboardPage');
