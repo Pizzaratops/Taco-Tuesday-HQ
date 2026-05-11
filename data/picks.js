@@ -122,4 +122,3 @@ const DRAFT_2026_SLOT_ORDER = [
   {round:1, slot:11, originalOwner:11, currentOwner:2,  nbaTeam:'GSW', note:''},
   {round:1, slot:12, originalOwner:2,  currentOwner:1,  nbaTeam:'OKC', note:'Champ-Regel'},
 ];
-
