@@ -295,6 +295,37 @@ function showDraftboard(){
   years.forEach(year=>{
     html+=`<h3 style="margin:24px 0 12px;font-size:16px;font-family:'Playfair Display',serif;color:var(--text);">${year} Draft</h3>`;
     if(DRAFT_NOTES[year]) html+=`<div style="background:var(--accent-light);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--muted);">${DRAFT_NOTES[year]}</div>`;
+
+    // For 2026: show lottery slot order table before the regular pick matrix
+    if(year===2026 && typeof DRAFT_2026_SLOT_ORDER !== 'undefined') {
+      html+=`<div style="margin-bottom:20px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">🎰 2026 Lottery Reihenfolge (R1)</div>
+        <table style="width:100%;border-collapse:collapse;">
+          <thead><tr style="background:var(--surface);">
+            <th style="padding:6px 10px;text-align:left;font-size:11px;color:var(--muted);border-bottom:1px solid var(--border);">Slot</th>
+            <th style="padding:6px 10px;text-align:left;font-size:11px;color:var(--muted);border-bottom:1px solid var(--border);">NBA Team</th>
+            <th style="padding:6px 10px;text-align:left;font-size:11px;color:var(--muted);border-bottom:1px solid var(--border);">Ursprung</th>
+            <th style="padding:6px 10px;text-align:left;font-size:11px;color:var(--muted);border-bottom:1px solid var(--border);">Besitzer</th>
+            <th style="padding:6px 10px;text-align:left;font-size:11px;color:var(--muted);border-bottom:1px solid var(--border);">Notiz</th>
+          </tr></thead><tbody>`;
+      DRAFT_2026_SLOT_ORDER.filter(s=>s.round===1).forEach(s=>{
+        const orig   = TEAMS.find(t=>t.id===s.originalOwner);
+        const holder = TEAMS.find(t=>t.id===s.currentOwner);
+        const traded = s.originalOwner !== s.currentOwner;
+        const slotColor = s.slot<=3?'#f5c842':s.slot<=6?'#4caf81':s.slot<=9?'#29b6f6':'var(--muted)';
+        html+=`<tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:7px 10px;"><span style="font-size:13px;font-weight:800;color:${slotColor};">#${s.slot}</span></td>
+          <td style="padding:7px 10px;font-size:12px;font-weight:600;color:var(--text);">${s.nbaTeam}</td>
+          <td style="padding:7px 10px;font-size:12px;color:var(--muted);">${orig?.name||'?'}</td>
+          <td style="padding:7px 10px;">
+            <span style="font-size:12px;font-weight:700;color:${traded?'var(--accent)':'var(--text)'};">${holder?.name||'?'}</span>
+          </td>
+          <td style="padding:7px 10px;font-size:11px;color:var(--muted);">${s.note||'—'}</td>
+        </tr>`;
+      });
+      html+='</tbody></table></div>';
+    }
+
     html+=`<table><thead><tr><th class="round-label">Rnd</th>`;
     TEAMS.forEach(t=>{html+=`<th title="${t.owner}">${t.name.split(' ')[0]}</th>`;});
     html+='</tr></thead><tbody>';
@@ -305,7 +336,13 @@ function showDraftboard(){
         if(!pick){html+=`<td><span class="pick-empty">—</span></td>`;return;}
         const traded=pick.currentOwner!==pick.originalOwner;
         const holder=teamMap[pick.currentOwner];
-        html+=`<td><div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}">${traded?'→ '+holder.name.split(' ')[0]:'Keep'}</div></td>`;
+        // For 2026 R1: show slot number
+        let slotLabel = '';
+        if(year===2026&&round===1&&typeof DRAFT_2026_SLOT_ORDER!=='undefined') {
+          const slot=DRAFT_2026_SLOT_ORDER.find(s=>s.originalOwner===t.id&&s.round===1);
+          if(slot) slotLabel=`<span style="font-size:9px;color:var(--muted);display:block;">#${slot.slot}</span>`;
+        }
+        html+=`<td><div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}">${traded?'→ '+holder.name.split(' ')[0]:'Keep'}${slotLabel}</div></td>`;
       });
       html+='</tr>';
     });
