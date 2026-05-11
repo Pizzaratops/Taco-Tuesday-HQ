@@ -73,6 +73,7 @@
           <button class="snav-dropdown-item" data-page="rankings"  onclick="showRankings()">🏅 Dynasty Rankings</button>
           <button class="snav-dropdown-item" data-page="bestavail" onclick="showBestAvail()">🆓 Best Available</button>
           <button class="snav-dropdown-item" data-page="analytics" onclick="showAnalytics()">📊 Team Analytics</button>
+          <button class="snav-dropdown-item" data-page="rollingrankings" onclick="showRollingRankings()">📈 Rolling Rankings</button>
         </div>
       </div>
 
@@ -126,6 +127,7 @@
         <button class="subnav-mobile-btn" data-page="rankings"  onclick="showRankings();closeMobileNav()">🏅 Dynasty Rankings</button>
         <button class="subnav-mobile-btn" data-page="bestavail" onclick="showBestAvail();closeMobileNav()">🆓 Best Available</button>
         <button class="subnav-mobile-btn" data-page="analytics" onclick="showAnalytics();closeMobileNav()">📊 Team Analytics</button>
+        <button class="subnav-mobile-btn" data-page="rollingrankings" onclick="showRollingRankings();closeMobileNav()">📈 Rolling Rankings</button>
       </div>
       <div class="subnav-mobile-group">
               </div>
@@ -734,6 +736,44 @@
     justify-content: center; transition: all 0.15s; font-family: 'DM Sans', sans-serif;
   }
   .share-close-btn:hover { border-color: var(--accent); color: var(--text); }
+  /* ── Rolling Rankings ───────────────────────── */
+  #rollingRankingsPage { padding: 0; overflow: hidden; }
+  #rollingRankingsPage.active { display: flex; flex-direction: column; height: calc(100vh - 120px); }
+  .rr-layout { display: grid; grid-template-columns: 340px 1fr; flex: 1; overflow: hidden; }
+  .rr-sidebar { border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+  .rr-sidebar-header { padding: 14px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: var(--surface); }
+  .rr-search { background: var(--surface2); border: 1.5px solid var(--border); border-radius: 9px; color: var(--text); font-family: DM Sans, sans-serif; font-size: 12px; padding: 7px 10px 7px 30px; width: 160px; outline: none; transition: border-color .2s; }
+  .rr-search:focus { border-color: var(--accent); }
+  .rr-list-cols { display: grid; grid-template-columns: 32px 1fr repeat(6, 30px); gap: 3px; padding: 7px 14px; background: var(--surface); border-bottom: 1px solid var(--border); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); position: sticky; top: 0; z-index: 5; }
+  .rr-list-cols span { text-align: center; }
+  .rr-list-cols span:nth-child(2) { text-align: left; }
+  #rrListBody { overflow-y: auto; flex: 1; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  .rr-row { display: grid; grid-template-columns: 32px 1fr repeat(6, 30px); gap: 3px; padding: 6px 14px; border-bottom: 1px solid var(--border); align-items: center; cursor: pointer; transition: background .1s; }
+  .rr-row:hover { background: var(--surface2); }
+  .rr-row.rr-active { background: rgba(245,200,66,.08); border-left: 3px solid var(--accent); padding-left: 11px; }
+  .rr-idx { font-size: 10px; font-weight: 700; color: var(--muted); text-align: center; }
+  .rr-name { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rr-rank-cell { font-size: 10px; font-weight: 800; text-align: center; border-radius: 4px; padding: 2px 0; }
+  .rr-main { padding: 28px 36px; overflow-y: auto; display: flex; flex-direction: column; }
+  .rr-player-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .rr-player-name { font-size: 28px; font-weight: 800; color: var(--text); font-family: 'Playfair Display', serif; line-height: 1.1; }
+  .rr-player-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .rr-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto; }
+  .rr-pill { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; text-align: center; display: flex; flex-direction: column; gap: 2px; }
+  .rr-pill-val { font-size: 18px; font-weight: 800; line-height: 1; }
+  .rr-pill-label { font-size: 10px; color: var(--muted); letter-spacing: .5px; text-transform: uppercase; }
+  .rr-chart-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .rr-badges { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+  .rr-month-badge { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 68px; }
+  .rr-badge-label { font-size: 10px; color: var(--muted); font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+  .rr-badge-rank { font-size: 20px; font-weight: 800; }
+  @media (max-width: 768px) {
+    .rr-layout { grid-template-columns: 1fr; }
+    #rollingRankingsPage.active { height: auto; }
+    .rr-sidebar { height: 45vh; border-right: none; border-bottom: 1px solid var(--border); }
+    .rr-main { padding: 16px; }
+  }
+
 </style>
 
 <style>
@@ -1058,6 +1098,36 @@
   </div>
 </div>
 
+
+<div class="page" id="rollingRankingsPage">
+  <div class="rr-layout">
+    <div class="rr-sidebar">
+      <div class="rr-sidebar-header">
+        <div style="flex:1;">
+          <div style="font-size:15px;font-weight:800;color:var(--text);">📈 Rolling Rankings</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px;">489 Spieler · Saison 2025/26</div>
+        </div>
+        <div style="position:relative;">
+          <span style="position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;pointer-events:none;">🔍</span>
+          <input id="rrSearch" class="rr-search" placeholder="Suchen…" oninput="rrFilter()">
+        </div>
+      </div>
+      <div class="rr-list-cols">
+        <span></span><span>Name</span>
+        <span>Oct</span><span>Nov</span><span>Dez</span><span>Jan</span><span>Feb</span><span>Mrz</span>
+      </div>
+      <div id="rrListBody"></div>
+    </div>
+    <div class="rr-main" id="rrChartPanel">
+      <div style="margin:auto;text-align:center;color:var(--muted);">
+        <div style="font-size:40px;margin-bottom:12px;">📈</div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;">Spieler auswählen</div>
+        <div style="font-size:13px;">Klicke links auf einen Spieler um seinen Ranking-Verlauf zu sehen</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- DRAFT DUEL PAGES -->
 
 <!-- DUEL PAGE -->
@@ -1188,7 +1258,9 @@
 <script src="js/espn-trade-detect.js"></script>
 
 <!-- Init runs last, after all scripts are loaded -->
-<script src="js/init.js"></script>
+<script src="data/rolling-rankings.js"></script>
+  <script src="js/rolling-rankings.js"></script>
+  <script src="js/init.js"></script>
 
 </body>
 </html>
