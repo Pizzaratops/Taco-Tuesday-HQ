@@ -5,7 +5,7 @@ const PICKS = [
   {year:2026,round:1,originalOwner:5,currentOwner:5},{year:2026,round:1,originalOwner:6,currentOwner:1},
   {year:2026,round:1,originalOwner:7,currentOwner:1},{year:2026,round:1,originalOwner:8,currentOwner:8},
   {year:2026,round:1,originalOwner:9,currentOwner:1},{year:2026,round:1,originalOwner:10,currentOwner:1},
-  {year:2026,round:1,originalOwner:11,currentOwner:1,note:"with Protection"},{year:2026,round:1,originalOwner:12,currentOwner:12},
+  {year:2026,round:1,originalOwner:11,currentOwner:2},{year:2026,round:1,originalOwner:12,currentOwner:1,note:"Champ-Regel"},
   {year:2026,round:2,originalOwner:1,currentOwner:1},{year:2026,round:2,originalOwner:2,currentOwner:2},
   {year:2026,round:2,originalOwner:3,currentOwner:3},{year:2026,round:2,originalOwner:4,currentOwner:4},
   {year:2026,round:2,originalOwner:5,currentOwner:5},{year:2026,round:2,originalOwner:6,currentOwner:6},
@@ -104,3 +104,22 @@ const DRAFT_NOTES = {
   2028:"Neukoelln's R1 goes to 3-POINT MAFIA in Banchero-Trade. 3PM's R2 goes to Bear Down (Moussa Diabate Trade).",
   2029:"All teams hold their own picks. No trades recorded yet.",
 };
+
+// 2026 Draft Lottery Order — maps draft slot to fantasy pick ownership
+// slot = actual draft position after lottery
+const DRAFT_2026_SLOT_ORDER = [
+  // R1: slot, originalOwner (fantasy team), currentOwner, note
+  {round:1, slot:1,  originalOwner:1,  currentOwner:1,  nbaTeam:'WAS', note:''},
+  {round:1, slot:2,  originalOwner:9,  currentOwner:1,  nbaTeam:'UTA', note:'via Cooking Show'},
+  {round:1, slot:3,  originalOwner:7,  currentOwner:1,  nbaTeam:'MEM', note:'via Always Money'},
+  {round:1, slot:4,  originalOwner:4,  currentOwner:1,  nbaTeam:'CHI', note:''},
+  {round:1, slot:5,  originalOwner:12, currentOwner:12, nbaTeam:'LAC', note:'via Pacers'},
+  {round:1, slot:6,  originalOwner:6,  currentOwner:1,  nbaTeam:'BKN', note:''},
+  {round:1, slot:7,  originalOwner:8,  currentOwner:8,  nbaTeam:'SAC', note:''},
+  {round:1, slot:8,  originalOwner:5,  currentOwner:5,  nbaTeam:'NOP', note:''},
+  {round:1, slot:9,  originalOwner:3,  currentOwner:1,  nbaTeam:'DAL', note:''},
+  {round:1, slot:10, originalOwner:10, currentOwner:1,  nbaTeam:'MIL', note:''},
+  {round:1, slot:11, originalOwner:11, currentOwner:2,  nbaTeam:'GSW', note:''},
+  {round:1, slot:12, originalOwner:2,  currentOwner:1,  nbaTeam:'OKC', note:'Champ-Regel'},
+];
+
