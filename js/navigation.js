@@ -206,7 +206,7 @@ function renderRoster(id) {
         <div style="flex:1;min-width:0;">
           <!-- Desktop: single line -->
           <div class="roster-desktop-row">
-            <div class="player-name" style="flex:1;">${p.name}${ageStr}</div>
+            <div class="player-name" style="flex:1;cursor:pointer;" onclick="showRollingRankings('${p.name}')" title="📈 Rolling Rankings ansehen">${p.name}${ageStr}</div>
             <span class="roster-col-nba player-team r-team-link"
               onclick="window.isAdmin?adminEditPlayerField(event,this,'${p.name}',${id},'team','${p.team}'):showNBATeam('${p.team}')"
               style="${_teamStyle}"
@@ -320,14 +320,14 @@ const SUBNAV_PAGES = {
   homePage:'home', draftboardPage:'draftboard', draft26Page:'draft26',
   duelPage:'duel', duelBoardPage:'duelboard', duelSettingsPage:'duelsettings',
   lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings',
-  bestAvailPage:'bestavail', analyticsPage:'analytics', tradePage:'trade',
+  bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
   tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', nbaTradesPage:'nbatrades', adminSettingsPage:'adminsettings', standingsPage:'standings', rulesPage:'rules',
 };
 
 const SNAV_GROUP = {
   draftboard: 'snavDraft', draft26: 'snavDraft', lottery: 'snavDraft',
   duel: 'snavDuel', duelboard: 'snavDuel', duelsettings: 'snavDuel',
-  rankings:   'snavAnalytics', bestavail: 'snavAnalytics', analytics: 'snavAnalytics',
+  rankings:   'snavAnalytics', bestavail: 'snavAnalytics', analytics: 'snavAnalytics', rollingrankings: 'snavAnalytics',
   trade:      'snavTrade', tradefinder: 'snavTrade', tradehistory: 'snavTrade',
 };
 
