@@ -328,11 +328,13 @@ function showDraftboard(){
 
 if(year===2026 && typeof DRAFT_2026_SLOT_ORDER!=='undefined') {
       // 2026: Spalten = Slots in Slot-Reihenfolge
-      const r1Slots = DRAFT_2026_SLOT_ORDER.filter(s=>s.round===1).sort((a,b)=>a.slot-b.slot);
+     const r1Slots = DRAFT_2026_SLOT_ORDER.filter(s=>s.round===1).sort((a,b)=>a.slot-b.slot);
       html+=`<table><thead><tr><th class="round-label">Rnd</th>`;
       r1Slots.forEach(s=>{
         const orig=TEAMS.find(t=>t.id===s.originalOwner);
-        html+=`<th title="${orig?.owner||''}">${orig?.name.split(' ')[0]||'?'}<span style="display:block;font-size:9px;font-weight:400;color:var(--muted);">#${s.slot}</span></th>`;
+        const holder=TEAMS.find(t=>t.id===s.currentOwner);
+        const traded=s.originalOwner!==s.currentOwner;
+        html+=`<th title="${orig?.owner||''}">${orig?.name.split(' ')[0]||'?'}<span style="display:block;font-size:9px;font-weight:400;color:${traded?'var(--accent)':'var(--muted)'};">#${s.slot}${traded?' →'+holder?.name.split(' ')[0]:''}</span></th>`;
       });
       html+='</tr></thead><tbody>';
       rounds.forEach(round=>{
