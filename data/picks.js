@@ -109,16 +109,16 @@ const DRAFT_NOTES = {
 // slot = actual draft position after lottery
 const DRAFT_2026_SLOT_ORDER = [
   // R1: slot, originalOwner (fantasy team), currentOwner, note
-  {round:1, slot:1,  originalOwner:1,  currentOwner:1,  nbaTeam:'WAS', note:''},
+  {round:1, slot:1,  originalOwner:11, currentOwner:1,  nbaTeam:'WAS', note:'via Double Dribble Trouble'},
   {round:1, slot:2,  originalOwner:9,  currentOwner:1,  nbaTeam:'UTA', note:'via Cooking Show'},
   {round:1, slot:3,  originalOwner:7,  currentOwner:1,  nbaTeam:'MEM', note:'via Always Money'},
-  {round:1, slot:4,  originalOwner:4,  currentOwner:1,  nbaTeam:'CHI', note:''},
-  {round:1, slot:5,  originalOwner:12, currentOwner:12, nbaTeam:'LAC', note:'via Pacers'},
-  {round:1, slot:6,  originalOwner:6,  currentOwner:1,  nbaTeam:'BKN', note:''},
+  {round:1, slot:4,  originalOwner:4,  currentOwner:1,  nbaTeam:'CHI', note:'via Leaveland'},
+  {round:1, slot:5,  originalOwner:12, currentOwner:12, nbaTeam:'LAC', note:''},
+  {round:1, slot:6,  originalOwner:10, currentOwner:1,  nbaTeam:'BKN', note:'via S-Town'},
   {round:1, slot:7,  originalOwner:8,  currentOwner:8,  nbaTeam:'SAC', note:''},
   {round:1, slot:8,  originalOwner:5,  currentOwner:5,  nbaTeam:'NOP', note:''},
-  {round:1, slot:9,  originalOwner:3,  currentOwner:1,  nbaTeam:'DAL', note:''},
-  {round:1, slot:10, originalOwner:10, currentOwner:1,  nbaTeam:'MIL', note:''},
-  {round:1, slot:11, originalOwner:11, currentOwner:2,  nbaTeam:'GSW', note:''},
-  {round:1, slot:12, originalOwner:2,  currentOwner:1,  nbaTeam:'OKC', note:'Champ-Regel'},
+  {round:1, slot:9,  originalOwner:6,  currentOwner:1,  nbaTeam:'DAL', note:'via 3-Point Mafia'},
+  {round:1, slot:10, originalOwner:3,  currentOwner:1,  nbaTeam:'MIL', note:'via Neukoelln'},
+  {round:1, slot:11, originalOwner:2,  currentOwner:2,  nbaTeam:'GSW', note:''},
+  {round:1, slot:12, originalOwner:1,  currentOwner:1,  nbaTeam:'OKC', note:'Champ-Regel'},
 ];
