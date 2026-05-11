@@ -441,11 +441,7 @@ function _pageIdFromHash(hash) {
 window.addEventListener('popstate', (e) => {
   const pageId = e.state?.pageId || _pageIdFromHash(window.location.hash);
   _applyPage(pageId);
-  // Re-run page-specific renderers
-  if (pageId === 'standingsPage') setTimeout(renderStandingsChart, 50);
-  if (pageId === 'nbaTradesPage') renderNbaTrades();
-  if (pageId === 'adminSettingsPage') _asInit();
-  if (pageId === 'tradeHistoryPage') renderTradeHistory();
+  _rerenderPage(pageId);
 });
 
 function toggleMobileNav() {
