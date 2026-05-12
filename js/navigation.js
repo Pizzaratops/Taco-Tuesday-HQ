@@ -458,4 +458,14 @@ function closeMobileNav() {
 function goHome(){navigate('homePage');}
 function showRules(){navigate('rulesPage');}
 function showStandings(){navigate('standingsPage');setTimeout(renderStandingsChart,50);}
+function _rerenderPage(pageId) {
+  if (pageId === 'standingsPage')     setTimeout(renderStandingsChart, 50);
+  if (pageId === 'nbaTradesPage')     renderNbaTrades();
+  if (pageId === 'adminSettingsPage') _asInit();
+  if (pageId === 'tradeHistoryPage')  renderTradeHistory();
+  if (pageId === 'draftboardPage')    showDraftboard();
+  if (pageId === 'bestAvailPage')     showBestAvail();
+  if (pageId === 'rankingsPage')      showRankings();
+  if (pageId === 'analyticsPage')     showAnalytics();
+}
 function toggleRule(header){header.parentElement.classList.toggle('collapsed');}
