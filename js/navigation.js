@@ -343,8 +343,16 @@ if(year===2026 && typeof DRAFT_2026_SLOT_ORDER!=='undefined') {
           if(!pick){html+=`<td><span class="pick-empty">—</span></td>`;return;}
           const traded=pick.currentOwner!==pick.originalOwner;
           const holder=teamMap[pick.currentOwner];
-html+=`<td><div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}">${traded?'→ '+holder.name.split(' ')[0]:'Keep'}<span style="display:block;font-size:9px;color:var(--muted);margin-top:2px;">${round}.${s.slot}</span></div></td>`;
-        });
+html += `<td>
+  <div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}"
+    style="cursor:pointer;"
+    onclick="openPickInTrade(2026,${round},${s.originalOwner},${pick.currentOwner},'${(pick.note||'').replace(/'/g,"\\'")}')">
+    ${traded?'→ '+holder.name.split(' ')[0]:'Keep'}
+    <span style="display:block;font-size:9px;color:var(--muted);margin-top:2px;">${round}.${s.slot}</span>
+    <span style="display:block;font-size:8px;color:var(--accent);margin-top:2px;opacity:0.8;">🔄 Trade</span>
+  </div>
+</td>`;
+		});
         html+='</tr>';
       });
       html+='</tbody></table>';
@@ -359,8 +367,15 @@ html+=`<td><div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}">$
           if(!pick){html+=`<td><span class="pick-empty">—</span></td>`;return;}
           const traded=pick.currentOwner!==pick.originalOwner;
           const holder=teamMap[pick.currentOwner];
-          html+=`<td><div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}">${traded?'→ '+holder.name.split(' ')[0]:'Keep'}</div></td>`;
-        });
+html += `<td>
+  <div class="pick-cell ${traded?'pick-traded-cell':'pick-own-cell'}"
+    style="cursor:pointer;"
+    onclick="openPickInTrade(${year},${round},${t.id},${pick.currentOwner},'${(pick.note||'').replace(/'/g,"\\'")}')">
+    ${traded?'→ '+holder.name.split(' ')[0]:'Keep'}
+    <span style="display:block;font-size:8px;color:var(--accent);margin-top:2px;opacity:0.8;">🔄 Trade</span>
+  </div>
+</td>`;
+		});
         html+='</tr>';
       });
       html+='</tbody></table>';
@@ -469,3 +484,44 @@ function _rerenderPage(pageId) {
   if (pageId === 'analyticsPage')     showAnalytics();
 }
 function toggleRule(header){header.parentElement.classList.toggle('collapsed');}
+
+function openPickInTrade(year, round, originalOwner, currentOwner, note) {
+  // Pick-Objekt in Trade-Struktur bauen (identisch zu toggleTradePickDirect)
+  const key = `${year}_R${round}_T${originalOwner}`;
+  const val = (typeof PICK_VALUES !== 'undefined' && PICK_VALUES[`${year}_R${round}_mid`]) || 0;
+  const orig  = teamMap[originalOwner];
+  const holder = teamMap[currentOwner];
+  const traded = originalOwner !== currentOwner;
+
+  const pickObj = {
+    isPick: true,
+    name: `${year} R${round} (${orig?.name || '?'})`,
+    pickKey: key,
+    year, round,
+    pickRange: `R${round}`,
+    originalOwner, currentOwner,
+    note: note || '',
+    owners: [{
+      curr: holder,
+      traded,
+      note: note || ''
+    }]
+  };
+
+  // showTrade() initialisiert alles → danach Pick in Side A injizieren
+  showTrade(); // setzt TRADE_STATE zurück und navigiert zur tradePage
+  TRADE_STATE.A.selected = [pickObj];
+  TRADE_STATE.A.showPicks = false;
+
+  // TT-Filter auf den aktuellen Besitzer vorsetzen
+  TRADE_STATE.A.ttFilter = String(currentOwner);
+  const ttEl = document.getElementById('tradeTTFilterA');
+  if (ttEl) {
+    ttEl.value = String(currentOwner);
+    ttEl.classList.add('has-filter');
+  }
+
+  renderTradeList('A');
+  renderSelectedPills('A');
+  renderTradeResult();
+}
