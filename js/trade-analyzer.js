@@ -297,7 +297,7 @@ function renderTradeList(side) {
           : (isLight ? 'rgba(192,98,47,0.1)'   : 'rgba(108,99,255,0.12)');
 
         html += `<div class="pick-item ${isSel ? 'selected' : ''}"
-          onclick="toggleTradePickDirect('${side}','${key}',${p.year},${p.round},${p.originalOwner},${p.currentOwner},${val},'${traded}')">
+          onclick="toggleTradePickDirect('${side}','${key}',${p.year},${p.round},${p.originalOwner},${p.currentOwner},${val},'${traded}',${p.slot || 'null'})">
           <div class="tp-check" style="margin-top:2px;flex-shrink:0;">
             ${isSel ? '<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}
           </div>
@@ -305,6 +305,7 @@ function renderTradeList(side) {
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
               <span style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:#c58f32;">${year}</span>
               <span class="pick-round-pos">Round ${p.round}</span>
+              ${p.slot ? `<span style="font-size:9px;font-weight:800;background:rgba(108,99,255,0.18);color:#6c63ff;padding:1px 6px;border-radius:3px;letter-spacing:0.5px;">Pick #${p.slot}</span>` : ''}
               ${p.note ? `<span style="font-size:9px;background:rgba(245,200,66,0.15);color:#f5c842;padding:1px 5px;border-radius:3px;">${p.note}</span>` : ''}
             </div>
             <div style="margin-top:5px;">
@@ -392,7 +393,7 @@ function renderSelectedPills(side) {
     if (item.isPick) {
       const val = pickTradeValue(item, TRADE_MODE);
       return `<span class="trade-selected-pill" style="background:rgba(197,143,50,0.12);border-color:#c58f3266;color:#c58f32;" onclick="removeTradePick('${side}','${item.pickKey}')">
-        📋 ${item.name}&nbsp;<span style="font-size:10px;opacity:0.75;">(${val.toLocaleString()})</span> <span class="pill-x">×</span>
+        📋 ${item.name}${item.slot ? ` #${item.slot}` : ''}&nbsp;<span style="font-size:10px;opacity:0.75;">(${val.toLocaleString()})</span> <span class="pill-x">×</span>
       </span>`;
     }
     return `<span class="trade-selected-pill" onclick="removeTradePlayer('${side}','${item.name.replace(/'/g,"\\'")}')">
@@ -594,3 +595,218 @@ const pickBtn = document.getElementById('pickBtn' + side);
     setTimeout(() => hint.remove(), 2500);
   }
 }
+
+// ============================================================
+//  TRADE SHARE MODAL — implementiert die fehlenden Handler
+//  für tradeScreenshotBtn, closeShareModal, copyShareBtn, downloadShareBtn
+// ============================================================
+
+function closeShareModal() {
+  const overlay = document.getElementById('shareModalOverlay');
+  if (overlay) overlay.style.display = 'none';
+}
+
+function openTradeShareModal() {
+  const selA = TRADE_STATE.A.selected || [];
+  const selB = TRADE_STATE.B.selected || [];
+  if (!selA.length || !selB.length) {
+    const hint = document.createElement('div');
+    hint.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--accent2);border-radius:12px;padding:10px 18px;font-size:12px;font-weight:600;color:var(--accent2);z-index:200;box-shadow:0 4px 20px rgba(0,0,0,0.3);pointer-events:none;white-space:nowrap;';
+    hint.textContent = 'Wähle Spieler/Picks auf beiden Seiten aus.';
+    document.body.appendChild(hint);
+    setTimeout(() => hint.remove(), 2200);
+    return;
+  }
+
+  const isLight = document.body.classList.contains('light');
+  const th = isLight ? {
+    bg: '#fff5ee', surface: '#ffffff', surface2: '#fdebd8',
+    border: '#f0d5bc', text: '#2c1a0e', muted: '#9a7560',
+    accentA: '#c0622f', accentB: '#e8975a', divider: '#f0d5bc',
+  } : {
+    bg: '#0f1117', surface: '#1a1d27', surface2: '#222636',
+    border: '#2e3250', text: '#e8eaf6', muted: '#7b7f9e',
+    accentA: '#6c63ff', accentB: '#ff6584', divider: '#2e3250',
+  };
+
+  // Werte beider Seiten
+  const valA = (typeof tradeSideValue === 'function') ? tradeSideValue(selA) : 0;
+  const valB = (typeof tradeSideValue === 'function') ? tradeSideValue(selB) : 0;
+  const total = valA + valB;
+  const pctA = total > 0 ? (valA / total * 100) : 50;
+  const pctB = 100 - pctA;
+  const diff = Math.abs(pctA - 50);
+  const aWins = valA > valB;
+
+  let verdict, cls, verdictColor;
+  if (diff < 5)       { verdict = '✅ Fair Trade';                            cls = 'fair';     verdictColor = '#4caf81'; }
+  else if (diff < 12) { verdict = aWins ? '🟡 Leichter Edge: Side A' : '🟡 Leichter Edge: Side B'; cls = 'slight'; verdictColor = '#f5c842'; }
+  else                { verdict = aWins ? '🔥 Side A gewinnt deutlich' : '🔥 Side B gewinnt deutlich'; cls = 'lopsided'; verdictColor = '#ff6584'; }
+
+  function pillRow(items, label, val) {
+    const rows = [...items]
+      .sort((a, b) => {
+        const va = a.isPick ? (a.baseValue || 0) : (typeof dynastyValue === 'function' ? dynastyValue(a.rank, a.dob) : 0);
+        const vb = b.isPick ? (b.baseValue || 0) : (typeof dynastyValue === 'function' ? dynastyValue(b.rank, b.dob) : 0);
+        return vb - va;
+      })
+      .map((p, i) => {
+        let line, detail, value;
+        if (p.isPick) {
+          const slotLabel = p.slot ? ` · Pick #${p.slot}` : '';
+          line   = `📋 ${p.year} R${p.round}${slotLabel}`;
+          detail = p.orig ? `via ${p.orig.name}` : '';
+          value  = (typeof pickTradeValue === 'function') ? pickTradeValue(p, TRADE_MODE) : (p.baseValue || 0);
+        } else {
+          line   = p.name;
+          detail = `${p.nba || ''}${p.owner ? ' · ' + p.owner.name : ''}`;
+          value  = (typeof dynastyValue === 'function') ? dynastyValue(p.rank, p.dob) : 0;
+        }
+        const effective = Math.round(value * Math.pow(0.70, i));
+        return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid ${th.divider};">
+          <div style="width:24px;height:24px;border-radius:6px;background:${th.accentA}22;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:${th.accentA};flex-shrink:0;">${i+1}</div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-weight:700;font-size:13px;color:${th.text};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${line}</div>
+            <div style="font-size:11px;color:${th.muted};">${detail}</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-size:12px;font-weight:800;color:${th.text};">${effective.toLocaleString()}</div>
+            ${i > 0 ? `<div style="font-size:9px;color:${th.muted};">×0.7^${i}</div>` : ''}
+          </div>
+        </div>`;
+      }).join('');
+    return `<div style="background:${th.surface};border:1px solid ${th.border};border-radius:12px;padding:12px 14px;margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:${th.muted};">${label}</div>
+        <div style="font-size:13px;font-weight:800;color:${th.accentA};">${val.toLocaleString()}</div>
+      </div>
+      ${rows}
+    </div>`;
+  }
+
+  const modeNames = { dynasty: '🏗️ Dynasty', raw: '📊 Raw', winnow: '🏆 Win-Now' };
+  const cardHtml = `<div id="shareCardInner" style="
+    background:${th.bg};border:2px solid ${th.accentA};border-radius:20px;
+    padding:22px 18px 18px;font-family:'DM Sans',system-ui,sans-serif;color:${th.text};">
+    <div style="text-align:center;margin-bottom:14px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:${th.muted};text-transform:uppercase;margin-bottom:5px;">🌮 Taco Tuesday HQ · Trade Analyzer</div>
+      <div style="font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:800;color:${th.accentA};">${verdict}</div>
+      <div style="font-size:11px;color:${th.muted};margin-top:4px;">${modeNames[TRADE_MODE] || TRADE_MODE}-Bewertung</div>
+    </div>
+    ${pillRow(selA, 'Side A', valA)}
+    <div style="text-align:center;font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:${th.muted};margin:4px 0;">vs</div>
+    ${pillRow(selB, 'Side B', valB)}
+    <div style="margin-top:10px;height:8px;background:${th.surface2};border-radius:4px;overflow:hidden;display:flex;">
+      <div style="width:${pctA.toFixed(1)}%;background:${aWins ? verdictColor : th.muted};"></div>
+      <div style="width:${pctB.toFixed(1)}%;background:${!aWins ? verdictColor : th.muted};"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:10px;font-weight:700;color:${th.muted};margin-top:5px;">
+      <span>${pctA.toFixed(1)}%</span>
+      <span>${pctB.toFixed(1)}%</span>
+    </div>
+    <div style="text-align:center;margin-top:14px;font-size:9px;color:${th.muted};letter-spacing:1px;text-transform:uppercase;">taco-tuesday-league.com</div>
+  </div>`;
+
+  document.getElementById('shareCardContent').innerHTML = cardHtml;
+  document.getElementById('shareModalOverlay').style.display = 'flex';
+
+  // Speichere Plain-Text-Version für Copy
+  window._tradeShareText = buildTradeShareText(selA, selB, valA, valB, verdict);
+}
+
+function buildTradeShareText(selA, selB, valA, valB, verdict) {
+  function fmtSide(items) {
+    return items.map(p => {
+      if (p.isPick) {
+        const slotLabel = p.slot ? ` Pick #${p.slot}` : '';
+        const via = p.orig ? ` (via ${p.orig.name})` : '';
+        return `  • ${p.year} R${p.round}${slotLabel}${via}`;
+      }
+      const owner = p.owner ? ` (${p.owner.name})` : '';
+      return `  • ${p.name}${owner}`;
+    }).join('\n');
+  }
+  return [
+    '🌮 Taco Tuesday HQ · Trade Analyzer',
+    verdict.replace(/[^\w\s\-:äöüÄÖÜß]/g, '').trim(),
+    '',
+    `Side A (${valA.toLocaleString()}):`,
+    fmtSide(selA),
+    '',
+    `Side B (${valB.toLocaleString()}):`,
+    fmtSide(selB),
+  ].join('\n');
+}
+
+function copyTradeShare() {
+  const txt = window._tradeShareText || '';
+  if (!txt) return;
+  navigator.clipboard.writeText(txt).then(() => {
+    const btn = document.getElementById('copyShareBtn');
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Kopiert!';
+      setTimeout(() => { btn.textContent = orig; }, 1500);
+    }
+  }).catch(err => {
+    console.error('Copy failed:', err);
+    alert('Kopieren fehlgeschlagen. Bitte manuell kopieren.');
+  });
+}
+
+async function downloadTradeShare() {
+  const card = document.getElementById('shareCardInner');
+  if (!card) return;
+  if (typeof html2canvas !== 'function') {
+    alert('html2canvas Library nicht geladen.');
+    return;
+  }
+
+  const btn = document.getElementById('downloadShareBtn');
+  const orig = btn ? btn.textContent : '';
+  if (btn) { btn.textContent = '⏳ Erstelle...'; btn.disabled = true; }
+
+  try {
+    const isLight = document.body.classList.contains('light');
+    const canvas = await html2canvas(card, {
+      backgroundColor: isLight ? '#fff5ee' : '#0f1117',
+      scale: 2,
+      logging: false,
+      useCORS: true,
+    });
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    const stamp = new Date().toISOString().split('T')[0];
+    link.download = `taco-trade-${stamp}.png`;
+    link.click();
+    if (btn) { btn.textContent = '✓ Gespeichert!'; }
+    setTimeout(() => { if (btn) { btn.textContent = orig; btn.disabled = false; } }, 1500);
+  } catch (err) {
+    console.error('Screenshot failed:', err);
+    alert('Fehler beim Erstellen: ' + err.message);
+    if (btn) { btn.textContent = orig; btn.disabled = false; }
+  }
+}
+
+// Event-Handler an die existierenden Buttons binden — sobald DOM bereit ist
+(function bindTradeShareHandlers() {
+  function bind() {
+    const shareBtn    = document.getElementById('tradeScreenshotBtn');
+    const copyBtn     = document.getElementById('copyShareBtn');
+    const downloadBtn = document.getElementById('downloadShareBtn');
+    const overlay     = document.getElementById('shareModalOverlay');
+
+    if (shareBtn && !shareBtn._bound)    { shareBtn.addEventListener('click', openTradeShareModal); shareBtn._bound = true; }
+    if (copyBtn && !copyBtn._bound)      { copyBtn.addEventListener('click', copyTradeShare);       copyBtn._bound  = true; }
+    if (downloadBtn && !downloadBtn._bound) { downloadBtn.addEventListener('click', downloadTradeShare); downloadBtn._bound = true; }
+    if (overlay && !overlay._bound) {
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeShareModal(); });
+      overlay._bound = true;
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bind);
+  } else {
+    bind();
+  }
+})();
