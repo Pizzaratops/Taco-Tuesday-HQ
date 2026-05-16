@@ -89,6 +89,28 @@ const REPLACEMENT_VALUE = (() => {
   return ranks.reduce((a, b) => a + b, 0) / ranks.length;
 })();
 
+
+// ============================================================
+//  F: Slot-basierte Pick-Werte (early/mid/late für 2026 R1)
+// ============================================================
+// Für Picks mit explizit gesetztem slot (1-12) wird der Wert
+// dynamisch nach Slot-Position berechnet. Für alle anderen Picks
+// (ohne slot, z.B. 2026 R2+, 2027+) bleibt "mid" als Standard.
+function slotAwarePickValue(pick) {
+  if (!pick || !pick.year || !pick.round) return 0;
+  const yr = String(pick.year);
+  const rd = pick.round;
+  // Bestimme Pick-Range basierend auf Slot
+  let range = 'mid';
+  if (pick.slot != null) {
+    if (pick.slot <= 4)       range = 'early';
+    else if (pick.slot <= 8)  range = 'mid';
+    else                       range = 'late';
+  }
+  const key = `${yr}_R${rd}_${range}`;
+  return (typeof PICK_VALUES !== 'undefined' && PICK_VALUES[key]) || 0;
+}
+
 // Cliff multiplier: tuned for a 312-player league.
 // Rank 100 is still a real asset; zero past rank 175.
 function dynastyCliff(rank) {
@@ -123,7 +145,7 @@ function tradeSideValue(players) {
     .map(p => p.isPick ? pickTradeValue(p, TRADE_MODE) : dynastyValue(p.rank, p.dob))
     .sort((a, b) => b - a);
   let total = 0;
-  withValues.forEach((val, i) => { total += val * Math.pow(0.70, i); });
+  withValues.forEach((val, i) => { total += val * Math.pow(0.80, i); });
   return Math.round(total);
 }
 
@@ -283,7 +305,7 @@ function renderTradeList(side) {
         const traded = p.originalOwner !== p.currentOwner;
         const key    = `${p.year}_R${p.round}_T${p.originalOwner}`;
         const isSel  = selectedKeys.includes(key);
-        const val    = PICK_VALUES[`${p.year}_R${p.round}_mid`] || 0;
+        const val    = slotAwarePickValue(p);
 
         const ownLabel    = 'Eigener Pick';
         const tradedLabel = `→ von ${orig.name}`;
@@ -443,7 +465,7 @@ const sorted = [...players].sort((a, b) => {
   return vb - va;
 });   const rows = sorted.map((p, i) => {
       const rawVal       = p.isPick ? pickTradeValue(p, TRADE_MODE) : dynastyValue(p.rank, p.dob);
-      const effectiveVal = Math.round(rawVal * Math.pow(0.70, sorted.indexOf(p)));
+      const effectiveVal = Math.round(rawVal * Math.pow(0.80, sorted.indexOf(p)));
       const isDiscounted = i > 0;
       const isLight      = document.body.classList.contains('light');
 
@@ -491,7 +513,7 @@ const sorted = [...players].sort((a, b) => {
         </div>
         <div style="text-align:right;flex-shrink:0;">
           <div style="font-size:11px;font-weight:800;${valueBadgeStyle(rawVal)}padding:2px 5px;border-radius:4px;">${effectiveVal.toLocaleString()}</div>
-          ${isDiscounted ? `<div style="font-size:9px;color:var(--muted);margin-top:2px;">–30% depth</div>` : ''}
+          ${isDiscounted ? `<div style="font-size:9px;color:var(--muted);margin-top:2px;">–20% depth</div>` : ''}
         </div>
       </div>`;
     }).join('');
@@ -662,7 +684,7 @@ function openTradeShareModal() {
           detail = `${p.nba || ''}${p.owner ? ' · ' + p.owner.name : ''}`;
           value  = (typeof dynastyValue === 'function') ? dynastyValue(p.rank, p.dob) : 0;
         }
-        const effective = Math.round(value * Math.pow(0.70, i));
+        const effective = Math.round(value * Math.pow(0.80, i));
         return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid ${th.divider};">
           <div style="width:24px;height:24px;border-radius:6px;background:${th.accentA}22;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:${th.accentA};flex-shrink:0;">${i+1}</div>
           <div style="flex:1;min-width:0;">
@@ -671,7 +693,7 @@ function openTradeShareModal() {
           </div>
           <div style="text-align:right;flex-shrink:0;">
             <div style="font-size:12px;font-weight:800;color:${th.text};">${effective.toLocaleString()}</div>
-            ${i > 0 ? `<div style="font-size:9px;color:${th.muted};">×0.7^${i}</div>` : ''}
+            ${i > 0 ? `<div style="font-size:9px;color:${th.muted};">×0.8^${i}</div>` : ''}
           </div>
         </div>`;
       }).join('');
@@ -687,7 +709,8 @@ function openTradeShareModal() {
   const modeNames = { dynasty: '🏗️ Dynasty', raw: '📊 Raw', winnow: '🏆 Win-Now' };
   const cardHtml = `<div id="shareCardInner" style="
     background:${th.bg};border:2px solid ${th.accentA};border-radius:20px;
-    padding:22px 18px 18px;font-family:'DM Sans',system-ui,sans-serif;color:${th.text};">
+    padding:24px 20px 20px;font-family:'DM Sans',system-ui,sans-serif;color:${th.text};
+    max-width:480px;margin:0 auto;aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:space-between;">
     <div style="text-align:center;margin-bottom:14px;">
       <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:${th.muted};text-transform:uppercase;margin-bottom:5px;">🌮 Taco Tuesday HQ · Trade Analyzer</div>
       <div style="font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:800;color:${th.accentA};">${verdict}</div>
@@ -739,7 +762,11 @@ function buildTradeShareText(selA, selB, valA, valB, verdict) {
 }
 
 function copyTradeShare() {
-  const txt = window._tradeShareText || '';
+  let txt = window._tradeShareText || '';
+  if (!txt) {
+    const card = document.getElementById('shareCardInner');
+    if (card) txt = card.innerText.replace(/\n{3,}/g, '\n\n').trim();
+  }
   if (!txt) return;
   navigator.clipboard.writeText(txt).then(() => {
     const btn = document.getElementById('copyShareBtn');

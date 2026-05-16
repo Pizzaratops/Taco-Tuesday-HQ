@@ -727,6 +727,9 @@ function openTFShareModal() {
   const give    = window._tfGivePlayers || [];
   if (!results.length || !give.length) return;
 
+  // E: Reset _tradeShareText, damit Copy-Fallback auf Card-innerText liest
+  window._tradeShareText = '';
+
   const isLight = document.body.classList.contains('light');
   const th = isLight ? {
     bg: '#fff5ee', surface: '#ffffff', surface2: '#fdebd8',
@@ -776,7 +779,8 @@ function openTFShareModal() {
 
   const cardHtml = `<div id="shareCardInner" style="
     background:${th.bg};border:2px solid ${th.accentA};border-radius:20px;
-    padding:22px 18px 18px;font-family:'DM Sans',system-ui,sans-serif;color:${th.text};">
+    padding:24px 20px 20px;font-family:'DM Sans',system-ui,sans-serif;color:${th.text};
+    max-width:480px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:14px;">
       <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:${th.muted};text-transform:uppercase;margin-bottom:5px;">🌮 Taco Tuesday HQ · Trade Finder</div>
       <div style="font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:800;color:${th.accentA};">Trade Vorschläge</div>
