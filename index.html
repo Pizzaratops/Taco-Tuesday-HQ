@@ -6,6 +6,7 @@
   <title>Taco Tuesday HQ 🌮</title>
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/big-board.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -63,6 +64,7 @@
         <div class="snav-dropdown">
           <button class="snav-dropdown-item" data-page="draftboard" onclick="showDraftboard()">📋 Full Draft Board</button>
           <button class="snav-dropdown-item" data-page="draft26"    onclick="showDraft26()">🏀 2026 Draft Board</button>
+          <button class="snav-dropdown-item" data-page="bigBoard"  onclick="showBigBoard()">📰 Big Board</button>
           <button class="snav-dropdown-item" data-page="lottery"    onclick="showLottery()">🎲 2026 Lottery</button>
         </div>
       </div>
@@ -120,6 +122,7 @@
         <div class="subnav-mobile-label">Draft</div>
         <button class="subnav-mobile-btn" data-page="draftboard" onclick="showDraftboard();closeMobileNav()">📋 Full Draft Board</button>
         <button class="subnav-mobile-btn" data-page="draft26"    onclick="showDraft26();closeMobileNav()">🏀 2026 Draft Board</button>
+        <button class="subnav-mobile-btn" data-page="bigBoard"  onclick="showBigBoard();closeMobileNav()">📰 Big Board</button>
         <button class="subnav-mobile-btn" data-page="lottery"    onclick="showLottery();closeMobileNav()">🎲 2026 Lottery</button>
       </div>
       <div class="subnav-mobile-group">
@@ -1212,6 +1215,9 @@
   <div class="draft26-no-results" id="draft26NoResults" style="display:none;">No prospects found.</div>
 </div>
 
+<!-- BIG BOARD (Interactive, Newspaper-Style) -->
+<div class="page" id="bigBoardPage"></div>
+
 <!-- TRADE CONFIRM MODAL -->
 <div id="tradeConfirmOverlay" onclick="if(event.target===this)closeTradeConfirm()">
   <div id="tradeConfirmBox">
@@ -1250,6 +1256,7 @@
 <script src="js/trade-history.js"></script>
 <script src="js/trade-admin.js"></script>
 <script src="js/draft-duel.js"></script>
+<script src="js/big-board.js"></script>
 <script src="js/analytics.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/admin-inline.js"></script>
