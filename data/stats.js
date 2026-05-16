@@ -84,6 +84,7 @@ function buildPickPool() {
       pickKey:        `${p.year}_R${p.round}_T${p.originalOwner}`,
       year:           p.year,
       round:          p.round,
+      slot:           p.slot || null,
       pos:            'mid',
       originalOwner:  p.originalOwner,
       currentOwner:   p.currentOwner,
@@ -147,7 +148,7 @@ function toggleTradePick(side, pickKey) {
   renderTradeResult();
 }
 
-function toggleTradePickDirect(side, key, year, round, originalOwner, currentOwner, baseVal, tradedStr) {
+function toggleTradePickDirect(side, key, year, round, originalOwner, currentOwner, baseVal, tradedStr, slot) {
   const st     = TRADE_STATE[side];
   const traded = tradedStr === 'true';
   const orig   = teamMap[originalOwner];
@@ -161,6 +162,7 @@ function toggleTradePickDirect(side, key, year, round, originalOwner, currentOwn
       isPick:        true,
       pickKey:       key,
       year, round,
+      slot:          (slot === null || slot === 'null') ? null : slot,
       pos:           'mid',
       originalOwner, currentOwner,
       traded, orig, curr,

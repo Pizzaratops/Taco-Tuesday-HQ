@@ -1,11 +1,11 @@
 // ============================================================
 const PICKS = [
-  {year:2026,round:1,originalOwner:1,currentOwner:1},{year:2026,round:1,originalOwner:2,currentOwner:2},
-  {year:2026,round:1,originalOwner:3,currentOwner:1},{year:2026,round:1,originalOwner:4,currentOwner:1},
-  {year:2026,round:1,originalOwner:5,currentOwner:5},{year:2026,round:1,originalOwner:6,currentOwner:1},
-  {year:2026,round:1,originalOwner:7,currentOwner:1},{year:2026,round:1,originalOwner:8,currentOwner:8},
-  {year:2026,round:1,originalOwner:9,currentOwner:1},{year:2026,round:1,originalOwner:10,currentOwner:1},
-  {year:2026,round:1,originalOwner:11,currentOwner:1},{year:2026,round:1,originalOwner:12,currentOwner:12,note:"Champ-Regel"},
+  {year:2026,round:1,originalOwner:1,currentOwner:1,slot:12,note:"Champ-Regel"},{year:2026,round:1,originalOwner:2,currentOwner:2,slot:11},
+  {year:2026,round:1,originalOwner:3,currentOwner:1,slot:10},{year:2026,round:1,originalOwner:4,currentOwner:1,slot:4},
+  {year:2026,round:1,originalOwner:5,currentOwner:5,slot:8},{year:2026,round:1,originalOwner:6,currentOwner:1,slot:9},
+  {year:2026,round:1,originalOwner:7,currentOwner:1,slot:3},{year:2026,round:1,originalOwner:8,currentOwner:8,slot:7},
+  {year:2026,round:1,originalOwner:9,currentOwner:1,slot:2},{year:2026,round:1,originalOwner:10,currentOwner:1,slot:6},
+  {year:2026,round:1,originalOwner:11,currentOwner:1,slot:1},{year:2026,round:1,originalOwner:12,currentOwner:12,slot:5},
   {year:2026,round:2,originalOwner:1,currentOwner:1},{year:2026,round:2,originalOwner:2,currentOwner:2},
   {year:2026,round:2,originalOwner:3,currentOwner:3},{year:2026,round:2,originalOwner:4,currentOwner:4},
   {year:2026,round:2,originalOwner:5,currentOwner:5},{year:2026,round:2,originalOwner:6,currentOwner:6},
