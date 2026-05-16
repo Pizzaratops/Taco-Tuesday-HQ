@@ -77,15 +77,22 @@ function buildPickPool() {
     const orig   = teamMap[p.originalOwner];
     const curr   = teamMap[p.currentOwner];
     const traded = p.originalOwner !== p.currentOwner;
-    const valKey = `${p.year}_R${p.round}_mid`;
-    const baseValue = PICK_VALUES[valKey] || 0;
+    // F: slot-aware baseValue
+    let pickRange = 'mid';
+    if (p.slot != null) {
+      if (p.slot <= 4)      pickRange = 'early';
+      else if (p.slot <= 8) pickRange = 'mid';
+      else                  pickRange = 'late';
+    }
+    const valKey = `${p.year}_R${p.round}_${pickRange}`;
+    const baseValue = PICK_VALUES[valKey] || PICK_VALUES[`${p.year}_R${p.round}_mid`] || 0;
     return {
       isPick:         true,
       pickKey:        `${p.year}_R${p.round}_T${p.originalOwner}`,
       year:           p.year,
       round:          p.round,
       slot:           p.slot || null,
-      pos:            'mid',
+      pos:            pickRange,
       originalOwner:  p.originalOwner,
       currentOwner:   p.currentOwner,
       traded,
