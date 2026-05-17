@@ -4,18 +4,21 @@
 const DRAFT_2026 = [
   // ── TIER 1 ──────────────────────────────────────────────────
   {pick:1, name:"Cameron Boozer", pos:"PF", school:"Duke",
+   measurements:"6-8.25" · 253 lbs · Wingspan: 7-1.5 · Reach: 9-0",
    tier:"Tier 1",
    stats:"24.2 PTS · 11.0 REB · 4.4 AST · 1.5 STL · 0.7 BLK",
    fantasy:"🏀 Archetype: Franchise Centerpiece · 9cat: +REB +AST +FG% · Stable across the board",
    scouting:"Stabilster und vielseitigster Frontcourt-Spieler in diesem Draft. 6'9\", 250 lbs — er agiert zwischen Position 3 und 4 mit bemerkenswert ausgereifter Footwork im Post. 4.4 Assists pro Spiel als Big ist außergewöhnlich. Fantasy-seitig ein echter Baseline-Contributor: starke REB- und AST-Zahlen ohne klares Schwächekat, gute FG% durch hochquotigte Abschlüsse am Ring. Kein Punt-Build-Spieler — er hält jede Kategorie zuverlässig. Einzige echte Frage: Athletik auf NBA-Niveau gegen echte Bigs. Der Dreier ist noch nicht verlässlich, aber alles andere ist schon jetzt nah an NBA-ready."},
  
   {pick:2, name:"Darryn Peterson", pos:"SG/PG", school:"Kansas",
+   measurements:"6-4.5" · 199 lbs · Wingspan: 6-9.75 · Reach: 8-7",
    tier:"Tier 1",
    stats:"25.0 PTS · 5.2 REB · 2.0 AST · 1.8 STL · 0.8 BLK",
    fantasy:"🔴 Archetype: Jalen Green + defensive juice · 9cat: +PTS +STL — WARNUNG: geringe AST, FG%/TO-Risiko",
    scouting:"25 Punkte pro Spiel auf allen drei Leveln, kombiniert mit 1.8 Steals — das klingt wie ein Fantasy-Jackpot. Und tatsächlich: sein STL-Output ist für einen Guard dieses Kalibers selten stabil. Aber: nur 2.0 AST für diesen Usage-Anteil ist ein klares Signal — er ist eher Scoring Guard als Primary Creator. Fantasy-seitig stark in Punt-AST-Builds, Risiko liegt bei FG% und TO. Hamstringprobleme könnten seinen Floor senken. Höheres Risikoprofil als Boozer, aber das Ceiling ist Top-5 im Draft."},
  
   {pick:3, name:"AJ Dybantsa", pos:"SF", school:"BYU",
+   measurements:"6-8.5" · 217 lbs · Wingspan: 7-0.25 · Reach: 8-10",
    tier:"Tier 1",
    stats:"Keine vollständigen Col. Daten · Elite-Athletik · Multiple-Level Scorer",
    fantasy:"🔴 Archetype: T-Mac Comp · 9cat: Potential +PTS +REB +STL — Ceiling unklar, Usage-abhängig",
@@ -23,12 +26,14 @@ const DRAFT_2026 = [
  
   // ── TIER 1.5 ────────────────────────────────────────────────
   {pick:4, name:"Caleb Wilson", pos:"SF/PF", school:"North Carolina",
+   measurements:"6-9.25" · 211 lbs · Wingspan: 7-0.25 · Reach: 9-0",
    tier:"Tier 1.5",
    stats:"22.8 PTS · 10.8 REB · 3.1 AST · 1.7 STL · 1.6 BLK",
    fantasy:"🟢 Archetype: Scottie Barnes mit mehr Blocks · 9cat: UNICORN — +REB +STL +BLK gleichzeitig · Top-5 Fantasy Upside",
    scouting:"Das ist der 9cat-Cheatcode dieses Drafts. 1.7 STL UND 1.6 BLK als Forward — diese Kombination findet man im College Basketball so gut wie nicht. Dazu 10.8 Rebounds und 3.1 Assists, was für einen Wing ungewöhnlich vielseitig ist. Hat in dieser Saison den NCAA-Dunking-Rekord gebrochen und ist defensiv auf einem Niveau, das an Jonathan Isaac erinnert. Fantasy-seitig: Wer STL + BLK stacken will, findet hier seinen Cornerstone. Schwäche: Halbcourt-Offense und der Dreier sind noch unfertig. Aber sein defensiver Impact pro Possession ist in fast jedem Spiel sichtbar — auch ohne Punktezettel."},
  
   {pick:5, name:"Keaton Wagler", pos:"SG/PG", school:"Illinois",
+   measurements:"6-5" · 188 lbs · Wingspan: 6-6.25 · Reach: 8-4",
    tier:"Tier 1.5",
    stats:"19.0 PTS · 5.4 REB · 4.5 AST · 1.1 STL · 0.4 BLK",
    fantasy:"⚪ Archetype: Josh Giddey Lite mit besserem Shooting · 9cat: Balanced Connector — kein Cat verlieren, aber auch keinen dominieren",
@@ -36,18 +41,21 @@ const DRAFT_2026 = [
  
   // ── TIER 2 ──────────────────────────────────────────────────
   {pick:6, name:"Kingston Flemings", pos:"PG", school:"Houston",
+   measurements:"6-2.5" · 183 lbs · Wingspan: 6-3.5 · Reach: 8-2.5",
    tier:"Tier 2",
    stats:"18.2 PTS · 4.6 REB · 5.9 AST · 1.7 STL · 0.4 BLK",
    fantasy:"🔴 Archetype: Defense-first PG mit Playmaking · 9cat: +AST +STL — Scoring-Volumen noch ausbaufähig",
    scouting:"Schnellster Guard in diesem Draft, fast 90% Finishing-Quote am Ring in dieser Saison. 5.9 Assists und 1.7 Steals — das ist ein vollständiges Guard-Paket auf Two-Way-Niveau. Fantasy-seitig ein AST+STL-Spezialist: wer diese beiden Cats gewinnen will, ist hier gut aufgehoben. PTS ist derzeit noch zu wenig für primary Scoring-Rolle — er braucht Mitspieler, die ihn entlasten. Kelvin Sampson hat ihn in höchsten Tönen gelobt, was bei diesem Coach kein PR-Move ist. Körperbau ist die offene Frage gegen athletischere NBA-Defender."},
  
   {pick:7, name:"Darius Acuff Jr.", pos:"PG", school:"Arkansas",
+   measurements:"6-2" · 186 lbs · Wingspan: 6-7 · Reach: 8-2.5",
    tier:"Tier 2",
    stats:"24.1 PTS · 3.2 REB · 6.6 AST · 1.0 STL · 0.3 BLK",
    fantasy:"🔴 Archetype: Trae Young Lite ohne Elite Shooting · 9cat: +PTS +AST aber STL schwach — klassischer Punt-FG%-Kandidat",
    scouting:"6.6 Assists und 24.1 Punkte — auf dem Papier eine der besten PTS/AST-Kombinationen im Draft. Aber: nur 1.0 Steals und schwache BLK-Zahlen machen ihn zu einem eindimensionalen Fantasy-Profil. Fantasy-seitig: idealer Baustein für Punt-FG%-Builds mit hohem Volumen. Wer AST und PTS stapeln will ohne auf Defensive Events zu achten, ist hier richtig. Defense bleibt sein klarer Schwachpunkt auf NBA-Niveau. Sein Pick-and-Roll-Spiel funktioniert und sein Scoring ist in dieser Saison deutlich gewachsen — Starter-Potenzial wenn er defensiv wächst."},
  
   {pick:8, name:"Yaxel Lendeborg", pos:"PF", school:"Michigan",
+   measurements:"6-8.75" · 241 lbs · Wingspan: 7-3.25 · Reach: 9-0.5",
    tier:"Tier 2",
    stats:"18.0 PTS · 8.1 REB · 3.9 AST · 1.3 STL · 1.5 BLK",
    fantasy:"⚪ Archetype: Kyle Anderson Big Version · 9cat: Connector Big — +REB +BLK +AST aus einer Position · underrated in 9cat",
@@ -55,30 +63,35 @@ const DRAFT_2026 = [
  
   // ── TIER 3 ──────────────────────────────────────────────────
   {pick:9, name:"Labaron Philon Jr.", pos:"PG", school:"Alabama",
+   measurements:"6-2.5" · 176 lbs · Wingspan: 6-6.25 · Reach: 8-3.5",
    tier:"Tier 3",
    stats:"25.6 PTS · 4.1 REB · 5.8 AST · 1.3 STL · 0.2 BLK",
    fantasy:"🔴 Archetype: Darius Garland Lite mit Defense Floor · 9cat: Einer der besten Fantasy Guards im Pool — +PTS +AST +solide STL",
    scouting:"25.6 Punkte und 5.8 Assists — Philons Zahlen erinnern an einen echten Lead Guard, nicht nur einen Scorer. 41.5% von der Dreierlinie bei fast einem Drittel aller Teamabschlüsse. Fantasy-seitig das vollständigste Guard-Paket in diesem Draft: PTS, AST und eine brauchbare STL-Baseline ohne extreme Schwächekat. Er erinnert an Brunson in seiner Spielweise — kein Athletik-Highlight, aber Pässe kommen an, Floater ist tödlich. Frame (175 lbs) ist schlank und er muss lernen, durch Kontakt zu finishen. Aber sein Potenzial geht deutlich über einen Backup hinaus."},
  
   {pick:10, name:"Hannes Steinbach", pos:"PF", school:"Washington",
+   measurements:"6-10.25" · 248 lbs · Wingspan: 7-2.25 · Reach: 9-0",
    tier:"Tier 3",
    stats:"19.3 PTS · 12.2 REB · 1.6 AST · 1.1 STL · 1.3 BLK",
    fantasy:"🔵 Archetype: Jakob Poeltl mit mehr Motor · 9cat: Elite REB-Anchor — +REB +BLK, schwach in PTS/AST/3PM",
    scouting:"12.2 Rebounds — das ist der höchste Wert unter allen Prospects in diesem Draft. 4.8 offensive Rebounds pro Spiel ist ein Ausreißerwert. Fantasy-seitig ein klassischer Rebound-Anchor: ideal in Builds, die REB und BLK dominieren wollen, aber schwach in Scoring-Kategorien und ohne 3PM-Output. Einige Scouts sehen in ihm einen künftigen Starter in der Mitte — seine Schwäche ist die Außenverteidigung und Anfälligkeit beim Drop-Coverage. Überzeugt Scouts Woche für Woche weiter, die Community vergleicht ihn inzwischen mit Sengun."},
  
   {pick:11, name:"Brayden Burries", pos:"SG", school:"Arizona",
+   measurements:"6-3.75" · 215 lbs · Wingspan: 6-6 · Reach: 8-2.5",
    tier:"Tier 3",
    stats:"19.4 PTS · 5.9 REB · 2.9 AST · 1.9 STL · 0.2 BLK",
    fantasy:"🟡 Archetype: Derrick White Lite · 9cat: Two-Way Guard — +STL sehr stark, +REB für Guard-Position, balancierter Scorer",
    scouting:"6'4\", 205 lbs — er geht zum Ring als wäre er größer. 1.9 Steals ist für einen Guard mit diesem Usage-Anteil außergewöhnlich stabil, nicht nur ein Rauschen-Wert. Fantasy-seitig: ein Two-Way-Guard-Profil, das STL zuverlässig liefert ohne auf Scoring zu verzichten. Dazu überraschend solide 5.9 Rebounds für die Position. Sein Dreier-Spiel baut sich aus, er trifft immer konsistenter. Schwäche: er muss beweisen, dass er das über 82 NBA-Spiele reproduzieren kann. Defensiv erinnert er an Thaddeus Young in jungen Jahren."},
  
   {pick:12, name:"Mikel Brown Jr.", pos:"SG", school:"Louisville",
+   measurements:"6-3.5" · 190 lbs · Wingspan: 6-7.5 · Reach: 8-4.5",
    tier:"Tier 3",
    stats:"22.4 PTS · 4.1 REB · 5.8 AST · 1.6 STL · 0.2 BLK",
    fantasy:"🔴 Archetype: CJ McCollum / Jamal Murray Hybrid · 9cat: Balanced Guard — +PTS +AST +STL, 83% FT% ist ein Indikator",
    scouting:"Brown kann sich in dieser Liga zu einem echten Scorer entwickeln. 6'5\", 83% von der Freiwurflinie — das ist ein zuverlässiges Signal für saubere Wurfmechanik. Fantasy-seitig: ein balancierter Guard ohne extremes Cat-Spike, der aber alle relevanten Kategorien auf akzeptablem Niveau hält. 5.8 Assists zeigt Playmaking-Ansätze. 1.6 Steals ist solide. Health ist der entscheidende Swing-Factor — wenn er gesund bleibt, ist sein Fantasy-Floor angenehm hoch."},
  
   {pick:13, name:"Morez Johnson Jr.", pos:"PF", school:"Michigan",
+   measurements:"6-9" · 251 lbs · Wingspan: 7-3.5 · Reach: 8-11",
    tier:"Tier 3",
    stats:"18.8 PTS · 10.5 REB · 1.7 AST · 1.0 STL · 1.6 BLK",
    fantasy:"🟢 Archetype: Jaren Jackson Jr. Lite (weniger Shooting) · 9cat: Defensive Event Big — +REB +BLK, STL auf akzeptablem Niveau",
@@ -86,36 +99,42 @@ const DRAFT_2026 = [
  
   // ── TIER 4 ──────────────────────────────────────────────────
   {pick:14, name:"Nate Ament", pos:"PF", school:"Tennessee",
+   measurements:"6-9.5" · 211 lbs · Wingspan: 6-11.5 · Reach: 9-1.5",
    tier:"Tier 4",
    stats:"Freshman · 6'9\" · 17 lbs Gewichtszunahme in dieser Saison · 44.8% am Ring",
    fantasy:"⚪ Archetype: 3-and-D Projekt · 9cat: Potenziell +BLK +REB wenn entwickelt — aktuell noch Rohmaterial",
    scouting:"Ament hat in dieser Saison 17 Pfund zugelegt und sieht jetzt aus wie ein NBA-Körper. 6'9\", langer Arm, schneller Release. Sein Abschluss am Ring ist noch zu unbeständig bei 44.8%, aber Länge und Wurfmechanik machen ihn zu einem 3-and-D-Projekt mit echtem Potenzial. Fantasy-seitig ein spekulativer Pick: wenn er seinen Abschluss entwickelt, könnte das FG%-Boost und BLK-Beitrag kombiniert werden. Erinnert vom Typ her an Risacher in seinem Rookiejahr — Geduld erforderlich."},
  
   {pick:15, name:"Aday Mara", pos:"C", school:"Michigan",
+   measurements:"7-3" · 260 lbs · Wingspan: 7-6 · Reach: 9-9",
    tier:"Tier 4",
    stats:"18.6 PTS · 10.4 REB · 3.7 AST · 4.0 BLK · 0.5 STL",
    fantasy:"🔵 Archetype: Walker Kessler on steroids · 9cat: Outlier Rim Protector — 4.0 BLK ist Liga-winning, ideal in Punt-FT-Builds",
    scouting:"7'3\" Center mit 4.0 Blocks pro Spiel — das ist ein absoluter Outlier-Wert, der auch in der NBA selten zu finden ist. Fantasy-seitig der klarste Build-Definer im Draft: wer BLK dominieren will, kommt an ihm nicht vorbei. Dazu 10.4 Rebounds und überraschend 3.7 Assists als Passspieler aus dem Post. Schwäche: FT%-Risiko (klassisch für riesige Bigs), Scoring kommt fast ausschließlich durch seine Größe. Tempo und Beweglichkeit in den Hüften sind echte Grenzen — aber ein Center dieses Profils kommt selten und Teams wetten gerne darauf."},
  
   {pick:16, name:"Dailyn Swain", pos:"SF", school:"Texas",
+   measurements:"6-6.5" · 211 lbs · Wingspan: 6-10 · Reach: 8-8.5",
    tier:"Tier 4",
    stats:"19.0 PTS · 8.3 REB · 3.9 AST · 1.8 STL · 0.3 BLK",
    fantasy:"🟢 Archetype: Josh Hart + Self Creation · 9cat: Multi-Cat Wing — +REB +STL +AST aus einer Forward-Position · underrated",
    scouting:"Swain ist kein Creator, der Highlights produziert. Er macht keine Spektakel. Er verteidigt physisch, gewinnt seine Duelle und bringt das Team in die richtigen Situationen. Fantasy-seitig aber sehr interessant: 8.3 Rebounds, 3.9 Assists und 1.8 Steals als SF ist ein vollständiges Multi-Cat-Profil, das in einem System mit klaren Rollen sehr wertvoll ist. In H2H oft underrated, weil er keine Elite-Einzelkategorie hat — aber er kann STL und REB gleichzeitig gewinnen helfen. Ein echter Glue-Guy-Pick."},
  
   {pick:17, name:"Jayden Quaintance", pos:"C", school:"Kentucky",
+   measurements:"6-9" · 253 lbs · Wingspan: 7-5.25 · Reach: 9-1",
    tier:"Tier 4",
    stats:"Kommt von Kreuzbandriss zurück · Elite Shotblocker · 47.9% FT%",
    fantasy:"🔵 Archetype: Bam Adebayo Potenzial (wenn gesund) · 9cat: +BLK +REB — FT% ist ein echter Schwachpunkt, Gesundheit der Wildcard",
    scouting:"Viele Scouts nennen ihn den besten Verteidiger in diesem Draft. Seine Geschwindigkeit für einen Center ist ungewöhnlich, sein Shotblocking ist konstant und sein Basketball-IQ ist weit über seinem Alter. Er kommt von einem Kreuzbandriss zurück — das ist der entscheidende Risikofaktor. Fantasy-seitig: 47.9% Freiwurfquote zeigt wie roh er offensiv noch ist — Punt-FT-Builds profitieren, alle anderen nehmen das Risiko. Wenn er gesund bleibt und seine Offense entwickelt, hat er Bam-Adebayo-Potenzial. BLK und REB sind schon jetzt auf High-Level."},
  
   {pick:18, name:"Tyler Tanner", pos:"PG", school:"Vanderbilt",
+   measurements:"5-10.75" · 167 lbs · Wingspan: 6-4.25 · Reach: 7-9",
    tier:"Tier 4",
    stats:"21.0 PTS · 3.9 REB · 5.5 AST · 2.6 STL · 0.4 BLK",
    fantasy:"🟡 Archetype: Dejounte Murray Lite · 9cat: Elite STL Guard — 2.6 STL ist Draft-Leading, Sleeper-Pick für STL-dominante Builds",
    scouting:"2.6 Steals als Guard — das ist der höchste STL-Wert unter allen Guards in diesem Draft und einer der höchsten im gesamten College Basketball. Fantasy-seitig ist er der klarste STL-Spezialist: wer diese Kategorie dominieren will, ist hier richtig. 5.5 Assists sind dazu eine solide Playmaking-Basis. Er ist klein (6'0\") — das wird in der NBA immer diskutiert werden. Aber sein Athletik-Niveau und seine defensive Energie machen ihn zu einem echten Überraschungskandidaten. 4.1% Steal-Rate und 16 Dunks in einer Saison als Guard zeigen die explosive Seite."},
  
   {pick:19, name:"Allen Graves", pos:"PF", school:'undeclared',
+   measurements:"6-7.75" · 226 lbs · Wingspan: 7-0 · Reach: 8-10.25",
    tier:"Tier 4",
    stats:"1.5 BLK · 3.0 STL — Scouts-Daten · Wenig Tape verfügbar",
    fantasy:"🟢 Archetype: Draymond Green defensive chaos profile · ⚡ SLEEPER ALERT — 3.0 STL als Big ist absurd selten",
@@ -123,30 +142,35 @@ const DRAFT_2026 = [
  
   // ── TIER 5 ──────────────────────────────────────────────────
     {pick:21, name:"Cameron Carr", pos:"SG", school:"Baylor",
+   measurements:"6-4.5" · 184 lbs · Wingspan: 7-0.75 · Reach: 8-8",
    tier:"Tier 5",
    stats:"20.2 PTS · 6.2 REB · 2.8 AST · 0.9 STL · 1.4 BLK",
    fantasy:"🔴 Archetype: MPJ Scoring Comp · 9cat: Off-Ball-Scorer — +PTS +BLK für einen Guard ist selten, schwach in AST/STL",
    scouting:"57.5% FG, 44% von der Dreierlinie, 22 Dunks in 10 Spielen — Carr ist ein Elite-Shotmaker mit 7-Foot-Wingspan und spektakulärer Athletik. Fantasy-seitig ungewöhnlich: 1.4 BLK als Shooting Guard ist eine seltene Kategorie-Kombination. Schwäche: 6.2% Assist-Rate deutet auf Tunnelvision hin — als Off-Ball-Scorer im richtigen System hat er echter Top-10-Wert, aber er braucht Mitspieler die ihn kreieren. Niedrige AST/STL-Zahlen machen ihn zu einem spezialisierten Scoring-Piece, kein Allround-Guard."},
  
   {pick:22, name:"Amari Allen", pos:"SF", school:"Alabama",
+   measurements:"6-5.25" · 204 lbs · Wingspan: 6-8 · Reach: 8-3.5",
    tier:"Tier 5",
    stats:"3.0 BLK% · 2.1 STL% · 37% 3PT — Conference Play: 14.4 PTS, 42.1% 3PT",
    fantasy:"🟢 Archetype: Draymond-ähnliches Stat-Profil · 9cat: Defensive Event Wing — +STL +BLK kombiniert auf Wing-Niveau · sehr selten",
    scouting:"Vielseitiger 6'8'' Wing mit einem Stat-Profil, das an Draymond erinnert: 37% von Drei, 3.0% BLK-Rate, 2.1% STL-Rate, Rebounding und Passing. Niedrige Usage kaschiert seinen Wert — Conference-Play (14.4 PPG, 42.1% 3PT) zeigt sein echtes Niveau. Fantasy-seitig: einer der wenigen Wings, der STL und BLK gleichzeitig auf relevantem Niveau hält. Das ist 9cat Gold. In Builds, die Defensive Events stacken wollen, ist er ein hochattraktives Puzzle-Piece."},
  
   {pick:23, name:"Isiah Evans", pos:"PG/SG", school:'undeclared',
+   measurements:"6-5.5" · 186 lbs · Wingspan: 6-8.75 · Reach: 8-8.5",
    tier:"Tier 5",
    stats:"Elite Off-Ball-Shooter · 3PT% stark · Defensiv engagiert",
    fantasy:"⚪ Archetype: Isaiah Joe Comp · 9cat: Shooter mit Defensive Floor — verlässliche 3PM + solide STL in der richtigen Rolle",
    scouting:"Elite Off-Ball-Shooter mit Isaiah-Joe-Comp, aktivem Off-Screen-Movement und starkem defensivem Engagement. Fantasy-seitig ein Spezialist: wenn er 3PM und einen stabilen STL-Beitrag kombiniert, ist er in ausgeglichenen Builds sehr nützlich. Kein Handle, kein Playmaking — als Off-Ball-Wing in einem System mit klaren Rollen aber verlässlich. Shooting-Reliability und athletisches Fundament machen ihn zum robusten Rotation-Wing."},
  
   {pick:24, name:"Chris Cenac Jr.", pos:"PF/C", school:"Houston",
+   measurements:"6-10.25" · 240 lbs · Wingspan: 7-5 · Reach: 9-0.5",
    tier:"Tier 5",
    stats:"6'11\" · Rim-Runner-Profil · Athletisch · Noch roh",
    fantasy:"🔵 Archetype: Clint Capela Upside · 9cat: Rim-Runner — +FG% +REB, schwach in allen anderen Cats · klassischer Punt-Build-Piece",
    scouting:"Athletischer 6'11'' Center mit gutem Timing, starkem Motor und klassischem Rim-Running-Profil. Fantasy-seitig ein eindeutiger Spezialist: FG% und REB sind seine Kategorien, der Rest ist Schweigen. In Punt-FG%-Builds ein interessanter Baustein. Noch roh — aber physisches Paket und Coachability machen ihn zu einem legitimen Lottery-Gamble. Scouts vergleichen ihn mit einem Capella mit Dreier-Upside."},
  
   {pick:25, name:"Karim Lopez", pos:"SF/PF", school:"New Zealand Breakers",
+   measurements:"6-8.25" · 222 lbs · Wingspan: 6-11.5 · Reach: 8-9.5",
    tier:"Tier 5",
    stats:"16.8 PTS · 8.5 REB · 2.7 AST · 1.6 STL · 1.5 BLK",
    fantasy:"🟢 Archetype: OG Anunoby mit mehr Rebounds · 9cat: Sehr seltene STL+BLK Combo als Wing — Top Defensive Event Pick",
@@ -166,12 +190,14 @@ const DRAFT_2026 = [
  
   // ── TIER 6 ──────────────────────────────────────────────────
   {pick:28, name:"Flory Bidunga", pos:"C", school:"Kansas",
+   measurements:"6-7.75" · 228 lbs · Wingspan: 7-3.25 · Reach: 8-10.5",
    tier:"Tier 6",
    stats:"Mobiler Center · Drive-Fähigkeit · 3PT-Ansätze",
    fantasy:"🔵 Archetype: Developing Stretch Center · 9cat: +REB +BLK Baseline — 3PM als Center ein Bonus, wenn er sich entwickelt",
    scouting:"Mobiler Center mit gutem 3PT-Ansatz, echter Drive-Fähigkeit und Helpside-Rimschutz. Kann schlecht screenen und meidet Post-Kontakt — das schränkt seinen Floor ein. Fantasy-seitig ein Entwicklungs-Projekt: BLK und REB sind die sicheren Contributions, alles andere hängt von der Entwicklung seiner Außenwerkzeuge ab. Für die späte Lottery mit interessantem Skill-Profil."},
  
   {pick:29, name:"Meleek Thomas", pos:"SG", school:"Arkansas",
+   measurements:"6-3" · 189 lbs · Wingspan: 6-6.75 · Reach: 8-4.5",
    tier:"Tier 6",
    stats:"Defensiv stark · Shooting-Upside · Malik Monk Comp",
    fantasy:"🟡 Archetype: Malik Monk Vibes · 9cat: High-Variance Scorer — wenn der Shot fällt, +PTS +STL; wenn nicht, wenig Contributions",
@@ -185,12 +211,14 @@ const DRAFT_2026 = [
  
   // ── MYSTERY TIER ─────────────────────────────────────────────
   {pick:31, name:"Koa Peat", pos:"PF", school:"Arizona",
+   measurements:"6-7" · 245 lbs · Wingspan: 6-11.25 · Reach: 8-8",
    tier:"Mystery",
    stats:"Zion-ähnliche Athletik · Solid Midrange · FT% sub-70%",
    fantasy:"🟢 Archetype: Zion-ähnlicher PF · 9cat: +REB +PTS, aber FT% bleibt der Schwachpunkt — Punt-FT-Kandidat",
    scouting:"Zion-ähnlicher PF mit Elite-Athletik, überzeugender Footwork und solidem Midrange-Spiel. Top-6-Kandidat auf vielen Boards — 3PT-Volumen und FT% (sub-70%) sind die einzigen echten Fragezeichen. Fantasy-seitig: hohe PTS und REB kommen automatisch mit diesem Athletikprofil, aber wer FT% nicht punten will, muss zweimal überlegen."},
  
   {pick:32, name:"Bennett Stirtz", pos:"PG", school:"Iowa",
+   measurements:"6-2.5" · 186 lbs · Wingspan: 6-6 · Reach: 8-2.5",
    tier:"Mystery",
    stats:"18.9 PTS · 2.5 REB · 4.2 AST · 1.3 STL · 44% 3PT · 2.43 AST/TO",
    fantasy:"🟡 Archetype: Ty Jerome Comp · 9cat: +3PM +AST sehr stark, aber STL/REB für Guard schwach — Shooting-Spezialist",
@@ -215,6 +243,7 @@ const DRAFT_2026 = [
    scouting:"Dyson Daniels' jüngerer Bruder mit ähnlichem Defensivprofil und flüssigerer offensiver Basis. 6'6'' NBL-Next-Stars-Wing mit Grit, Perimeter-IQ und NBA-Reife durch Spiele gegen echte Profis. Fantasy-seitig: STL ist wie bei seinem Bruder der sichere Beitrag — aber er zeigt offensiv mehr Ansätze als Dyson es früh tat. Interessanter Mystery-Pick."},
  
   {pick:38, name:"Christian Anderson", pos:"PG", school:"Texas Tech",
+   measurements:"6-0.75" · 180 lbs · Wingspan: 6-6.25 · Reach: 8-0.5",
    tier:"Mystery",
    stats:"17.4 PTS · 3.4 REB · 6.9 AST · 1.4 STL · 45% 3PT",
    fantasy:"🔴 Archetype: Tyus Jones mit Upside · 9cat: +AST +3PM starke Combo — Three-Level-Scorer mit Playmaking",
@@ -251,6 +280,7 @@ const DRAFT_2026 = [
    scouting:"Athletischer 3&D Wing mit Defense-First-Profil, Bruce-Brown-Median-Comp und 6'10'' Wingspan. Offensive Kreativität fehlt aktuell — Frame und Athletik schreien aber klar einen NBA-Roster-Spot. Fantasy-seitig: ein STL-Spezialist mit athletischen Voraussetzungen. Wie viel er darüber hinaus contributen kann, hängt komplett vom System ab."},
  
   {pick:44, name:"Alex Karaban", pos:"PF", school:"UConn",
+   measurements:"6-6.75" · 225 lbs · Wingspan: 6-11 · Reach: 8-8.5",
    tier:"Mystery",
    stats:"39.4% 3PT Karriere · UConn Championship-DNA · Kein Shot-Creator",
    fantasy:"⚪ Archetype: Georges Niang Stretch-Forward · 9cat: +3PM als Big ist der einzige Beitrag — sehr spezialisiert",
