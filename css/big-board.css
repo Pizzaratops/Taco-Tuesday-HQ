@@ -7,6 +7,21 @@
    ============================================================ */
 
 /* ─── Farb-Konstanten als CSS-Variablen NUR im .sh-page Scope ─── */
+/* HINWEIS: Auch auf :root gesetzt, damit position:fixed Elemente
+   (z.B. .bb-scout-popup) die Variablen erben können — fixed
+   Elemente liegen außerhalb des .sh-page DOM-Scopes. */
+:root {
+  --sh-bg:         #fbf8f1;
+  --sh-bg-line:    rgba(19, 41, 75, 0.025);
+  --sh-text:       #13294B;
+  --sh-text-dim:   #5a4a3a;
+  --sh-muted:      #8a7a6a;
+  --sh-accent:     #E84A27;
+  --sh-border:     #d4c8b4;
+  --sh-border-soft:#e4d8c4;
+  --sh-row-alt:    rgba(19, 41, 75, 0.025);
+  --sh-row-hover:  rgba(232, 74, 39, 0.08);
+}
 .sh-page {
   --sh-bg:         #fbf8f1;
   --sh-bg-line:    rgba(19, 41, 75, 0.025);  /* feine Linien im BG */
