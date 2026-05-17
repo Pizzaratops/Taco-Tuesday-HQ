@@ -63,8 +63,8 @@
         <button class="snav-group-btn" id="snavDraft">📋 Draft <span class="snav-arrow">▾</span></button>
         <div class="snav-dropdown">
           <button class="snav-dropdown-item" data-page="draftboard" onclick="showDraftboard()">📋 Full Draft Board</button>
-          <button class="snav-dropdown-item" data-page="draft26"    onclick="showDraft26()">🏀 2026 Draft Board</button>
-          <button class="snav-dropdown-item" data-page="bigBoard"  onclick="showBigBoard()">📰 Big Board</button>
+          <button class="snav-dropdown-item" data-page="draft26"    onclick="showDraft26()">🔎 Prospect Database</button>
+          <button class="snav-dropdown-item" data-page="bigBoard"  onclick="showBigBoard()">📋 MFHFBs Big Board</button>
           <button class="snav-dropdown-item" data-page="lottery"    onclick="showLottery()">🎲 2026 Lottery</button>
         </div>
       </div>
@@ -121,8 +121,8 @@
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Draft</div>
         <button class="subnav-mobile-btn" data-page="draftboard" onclick="showDraftboard();closeMobileNav()">📋 Full Draft Board</button>
-        <button class="subnav-mobile-btn" data-page="draft26"    onclick="showDraft26();closeMobileNav()">🏀 2026 Draft Board</button>
-        <button class="subnav-mobile-btn" data-page="bigBoard"  onclick="showBigBoard();closeMobileNav()">📰 Big Board</button>
+        <button class="subnav-mobile-btn" data-page="draft26"    onclick="showDraft26();closeMobileNav()">🔎 Prospect Database</button>
+        <button class="subnav-mobile-btn" data-page="bigBoard"  onclick="showBigBoard();closeMobileNav()">📋 MFHFBs Big Board</button>
         <button class="subnav-mobile-btn" data-page="lottery"    onclick="showLottery();closeMobileNav()">🎲 2026 Lottery</button>
       </div>
       <div class="subnav-mobile-group">
@@ -1203,8 +1203,8 @@
 
 <!-- 2026 DRAFT BOARD -->
 <div class="page" id="draft26Page">
-  <h2 style="margin-bottom:6px;">MFHFBs 2026 Draft Board</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">30 prospects · Tiered Big Board + Mystery Tier + Erster richtiger Mock, viele Infos, einige musste ich mir zusammenschustern. Wenn euch Fehler auffallen, schickt sie mir</p>
+  <h2 style="margin-bottom:6px;">🔎 Prospect Database · 2026 Draft</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Browse-Modus mit Suche · Scouting Reports & Fantasy-Insights · Tier-Struktur fest. Für deine persönliche Rangliste → <a href="#" onclick="showBigBoard();return false;" style="color:var(--accent);text-decoration:underline;">📋 Big Board</a>.</p>
   <div class="draft26-search">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
