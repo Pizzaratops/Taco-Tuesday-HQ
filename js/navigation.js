@@ -474,14 +474,25 @@ function goHome(){navigate('homePage');}
 function showRules(){navigate('rulesPage');}
 function showStandings(){navigate('standingsPage');setTimeout(renderStandingsChart,50);}
 function _rerenderPage(pageId) {
-  if (pageId === 'standingsPage')     setTimeout(renderStandingsChart, 50);
-  if (pageId === 'nbaTradesPage')     renderNbaTrades();
-  if (pageId === 'adminSettingsPage') _asInit();
-  if (pageId === 'tradeHistoryPage')  renderTradeHistory();
-  if (pageId === 'draftboardPage')    showDraftboard();
-  if (pageId === 'bestAvailPage')     showBestAvail();
-  if (pageId === 'rankingsPage')      showRankings();
-  if (pageId === 'analyticsPage')     showAnalytics();
+  if (pageId === 'standingsPage')        setTimeout(renderStandingsChart, 50);
+  if (pageId === 'nbaTradesPage')        renderNbaTrades();
+  if (pageId === 'adminSettingsPage')    _asInit();
+  if (pageId === 'tradeHistoryPage')     renderTradeHistory();
+  if (pageId === 'draftboardPage')       showDraftboard();
+  if (pageId === 'bestAvailPage')        showBestAvail();
+  if (pageId === 'rankingsPage')         showRankings();
+  if (pageId === 'hashtagRankingsPage')  showHashtagRankings();
+  if (pageId === 'analyticsPage')        showAnalytics();
+  if (pageId === 'rollingRankingsPage')  showRollingRankings();
+  if (pageId === 'bigBoardPage')         showBigBoard();
+  if (pageId === 'draft26Page')          showDraft26();
+  if (pageId === 'lotteryPage')          showLottery();
+  if (pageId === 'tradePage')            typeof showTrade === 'function' && showTrade();
+  if (pageId === 'tradeFinderPage')      typeof showTradeFinder === 'function' && showTradeFinder();
+  if (pageId === 'duelPage')             typeof showDuelPage === 'function' && showDuelPage();
+  if (pageId === 'duelBoardPage')        typeof showDuelBoard === 'function' && showDuelBoard();
+  if (pageId === 'duelSettingsPage')     typeof showDuelSettings === 'function' && showDuelSettings();
+  if (pageId === 'rulesPage')            showRules();
 }
 function toggleRule(header){header.parentElement.classList.toggle('collapsed');}
 

@@ -454,6 +454,7 @@ function bbShowScout(name) {
     <div class="bb-scout-meta-top">▪ Scouting Report · MFHFBs Internal</div>
     <div class="bb-scout-name">${src.name}</div>
     <div class="bb-scout-meta">${src.pos || ''}${src.pos && src.school ? ' · ' : ''}${src.school || ''}${src.tier ? ' · ' + src.tier : ''}</div>
+    ${src.measurements ? `<div class="bb-scout-measurements">📐 ${src.measurements}</div>` : ''}
     ${src.stats     ? `<div class="bb-scout-stats">${src.stats}</div>` : ''}
     ${src.fantasy   ? `<div class="bb-scout-fantasy">${src.fantasy}</div>` : ''}
     ${src.scouting  ? `<div class="bb-scout-text">${src.scouting}</div>` : ''}
