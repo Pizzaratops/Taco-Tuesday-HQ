@@ -195,12 +195,19 @@ function renderBigBoard() {
   const root = document.getElementById('bigBoardPage');
   if (!root) return;
 
-  // Wenn DRAFT_2026 noch nicht da ist (sehr seltener Fall), warte 100ms und versuche nochmal
+  // Wenn DRAFT_2026 noch nicht da ist, warte kurz und versuche nochmal — aber MAX 10x
   if (typeof DRAFT_2026 === 'undefined' || !DRAFT_2026.length) {
+    if (!window._bbLoadRetries) window._bbLoadRetries = 0;
+    window._bbLoadRetries++;
+    if (window._bbLoadRetries > 10) {
+      root.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted);font-family:DM Sans,sans-serif;line-height:1.6;"><div style="font-size:36px;margin-bottom:12px;">⚠️</div><div style="color:#E84A27;font-weight:700;margin-bottom:8px;">DRAFT_2026 nicht geladen</div><div style="font-size:12px;">Prüfe die Browser-Console (F12) auf JavaScript-Fehler in <code>data/draft2026.js</code>.</div></div>';
+      return;
+    }
     root.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted);font-family:DM Sans,sans-serif;"><div style="font-size:36px;margin-bottom:12px;">⏳</div><div>Lade Prospects…</div></div>';
     setTimeout(renderBigBoard, 200);
     return;
   }
+  window._bbLoadRetries = 0;
 
   const editClass = BB_EDITING ? 'bb-edit' : 'bb-view';
   const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
