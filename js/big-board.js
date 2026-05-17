@@ -4,11 +4,11 @@
 //  Quelle:       data/draft2026.js (DRAFT_2026)
 //  Persistenz:   localStorage (lokal pro Browser)
 //  Export:       window.print() + @media print (A4 landscape)
-//  Interaktion:  Drag & Drop, contenteditable Felder,
-//                Tier-Pills klickbar, Notes editierbar
+//  Field Notes:  Default aus DRAFT_2026[i].fantasy
+//                Scout-Popup nutzt DRAFT_2026[i].scouting
 // ============================================================
 
-const BB_STORAGE_KEY = 'mfhfbs_bigBoard_v2';   // v2 wegen Layout-Wechsel
+const BB_STORAGE_KEY = 'mfhfbs_bigBoard_v3';   // v3 — neuer state-shape
 const BB_MAX_TOP     = 30;
 const BB_MAX_TIERS   = 7;
 
@@ -23,15 +23,25 @@ const BB_TIER_COLORS = [
   '#7bdcb5',  // T7 — Mint (Reserve)
 ];
 
+// Helper: hole DRAFT_2026 Eintrag by Name (für Default-Notes + Scout-Popup)
+function bbFindDraftEntry(name) {
+  if (typeof DRAFT_2026 === 'undefined' || !name) return null;
+  return DRAFT_2026.find(p => p.name === name) || null;
+}
+
+// Default-Field-Note für einen Spieler: nimm fantasy als kurze Scout-Line
+function bbDefaultNote(name) {
+  const e = bbFindDraftEntry(name);
+  return (e && e.fantasy) ? e.fantasy : '';
+}
+
 function bbDefaultState() {
   const src = (typeof DRAFT_2026 !== 'undefined') ? DRAFT_2026 : [];
   const items = src.map(p => ({
-    type:   'player',
     name:   p.name,
     pos:    p.pos || '',
     school: p.school || '',
-    notes:  '',                  // Field Notes vom Commish
-    tier:   p.tier || '',        // initial-Tier aus draft2026.js (z.B. "Tier 1")
+    notes:  '',  // leer = Default aus DRAFT_2026.fantasy wird beim Render gezogen
   }));
   return {
     title:     'THE 2026 BIG BOARD',
@@ -42,28 +52,40 @@ function bbDefaultState() {
     top:       items.slice(0, BB_MAX_TOP),
     hm:        items.slice(BB_MAX_TOP),
     tiers:     [
-      { after: 2,  label: 'T1', name: 'Generational' },
-      { after: 6,  label: 'T2', name: 'Cornerstone'  },
-      { after: 13, label: 'T3', name: 'Starter Lock' },
-      { after: 21, label: 'T4', name: 'High-Upside'  },
+      { after: 2,  label: 'T2' },
+      { after: 6,  label: 'T3' },
+      { after: 13, label: 'T4' },
+      { after: 21, label: 'T5' },
     ],
+    tierNames: ['Generational', 'Cornerstone', 'Starter Lock', 'High-Upside', 'Rotation'],
   };
 }
 
 function bbLoad() {
+  if (typeof DRAFT_2026 === 'undefined') {
+    console.warn('[Big Board] DRAFT_2026 nicht geladen — Fallback auf leeren State');
+    return bbDefaultState();
+  }
   try {
     const raw = localStorage.getItem(BB_STORAGE_KEY);
     if (!raw) return bbDefaultState();
     const obj = JSON.parse(raw);
     // Wenn DRAFT_2026 deutlich gewachsen/geschrumpft ist, Default neu laden
-    if (typeof DRAFT_2026 !== 'undefined') {
-      const expected = DRAFT_2026.length;
-      const got      = (obj.top || []).length + (obj.hm || []).length;
-      if (Math.abs(expected - got) > 3) {
-        console.warn('[Big Board] DRAFT_2026 hat sich geändert — lade Default.');
-        return bbDefaultState();
-      }
+    const expected = DRAFT_2026.length;
+    const got      = (obj.top || []).length + (obj.hm || []).length;
+    if (Math.abs(expected - got) > 3) {
+      console.warn('[Big Board] DRAFT_2026 hat sich geändert — lade Default.');
+      return bbDefaultState();
     }
+    // Sicherheits-Defaults
+    if (!Array.isArray(obj.top))       obj.top = [];
+    if (!Array.isArray(obj.hm))        obj.hm = [];
+    if (!Array.isArray(obj.tiers))     obj.tiers = [];
+    if (!Array.isArray(obj.tierNames)) obj.tierNames = ['Tier 1'];
+    // Sicherstellen: tierNames.length === tiers.length + 1
+    const expectedLen = obj.tiers.length + 1;
+    while (obj.tierNames.length < expectedLen) obj.tierNames.push(`Tier ${obj.tierNames.length + 1}`);
+    while (obj.tierNames.length > expectedLen) obj.tierNames.pop();
     return obj;
   } catch (e) {
     console.error('[Big Board] localStorage corrupted, using default:', e);
@@ -71,20 +93,24 @@ function bbLoad() {
   }
 }
 
-function bbSave(state) {
-  try { localStorage.setItem(BB_STORAGE_KEY, JSON.stringify(state)); }
+function bbSave() {
+  try { localStorage.setItem(BB_STORAGE_KEY, JSON.stringify(BB_STATE)); }
   catch (e) { console.error('[Big Board] save failed:', e); }
 }
 
-// Globaler State
-let BB_STATE   = bbLoad();
+// State wird LAZY initialisiert beim ersten showBigBoard(), nicht beim Script-Load.
+// Das vermeidet Race-Conditions, falls Script-Order anders ist als gedacht.
+let BB_STATE   = null;
 let BB_DRAG    = null;
-let BB_EDITING = true;
+let BB_EDITING = false;  // View-Mode default
+
+function bbEnsureState() {
+  if (!BB_STATE) BB_STATE = bbLoad();
+}
 
 // ============================================================
 //  TIER HELPER
 // ============================================================
-// Bestimme den Tier-Index (0-basiert) für einen Spieler an Position `idx` (0-basiert)
 function bbTierIndexAt(idx) {
   let t = 0;
   for (const tier of BB_STATE.tiers || []) {
@@ -92,28 +118,29 @@ function bbTierIndexAt(idx) {
   }
   return t;
 }
-
-function bbTierColor(idx) {
-  return BB_TIER_COLORS[bbTierIndexAt(idx) % BB_TIER_COLORS.length];
-}
-
-function bbTierLabel(idx) {
-  const tIdx = bbTierIndexAt(idx);
-  // Wir labeln als "T1", "T2" — Anzahl der durchschrittenen Tier-Breaks +1
-  return `T${tIdx + 1}`;
-}
+function bbTierColor(idx) { return BB_TIER_COLORS[bbTierIndexAt(idx) % BB_TIER_COLORS.length]; }
+function bbTierLabel(idx) { return `T${bbTierIndexAt(idx) + 1}`; }
 
 // ============================================================
 //  RENDER
 // ============================================================
 function showBigBoard() {
+  bbEnsureState();
   navigate('bigBoardPage');
   renderBigBoard();
 }
 
 function renderBigBoard() {
+  bbEnsureState();
   const root = document.getElementById('bigBoardPage');
   if (!root) return;
+
+  // Wenn DRAFT_2026 noch nicht da ist (sehr seltener Fall), warte 100ms und versuche nochmal
+  if (typeof DRAFT_2026 === 'undefined' || !DRAFT_2026.length) {
+    root.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted);font-family:DM Sans,sans-serif;"><div style="font-size:36px;margin-bottom:12px;">⏳</div><div>Lade Prospects…</div></div>';
+    setTimeout(renderBigBoard, 200);
+    return;
+  }
 
   const editClass = BB_EDITING ? 'bb-edit' : 'bb-view';
   const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -121,19 +148,18 @@ function renderBigBoard() {
   root.innerHTML = `
     <div class="bb-toolbar">
       <div class="bb-toolbar-left">
-        <h2 style="margin:0;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:26px;">🗂️ Big Board · Stat Sheet</h2>
-        <span class="bb-toolbar-hint">${BB_EDITING ? 'Drag & Drop sortieren · Felder klicken zum Editieren' : 'View-Mode'}</span>
+        <h2 class="bb-toolbar-title">🗂️ Big Board · Stat Sheet</h2>
+        <span class="bb-toolbar-hint">${BB_EDITING ? 'Drag & Drop sortieren · Felder klicken zum Editieren' : 'View-Mode · Klick auf Spieler für Scouting'}</span>
       </div>
       <div class="bb-toolbar-right">
         <button class="bb-btn bb-btn-mode ${BB_EDITING ? 'active' : ''}" onclick="bbToggleEdit()">${BB_EDITING ? '✏️ Edit-Mode' : '👁️ View-Mode'}</button>
         <button class="bb-btn" onclick="bbResetState()" title="Zurück zu Default aus draft2026.js">🔄 Reset</button>
-        <button class="bb-btn" onclick="bbExportJSON()" title="Aktuelles Board als JSON exportieren">💾 JSON</button>
+        <button class="bb-btn" onclick="bbExportJSON()" title="Aktuelles Board als JSON">💾 JSON</button>
         <button class="bb-btn bb-btn-primary" onclick="bbPrintA4()" title="A4 Querformat — über Druckdialog als PDF speichern">🖨️ A4 Drucken</button>
       </div>
     </div>
 
     <div class="sh-page ${editClass}" id="bbSheet">
-      <!-- HEADER -->
       <div class="sh-header">
         <div class="sh-title-block">
           <div class="sh-classified" ${BB_EDITING ? 'contenteditable="true" onblur="bbField(\'classified\',this.innerText)"' : ''}>${BB_STATE.classified}</div>
@@ -146,7 +172,6 @@ function renderBigBoard() {
         </div>
       </div>
 
-      <!-- META ROW -->
       <div class="sh-meta-row">
         <span>Author: <strong ${BB_EDITING ? 'contenteditable="true" onblur="bbField(\'author\',this.innerText)"' : ''}>${BB_STATE.author}</strong></span>
         <span>Date: <strong>${today}</strong></span>
@@ -155,15 +180,12 @@ function renderBigBoard() {
         <span>Prospects: <strong>${BB_STATE.top.length} + ${BB_STATE.hm.length} HM</strong></span>
       </div>
 
-      <!-- TIER LEGEND -->
-      <div class="sh-tier-legend">
-        ${renderTierLegend()}
-      </div>
+      <div class="sh-tier-legend">${renderTierLegend()}</div>
 
-      <!-- MAIN TABLE -->
       <div class="sh-table-wrap">
-        <table class="sh-table" id="bbTable">
+        <table class="sh-table">
           <thead><tr>
+            ${BB_EDITING ? '<th class="sh-th-handle"></th>' : ''}
             <th class="sh-th-pick">Pick</th>
             <th class="sh-th-tier">Tier</th>
             <th class="sh-th-name">Name</th>
@@ -172,9 +194,7 @@ function renderBigBoard() {
             <th class="sh-th-notes">Field Notes</th>
             ${BB_EDITING ? '<th class="sh-th-actions"></th>' : ''}
           </tr></thead>
-          <tbody>
-            ${renderTableRows()}
-          </tbody>
+          <tbody>${renderTableRows()}</tbody>
         </table>
       </div>
 
@@ -187,7 +207,6 @@ function renderBigBoard() {
         <div class="sh-hm-grid">${renderHM()}</div>
       </div>` : ''}
 
-      <!-- FOOTER -->
       <div class="sh-footer">
         <span>▪ MFHFBs PRESS · Internal</span>
         <span>Page 1 of 1 · Top-${BB_STATE.top.length}${BB_STATE.hm.length ? ` + ${BB_STATE.hm.length} HM` : ''}</span>
@@ -195,32 +214,31 @@ function renderBigBoard() {
       </div>
     </div>
 
-    <!-- Scouting Popup -->
     <div id="bbScoutPopup" class="bb-scout-popup" style="display:none;" onclick="bbCloseScout()"></div>
   `;
 }
 
 function renderTierLegend() {
-  const numTiers = (BB_STATE.tiers || []).length + 1;
   let html = '';
-  // Tier 1 = vor dem ersten tier.after
   let prevAfter = -1;
-  const tiers = [...(BB_STATE.tiers || [])];
-  // Wir bauen alle Tier-Bereiche [start..end] auf
+  const tiers = BB_STATE.tiers || [];
+  const tierNames = BB_STATE.tierNames || [];
   const ranges = [];
   tiers.forEach(t => {
-    ranges.push({ start: prevAfter + 1, end: t.after, label: t.label, name: t.name });
+    ranges.push({ start: prevAfter + 1, end: t.after, label: t.label });
     prevAfter = t.after;
   });
-  ranges.push({ start: prevAfter + 1, end: BB_STATE.top.length - 1, label: `T${ranges.length + 1}`, name: 'Rotation' });
+  ranges.push({ start: prevAfter + 1, end: BB_STATE.top.length - 1, label: `T${ranges.length + 1}` });
+  if (ranges.length > 0) ranges[0].label = 'T1';
 
   ranges.forEach((r, i) => {
     const color = BB_TIER_COLORS[i % BB_TIER_COLORS.length];
     const count = Math.max(0, r.end - r.start + 1);
+    const name  = tierNames[i] || `Tier ${i + 1}`;
     const editable = BB_EDITING ? `contenteditable="true" onblur="bbUpdateTierName(${i}, this.innerText)"` : '';
     html += `<div class="sh-legend-item" style="--c:${color}">
-      <span class="sh-legend-pill">${r.label}</span>
-      <span class="sh-legend-name" ${editable}>${r.name}</span>
+      <span class="sh-legend-pill" style="background:${color}">${r.label}</span>
+      <span class="sh-legend-name" ${editable}>${name}</span>
       <span class="sh-legend-count">${count} prospect${count===1?'':'s'}</span>
     </div>`;
   });
@@ -235,17 +253,18 @@ function renderTableRows() {
   BB_STATE.top.forEach((item, idx) => {
     const color = bbTierColor(idx);
     const tlab  = bbTierLabel(idx);
-    const tierIdx = bbTierIndexAt(idx);
 
     const draggable = BB_EDITING ? 'draggable="true"' : '';
     const dragHandlers = BB_EDITING
       ? `ondragstart="bbDragStart(event,'top',${idx})" ondragover="bbDragOver(event)" ondrop="bbDrop(event,'top',${idx})" ondragend="bbDragEnd(event)"`
       : '';
-
-    // Klick → Scouting Popup (nur im View-Mode, da Drag im Edit-Mode prio hat)
-    const clickHandler = (!BB_EDITING && typeof DRAFT_2026 !== 'undefined' && DRAFT_2026.find(p => p.name === item.name))
+    const clickHandler = (!BB_EDITING && bbFindDraftEntry(item.name))
       ? `onclick="bbShowScout('${escapeJs(item.name)}')"`
       : '';
+
+    // Notes: explizit gesetzt? Sonst Default aus fantasy
+    const displayNotes = item.notes || bbDefaultNote(item.name);
+    const isDefault = !item.notes && displayNotes;
 
     html += `<tr class="sh-row" data-idx="${idx}" ${draggable} ${dragHandlers} ${clickHandler}>
       ${BB_EDITING ? '<td class="sh-handle-cell"><span class="sh-handle">⋮⋮</span></td>' : ''}
@@ -255,7 +274,7 @@ function renderTableRows() {
       <td class="sh-pos" ${BB_EDITING ? `contenteditable="true" onblur="bbUpdateField('top',${idx},'pos',this.innerText)"` : ''}>${item.pos}</td>
       <td class="sh-school" ${BB_EDITING ? `contenteditable="true" onblur="bbUpdateField('top',${idx},'school',this.innerText)"` : ''}>${item.school}</td>
       <td class="sh-notes-cell">
-        <div class="sh-notes" ${BB_EDITING ? `contenteditable="true" onblur="bbUpdateField('top',${idx},'notes',this.innerText)"` : ''} data-placeholder="…">${item.notes || ''}</div>
+        <div class="sh-notes ${isDefault ? 'sh-notes-default' : ''}" ${BB_EDITING ? `contenteditable="true" onblur="bbUpdateField('top',${idx},'notes',this.innerText)"` : ''}>${displayNotes}</div>
       </td>
       ${BB_EDITING ? `<td class="sh-actions">
         <button class="sh-btn-mini" onclick="event.stopPropagation();bbAddTierAfter(${idx})" title="Tier-Break nach diesem Pick">+T</button>
@@ -263,18 +282,18 @@ function renderTableRows() {
       </td>` : ''}
     </tr>`;
 
-    // Tier-Break-Zeile nach diesem Spieler
     if (tiersByAfter[idx]) {
       const tier = tiersByAfter[idx];
-      const nextTierIdx = tierIdx + 1;
-      const nextColor = BB_TIER_COLORS[nextTierIdx % BB_TIER_COLORS.length];
+      const tierIdx = bbTierIndexAt(idx);
+      const nextColor = BB_TIER_COLORS[(tierIdx + 1) % BB_TIER_COLORS.length];
       const colspan = BB_EDITING ? 8 : 6;
+      const nextName = (BB_STATE.tierNames || [])[tierIdx + 1] || `Tier ${tierIdx + 2}`;
       html += `<tr class="sh-tier-row" data-tier-after="${idx}">
         <td colspan="${colspan}" style="--c:${nextColor}">
           <div class="sh-tier-break">
             <span class="sh-tier-break-pill" style="background:${nextColor}">${tier.label}</span>
-            <span class="sh-tier-break-name" ${BB_EDITING ? `contenteditable="true" onblur="bbUpdateTierBreakName(${idx},this.innerText)"` : ''}>${tier.name}</span>
-            <span class="sh-tier-break-line" style="background:linear-gradient(90deg,${nextColor},transparent)"></span>
+            <span class="sh-tier-break-name" style="color:${nextColor}">${nextName}</span>
+            <span class="sh-tier-break-line" style="background:linear-gradient(90deg,${nextColor}88,transparent)"></span>
             ${BB_EDITING ? `<button class="sh-tier-remove" onclick="bbRemoveTier(${idx})" title="Tier-Break entfernen">×</button>` : ''}
           </div>
         </td>
@@ -286,10 +305,15 @@ function renderTableRows() {
 
 function renderHM() {
   if (!BB_EDITING) {
-    return BB_STATE.hm.map(p => `<div class="sh-hm-item">
-      <span class="sh-hm-name">${p.name}</span>
-      <span class="sh-hm-meta">${p.pos}${p.pos && p.school ? ' · ' : ''}${p.school}</span>
-    </div>`).join('');
+    return BB_STATE.hm.map(p => {
+      const hasScout = !!bbFindDraftEntry(p.name);
+      const click = hasScout ? `onclick="bbShowScout('${escapeJs(p.name)}')"` : '';
+      const cursor = hasScout ? 'style="cursor:pointer;"' : '';
+      return `<div class="sh-hm-item" ${click} ${cursor}>
+        <span class="sh-hm-name">${p.name}</span>
+        <span class="sh-hm-meta">${p.pos}${p.pos && p.school ? ' · ' : ''}${p.school}</span>
+      </div>`;
+    }).join('');
   }
   return BB_STATE.hm.map((p, idx) => `<div class="sh-hm-item" data-idx="${idx}" draggable="true" ondragstart="bbDragStart(event,'hm',${idx})" ondragover="bbDragOver(event)" ondrop="bbDrop(event,'hm',${idx})" ondragend="bbDragEnd(event)">
     <span class="sh-hm-handle">⋮</span>
@@ -304,10 +328,10 @@ function escapeJs(s) {
 }
 
 // ============================================================
-//  SCOUTING POPUP — wenn Spieler in DRAFT_2026 vorhanden
+//  SCOUTING POPUP — nutzt scouting + stats + fantasy
 // ============================================================
 function bbShowScout(name) {
-  const src = (typeof DRAFT_2026 !== 'undefined') ? DRAFT_2026.find(p => p.name === name) : null;
+  const src = bbFindDraftEntry(name);
   if (!src) return;
   const pop = document.getElementById('bbScoutPopup');
   pop.innerHTML = `<div class="bb-scout-card" onclick="event.stopPropagation()">
@@ -341,50 +365,28 @@ function bbResetState() {
 
 function bbField(field, value) {
   BB_STATE[field] = String(value || '').trim();
-  bbSave(BB_STATE);
+  bbSave();
 }
 
 function bbUpdateField(list, idx, field, value) {
   const arr = (list === 'top') ? BB_STATE.top : BB_STATE.hm;
   if (!arr[idx]) return;
-  arr[idx][field] = String(value || '').trim();
-  bbSave(BB_STATE);
+  const newVal = String(value || '').trim();
+  // Wenn notes auf Default zurückgesetzt werden soll: leeren — wird dann beim Render aus fantasy gefüllt
+  if (field === 'notes' && newVal === bbDefaultNote(arr[idx].name)) {
+    arr[idx].notes = '';
+  } else {
+    arr[idx][field] = newVal;
+  }
+  bbSave();
 }
 
 function bbUpdateTierName(legendIdx, value) {
-  // Legend-Index ist die Tier-Position (0-based)
-  // Wir mappen das auf BB_STATE.tiers[legendIdx-1] für Tiers nach dem ersten,
-  // bzw. der erste Tier hat keinen Eintrag in BB_STATE.tiers (ist implizit)
-  // ABER: wir labeln tier 1 als Bereich VOR dem ersten Tier-Break
-  // Daher: Tier-Bereich i entspricht Eintrag i in der gerenderten Liste
-  // Wenn legendIdx < tiers.length, ist es der Bereich vor dem Break[legendIdx]
-  // Wenn legendIdx == tiers.length, ist es der letzte Bereich (kein Eintrag in tiers)
-  const tiers = BB_STATE.tiers || [];
-  if (legendIdx < tiers.length) {
-    // Der Bereich vor Break[legendIdx] — wir labeln im Break selbst NICHT,
-    // weil der erste Bereich keinen Break davor hat. Wir speichern in tiers[legendIdx].name
-    // ABER nur, wenn legendIdx > 0 — der ERSTE Bereich (T1) hat keinen Break
-    // Spezialfall: legendIdx 0 ist "Tier 1" — wir bräuchten ein eigenes Feld
-    // Pragmatisch: nur Tier 2+ können hier umbenannt werden via Legend, T1 ist fix.
-    // Für T1 müsste ein zusätzliches Feld in BB_STATE her.
-    if (legendIdx === 0) {
-      // T1 Name in eigenes Feld speichern
-      BB_STATE.firstTierName = String(value || '').trim();
-      bbSave(BB_STATE);
-      return;
-    }
-    // Tier N (N >= 2) entspricht dem Break davor (tiers[N-1])
-    tiers[legendIdx - 1].name = String(value || '').trim();
-  } else {
-    // Letzter Tier — auch eigenes Feld
-    BB_STATE.lastTierName = String(value || '').trim();
-  }
-  bbSave(BB_STATE);
-}
-
-function bbUpdateTierBreakName(afterIdx, value) {
-  const t = (BB_STATE.tiers || []).find(x => x.after === afterIdx);
-  if (t) { t.name = String(value || '').trim(); bbSave(BB_STATE); }
+  if (!BB_STATE.tierNames) BB_STATE.tierNames = [];
+  BB_STATE.tierNames[legendIdx] = String(value || '').trim();
+  bbSave();
+  // Tier-Break Label in der Tabelle aktualisieren — wir rerendern einfach
+  renderBigBoard();
 }
 
 function bbAddTierAfter(idx) {
@@ -397,25 +399,30 @@ function bbAddTierAfter(idx) {
     alert('Nach diesem Spieler ist bereits ein Tier-Break.');
     return;
   }
-  // Bestimme nächsten freien Tier-Label (T2, T3, T4, ...)
-  // Anzahl bestehender Tier-Breaks + 1 = nächster Tier-Index
-  // ABER besser dynamisch: nach dem Hinzufügen sortieren und neu vergeben
   const nextNum = BB_STATE.tiers.length + 2;
-  const name = prompt(`Name des neuen Tiers:`, `Tier ${nextNum} Name`);
+  const name = prompt(`Name des neuen Tiers (T${nextNum}):`, `Tier ${nextNum}`);
   if (!name) return;
-  BB_STATE.tiers.push({ after: idx, label: `T${nextNum}`, name: name.trim() });
-  // Sortieren nach `after` und Labels neu vergeben
+  BB_STATE.tiers.push({ after: idx, label: `T${nextNum}` });
   BB_STATE.tiers.sort((a, b) => a.after - b.after);
+  // Tier-Labels neu vergeben (T2, T3, T4, ...)
   BB_STATE.tiers.forEach((t, i) => { t.label = `T${i + 2}`; });
-  bbSave(BB_STATE);
+  // Einfügen-Position in tierNames bestimmen (entspricht der Position des Breaks +1)
+  const breakPos = BB_STATE.tiers.findIndex(t => t.after === idx);
+  if (!BB_STATE.tierNames) BB_STATE.tierNames = ['Tier 1'];
+  BB_STATE.tierNames.splice(breakPos + 1, 0, name.trim());
+  bbSave();
   renderBigBoard();
 }
 
 function bbRemoveTier(afterIdx) {
-  BB_STATE.tiers = (BB_STATE.tiers || []).filter(t => t.after !== afterIdx);
+  const breakPos = (BB_STATE.tiers || []).findIndex(t => t.after === afterIdx);
+  if (breakPos === -1) return;
+  BB_STATE.tiers.splice(breakPos, 1);
   // Labels neu nummerieren
   BB_STATE.tiers.forEach((t, i) => { t.label = `T${i + 2}`; });
-  bbSave(BB_STATE);
+  // Auch den entsprechenden tierNames-Eintrag löschen (Position breakPos+1)
+  if (BB_STATE.tierNames) BB_STATE.tierNames.splice(breakPos + 1, 1);
+  bbSave();
   renderBigBoard();
 }
 
@@ -424,12 +431,12 @@ function bbDemoteToHM(idx) {
   const [item] = BB_STATE.top.splice(idx, 1);
   if (!BB_STATE.hm) BB_STATE.hm = [];
   BB_STATE.hm.unshift(item);
-  // Tier-Breaks anpassen — die nach idx waren, rücken um 1 zurück
   BB_STATE.tiers = (BB_STATE.tiers || []).map(t => {
     if (t.after >= idx) return { ...t, after: t.after - 1 };
     return t;
   }).filter(t => t.after >= 0 && t.after < BB_STATE.top.length - 1);
-  bbSave(BB_STATE);
+  // tierNames bleibt — Anzahl der Tiers ändert sich erst durch tier-break-removal
+  bbSave();
   renderBigBoard();
 }
 
@@ -440,7 +447,7 @@ function bbPromoteFromHM(idx) {
   }
   const [item] = BB_STATE.hm.splice(idx, 1);
   BB_STATE.top.push(item);
-  bbSave(BB_STATE);
+  bbSave();
   renderBigBoard();
 }
 
@@ -451,10 +458,8 @@ function bbDragStart(e, list, idx) {
   if (!BB_EDITING) return;
   BB_DRAG = { list, idx };
   e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/plain', `${list}:${idx}`);
-  // Auf der Row selbst die Drag-Class setzen
-  const row = e.currentTarget;
-  row.classList.add('bb-dragging');
+  try { e.dataTransfer.setData('text/plain', `${list}:${idx}`); } catch (_) {}
+  e.currentTarget.classList.add('bb-dragging');
 }
 
 function bbDragOver(e) {
@@ -487,12 +492,10 @@ function bbDrop(e, list, idx) {
   if (srcList === list && idx > srcIdx) insertAt = idx - 1;
   dstArr.splice(insertAt, 0, item);
 
-  // Tier-Breaks bereinigen falls Top-Länge geändert
   if (srcList === 'top' || list === 'top') {
     BB_STATE.tiers = (BB_STATE.tiers || []).filter(t => t.after >= 0 && t.after < BB_STATE.top.length - 1);
   }
-
-  bbSave(BB_STATE);
+  bbSave();
   renderBigBoard();
 }
 
@@ -508,7 +511,7 @@ function bbDragEnd(e) {
 function bbExportJSON() {
   const json = JSON.stringify(BB_STATE, null, 2);
   navigator.clipboard.writeText(json).then(() => {
-    alert('Big-Board-JSON in die Zwischenablage kopiert.\n\nZum Festschreiben: in big-board.js als BIG_BOARD_OFFICIAL Constant einfügen.');
+    alert('Big-Board-JSON in die Zwischenablage kopiert.');
   }).catch(() => {
     const w = window.open('', '', 'width=700,height=600');
     w.document.write(`<title>Big Board JSON</title><pre style="font-family:monospace;white-space:pre-wrap;padding:20px;font-size:11px;">${json.replace(/</g, '&lt;')}</pre>`);
