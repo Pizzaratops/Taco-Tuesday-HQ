@@ -23,7 +23,62 @@ const BB_TIER_COLORS = [
   '#7bdcb5',  // T7 — Mint (Reserve)
 ];
 
-// Helper: hole DRAFT_2026 Eintrag by Name (für Default-Notes + Scout-Popup)
+// ============================================================
+//  DUEL-INTEGRATION — Liga-Konsens via ELO
+// ============================================================
+// Berechnet für jeden Spieler im Big Board den Liga-Rang basierend auf ELO.
+// Cache wird beim ersten Aufruf pro Render gebaut.
+let _bbDuelCache = null;
+
+function bbBuildDuelCache() {
+  _bbDuelCache = { rankByPick: {}, eloByPick: {}, gamesByPick: {}, hasData: false };
+  if (typeof duelComputeElo !== 'function' || typeof DRAFT_2026 === 'undefined') return _bbDuelCache;
+  let computed;
+  try { computed = duelComputeElo(); } catch (e) { console.warn('[Big Board] ELO compute failed:', e); return _bbDuelCache; }
+  if (!computed || !computed.elo) return _bbDuelCache;
+  const { elo, games } = computed;
+  _bbDuelCache.eloByPick = elo;
+  _bbDuelCache.gamesByPick = games;
+  // Sortiere DRAFT_2026 Spieler nach ELO absteigend → Liga-Rang
+  const ranked = [...DRAFT_2026].sort((a, b) => (elo[b.pick] || 0) - (elo[a.pick] || 0));
+  ranked.forEach((p, i) => { _bbDuelCache.rankByPick[p.pick] = i + 1; });
+  // hasData: True wenn mindestens 1 Vote existiert
+  _bbDuelCache.hasData = Object.values(games).some(g => g > 0);
+  return _bbDuelCache;
+}
+
+// Gibt Duel-Info für einen Spieler-Namen zurück: { rank, elo, games } oder null
+function bbDuelInfo(name) {
+  if (!_bbDuelCache) bbBuildDuelCache();
+  const entry = bbFindDraftEntry(name);
+  if (!entry) return null;
+  const pick = entry.pick;
+  if (_bbDuelCache.rankByPick[pick] == null) return null;
+  return {
+    rank:  _bbDuelCache.rankByPick[pick],
+    elo:   _bbDuelCache.eloByPick[pick] || 0,
+    games: _bbDuelCache.gamesByPick[pick] || 0,
+  };
+}
+
+// Delta zwischen Big-Board-Position und Liga-Rang
+// negativ = du hast ihn höher als Liga (↑), positiv = niedriger (↓)
+function bbDuelDelta(myRank, leagueRank) {
+  return leagueRank - myRank;
+}
+
+// Render des Delta-Badges: ▲5 / ▼3 / =
+function bbDeltaBadge(delta, games) {
+  if (delta == null) return '';
+  const dimmed = games < 5;
+  const dimClass = dimmed ? ' bb-delta-dim' : '';
+  const title = `Liga-Rang vs. Commish-Rang (${games} Vote${games===1?'':'s'})`;
+  if (delta === 0)  return `<span class="bb-delta bb-delta-eq${dimClass}" title="${title}">=</span>`;
+  if (delta > 0)    return `<span class="bb-delta bb-delta-up${dimClass}" title="${title}">▲${delta}</span>`;
+  return `<span class="bb-delta bb-delta-down${dimClass}" title="${title}">▼${Math.abs(delta)}</span>`;
+}
+
+// // Helper: hole DRAFT_2026 Eintrag by Name (für Default-Notes + Scout-Popup)
 function bbFindDraftEntry(name) {
   if (typeof DRAFT_2026 === 'undefined' || !name) return null;
   return DRAFT_2026.find(p => p.name === name) || null;
@@ -124,14 +179,19 @@ function bbTierLabel(idx) { return `T${bbTierIndexAt(idx) + 1}`; }
 // ============================================================
 //  RENDER
 // ============================================================
-function showBigBoard() {
+async function showBigBoard() {
   bbEnsureState();
   navigate('bigBoardPage');
+  // Duel-Daten frisch laden, falls Draft Duel noch nicht geöffnet wurde
+  if (typeof duelLoadAll === 'function') {
+    try { await duelLoadAll(); } catch (e) { console.warn('[Big Board] duelLoadAll failed:', e); }
+  }
   renderBigBoard();
 }
 
 function renderBigBoard() {
   bbEnsureState();
+  _bbDuelCache = null;  // Cache invalidieren, jeder Render rebaut
   const root = document.getElementById('bigBoardPage');
   if (!root) return;
 
@@ -191,6 +251,7 @@ function renderBigBoard() {
             <th class="sh-th-name">Name</th>
             <th class="sh-th-pos">Pos</th>
             <th class="sh-th-school">School / Origin</th>
+            <th class="sh-th-liga" title="Liga-Konsens via Draft Duel ELO">Liga</th>
             <th class="sh-th-notes">Field Notes</th>
             ${BB_EDITING ? '<th class="sh-th-actions"></th>' : ''}
           </tr></thead>
@@ -207,6 +268,7 @@ function renderBigBoard() {
         <div class="sh-hm-grid">${renderHM()}</div>
       </div>` : ''}
 
+      ${renderDisagreementsBox()}
       <div class="sh-footer">
         <span>▪ MFHFBs PRESS · Internal</span>
         <span>Page 1 of 1 · Top-${BB_STATE.top.length}${BB_STATE.hm.length ? ` + ${BB_STATE.hm.length} HM` : ''}</span>
@@ -216,6 +278,53 @@ function renderBigBoard() {
 
     <div id="bbScoutPopup" class="bb-scout-popup" style="display:none;" onclick="bbCloseScout()"></div>
   `;
+}
+
+function renderDisagreementsBox() {
+  bbBuildDuelCache();
+  if (!_bbDuelCache.hasData) return '';
+  // Sammle alle Spieler aus Top mit Duel-Daten + berechne Delta
+  const rows = [];
+  BB_STATE.top.forEach((item, idx) => {
+    const d = bbDuelInfo(item.name);
+    if (!d) return;
+    // Spieler mit < 3 Games ausschließen (zu wenig Signal)
+    if (d.games < 3) return;
+    const delta = bbDuelDelta(idx + 1, d.rank);
+    rows.push({ name: item.name, school: item.school, myRank: idx + 1, leagueRank: d.rank, delta, games: d.games, elo: d.elo });
+  });
+  if (rows.length === 0) return '';
+  // Sortiere nach absolutem Delta absteigend, top 5
+  rows.sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
+  const topGaps = rows.slice(0, 5);
+  if (topGaps.length === 0 || Math.abs(topGaps[0].delta) === 0) return '';
+
+  const items = topGaps.map(r => {
+    const isHigher = r.delta > 0;  // Liga hat ihn niedriger → ich überrate ihn
+    const arrowClass = isHigher ? 'bb-delta-up' : 'bb-delta-down';
+    const arrow = isHigher ? `▲${r.delta}` : `▼${Math.abs(r.delta)}`;
+    const verdict = isHigher
+      ? `Commish hoch · Liga niedrig`
+      : `Liga hoch · Commish niedrig`;
+    return `<div class="bb-disagree-item">
+      <div class="bb-disagree-name">${r.name}</div>
+      <div class="bb-disagree-detail">
+        <span class="bb-disagree-rank">Mein <strong>#${r.myRank}</strong></span>
+        <span class="bb-disagree-vs">↔</span>
+        <span class="bb-disagree-rank">Liga <strong>#${r.leagueRank}</strong></span>
+        <span class="bb-disagree-arrow ${arrowClass}">${arrow}</span>
+      </div>
+      <div class="bb-disagree-verdict">${verdict}</div>
+    </div>`;
+  }).join('');
+
+  return `<div class="bb-disagree-section">
+    <div class="bb-disagree-header">
+      <span class="bb-disagree-label">▪ Liga vs. Commish — Top Disagreements</span>
+      <span class="bb-disagree-sub">Größte Diskrepanzen zwischen Big-Board-Ranking und Draft-Duel-Konsens (ELO)</span>
+    </div>
+    <div class="bb-disagree-grid">${items}</div>
+  </div>`;
 }
 
 function renderTierLegend() {
@@ -273,6 +382,12 @@ function renderTableRows() {
       <td class="sh-name" ${BB_EDITING ? `contenteditable="true" onblur="bbUpdateField('top',${idx},'name',this.innerText)"` : ''}>${item.name}</td>
       <td class="sh-pos" ${BB_EDITING ? `contenteditable="true" onblur="bbUpdateField('top',${idx},'pos',this.innerText)"` : ''}>${item.pos}</td>
       <td class="sh-school" ${BB_EDITING ? `contenteditable="true" onblur="bbUpdateField('top',${idx},'school',this.innerText)"` : ''}>${item.school}</td>
+      <td class="sh-liga">${(() => {
+        const d = bbDuelInfo(item.name);
+        if (!d) return '<span class="bb-delta-na" title="Keine Duel-Daten">–</span>';
+        const delta = bbDuelDelta(idx + 1, d.rank);
+        return `<span class="sh-liga-rank">#${d.rank}</span>${bbDeltaBadge(delta, d.games)}`;
+      })()}</td>
       <td class="sh-notes-cell">
         <div class="sh-notes ${isDefault ? 'sh-notes-default' : ''}" ${BB_EDITING ? `contenteditable="true" onblur="bbUpdateField('top',${idx},'notes',this.innerText)"` : ''}>${displayNotes}</div>
       </td>
@@ -286,7 +401,7 @@ function renderTableRows() {
       const tier = tiersByAfter[idx];
       const tierIdx = bbTierIndexAt(idx);
       const nextColor = BB_TIER_COLORS[(tierIdx + 1) % BB_TIER_COLORS.length];
-      const colspan = BB_EDITING ? 8 : 6;
+      const colspan = BB_EDITING ? 9 : 7;
       const nextName = (BB_STATE.tierNames || [])[tierIdx + 1] || `Tier ${tierIdx + 2}`;
       html += `<tr class="sh-tier-row" data-tier-after="${idx}">
         <td colspan="${colspan}" style="--c:${nextColor}">
