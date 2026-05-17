@@ -625,3 +625,168 @@ table.sh-table {
   }
   .sh-view .sh-row:hover { background: transparent !important; }
 }
+
+/* ============================================================
+   DUEL-INTEGRATION — Liga-Spalte + Delta-Indikatoren
+   ============================================================ */
+.sh-th-liga {
+  width: 90px;
+  text-align: left !important;
+}
+.sh-liga {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  white-space: nowrap;
+  color: var(--sh-text-dim) !important;
+}
+.sh-liga-rank {
+  font-weight: 700;
+  color: var(--sh-text) !important;
+  margin-right: 4px;
+}
+
+/* Delta-Badges */
+.bb-delta {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+.bb-delta-eq {
+  color: var(--sh-muted) !important;
+  background: rgba(138, 122, 106, 0.15);
+}
+.bb-delta-up {
+  /* Commish hat ihn HÖHER → grün (positive enthusiasm) */
+  color: #2d7a50 !important;
+  background: rgba(76, 175, 129, 0.18);
+}
+.bb-delta-down {
+  /* Commish hat ihn NIEDRIGER → orange (cooler take) */
+  color: #c0622f !important;
+  background: rgba(232, 74, 39, 0.15);
+}
+.bb-delta-dim {
+  opacity: 0.55;
+}
+.bb-delta-na {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--sh-border) !important;
+  font-size: 11px;
+}
+
+/* ============================================================
+   TOP DISAGREEMENTS FOOTER BOX
+   ============================================================ */
+.bb-disagree-section {
+  margin-top: 22px;
+  padding: 18px 22px;
+  background: rgba(19, 41, 75, 0.04);
+  border-top: 2px solid var(--sh-text);
+  border-bottom: 2px solid var(--sh-text);
+  border-radius: 0;
+}
+.bb-disagree-header {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.bb-disagree-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sh-accent) !important;
+}
+.bb-disagree-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: var(--sh-muted) !important;
+  font-style: italic;
+}
+.bb-disagree-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+.bb-disagree-item {
+  padding: 10px 12px;
+  background: var(--sh-bg);
+  border-left: 3px solid var(--sh-border);
+  border-radius: 0 4px 4px 0;
+}
+.bb-disagree-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--sh-text) !important;
+  margin-bottom: 4px;
+}
+.bb-disagree-detail {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--sh-text-dim) !important;
+  flex-wrap: wrap;
+}
+.bb-disagree-rank strong {
+  color: var(--sh-text) !important;
+  font-size: 11px;
+}
+.bb-disagree-vs {
+  color: var(--sh-muted) !important;
+  font-size: 11px;
+}
+.bb-disagree-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: auto;
+}
+.bb-disagree-arrow.bb-delta-up {
+  color: #2d7a50 !important;
+  background: rgba(76, 175, 129, 0.18);
+}
+.bb-disagree-arrow.bb-delta-down {
+  color: #c0622f !important;
+  background: rgba(232, 74, 39, 0.15);
+}
+.bb-disagree-verdict {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-style: italic;
+  color: var(--sh-muted) !important;
+  margin-top: 4px;
+}
+
+/* Mobile: Liga-Spalte auf Mobile ausblenden, Disagree-Section kompakter */
+@media (max-width: 900px) {
+  .sh-th-liga, .sh-liga { display: none; }
+  .bb-disagree-section { padding: 12px 14px; margin-top: 14px; }
+  .bb-disagree-grid { grid-template-columns: 1fr; }
+}
+
+/* Print: Liga-Spalte wieder rein, Disagree-Section kompakter */
+@media print {
+  .sh-th-liga, .sh-liga { display: table-cell !important; }
+  .bb-disagree-section {
+    margin-top: 10px;
+    padding: 8px 10px;
+  }
+  .bb-disagree-label { font-size: 9px; }
+  .bb-disagree-sub { font-size: 8px; }
+  .bb-disagree-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .bb-disagree-item { padding: 6px 8px; }
+  .bb-disagree-name { font-size: 10px; margin-bottom: 2px; }
+  .bb-disagree-detail { font-size: 8.5px; gap: 4px; }
+  .bb-disagree-rank strong { font-size: 9px; }
+  .bb-disagree-arrow { font-size: 9px; padding: 1px 4px; }
+  .bb-disagree-verdict { font-size: 8.5px; margin-top: 2px; }
+  .bb-delta { font-size: 8.5px; }
+}
