@@ -41,6 +41,12 @@ function renderDynastyRankings(data) {
   const noR   = document.getElementById('rankingsNoResults');
   if (!data.length) { tbody.innerHTML=''; if(noR) noR.style.display='block'; return; }
   if(noR) noR.style.display='none';
+
+  // Edit-Mode header / toolbar
+  const editActive = (typeof _dynEditModeActive !== 'undefined') && _dynEditModeActive && (typeof isAdmin !== 'undefined') && isAdmin;
+  const theadExtra = document.getElementById('rankingsEditHeader');
+  if (theadExtra) theadExtra.style.display = editActive ? '' : 'none';
+
   tbody.innerHTML = data.map(p => {
     const mRk = MATT_RANKS[p[1]] || null;
     const hRk = hashtagRank(p[1]);
@@ -50,13 +56,17 @@ function renderDynastyRankings(data) {
     const hBadge = hRk
       ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(hRk)};color:${dynastyRankColor(hRk)};">#${hRk}</span>`
       : `<span style="color:var(--border);font-size:11px;">—</span>`;
-    return `<tr>
-      <td><span class="r-rank ${rankClass(p[0])}">${p[0]}</span></td>
+    const editExtras = (typeof dynEditRowExtras === 'function') ? dynEditRowExtras(p) : { dragAttrs:'', extraCol:'', isModified:false };
+    const rowStyle = editExtras.isModified ? 'background:rgba(232,74,39,.08);' : '';
+    const dragHandle = editActive ? '<span style="color:var(--muted);cursor:grab;margin-right:6px;user-select:none;">⋮⋮</span>' : '';
+    return `<tr ${editExtras.dragAttrs} style="${rowStyle}">
+      <td>${dragHandle}<span class="r-rank ${rankClass(p[0])}">${p[0]}</span></td>
       <td><span class="r-name">${p[1]}</span></td>
       <td><span class="r-team">${p[2]}</span></td>
       <td><span class="r-pos">${p[3]}</span></td>
       <td style="text-align:center;">${mBadge}</td>
       <td style="text-align:center;">${hBadge}</td>
+      ${editActive ? editExtras.extraCol : ''}
     </tr>`;
   }).join('');
 }
@@ -79,4 +89,48 @@ function sortRankings(col) {
 function showRankings() {
   renderDynastyRankings(rCurrentData);
   navigate('rankingsPage');
+  // Edit-Toolbar nur für Admin sichtbar machen
+  if (typeof renderDynEditToolbar === 'function') renderDynEditToolbar();
+}
+
+function renderDynEditToolbar() {
+  const page = document.getElementById('rankingsPage');
+  if (!page) return;
+  let bar = document.getElementById('dynEditToolbar');
+  const showBar = (typeof isAdmin !== 'undefined') && isAdmin;
+
+  if (!showBar) {
+    if (bar) bar.style.display = 'none';
+    _dynEditModeActive = false; // Edit-Modus aus, wenn nicht Admin
+    return;
+  }
+
+  if (!bar) {
+    bar = document.createElement('div');
+    bar.id = 'dynEditToolbar';
+    bar.style.cssText = 'display:flex;gap:8px;align-items:center;padding:10px 14px;margin-bottom:10px;background:var(--surface);border:1.5px dashed var(--accent);border-radius:10px;flex-wrap:wrap;font-family:DM Sans,sans-serif;';
+    bar.innerHTML = `
+      <span style="font-weight:700;color:var(--accent);font-size:13px;">⭐ Admin-Tools:</span>
+      <button id="dynEditToggleBtn" onclick="toggleDynastyEditMode()" style="padding:7px 14px;background:transparent;border:1.5px solid var(--accent);color:var(--accent);border-radius:8px;font-weight:700;cursor:pointer;font-size:13px;">✏️ Edit-Modus</button>
+      <button onclick="dynEditExportRankingsJs()" style="padding:7px 14px;background:transparent;border:1.5px solid var(--border);color:var(--text);border-radius:8px;font-weight:700;cursor:pointer;font-size:13px;">📤 Export rankings.js</button>
+      <button onclick="dynEditResetAll()" style="padding:7px 14px;background:transparent;border:1.5px solid var(--border);color:var(--muted);border-radius:8px;font-weight:700;cursor:pointer;font-size:13px;">↺ Alle zurücksetzen</button>
+      <span id="dynEditCount" style="margin-left:auto;font-size:12px;color:var(--muted);"></span>
+    `;
+    // Vor der Search-Bar einfügen
+    const firstChild = page.querySelector('.rankings-table')?.parentElement || page.firstElementChild;
+    if (firstChild) {
+      page.insertBefore(bar, firstChild);
+    } else {
+      page.appendChild(bar);
+    }
+  }
+  bar.style.display = '';
+
+  // Counter aktualisieren
+  try {
+    const ov = JSON.parse(localStorage.getItem('mfhfbs_dynastyOverrides_v1') || '{}');
+    const n = Object.keys(ov).length;
+    const cnt = document.getElementById('dynEditCount');
+    if (cnt) cnt.textContent = n ? `${n} Override${n === 1 ? '' : 's'} aktiv` : '';
+  } catch (e) {}
 }

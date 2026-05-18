@@ -58,6 +58,17 @@ function globalLogout() {
 function _updateAdminUI(active) {
   const settBtn = document.getElementById('adminSettingsBtn');
   if (settBtn) settBtn.style.display = active ? 'block' : 'none';
+  // Dynasty-Rankings: Edit-Toolbar refreshen (falls Page aktuell sichtbar)
+  if (typeof renderDynEditToolbar === 'function') {
+    try { renderDynEditToolbar(); } catch(e){}
+    // Wenn Edit-Modus aktiv war aber Admin abgemeldet, neu rendern damit Edit-Spalte weg ist
+    if (!active && typeof _dynEditModeActive !== 'undefined' && _dynEditModeActive) {
+      _dynEditModeActive = false;
+      if (typeof rCurrentData !== 'undefined' && typeof renderDynastyRankings === 'function') {
+        renderDynastyRankings(rCurrentData);
+      }
+    }
+  }
   const syncBtn = document.getElementById('espnSyncBtn');
   if (syncBtn) {
     if (active) {
