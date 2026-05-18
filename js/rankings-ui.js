@@ -64,6 +64,7 @@ function renderDynastyRankings(data) {
       <td><span class="r-name">${p[1]}</span></td>
       <td><span class="r-team">${p[2]}</span></td>
       <td><span class="r-pos">${p[3]}</span></td>
+      <td style="text-align:center;"><span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(p[0])};color:${dynastyRankColor(p[0])};">#${p[0]}</span></td>
       <td style="text-align:center;">${mBadge}</td>
       <td style="text-align:center;">${hBadge}</td>
       ${editActive ? editExtras.extraCol : ''}
@@ -117,9 +118,9 @@ function renderDynEditToolbar() {
       <span id="dynEditCount" style="margin-left:auto;font-size:12px;color:var(--muted);"></span>
     `;
     // Vor der Search-Bar einfügen
-    const firstChild = page.querySelector('.rankings-table')?.parentElement || page.firstElementChild;
-    if (firstChild) {
-      page.insertBefore(bar, firstChild);
+    const anchor = page.querySelector('#dynEditToolbarAnchor') || page.firstElementChild;
+    if (anchor) {
+      page.insertBefore(bar, anchor.nextSibling);
     } else {
       page.appendChild(bar);
     }
