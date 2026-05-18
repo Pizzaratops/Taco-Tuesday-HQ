@@ -135,35 +135,41 @@ const SYNC_INTERVAL_MS = 6 * 60 * 60 * 1000;
 // Tries proxies in order, returns parsed JSON. Throws if all fail.
 async function _fetchEspnViaProxy(espnUrl) {
   const proxies = [
-    // corsproxy.io — fast, encodes URL as query param
-    u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
-    // allorigins as backup — wraps response in {contents: "..."} so we unwrap
-    u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+    { name: 'codetabs',     build: u => `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(u)}` },
+    { name: 'cors.sh',      build: u => `https://proxy.cors.sh/${u}` },
+    { name: 'thingproxy',   build: u => `https://thingproxy.freeboard.io/fetch/${u}` },
+    { name: 'corsproxy.io', build: u => `https://corsproxy.io/?${encodeURIComponent(u)}` },
+    { name: 'allorigins',   build: u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}` },
   ];
-  let lastErr;
-  for (const buildUrl of proxies) {
+  const errors = [];
+  for (const { name, build } of proxies) {
     try {
-      const proxyUrl = buildUrl(espnUrl);
+      const proxyUrl = build(espnUrl);
+      console.log('[ESPN Sync] Trying', name, '…');
       const res = await fetch(proxyUrl, { credentials: 'omit' });
-      if (!res.ok) { lastErr = new Error('Proxy HTTP ' + res.status); continue; }
-      const text = await res.text();
-      // Some proxies return wrapped JSON, some raw — handle both
-      try {
-        const parsed = JSON.parse(text);
-        // allorigins /raw returns the raw JSON directly; if it wrapped it, unwrap:
-        if (parsed && typeof parsed === 'object' && 'contents' in parsed && typeof parsed.contents === 'string') {
-          return JSON.parse(parsed.contents);
-        }
-        return parsed;
-      } catch (parseErr) {
-        lastErr = new Error('Proxy returned non-JSON');
+      if (!res.ok) {
+        errors.push(`${name}: HTTP ${res.status}`);
         continue;
       }
+      const text = await res.text();
+      let parsed;
+      try {
+        parsed = JSON.parse(text);
+      } catch {
+        errors.push(`${name}: nicht-JSON Antwort`);
+        continue;
+      }
+      // allorigins wraps in {contents: "..."} when /get is used; unwrap if seen
+      if (parsed && typeof parsed === 'object' && 'contents' in parsed && typeof parsed.contents === 'string') {
+        parsed = JSON.parse(parsed.contents);
+      }
+      console.log('[ESPN Sync] Success via', name);
+      return parsed;
     } catch (err) {
-      lastErr = err;
+      errors.push(`${name}: ${err.message}`);
     }
   }
-  throw lastErr || new Error('Alle Proxies fehlgeschlagen');
+  throw new Error('Alle Proxies tot. Letzte Fehler: ' + errors.join(' | '));
 }
 
 async function espnSync(auto = false) {
