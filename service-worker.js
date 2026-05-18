@@ -1,4 +1,4 @@
-const CACHE_NAME = 'taco-tuesday-hq-v1';
+const CACHE_NAME = 'taco-tuesday-hq-v2';
 const FILES_TO_CACHE = [
   '/',
   '/index.html',
