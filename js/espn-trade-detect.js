@@ -238,8 +238,16 @@ async function espnSync(auto = false) {
 }
 
 async function fetchNbaTrades() {
+  // balldontlie.io verlangt seit Mitte 2024 einen API-Key (401 ohne Key).
+  // Wir lassen die Funktion existieren, aber überspringen den Call,
+  // damit die Console sauber bleibt. Wer NBA-League-Trades will:
+  // gratis Key bei balldontlie.io/signup holen und unten setzen.
+  const BALLDONTLIE_API_KEY = '326d494d-958f-4cdd-9c48-4576231bc8d9';
+  if (!BALLDONTLIE_API_KEY) return;
   try {
-    const r = await fetch('https://api.balldontlie.io/v1/trades?per_page=25&season=2025');
+    const r = await fetch('https://api.balldontlie.io/v1/trades?per_page=25&season=2025', {
+      headers: { 'Authorization': BALLDONTLIE_API_KEY }
+    });
     if (!r.ok) return;
     const data = await r.json();
     const trades = (data.data || []).map(t => ({
