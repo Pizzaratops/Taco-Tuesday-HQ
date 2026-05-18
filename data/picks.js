@@ -5,7 +5,7 @@ const PICKS = [
   {year:2026,round:1,originalOwner:5,currentOwner:5,slot:8},{year:2026,round:1,originalOwner:6,currentOwner:1,slot:9},
   {year:2026,round:1,originalOwner:7,currentOwner:1,slot:3},{year:2026,round:1,originalOwner:8,currentOwner:8,slot:7},
   {year:2026,round:1,originalOwner:9,currentOwner:1,slot:2},{year:2026,round:1,originalOwner:10,currentOwner:1,slot:6},
-  {year:2026,round:1,originalOwner:11,currentOwner:1,slot:1},{year:2026,round:1,originalOwner:12,currentOwner:12,slot:5},
+  {year:2026,round:1,originalOwner:11,currentOwner:1,slot:1},{year:2026,round:1,originalOwner:12,currentOwner:7,slot:5},
   {year:2026,round:2,originalOwner:1,currentOwner:1},{year:2026,round:2,originalOwner:2,currentOwner:2},
   {year:2026,round:2,originalOwner:3,currentOwner:3},{year:2026,round:2,originalOwner:4,currentOwner:4},
   {year:2026,round:2,originalOwner:5,currentOwner:5},{year:2026,round:2,originalOwner:6,currentOwner:6},
@@ -15,9 +15,9 @@ const PICKS = [
   {year:2026,round:3,originalOwner:1,currentOwner:1},{year:2026,round:3,originalOwner:2,currentOwner:9},
   {year:2026,round:3,originalOwner:3,currentOwner:3},{year:2026,round:3,originalOwner:4,currentOwner:4},
   {year:2026,round:3,originalOwner:5,currentOwner:5},{year:2026,round:3,originalOwner:6,currentOwner:1},
-  {year:2026,round:3,originalOwner:7,currentOwner:7},{year:2026,round:3,originalOwner:8,currentOwner:8},
+  {year:2026,round:3,originalOwner:7,currentOwner:12},{year:2026,round:3,originalOwner:8,currentOwner:8},
   {year:2026,round:3,originalOwner:9,currentOwner:9},{year:2026,round:3,originalOwner:10,currentOwner:10},
-  {year:2026,round:3,originalOwner:11,currentOwner:11},{year:2026,round:3,originalOwner:12,currentOwner:12},
+  {year:2026,round:3,originalOwner:11,currentOwner:11},{year:2026,round:3,originalOwner:12,currentOwner:7},
   {year:2026,round:4,originalOwner:1,currentOwner:2},{year:2026,round:4,originalOwner:2,currentOwner:9},
   {year:2026,round:4,originalOwner:3,currentOwner:3},{year:2026,round:4,originalOwner:4,currentOwner:4},
   {year:2026,round:4,originalOwner:5,currentOwner:5},{year:2026,round:4,originalOwner:6,currentOwner:6},
@@ -99,7 +99,7 @@ const PICKS = [
 ];
 
 const DRAFT_NOTES = {
-  2026:"Do not trade a 1st to Fighting Illini. He has enough. Draft order TBD based on final standings. Seagulls' R3/R4 2026 und R3 2027 gehen an Cooking Show (Murray-Boyles Trade).",
+  2026:"Do not trade a 1st to Fighting Illini. He has enough. Draft order TBD based on final standings. Seagulls' R3/R4 2026 und R3 2027 gehen an Cooking Show (Murray-Boyles Trade). Vancouver's R1 slot5 + R3 2026 gehen an Always Money; Always Money's R3 2026 geht an Vancouver (Ayo/Essengue Trade).",
   2027:"Fighting Illini's R1 goes to Always Money. Neukoelln's R1 goes to 3-POINT MAFIA. 3PM's R3 goes to Neukoelln. Cooking Show sends 2027 R1 & KJ for Vassell/ Ron Holland II",
   2028:"Neukoelln's R1 goes to 3-POINT MAFIA in Banchero-Trade. 3PM's R2 goes to Bear Down (Moussa Diabate Trade).",
   2029:"All teams hold their own picks. No trades recorded yet.",
@@ -113,7 +113,7 @@ const DRAFT_2026_SLOT_ORDER = [
   {round:1, slot:2,  originalOwner:9,  currentOwner:1,  nbaTeam:'UTA', note:'via Cooking Show'},
   {round:1, slot:3,  originalOwner:7,  currentOwner:1,  nbaTeam:'MEM', note:'via Always Money'},
   {round:1, slot:4,  originalOwner:4,  currentOwner:1,  nbaTeam:'CHI', note:'via Leaveland'},
-  {round:1, slot:5,  originalOwner:12, currentOwner:12, nbaTeam:'LAC', note:''},
+  {round:1, slot:5,  originalOwner:12, currentOwner:7,  nbaTeam:'LAC', note:'via Vancouver Curry-Wurst'},
   {round:1, slot:6,  originalOwner:10, currentOwner:1,  nbaTeam:'BKN', note:'via S-Town'},
   {round:1, slot:7,  originalOwner:8,  currentOwner:8,  nbaTeam:'SAC', note:''},
   {round:1, slot:8,  originalOwner:5,  currentOwner:5,  nbaTeam:'NOP', note:''},
