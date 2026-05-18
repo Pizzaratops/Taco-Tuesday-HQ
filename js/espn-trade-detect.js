@@ -180,7 +180,6 @@ async function espnSync(auto = false) {
 
     _applyRosterOverrides();
     if (typeof renderHome === 'function') renderHome();
-initEspnSyncBtn();
     if (typeof renderTab  === 'function') renderTab();
 
     if (btn) { btn.textContent = '✅ ' + now; btn.disabled = false; }
