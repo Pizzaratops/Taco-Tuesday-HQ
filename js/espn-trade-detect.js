@@ -131,6 +131,41 @@ function _detectAndSaveEspnTrades(newRosters) {
 
 const SYNC_INTERVAL_MS = 6 * 60 * 60 * 1000;
 
+// ── CORS-Proxy: ESPN API direkt blockt CORS, also über öffentlichen Proxy
+// Tries proxies in order, returns parsed JSON. Throws if all fail.
+async function _fetchEspnViaProxy(espnUrl) {
+  const proxies = [
+    // corsproxy.io — fast, encodes URL as query param
+    u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+    // allorigins as backup — wraps response in {contents: "..."} so we unwrap
+    u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+  ];
+  let lastErr;
+  for (const buildUrl of proxies) {
+    try {
+      const proxyUrl = buildUrl(espnUrl);
+      const res = await fetch(proxyUrl, { credentials: 'omit' });
+      if (!res.ok) { lastErr = new Error('Proxy HTTP ' + res.status); continue; }
+      const text = await res.text();
+      // Some proxies return wrapped JSON, some raw — handle both
+      try {
+        const parsed = JSON.parse(text);
+        // allorigins /raw returns the raw JSON directly; if it wrapped it, unwrap:
+        if (parsed && typeof parsed === 'object' && 'contents' in parsed && typeof parsed.contents === 'string') {
+          return JSON.parse(parsed.contents);
+        }
+        return parsed;
+      } catch (parseErr) {
+        lastErr = new Error('Proxy returned non-JSON');
+        continue;
+      }
+    } catch (err) {
+      lastErr = err;
+    }
+  }
+  throw lastErr || new Error('Alle Proxies fehlgeschlagen');
+}
+
 async function espnSync(auto = false) {
   const btn = document.getElementById('espnSyncBtn');
   if (auto) {
@@ -139,10 +174,8 @@ async function espnSync(auto = false) {
   }
   if (btn) { btn.textContent = '⏳ Syncing…'; btn.disabled = true; }
   try {
-    const url = `https://fantasy.espn.com/apis/v3/games/fba/seasons/${ESPN_SEASON}/segments/0/leagues/${ESPN_LEAGUE_ID}?view=mRoster&view=mTeam`;
-    const res  = await fetch(url, { credentials: 'omit' });
-    if (!res.ok) throw new Error('ESPN API ' + res.status);
-    const data = await res.json();
+    const espnUrl = `https://fantasy.espn.com/apis/v3/games/fba/seasons/${ESPN_SEASON}/segments/0/leagues/${ESPN_LEAGUE_ID}?view=mRoster&view=mTeam`;
+    const data = await _fetchEspnViaProxy(espnUrl);
     const teams = data.teams || [];
     if (!teams.length) throw new Error('Keine Teams in ESPN-Antwort');
 
@@ -176,11 +209,13 @@ async function espnSync(auto = false) {
     saveRosterOverrides({});
     const total = Object.values(newRosters).reduce((s,r) => s + r.length, 0);
     const now   = new Date().toLocaleString('de-DE', {dateStyle:'short', timeStyle:'short'});
-    localStorage.setItem('espnLastSync', now);
 
     _applyRosterOverrides();
     if (typeof renderHome === 'function') renderHome();
     if (typeof renderTab  === 'function') renderTab();
+
+    localStorage.setItem('espnLastSync', now);
+    localStorage.setItem('espnLastSyncTs', String(Date.now()));
 
     if (btn) { btn.textContent = '✅ ' + now; btn.disabled = false; }
     if (!auto && typeof toast === 'function') toast('✅ Sync: ' + total + ' Spieler (' + now + ')');
