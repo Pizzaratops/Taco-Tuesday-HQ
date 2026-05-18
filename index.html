@@ -248,6 +248,7 @@
 <div class="page" id="rankingsPage">
   <h2 style="margin-bottom:6px;">Dynasty Rankings</h2>
 <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">450 players · 2025–26 Season · MFHFBs DR = your ranking · Matt DR = Matt Lawson's ranking · #️⃣ = Hashtag Basketball</p>
+  <div id="dynEditToolbarAnchor"></div>
   <div class="rankings-search">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -255,7 +256,8 @@
     <input type="text" id="rankSearch" placeholder="Search player, team, or position…" oninput="filterRankings()"/>
   </div>
 
-<!-- HASHTAG RANKINGS -->
+<!-- HASHTAG RANKINGS (sibling, not nested) -->
+</div>
 <div class="page" id="hashtagRankingsPage">
   <h2 style="margin-bottom:6px;">#️⃣ Hashtag Rankings</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">700+ players · Dynasty Values</p>
@@ -289,6 +291,7 @@
           <th onclick="sortRankings(1)">Name<span class="r-sort-arrow">↕</span></th>
           <th onclick="sortRankings(2)">Team<span class="r-sort-arrow">↕</span></th>
           <th onclick="sortRankings(3)">Position<span class="r-sort-arrow">↕</span></th>
+          <th style="text-align:center;white-space:nowrap;">MFHFBs DR</th>
           <th style="text-align:center;white-space:nowrap;">Matt DR</th>
           <th style="text-align:center;white-space:nowrap;">#️⃣ Hashtag</th>
           <th id="rankingsEditHeader" style="display:none;text-align:center;white-space:nowrap;">Edit Rank</th>
