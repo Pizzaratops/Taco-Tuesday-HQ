@@ -238,31 +238,10 @@ async function espnSync(auto = false) {
 }
 
 async function fetchNbaTrades() {
-  // balldontlie.io verlangt seit Mitte 2024 einen API-Key (401 ohne Key).
-  // Wir lassen die Funktion existieren, aber überspringen den Call,
-  // damit die Console sauber bleibt. Wer NBA-League-Trades will:
-  // gratis Key bei balldontlie.io/signup holen und unten setzen.
-  const BALLDONTLIE_API_KEY = '326d494d-958f-4cdd-9c48-4576231bc8d9';
-  if (!BALLDONTLIE_API_KEY) return;
-  try {
-    const r = await fetch('https://api.balldontlie.io/v1/trades?per_page=25&season=2025', {
-      headers: { 'Authorization': BALLDONTLIE_API_KEY }
-    });
-    if (!r.ok) return;
-    const data = await r.json();
-    const trades = (data.data || []).map(t => ({
-      id:   t.id,
-      date: t.traded_at ? t.traded_at.split('T')[0] : '?',
-      players: (t.players || []).map(p => ({
-        name:     (p.first_name||'') + ' ' + (p.last_name||''),
-        fromTeam: t.from_team?.abbreviation || '?',
-        toTeam:   t.to_team?.abbreviation   || '?',
-      }))
-    })).filter(t => t.players.length);
-    localStorage.setItem('nbaTrades', JSON.stringify(trades));
-    localStorage.setItem('nbaTradesTs', Date.now().toString());
-    if (typeof renderNbaTrades === 'function') renderNbaTrades();
-  } catch(e) { console.warn('fetchNbaTrades:', e); }
+  // Der /trades-Endpoint existiert in der balldontlie v1-API nicht mehr
+  // (neue URL-Struktur: /nba/v1/... — aber kein Trades-Endpoint verfügbar).
+  // Funktion deaktiviert bis ein Ersatz gefunden wird.
+  return;
 }
 
 function initEspnSyncBtn() {
