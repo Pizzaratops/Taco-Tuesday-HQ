@@ -1,7 +1,7 @@
 // ============================================================
 //  HASHTAG RANKINGS FUNCTIONS
 // ============================================================
-let hSortCol=0, hSortAsc=true, hCurrentData=[...HASHTAG_RANKINGS];
+var hSortCol=0, hSortAsc=true, hCurrentData=[...HASHTAG_RANKINGS];
 
 function renderHashtag(data) {
   const tbody=document.getElementById('hashtagBody');
@@ -34,7 +34,7 @@ function showHashtagRankings() { renderHashtag(hCurrentData); navigate('hashtagR
 // ============================================================
 //  DYNASTY RANKINGS — showRankings() war nicht definiert
 // ============================================================
-let rSortCol=0, rSortAsc=true, rCurrentData=[...DYNASTY_PLAYERS];
+var rSortCol=0, rSortAsc=true, rCurrentData=[...DYNASTY_PLAYERS];
 
 function renderDynastyRankings(data) {
   const tbody = document.getElementById('rankingsBody');

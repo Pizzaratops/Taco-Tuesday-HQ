@@ -8,7 +8,7 @@ const DYN_EDIT_STORAGE_KEY = 'mfhfbs_dynastyOverrides_v1';
 
 // Speicher-Format: { "Spielername": newRank, ... }
 // Wir speichern nur die Spieler, deren Rank vom Original abweicht
-let _dynEditOverrides = null;
+var _dynEditOverrides = null;
 
 function _dynLoadOverrides() {
   if (_dynEditOverrides !== null) return _dynEditOverrides;
@@ -70,7 +70,7 @@ if (typeof DYNASTY_PLAYERS !== 'undefined') {
 // ------------------------------------------------------------
 //  Edit-UI: Im Admin-Modus, in der Dynasty-Rankings-Page
 // ------------------------------------------------------------
-let _dynEditModeActive = false;
+var _dynEditModeActive = false;
 
 function toggleDynastyEditMode() {
   if (typeof isAdmin === 'undefined' || !isAdmin) {
@@ -114,7 +114,7 @@ function dynEditSetRank(playerName, newRankStr) {
 // ------------------------------------------------------------
 //  Rank ändern per Drag&Drop
 // ------------------------------------------------------------
-let _dynDragSrcName = null;
+var _dynDragSrcName = null;
 
 function dynEditDragStart(evt, playerName) {
   if (!_dynEditModeActive) { evt.preventDefault(); return; }
