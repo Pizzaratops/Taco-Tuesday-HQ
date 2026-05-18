@@ -2,11 +2,14 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taco Tuesday HQ 🌮</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/big-board.css">
+  <link rel="manifest" href="manifest.json?v=4">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/big-board.css?v=4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -256,8 +259,27 @@
     <input type="text" id="rankSearch" placeholder="Search player, team, or position…" oninput="filterRankings()"/>
   </div>
 
-<!-- HASHTAG RANKINGS (sibling, not nested) -->
+  <div class="rankings-table-wrap">
+    <table class="rankings-table">
+      <thead>
+        <tr>
+          <th onclick="sortRankings(0)">#<span class="r-sort-arrow">↕</span></th>
+          <th onclick="sortRankings(1)">Name<span class="r-sort-arrow">↕</span></th>
+          <th onclick="sortRankings(2)">Team<span class="r-sort-arrow">↕</span></th>
+          <th onclick="sortRankings(3)">Position<span class="r-sort-arrow">↕</span></th>
+          <th style="text-align:center;white-space:nowrap;">MFHFBs DR</th>
+          <th style="text-align:center;white-space:nowrap;">Matt DR</th>
+          <th style="text-align:center;white-space:nowrap;">#️⃣ Hashtag</th>
+          <th id="rankingsEditHeader" style="display:none;text-align:center;white-space:nowrap;">Edit Rank</th>
+        </tr>
+      </thead>
+      <tbody id="rankingsBody"></tbody>
+    </table>
+    <div class="r-no-results" id="rankingsNoResults" style="display:none;">No players found.</div>
+  </div>
 </div>
+
+<!-- HASHTAG RANKINGS -->
 <div class="page" id="hashtagRankingsPage">
   <h2 style="margin-bottom:6px;">#️⃣ Hashtag Rankings</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">700+ players · Dynasty Values</p>
@@ -280,26 +302,6 @@
       <tbody id="hashtagBody"></tbody>
     </table>
     <div class="r-no-results" id="hashtagNoResults" style="display:none;">No players found.</div>
-  </div>
-</div>
-
-  <div class="rankings-table-wrap">
-    <table class="rankings-table">
-      <thead>
-        <tr>
-          <th onclick="sortRankings(0)">#<span class="r-sort-arrow">↕</span></th>
-          <th onclick="sortRankings(1)">Name<span class="r-sort-arrow">↕</span></th>
-          <th onclick="sortRankings(2)">Team<span class="r-sort-arrow">↕</span></th>
-          <th onclick="sortRankings(3)">Position<span class="r-sort-arrow">↕</span></th>
-          <th style="text-align:center;white-space:nowrap;">MFHFBs DR</th>
-          <th style="text-align:center;white-space:nowrap;">Matt DR</th>
-          <th style="text-align:center;white-space:nowrap;">#️⃣ Hashtag</th>
-          <th id="rankingsEditHeader" style="display:none;text-align:center;white-space:nowrap;">Edit Rank</th>
-        </tr>
-      </thead>
-      <tbody id="rankingsBody"></tbody>
-    </table>
-    <div class="r-no-results" id="rankingsNoResults" style="display:none;">No players found.</div>
   </div>
 </div>
 
@@ -1239,39 +1241,39 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- Data (load first — other scripts depend on these constants) -->
-<script src="data/teams-rosters.js"></script>
-<script src="data/picks.js"></script>
-<script src="data/rankings.js"></script>
-<script src="data/hashtag.js"></script>
-<script src="data/aliases.js"></script>
-<script src="data/draft2026.js"></script>
-<script src="data/stats.js"></script>
+<script src="data/teams-rosters.js?v=4"></script>
+<script src="data/picks.js?v=4"></script>
+<script src="data/rankings.js?v=4"></script>
+<script src="data/hashtag.js?v=4"></script>
+<script src="data/aliases.js?v=4"></script>
+<script src="data/draft2026.js?v=4"></script>
+<script src="data/stats.js?v=4"></script>
 
 <!-- App logic -->
-<script src="js/theme.js"></script>
-<script src="js/navigation.js"></script>
-<script src="js/nba-teams.js"></script>
-<script src="js/standings.js"></script>
-<script src="js/rankings-ui.js"></script>
-<script src="js/dynasty-edit.js"></script>
-<script src="js/best-available.js"></script>
-<script src="js/trade-analyzer.js"></script>
-<script src="js/trade-finder.js"></script>
-<script src="js/trade-history.js"></script>
-<script src="js/trade-admin.js"></script>
-<script src="js/draft-duel.js"></script>
-<script src="js/big-board.js"></script>
-<script src="js/analytics.js"></script>
-<script src="js/admin.js"></script>
-<script src="js/admin-inline.js"></script>
-<script src="js/admin-settings.js"></script>
-<script src="js/espn-sync.js"></script>
-<script src="js/espn-trade-detect.js"></script>
+<script src="js/theme.js?v=4"></script>
+<script src="js/navigation.js?v=4"></script>
+<script src="js/nba-teams.js?v=4"></script>
+<script src="js/standings.js?v=4"></script>
+<script src="js/rankings-ui.js?v=4"></script>
+<script src="js/dynasty-edit.js?v=4"></script>
+<script src="js/best-available.js?v=4"></script>
+<script src="js/trade-analyzer.js?v=4"></script>
+<script src="js/trade-finder.js?v=4"></script>
+<script src="js/trade-history.js?v=4"></script>
+<script src="js/trade-admin.js?v=4"></script>
+<script src="js/draft-duel.js?v=4"></script>
+<script src="js/big-board.js?v=4"></script>
+<script src="js/analytics.js?v=4"></script>
+<script src="js/admin.js?v=4"></script>
+<script src="js/admin-inline.js?v=4"></script>
+<script src="js/admin-settings.js?v=4"></script>
+<script src="js/espn-sync.js?v=4"></script>
+<script src="js/espn-trade-detect.js?v=4"></script>
 
 <!-- Init runs last, after all scripts are loaded -->
-<script src="data/rolling-rankings.js"></script>
-  <script src="js/rolling-rankings.js"></script>
-  <script src="js/init.js"></script>
+<script src="data/rolling-rankings.js?v=4"></script>
+  <script src="js/rolling-rankings.js?v=4"></script>
+  <script src="js/init.js?v=4"></script>
 
 </body>
 </html>

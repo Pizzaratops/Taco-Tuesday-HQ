@@ -1,32 +1,12 @@
-const CACHE_NAME = 'taco-tuesday-hq-v2';
-const FILES_TO_CACHE = [
-  '/',
-  '/index.html',
-];
-
-// Install — cache the app shell
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
-  );
-  self.skipWaiting();
-});
-
-// Activate — clean up old caches
+// Unregister immediately - let browser handle caching via HTTP headers
+self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-    )
+    caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k))))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
-
-// Fetch — serve from cache, fall back to network
+// Pass-through: no caching, always fetch fresh
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(cached => {
-      return cached || fetch(event.request).catch(() => caches.match('/index.html'));
-    })
-  );
+  event.respondWith(fetch(event.request).catch(() => new Response('Offline', {status: 503})));
 });
