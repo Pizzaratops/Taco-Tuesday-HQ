@@ -16,3 +16,22 @@ const ESPN_NBA_MAP = {
   23:'SAC',24:'SAS',25:'OKC',26:'UTA',27:'WAS',28:'TOR',29:'MEM',
   33:'UTA',38:'NOR',40:'WAS',41:'CHA',
 };
+
+// ESPN-Team-IDs weichen von unseren internen Team-IDs (TEAMS in teams-rosters.js) ab.
+// Mapping: ESPN-ID → unsere TT-ID. Taxi Squads (ESPN 12, 13) sind nicht gemappt
+// und werden im Sync übersprungen.
+const ESPN_TO_TT_TEAM = {
+  1: 1,   // Bear Down            → Fighting Illini
+  2: 2,   // Hospital Squad       → Seagulls
+  4: 3,   // Neukoelln Hustlers   → Neukoelln Hustlers
+  7: 4,   // Leaveland Cavaliers  → Leaveland Cavaliers
+  5: 5,   // Anadolu Ballers      → Anadolu Ballers
+  11: 6,  // 3-POINT MAFIA        → 3-POINT MAFIA
+  8: 7,   // Always Money         → Always Money In The BananaStand
+  10: 8,  // Kawhi So Serious     → Kawhi So Serious
+  6: 9,   // Cooking Show         → Cooking Show
+  14: 10, // S-Town Grizzlies     → S-Town Grizzlies
+  3: 11,  // Double Dribble Tr.   → Double Dribble Trouble
+  9: 12,  // Vancouver Curry-Wurst→ Vancouver Curry-Wurst
+  // ESPN 12 + 13 = Taxi Squads → ignorieren
+};

@@ -181,16 +181,19 @@ async function espnSync(auto = false) {
   }
   if (btn) { btn.textContent = '⏳ Syncing…'; btn.disabled = true; }
   try {
-    const espnUrl = `https://fantasy.espn.com/apis/v3/games/fba/seasons/${ESPN_SEASON}/segments/0/leagues/${ESPN_LEAGUE_ID}?view=mRoster&view=mTeam`;
+    const espnUrl = `https://lm-api-reads.fantasy.espn.com/apis/v3/games/fba/seasons/${ESPN_SEASON}/segments/0/leagues/${ESPN_LEAGUE_ID}?view=mRoster&view=mTeam`;
     const data = await _fetchEspnViaProxy(espnUrl);
-    const teams = data.teams || [];
+    // ESPN nutzt eigene Team-IDs (1-14, inkl. 2 Taxi Squads). Nur Teams behalten,
+    // die im ESPN_TO_TT_TEAM-Mapping stehen, und auf interne TT-IDs umsetzen.
+    const teams = (data.teams || []).filter(t => ESPN_TO_TT_TEAM[t.id] !== undefined);
     if (!teams.length) throw new Error('Keine Teams in ESPN-Antwort');
 
     const newRosters = {};
     teams.forEach(espnTeam => {
-      const tid     = espnTeam.id;
+      const ttId    = ESPN_TO_TT_TEAM[espnTeam.id];  // ESPN-ID → TT-ID
+      if (!ttId) return;
       const entries = espnTeam.roster?.entries || [];
-      newRosters[tid] = entries.map(entry => {
+      newRosters[ttId] = entries.map(entry => {
         const pi     = entry.playerPoolEntry || {};
         const p      = pi.player || {};
         const name   = p.fullName || null;
