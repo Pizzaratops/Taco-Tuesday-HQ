@@ -131,13 +131,14 @@ function _detectAndSaveEspnTrades(newRosters) {
 
 const SYNC_INTERVAL_MS = 6 * 60 * 60 * 1000;
 
-// ── CORS-Proxy: ESPN API direkt blockt CORS, also über öffentlichen Proxy
-// Tries proxies in order, returns parsed JSON. Throws if all fail.
+// ── CORS-Proxy: ESPN API direkt blockt CORS, also über eigenen Cloudflare Worker
+// Eigener Worker als primäre Quelle, öffentliche Proxies als Fallback.
+const ESPN_WORKER_URL = 'https://pizzaratops.buniliga.workers.dev/';
+
 async function _fetchEspnViaProxy(espnUrl) {
   const proxies = [
+    { name: 'cf-worker',    build: u => `${ESPN_WORKER_URL}?url=${encodeURIComponent(u)}` },
     { name: 'codetabs',     build: u => `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(u)}` },
-    { name: 'cors.sh',      build: u => `https://proxy.cors.sh/${u}` },
-    { name: 'thingproxy',   build: u => `https://thingproxy.freeboard.io/fetch/${u}` },
     { name: 'corsproxy.io', build: u => `https://corsproxy.io/?${encodeURIComponent(u)}` },
     { name: 'allorigins',   build: u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}` },
   ];
