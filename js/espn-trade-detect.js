@@ -216,7 +216,16 @@ async function espnSync(auto = false) {
       _detectAndSaveEspnTrades(newRosters);
     }
 
-    saveRosterOverrides({});
+    // Persist the synced rosters so they survive page reloads.
+    // Without this, every reload reverts to the hardcoded teams-rosters.js data.
+    if (typeof saveEspnRosterSnapshot === 'function') {
+      saveEspnRosterSnapshot(newRosters);
+    }
+    // NOTE: We deliberately do NOT call saveRosterOverrides({}) here.
+    // Doing so would wipe out manual admin roster edits on every sync.
+    // Manual overrides are layered on top of the ESPN snapshot by
+    // _applyRosterOverrides().
+
     const total = Object.values(newRosters).reduce((s,r) => s + r.length, 0);
     const now   = new Date().toLocaleString('de-DE', {dateStyle:'short', timeStyle:'short'});
 

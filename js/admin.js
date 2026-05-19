@@ -123,7 +123,43 @@ function _closeAdminOnOutside() {
 
 // ── ROSTER OVERRIDE SYSTEM (rewritten) ──────────────────────────────────────
 
-// Deep-copy of original hardcoded rosters — set once at startup, never modified
+// ── ESPN ROSTER SNAPSHOT PERSISTENCE ────────────────────────────────────────
+// The ESPN sync writes the live league state into localStorage so that
+// rosters survive a page reload. Without this, every reload reverts to
+// the hardcoded teams-rosters.js data.
+const ESPN_ROSTER_SNAPSHOT_KEY = 'taco_espn_roster_snapshot_v1';
+
+function loadEspnRosterSnapshot() {
+  try {
+    const raw = localStorage.getItem(ESPN_ROSTER_SNAPSHOT_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) { return null; }
+}
+
+function saveEspnRosterSnapshot(rosters) {
+  try {
+    localStorage.setItem(ESPN_ROSTER_SNAPSHOT_KEY, JSON.stringify(rosters));
+  } catch (e) { console.warn('ESPN snapshot save failed:', e); }
+}
+
+// Merge any persisted ESPN snapshot into ROSTERS *before* we take the
+// _ORIGINAL_ROSTERS reference. This means _ORIGINAL_ROSTERS reflects the
+// latest known ESPN state (or the hardcoded fallback if no snapshot exists),
+// and _applyRosterOverrides() can layer manual admin overrides on top.
+(function _hydrateRostersFromEspnSnapshot() {
+  const snap = loadEspnRosterSnapshot();
+  if (!snap) return;
+  Object.keys(snap).forEach(tidStr => {
+    const tid = parseInt(tidStr);
+    if (Array.isArray(snap[tidStr])) {
+      ROSTERS[tid] = snap[tidStr].map(p => ({...p}));
+    }
+  });
+})();
+
+// Deep-copy of original rosters — set once at startup, never modified.
+// "Original" here means: ESPN snapshot if available, otherwise the
+// hardcoded teams-rosters.js data.
 const _ORIGINAL_ROSTERS = {};
 Object.keys(ROSTERS).forEach(tid => {
   _ORIGINAL_ROSTERS[parseInt(tid)] = ROSTERS[tid].map(p => ({...p}));
