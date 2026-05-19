@@ -2,7 +2,10 @@
 //  ESPN FANTASY SYNC
 // ============================================================
 const ESPN_LEAGUE_ID = 44361109;
-const ESPN_SEASON    = 2025;
+// ESPN nutzt das END-Jahr der Saison als ID:
+// 2024/25 → 2025, 2025/26 → 2026, 2026/27 → 2027.
+// Bei Saisonwechsel hier hochzählen.
+const ESPN_SEASON    = 2026;
 
 const ESPN_POS_MAP = {
   1:'PG', 2:'SG', 3:'SF', 4:'PF', 5:'C', 6:'C', 11:'PG',
