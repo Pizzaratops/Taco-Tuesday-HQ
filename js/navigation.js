@@ -190,7 +190,7 @@ function renderRoster(id) {
         ? `<span onclick="showRankings()" style="font-size:11px;font-weight:800;width:48px;text-align:center;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(mattRk)};color:${dynastyRankColor(mattRk)};cursor:pointer;display:inline-block;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${mattRk}</span>`
         : '<span style="font-size:11px;color:var(--border);font-weight:600;width:48px;text-align:right;padding:3px 8px;display:inline-block;">—</span>';
       const hashBadge = hashRk
-        ? `<span onclick="showHashtagRankings()" style="font-size:11px;font-weight:800;width:48px;text-align:center;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(hashRk)};color:${dynastyRankColor(hashRk)};cursor:pointer;display:inline-block;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${hashRk}</span>`
+        ? `<span onclick="showRankings()" style="font-size:11px;font-weight:800;width:48px;text-align:center;padding:3px 8px;border-radius:6px;background:${dynastyRankBg(hashRk)};color:${dynastyRankColor(hashRk)};cursor:pointer;display:inline-block;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity='1'">#${hashRk}</span>`
         : '<span style="font-size:11px;color:var(--border);font-weight:600;width:48px;text-align:right;padding:3px 8px;display:inline-block;">—</span>';
       const dynBadge = dynastyRankBadge(rank);
 

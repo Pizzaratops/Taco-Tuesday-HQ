@@ -104,7 +104,7 @@ function buildTFPlayerPool() {
   return DYNASTY_PLAYERS
     .filter(p => p[0] <= 300)
     .map(p => {
-      const ownerId = ownerMap[p[1].toLowerCase()] || null;
+      const ownerId = ownerMap[normalizeName(p[1])] || null;
       const owner   = ownerId ? teamMap[ownerId] : null;
       const dv      = dynastyValue(p[0], p[4] || null);
       return { rank: p[0], name: p[1], nba: p[2], pos: p[3], dob: p[4] || null, owner, ownerId, dynVal: dv };

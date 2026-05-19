@@ -18,7 +18,7 @@ const NBA_TEAM_NAMES = {
 function buildFantasyOwnerMap() {
   const map = {};
   Object.entries(ROSTERS).forEach(([teamId, roster]) => {
-    roster.forEach(p => { map[p.name.toLowerCase()] = parseInt(teamId); });
+    roster.forEach(p => { map[normalizeName(p.name)] = parseInt(teamId); });
   });
   return map;
 }
@@ -30,7 +30,7 @@ function showNBATeam(abbr) {
   const ranked = DYNASTY_PLAYERS
     .filter(p => p[2] === abbr)
     .map(p => {
-      const ownerId = fantasyOwners[p[1].toLowerCase()] || null;
+      const ownerId = fantasyOwners[normalizeName(p[1])] || null;
       const owner = ownerId ? teamMap[ownerId] : null;
       return { rank: p[0], name: p[1], pos: p[3], owner };
     });
