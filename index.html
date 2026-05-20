@@ -7,9 +7,9 @@
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taco Tuesday HQ 🌮</title>
-  <link rel="manifest" href="manifest.json?v=7">
-  <link rel="stylesheet" href="css/style.css?v=7">
-  <link rel="stylesheet" href="css/big-board.css?v=7">
+  <link rel="manifest" href="manifest.json?v=5">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/big-board.css?v=5">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -748,14 +748,20 @@
   #rollingRankingsPage { padding: 0; overflow: hidden; }
   #rollingRankingsPage.active { display: flex; flex-direction: column; height: calc(100vh - 120px); }
   .rr-layout { display: grid; grid-template-columns: 340px 1fr; flex: 1; overflow: hidden; }
-  .rr-sidebar { border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+  .rr-sidebar { border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
   .rr-sidebar-header { padding: 14px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: var(--surface); }
   .rr-search { background: var(--surface2); border: 1.5px solid var(--border); border-radius: 9px; color: var(--text); font-family: DM Sans, sans-serif; font-size: 12px; padding: 7px 10px 7px 30px; width: 160px; outline: none; transition: border-color .2s; }
   .rr-search:focus { border-color: var(--accent); }
+  .rr-toolbar { display: flex; gap: 8px; padding: 10px 14px; background: var(--surface); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .rr-tb-group { display: flex; gap: 4px; background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; padding: 3px; }
+  .rr-tb-btn { background: transparent; border: none; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 6px; cursor: pointer; transition: all .15s; white-space: nowrap; }
+  .rr-tb-btn:hover { color: var(--text); }
+  .rr-tb-btn.rr-tb-active { background: var(--accent); color: var(--bg, #0f0f13); }
+  .rr-list-scroll { flex: 1; overflow: auto; scrollbar-width: thin; scrollbar-color: var(--border) transparent; min-width: 0; }
   .rr-list-cols { display: grid; grid-template-columns: 32px 1fr repeat(6, 30px); gap: 3px; padding: 7px 14px; background: var(--surface); border-bottom: 1px solid var(--border); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); position: sticky; top: 0; z-index: 5; }
   .rr-list-cols span { text-align: center; }
   .rr-list-cols span:nth-child(2) { text-align: left; }
-  #rrListBody { overflow-y: auto; flex: 1; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  #rrListBody { /* removed overflow — handled by parent .rr-list-scroll */ }
   .rr-row { display: grid; grid-template-columns: 32px 1fr repeat(6, 30px); gap: 3px; padding: 6px 14px; border-bottom: 1px solid var(--border); align-items: center; cursor: pointer; transition: background .1s; }
   .rr-row:hover { background: var(--surface2); }
   .rr-row.rr-active { background: rgba(245,200,66,.08); border-left: 3px solid var(--accent); padding-left: 11px; }
@@ -775,11 +781,25 @@
   .rr-month-badge { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 68px; }
   .rr-badge-label { font-size: 10px; color: var(--muted); font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
   .rr-badge-rank { font-size: 20px; font-weight: 800; }
+  .rr-compare-cards { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+  .rr-compare-card { flex: 1; min-width: 200px; background: var(--surface); border: 2px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+  .rr-share-row { margin-top: 18px; display: flex; justify-content: flex-end; }
+  .rr-share-btn { background: var(--accent); border: none; color: var(--bg, #0f0f13); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 800; padding: 10px 18px; border-radius: 10px; cursor: pointer; transition: opacity .15s; }
+  .rr-share-btn:hover { opacity: .85; }
+  .rr-share-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 1000; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+  .rr-share-box { background: var(--surface); border-radius: 16px; padding: 22px; max-width: 540px; width: 100%; position: relative; max-height: 92vh; overflow-y: auto; }
+  .rr-style-toggle { display: flex; gap: 6px; background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; padding: 3px; margin: 0 auto 16px; width: fit-content; }
+  .rr-style-btn { background: transparent; border: none; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 6px; cursor: pointer; transition: all .15s; }
+  .rr-style-btn.rr-style-active { background: var(--accent); color: var(--bg, #0f0f13); }
+  #rrShareCardContent { display: flex; justify-content: center; margin-bottom: 14px; }
   @media (max-width: 768px) {
     .rr-layout { grid-template-columns: 1fr; }
     #rollingRankingsPage.active { height: auto; }
-    .rr-sidebar { height: 45vh; border-right: none; border-bottom: 1px solid var(--border); }
+    .rr-sidebar { height: 50vh; border-right: none; border-bottom: 1px solid var(--border); }
     .rr-main { padding: 16px; }
+    .rr-toolbar { padding: 8px 12px; }
+    .rr-tb-btn { font-size: 10px; padding: 5px 8px; }
+    #rrShareCardContent { transform: scale(0.7); transform-origin: top center; height: 600px; margin-bottom: 0; }
   }
 
 </style>
@@ -1113,18 +1133,18 @@
       <div class="rr-sidebar-header">
         <div style="flex:1;">
           <div style="font-size:15px;font-weight:800;color:var(--text);">📈 Rolling Rankings</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">489 Spieler · Saison 2025/26</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Saison 2025/26</div>
         </div>
         <div style="position:relative;">
           <span style="position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;pointer-events:none;">🔍</span>
           <input id="rrSearch" class="rr-search" placeholder="Suchen…" oninput="rrFilter()">
         </div>
       </div>
-      <div class="rr-list-cols">
-        <span></span><span>Name</span>
-        <span>Oct</span><span>Nov</span><span>Dez</span><span>Jan</span><span>Feb</span><span>Mrz</span>
+      <div id="rrToolbar" class="rr-toolbar"></div>
+      <div class="rr-list-scroll">
+        <div id="rrListCols" class="rr-list-cols"></div>
+        <div id="rrListBody"></div>
       </div>
-      <div id="rrListBody"></div>
     </div>
     <div class="rr-main" id="rrChartPanel">
       <div style="margin:auto;text-align:center;color:var(--muted);">
@@ -1132,6 +1152,22 @@
         <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;">Spieler auswählen</div>
         <div style="font-size:13px;">Klicke links auf einen Spieler um seinen Ranking-Verlauf zu sehen</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROLLING RANKINGS SHARE MODAL -->
+<div id="rrShareModalOverlay" class="rr-share-overlay">
+  <div class="rr-share-box">
+    <button class="share-close-btn" onclick="rrCloseShareModal()">✕</button>
+    <div class="share-modal-title">📸 Rolling Rankings Share</div>
+    <div class="rr-style-toggle">
+      <button class="rr-style-btn rr-style-active" data-style="warm" onclick="rrSetShareStyle('warm')">☀️ Warm</button>
+      <button class="rr-style-btn" data-style="dark" onclick="rrSetShareStyle('dark')">🌙 Dark</button>
+    </div>
+    <div id="rrShareCardContent"></div>
+    <div class="share-btn-row">
+      <button class="share-action-btn primary" id="rrDownloadBtn" onclick="rrDownloadShareImage()">💾 Save Image</button>
     </div>
   </div>
 </div>
@@ -1241,39 +1277,39 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- Data (load first — other scripts depend on these constants) -->
-<script src="data/teams-rosters.js?v=7"></script>
-<script src="data/picks.js?v=7"></script>
-<script src="data/rankings.js?v=7"></script>
-<script src="data/hashtag.js?v=7"></script>
-<script src="data/aliases.js?v=7"></script>
-<script src="data/draft2026.js?v=7"></script>
-<script src="data/stats.js?v=7"></script>
+<script src="data/teams-rosters.js?v=5"></script>
+<script src="data/picks.js?v=5"></script>
+<script src="data/rankings.js?v=5"></script>
+<script src="data/hashtag.js?v=5"></script>
+<script src="data/aliases.js?v=5"></script>
+<script src="data/draft2026.js?v=5"></script>
+<script src="data/stats.js?v=5"></script>
 
 <!-- App logic -->
-<script src="js/theme.js?v=7"></script>
-<script src="js/navigation.js?v=7"></script>
-<script src="js/nba-teams.js?v=7"></script>
-<script src="js/standings.js?v=7"></script>
-<script src="js/rankings-ui.js?v=7"></script>
-<script src="js/dynasty-edit.js?v=7"></script>
-<script src="js/best-available.js?v=7"></script>
-<script src="js/trade-analyzer.js?v=7"></script>
-<script src="js/trade-finder.js?v=7"></script>
-<script src="js/trade-history.js?v=7"></script>
-<script src="js/trade-admin.js?v=7"></script>
-<script src="js/draft-duel.js?v=7"></script>
-<script src="js/big-board.js?v=7"></script>
-<script src="js/analytics.js?v=7"></script>
-<script src="js/admin.js?v=7"></script>
-<script src="js/admin-inline.js?v=7"></script>
-<script src="js/admin-settings.js?v=7"></script>
-<script src="js/espn-sync.js?v=7"></script>
-<script src="js/espn-trade-detect.js?v=7"></script>
+<script src="js/theme.js?v=5"></script>
+<script src="js/navigation.js?v=5"></script>
+<script src="js/nba-teams.js?v=5"></script>
+<script src="js/standings.js?v=5"></script>
+<script src="js/rankings-ui.js?v=5"></script>
+<script src="js/dynasty-edit.js?v=5"></script>
+<script src="js/best-available.js?v=5"></script>
+<script src="js/trade-analyzer.js?v=5"></script>
+<script src="js/trade-finder.js?v=5"></script>
+<script src="js/trade-history.js?v=5"></script>
+<script src="js/trade-admin.js?v=5"></script>
+<script src="js/draft-duel.js?v=5"></script>
+<script src="js/big-board.js?v=5"></script>
+<script src="js/analytics.js?v=5"></script>
+<script src="js/admin.js?v=5"></script>
+<script src="js/admin-inline.js?v=5"></script>
+<script src="js/admin-settings.js?v=5"></script>
+<script src="js/espn-sync.js?v=5"></script>
+<script src="js/espn-trade-detect.js?v=5"></script>
 
 <!-- Init runs last, after all scripts are loaded -->
-<script src="data/rolling-rankings.js?v=7"></script>
-  <script src="js/rolling-rankings.js?v=7"></script>
-  <script src="js/init.js?v=7"></script>
+<script src="data/rolling-rankings.js?v=5"></script>
+  <script src="js/rolling-rankings.js?v=5"></script>
+  <script src="js/init.js?v=5"></script>
 
 </body>
 </html>
