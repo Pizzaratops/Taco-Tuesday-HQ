@@ -761,6 +761,9 @@
   .rr-list-cols { display: grid; grid-template-columns: 32px 1fr repeat(6, 30px); gap: 3px; padding: 7px 14px; background: var(--surface); border-bottom: 1px solid var(--border); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); position: sticky; top: 0; z-index: 5; }
   .rr-list-cols span { text-align: center; }
   .rr-list-cols span:nth-child(2) { text-align: left; }
+  .rr-col-h { cursor: pointer; user-select: none; transition: color .12s; }
+  .rr-col-h:hover { color: var(--text); }
+  .rr-col-active { color: var(--accent) !important; }
   #rrListBody { /* removed overflow — handled by parent .rr-list-scroll */ }
   .rr-row { display: grid; grid-template-columns: 32px 1fr repeat(6, 30px); gap: 3px; padding: 6px 14px; border-bottom: 1px solid var(--border); align-items: center; cursor: pointer; transition: background .1s; }
   .rr-row:hover { background: var(--surface2); }
