@@ -14,6 +14,8 @@ let rrCompareMode   = false;
 let rrSelected      = [];          // Array von origIdx (max 3 wenn compare, sonst max 1)
 let rrFiltered      = [];
 let rrChart         = null;
+let rrSortBy        = 'eos';       // 'eos' | 'name' | period-key (e.g. 'Oct', 'März', '1', '22')
+let rrSortDir       = 'asc';       // 'asc' = lowest rank first
 
 // Farben für Vergleichslinien
 const RR_COMPARE_COLORS = ['#f5c842', '#29b6f6', '#ff6584'];
@@ -39,9 +41,52 @@ function showRollingRankings(highlightName) {
 
 function _rrInit() {
   rrFiltered = ROLLING_RANKINGS.map((p, i) => ({ ...p, origIdx: i }));
+  _rrApplySort();
   const inp = document.getElementById('rrSearch');
   if (inp) inp.value = '';
   _rrRenderAll();
+}
+
+// Sort rrFiltered in-place by current rrSortBy / rrSortDir.
+function _rrApplySort() {
+  const dir = rrSortDir === 'desc' ? -1 : 1;
+  const key = rrSortBy;
+  const isPeriod = key !== 'eos' && key !== 'name';
+
+  rrFiltered.sort((a, b) => {
+    let va, vb;
+    if (key === 'name') {
+      return dir * a.name.localeCompare(b.name);
+    }
+    if (key === 'eos') {
+      va = a.eosRank;
+      vb = b.eosRank;
+    } else if (isPeriod) {
+      // period: month name or week number string
+      const isMonth = RR_MONTHS.indexOf(key) !== -1;
+      va = isMonth ? (a.rankings || {})[key] : (a.weeklyRanks || {})[key];
+      vb = isMonth ? (b.rankings || {})[key] : (b.weeklyRanks || {})[key];
+    }
+    // Nulls always last
+    const an = va == null;
+    const bn = vb == null;
+    if (an && bn) return a.name.localeCompare(b.name);
+    if (an) return 1;
+    if (bn) return -1;
+    return dir * (va - vb);
+  });
+}
+
+function rrSortByKey(key) {
+  if (rrSortBy === key) {
+    rrSortDir = rrSortDir === 'asc' ? 'desc' : 'asc';
+  } else {
+    rrSortBy = key;
+    rrSortDir = 'asc';
+  }
+  _rrApplySort();
+  _rrRenderListHeader();
+  _rrRenderList();
 }
 
 function _rrRenderAll() {
@@ -83,19 +128,38 @@ function rrToggleCompare() {
   _rrRenderAll();
 }
 
-// ── LIST HEADER (cols change with view) ─────────────────────────────────────
+// ── LIST HEADER (cols change with view, clickable for sort) ─────────────────
 function _rrRenderListHeader() {
   const host = document.getElementById('rrListCols');
   if (!host) return;
+
+  const sortIndicator = key => {
+    if (rrSortBy !== key) return '';
+    return rrSortDir === 'asc' ? ' ↑' : ' ↓';
+  };
+  const cls = key => 'rr-col-h' + (rrSortBy === key ? ' rr-col-active' : '');
+
   if (rrView === 'monthly') {
     host.style.gridTemplateColumns = '32px 1fr repeat(6, 30px)';
-    host.innerHTML = '<span></span><span>Name</span>' +
-      '<span>Oct</span><span>Nov</span><span>Dez</span><span>Jan</span><span>Feb</span><span>Mrz</span>';
+    const monthHeaders = RR_MONTHS.map(m => {
+      const lbl = m === 'März' ? 'Mrz' : m;
+      return `<span class="${cls(m)}" onclick="rrSortByKey('${m}')">${lbl}${sortIndicator(m)}</span>`;
+    }).join('');
+    host.innerHTML =
+      `<span class="${cls('eos')}" onclick="rrSortByKey('eos')" title="End of Season Rank">#${sortIndicator('eos')}</span>` +
+      `<span class="${cls('name')}" onclick="rrSortByKey('name')" style="text-align:left;">Name${sortIndicator('name')}</span>` +
+      monthHeaders;
   } else {
     const colCount = RR_WEEKS.length;
     host.style.gridTemplateColumns = `32px minmax(120px, 1fr) repeat(${colCount}, 26px)`;
-    const weekHeaders = RR_WEEKS.map(w => `<span>W${w}</span>`).join('');
-    host.innerHTML = '<span></span><span>Name</span>' + weekHeaders;
+    const weekHeaders = RR_WEEKS.map(w => {
+      const k = String(w);
+      return `<span class="${cls(k)}" onclick="rrSortByKey('${k}')">W${w}${sortIndicator(k)}</span>`;
+    }).join('');
+    host.innerHTML =
+      `<span class="${cls('eos')}" onclick="rrSortByKey('eos')" title="End of Season Rank">#${sortIndicator('eos')}</span>` +
+      `<span class="${cls('name')}" onclick="rrSortByKey('name')" style="text-align:left;">Name${sortIndicator('name')}</span>` +
+      weekHeaders;
   }
 }
 
@@ -104,6 +168,7 @@ function rrFilter() {
   rrFiltered = q
     ? ROLLING_RANKINGS.map((p, i) => ({ ...p, origIdx: i })).filter(p => p.name.toLowerCase().includes(q))
     : ROLLING_RANKINGS.map((p, i) => ({ ...p, origIdx: i }));
+  _rrApplySort();
   _rrRenderList();
 }
 
@@ -144,7 +209,7 @@ function _rrRenderList() {
     ? `32px 1fr repeat(${cols.length}, ${colWidth}px)`
     : `32px minmax(120px, 1fr) repeat(${cols.length}, ${colWidth}px)`;
 
-  body.innerHTML = rrFiltered.map(p => {
+  body.innerHTML = rrFiltered.map((p, sortIdx) => {
     const cells = cols.map(k => {
       const r = rrView === 'monthly' ? (p.rankings || {})[k] : (p.weeklyRanks || {})[k];
       const c = _rrRankColor(r);
@@ -156,8 +221,12 @@ function _rrRenderList() {
     const colorDot = (rrCompareMode && isSelected)
       ? `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${RR_COMPARE_COLORS[selIdx]};margin-right:4px;vertical-align:middle;"></span>`
       : '';
+    // Index column: when sorting by EOS, show the EOS rank itself; otherwise the position in the current sort
+    const idxLabel = rrSortBy === 'eos'
+      ? (p.eosRank != null ? p.eosRank : '–')
+      : (sortIdx + 1);
     return `<div class="rr-row${active}" data-idx="${p.origIdx}" onclick="rrSelectPlayer(${p.origIdx})" style="grid-template-columns:${gridTpl};">
-      <span class="rr-idx">${p.origIdx + 1}</span>
+      <span class="rr-idx">${idxLabel}</span>
       <span class="rr-name" title="${p.name}">${colorDot}${p.name}</span>
       ${cells}
     </div>`;
