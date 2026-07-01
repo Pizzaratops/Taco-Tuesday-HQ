@@ -195,3 +195,60 @@ function _applyRosterOverrides() {
     });
   });
 }
+
+// ── DRAFT PICK OVERRIDE SYSTEM ──────────────────────────────────────────────
+// Same pattern as the roster overrides above: picks.js ships the "original"
+// pick ownership. Manual admin edits (asUpdatePick) are stored keyed by
+// "year-round-originalOwner" and re-applied on top of the originals on every
+// load. Previously these overrides were only written to localStorage and
+// read back by the admin page's own list — every other page (draft board,
+// trade analyzer, trade finder, ...) read PICKS directly and never saw the
+// change. _applyPickOverrides() now mutates the live PICKS array in place so
+// all pages stay in sync.
+function loadExtraPicks() {
+  try {
+    const raw = localStorage.getItem('extraPicks');
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) { return []; }
+}
+
+function saveExtraPicks(picks) {
+  try { localStorage.setItem('extraPicks', JSON.stringify(picks)); }
+  catch (e) { console.warn('Extra pick save failed:', e); }
+}
+
+// "Originals" = hardcoded picks from data/picks.js + any manually added
+// extra picks from a previous session, so both survive an override reset.
+const _ORIGINAL_PICKS = PICKS.map(p => ({...p})).concat(loadExtraPicks());
+
+function loadPickOverrides() {
+  try {
+    const raw = localStorage.getItem('pickOverrides');
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) { return {}; }
+}
+
+function savePickOverrides(overrides) {
+  try {
+    localStorage.setItem('pickOverrides', JSON.stringify(overrides));
+  } catch (e) { console.warn('Pick override save failed:', e); }
+}
+
+function _applyPickOverrides() {
+  const overrides = loadPickOverrides();
+
+  // Always start fresh from originals, then re-apply overrides on top.
+  PICKS.length = 0;
+  _ORIGINAL_PICKS.forEach(p => PICKS.push({...p}));
+
+  if (!overrides || !Object.keys(overrides).length) return;
+
+  PICKS.forEach(p => {
+    const key = p.year + '-' + p.round + '-' + p.originalOwner;
+    if (overrides[key] !== undefined) p.currentOwner = overrides[key];
+    const noteKey = key + '-note';
+    if (overrides[noteKey]) p.note = overrides[noteKey];
+  });
+}
+
+_applyPickOverrides();

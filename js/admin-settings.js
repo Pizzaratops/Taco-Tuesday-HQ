@@ -75,13 +75,11 @@ function asRemovePlayer() {
 function _asRenderPickList() {
   const el = document.getElementById('as-pick-list');
   if (!el) return;
-  const pickOverrides = JSON.parse(localStorage.getItem('pickOverrides') || '{}');
   const lines = PICKS.map(p => {
-    const key = p.year + '-' + p.round + '-' + p.originalOwner;
-    const currOwner = pickOverrides[key] !== undefined ? pickOverrides[key] : p.currentOwner;
+    const orig = _ORIGINAL_PICKS.find(o => o.year === p.year && o.round === p.round && o.originalOwner === p.originalOwner);
     const origTeam = TEAMS.find(t => t.id === p.originalOwner)?.name || 'Team ' + p.originalOwner;
-    const currTeam = TEAMS.find(t => t.id === currOwner)?.name || 'Team ' + currOwner;
-    const changed  = currOwner !== p.currentOwner ? ' <span style="color:var(--accent);">✎</span>' : '';
+    const currTeam = TEAMS.find(t => t.id === p.currentOwner)?.name || 'Team ' + p.currentOwner;
+    const changed  = orig && orig.currentOwner !== p.currentOwner ? ' <span style="color:var(--accent);">✎</span>' : '';
     return p.year + ' R' + p.round + ' (' + origTeam + ') → ' + currTeam + (p.note ? ' · ' + p.note : '') + changed;
   });
   el.innerHTML = '<div style="line-height:2;">' + lines.join('<br>') + '</div>';
@@ -95,14 +93,18 @@ function asUpdatePick() {
   const note     = document.getElementById('as-pick-note').value.trim();
   if (!origId || !newOwner) { toast('⚠️ Original-Team und neuer Besitzer sind Pflicht'); return; }
 
-  const pickOverrides = JSON.parse(localStorage.getItem('pickOverrides') || '{}');
+  const pickExists = _ORIGINAL_PICKS.some(p => p.year === year && p.round === round && p.originalOwner === origId);
+  if (!pickExists) { toast('⚠️ Diesen Pick gibt es nicht — Jahr/Runde/Original-Team prüfen'); return; }
+
+  const overrides = loadPickOverrides();
   const key = year + '-' + round + '-' + origId;
-  pickOverrides[key] = newOwner;
-  if (note) {
-    const noteKey = key + '-note';
-    pickOverrides[noteKey] = note;
-  }
-  localStorage.setItem('pickOverrides', JSON.stringify(pickOverrides));
+  overrides[key] = newOwner;
+  if (note) overrides[key + '-note'] = note;
+  savePickOverrides(overrides);
+
+  // Apply immediately so every page (Draft Board, Trade Analyzer, Trade
+  // Finder, ...) sees the change right away, not just this admin list.
+  _applyPickOverrides();
   _asRenderPickList();
   toast('✅ Pick gespeichert: ' + year + ' R' + round + ' → ' + (TEAMS.find(t=>t.id===newOwner)?.name||'Team '+newOwner));
 }
@@ -114,7 +116,17 @@ function asAddNewPick() {
   const ownerId = parseInt(document.getElementById('as-pick-new-owner').value);
   const note  = document.getElementById('as-pick-note').value.trim();
   if (!origId || !ownerId) { toast('⚠️ Pflichtfelder fehlen'); return; }
-  PICKS.push({ year, round, originalOwner: origId, currentOwner: ownerId, note: note||undefined });
+
+  const newPick = { year, round, originalOwner: origId, currentOwner: ownerId, note: note||undefined };
+
+  // Persist so the pick survives a reload and doesn't get wiped the next
+  // time _applyPickOverrides() resets PICKS from the originals.
+  const extra = loadExtraPicks();
+  extra.push(newPick);
+  saveExtraPicks(extra);
+
+  _ORIGINAL_PICKS.push({...newPick});
+  PICKS.push(newPick);
   _asRenderPickList();
   toast('✅ Neuer Pick erstellt: ' + year + ' R' + round);
 }
