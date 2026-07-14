@@ -213,8 +213,8 @@
 
   <div class="ls-subtabs">
     <div class="ls-subtab active" id="lsSubtabDaily" onclick="lsSwitchPeriod('daily')">📅 Daily</div>
-    <div class="ls-subtab disabled" id="lsSubtabWeekly" title="Kommt bald">📈 Weekly</div>
-    <div class="ls-subtab disabled" id="lsSubtabMonthly" title="Kommt bald">🗓️ Monthly</div>
+    <div class="ls-subtab" id="lsSubtabWeekly" onclick="lsSwitchPeriod('week')">📈 Weekly</div>
+    <div class="ls-subtab" id="lsSubtabMonthly" onclick="lsSwitchPeriod('month')">🗓️ Monthly</div>
   </div>
 
   <div class="ls-toolbar">
@@ -1347,7 +1347,8 @@
 <script src="data/rolling-rankings.js?v=5"></script>
   <script src="js/rolling-rankings.js?v=5"></script>
 <script src="data/livescores-daily.js?v=5"></script>
-<script src="js/livescores.js?v=5"></script>
+<script src="data/livescores-aggregate.js?v=1"></script>
+<script src="js/livescores.js?v=6"></script>
   <script src="js/init.js?v=5"></script>
 
 </body>
