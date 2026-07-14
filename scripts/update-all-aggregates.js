@@ -81,6 +81,20 @@ const anchorNote = effectiveEnd !== endDate ? ` (Fenster verankert auf letzten v
 const existing = loadExisting(out);
 let updated = 0;
 let skipped = 0;
+// Migration: alte Einträge unter Standort-spezifischen Keys für week/month
+// entfernen. Das Datenmodell ist auf einen kombinierten "all"-Key
+// umgestellt — Alt-Einträge (z.B. "nba-summer-california" unter week/month)
+// sind sowohl überholt als auch unvollständig (kein zScores/leagues-Feld)
+// und würden beim Serialisieren sonst crashen bzw. tote Daten hinterlassen.
+for (const period of ['week', 'month']) {
+  if (!existing[period]) continue;
+  for (const leagueKey of Object.keys(existing[period])) {
+    if (leagueKey !== 'all') {
+      console.log(`  ⚠ Entferne veralteten Eintrag ${period}/${leagueKey} (Alt-Datenmodell, ersetzt durch "all").`);
+      delete existing[period][leagueKey];
+    }
+  }
+}
 
 for (const period of ['week', 'month']) {
   const entry = buildEntry({ period, league: 'all', endDate: effectiveEnd, dir });
