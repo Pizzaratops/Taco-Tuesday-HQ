@@ -26,7 +26,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
-const { computeAggregate, toDateStr } = require('./lib/aggregate-core');
+const { computeAggregate, toDateStr, CATEGORIES } = require('./lib/aggregate-core');
 
 const DEFAULT_OUT = path.join(__dirname, '..', 'data', 'livescores-aggregate.js');
 const DEFAULT_DIR = path.join(__dirname, 'data');
@@ -34,6 +34,19 @@ const DEFAULT_KEEP = 90; // Stichtage pro Liga/Periode
 
 const round1 = (n) => Math.round(n * 10) / 10;
 const round2 = (n) => Math.round(n * 100) / 100;
+
+/**
+ * Rundet die Per-Category-Z-Scores eines Spielers auf 2 Nachkommastellen,
+ * in derselben Reihenfolge wie CATEGORIES (pts, reb, ast, stl, blk, tpm,
+ * fgImpact, ftImpact, to). Blocker für die Punt-Gewichtungs-UI (Punkt 2).
+ */
+function roundZScores(zScores) {
+  const out = {};
+  for (const cat of CATEGORIES) {
+    out[cat.key] = round2(zScores[cat.key]);
+  }
+  return out;
+}
 
 /**
  * Berechnet einen einzelnen Eintrag für data/livescores-aggregate.js.
@@ -65,6 +78,7 @@ function buildEntry({ period, league, endDate, dir, minGames }) {
     fgPct: p.fga > 0 ? round1((p.fgm / p.fga) * 100) : 0,
     ftPct: p.fta > 0 ? round1((p.ftm / p.fta) * 100) : 0,
     composite: round2(p.composite),
+    zScores: roundZScores(p.zScores),
   }));
 
   return {
@@ -110,8 +124,12 @@ function trimKeep(existing, keep) {
   }
 }
 
+function fmtZScores(z) {
+  return `{ ${CATEGORIES.map(cat => `${cat.key}: ${z[cat.key]}`).join(', ')} }`;
+}
+
 function fmtPlayer(p) {
-  return `{ rank: ${p.rank}, name: ${JSON.stringify(p.name)}, team: ${JSON.stringify(p.team)}, games: ${p.games}, min: ${p.min}, pts: ${p.pts}, reb: ${p.reb}, ast: ${p.ast}, stl: ${p.stl}, blk: ${p.blk}, to: ${p.to}, tpm: ${p.tpm}, fgPct: ${p.fgPct}, ftPct: ${p.ftPct}, composite: ${p.composite} }`;
+  return `{ rank: ${p.rank}, name: ${JSON.stringify(p.name)}, team: ${JSON.stringify(p.team)}, games: ${p.games}, min: ${p.min}, pts: ${p.pts}, reb: ${p.reb}, ast: ${p.ast}, stl: ${p.stl}, blk: ${p.blk}, to: ${p.to}, tpm: ${p.tpm}, fgPct: ${p.fgPct}, ftPct: ${p.ftPct}, composite: ${p.composite}, zScores: ${fmtZScores(p.zScores)} }`;
 }
 
 function fmtEntry(entry) {
@@ -156,7 +174,10 @@ function serialize(existing) {
 //    leagueAvg: { fg, ft },
 //    players: [
 //      { rank, name, team, games, min, pts, reb, ast, stl, blk, to, tpm,
-//        fgPct, ftPct, composite },   // Werte sind Pro-Spiel-Schnitte im Fenster
+//        fgPct, ftPct, composite,     // Werte sind Pro-Spiel-Schnitte im Fenster
+//        zScores: { pts, reb, ast, stl, blk, tpm, fgImpact, ftImpact, to } },
+//        // ^ Per-Category-Z-Scores (auf 2 Nachkommastellen gerundet, TO-Vorzeichen
+//        //   bereits invertiert — hoher Wert = gut). Blocker für Punt-Gewichtungs-UI.
 //      ...
 //    ]
 //  }
