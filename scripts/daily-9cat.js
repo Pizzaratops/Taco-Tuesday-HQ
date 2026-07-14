@@ -21,9 +21,10 @@ const verbose = args.includes('-v') || args.includes('--verbose');
 const dateArg = args.find(a => /^\d{4}-\d{2}-\d{2}$/.test(a));
 
 // ESPN führt Summer League unter eigenen League-Slugs, getrennt von der reguären
-// Saison ('nba'). Bekannte Slugs (Stand Juli 2026):
-//   nba-summer-las-vegas   -> NBA Summer League Las Vegas (Hauptevent)
-//   nba-summer-utah        -> Utah Summer League (falls in der jeweiligen Saison ausgetragen)
+// Saison ('nba'). Verifizierte Slugs (Stand Juli 2026, via ESPN-Boxscore-URLs):
+//   nba-summer-california   -> California Classic (San Francisco/Sacramento, 3.–6. Juli)
+//   nba-summer-utah         -> Salt Lake City Summer League (4.–7. Juli)
+//   nba-summer-las-vegas    -> NBA Summer League Las Vegas (Hauptevent, 9.–19. Juli)
 // Per Flag wählbar: --league=nba-summer-las-vegas (Default) oder --league=nba (reguläre Saison)
 const leagueArg = args.find(a => a.startsWith('--league='));
 const LEAGUE = leagueArg ? leagueArg.split('=')[1] : 'nba-summer-las-vegas';
