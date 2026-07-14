@@ -131,7 +131,13 @@ function trimKeep(existing, keep) {
 }
 
 function fmtZScores(z) {
-  return `{ ${CATEGORIES.map(cat => `${cat.key}: ${z[cat.key]}`).join(', ')} }`;
+  // Defensiv: alte Einträge (vor Einführung der Per-Category-Z-Scores bzw.
+  // aus der Zeit vor dem kombinierten "all"-Key) haben ggf. kein zScores-
+  // Objekt. Nie hart crashen beim Neuschreiben der Datei — lieber ein
+  // leeres/0-Objekt schreiben, das beim nächsten echten Lauf für diese
+  // Liga/Periode ohnehin überschrieben wird.
+  if (!z) return `{ ${CATEGORIES.map(cat => `${cat.key}: 0`).join(', ')} }`;
+  return `{ ${CATEGORIES.map(cat => `${cat.key}: ${z[cat.key] != null ? z[cat.key] : 0}`).join(', ')} }`;
 }
 
 function fmtPlayer(p) {
