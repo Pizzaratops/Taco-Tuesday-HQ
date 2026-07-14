@@ -11,16 +11,18 @@
 //  erhalten — es wird nur der eine Schlüssel überschrieben/ergänzt.
 //
 //  Usage:
+//    node scripts/convert-aggregate-to-livescores.js --period=week --league=all
+//      → Fenster endet heute, kombiniert alle Standorte (empfohlen/Standardfall)
+//    node scripts/convert-aggregate-to-livescores.js --period=month --league=all --end=2026-11-01
+//    node scripts/convert-aggregate-to-livescores.js --period=week --league=all --keep=90
+//      → wirft Einträge raus, wenn mehr als 90 Stichtage gespeichert sind
 //    node scripts/convert-aggregate-to-livescores.js --period=week --league=nba-summer-las-vegas
-//      → Fenster endet heute
-//    node scripts/convert-aggregate-to-livescores.js --period=month --league=nba --end=2026-11-01
-//    node scripts/convert-aggregate-to-livescores.js --period=week --league=nba --keep=90
-//      → wirft Einträge raus, wenn mehr als 90 Stichtage für diese Liga/Periode gespeichert sind
+//      → nur zu Debug-/Vergleichszwecken: EIN Standort statt kombiniert
 //
 //  Wird auch von scripts/update-all-aggregates.js als Modul benutzt
-//  (buildEntry/mergeEntry/trimKeep/loadExisting/serialize), damit der
-//  Workflow in einem Rutsch mehrere Ligen/Perioden aktualisieren kann,
-//  ohne die Ausgabedatei mehrfach zu lesen/schreiben.
+//  (buildEntry/mergeEntry/trimKeep/loadExisting/serialize) — das ist der
+//  eigentliche Weg, wie Weekly/Monthly in der Praxis aktualisiert werden
+//  (ein kombinierter "all"-Eintrag pro Periode, statt pro Liga).
 // ============================================================
 
 const fs = require('fs');
@@ -60,13 +62,14 @@ function buildEntry({ period, league, endDate, dir, minGames }) {
     return null;
   }
 
-  const { windowStart, windowEnd, windowDays, filesInWindow, eligible, leagueFGpct, leagueFTpct } = result;
+  const { windowStart, windowEnd, windowDays, datesInWindow, leaguesInWindow, eligible, leagueFGpct, leagueFTpct } = result;
 
   const players = eligible.map((p, i) => ({
     rank: i + 1,
     name: p.name,
     team: p.team,
     games: p.games,
+    leagues: p.leagues, // Standorte, an denen der Spieler im Fenster aufgelaufen ist
     min: round1(p.min / p.games),
     pts: round1(p.ptsPg),
     reb: round1(p.rebPg),
@@ -85,7 +88,10 @@ function buildEntry({ period, league, endDate, dir, minGames }) {
     windowStart: toDateStr(windowStart),
     windowEnd: toDateStr(windowEnd),
     windowDays,
-    daysInWindow: filesInWindow.length,
+    // Anzahl Kalendertage mit Daten im Fenster (nicht Dateien — bei
+    // kombinierten Ligen können mehrere Dateien denselben Tag betreffen).
+    daysInWindow: datesInWindow.length,
+    leaguesInWindow, // z.B. ["nba-summer-las-vegas","nba-summer-utah"]
     minGames: result.minGames,
     leagueAvg: { fg: round1(leagueFGpct * 100), ft: round1(leagueFTpct * 100) },
     players,
@@ -129,7 +135,7 @@ function fmtZScores(z) {
 }
 
 function fmtPlayer(p) {
-  return `{ rank: ${p.rank}, name: ${JSON.stringify(p.name)}, team: ${JSON.stringify(p.team)}, games: ${p.games}, min: ${p.min}, pts: ${p.pts}, reb: ${p.reb}, ast: ${p.ast}, stl: ${p.stl}, blk: ${p.blk}, to: ${p.to}, tpm: ${p.tpm}, fgPct: ${p.fgPct}, ftPct: ${p.ftPct}, composite: ${p.composite}, zScores: ${fmtZScores(p.zScores)} }`;
+  return `{ rank: ${p.rank}, name: ${JSON.stringify(p.name)}, team: ${JSON.stringify(p.team)}, games: ${p.games}, leagues: ${JSON.stringify(p.leagues || [])}, min: ${p.min}, pts: ${p.pts}, reb: ${p.reb}, ast: ${p.ast}, stl: ${p.stl}, blk: ${p.blk}, to: ${p.to}, tpm: ${p.tpm}, fgPct: ${p.fgPct}, ftPct: ${p.ftPct}, composite: ${p.composite}, zScores: ${fmtZScores(p.zScores)} }`;
 }
 
 function fmtEntry(entry) {
@@ -139,6 +145,7 @@ function fmtEntry(entry) {
         windowEnd: ${JSON.stringify(entry.windowEnd)},
         windowDays: ${entry.windowDays},
         daysInWindow: ${entry.daysInWindow},
+        leaguesInWindow: ${JSON.stringify(entry.leaguesInWindow || [])},
         minGames: ${entry.minGames},
         leagueAvg: { fg: ${entry.leagueAvg.fg}, ft: ${entry.leagueAvg.ft} },
         players: [
@@ -166,23 +173,32 @@ function serialize(existing) {
 //  Änderungen werden beim nächsten Lauf überschrieben.
 //
 //  Shape:
-//  LIVESCORES_AGGREGATE[period][league][endDate] = {
+//  LIVESCORES_AGGREGATE[period]["all"][endDate] = {
 //    windowStart, windowEnd,   // "YYYY-MM-DD" — Rand des rollierenden Fensters
 //    windowDays,                // 7 (week) oder 30 (month)
-//    daysInWindow,              // Anzahl Tages-CSVs, die tatsächlich im Fenster lagen
+//    daysInWindow,              // Anzahl Kalendertage mit Daten im Fenster
+//    leaguesInWindow,           // Standorte, die irgendwo im Fenster CSVs hatten
+//                                // (z.B. ["nba-summer-las-vegas","nba-summer-utah"])
 //    minGames,                  // Mindestspiele, um in "players" zu erscheinen
 //    leagueAvg: { fg, ft },
 //    players: [
-//      { rank, name, team, games, min, pts, reb, ast, stl, blk, to, tpm,
+//      { rank, name, team, games, leagues, min, pts, reb, ast, stl, blk, to, tpm,
 //        fgPct, ftPct, composite,     // Werte sind Pro-Spiel-Schnitte im Fenster
 //        zScores: { pts, reb, ast, stl, blk, tpm, fgImpact, ftImpact, to } },
-//        // ^ Per-Category-Z-Scores (auf 2 Nachkommastellen gerundet, TO-Vorzeichen
-//        //   bereits invertiert — hoher Wert = gut). Blocker für Punt-Gewichtungs-UI.
+//        // ^ "leagues" = Standorte, an denen DIESER Spieler im Fenster gespielt hat.
+//        //   Per-Category-Z-Scores auf 2 Nachkommastellen gerundet, TO-Vorzeichen
+//        //   bereits invertiert — hoher Wert = gut. Blocker für Punt-Gewichtungs-UI.
 //      ...
 //    ]
 //  }
 //
 //  period: "week" | "month"
+//  Weekly/Monthly werden IMMER standortübergreifend berechnet — "all" ist der
+//  einzige League-Key, der hier vorkommt. Das Fenster sind immer die letzten
+//  7 bzw. 30 Tage vor "endDate", egal ob ein Spieler in Cali, Utah und/oder
+//  Vegas aufgelaufen ist. (Daily bleibt weiterhin pro Standort in
+//  data/livescores-daily.js — dort macht die Trennung Sinn, weil an einem
+//  Tag ohnehin nur an einem Standort gespielt wird.)
 //  endDate: Stichtag, an dem das Fenster endet ("YYYY-MM-DD")
 // ============================================================
 
