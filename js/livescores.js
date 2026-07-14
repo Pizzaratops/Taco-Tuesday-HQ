@@ -47,6 +47,17 @@ const LS_COLUMNS_AGGREGATE = [
 
 const LS_PERIOD_LABEL = { week: 'Woche', month: 'Monat' };
 
+const LS_LEAGUE_SHORT_LABEL = {
+  'nba-summer-california': 'Cali',
+  'nba-summer-utah': 'Salt Lake',
+  'nba-summer-las-vegas': 'Vegas',
+  'nba-preseason': 'Pre-Season',
+  'nba': 'NBA',
+};
+function _lsLeagueShortLabel(slug) {
+  return LS_LEAGUE_SHORT_LABEL[slug] || slug;
+}
+
 let lsCurrentPeriod = 'daily';  // "daily" | "week" | "month"
 let lsCurrentLeague = 'nba-summer-las-vegas';
 let lsCurrentDate   = null;     // "YYYY-MM-DD" — Tag (daily) oder Fenster-Stichtag (week/month)
@@ -73,12 +84,18 @@ function _lsFormatDateShort(dateStr) {
 // ------------------------------------------------------------
 // Datenzugriff — je nach Periode aus einer anderen globalen Quelle
 // ------------------------------------------------------------
+// Weekly/Monthly ignorieren die Liga-Auswahl bewusst: sie werden
+// standortübergreifend berechnet (letzte 7/30 Tage, egal ob Cali/Utah/
+// Vegas) und liegen unter dem festen Key "all" — siehe
+// scripts/update-all-aggregates.js.
+const LS_AGGREGATE_LEAGUE = 'all';
+
 function _lsAvailableDates(period, league) {
   if (period === 'daily') {
     const data = (typeof LIVESCORES_DAILY !== 'undefined' ? LIVESCORES_DAILY[league] : null) || {};
     return Object.keys(data).sort();
   }
-  const data = (typeof LIVESCORES_AGGREGATE !== 'undefined' ? (LIVESCORES_AGGREGATE[period] || {})[league] : null) || {};
+  const data = (typeof LIVESCORES_AGGREGATE !== 'undefined' ? (LIVESCORES_AGGREGATE[period] || {})[LS_AGGREGATE_LEAGUE] : null) || {};
   return Object.keys(data).sort();
 }
 
@@ -87,7 +104,7 @@ function _lsEntry(period, league, dateStr) {
     const data = (typeof LIVESCORES_DAILY !== 'undefined' ? LIVESCORES_DAILY[league] : null) || {};
     return data[dateStr];
   }
-  const data = (typeof LIVESCORES_AGGREGATE !== 'undefined' ? (LIVESCORES_AGGREGATE[period] || {})[league] : null) || {};
+  const data = (typeof LIVESCORES_AGGREGATE !== 'undefined' ? (LIVESCORES_AGGREGATE[period] || {})[LS_AGGREGATE_LEAGUE] : null) || {};
   return data[dateStr];
 }
 
@@ -113,6 +130,16 @@ function lsSwitchPeriod(period) {
   document.querySelectorAll('.ls-subtab').forEach(el => el.classList.remove('active'));
   const idByPeriod = { daily: 'lsSubtabDaily', week: 'lsSubtabWeekly', month: 'lsSubtabMonthly' };
   document.getElementById(idByPeriod[period])?.classList.add('active');
+
+  // Liga-Dropdown gilt nur für Daily — Weekly/Monthly sind standortübergreifend.
+  const select = document.getElementById('lsLeagueSelect');
+  if (select) select.disabled = (period !== 'daily');
+  const hint = document.getElementById('lsScheduleHint');
+  if (hint) {
+    hint.textContent = period === 'daily'
+      ? 'Kalifornien: 3.–6. Juli · Salt Lake City: 4.–7. Juli · Las Vegas: 9.–19. Juli'
+      : `${LS_PERIOD_LABEL[period]}-Ranking kombiniert automatisch alle Standorte (Kalifornien, Salt Lake City, Las Vegas, …) — die Liga-Auswahl gilt nur für Daily.`;
+  }
 
   // Beim Wechsel auf den zuletzt verfügbaren Stichtag für die neue Periode springen —
   // ein Datum, das bei Daily existiert, muss bei Weekly/Monthly nicht existieren.
@@ -177,8 +204,10 @@ function _lsRender() {
       const avg = entry.leagueAvg
         ? ` · Liga-Ø FG% ${entry.leagueAvg.fg.toFixed(1)}% · FT% ${entry.leagueAvg.ft.toFixed(1)}%`
         : '';
+      const locations = (entry.leaguesInWindow || []).map(_lsLeagueShortLabel).join(', ');
       gamesLine.innerHTML = `Fenster ${_lsFormatDateShort(entry.windowStart)} – ${_lsFormatDateShort(entry.windowEnd)}`
         + ` &nbsp;·&nbsp; ${entry.daysInWindow} Tag${entry.daysInWindow === 1 ? '' : 'e'} mit Daten`
+        + (locations ? ` &nbsp;·&nbsp; Standorte: ${locations}` : '')
         + ` &nbsp;·&nbsp; min. ${entry.minGames} Spiele für Aufnahme`
         + avg;
     }
