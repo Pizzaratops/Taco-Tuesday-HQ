@@ -93,6 +93,7 @@
       </div>
 
       <div class="snav-divider"></div>
+      <button class="snav-single" data-page="livescores" onclick="showLiveScores()">🔴 Live Scores</button>
       <button class="snav-single" data-page="standings" onclick="showStandings()">📈 Standings</button>
       <button class="snav-single" data-page="rules"     onclick="showRules()">📜 Rules</button>
       <div class="snav-divider"></div>
@@ -118,6 +119,7 @@
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Navigation</div>
         <button class="subnav-mobile-btn" data-page="home"      onclick="goHome();closeMobileNav()">🏠 Home</button>
+        <button class="subnav-mobile-btn" data-page="livescores" onclick="showLiveScores();closeMobileNav()">🔴 Live Scores</button>
         <button class="subnav-mobile-btn" data-page="standings" onclick="showStandings();closeMobileNav()">📈 Standings</button>
         <button class="subnav-mobile-btn" data-page="rules"     onclick="showRules();closeMobileNav()">📜 Rules</button>
       </div>
@@ -202,6 +204,35 @@
     </div>
   </div>
   <p style="color:var(--muted);font-size:12px;margin-top:12px;text-align:center;">— = did not participate that season</p>
+</div>
+
+<!-- LIVE SCORES -->
+<div class="page" id="liveScoresPage">
+  <h2 style="margin-bottom:6px;">🔴 Live Scores</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">9-Cat Z-Score Rankings · Summer League → Pre-Season → 2026/27 Season</p>
+
+  <div class="ls-subtabs">
+    <div class="ls-subtab active" id="lsSubtabDaily" onclick="lsSwitchPeriod('daily')">📅 Daily</div>
+    <div class="ls-subtab disabled" id="lsSubtabWeekly" title="Kommt bald">📈 Weekly</div>
+    <div class="ls-subtab disabled" id="lsSubtabMonthly" title="Kommt bald">🗓️ Monthly</div>
+  </div>
+
+  <div class="ls-toolbar">
+    <div class="ls-datepicker">
+      <button onclick="lsShiftDate(-1)" title="Vorheriger Tag">‹</button>
+      <input type="date" id="lsDateInput" onchange="lsLoadDate(this.value)"/>
+      <button onclick="lsShiftDate(1)" title="Nächster Tag">›</button>
+    </div>
+    <select class="ls-league-select" id="lsLeagueSelect" onchange="lsLoadDate(document.getElementById('lsDateInput').value)">
+      <option value="nba-summer-las-vegas">🏖️ NBA Summer League (Las Vegas)</option>
+      <option value="nba-preseason">🏀 NBA Pre-Season</option>
+      <option value="nba">🏆 NBA 2026/27</option>
+    </select>
+    <div class="ls-meta" id="lsMeta"></div>
+  </div>
+
+  <div id="lsGamesLine" class="ls-games-line"></div>
+  <div id="lsContent"></div>
 </div>
 
 <!-- RULES -->
@@ -1312,6 +1343,8 @@
 <!-- Init runs last, after all scripts are loaded -->
 <script src="data/rolling-rankings.js?v=5"></script>
   <script src="js/rolling-rankings.js?v=5"></script>
+<script src="data/livescores-daily.js?v=5"></script>
+<script src="js/livescores.js?v=5"></script>
   <script src="js/init.js?v=5"></script>
 
 </body>

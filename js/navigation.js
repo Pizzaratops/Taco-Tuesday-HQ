@@ -392,6 +392,7 @@ const SUBNAV_PAGES = {
   lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings',
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
   tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', nbaTradesPage:'nbatrades', adminSettingsPage:'adminsettings', standingsPage:'standings', rulesPage:'rules',
+  liveScoresPage:'livescores',
 };
 
 const SNAV_GROUP = {
@@ -473,6 +474,7 @@ function closeMobileNav() {
 function goHome(){navigate('homePage');}
 function showRules(){navigate('rulesPage');}
 function showStandings(){navigate('standingsPage');setTimeout(renderStandingsChart,50);}
+function showLiveScores(){navigate('liveScoresPage');typeof lsInit==='function'&&lsInit();}
 function _rerenderPage(pageId) {
   if (pageId === 'standingsPage')        setTimeout(renderStandingsChart, 50);
   if (pageId === 'nbaTradesPage')        renderNbaTrades();
@@ -493,6 +495,7 @@ function _rerenderPage(pageId) {
   if (pageId === 'duelBoardPage')        typeof showDuelBoard === 'function' && showDuelBoard();
   if (pageId === 'duelSettingsPage')     typeof showDuelSettings === 'function' && showDuelSettings();
   if (pageId === 'rulesPage')            showRules();
+  if (pageId === 'liveScoresPage')       typeof lsInit === 'function' && lsInit();
 }
 function toggleRule(header){header.parentElement.classList.toggle('collapsed');}
 

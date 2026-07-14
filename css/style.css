@@ -389,6 +389,48 @@
   .r-no-results { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
   .r-sort-arrow { margin-left: 4px; opacity: 0.5; font-size: 9px; }
   .r-sorted .r-sort-arrow { opacity: 1; }
+
+/* ===== LIVE SCORES ===== */
+  .ls-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .ls-datepicker { display: flex; align-items: center; gap: 6px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 6px 8px; }
+  .ls-datepicker button { background: var(--surface2); border: 1px solid var(--border); color: var(--text); border-radius: 8px; width: 30px; height: 30px; cursor: pointer; font-size: 14px; font-weight: 700; }
+  .ls-datepicker button:hover { border-color: var(--accent); color: var(--accent); }
+  .ls-datepicker input[type="date"] { background: transparent; border: none; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; padding: 4px; }
+  .ls-league-select { background: var(--surface); border: 1px solid var(--border); color: var(--text); border-radius: 10px; padding: 8px 12px; font-size: 13px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+  .ls-meta { color: var(--muted); font-size: 12px; margin-left: auto; white-space: nowrap; }
+  .ls-status { padding: 40px; text-align: center; color: var(--muted); font-size: 13px; }
+  .ls-status.ls-error { color: var(--red, #d9534f); }
+  .ls-games-line { color: var(--muted); font-size: 12px; margin-bottom: 14px; line-height: 1.6; }
+  .ls-table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto; }
+  .ls-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .ls-table thead tr { background: var(--surface2); border-bottom: 1px solid var(--border); }
+  .ls-table thead th {
+    padding: 10px 14px; text-align: right; font-size: 10.5px; font-weight: 800;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px;
+    white-space: nowrap; cursor: pointer; user-select: none;
+  }
+  .ls-table thead th:hover { color: var(--accent); }
+  .ls-table thead th.r-sorted { color: var(--accent); }
+  .ls-table thead th:first-child, .ls-table thead th:nth-child(2), .ls-table thead th:nth-child(3) { text-align: left; }
+  .ls-table thead th:first-child { width: 44px; text-align: center; }
+  .ls-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+  .ls-table tbody tr:last-child { border-bottom: none; }
+  .ls-table tbody tr:hover { background: var(--surface2); }
+  .ls-table td { padding: 9px 14px; text-align: right; white-space: nowrap; }
+  .ls-table td:first-child { text-align: center; color: var(--muted); font-weight: 700; }
+  .ls-table td:nth-child(2) { text-align: left; font-weight: 700; }
+  .ls-table td:nth-child(3) { text-align: left; color: var(--muted); font-size: 11.5px; font-weight: 700; }
+  .ls-composite { font-weight: 800; border-radius: 6px; padding: 3px 8px; display: inline-block; min-width: 46px; }
+  .ls-composite.pos { color: var(--green); background: rgba(76,175,129,0.12); }
+  .ls-composite.neg { color: #d9534f; background: rgba(217,83,79,0.12); }
+  .ls-subtabs { display: flex; gap: 4px; background: var(--surface); border-radius: 12px; padding: 5px; margin-bottom: 18px; border: 1px solid var(--border); max-width: 420px; }
+  .ls-subtab { flex: 1; padding: 9px; text-align: center; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--muted); transition: all 0.15s; }
+  .ls-subtab.active { background: var(--accent); color: white; }
+  .ls-subtab.disabled { cursor: not-allowed; opacity: 0.45; }
+  @media (max-width: 640px) {
+    .ls-meta { margin-left: 0; width: 100%; }
+    .ls-table td, .ls-table th { padding: 8px 9px; font-size: 12px; }
+  }
   .r-team-link { cursor: pointer; transition: all 0.15s; }
   .r-team-link:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
   .nba-team-hero { display:flex; align-items:center; gap:20px; margin-bottom:28px; }
