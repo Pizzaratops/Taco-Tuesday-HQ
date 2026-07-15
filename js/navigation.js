@@ -387,7 +387,7 @@ html += `<td>
 
 // Which group each page belongs to (for group-button highlighting)
 const SUBNAV_PAGES = {
-  homePage:'home', draftboardPage:'draftboard', draft26Page:'draft26', bigBoardPage:'bigBoard',
+  homePage:'home', draftboardPage:'draftboard', draft26Page:'draft26', draft27Page:'draft27', bigBoardPage:'bigBoard',
   duelPage:'duel', duelBoardPage:'duelboard', duelSettingsPage:'duelsettings',
   lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings',
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
@@ -396,7 +396,7 @@ const SUBNAV_PAGES = {
 };
 
 const SNAV_GROUP = {
-  draftboard: 'snavDraft', draft26: 'snavDraft', lottery: 'snavDraft',
+  draft26: 'snavDraft', draft27: 'snavDraft', lottery: 'snavDraft',
   duel: 'snavDuel', duelboard: 'snavDuel', duelsettings: 'snavDuel',
   rankings:   'snavAnalytics', bestavail: 'snavAnalytics', analytics: 'snavAnalytics', rollingrankings: 'snavAnalytics',
   trade:      'snavTrade', tradefinder: 'snavTrade', tradehistory: 'snavTrade',
@@ -488,6 +488,7 @@ function _rerenderPage(pageId) {
   if (pageId === 'rollingRankingsPage')  showRollingRankings();
   if (pageId === 'bigBoardPage')         showBigBoard();
   if (pageId === 'draft26Page')          showDraft26();
+  if (pageId === 'draft27Page')          showDraft27();
   if (pageId === 'lotteryPage')          showLottery();
   if (pageId === 'tradePage')            typeof showTrade === 'function' && showTrade();
   if (pageId === 'tradeFinderPage')      typeof showTradeFinder === 'function' && showTradeFinder();
