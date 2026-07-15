@@ -47,11 +47,32 @@ const LS_COLUMNS_AGGREGATE = [
 
 const LS_PERIOD_LABEL = { week: 'Woche', month: 'Monat' };
 
+// ESPN benutzt in den Boxscore-Feeds eigene Kurz-Codes, die teils von den
+// "Standard"-3-Buchstaben-Codes abweichen, die anderswo auf der Seite
+// verwendet werden (z.B. NBA_TEAM_NAMES in js/nba-teams.js) — GS statt GSW,
+// NO statt NOR, NY statt NYK, PHX statt PHO, SA statt SAS, UTAH statt UTA,
+// WSH statt WAS. Diese Map ist deshalb bewusst getrennt und deckt exakt die
+// Codes ab, die in data/livescores-*.js tatsächlich vorkommen.
+const LS_TEAM_NAMES = {
+  ATL: 'Atlanta', BOS: 'Boston', BKN: 'Brooklyn', CHA: 'Charlotte',
+  CHI: 'Chicago', CLE: 'Cleveland', DAL: 'Dallas', DEN: 'Denver',
+  DET: 'Detroit', GS: 'Golden State', HOU: 'Houston', IND: 'Indiana',
+  LAC: 'LA Clippers', LAL: 'LA Lakers', MEM: 'Memphis', MIA: 'Miami',
+  MIL: 'Milwaukee', MIN: 'Minnesota', NO: 'New Orleans', NY: 'New York',
+  OKC: 'Oklahoma City', ORL: 'Orlando', PHI: 'Philadelphia', PHX: 'Phoenix',
+  POR: 'Portland', SA: 'San Antonio', SAC: 'Sacramento', TOR: 'Toronto',
+  UTAH: 'Utah', WSH: 'Washington', FA: 'Free Agent',
+};
+function _lsTeamFullName(abbr) {
+  return LS_TEAM_NAMES[abbr] || abbr;
+}
+
 // Reihenfolge/Labels für die Punt-Gewichtung — Keys müssen zu den Keys in
 // player.zScores passen (siehe scripts/lib/aggregate-core.js CATEGORIES).
-// Range -1..2 in 0.25-Schritten, Default 1 (= normale Gewichtung, ergibt
-// exakt die ursprüngliche unweighted Composite-Summe). Nichts wird
-// gespeichert — lsWeights lebt nur im Speicher dieser Session.
+// Range 0..2 in 0.25-Schritten (0 - 0,25 - 0,5 - ... - 2), Default 1 (=
+// normale Gewichtung, ergibt exakt die ursprüngliche unweighted Composite-
+// Summe). Nichts wird gespeichert — lsWeights lebt nur im Speicher dieser
+// Session.
 const LS_WEIGHT_CATS = [
   { key: 'pts',       label: 'PTS' },
   { key: 'reb',       label: 'REB' },
@@ -88,12 +109,16 @@ function _lsWeightedComposite(p) {
 }
 
 // ------------------------------------------------------------
-// Punt-Gewichtungs-Panel — immer sichtbar, kein Ein-/Ausklappen
+// Punt-Gewichtungs-Panel — aufklappbar, Standard: eingeklappt
 // ------------------------------------------------------------
 function _lsEnsurePuntGrid() {
   if (lsPuntGridBuilt) return;
   _lsRenderPuntGrid();
   lsPuntGridBuilt = true;
+}
+
+function lsTogglePuntPanel() {
+  document.getElementById('lsPuntPanel')?.classList.toggle('collapsed');
 }
 
 function _lsRenderPuntGrid() {
@@ -103,7 +128,7 @@ function _lsRenderPuntGrid() {
     const v = lsWeights[c.key];
     return `<div class="ls-punt-item ${v === 0 ? 'is-punted' : ''}" id="lsPuntItem-${c.key}">
       <div class="ls-punt-item-label"><span>${c.label}</span><span class="ls-punt-item-value" id="lsPuntValue-${c.key}">${v.toFixed(2)}</span></div>
-      <input type="range" min="-1" max="2" step="0.25" value="${v}" oninput="lsSetPuntWeight('${c.key}', this.value)"/>
+      <input type="range" min="0" max="2" step="0.25" value="${v}" oninput="lsSetPuntWeight('${c.key}', this.value)"/>
     </div>`;
   }).join('');
 }
@@ -302,10 +327,11 @@ function _lsRenderTable() {
     const compClass = p.composite >= 0 ? 'pos' : 'neg';
     const compLabel = (p.composite >= 0 ? '+' : '') + p.composite.toFixed(2);
     const gpCell = isDaily ? '' : `<td>${p.games}</td>`;
+    const teamCell = `<td><div class="ls-team-cell"><span class="ls-team-abbr">${p.team}</span><span class="ls-team-full">${_lsTeamFullName(p.team)}</span></div></td>`;
     return `<tr>
       <td>${i + 1}</td>
       <td>${p.name}</td>
-      <td>${p.team}</td>
+      ${teamCell}
       ${gpCell}
       <td>${fmtCount(p.min)}</td>
       <td>${fmtCount(p.pts)}</td>
