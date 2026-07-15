@@ -431,12 +431,19 @@
 
   .ls-punt-panel {
     background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-    padding: 16px 18px; margin-bottom: 18px;
+    padding: 0; margin-bottom: 18px; overflow: hidden;
   }
   .ls-punt-header {
     display: flex; justify-content: space-between; align-items: center; gap: 12px;
-    flex-wrap: wrap; margin-bottom: 14px; font-size: 11.5px; color: var(--muted);
+    flex-wrap: wrap; font-size: 11.5px; color: var(--muted);
+    padding: 14px 18px; cursor: pointer; user-select: none; transition: background 0.15s;
   }
+  .ls-punt-header:hover { background: var(--surface2); }
+  .ls-punt-header-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .ls-punt-chevron { font-size: 14px; color: var(--muted); transition: transform 0.2s; }
+  .ls-punt-panel.collapsed .ls-punt-chevron { transform: rotate(-90deg); }
+  .ls-punt-body { padding: 4px 18px 16px; }
+  .ls-punt-panel.collapsed .ls-punt-body { display: none; }
   .ls-punt-reset {
     background: var(--surface2); border: 1px solid var(--border); color: var(--text);
     padding: 5px 12px; border-radius: 8px; cursor: pointer; font-size: 11px; font-weight: 700;
@@ -451,6 +458,9 @@
   .ls-punt-item input[type="range"] {
     width: 100%; accent-color: var(--accent); cursor: pointer; height: 4px;
   }
+  .ls-team-cell { display: flex; flex-direction: column; line-height: 1.3; gap: 1px; }
+  .ls-team-abbr { font-weight: 800; color: var(--text); font-size: 11.5px; letter-spacing: 0.3px; }
+  .ls-team-full { color: var(--muted); font-size: 10.5px; font-weight: 600; }
   @media (max-width: 640px) {
     .ls-meta { margin-left: 0; width: 100%; }
     .ls-table td, .ls-table th { padding: 8px 9px; font-size: 12px; }
