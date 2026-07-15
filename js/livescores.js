@@ -47,16 +47,31 @@ const LS_COLUMNS_AGGREGATE = [
 
 const LS_PERIOD_LABEL = { week: 'Woche', month: 'Monat' };
 
-const LS_LEAGUE_SHORT_LABEL = {
-  'nba-summer-california': 'Cali',
-  'nba-summer-utah': 'Salt Lake',
-  'nba-summer-las-vegas': 'Vegas',
-  'nba-preseason': 'Pre-Season',
-  'nba': 'NBA',
-};
-function _lsLeagueShortLabel(slug) {
-  return LS_LEAGUE_SHORT_LABEL[slug] || slug;
+// Reihenfolge/Labels für die Punt-Gewichtung — Keys müssen zu den Keys in
+// player.zScores passen (siehe scripts/lib/aggregate-core.js CATEGORIES).
+// Range -1..2 in 0.25-Schritten, Default 1 (= normale Gewichtung, ergibt
+// exakt die ursprüngliche unweighted Composite-Summe). Nichts wird
+// gespeichert — lsWeights lebt nur im Speicher dieser Session.
+const LS_WEIGHT_CATS = [
+  { key: 'pts',       label: 'PTS' },
+  { key: 'reb',       label: 'REB' },
+  { key: 'ast',       label: 'AST' },
+  { key: 'stl',       label: 'STL' },
+  { key: 'blk',       label: 'BLK' },
+  { key: 'to',        label: 'TO' },
+  { key: 'tpm',       label: '3PM' },
+  { key: 'fgImpact',  label: 'FG%' },
+  { key: 'ftImpact',  label: 'FT%' },
+];
+
+function _lsDefaultWeights() {
+  const w = {};
+  LS_WEIGHT_CATS.forEach(c => { w[c.key] = 1; });
+  return w;
 }
+
+let lsWeights = _lsDefaultWeights();
+let lsPuntGridBuilt = false;
 
 let lsCurrentPeriod = 'daily';  // "daily" | "week" | "month"
 let lsCurrentLeague = 'nba-summer-las-vegas';
@@ -64,6 +79,55 @@ let lsCurrentDate   = null;     // "YYYY-MM-DD" — Tag (daily) oder Fenster-Sti
 let lsSortCol = 'composite';
 let lsSortAsc = false;
 let lsRows = [];
+
+function _lsWeightedComposite(p) {
+  if (!p.zScores) return p.composite;
+  let sum = 0;
+  for (const c of LS_WEIGHT_CATS) sum += (p.zScores[c.key] || 0) * (lsWeights[c.key] ?? 1);
+  return Math.round(sum * 100) / 100;
+}
+
+// ------------------------------------------------------------
+// Punt-Gewichtungs-Panel — immer sichtbar, kein Ein-/Ausklappen
+// ------------------------------------------------------------
+function _lsEnsurePuntGrid() {
+  if (lsPuntGridBuilt) return;
+  _lsRenderPuntGrid();
+  lsPuntGridBuilt = true;
+}
+
+function _lsRenderPuntGrid() {
+  const grid = document.getElementById('lsPuntGrid');
+  if (!grid) return;
+  grid.innerHTML = LS_WEIGHT_CATS.map(c => {
+    const v = lsWeights[c.key];
+    return `<div class="ls-punt-item ${v === 0 ? 'is-punted' : ''}" id="lsPuntItem-${c.key}">
+      <div class="ls-punt-item-label"><span>${c.label}</span><span class="ls-punt-item-value" id="lsPuntValue-${c.key}">${v.toFixed(2)}</span></div>
+      <input type="range" min="-1" max="2" step="0.25" value="${v}" oninput="lsSetPuntWeight('${c.key}', this.value)"/>
+    </div>`;
+  }).join('');
+}
+
+function lsSetPuntWeight(key, value) {
+  const v = parseFloat(value);
+  lsWeights[key] = v;
+  const valueEl = document.getElementById(`lsPuntValue-${key}`);
+  if (valueEl) valueEl.textContent = v.toFixed(2);
+  document.getElementById(`lsPuntItem-${key}`)?.classList.toggle('is-punted', v === 0);
+  _lsRender();
+}
+
+function lsResetPuntWeights() {
+  lsWeights = _lsDefaultWeights();
+  LS_WEIGHT_CATS.forEach(c => {
+    const input = document.querySelector(`#lsPuntItem-${c.key} input[type="range"]`);
+    if (input) input.value = 1;
+    const valueEl = document.getElementById(`lsPuntValue-${c.key}`);
+    if (valueEl) valueEl.textContent = '1.00';
+    document.getElementById(`lsPuntItem-${c.key}`)?.classList.remove('is-punted');
+  });
+  _lsRender();
+}
 
 function _lsToDateObj(str) {
   const [y, m, d] = str.split('-').map(Number);
@@ -84,18 +148,12 @@ function _lsFormatDateShort(dateStr) {
 // ------------------------------------------------------------
 // Datenzugriff — je nach Periode aus einer anderen globalen Quelle
 // ------------------------------------------------------------
-// Weekly/Monthly ignorieren die Liga-Auswahl bewusst: sie werden
-// standortübergreifend berechnet (letzte 7/30 Tage, egal ob Cali/Utah/
-// Vegas) und liegen unter dem festen Key "all" — siehe
-// scripts/update-all-aggregates.js.
-const LS_AGGREGATE_LEAGUE = 'all';
-
 function _lsAvailableDates(period, league) {
   if (period === 'daily') {
     const data = (typeof LIVESCORES_DAILY !== 'undefined' ? LIVESCORES_DAILY[league] : null) || {};
     return Object.keys(data).sort();
   }
-  const data = (typeof LIVESCORES_AGGREGATE !== 'undefined' ? (LIVESCORES_AGGREGATE[period] || {})[LS_AGGREGATE_LEAGUE] : null) || {};
+  const data = (typeof LIVESCORES_AGGREGATE !== 'undefined' ? (LIVESCORES_AGGREGATE[period] || {})[league] : null) || {};
   return Object.keys(data).sort();
 }
 
@@ -104,7 +162,7 @@ function _lsEntry(period, league, dateStr) {
     const data = (typeof LIVESCORES_DAILY !== 'undefined' ? LIVESCORES_DAILY[league] : null) || {};
     return data[dateStr];
   }
-  const data = (typeof LIVESCORES_AGGREGATE !== 'undefined' ? (LIVESCORES_AGGREGATE[period] || {})[LS_AGGREGATE_LEAGUE] : null) || {};
+  const data = (typeof LIVESCORES_AGGREGATE !== 'undefined' ? (LIVESCORES_AGGREGATE[period] || {})[league] : null) || {};
   return data[dateStr];
 }
 
@@ -112,6 +170,8 @@ function _lsEntry(period, league, dateStr) {
 // Navigation
 // ------------------------------------------------------------
 function lsInit() {
+  _lsEnsurePuntGrid();
+
   const select = document.getElementById('lsLeagueSelect');
   if (select) select.value = lsCurrentLeague;
 
@@ -130,16 +190,6 @@ function lsSwitchPeriod(period) {
   document.querySelectorAll('.ls-subtab').forEach(el => el.classList.remove('active'));
   const idByPeriod = { daily: 'lsSubtabDaily', week: 'lsSubtabWeekly', month: 'lsSubtabMonthly' };
   document.getElementById(idByPeriod[period])?.classList.add('active');
-
-  // Liga-Dropdown gilt nur für Daily — Weekly/Monthly sind standortübergreifend.
-  const select = document.getElementById('lsLeagueSelect');
-  if (select) select.disabled = (period !== 'daily');
-  const hint = document.getElementById('lsScheduleHint');
-  if (hint) {
-    hint.textContent = period === 'daily'
-      ? 'Kalifornien: 3.–6. Juli · Salt Lake City: 4.–7. Juli · Las Vegas: 9.–19. Juli'
-      : `${LS_PERIOD_LABEL[period]}-Ranking kombiniert automatisch alle Standorte (Kalifornien, Salt Lake City, Las Vegas, …) — die Liga-Auswahl gilt nur für Daily.`;
-  }
 
   // Beim Wechsel auf den zuletzt verfügbaren Stichtag für die neue Periode springen —
   // ein Datum, das bei Daily existiert, muss bei Weekly/Monthly nicht existieren.
@@ -204,16 +254,14 @@ function _lsRender() {
       const avg = entry.leagueAvg
         ? ` · Liga-Ø FG% ${entry.leagueAvg.fg.toFixed(1)}% · FT% ${entry.leagueAvg.ft.toFixed(1)}%`
         : '';
-      const locations = (entry.leaguesInWindow || []).map(_lsLeagueShortLabel).join(', ');
       gamesLine.innerHTML = `Fenster ${_lsFormatDateShort(entry.windowStart)} – ${_lsFormatDateShort(entry.windowEnd)}`
         + ` &nbsp;·&nbsp; ${entry.daysInWindow} Tag${entry.daysInWindow === 1 ? '' : 'e'} mit Daten`
-        + (locations ? ` &nbsp;·&nbsp; Standorte: ${locations}` : '')
         + ` &nbsp;·&nbsp; min. ${entry.minGames} Spiele für Aufnahme`
         + avg;
     }
   }
 
-  lsRows = entry.players.slice();
+  lsRows = entry.players.map(p => ({ ...p, composite: _lsWeightedComposite(p) }));
   _lsSort(lsSortCol, true);
   _lsRenderTable();
 }
@@ -250,12 +298,12 @@ function _lsRenderTable() {
   // Bei Weekly/Monthly sind es Pro-Spiel-Schnitte über mehrere Tage (1 Dezimalstelle).
   const fmtCount = (n) => isDaily ? n : n.toFixed(1);
 
-  const rows = lsRows.map(p => {
+  const rows = lsRows.map((p, i) => {
     const compClass = p.composite >= 0 ? 'pos' : 'neg';
     const compLabel = (p.composite >= 0 ? '+' : '') + p.composite.toFixed(2);
     const gpCell = isDaily ? '' : `<td>${p.games}</td>`;
     return `<tr>
-      <td>${p.rank}</td>
+      <td>${i + 1}</td>
       <td>${p.name}</td>
       <td>${p.team}</td>
       ${gpCell}

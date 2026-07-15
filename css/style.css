@@ -428,6 +428,29 @@
   .ls-subtab { flex: 1; padding: 9px; text-align: center; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--muted); transition: all 0.15s; }
   .ls-subtab.active { background: var(--accent); color: white; }
   .ls-subtab.disabled { cursor: not-allowed; opacity: 0.45; }
+
+  .ls-punt-panel {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 16px 18px; margin-bottom: 18px;
+  }
+  .ls-punt-header {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    flex-wrap: wrap; margin-bottom: 14px; font-size: 11.5px; color: var(--muted);
+  }
+  .ls-punt-reset {
+    background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+    padding: 5px 12px; border-radius: 8px; cursor: pointer; font-size: 11px; font-weight: 700;
+    font-family: 'DM Sans', sans-serif; white-space: nowrap; transition: all 0.15s;
+  }
+  .ls-punt-reset:hover { border-color: var(--accent); }
+  .ls-punt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px 18px; }
+  .ls-punt-item { display: flex; flex-direction: column; gap: 5px; }
+  .ls-punt-item-label { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: var(--text); }
+  .ls-punt-item-value { color: var(--accent); font-family: 'Playfair Display', serif; }
+  .ls-punt-item.is-punted .ls-punt-item-value { color: var(--muted); }
+  .ls-punt-item input[type="range"] {
+    width: 100%; accent-color: var(--accent); cursor: pointer; height: 4px;
+  }
   @media (max-width: 640px) {
     .ls-meta { margin-left: 0; width: 100%; }
     .ls-table td, .ls-table th { padding: 8px 9px; font-size: 12px; }

@@ -11,24 +11,22 @@
 //  erhalten — es wird nur der eine Schlüssel überschrieben/ergänzt.
 //
 //  Usage:
-//    node scripts/convert-aggregate-to-livescores.js --period=week --league=all
-//      → Fenster endet heute, kombiniert alle Standorte (empfohlen/Standardfall)
-//    node scripts/convert-aggregate-to-livescores.js --period=month --league=all --end=2026-11-01
-//    node scripts/convert-aggregate-to-livescores.js --period=week --league=all --keep=90
-//      → wirft Einträge raus, wenn mehr als 90 Stichtage gespeichert sind
 //    node scripts/convert-aggregate-to-livescores.js --period=week --league=nba-summer-las-vegas
-//      → nur zu Debug-/Vergleichszwecken: EIN Standort statt kombiniert
+//      → Fenster endet heute
+//    node scripts/convert-aggregate-to-livescores.js --period=month --league=nba --end=2026-11-01
+//    node scripts/convert-aggregate-to-livescores.js --period=week --league=nba --keep=90
+//      → wirft Einträge raus, wenn mehr als 90 Stichtage für diese Liga/Periode gespeichert sind
 //
 //  Wird auch von scripts/update-all-aggregates.js als Modul benutzt
-//  (buildEntry/mergeEntry/trimKeep/loadExisting/serialize) — das ist der
-//  eigentliche Weg, wie Weekly/Monthly in der Praxis aktualisiert werden
-//  (ein kombinierter "all"-Eintrag pro Periode, statt pro Liga).
+//  (buildEntry/mergeEntry/trimKeep/loadExisting/serialize), damit der
+//  Workflow in einem Rutsch mehrere Ligen/Perioden aktualisieren kann,
+//  ohne die Ausgabedatei mehrfach zu lesen/schreiben.
 // ============================================================
 
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
-const { computeAggregate, toDateStr, CATEGORIES } = require('./lib/aggregate-core');
+const { computeAggregate, toDateStr } = require('./lib/aggregate-core');
 
 const DEFAULT_OUT = path.join(__dirname, '..', 'data', 'livescores-aggregate.js');
 const DEFAULT_DIR = path.join(__dirname, 'data');
@@ -36,19 +34,6 @@ const DEFAULT_KEEP = 90; // Stichtage pro Liga/Periode
 
 const round1 = (n) => Math.round(n * 10) / 10;
 const round2 = (n) => Math.round(n * 100) / 100;
-
-/**
- * Rundet die Per-Category-Z-Scores eines Spielers auf 2 Nachkommastellen,
- * in derselben Reihenfolge wie CATEGORIES (pts, reb, ast, stl, blk, tpm,
- * fgImpact, ftImpact, to). Blocker für die Punt-Gewichtungs-UI (Punkt 2).
- */
-function roundZScores(zScores) {
-  const out = {};
-  for (const cat of CATEGORIES) {
-    out[cat.key] = round2(zScores[cat.key]);
-  }
-  return out;
-}
 
 /**
  * Berechnet einen einzelnen Eintrag für data/livescores-aggregate.js.
@@ -62,36 +47,36 @@ function buildEntry({ period, league, endDate, dir, minGames }) {
     return null;
   }
 
-  const { windowStart, windowEnd, windowDays, datesInWindow, leaguesInWindow, eligible, leagueFGpct, leagueFTpct } = result;
+  const { windowStart, windowEnd, windowDays, filesInWindow, eligible, leagueFGpct, leagueFTpct } = result;
 
-  const players = eligible.map((p, i) => ({
-    rank: i + 1,
-    name: p.name,
-    team: p.team,
-    games: p.games,
-    leagues: p.leagues, // Standorte, an denen der Spieler im Fenster aufgelaufen ist
-    min: round1(p.min / p.games),
-    pts: round1(p.ptsPg),
-    reb: round1(p.rebPg),
-    ast: round1(p.astPg),
-    stl: round1(p.stlPg),
-    blk: round1(p.blkPg),
-    to: round1(p.toPg),
-    tpm: round1(p.tpmPg),
-    fgPct: p.fga > 0 ? round1((p.fgm / p.fga) * 100) : 0,
-    ftPct: p.fta > 0 ? round1((p.ftm / p.fta) * 100) : 0,
-    composite: round2(p.composite),
-    zScores: roundZScores(p.zScores),
-  }));
+  const players = eligible.map((p, i) => {
+    const zScores = {};
+    for (const key of Object.keys(p.zScores)) zScores[key] = round2(p.zScores[key]);
+    return {
+      rank: i + 1,
+      name: p.name,
+      team: p.team,
+      games: p.games,
+      min: round1(p.min / p.games),
+      pts: round1(p.ptsPg),
+      reb: round1(p.rebPg),
+      ast: round1(p.astPg),
+      stl: round1(p.stlPg),
+      blk: round1(p.blkPg),
+      to: round1(p.toPg),
+      tpm: round1(p.tpmPg),
+      fgPct: p.fga > 0 ? round1((p.fgm / p.fga) * 100) : 0,
+      ftPct: p.fta > 0 ? round1((p.ftm / p.fta) * 100) : 0,
+      composite: round2(p.composite),
+      zScores,
+    };
+  });
 
   return {
     windowStart: toDateStr(windowStart),
     windowEnd: toDateStr(windowEnd),
     windowDays,
-    // Anzahl Kalendertage mit Daten im Fenster (nicht Dateien — bei
-    // kombinierten Ligen können mehrere Dateien denselben Tag betreffen).
-    daysInWindow: datesInWindow.length,
-    leaguesInWindow, // z.B. ["nba-summer-las-vegas","nba-summer-utah"]
+    daysInWindow: filesInWindow.length,
     minGames: result.minGames,
     leagueAvg: { fg: round1(leagueFGpct * 100), ft: round1(leagueFTpct * 100) },
     players,
@@ -130,18 +115,10 @@ function trimKeep(existing, keep) {
   }
 }
 
-function fmtZScores(z) {
-  // Defensiv: alte Einträge (vor Einführung der Per-Category-Z-Scores bzw.
-  // aus der Zeit vor dem kombinierten "all"-Key) haben ggf. kein zScores-
-  // Objekt. Nie hart crashen beim Neuschreiben der Datei — lieber ein
-  // leeres/0-Objekt schreiben, das beim nächsten echten Lauf für diese
-  // Liga/Periode ohnehin überschrieben wird.
-  if (!z) return `{ ${CATEGORIES.map(cat => `${cat.key}: 0`).join(', ')} }`;
-  return `{ ${CATEGORIES.map(cat => `${cat.key}: ${z[cat.key] != null ? z[cat.key] : 0}`).join(', ')} }`;
-}
-
 function fmtPlayer(p) {
-  return `{ rank: ${p.rank}, name: ${JSON.stringify(p.name)}, team: ${JSON.stringify(p.team)}, games: ${p.games}, leagues: ${JSON.stringify(p.leagues || [])}, min: ${p.min}, pts: ${p.pts}, reb: ${p.reb}, ast: ${p.ast}, stl: ${p.stl}, blk: ${p.blk}, to: ${p.to}, tpm: ${p.tpm}, fgPct: ${p.fgPct}, ftPct: ${p.ftPct}, composite: ${p.composite}, zScores: ${fmtZScores(p.zScores)} }`;
+  const z = p.zScores || {};
+  const zStr = Object.keys(z).map(k => `${k}: ${z[k]}`).join(', ');
+  return `{ rank: ${p.rank}, name: ${JSON.stringify(p.name)}, team: ${JSON.stringify(p.team)}, games: ${p.games}, min: ${p.min}, pts: ${p.pts}, reb: ${p.reb}, ast: ${p.ast}, stl: ${p.stl}, blk: ${p.blk}, to: ${p.to}, tpm: ${p.tpm}, fgPct: ${p.fgPct}, ftPct: ${p.ftPct}, composite: ${p.composite}, zScores: { ${zStr} } }`;
 }
 
 function fmtEntry(entry) {
@@ -151,7 +128,6 @@ function fmtEntry(entry) {
         windowEnd: ${JSON.stringify(entry.windowEnd)},
         windowDays: ${entry.windowDays},
         daysInWindow: ${entry.daysInWindow},
-        leaguesInWindow: ${JSON.stringify(entry.leaguesInWindow || [])},
         minGames: ${entry.minGames},
         leagueAvg: { fg: ${entry.leagueAvg.fg}, ft: ${entry.leagueAvg.ft} },
         players: [
@@ -179,32 +155,24 @@ function serialize(existing) {
 //  Änderungen werden beim nächsten Lauf überschrieben.
 //
 //  Shape:
-//  LIVESCORES_AGGREGATE[period]["all"][endDate] = {
+//  LIVESCORES_AGGREGATE[period][league][endDate] = {
 //    windowStart, windowEnd,   // "YYYY-MM-DD" — Rand des rollierenden Fensters
 //    windowDays,                // 7 (week) oder 30 (month)
-//    daysInWindow,              // Anzahl Kalendertage mit Daten im Fenster
-//    leaguesInWindow,           // Standorte, die irgendwo im Fenster CSVs hatten
-//                                // (z.B. ["nba-summer-las-vegas","nba-summer-utah"])
+//    daysInWindow,              // Anzahl Tages-CSVs, die tatsächlich im Fenster lagen
 //    minGames,                  // Mindestspiele, um in "players" zu erscheinen
 //    leagueAvg: { fg, ft },
 //    players: [
-//      { rank, name, team, games, leagues, min, pts, reb, ast, stl, blk, to, tpm,
-//        fgPct, ftPct, composite,     // Werte sind Pro-Spiel-Schnitte im Fenster
+//      { rank, name, team, games, min, pts, reb, ast, stl, blk, to, tpm,
+//        fgPct, ftPct, composite,
 //        zScores: { pts, reb, ast, stl, blk, tpm, fgImpact, ftImpact, to } },
-//        // ^ "leagues" = Standorte, an denen DIESER Spieler im Fenster gespielt hat.
-//        //   Per-Category-Z-Scores auf 2 Nachkommastellen gerundet, TO-Vorzeichen
-//        //   bereits invertiert — hoher Wert = gut. Blocker für Punt-Gewichtungs-UI.
+//        // Werte sind Pro-Spiel-Schnitte im Fenster; zScores sind die
+//        // ungewichteten Kategorie-Z-Scores (composite ist ihre Summe) —
+//        // Basis für die Punt-Gewichtung im Frontend.
 //      ...
 //    ]
 //  }
 //
 //  period: "week" | "month"
-//  Weekly/Monthly werden IMMER standortübergreifend berechnet — "all" ist der
-//  einzige League-Key, der hier vorkommt. Das Fenster sind immer die letzten
-//  7 bzw. 30 Tage vor "endDate", egal ob ein Spieler in Cali, Utah und/oder
-//  Vegas aufgelaufen ist. (Daily bleibt weiterhin pro Standort in
-//  data/livescores-daily.js — dort macht die Trennung Sinn, weil an einem
-//  Tag ohnehin nur an einem Standort gespielt wird.)
 //  endDate: Stichtag, an dem das Fenster endet ("YYYY-MM-DD")
 // ============================================================
 

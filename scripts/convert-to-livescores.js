@@ -22,6 +22,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const { CATEGORIES, mean, stdDev } = require('./lib/aggregate-core');
 
 const args = process.argv.slice(2);
 const arg = (name, fallback) => {
@@ -70,6 +71,39 @@ function splitCsvLine(line) {
 const num = (v) => (v === undefined || v === '' ? 0 : Number(v) || 0);
 
 // ------------------------------------------------------------
+// Rekonstruiert die Pro-Kategorie-Z-Scores aus den bereits in der
+// CSV vorhandenen Rohwerten (PTS/REB/AST/STL/BLK/TO/3PM/FGImpact/
+// FTImpact) — daily-9cat.js berechnet diese Z-Scores intern schon,
+// schreibt sie aber nur als Summe (Composite) in die CSV. Für die
+// Punt-Gewichtung auf der Live-Scores-Seite brauchen wir sie einzeln.
+// Rechnet über denselben Spieler-Pool (alle Zeilen der Tages-CSV),
+// den daily-9cat.js für die ursprüngliche Berechnung benutzt hat —
+// das Ergebnis ist identisch zur ursprünglichen Composite-Summe.
+// ------------------------------------------------------------
+function attachZScores(players) {
+  const stats = {};
+  for (const cat of CATEGORIES) {
+    const values = players.map(p => p[cat.key]);
+    const m = mean(values);
+    const sd = stdDev(values, m);
+    stats[cat.key] = { mean: m, sd };
+  }
+  for (const p of players) {
+    p.zScores = {};
+    let sum = 0;
+    for (const cat of CATEGORIES) {
+      const { mean: m, sd } = stats[cat.key];
+      let z = sd > 0 ? (p[cat.key] - m) / sd : 0;
+      if (cat.invert) z = -z;
+      z = Math.round(z * 1000) / 1000;
+      p.zScores[cat.key] = z;
+      sum += z;
+    }
+    p._zSum = sum;
+  }
+}
+
+// ------------------------------------------------------------
 // 1) CSV + Meta für den angefragten Tag laden
 // ------------------------------------------------------------
 const csvPath = path.join(DIR, `daily-9cat_${LEAGUE}_${dateStr}.csv`);
@@ -83,7 +117,9 @@ if (!fs.existsSync(csvPath)) {
 const rows = parseCsv(fs.readFileSync(csvPath, 'utf8'));
 // Spalten werden per Name gelesen (nicht per Position) — robust gegenüber
 // zusätzlichen/fehlenden Spalten in daily-9cat.js (z.B. FGM/FGA/FTM/FTA).
-const players = rows.map(row => ({
+// fgImpact/ftImpact werden nur für die Z-Score-Rekonstruktion gebraucht,
+// nicht Teil des finalen Player-Outputs (dort stehen fgPct/ftPct in %).
+const rawPlayers = rows.map(row => ({
   rank: Math.round(num(row.Rank)),
   name: row.Name,
   team: row.Team,
@@ -95,9 +131,26 @@ const players = rows.map(row => ({
   blk: Math.round(num(row.BLK)),
   to: Math.round(num(row.TO)),
   tpm: Math.round(num(row['3PM'])),
+  fgImpact: num(row.FGImpact),
+  ftImpact: num(row.FTImpact),
   fgPct: num(row['FG%']),
   ftPct: num(row['FT%']),
   composite: num(row.Composite),
+}));
+
+attachZScores(rawPlayers);
+
+// Sanity-Check: Summe der rekonstruierten Z-Scores sollte (bis auf
+// Rundung) der ursprünglich gespeicherten Composite-Spalte entsprechen.
+const mismatches = rawPlayers.filter(p => Math.abs(p._zSum - p.composite) > 0.05);
+if (mismatches.length) {
+  console.warn(`Achtung: ${mismatches.length} Spieler mit Composite-Abweichung > 0.05 nach Z-Score-Rekonstruktion (z.B. ${mismatches[0].name}: ${mismatches[0]._zSum.toFixed(2)} vs. ${mismatches[0].composite}). Läuft meist auf abweichende Rundung hinaus, kein Blocker.`);
+}
+
+const players = rawPlayers.map(p => ({
+  rank: p.rank, name: p.name, team: p.team, min: p.min,
+  pts: p.pts, reb: p.reb, ast: p.ast, stl: p.stl, blk: p.blk, to: p.to, tpm: p.tpm,
+  fgPct: p.fgPct, ftPct: p.ftPct, composite: p.composite, zScores: p.zScores,
 }));
 
 let meta = { games: [], leagueAvg: { fg: 0, ft: 0 } };
@@ -153,7 +206,9 @@ if (keepDaysArg) {
 // 4) Zurück in JS serialisieren
 // ------------------------------------------------------------
 function fmtPlayer(p) {
-  return `{ rank: ${p.rank}, name: ${JSON.stringify(p.name)}, team: ${JSON.stringify(p.team)}, min: ${p.min}, pts: ${p.pts}, reb: ${p.reb}, ast: ${p.ast}, stl: ${p.stl}, blk: ${p.blk}, to: ${p.to}, tpm: ${p.tpm}, fgPct: ${p.fgPct}, ftPct: ${p.ftPct}, composite: ${p.composite} }`;
+  const z = p.zScores || {};
+  const zStr = CATEGORIES.map(c => `${c.key}: ${z[c.key] ?? 0}`).join(', ');
+  return `{ rank: ${p.rank}, name: ${JSON.stringify(p.name)}, team: ${JSON.stringify(p.team)}, min: ${p.min}, pts: ${p.pts}, reb: ${p.reb}, ast: ${p.ast}, stl: ${p.stl}, blk: ${p.blk}, to: ${p.to}, tpm: ${p.tpm}, fgPct: ${p.fgPct}, ftPct: ${p.ftPct}, composite: ${p.composite}, zScores: { ${zStr} } }`;
 }
 
 function fmtDay(day) {
@@ -186,10 +241,16 @@ const header = `// ============================================================
 //    leagueAvg: { fg: 47.3, ft: 76.1 },
 //    players: [
 //      { rank, name, team, min, pts, reb, ast, stl, blk, to, tpm,
-//        fgPct, ftPct, composite },
+//        fgPct, ftPct, composite,
+//        zScores: { pts, reb, ast, stl, blk, tpm, fgImpact, ftImpact, to } },
 //      ...
 //    ]
 //  }
+//
+//  zScores sind die ungewichteten Pro-Kategorie-Z-Scores (composite ist
+//  ihre einfache Summe) — Basis für die Punt-Gewichtung im Frontend
+//  (js/livescores.js), die composite mit benutzerdefinierten Gewichten
+//  neu berechnet, ohne dass hier serverseitig etwas gespeichert wird.
 //
 //  date format: "YYYY-MM-DD"
 //  league keys match the ESPN league slugs used in daily-9cat.js:
