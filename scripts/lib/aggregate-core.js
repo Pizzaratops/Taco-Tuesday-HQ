@@ -91,7 +91,7 @@ function stdDev(arr, m) {
  */
 function computeAggregate({ league, period, endDate, dir, minGames }) {
   const WINDOW_DAYS = period === 'month' ? 30 : 7;
-  const MIN_GAMES = minGames != null ? minGames : (period === 'month' ? 4 : 2);
+  const DEFAULT_MIN_GAMES = period === 'month' ? 4 : 2;
 
   const end = toDate(endDate);
   const start = new Date(end);
@@ -112,6 +112,16 @@ function computeAggregate({ league, period, endDate, dir, minGames }) {
   if (!filesInWindow.length) {
     return { status: 'no-files', windowStart: start, windowEnd: end };
   }
+
+  // MIN_GAMES darf nie höher sein, als die im Fenster tatsächlich verfügbaren
+  // Spieltage es zulassen — sonst bleibt "month" für kurze Formate wie Summer
+  // League (Teams spielen dort insgesamt nur 3-4 Partien) für immer leer.
+  // Regel: höchstens die Hälfte der verfügbaren Tage (aufgerundet), gedeckelt
+  // durch den regulären Default, minimal aber immer 1.
+  // Beispiel Las Vegas Summer League (6 Tages-CSVs im Fenster): month → 3 statt 4.
+  // Reguläre Saison (30 Tages-CSVs im Fenster): month → weiterhin 4 (unverändert).
+  const dynamicCap = Math.max(1, Math.ceil(filesInWindow.length / 2));
+  const MIN_GAMES = minGames != null ? minGames : Math.min(DEFAULT_MIN_GAMES, dynamicCap);
 
   const players = new Map(); // key: name -> aggregate object
   for (const { file, date } of filesInWindow) {
