@@ -234,12 +234,17 @@
   </div>
   <div class="ls-hint" id="lsScheduleHint">Kalifornien: 3.–6. Juli · Salt Lake City: 4.–7. Juli · Las Vegas: 9.–19. Juli</div>
 
-  <div class="ls-punt-panel open" id="lsPuntPanel">
-    <div class="ls-punt-header">
-      <span>⚖️ Punt-Gewichtung — Kategorien von -1 (invertiert) bis +2 gewichten · 1 = normal, 0 = geputtet · nichts wird gespeichert</span>
-      <button class="ls-punt-reset" onclick="lsResetPuntWeights()">↺ Zurücksetzen</button>
+  <div class="ls-punt-panel collapsed" id="lsPuntPanel">
+    <div class="ls-punt-header" onclick="lsTogglePuntPanel()">
+      <span>⚖️ Punt-Gewichtung — Kategorien von 0 bis 2 gewichten · 1 = normal, 0 = geputtet · nichts wird gespeichert</span>
+      <div class="ls-punt-header-right">
+        <button class="ls-punt-reset" onclick="event.stopPropagation(); lsResetPuntWeights()">↺ Zurücksetzen</button>
+        <span class="ls-punt-chevron">▾</span>
+      </div>
     </div>
-    <div class="ls-punt-grid" id="lsPuntGrid"></div>
+    <div class="ls-punt-body">
+      <div class="ls-punt-grid" id="lsPuntGrid"></div>
+    </div>
   </div>
 
   <div id="lsGamesLine" class="ls-games-line"></div>
