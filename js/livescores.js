@@ -67,6 +67,28 @@ function _lsTeamFullName(abbr) {
   return LS_TEAM_NAMES[abbr] || abbr;
 }
 
+// Manche Spieler stehen im echten NBA-Team X, sind bei ESPN aber einem TT-
+// Fantasy-Team zugeordnet (Keeper, Draft etc.) — z.B. Javon Small spielt
+// für Memphis, ist aber bei den Seagulls gerostert. Zweite Zeile in der
+// Team-Zelle soll deshalb bevorzugt den Fantasy-Owner zeigen, nicht die
+// echte NBA-Stadt. ROSTERS/TEAMS kommen aus data/teams-rosters.js (inkl.
+// ESPN-Sync-Überschreibungen) und sind global verfügbar, da vor
+// livescores.js geladen.
+function _lsFantasyOwner(playerName) {
+  if (typeof ROSTERS === 'undefined' || typeof TEAMS === 'undefined') return null;
+  const norm = (n) => (n || '').toLowerCase().trim();
+  const target = norm(playerName);
+  if (!target) return null;
+  for (const tid of Object.keys(ROSTERS)) {
+    const roster = ROSTERS[tid] || [];
+    if (roster.some(p => norm(p.name) === target)) {
+      const team = TEAMS.find(t => t.id === parseInt(tid, 10));
+      return team ? { id: team.id, name: team.name } : null;
+    }
+  }
+  return null;
+}
+
 // Reihenfolge/Labels für die Punt-Gewichtung — Keys müssen zu den Keys in
 // player.zScores passen (siehe scripts/lib/aggregate-core.js CATEGORIES).
 // Range 0..2 in 0.25-Schritten (0 - 0,25 - 0,5 - ... - 2), Default 1 (=
@@ -327,7 +349,11 @@ function _lsRenderTable() {
     const compClass = p.composite >= 0 ? 'pos' : 'neg';
     const compLabel = (p.composite >= 0 ? '+' : '') + p.composite.toFixed(2);
     const gpCell = isDaily ? '' : `<td>${p.games}</td>`;
-    const teamCell = `<td><div class="ls-team-cell"><span class="ls-team-abbr">${p.team}</span><span class="ls-team-full">${_lsTeamFullName(p.team)}</span></div></td>`;
+    const owner = _lsFantasyOwner(p.name);
+    const secondLine = owner
+      ? `<span class="ls-team-full ls-fantasy-owner" onclick="event.stopPropagation();if(typeof showTeam==='function')showTeam(${owner.id})" title="Go to ${owner.name}">${owner.name}</span>`
+      : `<span class="ls-team-full">${_lsTeamFullName(p.team)}</span>`;
+    const teamCell = `<td><div class="ls-team-cell"><span class="ls-team-abbr">${p.team}</span>${secondLine}</div></td>`;
     return `<tr>
       <td>${i + 1}</td>
       <td>${p.name}</td>
