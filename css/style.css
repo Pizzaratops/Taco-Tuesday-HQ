@@ -461,6 +461,8 @@
   .ls-team-cell { display: flex; flex-direction: column; line-height: 1.3; gap: 1px; }
   .ls-team-abbr { font-weight: 800; color: var(--text); font-size: 11.5px; letter-spacing: 0.3px; }
   .ls-team-full { color: var(--muted); font-size: 10.5px; font-weight: 600; }
+  .ls-team-full.ls-fantasy-owner { color: var(--accent); cursor: pointer; }
+  .ls-team-full.ls-fantasy-owner:hover { text-decoration: underline; }
   @media (max-width: 640px) {
     .ls-meta { margin-left: 0; width: 100%; }
     .ls-table td, .ls-table th { padding: 8px 9px; font-size: 12px; }
