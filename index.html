@@ -60,18 +60,15 @@
     <div class="subnav-inner">
 
       <button class="snav-single" data-page="home" onclick="goHome()">🏠 Home</button>
-      <button class="snav-single" data-page="draftboard" onclick="showDraftboard()">📋 TT HQ Draft Board – Draft Day: Oct 1st 2026</button>
       <div class="snav-divider"></div>
 
       <div class="snav-group">
         <button class="snav-group-btn" id="snavDraft">📋 Draft <span class="snav-arrow">▾</span></button>
         <div class="snav-dropdown">
-          <div class="snav-dropdown-label">2026 Draft</div>
+          <button class="snav-dropdown-item" data-page="draftboard" onclick="showDraftboard()">📋 Full Draft Board</button>
           <button class="snav-dropdown-item" data-page="draft26"    onclick="showDraft26()">🔎 Prospect Database</button>
           <button class="snav-dropdown-item" data-page="bigBoard"  onclick="showBigBoard()">📋 MFHFBs Big Board</button>
           <button class="snav-dropdown-item" data-page="lottery"    onclick="showLottery()">🎲 2026 Lottery</button>
-          <div class="snav-dropdown-label">2027 Draft</div>
-          <button class="snav-dropdown-item" data-page="draft27"    onclick="showDraft27()">🔎 Prospect Database</button>
         </div>
       </div>
 
@@ -122,20 +119,16 @@
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Navigation</div>
         <button class="subnav-mobile-btn" data-page="home"      onclick="goHome();closeMobileNav()">🏠 Home</button>
-        <button class="subnav-mobile-btn" data-page="draftboard" onclick="showDraftboard();closeMobileNav()">📋 TT HQ Draft Board – Oct 1st 2026</button>
         <button class="subnav-mobile-btn" data-page="livescores" onclick="showLiveScores();closeMobileNav()">🔴 Live Scores</button>
         <button class="subnav-mobile-btn" data-page="standings" onclick="showStandings();closeMobileNav()">📈 Standings</button>
         <button class="subnav-mobile-btn" data-page="rules"     onclick="showRules();closeMobileNav()">📜 Rules</button>
       </div>
       <div class="subnav-mobile-group">
-        <div class="subnav-mobile-label">2026 Draft</div>
+        <div class="subnav-mobile-label">Draft</div>
+        <button class="subnav-mobile-btn" data-page="draftboard" onclick="showDraftboard();closeMobileNav()">📋 Full Draft Board</button>
         <button class="subnav-mobile-btn" data-page="draft26"    onclick="showDraft26();closeMobileNav()">🔎 Prospect Database</button>
         <button class="subnav-mobile-btn" data-page="bigBoard"  onclick="showBigBoard();closeMobileNav()">📋 MFHFBs Big Board</button>
         <button class="subnav-mobile-btn" data-page="lottery"    onclick="showLottery();closeMobileNav()">🎲 2026 Lottery</button>
-      </div>
-      <div class="subnav-mobile-group">
-        <div class="subnav-mobile-label">2027 Draft</div>
-        <button class="subnav-mobile-btn" data-page="draft27"    onclick="showDraft27();closeMobileNav()">🔎 Prospect Database</button>
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Rankings & Analytics</div>
@@ -167,7 +160,6 @@
 <!-- HOME -->
 <div class="page active" id="homePage">
   <div style="max-width:960px;margin:0 auto;">
-    <div style="display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);border:1px solid var(--accent);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:0.5px;padding:4px 12px;border-radius:20px;margin-bottom:10px;">🏀 Season 2025/2026</div>
     <div class="home-title">The Taco Tuesday League</div>
     <div class="home-sub">Klick auf Dein Team für Deine Spieler und Deine Picks</div>
     <div class="team-grid" id="teamGrid"></div>
@@ -1191,7 +1183,7 @@
       <div class="rr-sidebar-header">
         <div style="flex:1;">
           <div style="font-size:15px;font-weight:800;color:var(--text);">📈 Rolling Rankings</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Saison 2025/26</div>
+          <div id="rrSeasonSubtitle" style="font-size:11px;color:var(--muted);margin-top:2px;">Saison 2025/26</div>
         </div>
         <div style="position:relative;">
           <span style="position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;pointer-events:none;">🔍</span>
@@ -1314,20 +1306,6 @@
   <div class="draft26-no-results" id="draft26NoResults" style="display:none;">No prospects found.</div>
 </div>
 
-<!-- 2027 DRAFT (leer, zum Befüllen) -->
-<div class="page" id="draft27Page">
-  <h2 style="margin-bottom:6px;">🔎 Prospect Database · 2027 Draft</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Noch leer — Prospects trägst du in <code>data/draft2027.js</code> ein (gleiche Struktur wie beim 2026 Board).</p>
-  <div class="draft26-search">
-    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-    </svg>
-    <input type="text" id="draft27Search" placeholder="Search prospect, school, or position…" oninput="filterDraft27()"/>
-  </div>
-  <div id="draft27Grid"></div>
-  <div class="draft26-no-results" id="draft27NoResults" style="display:none;">Noch keine Prospects eingetragen — füge sie in <code>data/draft2027.js</code> hinzu.</div>
-</div>
-
 <!-- BIG BOARD (Interactive, Newspaper-Style) -->
 <div class="page" id="bigBoardPage"></div>
 
@@ -1355,7 +1333,6 @@
 <script src="data/hashtag.js?v=5"></script>
 <script src="data/aliases.js?v=5"></script>
 <script src="data/draft2026.js?v=5"></script>
-<script src="data/draft2027.js?v=1"></script>
 <script src="data/stats.js?v=5"></script>
 
 <!-- App logic -->
