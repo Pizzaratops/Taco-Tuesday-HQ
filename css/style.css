@@ -161,6 +161,16 @@
     transition: all 0.12s;
     border-bottom: 1px solid var(--border);
   }
+  .snav-dropdown-label {
+    padding: 8px 16px 4px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+  }
   .snav-dropdown-item:last-child { border-bottom: none; }
   .snav-dropdown-item:hover { background: var(--accent-light); color: var(--accent); }
   .snav-dropdown-item.active { color: var(--accent); background: var(--accent-light); }
