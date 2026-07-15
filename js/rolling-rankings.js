@@ -1,13 +1,37 @@
 // ============================================================
-//  ROLLING RANKINGS — Saison 2025/26
+//  ROLLING RANKINGS — Saison-Toggle 2025/26 ↔ 2026/27
 //  Features:
-//    - Monthly (Oct..März) und Weekly (1..22) Toggle
+//    - Season-Toggle (2025/26 handkuratiert / 2026/27 live aus Livescores)
+//    - Monthly und Weekly Toggle
 //    - Vergleichsmodus für bis zu 3 Spieler
 //    - Instagram-Screenshot (4:5) in 2 Styles (warm / dark)
+//
+//  Saison 2025/26: ROLLING_RANKINGS (data/rolling-rankings.js) — handkuratiert
+//  aus BBM-Exports. RR_MONTHS/RR_WEEKS sind deren feste Spaltenköpfe.
+//
+//  Saison 2026/27: wird zur Laufzeit aus LIVESCORES_AGGREGATE (data/
+//  livescores-aggregate.js) unter der Liga "nba" (reguläre Saison) gebaut —
+//  NICHT aus "nba-summer-*" oder "nba-preseason". Monthly/Weekly-Aggregate
+//  dort sind rollierende 30-/7-Tage-Fenster, die täglich fortgeschrieben
+//  werden; wir bündeln sie pro Kalendermonat bzw. Kalenderwoche (jeweils der
+//  letzte verfügbare Tag im Bündel) und leiten pro Bündel einen Rang aus dem
+//  composite-Wert ab — exakt gleiches Format wie ROLLING_RANKINGS, damit
+//  Sortierung, Vergleichsmodus und Instagram-Export unverändert weiterlaufen.
 // ============================================================
 
 const RR_MONTHS  = ['Oct','Nov','Dez','Jan','Feb','März'];
 // RR_WEEKS und ROLLING_RANKINGS werden in data/rolling-rankings.js gesetzt (lädt davor).
+
+// Liga-Key in LIVESCORES_AGGREGATE für die reguläre 2026/27-Saison.
+// Bewusst NICHT "nba-summer-california"/"nba-summer-las-vegas"/"nba-summer-utah"
+// (Summer League) oder "nba-preseason" — nur die echte Regular Season.
+const RR_LIVE_LEAGUE = 'nba';
+
+const RR_SEASONS = [
+  { key: 'season2025', label: '2025/26', short: '25/26' },
+  { key: 'season2026', label: '2026/27', short: '26/27' },
+];
+let rrSeason = 'season2025';       // 'season2025' | 'season2026'
 
 let rrView          = 'monthly';   // 'monthly' | 'weekly'
 let rrCompareMode   = false;
@@ -20,11 +44,172 @@ let rrSortDir       = 'asc';       // 'asc' = lowest rank first
 // Farben für Vergleichslinien
 const RR_COMPARE_COLORS = ['#f5c842', '#29b6f6', '#ff6584'];
 
+// Kurzlabel je Kalendermonat — gleicher (bewusst gemischter DE/EN) Stil wie
+// die handkuratierten RR_MONTHS ("Oct", aber "Dez"/"März").
+const RR_MONTH_LABEL_BY_NUM = {
+  1: 'Jan', 2: 'Feb', 3: 'März', 4: 'Apr', 5: 'Mai', 6: 'Jun',
+  7: 'Jul', 8: 'Aug', 9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dez',
+};
+
+function _rrSeasonLabel(season) {
+  const s = RR_SEASONS.find(s => s.key === (season || rrSeason));
+  return s ? s.label : '';
+}
+
+// ── SEASON 2026/27 — aus LIVESCORES_AGGREGATE ableiten ──────────────────────
+let _rrSeason2026Cache = null;
+
+function _rrRankByComposite(players) {
+  if (!Array.isArray(players)) return [];
+  return players
+    .filter(p => p && p.name != null && typeof p.composite === 'number')
+    .slice()
+    .sort((a, b) => b.composite - a.composite)
+    .map((p, i) => ({ name: p.name, rank: i + 1 }));
+}
+
+// Bündelt tägliche rollierende Fenster-Snapshots (LIVESCORES_AGGREGATE[period][league])
+// zu einem Eintrag pro Kalendermonat ('month') bzw. Kalenderwoche ('week') — jeweils
+// der zeitlich letzte verfügbare Tag innerhalb des Bündels. Ergebnis chronologisch sortiert.
+function _rrBucketEntries(data, mode) {
+  if (!data) return [];
+  const dates = Object.keys(data).sort();
+  if (!dates.length) return [];
+
+  const buckets = new Map(); // bucketKey -> { date, entry }
+  dates.forEach(dateStr => {
+    const entry = data[dateStr];
+    if (!entry || !Array.isArray(entry.players)) return;
+    const bucketKey = mode === 'month' ? dateStr.slice(0, 7) : _rrIsoWeekStart(dateStr);
+    const existing = buckets.get(bucketKey);
+    if (!existing || dateStr > existing.date) {
+      buckets.set(bucketKey, { date: dateStr, entry });
+    }
+  });
+
+  const orderedKeys = [...buckets.keys()].sort();
+  return orderedKeys.map((key, i) => ({
+    key,
+    label: mode === 'month' ? _rrMonthLabelFromKey(key) : String(i + 1),
+    entry: buckets.get(key).entry,
+  }));
+}
+
+function _rrMonthLabelFromKey(key) {
+  const m = parseInt(key.slice(5, 7), 10);
+  return RR_MONTH_LABEL_BY_NUM[m] || key;
+}
+
+// Montag der ISO-Woche des gegebenen Datums, als "YYYY-MM-DD" — dient als
+// stabiler, chronologisch sortierbarer Wochen-Bucket-Key.
+function _rrIsoWeekStart(dateStr) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const dt = new Date(Date.UTC(y, m - 1, d));
+  const day = dt.getUTCDay(); // 0=So..6=Sa
+  const diff = day === 0 ? -6 : 1 - day; // auf Montag zurückrechnen
+  dt.setUTCDate(dt.getUTCDate() + diff);
+  return dt.toISOString().slice(0, 10);
+}
+
+// Führt Monats- und Wochen-Buckets zu einer Spielerliste im ROLLING_RANKINGS-
+// Format zusammen: { name, rankings:{Monat:rank}, weeklyRanks:{Woche:rank}, eosRank }.
+// eosRank = Rang aus dem jeweils neuesten Bucket, in dem der Spieler vorkommt
+// (bevorzugt Monat, sonst Woche) — dient als "aktueller Stand" für eine
+// laufende Saison, analog zur Sortierfunktion des End-of-Season-Rangs bei 2025/26.
+function _rrMergeBuckets(monthBuckets, weekBuckets) {
+  const playerMap = new Map(); // normalizedName -> player object
+
+  function ensure(name) {
+    const norm = normalizeName(name);
+    let p = playerMap.get(norm);
+    if (!p) {
+      p = { name, rankings: {}, weeklyRanks: {}, eosRank: null };
+      playerMap.set(norm, p);
+    }
+    return p;
+  }
+
+  monthBuckets.forEach(bucket => {
+    _rrRankByComposite(bucket.entry.players).forEach(({ name, rank }) => {
+      const p = ensure(name);
+      p.rankings[bucket.label] = rank;
+      p.eosRank = rank; // Buckets sind chronologisch sortiert → letzter Treffer gewinnt
+    });
+  });
+
+  weekBuckets.forEach(bucket => {
+    _rrRankByComposite(bucket.entry.players).forEach(({ name, rank }) => {
+      const p = ensure(name);
+      p.weeklyRanks[String(bucket.label)] = rank;
+    });
+  });
+
+  // Fallback: Spieler, die (noch) in keinem Monats-Bucket auftauchen, aber schon
+  // in der aktuellsten Woche — z.B. ganz am Saisonstart, bevor der erste
+  // Monats-Snapshot existiert.
+  if (weekBuckets.length) {
+    const lastWeek = weekBuckets[weekBuckets.length - 1];
+    _rrRankByComposite(lastWeek.entry.players).forEach(({ name, rank }) => {
+      const p = ensure(name);
+      if (p.eosRank == null) p.eosRank = rank;
+    });
+  }
+
+  return Array.from(playerMap.values());
+}
+
+function _rrBuildSeason2026() {
+  if (_rrSeason2026Cache) return _rrSeason2026Cache;
+
+  const monthData = (typeof LIVESCORES_AGGREGATE !== 'undefined' && LIVESCORES_AGGREGATE.month)
+    ? LIVESCORES_AGGREGATE.month[RR_LIVE_LEAGUE] : null;
+  const weekData = (typeof LIVESCORES_AGGREGATE !== 'undefined' && LIVESCORES_AGGREGATE.week)
+    ? LIVESCORES_AGGREGATE.week[RR_LIVE_LEAGUE] : null;
+
+  const monthBuckets = _rrBucketEntries(monthData, 'month');
+  const weekBuckets  = _rrBucketEntries(weekData, 'week');
+  const players      = _rrMergeBuckets(monthBuckets, weekBuckets);
+
+  _rrSeason2026Cache = {
+    players,
+    months: monthBuckets.map(b => b.label),
+    weeks:  weekBuckets.map((b, i) => i + 1),
+  };
+  return _rrSeason2026Cache;
+}
+
+// ── SAISON-AWARE ACCESSORS (ersetzen direkte ROLLING_RANKINGS/RR_MONTHS/RR_WEEKS-Zugriffe) ──
+function _rrData() {
+  return rrSeason === 'season2026' ? _rrBuildSeason2026().players : ROLLING_RANKINGS;
+}
+function _rrMonths() {
+  return rrSeason === 'season2026' ? _rrBuildSeason2026().months : RR_MONTHS;
+}
+function _rrWeeksList() {
+  return rrSeason === 'season2026' ? _rrBuildSeason2026().weeks : RR_WEEKS;
+}
+function _rrEosColumnTitle() {
+  return rrSeason === 'season2026' ? 'Aktueller Rang (neuester Monat)' : 'End of Season Rank';
+}
+
+function rrSetSeason(season) {
+  if (season !== 'season2025' && season !== 'season2026') return;
+  if (season === rrSeason) return;
+  rrSeason = season;
+  rrSelected = [];
+  rrSortBy = 'eos';
+  rrSortDir = 'asc';
+  const inp = document.getElementById('rrSearch');
+  if (inp) inp.value = '';
+  _rrInit();
+}
+
 function showRollingRankings(highlightName) {
   navigate('rollingRankingsPage');
   _rrInit();
   if (highlightName) {
-    const idx = ROLLING_RANKINGS.findIndex(p =>
+    const data = _rrData();
+    const idx = data.findIndex(p =>
       p.name === highlightName || normalizeName(p.name) === normalizeName(highlightName)
     );
     if (idx !== -1) {
@@ -40,7 +225,7 @@ function showRollingRankings(highlightName) {
 }
 
 function _rrInit() {
-  rrFiltered = ROLLING_RANKINGS.map((p, i) => ({ ...p, origIdx: i }));
+  rrFiltered = _rrData().map((p, i) => ({ ...p, origIdx: i }));
   _rrApplySort();
   const inp = document.getElementById('rrSearch');
   if (inp) inp.value = '';
@@ -62,8 +247,10 @@ function _rrApplySort() {
       va = a.eosRank;
       vb = b.eosRank;
     } else if (isPeriod) {
-      // period: month name or week number string
-      const isMonth = RR_MONTHS.indexOf(key) !== -1;
+      // period: month name (rrView === 'monthly') or week number string (rrView === 'weekly').
+      // Hängt bewusst am aktiven View statt an der festen 2025/26-Monatsliste, da die
+      // 2026/27-Saison mehr/andere Monatslabel haben kann (Apr, Mai, Jun, …).
+      const isMonth = rrView === 'monthly';
       va = isMonth ? (a.rankings || {})[key] : (a.weeklyRanks || {})[key];
       vb = isMonth ? (b.rankings || {})[key] : (b.weeklyRanks || {})[key];
     }
@@ -91,19 +278,49 @@ function rrSortByKey(key) {
 
 function _rrRenderAll() {
   _rrRenderToolbar();
+  if (rrSeason === 'season2026' && !_rrData().length) {
+    _rrRenderEmptySeason();
+    return;
+  }
   _rrRenderListHeader();
   _rrRenderList();
   _rrRenderMain();
 }
 
-// ── TOOLBAR (View Toggle + Compare Toggle) ──────────────────────────────────
+// Platzhalter, solange für die Liga "nba" (reguläre 2026/27-Saison) noch keine
+// LIVESCORES_AGGREGATE-Daten existieren (z.B. während Summer League/Preseason).
+function _rrRenderEmptySeason() {
+  const colHost = document.getElementById('rrListCols');
+  if (colHost) colHost.innerHTML = '';
+  const body = document.getElementById('rrListBody');
+  if (body) body.innerHTML = `
+    <div style="padding:32px 18px;color:var(--muted);font-size:12px;text-align:center;line-height:1.6;">
+      Noch keine Live-Daten für die Saison 2026/27.<br>
+      Sobald die regulären NBA-Season-Aggregate (Liga „NBA 2026/27") einlaufen, erscheinen sie hier automatisch.
+    </div>`;
+  const panel = document.getElementById('rrChartPanel');
+  if (panel) panel.innerHTML = `
+    <div style="margin:auto;text-align:center;color:var(--muted);">
+      <div style="font-size:40px;margin-bottom:12px;">🕒</div>
+      <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;">Saison 2026/27 startet bald</div>
+      <div style="font-size:13px;max-width:340px;">Sobald reguläre Season-Daten unter Live Scores → „NBA 2026/27" einlaufen, werden die Rolling Rankings hier automatisch befüllt — Summer League- und Pre-Season-Daten fließen bewusst nicht ein.</div>
+    </div>`;
+}
+
+// ── TOOLBAR (Season Toggle + View Toggle + Compare Toggle) ──────────────────
 function _rrRenderToolbar() {
   const host = document.getElementById('rrToolbar');
   if (!host) return;
+  const season2025Active = rrSeason === 'season2025' ? ' rr-tb-active' : '';
+  const season2026Active = rrSeason === 'season2026' ? ' rr-tb-active' : '';
   const monthlyActive = rrView === 'monthly' ? ' rr-tb-active' : '';
   const weeklyActive  = rrView === 'weekly'  ? ' rr-tb-active' : '';
   const compareActive = rrCompareMode ? ' rr-tb-active' : '';
   host.innerHTML = `
+    <div class="rr-tb-group">
+      <button class="rr-tb-btn${season2025Active}" onclick="rrSetSeason('season2025')">2025/26</button>
+      <button class="rr-tb-btn${season2026Active}" onclick="rrSetSeason('season2026')">2026/27</button>
+    </div>
     <div class="rr-tb-group">
       <button class="rr-tb-btn${monthlyActive}" onclick="rrSetView('monthly')">📅 Monate</button>
       <button class="rr-tb-btn${weeklyActive}" onclick="rrSetView('weekly')">📊 Wochen</button>
@@ -112,6 +329,8 @@ function _rrRenderToolbar() {
       <button class="rr-tb-btn${compareActive}" onclick="rrToggleCompare()">⚖️ Vergleichen ${rrCompareMode ? '(' + rrSelected.length + '/3)' : ''}</button>
     </div>
   `;
+  const sub = document.getElementById('rrSeasonSubtitle');
+  if (sub) sub.textContent = 'Saison ' + _rrSeasonLabel();
 }
 
 function rrSetView(v) {
@@ -139,25 +358,28 @@ function _rrRenderListHeader() {
   };
   const cls = key => 'rr-col-h' + (rrSortBy === key ? ' rr-col-active' : '');
 
+  const eosTitle = _rrEosColumnTitle();
+
   if (rrView === 'monthly') {
-    host.style.gridTemplateColumns = '32px 1fr repeat(6, 30px)';
-    const monthHeaders = RR_MONTHS.map(m => {
+    const months = _rrMonths();
+    host.style.gridTemplateColumns = `32px 1fr repeat(${months.length}, 30px)`;
+    const monthHeaders = months.map(m => {
       const lbl = m === 'März' ? 'Mrz' : m;
       return `<span class="${cls(m)}" onclick="rrSortByKey('${m}')">${lbl}${sortIndicator(m)}</span>`;
     }).join('');
     host.innerHTML =
-      `<span class="${cls('eos')}" onclick="rrSortByKey('eos')" title="End of Season Rank">#${sortIndicator('eos')}</span>` +
+      `<span class="${cls('eos')}" onclick="rrSortByKey('eos')" title="${eosTitle}">#${sortIndicator('eos')}</span>` +
       `<span class="${cls('name')}" onclick="rrSortByKey('name')" style="text-align:left;">Name${sortIndicator('name')}</span>` +
       monthHeaders;
   } else {
-    const colCount = RR_WEEKS.length;
-    host.style.gridTemplateColumns = `32px minmax(120px, 1fr) repeat(${colCount}, 26px)`;
-    const weekHeaders = RR_WEEKS.map(w => {
+    const weeks = _rrWeeksList();
+    host.style.gridTemplateColumns = `32px minmax(120px, 1fr) repeat(${weeks.length}, 26px)`;
+    const weekHeaders = weeks.map(w => {
       const k = String(w);
       return `<span class="${cls(k)}" onclick="rrSortByKey('${k}')">W${w}${sortIndicator(k)}</span>`;
     }).join('');
     host.innerHTML =
-      `<span class="${cls('eos')}" onclick="rrSortByKey('eos')" title="End of Season Rank">#${sortIndicator('eos')}</span>` +
+      `<span class="${cls('eos')}" onclick="rrSortByKey('eos')" title="${eosTitle}">#${sortIndicator('eos')}</span>` +
       `<span class="${cls('name')}" onclick="rrSortByKey('name')" style="text-align:left;">Name${sortIndicator('name')}</span>` +
       weekHeaders;
   }
@@ -165,9 +387,10 @@ function _rrRenderListHeader() {
 
 function rrFilter() {
   const q = (document.getElementById('rrSearch')?.value || '').toLowerCase().trim();
+  const data = _rrData();
   rrFiltered = q
-    ? ROLLING_RANKINGS.map((p, i) => ({ ...p, origIdx: i })).filter(p => p.name.toLowerCase().includes(q))
-    : ROLLING_RANKINGS.map((p, i) => ({ ...p, origIdx: i }));
+    ? data.map((p, i) => ({ ...p, origIdx: i })).filter(p => p.name.toLowerCase().includes(q))
+    : data.map((p, i) => ({ ...p, origIdx: i }));
   _rrApplySort();
   _rrRenderList();
 }
@@ -185,25 +408,27 @@ function _rrRankColor(r) {
 function _rrGetValues(player) {
   // Returns { labels, values } for the active view
   if (rrView === 'weekly') {
+    const weeks = _rrWeeksList();
     const ranks = player.weeklyRanks || {};
     return {
-      labels: RR_WEEKS.map(w => 'W' + w),
-      values: RR_WEEKS.map(w => ranks[String(w)] ?? null),
-      keys:   RR_WEEKS.map(w => String(w)),
+      labels: weeks.map(w => 'W' + w),
+      values: weeks.map(w => ranks[String(w)] ?? null),
+      keys:   weeks.map(w => String(w)),
     };
   }
+  const months = _rrMonths();
   const ranks = player.rankings || {};
   return {
-    labels: RR_MONTHS,
-    values: RR_MONTHS.map(m => ranks[m] ?? null),
-    keys:   RR_MONTHS.slice(),
+    labels: months,
+    values: months.map(m => ranks[m] ?? null),
+    keys:   months.slice(),
   };
 }
 
 function _rrRenderList() {
   const body = document.getElementById('rrListBody');
   if (!body) return;
-  const cols = rrView === 'monthly' ? RR_MONTHS : RR_WEEKS.map(w => String(w));
+  const cols = rrView === 'monthly' ? _rrMonths() : _rrWeeksList().map(w => String(w));
   const colWidth = rrView === 'monthly' ? 30 : 26;
   const gridTpl = rrView === 'monthly'
     ? `32px 1fr repeat(${cols.length}, ${colWidth}px)`
@@ -268,7 +493,7 @@ function _rrRenderMain() {
   if (rrCompareMode && rrSelected.length > 1) {
     _rrRenderCompare(panel);
   } else {
-    _rrRenderSingle(panel, ROLLING_RANKINGS[rrSelected[0]]);
+    _rrRenderSingle(panel, _rrData()[rrSelected[0]]);
   }
 }
 
@@ -292,7 +517,7 @@ function _rrRenderSingle(panel, player) {
   // Compact badges — only for monthly (weekly would be too many)
   let badgesHtml = '';
   if (rrView === 'monthly') {
-    badgesHtml = '<div class="rr-badges">' + RR_MONTHS.map((m, i) => {
+    badgesHtml = '<div class="rr-badges">' + _rrMonths().map((m, i) => {
       const r = v.values[i];
       const c = _rrRankColor(r);
       return `<div class="rr-month-badge">
@@ -306,7 +531,7 @@ function _rrRenderSingle(panel, player) {
     <div class="rr-player-header">
       <div>
         <div class="rr-player-name">${player.name}</div>
-        <div class="rr-player-sub">Dynasty Rolling Rankings · Saison 2025/26 · ${rrView === 'weekly' ? 'Wöchentlich' : 'Monatlich'}</div>
+        <div class="rr-player-sub">Dynasty Rolling Rankings · Saison ${_rrSeasonLabel()} · ${rrView === 'weekly' ? 'Wöchentlich' : 'Monatlich'}</div>
       </div>
       ${pillsHtml}
     </div>
@@ -322,7 +547,8 @@ function _rrRenderSingle(panel, player) {
 }
 
 function _rrRenderCompare(panel) {
-  const players = rrSelected.map(i => ROLLING_RANKINGS[i]);
+  const data = _rrData();
+  const players = rrSelected.map(i => data[i]);
   const datasets = players.map((p, i) => {
     const v = _rrGetValues(p);
     return { player: p, values: v.values, color: RR_COMPARE_COLORS[i] };
@@ -350,7 +576,7 @@ function _rrRenderCompare(panel) {
     <div class="rr-player-header">
       <div>
         <div class="rr-player-name">Vergleich</div>
-        <div class="rr-player-sub">Dynasty Rolling Rankings · Saison 2025/26 · ${rrView === 'weekly' ? 'Wöchentlich' : 'Monatlich'}</div>
+        <div class="rr-player-sub">Dynasty Rolling Rankings · Saison ${_rrSeasonLabel()} · ${rrView === 'weekly' ? 'Wöchentlich' : 'Monatlich'}</div>
       </div>
     </div>
     <div class="rr-compare-cards">${cardsHtml}</div>
@@ -482,7 +708,8 @@ function _rrRenderShareCard() {
   });
 
   const isCompare = rrCompareMode && rrSelected.length > 1;
-  const players   = rrSelected.map(i => ROLLING_RANKINGS[i]);
+  const data      = _rrData();
+  const players   = rrSelected.map(i => data[i]);
   const labels    = _rrGetValues(players[0]).labels;
   const datasets  = players.map((p, i) => {
     const v = _rrGetValues(p);
@@ -498,7 +725,7 @@ function _rrRenderShareCard() {
   };
 
   const titleText = isCompare ? 'Rolling Rankings · Vergleich' : players[0].name;
-  const subText   = isCompare ? 'Saison 2025/26' : `Dynasty Rolling Rankings · 2025/26`;
+  const subText   = isCompare ? `Saison ${_rrSeasonLabel()}` : `Dynasty Rolling Rankings · ${_rrSeasonLabel()}`;
 
   // Stats section
   let statsHtml = '';
@@ -630,7 +857,7 @@ async function rrDownloadShareImage() {
     const isCompare = rrCompareMode && rrSelected.length > 1;
     const slug = isCompare
       ? 'vergleich'
-      : (ROLLING_RANKINGS[rrSelected[0]]?.name || 'spieler').toLowerCase().replace(/[^a-z0-9]+/g,'-');
+      : (_rrData()[rrSelected[0]]?.name || 'spieler').toLowerCase().replace(/[^a-z0-9]+/g,'-');
     link.download = `taco-rolling-${slug}-${stamp}.png`;
     link.click();
     if (btn) { btn.textContent = '✓ Gespeichert!'; }
