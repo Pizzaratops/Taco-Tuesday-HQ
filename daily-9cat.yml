@@ -1,0 +1,123 @@
+name: Daily 9cat Live Scores
+
+on:
+  schedule:
+    # Sommerzeit (CEST, UTC+2): 06/08/22 Uhr Berlin -> 04/06/20 UTC
+    - cron: '0 4 * * *'
+    - cron: '0 6 * * *'
+    - cron: '0 20 * * *'
+    # Winterzeit (CET, UTC+1): 06/08/22 Uhr Berlin -> 05/07/21 UTC
+    - cron: '0 5 * * *'
+    - cron: '0 7 * * *'
+    - cron: '0 21 * * *'
+    # Der Zeit-Check-Step unten sorgt dafür, dass jeweils nur der
+    # tatsächlich passende Lauf (Sommer- ODER Winterzeit) wirklich arbeitet
+    # und der andere übersprungen wird. So ist keine manuelle Umstellung
+    # zweimal im Jahr mehr nötig.
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Datum (YYYY-MM-DD), leer = heute'
+        required: false
+      league:
+        description: 'ESPN League-Slug'
+        required: false
+        default: 'nba-summer-las-vegas'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-9cat
+  cancel-in-progress: false
+
+jobs:
+  update-live-scores:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prüfe ob aktuelle Zeit 6/8/22 Uhr Berlin ist
+        id: check_time
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manueller Start, Zeit-Check wird übersprungen."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          HOUR=$(TZ=Europe/Berlin date +%H)
+          if [ "$HOUR" = "06" ] || [ "$HOUR" = "08" ] || [ "$HOUR" = "22" ]; then
+            echo "Berlin-Zeit ist ${HOUR} Uhr, Job läuft weiter."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Berlin-Zeit ist ${HOUR} Uhr, kein Zieltermin, Job wird übersprungen."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.check_time.outputs.skip != 'true'
+        uses: actions/checkout@v4
+
+      - name: Node einrichten
+        if: steps.check_time.outputs.skip != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Tagesdaten von ESPN holen
+        if: steps.check_time.outputs.skip != 'true'
+        env:
+          DATE_ARG: ${{ github.event.inputs.date }}
+          LEAGUE_ARG: ${{ github.event.inputs.league || 'nba-summer-las-vegas' }}
+        run: |
+          node scripts/daily-9cat.js ${DATE_ARG} --league=${LEAGUE_ARG}
+
+      - name: In livescores-daily.js konvertieren
+        if: steps.check_time.outputs.skip != 'true'
+        env:
+          DATE_ARG: ${{ github.event.inputs.date }}
+          LEAGUE_ARG: ${{ github.event.inputs.league || 'nba-summer-las-vegas' }}
+        run: |
+          if [ -n "$DATE_ARG" ]; then
+            node scripts/convert-to-livescores.js --league="$LEAGUE_ARG" --date="$DATE_ARG" --keep-days=120
+          else
+            node scripts/convert-to-livescores.js --league="$LEAGUE_ARG" --keep-days=120
+          fi
+
+      - name: Weekly/Monthly aktualisieren (alle Standorte kombiniert)
+        if: steps.check_time.outputs.skip != 'true'
+        env:
+          DATE_ARG: ${{ github.event.inputs.date }}
+        run: |
+          if [ -n "$DATE_ARG" ]; then
+            node scripts/update-all-aggregates.js --end="$DATE_ARG" --keep=180
+          else
+            node scripts/update-all-aggregates.js --keep=180
+          fi
+
+      - name: Off-Season-Rankings fortschreiben (Summer League + Preseason)
+        if: steps.check_time.outputs.skip != 'true'
+        run: |
+          node scripts/build-offseason-rankings.js
+
+      - name: Rolling-Rankings-Archiv 2026/27 fortschreiben (Liga "nba")
+        if: steps.check_time.outputs.skip != 'true'
+        env:
+          DATE_ARG: ${{ github.event.inputs.date }}
+        run: |
+          if [ -n "$DATE_ARG" ]; then
+            node scripts/build-rolling-archive.js --date="$DATE_ARG" --league=nba
+          else
+            node scripts/build-rolling-archive.js --league=nba
+          fi
+
+      - name: Änderungen committen & pushen
+        if: steps.check_time.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/livescores-daily.js data/livescores-aggregate.js data/rolling-rankings-2026-27.js data/offseason-rankings.js scripts/data/
+          if git diff --cached --quiet; then
+            echo "Keine Änderungen (vermutlich keine Spiele an diesem Tag)."
+          else
+            git commit -m "Live Scores: Daily-Update $(date -u +%Y-%m-%d)"
+            git push
+          fi

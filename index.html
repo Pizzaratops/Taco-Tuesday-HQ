@@ -63,6 +63,15 @@
       <div class="snav-divider"></div>
 
       <div class="snav-group">
+        <button class="snav-group-btn" id="snavPlayer">🧍 Player <span class="snav-arrow">▾</span></button>
+        <div class="snav-dropdown">
+          <button class="snav-dropdown-item" data-page="playerrankings"    onclick="showPlayerRankings()">🏅 2026/27 Rankings</button>
+          <button class="snav-dropdown-item" data-page="playerprojections" onclick="showPlayerProjections()">🔮 2026/27 Projections</button>
+        </div>
+      </div>
+      <div class="snav-divider"></div>
+
+      <div class="snav-group">
         <button class="snav-group-btn" id="snavDraft">📋 Draft <span class="snav-arrow">▾</span></button>
         <div class="snav-dropdown">
           <button class="snav-dropdown-item" data-page="draftboard" onclick="showDraftboard()">📋 Full Draft Board</button>
@@ -122,6 +131,11 @@
         <button class="subnav-mobile-btn" data-page="livescores" onclick="showLiveScores();closeMobileNav()">🔴 Live Scores</button>
         <button class="subnav-mobile-btn" data-page="standings" onclick="showStandings();closeMobileNav()">📈 Standings</button>
         <button class="subnav-mobile-btn" data-page="rules"     onclick="showRules();closeMobileNav()">📜 Rules</button>
+      </div>
+      <div class="subnav-mobile-group">
+        <div class="subnav-mobile-label">Player</div>
+        <button class="subnav-mobile-btn" data-page="playerrankings"    onclick="showPlayerRankings();closeMobileNav()">🏅 2026/27 Rankings</button>
+        <button class="subnav-mobile-btn" data-page="playerprojections" onclick="showPlayerProjections();closeMobileNav()">🔮 2026/27 Projections</button>
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Draft</div>
@@ -204,6 +218,34 @@
     </div>
   </div>
   <p style="color:var(--muted);font-size:12px;margin-top:12px;text-align:center;">— = did not participate that season</p>
+</div>
+
+<!-- PLAYER RANKINGS -->
+<div class="page" id="playerRankingsPage">
+  <h2 style="margin-bottom:6px;">🏅 2026/27 Rankings</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">9-Cat Z-Score Rankings · automatisch aus Live Score Stats</p>
+
+  <div class="ls-subtabs">
+    <div class="ls-subtab" id="prSubtabOffSeason" onclick="prSwitchTab('offseason')">☀️ Off Season</div>
+    <div class="ls-subtab active" id="prSubtabRegSeason" onclick="prSwitchTab('regseason')">🏆 Reg Season</div>
+  </div>
+
+  <div class="rankings-search">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" id="prSearch" placeholder="Search player or team…" oninput="prFilter()"/>
+  </div>
+
+  <div id="prMeta" style="color:var(--muted);font-size:12px;margin-bottom:14px;"></div>
+  <div id="prContent"></div>
+</div>
+
+<!-- PLAYER PROJECTIONS -->
+<div class="page" id="playerProjectionsPage">
+  <h2 style="margin-bottom:6px;">🔮 2026/27 Projections</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Kommt bald</p>
+  <div class="ls-status">Noch keine Projections verfügbar — dieser Bereich folgt später.</div>
 </div>
 
 <!-- LIVE SCORES -->
@@ -1358,10 +1400,13 @@
 
 <!-- Init runs last, after all scripts are loaded -->
 <script src="data/rolling-rankings.js?v=5"></script>
+<script src="data/rolling-rankings-2026-27.js?v=1"></script>
   <script src="js/rolling-rankings.js?v=5"></script>
 <script src="data/livescores-daily.js?v=5"></script>
 <script src="data/livescores-aggregate.js?v=1"></script>
 <script src="js/livescores.js?v=6"></script>
+<script src="data/offseason-rankings.js?v=1"></script>
+<script src="js/player-rankings.js?v=1"></script>
   <script src="js/init.js?v=5"></script>
 
 </body>
