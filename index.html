@@ -403,7 +403,7 @@
 <!-- BEST AVAILABLE -->
 <div class="page" id="bestAvailPage">
   <h2 style="margin-bottom:6px;">🆓 Best Available</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Spieler aus Dynasty Rankings die in keinem Roster stehen — sortiert nach Rank</p>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Spieler aus Dynasty Rankings die in keinem Roster stehen — sortiert nach Rank. Rookies ohne eigenen Dynasty-Rank erscheinen unten, sortiert nach Post-Draft-Score (Big Board + Draft Capital + Off-Season-Performance + Sticky Score).</p>
   <div class="rankings-search">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -421,6 +421,7 @@
           <th style="text-align:center;">Alter</th>
           <th style="text-align:center;">Matt DR</th>
           <th style="text-align:center;">#️⃣</th>
+          <th style="text-align:center;">Sticky</th>
         </tr>
       </thead>
       <tbody id="baBody"></tbody>
@@ -1375,6 +1376,7 @@
 <script src="data/hashtag.js?v=5"></script>
 <script src="data/aliases.js?v=5"></script>
 <script src="data/draft2026.js?v=5"></script>
+<script src="data/postdraft-board.js?v=1"></script>
 <script src="data/stats.js?v=5"></script>
 
 <!-- App logic -->
