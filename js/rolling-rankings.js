@@ -9,23 +9,18 @@
 //  Saison 2025/26: ROLLING_RANKINGS (data/rolling-rankings.js) — handkuratiert
 //  aus BBM-Exports. RR_MONTHS/RR_WEEKS sind deren feste Spaltenköpfe.
 //
-//  Saison 2026/27: wird zur Laufzeit aus LIVESCORES_AGGREGATE (data/
-//  livescores-aggregate.js) unter der Liga "nba" (reguläre Saison) gebaut —
-//  NICHT aus "nba-summer-*" oder "nba-preseason". Monthly/Weekly-Aggregate
-//  dort sind rollierende 30-/7-Tage-Fenster, die täglich fortgeschrieben
-//  werden; wir bündeln sie pro Kalendermonat bzw. Kalenderwoche (jeweils der
-//  letzte verfügbare Tag im Bündel) und leiten pro Bündel einen Rang aus dem
-//  composite-Wert ab — exakt gleiches Format wie ROLLING_RANKINGS, damit
+//  Saison 2026/27: kommt aus dem PERMANENTEN Archiv data/rolling-rankings-
+//  2026-27.js (ROLLING_RANKINGS_2026 / RR2026_MONTHS / RR2026_WEEKS),
+//  täglich gebaut von scripts/build-rolling-archive.js aus LIVESCORES_
+//  AGGREGATE (Liga "nba", reguläre Saison — NICHT "nba-summer-*"/
+//  "nba-preseason"), inkl. fester Kategorie-Gewichtung. Anders als früher
+//  wird hier NICHTS mehr live im Browser neu berechnet — das Archiv wird
+//  nie gekürzt, exakt gleiches Format wie ROLLING_RANKINGS (2025/26), damit
 //  Sortierung, Vergleichsmodus und Instagram-Export unverändert weiterlaufen.
 // ============================================================
 
 const RR_MONTHS  = ['Oct','Nov','Dez','Jan','Feb','März'];
 // RR_WEEKS und ROLLING_RANKINGS werden in data/rolling-rankings.js gesetzt (lädt davor).
-
-// Liga-Key in LIVESCORES_AGGREGATE für die reguläre 2026/27-Saison.
-// Bewusst NICHT "nba-summer-california"/"nba-summer-las-vegas"/"nba-summer-utah"
-// (Summer League) oder "nba-preseason" — nur die echte Regular Season.
-const RR_LIVE_LEAGUE = 'nba';
 
 const RR_SEASONS = [
   { key: 'season2025', label: '2025/26', short: '25/26' },
@@ -44,137 +39,30 @@ let rrSortDir       = 'asc';       // 'asc' = lowest rank first
 // Farben für Vergleichslinien
 const RR_COMPARE_COLORS = ['#f5c842', '#29b6f6', '#ff6584'];
 
-// Kurzlabel je Kalendermonat — gleicher (bewusst gemischter DE/EN) Stil wie
-// die handkuratierten RR_MONTHS ("Oct", aber "Dez"/"März").
-const RR_MONTH_LABEL_BY_NUM = {
-  1: 'Jan', 2: 'Feb', 3: 'März', 4: 'Apr', 5: 'Mai', 6: 'Jun',
-  7: 'Jul', 8: 'Aug', 9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dez',
-};
-
 function _rrSeasonLabel(season) {
   const s = RR_SEASONS.find(s => s.key === (season || rrSeason));
   return s ? s.label : '';
 }
 
-// ── SEASON 2026/27 — aus LIVESCORES_AGGREGATE ableiten ──────────────────────
+// ── SEASON 2026/27 — aus dem permanenten Archiv laden ───────────────────────
+// data/rolling-rankings-2026-27.js wird täglich von
+// scripts/build-rolling-archive.js aus LIVESCORES_AGGREGATE (Liga "nba",
+// reguläre Saison) gebaut — inkl. fester Kategorie-Gewichtung (PTS 0.9,
+// REB 1, AST 1, STL 0.75, BLK 0.75, 3PM 0.75, FG% 1, FT% 0.85, TO 0.25) und
+// wird NIE gekürzt. Anders als früher wird hier also nichts mehr live im
+// Browser aus LIVESCORES_AGGREGATE neu berechnet (das würde nach dessen
+// Kürzung auf 180 Stichtage Daten verlieren) — die Datei selbst ist die
+// dauerhafte Quelle.
 let _rrSeason2026Cache = null;
-
-function _rrRankByComposite(players) {
-  if (!Array.isArray(players)) return [];
-  return players
-    .filter(p => p && p.name != null && typeof p.composite === 'number')
-    .slice()
-    .sort((a, b) => b.composite - a.composite)
-    .map((p, i) => ({ name: p.name, rank: i + 1 }));
-}
-
-// Bündelt tägliche rollierende Fenster-Snapshots (LIVESCORES_AGGREGATE[period][league])
-// zu einem Eintrag pro Kalendermonat ('month') bzw. Kalenderwoche ('week') — jeweils
-// der zeitlich letzte verfügbare Tag innerhalb des Bündels. Ergebnis chronologisch sortiert.
-function _rrBucketEntries(data, mode) {
-  if (!data) return [];
-  const dates = Object.keys(data).sort();
-  if (!dates.length) return [];
-
-  const buckets = new Map(); // bucketKey -> { date, entry }
-  dates.forEach(dateStr => {
-    const entry = data[dateStr];
-    if (!entry || !Array.isArray(entry.players)) return;
-    const bucketKey = mode === 'month' ? dateStr.slice(0, 7) : _rrIsoWeekStart(dateStr);
-    const existing = buckets.get(bucketKey);
-    if (!existing || dateStr > existing.date) {
-      buckets.set(bucketKey, { date: dateStr, entry });
-    }
-  });
-
-  const orderedKeys = [...buckets.keys()].sort();
-  return orderedKeys.map((key, i) => ({
-    key,
-    label: mode === 'month' ? _rrMonthLabelFromKey(key) : String(i + 1),
-    entry: buckets.get(key).entry,
-  }));
-}
-
-function _rrMonthLabelFromKey(key) {
-  const m = parseInt(key.slice(5, 7), 10);
-  return RR_MONTH_LABEL_BY_NUM[m] || key;
-}
-
-// Montag der ISO-Woche des gegebenen Datums, als "YYYY-MM-DD" — dient als
-// stabiler, chronologisch sortierbarer Wochen-Bucket-Key.
-function _rrIsoWeekStart(dateStr) {
-  const [y, m, d] = dateStr.split('-').map(Number);
-  const dt = new Date(Date.UTC(y, m - 1, d));
-  const day = dt.getUTCDay(); // 0=So..6=Sa
-  const diff = day === 0 ? -6 : 1 - day; // auf Montag zurückrechnen
-  dt.setUTCDate(dt.getUTCDate() + diff);
-  return dt.toISOString().slice(0, 10);
-}
-
-// Führt Monats- und Wochen-Buckets zu einer Spielerliste im ROLLING_RANKINGS-
-// Format zusammen: { name, rankings:{Monat:rank}, weeklyRanks:{Woche:rank}, eosRank }.
-// eosRank = Rang aus dem jeweils neuesten Bucket, in dem der Spieler vorkommt
-// (bevorzugt Monat, sonst Woche) — dient als "aktueller Stand" für eine
-// laufende Saison, analog zur Sortierfunktion des End-of-Season-Rangs bei 2025/26.
-function _rrMergeBuckets(monthBuckets, weekBuckets) {
-  const playerMap = new Map(); // normalizedName -> player object
-
-  function ensure(name) {
-    const norm = normalizeName(name);
-    let p = playerMap.get(norm);
-    if (!p) {
-      p = { name, rankings: {}, weeklyRanks: {}, eosRank: null };
-      playerMap.set(norm, p);
-    }
-    return p;
-  }
-
-  monthBuckets.forEach(bucket => {
-    _rrRankByComposite(bucket.entry.players).forEach(({ name, rank }) => {
-      const p = ensure(name);
-      p.rankings[bucket.label] = rank;
-      p.eosRank = rank; // Buckets sind chronologisch sortiert → letzter Treffer gewinnt
-    });
-  });
-
-  weekBuckets.forEach(bucket => {
-    _rrRankByComposite(bucket.entry.players).forEach(({ name, rank }) => {
-      const p = ensure(name);
-      p.weeklyRanks[String(bucket.label)] = rank;
-    });
-  });
-
-  // Fallback: Spieler, die (noch) in keinem Monats-Bucket auftauchen, aber schon
-  // in der aktuellsten Woche — z.B. ganz am Saisonstart, bevor der erste
-  // Monats-Snapshot existiert.
-  if (weekBuckets.length) {
-    const lastWeek = weekBuckets[weekBuckets.length - 1];
-    _rrRankByComposite(lastWeek.entry.players).forEach(({ name, rank }) => {
-      const p = ensure(name);
-      if (p.eosRank == null) p.eosRank = rank;
-    });
-  }
-
-  return Array.from(playerMap.values());
-}
 
 function _rrBuildSeason2026() {
   if (_rrSeason2026Cache) return _rrSeason2026Cache;
 
-  const monthData = (typeof LIVESCORES_AGGREGATE !== 'undefined' && LIVESCORES_AGGREGATE.month)
-    ? LIVESCORES_AGGREGATE.month[RR_LIVE_LEAGUE] : null;
-  const weekData = (typeof LIVESCORES_AGGREGATE !== 'undefined' && LIVESCORES_AGGREGATE.week)
-    ? LIVESCORES_AGGREGATE.week[RR_LIVE_LEAGUE] : null;
+  const players = (typeof ROLLING_RANKINGS_2026 !== 'undefined') ? ROLLING_RANKINGS_2026 : [];
+  const months  = (typeof RR2026_MONTHS !== 'undefined') ? RR2026_MONTHS : [];
+  const weeks   = (typeof RR2026_WEEKS !== 'undefined') ? RR2026_WEEKS : [];
 
-  const monthBuckets = _rrBucketEntries(monthData, 'month');
-  const weekBuckets  = _rrBucketEntries(weekData, 'week');
-  const players      = _rrMergeBuckets(monthBuckets, weekBuckets);
-
-  _rrSeason2026Cache = {
-    players,
-    months: monthBuckets.map(b => b.label),
-    weeks:  weekBuckets.map((b, i) => i + 1),
-  };
+  _rrSeason2026Cache = { players, months, weeks };
   return _rrSeason2026Cache;
 }
 

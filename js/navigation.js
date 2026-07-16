@@ -392,10 +392,11 @@ const SUBNAV_PAGES = {
   lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings',
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
   tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', nbaTradesPage:'nbatrades', adminSettingsPage:'adminsettings', standingsPage:'standings', rulesPage:'rules',
-  liveScoresPage:'livescores',
+  liveScoresPage:'livescores', playerRankingsPage:'playerrankings', playerProjectionsPage:'playerprojections',
 };
 
 const SNAV_GROUP = {
+  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer',
   draft26: 'snavDraft', draft27: 'snavDraft', lottery: 'snavDraft',
   duel: 'snavDuel', duelboard: 'snavDuel', duelsettings: 'snavDuel',
   rankings:   'snavAnalytics', bestavail: 'snavAnalytics', analytics: 'snavAnalytics', rollingrankings: 'snavAnalytics',
@@ -476,6 +477,7 @@ function showRules(){navigate('rulesPage');}
 function showStandings(){navigate('standingsPage');setTimeout(renderStandingsChart,50);}
 function showLiveScores(){navigate('liveScoresPage');typeof lsInit==='function'&&lsInit();}
 function _rerenderPage(pageId) {
+  if (pageId === 'playerRankingsPage')   typeof prInit === 'function' && prInit();
   if (pageId === 'standingsPage')        setTimeout(renderStandingsChart, 50);
   if (pageId === 'nbaTradesPage')        renderNbaTrades();
   if (pageId === 'adminSettingsPage')    _asInit();
