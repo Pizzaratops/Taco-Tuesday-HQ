@@ -142,6 +142,21 @@ function saveEspnRosterSnapshot(rosters) {
   } catch (e) { console.warn('ESPN snapshot save failed:', e); }
 }
 
+// Merge the auto-synced ESPN snapshot (data/rosters-live.js, updated daily
+// by the "Daily 9cat Live Scores" GitHub Action) into ROSTERS as the new
+// baseline, replacing the static teams-rosters.js data. Runs BEFORE the
+// localStorage snapshot below, so a manual "ESPN Sync jetzt" click always
+// wins if it happened more recently than the last daily auto-sync.
+(function _hydrateRostersFromLiveFile() {
+  if (typeof ROSTERS_LIVE === 'undefined') return;
+  Object.keys(ROSTERS_LIVE).forEach(tidStr => {
+    const tid = parseInt(tidStr);
+    if (Array.isArray(ROSTERS_LIVE[tidStr])) {
+      ROSTERS[tid] = ROSTERS_LIVE[tidStr].map(p => ({...p}));
+    }
+  });
+})();
+
 // Merge any persisted ESPN snapshot into ROSTERS *before* we take the
 // _ORIGINAL_ROSTERS reference. This means _ORIGINAL_ROSTERS reflects the
 // latest known ESPN state (or the hardcoded fallback if no snapshot exists),

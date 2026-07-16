@@ -10,48 +10,25 @@ const BA_NBA_TEAMS = new Set(['ATL','BOS','BKN','CHA','CHI','CLE','DAL','DEN','D
   'GSW','HOU','IND','LAC','LAL','MEM','MIA','MIL','MIN','NOR','NYK','OKC','ORL',
   'PHI','PHO','POR','SAC','SAS','TOR','UTA','WAS','FA']);
 
+// BEST_AVAILABLE_BOARD (data/best-available-board.js) ist bereits der fertige,
+// gewichtete Gesamtscore ueber ALLE Signale (Dynasty-Rang, BBM-Rang,
+// letzte Saison, Off-Season, laufende Saison, Post-Draft-Board fuer
+// Rookies) - taeglich neu von scripts/build-best-available-board.js
+// gebaut. Hier wird nur noch gegen die aktuellen Rosters gefiltert.
 function buildBestAvail() {
   const allRosteredNames = new Set();
   Object.values(ROSTERS).forEach(roster => {
     roster.forEach(p => allRosteredNames.add(normalizeName(p.name)));
   });
 
-  // Dynasty players: exclude rostered AND exclude anyone without a real NBA team
-  const dynastyFAs = DYNASTY_PLAYERS.filter(p => {
-    if (allRosteredNames.has(normalizeName(p[1]))) return false;
-    if (!BA_NBA_TEAMS.has(p[2])) return false;  // college/prospect = no NBA team code
-    return true;
-  }).map(p => ({
-    rank: p[0], name: p[1], nba: p[2], pos: p[3],
-    dob: p[4] || null, source: 'dynasty'
-  }));
+  if (typeof BEST_AVAILABLE_BOARD === 'undefined') return [];
 
-  // FA_PLAYERS already verified by BBM Owner column
-  const dynastyNames = new Set(dynastyFAs.map(p => normalizeName(p.name)));
-  const bbmFAs = FA_PLAYERS
-    .filter(p => !dynastyNames.has(normalizeName(p.name)))
-    .map(p => ({
-      rank: p.rank, name: p.name, nba: p.nba, pos: p.pos,
-      dob: null, source: 'fa'
-    }));
-
-  // Post-Draft Board: 2026 Draft-Klasse ohne eigenen Dynasty-Rank in
-  // DYNASTY_PLAYERS. Rank wird hinter die Dynasty-Skala gelegt (max
-  // Dynasty-Rank + Post-Draft-Score-Rang), damit sie unten anschließen,
-  // aber untereinander nach dem kombinierten Post-Draft-Score sortiert
-  // bleiben (Big Board + Draft Capital + Off-Season + Sticky Score).
-  const knownNames = new Set([...dynastyNames, ...bbmFAs.map(p => normalizeName(p.name))]);
-  const dynastyMaxRank = DYNASTY_PLAYERS.reduce((m, p) => Math.max(m, p[0]), 0);
-  const postDraftFAs = (typeof POSTDRAFT_BOARD !== 'undefined' ? POSTDRAFT_BOARD : [])
-    .filter(p => p.drafted && p.nbaTeam && BA_NBA_TEAMS.has(p.nbaTeam))
+  return BEST_AVAILABLE_BOARD
     .filter(p => !allRosteredNames.has(normalizeName(p.name)))
-    .filter(p => !knownNames.has(normalizeName(p.name)))
     .map(p => ({
-      rank: dynastyMaxRank + p.rank, name: p.name, nba: p.nbaTeam, pos: p.pos,
-      dob: null, source: 'postdraft', stickyScore: p.stickyScore, compositeScore: p.compositeScore
+      ...p,
+      source: p.isRookie ? 'postdraft' : (p.dynastyRank ? 'dynasty' : 'fa'),
     }));
-
-  return [...dynastyFAs, ...bbmFAs, ...postDraftFAs].sort((a, b) => a.rank - b.rank);
 }
 
 function renderBestAvail(data) {
@@ -60,14 +37,13 @@ function renderBestAvail(data) {
   if (!data.length) { tbody.innerHTML = ''; noR.style.display = 'block'; return; }
   noR.style.display = 'none';
   tbody.innerHTML = data.map(p => {
-    // Support both old array format and new object format
-    const rank = p.rank ?? p[0];
-    const name = p.name ?? p[1];
-    const nba  = p.nba  ?? p[2];
-    const pos  = p.pos  ?? p[3];
-    const dob  = p.dob  ?? p[4] ?? null;
+    const rank = p.rank;
+    const name = p.name;
+    const nba  = p.nbaTeam;
+    const pos  = p.pos;
+    const dob  = p.dob ?? null;
     const isFA = p.source === 'fa';
-    const isRookie = p.source === 'postdraft';
+    const isRookie = p.source === 'postdraft' || p.isRookie;
 
     const age  = playerAge(dob);
     const mRk  = MATT_RANKS[name] || null;
@@ -76,26 +52,40 @@ function renderBestAvail(data) {
 
     const mattBadge = mRk
       ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(mRk)};color:${dynastyRankColor(mRk)};">#${mRk}</span>`
-      : '<span style="color:var(--border);">—</span>';
+      : '<span style="color:var(--border);">-</span>';
     const hashBadge = hRk
       ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(hRk)};color:${dynastyRankColor(hRk)};">#${hRk}</span>`
-      : '<span style="color:var(--border);">—</span>';
+      : '<span style="color:var(--border);">-</span>';
     const faBadge = isFA
       ? `<span style="font-size:9px;font-weight:800;padding:1px 5px;border-radius:5px;background:rgba(76,175,129,0.15);color:#4caf81;margin-left:5px;vertical-align:middle;">FA</span>`
       : '';
     const rookieBadge = isRookie
       ? `<span style="font-size:9px;font-weight:800;padding:1px 5px;border-radius:5px;background:rgba(108,99,255,0.15);color:#a89bff;margin-left:5px;vertical-align:middle;">ROOKIE</span>`
       : '';
-    const stickyBadge = isRookie && p.stickyScore !== null && p.stickyScore !== undefined
+    const stickyBadge = (p.stickyScore !== null && p.stickyScore !== undefined)
       ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${p.stickyScore >= 5 ? 'rgba(76,175,129,0.15)' : p.stickyScore >= 0 ? 'rgba(41,182,246,0.15)' : 'rgba(255,101,132,0.12)'};color:${p.stickyScore >= 5 ? '#6dddaa' : p.stickyScore >= 0 ? '#4fc3f7' : '#ff8fa3'};" title="Sticky Score (Summer-League-Modell)">${p.stickyScore.toFixed(1)}</span>`
-      : '<span style="color:var(--border);">—</span>';
+      : '<span style="color:var(--border);">-</span>';
+
+    const minCell = (p.minutesAvg !== null && p.minutesAvg !== undefined)
+      ? `<span style="font-size:12px;color:var(--muted);font-weight:600;">${p.minutesAvg}</span>`
+      : '<span style="color:var(--border);">-</span>';
+
+    // Beste/schwaechste Kategorie aus dem jeweils aktuellsten verfuegbaren
+    // Fenster (laufende Saison > Off-Season). Fehlt beides (z.B. etablierter
+    // Veteran ohne Summer-League-Minuten vor Saisonstart), bleibt das Feld
+    // leer statt eine falsche Zahl vorzutaeuschen.
+    const catCell = (p.bestCat30 && p.worstCat30)
+      ? `<span style="font-size:11px;font-weight:700;color:#6dddaa;">${p.bestCat30}</span><span style="color:var(--border);"> / </span><span style="font-size:11px;font-weight:700;color:#ff8fa3;">${p.worstCat30}</span>`
+      : '<span style="color:var(--border);">-</span>';
 
     return `<tr>
       <td><span class="r-rank ${rc}">${rank}</span></td>
       <td><span class="r-name">${name}</span>${faBadge}${rookieBadge}</td>
       <td><span class="r-team r-team-link" onclick="showNBATeam('${nba}')" title="${NBA_TEAM_NAMES[nba]||nba}">${nba}</span></td>
       <td><span class="r-pos">${pos}</span></td>
-      <td style="text-align:center;font-size:12px;color:var(--muted);font-weight:600;">${age !== null ? age+'y' : '—'}</td>
+      <td style="text-align:center;font-size:12px;color:var(--muted);font-weight:600;">${age !== null ? age+'y' : '-'}</td>
+      <td style="text-align:center;">${minCell}</td>
+      <td style="text-align:center;">${catCell}</td>
       <td style="text-align:center;">${mattBadge}</td>
       <td style="text-align:center;">${hashBadge}</td>
       <td style="text-align:center;">${stickyBadge}</td>
@@ -107,9 +97,9 @@ function filterBestAvail() {
   const q = document.getElementById('baSearch').value.toLowerCase().trim();
   baCurrentData = q
     ? buildBestAvail().filter(p => {
-        const name = (p.name ?? p[1] ?? '').toLowerCase();
-        const nba  = (p.nba  ?? p[2] ?? '').toLowerCase();
-        const pos  = (p.pos  ?? p[3] ?? '').toLowerCase();
+        const name = (p.name || '').toLowerCase();
+        const nba  = (p.nbaTeam || '').toLowerCase();
+        const pos  = (p.pos || '').toLowerCase();
         return name.includes(q) || nba.includes(q) || pos.includes(q);
       })
     : buildBestAvail();
