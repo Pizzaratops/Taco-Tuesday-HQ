@@ -17,7 +17,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { parseCsv, CATEGORIES, FIELD_MAP, mean, stdDev, OFFSEASON_LEAGUES } = require('./lib/aggregate-core');
+const { parseCsv, CATEGORIES, FIELD_MAP, mean, stdDev, OFFSEASON_LEAGUES } = require('./aggregate-core');
 
 const args = process.argv.slice(2);
 const arg = (name, fallback) => {
