@@ -295,6 +295,7 @@ candidates.forEach((info, key) => {
     nbaTeam: info.nbaTeam,
     pos: info.pos,
     dob: info.dob,
+    age: lastStats && lastStats.age != null ? Math.floor(lastStats.age) : null,
     isRookie: !!pd,
     dynastyRank: dyn ? dyn[0] : null,
     bbmRank: bbm ? bbm.rank : null,
@@ -321,7 +322,7 @@ players.forEach((p, i) => { p.rank = i + 1; });
 // ------------------------------------------------------------
 const lines = players.map(p => {
   const f = (v) => v === null || v === undefined ? 'null' : (typeof v === 'string' ? JSON.stringify(v) : v);
-  return `  { rank: ${p.rank}, name: ${JSON.stringify(p.name)}, nbaTeam: ${JSON.stringify(p.nbaTeam)}, pos: ${JSON.stringify(p.pos)}, dob: ${f(p.dob)}, ` +
+  return `  { rank: ${p.rank}, name: ${JSON.stringify(p.name)}, nbaTeam: ${JSON.stringify(p.nbaTeam)}, pos: ${JSON.stringify(p.pos)}, dob: ${f(p.dob)}, age: ${f(p.age)}, ` +
     `isRookie: ${p.isRookie}, dynastyRank: ${f(p.dynastyRank)}, bbmRank: ${f(p.bbmRank)}, lastSeasonRank: ${f(p.lastSeasonRank)}, ` +
     `postDraftRank: ${f(p.postDraftRank)}, stickyScore: ${f(p.stickyScore)}, minutesAvg: ${f(p.minutesAvg)}, ` +
     `z7: ${f(p.z7)}, z30: ${f(p.z30)}, bestCat7: ${f(p.bestCat7)}, bestCat30: ${f(p.bestCat30)}, worstCat30: ${f(p.worstCat30)}, ` +
