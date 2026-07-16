@@ -56,6 +56,14 @@ function renderDynastyRankings(data) {
     const hBadge = hRk
       ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(hRk)};color:${dynastyRankColor(hRk)};">#${hRk}</span>`
       : `<span style="color:var(--border);font-size:11px;">—</span>`;
+    // Live-Nudge: rein informatives Badge, verändert nicht p[0]/die Sortierung
+    // hier auf der Seite. Siehe scripts/build-dynasty-live.js.
+    const live = (typeof DYNASTY_LIVE !== 'undefined') ? DYNASTY_LIVE.find(d => d.name === p[1]) : null;
+    const liveBadge = live
+      ? (live.delta > 0
+          ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(76,175,129,0.15);color:#6dddaa;" title="Aktuelle Performance deutet nach oben (Basis: ${live.source === 'current' ? 'laufende Saison' : 'Off-Season'})">▲${live.delta}</span>`
+          : `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(255,101,132,0.15);color:#ff8fa3;" title="Aktuelle Performance deutet nach unten (Basis: ${live.source === 'current' ? 'laufende Saison' : 'Off-Season'})">▼${Math.abs(live.delta)}</span>`)
+      : `<span style="color:var(--border);font-size:11px;">—</span>`;
     const editExtras = (typeof dynEditRowExtras === 'function') ? dynEditRowExtras(p) : { dragAttrs:'', extraCol:'', isModified:false };
     const rowStyle = editExtras.isModified ? 'background:rgba(232,74,39,.08);' : '';
     const dragHandle = editActive ? '<span style="color:var(--muted);cursor:grab;margin-right:6px;user-select:none;">⋮⋮</span>' : '';
@@ -65,6 +73,7 @@ function renderDynastyRankings(data) {
       <td><span class="r-team">${p[2]}</span></td>
       <td><span class="r-pos">${p[3]}</span></td>
       <td style="text-align:center;"><span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(p[0])};color:${dynastyRankColor(p[0])};">#${p[0]}</span></td>
+      <td style="text-align:center;">${liveBadge}</td>
       <td style="text-align:center;">${mBadge}</td>
       <td style="text-align:center;">${hBadge}</td>
       ${editActive ? editExtras.extraCol : ''}
