@@ -35,7 +35,23 @@ function buildBestAvail() {
       dob: null, source: 'fa'
     }));
 
-  return [...dynastyFAs, ...bbmFAs].sort((a, b) => a.rank - b.rank);
+  // Post-Draft Board: 2026 Draft-Klasse ohne eigenen Dynasty-Rank in
+  // DYNASTY_PLAYERS. Rank wird hinter die Dynasty-Skala gelegt (max
+  // Dynasty-Rank + Post-Draft-Score-Rang), damit sie unten anschließen,
+  // aber untereinander nach dem kombinierten Post-Draft-Score sortiert
+  // bleiben (Big Board + Draft Capital + Off-Season + Sticky Score).
+  const knownNames = new Set([...dynastyNames, ...bbmFAs.map(p => normalizeName(p.name))]);
+  const dynastyMaxRank = DYNASTY_PLAYERS.reduce((m, p) => Math.max(m, p[0]), 0);
+  const postDraftFAs = (typeof POSTDRAFT_BOARD !== 'undefined' ? POSTDRAFT_BOARD : [])
+    .filter(p => p.drafted && p.nbaTeam && BA_NBA_TEAMS.has(p.nbaTeam))
+    .filter(p => !allRosteredNames.has(normalizeName(p.name)))
+    .filter(p => !knownNames.has(normalizeName(p.name)))
+    .map(p => ({
+      rank: dynastyMaxRank + p.rank, name: p.name, nba: p.nbaTeam, pos: p.pos,
+      dob: null, source: 'postdraft', stickyScore: p.stickyScore, compositeScore: p.compositeScore
+    }));
+
+  return [...dynastyFAs, ...bbmFAs, ...postDraftFAs].sort((a, b) => a.rank - b.rank);
 }
 
 function renderBestAvail(data) {
@@ -51,6 +67,7 @@ function renderBestAvail(data) {
     const pos  = p.pos  ?? p[3];
     const dob  = p.dob  ?? p[4] ?? null;
     const isFA = p.source === 'fa';
+    const isRookie = p.source === 'postdraft';
 
     const age  = playerAge(dob);
     const mRk  = MATT_RANKS[name] || null;
@@ -66,15 +83,22 @@ function renderBestAvail(data) {
     const faBadge = isFA
       ? `<span style="font-size:9px;font-weight:800;padding:1px 5px;border-radius:5px;background:rgba(76,175,129,0.15);color:#4caf81;margin-left:5px;vertical-align:middle;">FA</span>`
       : '';
+    const rookieBadge = isRookie
+      ? `<span style="font-size:9px;font-weight:800;padding:1px 5px;border-radius:5px;background:rgba(108,99,255,0.15);color:#a89bff;margin-left:5px;vertical-align:middle;">ROOKIE</span>`
+      : '';
+    const stickyBadge = isRookie && p.stickyScore !== null && p.stickyScore !== undefined
+      ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${p.stickyScore >= 5 ? 'rgba(76,175,129,0.15)' : p.stickyScore >= 0 ? 'rgba(41,182,246,0.15)' : 'rgba(255,101,132,0.12)'};color:${p.stickyScore >= 5 ? '#6dddaa' : p.stickyScore >= 0 ? '#4fc3f7' : '#ff8fa3'};" title="Sticky Score (Summer-League-Modell)">${p.stickyScore.toFixed(1)}</span>`
+      : '<span style="color:var(--border);">—</span>';
 
     return `<tr>
       <td><span class="r-rank ${rc}">${rank}</span></td>
-      <td><span class="r-name">${name}</span>${faBadge}</td>
+      <td><span class="r-name">${name}</span>${faBadge}${rookieBadge}</td>
       <td><span class="r-team r-team-link" onclick="showNBATeam('${nba}')" title="${NBA_TEAM_NAMES[nba]||nba}">${nba}</span></td>
       <td><span class="r-pos">${pos}</span></td>
       <td style="text-align:center;font-size:12px;color:var(--muted);font-weight:600;">${age !== null ? age+'y' : '—'}</td>
       <td style="text-align:center;">${mattBadge}</td>
       <td style="text-align:center;">${hashBadge}</td>
+      <td style="text-align:center;">${stickyBadge}</td>
     </tr>`;
   }).join('');
 }
