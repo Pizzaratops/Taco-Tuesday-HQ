@@ -1,0 +1,134 @@
+#!/usr/bin/env node
+// ============================================================
+//  ESPN ROSTER SYNC (automatisiert)
+// ============================================================
+//  Node-Äquivalent von espnSync() in js/espn-trade-detect.js.
+//  Im Browser muss der ESPN-Call über einen CORS-Proxy laufen, weil
+//  ESPN keine Browser-Cross-Origin-Requests erlaubt. In Node/GitHub
+//  Actions gibt es kein CORS — hier wird direkt gegen den ESPN-
+//  "reads"-Endpoint gefetcht, kein Proxy nötig.
+//
+//  Liest Konfiguration (ESPN_LEAGUE_ID, ESPN_SEASON, Team-/Positions-
+//  Mappings) direkt aus js/espn-sync.js, damit es keine zweite Quelle
+//  der Wahrheit gibt, die aus dem Ruder laufen kann.
+//
+//  Output: data/rosters-live.js — ROSTERS_LIVE, wird von js/admin.js
+//  beim Seitenstart als Basis geladen (vor manuellen localStorage-
+//  Overrides, siehe _hydrateRostersFromLiveFile()).
+//
+//  Usage:
+//    node scripts/sync-espn-rosters.js
+// ============================================================
+
+const fs = require('fs');
+const path = require('path');
+const vm = require('vm');
+const https = require('https');
+
+const ROOT = path.join(__dirname, '..');
+const OUT = path.join(ROOT, 'data', 'rosters-live.js');
+
+function loadConfig() {
+  const code = fs.readFileSync(path.join(ROOT, 'js', 'espn-sync.js'), 'utf8');
+  const sandbox = {};
+  vm.createContext(sandbox);
+  vm.runInContext(
+    `${code}\nthis.__CFG__ = { ESPN_LEAGUE_ID, ESPN_SEASON, ESPN_POS_MAP, ESPN_NBA_MAP, ESPN_TO_TT_TEAM };`,
+    sandbox
+  );
+  return sandbox.__CFG__;
+}
+
+function httpsGetJson(url) {
+  return new Promise((resolve, reject) => {
+    https.get(url, {
+      headers: {
+        'User-Agent': 'taco-tuesday-hq-bot',
+        'Accept': 'application/json',
+      },
+    }, res => {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        return httpsGetJson(res.headers.location).then(resolve, reject);
+      }
+      if (res.statusCode !== 200) {
+        res.resume();
+        return reject(new Error(`HTTP ${res.statusCode} für ${url}`));
+      }
+      let data = '';
+      res.on('data', chunk => { data += chunk; });
+      res.on('end', () => {
+        try { resolve(JSON.parse(data)); }
+        catch (e) { reject(new Error('Keine gültige JSON-Antwort von ESPN: ' + e.message)); }
+      });
+    }).on('error', reject);
+  });
+}
+
+async function main() {
+  const cfg = loadConfig();
+  const espnUrl = `https://lm-api-reads.fantasy.espn.com/apis/v3/games/fba/seasons/${cfg.ESPN_SEASON}/segments/0/leagues/${cfg.ESPN_LEAGUE_ID}?view=mRoster&view=mTeam`;
+
+  const data = await httpsGetJson(espnUrl);
+  const teams = (data.teams || []).filter(t => cfg.ESPN_TO_TT_TEAM[t.id] !== undefined);
+  if (!teams.length) throw new Error('Keine Teams in ESPN-Antwort — Liga-ID/Saison prüfen.');
+
+  const rosters = {};
+  teams.forEach(espnTeam => {
+    const ttId = cfg.ESPN_TO_TT_TEAM[espnTeam.id];
+    if (!ttId) return;
+    const entries = espnTeam.roster?.entries || [];
+    rosters[ttId] = entries.map(entry => {
+      const pi = entry.playerPoolEntry || {};
+      const p = pi.player || {};
+      const name = p.fullName || null;
+      const posId = (p.eligibleSlots || [])[0] ?? 0;
+      const pos = cfg.ESPN_POS_MAP[posId] || 'SF';
+      const nbaTeam = cfg.ESPN_NBA_MAP[p.proTeamId] || 'FA';
+      return name ? { name, pos, team: nbaTeam } : null;
+    }).filter(Boolean);
+  });
+
+  const totalPlayers = Object.values(rosters).reduce((s, r) => s + r.length, 0);
+  if (totalPlayers < 100) {
+    // Sanity check — a 12-team league should have well over 100 rostered
+    // players. If ESPN returned something malformed/partial, don't overwrite
+    // the last good snapshot with garbage.
+    throw new Error(`Nur ${totalPlayers} Spieler in ESPN-Antwort gefunden — sieht nach Teil-/Fehlantwort aus, breche ab ohne zu schreiben.`);
+  }
+
+  const now = new Date().toISOString();
+  const rosterLines = Object.keys(rosters).sort((a, b) => a - b).map(tid => {
+    const players = rosters[tid].map(p => JSON.stringify(p)).join(', ');
+    return `  ${tid}: [${players}]`;
+  });
+
+  const out = `// ============================================================
+//  ROSTERS_LIVE — automatisch von ESPN synchronisiert
+// ============================================================
+//  AUTO-GENERIERT von scripts/sync-espn-rosters.js über die
+//  "Daily 9cat Live Scores" GitHub Action. Nicht von Hand editieren.
+//  Zuletzt synchronisiert: ${now}
+//
+//  Wird von js/admin.js beim Seitenstart als Basis für ROSTERS geladen
+//  (ersetzt die statischen Rosters aus data/teams-rosters.js), bevor
+//  manuelle Overrides (localStorage bzw. der "ESPN Sync jetzt"-Knopf
+//  für einen sofortigen Zwischenstand) angewendet werden.
+// ============================================================
+
+const ROSTERS_LIVE = {
+${rosterLines.join(',\n')}
+};
+`;
+
+  fs.mkdirSync(path.dirname(OUT), { recursive: true });
+  fs.writeFileSync(OUT, out, 'utf8');
+  console.log(`${OUT} aktualisiert: ${totalPlayers} Spieler über ${Object.keys(rosters).length} Teams.`);
+}
+
+main().catch(err => {
+  console.error('ESPN Roster Sync fehlgeschlagen:', err.message);
+  // Non-fatal: exit 0 so the rest of the daily workflow still runs even
+  // if ESPN is temporarily unreachable. The last good rosters-live.js
+  // snapshot simply stays in place.
+  process.exit(0);
+});
