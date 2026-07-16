@@ -106,6 +106,7 @@
       <button class="snav-single" data-page="standings" onclick="showStandings()">📈 Standings</button>
       <button class="snav-single" data-page="rules"     onclick="showRules()">📜 Rules</button>
       <div class="snav-divider"></div>
+      <!-- Draft Duel deaktiviert bis 2027er Prospects da sind — Block einfach wieder auskommentieren
       <div class="snav-group">
         <button class="snav-group-btn" id="snavDuel">⚡ Draft Duel <span class="snav-arrow">▾</span></button>
         <div class="snav-dropdown">
@@ -114,6 +115,7 @@
           <button class="snav-dropdown-item" data-page="duelsettings" onclick="showDuelSettings()">⚙️ Duel Settings</button>
         </div>
       </div>
+      -->
 
     </div>
   </div>
@@ -153,12 +155,14 @@
       </div>
       <div class="subnav-mobile-group">
               </div>
+      <!-- Draft Duel deaktiviert bis 2027er Prospects da sind — Block einfach wieder auskommentieren
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Draft Duel</div>
         <button class="subnav-mobile-btn" data-page="duel"         onclick="showDuelPage();closeMobileNav()">⚡ Duell</button>
         <button class="subnav-mobile-btn" data-page="duelboard"    onclick="showDuelBoard();closeMobileNav()">📊 Duel Board</button>
         <button class="subnav-mobile-btn" data-page="duelsettings" onclick="showDuelSettings();closeMobileNav()">⚙️ Settings</button>
       </div>
+      -->
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Trade Tools</div>
         <button class="subnav-mobile-btn" data-page="trade"       onclick="showTrade();closeMobileNav()">⚖️ Trade Analyzer</button>
@@ -357,6 +361,7 @@
           <th onclick="sortRankings(2)">Team<span class="r-sort-arrow">↕</span></th>
           <th onclick="sortRankings(3)">Position<span class="r-sort-arrow">↕</span></th>
           <th style="text-align:center;white-space:nowrap;">MFHFBs DR</th>
+          <th style="text-align:center;white-space:nowrap;" title="Kleine automatische Bewegung basierend auf aktueller Off-Season-/Saison-Performance — rein informativ, verändert nicht deinen Rang">📡 Live</th>
           <th style="text-align:center;white-space:nowrap;">Matt DR</th>
           <th style="text-align:center;white-space:nowrap;">#️⃣ Hashtag</th>
           <th id="rankingsEditHeader" style="display:none;text-align:center;white-space:nowrap;">Edit Rank</th>
@@ -1376,6 +1381,7 @@
 <script src="data/rosters-live.js?v=1"></script>
 <script src="data/picks.js?v=5"></script>
 <script src="data/rankings.js?v=5"></script>
+<script src="data/dynasty-live.js?v=1"></script>
 <script src="data/hashtag.js?v=5"></script>
 <script src="data/aliases.js?v=5"></script>
 <script src="data/draft2026.js?v=5"></script>
