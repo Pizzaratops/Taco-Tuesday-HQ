@@ -2,13 +2,18 @@ name: Daily 9cat Live Scores
 
 on:
   schedule:
-    # 08:00 & 20:00 Europe/Berlin, während Sommerzeit (CEST = UTC+2) -> 06:00 & 18:00 UTC.
-    # ACHTUNG: Nach dem Ende der Sommerzeit (letzter Oktober-Sonntag) auf
-    # '0 7 * * *' / '0 19 * * *' (CET = UTC+1) umstellen, sonst laufen die
-    # Jobs im Winter eine Stunde später als 08/20 Uhr lokal. Cron kennt keine
-    # Zeitzonen, GitHub Actions rechnet immer in UTC.
+    # Sommerzeit (CEST, UTC+2): 06/08/22 Uhr Berlin -> 04/06/20 UTC
+    - cron: '0 4 * * *'
     - cron: '0 6 * * *'
-    - cron: '0 18 * * *'
+    - cron: '0 20 * * *'
+    # Winterzeit (CET, UTC+1): 06/08/22 Uhr Berlin -> 05/07/21 UTC
+    - cron: '0 5 * * *'
+    - cron: '0 7 * * *'
+    - cron: '0 21 * * *'
+    # Der Zeit-Check-Step unten sorgt dafür, dass jeweils nur der
+    # tatsächlich passende Lauf (Sommer- ODER Winterzeit) wirklich arbeitet
+    # und der andere übersprungen wird. So ist keine manuelle Umstellung
+    # zweimal im Jahr mehr nötig.
   workflow_dispatch:
     inputs:
       date:
@@ -30,15 +35,35 @@ jobs:
   update-live-scores:
     runs-on: ubuntu-latest
     steps:
+      - name: Prüfe ob aktuelle Zeit 6/8/22 Uhr Berlin ist
+        id: check_time
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manueller Start, Zeit-Check wird übersprungen."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          HOUR=$(TZ=Europe/Berlin date +%H)
+          if [ "$HOUR" = "06" ] || [ "$HOUR" = "08" ] || [ "$HOUR" = "22" ]; then
+            echo "Berlin-Zeit ist ${HOUR} Uhr, Job läuft weiter."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Berlin-Zeit ist ${HOUR} Uhr, kein Zieltermin, Job wird übersprungen."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout
+        if: steps.check_time.outputs.skip != 'true'
         uses: actions/checkout@v4
 
       - name: Node einrichten
+        if: steps.check_time.outputs.skip != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Tagesdaten von ESPN holen
+        if: steps.check_time.outputs.skip != 'true'
         env:
           DATE_ARG: ${{ github.event.inputs.date }}
           LEAGUE_ARG: ${{ github.event.inputs.league || 'nba-summer-las-vegas' }}
@@ -46,6 +71,7 @@ jobs:
           node scripts/daily-9cat.js ${DATE_ARG} --league=${LEAGUE_ARG}
 
       - name: In livescores-daily.js konvertieren
+        if: steps.check_time.outputs.skip != 'true'
         env:
           DATE_ARG: ${{ github.event.inputs.date }}
           LEAGUE_ARG: ${{ github.event.inputs.league || 'nba-summer-las-vegas' }}
@@ -57,6 +83,7 @@ jobs:
           fi
 
       - name: Weekly/Monthly aktualisieren (alle Standorte kombiniert)
+        if: steps.check_time.outputs.skip != 'true'
         env:
           DATE_ARG: ${{ github.event.inputs.date }}
         run: |
@@ -67,6 +94,7 @@ jobs:
           fi
 
       - name: Änderungen committen & pushen
+        if: steps.check_time.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
