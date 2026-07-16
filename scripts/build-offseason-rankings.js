@@ -12,19 +12,12 @@
 //
 //  Usage:
 //    node scripts/build-offseason-rankings.js
-//    node scripts/build-offseason-rankings.js --dir=scripts/data --out=data/offseason-rankings.js --min-games=2
+//    node scripts/build-offseason-rankings.js --dir=scripts/data --out=data/offseason-rankings.js --min-games=1
 // ============================================================
 
 const fs = require('fs');
 const path = require('path');
-const { parseCsv, CATEGORIES, FIELD_MAP, mean, stdDev } = require('./lib/aggregate-core');
-
-const OFFSEASON_LEAGUES = [
-  'nba-summer-california',
-  'nba-summer-utah',
-  'nba-summer-las-vegas',
-  'nba-preseason',
-];
+const { parseCsv, CATEGORIES, FIELD_MAP, mean, stdDev, OFFSEASON_LEAGUES } = require('./lib/aggregate-core');
 
 const args = process.argv.slice(2);
 const arg = (name, fallback) => {
@@ -34,7 +27,7 @@ const arg = (name, fallback) => {
 
 const DIR = arg('dir', path.join(__dirname, 'data'));
 const OUT = arg('out', path.join(__dirname, '..', 'data', 'offseason-rankings.js'));
-const MIN_GAMES = parseInt(arg('min-games', '2'), 10);
+const MIN_GAMES = parseInt(arg('min-games', '1'), 10);
 
 const round1 = (n) => Math.round(n * 10) / 10;
 const round2 = (n) => Math.round(n * 100) / 100;
