@@ -93,12 +93,28 @@ jobs:
             node scripts/update-all-aggregates.js --keep=180
           fi
 
+      - name: Off-Season-Rankings fortschreiben (Summer League + Preseason)
+        if: steps.check_time.outputs.skip != 'true'
+        run: |
+          node scripts/build-offseason-rankings.js
+
+      - name: Rolling-Rankings-Archiv 2026/27 fortschreiben (Liga "nba")
+        if: steps.check_time.outputs.skip != 'true'
+        env:
+          DATE_ARG: ${{ github.event.inputs.date }}
+        run: |
+          if [ -n "$DATE_ARG" ]; then
+            node scripts/build-rolling-archive.js --date="$DATE_ARG" --league=nba
+          else
+            node scripts/build-rolling-archive.js --league=nba
+          fi
+
       - name: Änderungen committen & pushen
         if: steps.check_time.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/livescores-daily.js data/livescores-aggregate.js scripts/data/
+          git add data/livescores-daily.js data/livescores-aggregate.js data/rolling-rankings-2026-27.js data/offseason-rankings.js scripts/data/
           if git diff --cached --quiet; then
             echo "Keine Änderungen (vermutlich keine Spiele an diesem Tag)."
           else
