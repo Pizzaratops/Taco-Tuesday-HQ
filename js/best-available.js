@@ -45,7 +45,7 @@ function renderBestAvail(data) {
     const isFA = p.source === 'fa';
     const isRookie = p.source === 'postdraft' || p.isRookie;
 
-    const age  = playerAge(dob);
+    const age  = playerAge(dob) ?? p.age ?? null;
     const mRk  = MATT_RANKS[name] || null;
     const hRk  = hashtagRank(name);
     const rc   = rankClass(rank);
