@@ -416,11 +416,16 @@
 <div class="page" id="bestAvailPage">
   <h2 style="margin-bottom:6px;">🆓 Best Available</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Spieler die in keinem Roster stehen — sortiert nach einem gewichteten Gesamtscore aus Dynasty-Rang, letzter Saison, Off-Season/Preseason, laufender Saison (sobald verfügbar) und für Rookies zusätzlich Big Board + Draft Capital + Sticky Score. MIN und Beste/Schwächste Kategorie fehlen bei Spielern, die noch keine Off-Season- oder Saison-Minuten gesammelt haben.</p>
-  <div class="rankings-search">
+  <div class="rankings-search" style="display:flex;align-items:center;gap:10px;">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
     </svg>
-    <input type="text" id="baSearch" placeholder="Search player, team, or position…" oninput="filterBestAvail()"/>
+    <input type="text" id="baSearch" placeholder="Search player, team, or position…" oninput="filterBestAvail()" style="flex:1;"/>
+    <select id="baExperienceSelect" onchange="baSetExperienceFilter(this.value)" style="padding:8px 12px;border-radius:8px;background:var(--surface2,rgba(255,255,255,.04));border:1px solid var(--border);color:var(--text);font-size:13px;">
+      <option value="all">Every Player</option>
+      <option value="rookie">Rookies</option>
+      <option value="sophomore">Sophomores</option>
+    </select>
   </div>
   <div class="rankings-table-wrap">
     <table class="rankings-table">
