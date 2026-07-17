@@ -280,6 +280,13 @@
   </div>
   <div class="ls-hint" id="lsScheduleHint">Kalifornien: 3.–6. Juli · Salt Lake City: 4.–7. Juli · Las Vegas: 9.–19. Juli</div>
 
+  <div id="lsMinGamesPanel" style="display:none;align-items:center;gap:10px;margin-bottom:14px;padding:10px 14px;background:var(--surface2,rgba(255,255,255,.04));border-radius:10px;">
+    <span style="font-size:13px;color:var(--muted);white-space:nowrap;">🎚️ Min. Spiele im Fenster:</span>
+    <input type="range" id="lsMinGamesSlider" min="1" max="5" step="1" value="1" oninput="lsSetMinGames(this.value)" style="flex:1;max-width:200px;"/>
+    <span style="font-size:13px;font-weight:700;min-width:16px;" id="lsMinGamesValue">1</span>
+    <span style="font-size:11px;color:var(--muted);">(1 = alle, auch Spieler mit nur einem Spiel im Fenster)</span>
+  </div>
+
   <div class="ls-punt-panel collapsed" id="lsPuntPanel">
     <div class="ls-punt-header" onclick="lsTogglePuntPanel()">
       <span>⚖️ Punt-Gewichtung — Kategorien von 0 bis 2 gewichten · 1 = normal, 0 = geputtet · nichts wird gespeichert</span>
