@@ -55,15 +55,14 @@ function renderBestAvail(data) {
     const isRookie = p.source === 'postdraft' || p.isRookie;
 
     const age  = playerAge(dob) ?? p.age ?? null;
-    const mRk  = MATT_RANKS[name] || null;
-    const hRk  = hashtagRank(name);
     const rc   = rankClass(rank);
 
-    const mattBadge = mRk
-      ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(mRk)};color:${dynastyRankColor(mRk)};">#${mRk}</span>`
-      : '<span style="color:var(--border);">-</span>';
-    const hashBadge = hRk
-      ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(hRk)};color:${dynastyRankColor(hRk)};">#${hRk}</span>`
+    // Auf Wunsch zeigt Best Available nur noch den MFHFB-eigenen Dynasty-Rang
+    // (data/rankings.js) statt zusaetzlich Matt Lawsons und Hashtag Basketballs
+    // Vergleichsrang einzublenden — die bleiben auf der Dynasty-Rankings-Seite
+    // selbst weiterhin sichtbar, nur hier auf Best Available nicht mehr.
+    const mfhfbBadge = p.dynastyRank
+      ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(p.dynastyRank)};color:${dynastyRankColor(p.dynastyRank)};">#${p.dynastyRank}</span>`
       : '<span style="color:var(--border);">-</span>';
     const faBadge = isFA
       ? `<span style="font-size:9px;font-weight:800;padding:1px 5px;border-radius:5px;background:rgba(76,175,129,0.15);color:#4caf81;margin-left:5px;vertical-align:middle;">FA</span>`
@@ -87,6 +86,11 @@ function renderBestAvail(data) {
       ? `<span style="font-size:11px;font-weight:700;color:#6dddaa;">${p.bestCat30}</span><span style="color:var(--border);"> / </span><span style="font-size:11px;font-weight:700;color:#ff8fa3;">${p.worstCat30}</span>`
       : '<span style="color:var(--border);">-</span>';
 
+    // 2026/27 Rankings & Projections — noch keine Datenquelle angebunden,
+    // Platzhalter bis geklärt/geliefert.
+    const season2627RankCell = '<span style="color:var(--border);">-</span>';
+    const season2627ProjCell = '<span style="color:var(--border);">-</span>';
+
     return `<tr>
       <td><span class="r-rank ${rc}">${rank}</span></td>
       <td><span class="r-name">${name}</span>${faBadge}${rookieBadge}</td>
@@ -95,9 +99,10 @@ function renderBestAvail(data) {
       <td style="text-align:center;font-size:12px;color:var(--muted);font-weight:600;">${age !== null ? age+'y' : '-'}</td>
       <td style="text-align:center;">${minCell}</td>
       <td style="text-align:center;">${catCell}</td>
-      <td style="text-align:center;">${mattBadge}</td>
-      <td style="text-align:center;">${hashBadge}</td>
+      <td style="text-align:center;">${mfhfbBadge}</td>
       <td style="text-align:center;">${stickyBadge}</td>
+      <td style="text-align:center;">${season2627RankCell}</td>
+      <td style="text-align:center;">${season2627ProjCell}</td>
     </tr>`;
   }).join('');
 }
