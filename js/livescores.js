@@ -122,6 +122,10 @@ let lsCurrentDate   = null;     // "YYYY-MM-DD" — Tag (daily) oder Fenster-Sti
 let lsSortCol = 'composite';
 let lsSortAsc = false;
 let lsRows = [];
+// Min.-Spiele-Filter für Weekly/Monthly, rein client-seitig (die Daten
+// selbst enthalten seit dem Off-Season-Fix immer schon alle Spieler ab
+// 1 Spiel — der Slider blendet nur aus, zeigt aber ohne neuen Datenabruf).
+let lsMinGamesFilter = 1;
 
 function _lsWeightedComposite(p) {
   if (!p.zScores) return p.composite;
@@ -303,14 +307,27 @@ function _lsRender() {
         : '';
       gamesLine.innerHTML = `Fenster ${_lsFormatDateShort(entry.windowStart)} – ${_lsFormatDateShort(entry.windowEnd)}`
         + ` &nbsp;·&nbsp; ${entry.daysInWindow} Tag${entry.daysInWindow === 1 ? '' : 'e'} mit Daten`
-        + ` &nbsp;·&nbsp; min. ${entry.minGames} Spiele für Aufnahme`
+        + ` &nbsp;·&nbsp; angezeigt: min. ${lsMinGamesFilter} Spiel${lsMinGamesFilter === 1 ? '' : 'e'} (Regler unten)`
         + avg;
     }
   }
 
-  lsRows = entry.players.map(p => ({ ...p, composite: _lsWeightedComposite(p) }));
+  const minGamesPanel = document.getElementById('lsMinGamesPanel');
+  if (minGamesPanel) minGamesPanel.style.display = lsCurrentPeriod === 'daily' ? 'none' : 'flex';
+
+  const source = lsCurrentPeriod === 'daily'
+    ? entry.players
+    : entry.players.filter(p => p.games >= lsMinGamesFilter);
+  lsRows = source.map(p => ({ ...p, composite: _lsWeightedComposite(p) }));
   _lsSort(lsSortCol, true);
   _lsRenderTable();
+}
+
+function lsSetMinGames(val) {
+  lsMinGamesFilter = parseInt(val, 10);
+  const label = document.getElementById('lsMinGamesValue');
+  if (label) label.textContent = lsMinGamesFilter;
+  _lsRender();
 }
 
 function _lsSort(col, keepDirection) {
