@@ -93,7 +93,9 @@ function zScores(values) {
 
 const CAT_LABELS = {
   pts: 'PTS', reb: 'REB', ast: 'AST', stl: 'STL', blk: 'BLK',
-  tpm: '3PM', to: 'TO', fgImpact: 'FG%', ftImpact: 'FT%',
+  tpm: '3PM', fgImpact: 'FG%', ftImpact: 'FT%',
+  // "to" (Turnover) bewusst NICHT hier drin — Beyaz will TO nicht als
+  // Beste/Schwächste Kategorie angezeigt bekommen, das ist ihm meist egal.
 };
 
 // Given a zScores dict (from offseason-rankings.js or livescores-aggregate.js
@@ -148,6 +150,21 @@ const LAST_SEASON_STATS = (() => {
   const p = path.join(ROOT, 'data', 'last-season-stats-2025-26.js');
   return fs.existsSync(p) ? (loadVmArray(p, 'LAST_SEASON_STATS_2025_26') || []) : [];
 })();
+
+// Alter für die 2026er Rookies (nicht in LAST_SEASON_STATS, da keine
+// NBA-Saison gespielt) + Namen des 2025er Draft-Jahrgangs für die
+// "Sophomore"-Filterstufe in Best Available.
+const DRAFT_CLASS_2026 = (() => {
+  const p = path.join(ROOT, 'data', 'draft-class-2026.js');
+  return fs.existsSync(p) ? (loadVmArray(p, 'DRAFT_CLASS_2026') || []) : [];
+})();
+const DRAFT_CLASS_2025 = (() => {
+  const p = path.join(ROOT, 'data', 'draft-class-2025.js');
+  return fs.existsSync(p) ? (loadVmArray(p, 'DRAFT_CLASS_2025') || []) : [];
+})();
+const rookieAgeByName = new Map();
+DRAFT_CLASS_2026.forEach(p => rookieAgeByName.set(normalizeName(p.name), p.age));
+const sophomoreNames = new Set(DRAFT_CLASS_2025.map(normalizeName));
 
 const OFFSEASON_RANKINGS = (() => {
   const p = path.join(ROOT, 'data', 'offseason-rankings.js');
@@ -295,8 +312,11 @@ candidates.forEach((info, key) => {
     nbaTeam: info.nbaTeam,
     pos: info.pos,
     dob: info.dob,
-    age: lastStats && lastStats.age != null ? Math.floor(lastStats.age) : null,
+    age: lastStats && lastStats.age != null
+      ? Math.floor(lastStats.age)
+      : (rookieAgeByName.has(key) ? Math.floor(rookieAgeByName.get(key)) : null),
     isRookie: !!pd,
+    experience: pd ? 'rookie' : (sophomoreNames.has(key) ? 'sophomore' : 'veteran'),
     dynastyRank: dyn ? dyn[0] : null,
     bbmRank: bbm ? bbm.rank : null,
     lastSeasonRank: roll ? roll.eosRank : null,
@@ -323,7 +343,7 @@ players.forEach((p, i) => { p.rank = i + 1; });
 const lines = players.map(p => {
   const f = (v) => v === null || v === undefined ? 'null' : (typeof v === 'string' ? JSON.stringify(v) : v);
   return `  { rank: ${p.rank}, name: ${JSON.stringify(p.name)}, nbaTeam: ${JSON.stringify(p.nbaTeam)}, pos: ${JSON.stringify(p.pos)}, dob: ${f(p.dob)}, age: ${f(p.age)}, ` +
-    `isRookie: ${p.isRookie}, dynastyRank: ${f(p.dynastyRank)}, bbmRank: ${f(p.bbmRank)}, lastSeasonRank: ${f(p.lastSeasonRank)}, ` +
+    `isRookie: ${p.isRookie}, experience: ${JSON.stringify(p.experience)}, dynastyRank: ${f(p.dynastyRank)}, bbmRank: ${f(p.bbmRank)}, lastSeasonRank: ${f(p.lastSeasonRank)}, ` +
     `postDraftRank: ${f(p.postDraftRank)}, stickyScore: ${f(p.stickyScore)}, minutesAvg: ${f(p.minutesAvg)}, ` +
     `z7: ${f(p.z7)}, z30: ${f(p.z30)}, bestCat7: ${f(p.bestCat7)}, bestCat30: ${f(p.bestCat30)}, worstCat30: ${f(p.worstCat30)}, ` +
     `statsWindow: ${f(p.statsWindow)}, compositeScore: ${p.compositeScore}, signalsUsed: ${JSON.stringify(p.signalsUsed)} }`;
