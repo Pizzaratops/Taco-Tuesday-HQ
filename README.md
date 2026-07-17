@@ -8,6 +8,9 @@ Fantasy-Basketball-Hub für eine 12-Team H2H 9-Category Dynasty-Liga auf ESPN Fa
 
 ## 📌 Zuletzt gemacht
 
+- **MFHFBs Dynasty Ranking neu aufgesetzt:** `data/rankings.js` ist jetzt Beyaz' eigenständiges Ranking (764 Spieler), **nicht mehr mit Matt Lawson geblendet**. Matt Lawsons Rangliste bleibt als separate Vergleichsquelle auf der Dynasty-Rankings-Seite bestehen (`MATT_RANKS`), fließt aber nicht mehr in `DYNASTY_PLAYERS` selbst ein. Trade Analyzer und alle anderen Verbraucher lesen `DYNASTY_PLAYERS` weiterhin live, keine Code-Änderung nötig — die neuen Werte greifen automatisch überall.
+- **Best Available zeigt nur noch MFHFBs eigenen Dynasty-Rang** — Matt-DR- und Hashtag-Vergleichsspalten wurden dort entfernt (bleiben aber auf der Dynasty-Rankings-Seite selbst sichtbar).
+- **Neue Platzhalter-Spalten "2026/27 Rankings" und "2026/27 Projections"** in Best Available — aktuell beide leer, Datenquelle noch zu klären.
 - **Best Available komplett neu gebaut:** ein einziger gewichteter Score aus Dynasty-Rang, BBM-Redraft-Rang, letzter Saison (2025/26), Off-Season/Preseason und laufender Saison (schaltet sich automatisch scharf, sobald die reguläre Saison Daten liefert). Für Rookies zusätzlich Pre-Draft Big Board + echte Draft Capital + Sticky Score.
 - **Post-Draft Board** für die komplette 2026er Draft-Klasse (56 Spieler), täglich neu berechnet.
 - **ESPN-Roster-Sync automatisiert** — lief vorher nur über einen manuellen Admin-Knopf, jetzt Teil des täglichen Workflows (`data/rosters-live.js`).
@@ -22,12 +25,13 @@ Fantasy-Basketball-Hub für eine 12-Team H2H 9-Category Dynasty-Liga auf ESPN Fa
 
 ## 🔜 Als Nächstes (bis Saisonbeginn 2026/27)
 
-1. **Liga-Wechsel im Workflow:** `LEAGUE_ARG`-Default von `nba-summer-las-vegas` auf `nba-preseason` (September) und dann `nba` (Oktober) umstellen.
-2. **Tagesgrenze auf US-Eastern statt Pacific:** Der Pacific-Fix war Summer-League-spezifisch (nur Kalifornien/Utah/Vegas). Sobald die reguläre Saison über alle US-Zeitzonen läuft, ist Eastern die branchenübliche Referenz.
-3. **BBM-Datei erneut hochladen**, sobald sie die 2026er-Rookies enthält (Alter + echte Season-Stats statt nur Tankathon-Fallback).
-4. **Team Analytics automatisieren** — aktuell noch eine komplett statische Momentaufnahme (`js/analytics.js`, `AN_ROSTER` hardcoded).
-5. **Draft Duel reaktivieren**, sobald 2027er Prospects verfügbar sind.
-6. **Aufräumen:** doppelte `draft-capital-2026.js` (liegt sowohl in `scripts/` als auch `data/` — nur die Version in `data/` wird gebraucht) und eine verrutschte `daily-9cat.js` in `.github/workflows/` (gehört nach `scripts/`, liegt dort auch schon korrekt) entfernen.
+1. **Datenquelle für "2026/27 Rankings" klären** — neue Spalte in Best Available, aktuell ohne Inhalt.
+2. **Liga-Wechsel im Workflow:** `LEAGUE_ARG`-Default von `nba-summer-las-vegas` auf `nba-preseason` (September) und dann `nba` (Oktober) umstellen.
+3. **Tagesgrenze auf US-Eastern statt Pacific:** Der Pacific-Fix war Summer-League-spezifisch (nur Kalifornien/Utah/Vegas). Sobald die reguläre Saison über alle US-Zeitzonen läuft, ist Eastern die branchenübliche Referenz.
+4. **BBM-Datei erneut hochladen**, sobald sie die 2026er-Rookies enthält (Alter + echte Season-Stats statt nur Tankathon-Fallback).
+5. **Team Analytics automatisieren** — aktuell noch eine komplett statische Momentaufnahme (`js/analytics.js`, `AN_ROSTER` hardcoded).
+6. **Draft Duel reaktivieren**, sobald 2027er Prospects verfügbar sind.
+7. **Aufräumen:** doppelte `draft-capital-2026.js` (liegt sowohl in `scripts/` als auch `data/` — nur die Version in `data/` wird gebraucht) und eine verrutschte `daily-9cat.js` in `.github/workflows/` (gehört nach `scripts/`, liegt dort auch schon korrekt) entfernen. ~88 Spieler in `data/rankings.js` (v.a. tiefe 2026er Draft-Picks) haben noch keine Positions-Angabe, da sie weder in der xlsx noch im Pre-Draft Big Board mit Position auftauchen.
 
 ---
 
@@ -53,7 +57,7 @@ scripts/data/            └ tägliche ESPN-Boxscore-CSVs (Rohdaten, per Workflo
 
 | Datei | Quelle | Update |
 |---|---|---|
-| `data/rankings.js` (`DYNASTY_PLAYERS`) | manuell kuratiert (Beyaz + Matt Lawson, 60/40 gewichtet) | von Hand |
+| `data/rankings.js` (`DYNASTY_PLAYERS`) | manuell kuratiert (Beyaz, eigenständig — nicht mehr mit Matt Lawson geblendet) | von Hand |
 | `data/rosters-live.js` | ESPN API | täglich automatisch |
 | `data/livescores-daily.js` / `-aggregate.js` | ESPN Boxscores | täglich automatisch |
 | `data/offseason-rankings.js` | Summer League + Preseason CSVs | täglich automatisch |
