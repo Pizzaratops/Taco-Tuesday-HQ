@@ -26,7 +26,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
-const { computeAggregate, toDateStr } = require('./lib/aggregate-core');
+const { computeAggregate, toDateStr } = require('./aggregate-core');
 
 const DEFAULT_OUT = path.join(__dirname, '..', 'data', 'livescores-aggregate.js');
 const DEFAULT_DIR = path.join(__dirname, 'data');

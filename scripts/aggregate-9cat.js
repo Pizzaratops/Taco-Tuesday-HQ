@@ -20,7 +20,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { computeAggregate, toDateStr } = require('./lib/aggregate-core');
+const { computeAggregate, toDateStr } = require('./aggregate-core');
 
 const args = process.argv.slice(2);
 const period = args.find(a => a === 'week' || a === 'month') || 'week';

@@ -22,7 +22,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
-const { CATEGORIES, mean, stdDev } = require('./lib/aggregate-core');
+const { CATEGORIES, mean, stdDev } = require('./aggregate-core');
 
 const args = process.argv.slice(2);
 const arg = (name, fallback) => {
