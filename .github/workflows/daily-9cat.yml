@@ -3,13 +3,17 @@ name: Daily 9cat Live Scores
 on:
   schedule:
     # Sommerzeit (CEST, UTC+2): 06/08/22 Uhr Berlin -> 04/06/20 UTC
-    - cron: '0 4 * * *'
-    - cron: '0 6 * * *'
-    - cron: '0 20 * * *'
+    # Minute bewusst auf :07 statt :00 gelegt — GitHub selbst empfiehlt das,
+    # weil Cron-Jobs exakt zur vollen Stunde am ehesten verzögert oder bei
+    # hoher Last ganz übersprungen werden. Der Zeit-Check-Step unten prüft
+    # nur die Stunde, nicht die Minute, das funktioniert also unverändert.
+    - cron: '7 4 * * *'
+    - cron: '7 6 * * *'
+    - cron: '7 20 * * *'
     # Winterzeit (CET, UTC+1): 06/08/22 Uhr Berlin -> 05/07/21 UTC
-    - cron: '0 5 * * *'
-    - cron: '0 7 * * *'
-    - cron: '0 21 * * *'
+    - cron: '7 5 * * *'
+    - cron: '7 7 * * *'
+    - cron: '7 21 * * *'
     # Der Zeit-Check-Step unten sorgt dafür, dass jeweils nur der
     # tatsächlich passende Lauf (Sommer- ODER Winterzeit) wirklich arbeitet
     # und der andere übersprungen wird. So ist keine manuelle Umstellung
@@ -44,12 +48,32 @@ jobs:
             exit 0
           fi
           HOUR=$(TZ=Europe/Berlin date +%H)
+          echo "hour=${HOUR}" >> "$GITHUB_OUTPUT"
           if [ "$HOUR" = "06" ] || [ "$HOUR" = "08" ] || [ "$HOUR" = "22" ]; then
             echo "Berlin-Zeit ist ${HOUR} Uhr, Job läuft weiter."
             echo "skip=false" >> "$GITHUB_OUTPUT"
           else
             echo "Berlin-Zeit ist ${HOUR} Uhr, kein Zieltermin, Job wird übersprungen."
             echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Korrekturdatum bestimmen (nur 22-Uhr-Lauf)
+        id: correction_date
+        if: steps.check_time.outputs.skip != 'true'
+        run: |
+          # Der 22-Uhr-Lauf ist bewusst ein NACHTRÄGLICHER Korrektur-Check:
+          # ESPN aktualisiert Boxscore-Stats manchmal noch Stunden nach
+          # Spielende. 6/8 Uhr holen automatisch den frischen "gestrigen"
+          # Las-Vegas-Spieltag (siehe todayYYYYMMDD() in daily-9cat.js).
+          # Um 22 Uhr Berlin ist es in Las Vegas aber erst früher Nachmittag
+          # (heutiger Tag, noch kaum gespielt) — deshalb hier explizit
+          # nochmal den GESTRIGEN Las-Vegas-Tag anfragen, nicht den heutigen.
+          if [ "${{ steps.check_time.outputs.hour }}" = "22" ] && [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
+            DATE=$(TZ=America/Los_Angeles date -d "yesterday" +%F)
+            echo "22-Uhr-Korrekturlauf: verwende gestrigen LA-Tag ($DATE) statt heutigem."
+            echo "date=${DATE}" >> "$GITHUB_OUTPUT"
+          else
+            echo "date=" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Checkout
@@ -70,7 +94,7 @@ jobs:
       - name: Tagesdaten von ESPN holen
         if: steps.check_time.outputs.skip != 'true'
         env:
-          DATE_ARG: ${{ github.event.inputs.date }}
+          DATE_ARG: ${{ steps.correction_date.outputs.date || github.event.inputs.date }}
           LEAGUE_ARG: ${{ github.event.inputs.league || 'nba-summer-las-vegas' }}
         run: |
           node scripts/daily-9cat.js ${DATE_ARG} --league=${LEAGUE_ARG}
@@ -78,7 +102,7 @@ jobs:
       - name: In livescores-daily.js konvertieren
         if: steps.check_time.outputs.skip != 'true'
         env:
-          DATE_ARG: ${{ github.event.inputs.date }}
+          DATE_ARG: ${{ steps.correction_date.outputs.date || github.event.inputs.date }}
           LEAGUE_ARG: ${{ github.event.inputs.league || 'nba-summer-las-vegas' }}
         run: |
           if [ -n "$DATE_ARG" ]; then
