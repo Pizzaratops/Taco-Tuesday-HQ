@@ -140,6 +140,22 @@ const ROLLING_RANKINGS = (() => {
   return fs.existsSync(p) ? (loadVmArray(p, 'ROLLING_RANKINGS') || []) : [];
 })();
 
+// Laufende Saison 2026/27 (Liga "nba", NICHT Off-Season) — permanentes
+// Archiv aus scripts/build-rolling-archive.js. eosRank wird darin trotz des
+// Namens laufend auf den neuesten verfügbaren Monats-/Wochen-Stand
+// aktualisiert, nicht nur am Saisonende. Aktuell (Off-Season) noch leer —
+// füllt sich automatisch, sobald die reguläre Saison Weekly/Monthly-Daten
+// liefert. Das ist die Quelle für die "2026/27 Rankings"-Spalte in Best
+// Available.
+const ROLLING_RANKINGS_2026_27 = (() => {
+  const p = path.join(ROOT, 'data', 'rolling-rankings-2026-27.js');
+  return fs.existsSync(p) ? (loadVmArray(p, 'ROLLING_RANKINGS_2026') || []) : [];
+})();
+const season2627RankByName = new Map();
+ROLLING_RANKINGS_2026_27.forEach(p => {
+  if (p.eosRank != null) season2627RankByName.set(normalizeName(p.name), p.eosRank);
+});
+
 // Voller BBM-Export der letzten Saison (Minuten + Kategorie-Z-Scores) —
 // deutlich reichhaltiger als ROLLING_RANKINGS (nur Gesamt-Rang). Wird
 // bevorzugt für das lastSeason-Signal UND für Beschreibungsfelder
@@ -320,6 +336,7 @@ candidates.forEach((info, key) => {
     dynastyRank: dyn ? dyn[0] : null,
     bbmRank: bbm ? bbm.rank : null,
     lastSeasonRank: roll ? roll.eosRank : null,
+    season2627Rank: season2627RankByName.get(key) ?? null,
     postDraftRank: pd ? pd.rank : null,
     stickyScore: pd ? pd.stickyScore : null,
     minutesAvg,
@@ -343,7 +360,7 @@ players.forEach((p, i) => { p.rank = i + 1; });
 const lines = players.map(p => {
   const f = (v) => v === null || v === undefined ? 'null' : (typeof v === 'string' ? JSON.stringify(v) : v);
   return `  { rank: ${p.rank}, name: ${JSON.stringify(p.name)}, nbaTeam: ${JSON.stringify(p.nbaTeam)}, pos: ${JSON.stringify(p.pos)}, dob: ${f(p.dob)}, age: ${f(p.age)}, ` +
-    `isRookie: ${p.isRookie}, experience: ${JSON.stringify(p.experience)}, dynastyRank: ${f(p.dynastyRank)}, bbmRank: ${f(p.bbmRank)}, lastSeasonRank: ${f(p.lastSeasonRank)}, ` +
+    `isRookie: ${p.isRookie}, experience: ${JSON.stringify(p.experience)}, dynastyRank: ${f(p.dynastyRank)}, bbmRank: ${f(p.bbmRank)}, lastSeasonRank: ${f(p.lastSeasonRank)}, season2627Rank: ${f(p.season2627Rank)}, ` +
     `postDraftRank: ${f(p.postDraftRank)}, stickyScore: ${f(p.stickyScore)}, minutesAvg: ${f(p.minutesAvg)}, ` +
     `z7: ${f(p.z7)}, z30: ${f(p.z30)}, bestCat7: ${f(p.bestCat7)}, bestCat30: ${f(p.bestCat30)}, worstCat30: ${f(p.worstCat30)}, ` +
     `statsWindow: ${f(p.statsWindow)}, compositeScore: ${p.compositeScore}, signalsUsed: ${JSON.stringify(p.signalsUsed)} }`;
@@ -364,7 +381,7 @@ const out = `// ============================================================
 //  durch manuelle Trades/Overrides zwischen den täglichen Läufen ändern kann.
 //
 //  Shape: BEST_AVAILABLE_BOARD = [ { rank, name, nbaTeam, pos, isRookie,
-//    dynastyRank, bbmRank, lastSeasonRank, postDraftRank, stickyScore,
+//    dynastyRank, bbmRank, lastSeasonRank, season2627Rank, postDraftRank, stickyScore,
 //    minutesAvg, z7, z30, bestCat7, bestCat30, worstCat30, statsWindow,
 //    compositeScore, signalsUsed }, ... ]
 // ============================================================
