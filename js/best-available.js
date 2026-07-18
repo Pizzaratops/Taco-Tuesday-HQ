@@ -86,9 +86,13 @@ function renderBestAvail(data) {
       ? `<span style="font-size:11px;font-weight:700;color:#6dddaa;">${p.bestCat30}</span><span style="color:var(--border);"> / </span><span style="font-size:11px;font-weight:700;color:#ff8fa3;">${p.worstCat30}</span>`
       : '<span style="color:var(--border);">-</span>';
 
-    // 2026/27 Rankings & Projections — noch keine Datenquelle angebunden,
-    // Platzhalter bis geklärt/geliefert.
-    const season2627RankCell = '<span style="color:var(--border);">-</span>';
+    // 2026/27 Rankings & Projections — Rankings zieht aus dem permanenten
+    // Rolling-Rankings-Archiv der laufenden Saison (Liga "nba"), das sich
+    // automatisch füllt, sobald Weekly/Monthly-Daten reinkommen. Off-Season:
+    // bleibt leer, das ist erwartet. Projections hat noch keine Quelle.
+    const season2627RankCell = p.season2627Rank
+      ? `<span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(p.season2627Rank)};color:${dynastyRankColor(p.season2627Rank)};">#${p.season2627Rank}</span>`
+      : '<span style="color:var(--border);">-</span>';
     const season2627ProjCell = '<span style="color:var(--border);">-</span>';
 
     return `<tr>
