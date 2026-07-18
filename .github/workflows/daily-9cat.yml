@@ -2,22 +2,31 @@ name: Daily 9cat Live Scores
 
 on:
   schedule:
-    # Sommerzeit (CEST, UTC+2): 06/08/22 Uhr Berlin -> 04/06/20 UTC
-    # Minute bewusst auf :07 statt :00 gelegt — GitHub selbst empfiehlt das,
-    # weil Cron-Jobs exakt zur vollen Stunde am ehesten verzögert oder bei
+    # Sommerzeit (CEST, UTC+2): 06:07/06:37/07:07/07:37/08:07/22:07 Berlin -> UTC
+    # Minute bewusst auf :07/:37 statt :00/:30 gelegt — GitHub selbst empfiehlt das,
+    # weil Cron-Jobs exakt zur vollen (halben) Stunde am ehesten verzögert oder bei
     # hoher Last ganz übersprungen werden. Der Zeit-Check-Step unten prüft
     # nur die Stunde, nicht die Minute, das funktioniert also unverändert.
-    - cron: '7 4 * * *'
-    - cron: '7 6 * * *'
-    - cron: '7 20 * * *'
-    # Winterzeit (CET, UTC+1): 06/08/22 Uhr Berlin -> 05/07/21 UTC
-    - cron: '7 5 * * *'
-    - cron: '7 7 * * *'
-    - cron: '7 21 * * *'
-    # Der Zeit-Check-Step unten sorgt dafür, dass jeweils nur der
-    # tatsächlich passende Lauf (Sommer- ODER Winterzeit) wirklich arbeitet
-    # und der andere übersprungen wird. So ist keine manuelle Umstellung
+    #
+    # Fünf Läufe im Fenster 06-08 Uhr Berlin statt nur zwei: falls GitHub einen
+    # einzelnen Scheduled Trigger droppt (kommt bei hoher Last vor, keine Garantie
+    # von GitHub), holt der nächste Slot im selben Fenster einfach frische Daten
+    # nach. Reruns sind unbedenklich, da alle Skripte pro Datum überschreiben statt
+    # anzuhängen, und der Commit-Step nur bei echten Änderungen committet.
+    - cron: '7 4 * * *'    # 06:07 Berlin (Sommer)
+    - cron: '37 4 * * *'   # 06:37 Berlin (Sommer)
+    - cron: '7 5 * * *'    # 07:07 Berlin (Sommer) / 06:07 Berlin (Winter)
+    - cron: '37 5 * * *'   # 07:37 Berlin (Sommer) / 06:37 Berlin (Winter)
+    - cron: '7 6 * * *'    # 08:07 Berlin (Sommer) / 07:07 Berlin (Winter)
+    - cron: '37 6 * * *'   # 07:37 Berlin (Winter)
+    - cron: '7 7 * * *'    # 08:07 Berlin (Winter)
+    - cron: '7 20 * * *'   # 22:07 Berlin (Sommer)
+    - cron: '7 21 * * *'   # 22:07 Berlin (Winter)
+    # Der Zeit-Check-Step unten sorgt dafür, dass jeweils nur die
+    # tatsächlich passenden Läufe (Sommer- ODER Winterzeit) wirklich arbeiten
+    # und die anderen übersprungen werden. So ist keine manuelle Umstellung
     # zweimal im Jahr mehr nötig.
+
   workflow_dispatch:
     inputs:
       date:
@@ -39,7 +48,7 @@ jobs:
   update-live-scores:
     runs-on: ubuntu-latest
     steps:
-      - name: Prüfe ob aktuelle Zeit 6/8/22 Uhr Berlin ist
+      - name: Prüfe ob aktuelle Zeit 6-8 oder 22 Uhr Berlin ist
         id: check_time
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
@@ -49,7 +58,7 @@ jobs:
           fi
           HOUR=$(TZ=Europe/Berlin date +%H)
           echo "hour=${HOUR}" >> "$GITHUB_OUTPUT"
-          if [ "$HOUR" = "06" ] || [ "$HOUR" = "08" ] || [ "$HOUR" = "22" ]; then
+          if [ "$HOUR" = "06" ] || [ "$HOUR" = "07" ] || [ "$HOUR" = "08" ] || [ "$HOUR" = "22" ]; then
             echo "Berlin-Zeit ist ${HOUR} Uhr, Job läuft weiter."
             echo "skip=false" >> "$GITHUB_OUTPUT"
           else
@@ -63,7 +72,7 @@ jobs:
         run: |
           # Der 22-Uhr-Lauf ist bewusst ein NACHTRÄGLICHER Korrektur-Check:
           # ESPN aktualisiert Boxscore-Stats manchmal noch Stunden nach
-          # Spielende. 6/8 Uhr holen automatisch den frischen "gestrigen"
+          # Spielende. 6-8 Uhr holen automatisch den frischen "gestrigen"
           # Las-Vegas-Spieltag (siehe todayYYYYMMDD() in daily-9cat.js).
           # Um 22 Uhr Berlin ist es in Las Vegas aber erst früher Nachmittag
           # (heutiger Tag, noch kaum gespielt) — deshalb hier explizit
