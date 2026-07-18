@@ -25,17 +25,131 @@ Fantasy-Basketball-Hub für eine 12-Team H2H 9-Category Dynasty-Liga auf ESPN Fa
 
 ## 🔜 Als Nächstes (bis Saisonbeginn 2026/27)
 
-1. **Datenquelle für "2026/27 Rankings" klären** — neue Spalte in Best Available, aktuell ohne Inhalt.
-2. **Liga-Wechsel im Workflow:** `LEAGUE_ARG`-Default von `nba-summer-las-vegas` auf `nba-preseason` (September) und dann `nba` (Oktober) umstellen.
-3. **Tagesgrenze auf US-Eastern statt Pacific:** Der Pacific-Fix war Summer-League-spezifisch (nur Kalifornien/Utah/Vegas). Sobald die reguläre Saison über alle US-Zeitzonen läuft, ist Eastern die branchenübliche Referenz.
-4. **BBM-Datei erneut hochladen**, sobald sie die 2026er-Rookies enthält (Alter + echte Season-Stats statt nur Tankathon-Fallback).
-5. **Team Analytics automatisieren** — aktuell noch eine komplett statische Momentaufnahme (`js/analytics.js`, `AN_ROSTER` hardcoded).
-6. **Draft Duel reaktivieren**, sobald 2027er Prospects verfügbar sind.
-7. **Aufräumen:** doppelte `draft-capital-2026.js` (liegt sowohl in `scripts/` als auch `data/` — nur die Version in `data/` wird gebraucht) und eine verrutschte `daily-9cat.js` in `.github/workflows/` (gehört nach `scripts/`, liegt dort auch schon korrekt) entfernen. ~88 Spieler in `data/rankings.js` (v.a. tiefe 2026er Draft-Picks) haben noch keine Positions-Angabe, da sie weder in der xlsx noch im Pre-Draft Big Board mit Position auftauchen.
+1. **Liga-Wechsel im Workflow:** `LEAGUE_ARG`-Default von `nba-summer-las-vegas` auf `nba-preseason` (September) und dann `nba` (Oktober) umstellen.
+2. **Tagesgrenze auf US-Eastern statt Pacific:** Der Pacific-Fix war Summer-League-spezifisch (nur Kalifornien/Utah/Vegas). Sobald die reguläre Saison über alle US-Zeitzonen läuft, ist Eastern die branchenübliche Referenz.
+3. **BBM-Datei erneut hochladen**, sobald sie die 2026er-Rookies enthält (Alter + echte Season-Stats statt nur Tankathon-Fallback).
+4. **Team Analytics automatisieren** — aktuell noch eine komplett statische Momentaufnahme (`js/analytics.js`, `AN_ROSTER` hardcoded).
+5. **Draft Duel reaktivieren**, sobald 2027er Prospects verfügbar sind.
+6. **"2026/27 Projections"-Spalte** in Best Available hat noch keine Datenquelle — bleibt leer, bis geklärt ist, woher Projections kommen sollen.
+7. **Aufräumen:** doppelte `draft-capital-2026.js` (liegt sowohl in `scripts/` als auch `data/` — nur die Version in `data/` wird gebraucht), eine verrutschte `daily-9cat.js` in `.github/workflows/` (gehört nach `scripts/`, liegt dort auch schon korrekt), sowie drei weitere Verrutscher in `js/`: `build-postdraft-board.js` (gehört nach `scripts/`), `draft2026.js` und `draft2027.js` (gehören nach `data/`) — alle drei sind identische Kopien der korrekten Dateien, können einfach aus `js/` gelöscht werden. ~88 Spieler in `data/rankings.js` (v.a. tiefe 2026er Draft-Picks) haben noch keine Positions-Angabe, da sie weder in der xlsx noch im Pre-Draft Big Board mit Position auftauchen.
 
 ---
 
-## 🛠️ Tech-Stack
+## 🗺️ Architektur & Datenfluss
+
+Was mit was verknüpft ist, was automatisch läuft und was nicht — als Nachschlagewerk für uns beide.
+
+```mermaid
+flowchart TD
+  subgraph EXT["Externe Quellen"]
+    ESPN["ESPN API<br/>(Rosters + Boxscores)"]
+    XLSX["Beyaz' Dynasty-Rankings-Excel<br/>(manueller Upload)"]
+    BBM["BBM Player Rankings .xls<br/>(manueller Upload, 1×/Saison)"]
+    TANK["Tankathon Draft-Ergebnisse<br/>(manuell, 1×/Draft-Jahrgang)"]
+    SLM["Summer-League-Modell Repo<br/>(externer Live-Fetch, Sticky Score)"]
+    MATT["Matt Lawson & Hashtag Basketball<br/>(manuell gepflegte Vergleichslisten)"]
+  end
+
+  subgraph DAILY["Täglicher Workflow (6/8/22 Uhr Berlin)"]
+    S1["sync-espn-rosters.js"]
+    S2["daily-9cat.js"]
+    S3["convert-to-livescores.js"]
+    S4["update-all-aggregates.js"]
+    S5["build-offseason-rankings.js"]
+    S6["build-postdraft-board.js"]
+    S7["build-best-available-board.js"]
+    S8["build-dynasty-live.js"]
+    S9["build-rolling-archive.js"]
+  end
+
+  subgraph DATA["data/ (generiert)"]
+    D1["rosters-live.js"]
+    D2["livescores-daily.js"]
+    D3["livescores-aggregate.js<br/>(Weekly/Monthly)"]
+    D4["offseason-rankings.js"]
+    D5["postdraft-board.js"]
+    D6["best-available-board.js"]
+    D7["dynasty-live.js"]
+    D8["rolling-rankings-2026-27.js"]
+  end
+
+  subgraph MANUAL["data/ (manuell gepflegt)"]
+    M1["rankings.js<br/>(DYNASTY_PLAYERS / MFHFBs DR)"]
+    M2["last-season-stats-2025-26.js"]
+    M3["draft-class-2026.js / -2025.js"]
+    M4["draft2026.js / draft2027.js"]
+  end
+
+  subgraph PAGES["Frontend-Seiten"]
+    P1["Dynasty Rankings"]
+    P2["Best Available"]
+    P3["Trade Analyzer"]
+    P4["Live Scores"]
+    P5["Big Board"]
+    P6["Team Analytics<br/>⚠️ noch NICHT automatisiert"]
+  end
+
+  ESPN --> S1 --> D1
+  ESPN --> S2 --> D2 --> S3 --> D3 --> S4
+  S4 --> S5 --> D4
+  TANK --> M3
+  D4 --> S6
+  M4 --> S6
+  SLM --> S6
+  S6 --> D5
+  M1 --> S7
+  D4 --> S7
+  D3 --> S7
+  D5 --> S7
+  M2 --> S7
+  M3 --> S7
+  S7 --> D6
+  S4 --> S9 --> D8
+  D8 --> S7
+  D3 --> S8
+  M1 --> S8
+  S8 --> D7
+  XLSX -.manuell hochladen.-> M1
+  BBM -.manuell hochladen.-> M2
+
+  M1 --> P1
+  D7 --> P1
+  MATT --> P1
+  D6 --> P2
+  D1 -.filtert.-> P2
+  M1 --> P3
+  D3 --> P4
+  M4 --> P5
+  M1 -.noch statisch.-> P6
+```
+
+### Verknüpfungsmatrix
+
+| Seite | Datenquelle(n) | Automatisch? |
+|---|---|---|
+| **Dynasty Rankings** | `rankings.js` (MFHFBs DR) + `dynasty-live.js` (Live-Nudge-Badge) + `MATT_RANKS`/`hashtag.js` (Vergleichsspalten) | Rang selbst: manuell · Live-Nudge: automatisch |
+| **Best Available** | `best-available-board.js` (alle Signale gebündelt) gegen `rosters-live.js` gefiltert | komplett automatisch |
+| **Trade Analyzer** | `rankings.js` live | folgt manuellen Updates sofort, keine eigene Automatisierung nötig |
+| **Live Scores** | `livescores-daily.js` + `livescores-aggregate.js` | komplett automatisch |
+| **Big Board** | `draft2026.js` / `draft2027.js` | manuell (neuer Draft-Jahrgang = neue Datei) |
+| **Team Analytics** | statisches `AN_ROSTER` in `js/analytics.js` | ⚠️ **nicht automatisiert**, siehe "Als Nächstes" |
+| **Draft Duel** | `js/draft-duel.js` | deaktiviert bis 2027er Prospects da sind |
+
+### Was in `best-available-board.js` alles zusammenfließt
+
+Das ist der Knotenpunkt mit den meisten Quellen — einmal explizit aufgeschlüsselt:
+
+| Signal | Quelle | Gewicht im Score | Auch als eigene Spalte sichtbar? |
+|---|---|---|---|
+| Dynasty-Rang | `rankings.js` | 0.35 | ✅ "MFHFBs DR" |
+| BBM-Redraft-Rang | `FA_PLAYERS` in `best-available.js` | 0.15 | nein |
+| Letzte Saison | `last-season-stats-2025-26.js` (Fallback: `rolling-rankings.js`) | 0.20 | nein (fließt in MIN/Kat. ein) |
+| Off-Season | `offseason-rankings.js` | 0.15 | nein (fließt in MIN/Kat. ein) |
+| Laufende Saison | `livescores-aggregate.js`, Liga `nba` | 0.35 (nur wenn Saison läuft) | nein (fließt in MIN/Kat. ein) |
+| Post-Draft (Rookies) | `postdraft-board.js` | 0.30 | ✅ "Sticky" (Sticky Score allein) |
+| 2026/27 Saison-Rang | `rolling-rankings-2026-27.js` | **nicht** in den Score gerechnet (Doppelzählung mit "Laufende Saison" vermeiden) | ✅ "2026/27 Rankings" |
+
+
 
 Reines Vanilla-JS + HTML/CSS, keine Build-Tools, kein Framework. Gehostet auf GitHub Pages, Datenpipeline läuft über GitHub Actions + Node.js-Scripts.
 
@@ -81,9 +195,9 @@ scripts/data/            └ tägliche ESPN-Boxscore-CSVs (Rohdaten, per Workflo
 4. **Weekly/Monthly aktualisieren** (`update-all-aggregates.js`)
 5. **Off-Season-Rankings fortschreiben**
 6. **Post-Draft Board fortschreiben**
-7. **Best Available Board fortschreiben**
-8. **Dynasty Live Nudge fortschreiben**
-9. **Rolling-Rankings-Archiv fortschreiben**
+7. **Rolling-Rankings-Archiv fortschreiben** (muss vor Best Available laufen, da dieses davon liest)
+8. **Best Available Board fortschreiben**
+9. **Dynasty Live Nudge fortschreiben**
 10. **Committen & pushen** (nur wenn sich tatsächlich was geändert hat)
 
 Manueller Trigger jederzeit möglich über den "Run workflow"-Button (Actions-Tab → Daily 9cat Live Scores → Run workflow), optional mit eigenem Datum/Liga.
