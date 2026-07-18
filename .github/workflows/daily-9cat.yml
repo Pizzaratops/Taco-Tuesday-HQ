@@ -141,16 +141,6 @@ jobs:
         run: |
           node scripts/build-postdraft-board.js
 
-      - name: Best Available Board fortschreiben (alle Spieler, alle Signale)
-        if: steps.check_time.outputs.skip != 'true'
-        run: |
-          node scripts/build-best-available-board.js
-
-      - name: Dynasty Live Nudge fortschreiben (nur Anzeige, verändert data/rankings.js nicht)
-        if: steps.check_time.outputs.skip != 'true'
-        run: |
-          node scripts/build-dynasty-live.js
-
       - name: Rolling-Rankings-Archiv 2026/27 fortschreiben (Liga "nba")
         if: steps.check_time.outputs.skip != 'true'
         env:
@@ -161,6 +151,16 @@ jobs:
           else
             node scripts/build-rolling-archive.js --league=nba
           fi
+
+      - name: Best Available Board fortschreiben (alle Spieler, alle Signale)
+        if: steps.check_time.outputs.skip != 'true'
+        run: |
+          node scripts/build-best-available-board.js
+
+      - name: Dynasty Live Nudge fortschreiben (nur Anzeige, verändert data/rankings.js nicht)
+        if: steps.check_time.outputs.skip != 'true'
+        run: |
+          node scripts/build-dynasty-live.js
 
       - name: Änderungen committen & pushen
         if: steps.check_time.outputs.skip != 'true'
