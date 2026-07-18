@@ -432,15 +432,16 @@
       <thead>
         <tr>
           <th style="width:56px;text-align:center;">#</th>
-          <th>Name</th>
-          <th>NBA Team</th>
-          <th>Position</th>
-          <th style="text-align:center;">Alter</th>
-          <th style="text-align:center;">MIN</th>
-          <th style="text-align:center;">Beste / Schwächste Kat.</th>
-          <th style="text-align:center;">MFHFBs DR</th>
-          <th style="text-align:center;">Sticky</th>
-          <th style="text-align:center;">2026/27 Rankings</th>
+          <th onclick="baSortBy('name')" style="cursor:pointer;">Name<span class="r-sort-arrow" id="baArrow-name">↕</span></th>
+          <th onclick="baSortBy('nbaTeam')" style="cursor:pointer;">NBA Team<span class="r-sort-arrow" id="baArrow-nbaTeam">↕</span></th>
+          <th onclick="baSortBy('pos')" style="cursor:pointer;">Position<span class="r-sort-arrow" id="baArrow-pos">↕</span></th>
+          <th onclick="baSortBy('age')" style="text-align:center;cursor:pointer;">Alter<span class="r-sort-arrow" id="baArrow-age">↕</span></th>
+          <th onclick="baSortBy('minutesAvg')" style="text-align:center;cursor:pointer;">MIN<span class="r-sort-arrow" id="baArrow-minutesAvg">↕</span></th>
+          <th onclick="baSortBy('bestCat30')" style="text-align:center;cursor:pointer;">Beste Kat.<span class="r-sort-arrow" id="baArrow-bestCat30">↕</span></th>
+          <th onclick="baSortBy('worstCat30')" style="text-align:center;cursor:pointer;">Schwächste Kat.<span class="r-sort-arrow" id="baArrow-worstCat30">↕</span></th>
+          <th onclick="baSortBy('dynastyRank')" style="text-align:center;cursor:pointer;">MFHFBs DR<span class="r-sort-arrow" id="baArrow-dynastyRank">↕</span></th>
+          <th onclick="baSortBy('stickyScore')" style="text-align:center;cursor:pointer;">Sticky<span class="r-sort-arrow" id="baArrow-stickyScore">↕</span></th>
+          <th onclick="baSortBy('season2627Rank')" style="text-align:center;cursor:pointer;">2026/27 Rankings<span class="r-sort-arrow" id="baArrow-season2627Rank">↕</span></th>
           <th style="text-align:center;">2026/27 Projections</th>
         </tr>
       </thead>
