@@ -285,6 +285,7 @@
     <input type="range" id="lsMinGamesSlider" min="1" max="5" step="1" value="1" oninput="lsSetMinGames(this.value)" style="flex:1;max-width:200px;"/>
     <span style="font-size:13px;font-weight:700;min-width:16px;" id="lsMinGamesValue">1</span>
     <span style="font-size:11px;color:var(--muted);">(1 = alle, auch Spieler mit nur einem Spiel im Fenster)</span>
+    <button id="lsExportCsvBtn" onclick="lsExportCsv()" style="margin-left:auto;white-space:nowrap;padding:7px 14px;border-radius:8px;background:rgba(76,175,129,0.12);border:1px solid rgba(76,175,129,0.3);color:#4caf81;font-size:12px;font-weight:700;cursor:pointer;">⬇️ CSV exportieren</button>
   </div>
 
   <div class="ls-punt-panel collapsed" id="lsPuntPanel">
