@@ -291,6 +291,8 @@ function _lsRender() {
         ? ''
         : `Kein ${LS_PERIOD_LABEL[lsCurrentPeriod]}-Ranking für diesen Stichtag verfügbar.`;
     }
+    const minGamesPanelEmpty = document.getElementById('lsMinGamesPanel');
+    if (minGamesPanelEmpty) minGamesPanelEmpty.style.display = 'none';
     content.innerHTML = `<div class="ls-status">Keine Daten für diesen Zeitraum. Entweder wurden keine Spiele ausgetragen, oder die Automatisierung hat das noch nicht erfasst.</div>`;
     return;
   }
@@ -345,6 +347,49 @@ function _lsSort(col, keepDirection) {
 function lsSortBy(col) {
   _lsSort(col, false);
   _lsRenderTable();
+}
+
+function _lsCsvEscape(val) {
+  const s = String(val);
+  return /[",\n;]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+}
+
+// Exportiert genau das, was gerade auf dem Bildschirm steht (aktuelle
+// Sortierung + Min.-Spiele-Filter), nicht die ungefilterten Rohdaten —
+// so stimmt die Datei immer mit dem überein, was Beyaz gerade sieht.
+function lsExportCsv() {
+  if (lsCurrentPeriod === 'daily' || !lsRows.length) return;
+
+  const isDaily = false;
+  const columns = LS_COLUMNS_AGGREGATE;
+  const fmtCount = (n) => n.toFixed(1);
+
+  const header = columns.map(c => c.label).join(';');
+  const lines = lsRows.map((p, i) => {
+    const vals = columns.map(c => {
+      if (c.key === 'rank') return i + 1;
+      if (c.key === 'name') return p.name;
+      if (c.key === 'team') return p.team;
+      if (c.key === 'games') return p.games;
+      if (c.key === 'fgPct' || c.key === 'ftPct') return p[c.key].toFixed(1) + '%';
+      if (c.key === 'composite') return p.composite.toFixed(2);
+      return fmtCount(p[c.key]);
+    });
+    return vals.map(_lsCsvEscape).join(';');
+  });
+
+  const csv = '\uFEFF' + [header, ...lines].join('\n'); // BOM, damit Excel Umlaute korrekt zeigt
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const periodLabel = LS_PERIOD_LABEL[lsCurrentPeriod] || lsCurrentPeriod;
+  const dateLabel = lsCurrentDate || 'aktuell';
+  a.href = url;
+  a.download = `livescores_${periodLabel}_${lsCurrentLeague}_${dateLabel}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 function _lsRenderTable() {
