@@ -8,6 +8,7 @@ Fantasy-Basketball-Hub für eine 12-Team H2H 9-Category Dynasty-Liga auf ESPN Fa
 
 ## 📌 Zuletzt gemacht
 
+- **Dynasty-Ranking-Workflow umgestellt auf laufendes Blending:** `data/rankings.js` wird ab jetzt nicht mehr komplett ersetzt, sondern bei jedem Upload einer neuen externen Rangliste (CSV/xlsx) mit dem bisherigen MFHFB-Rang gemittelt: neuer Rang je Spieler = Durchschnitt aus (bisherigem MFHFB-Rang, neuem Quellen-Rang), danach komplett neu sortiert und 1..764 durchnummeriert. Spieler, die im Update nicht auftauchen, behalten ihren bisherigen Rang unverändert. Namens-Matching läuft über `normalizeName()`/`aliases.js` plus ein paar manuelle Overrides für Tippfehler/Namensreihenfolge in der Quelle (z.B. "Yang Hansen" vs. "Hansen Yang"). Neue Spieler, die nur in der neuen Quelle auftauchen, werden mit deren Rang neu ins Board aufgenommen (aktuell: Bogoljub Marković, DOB manuell nachgetragen). Nach jedem Update automatisch mit-aktualisiert: `dynasty-live.js` (Live-Nudge-Basis) und `best-available-board.js` (Dynasty-Rang-Gewicht 0.35) — Trade Analyzer, Rosters etc. lesen `DYNASTY_PLAYERS` ohnehin live, keine weiteren Schritte nötig. Erstes Update nach dieser Umstellung: 2026-07-24, Quelle `Dynasty_July.csv` (320 gerankte Spieler, 319 gematcht, 1 neu).
 - **CSV-Export-Button** bei Weekly/Monthly Live Scores — lädt exakt das herunter, was gerade auf dem Bildschirm steht (aktuelle Sortierung + Min.-Spiele-Filter), nicht die ungefilterten Rohdaten.
 - **Merge-Fix:** Workflow-Datei war in zwei parallelen Chats unabhängig voneinander geändert worden (robusterer Cron-Zeitplan in einem, korrigierte Schritt-Reihenfolge im anderen) — zusammengeführt, beide Verbesserungen jetzt zusammen live.
 
@@ -174,7 +175,7 @@ scripts/data/            └ tägliche ESPN-Boxscore-CSVs (Rohdaten, per Workflo
 
 | Datei | Quelle | Update |
 |---|---|---|
-| `data/rankings.js` (`DYNASTY_PLAYERS`) | manuell kuratiert (Beyaz, eigenständig — nicht mehr mit Matt Lawson geblendet) | von Hand |
+| `data/rankings.js` (`DYNASTY_PLAYERS`) | manuell kuratiert, ab 2026-07-24 laufend geblendet: bisheriger MFHFB-Rang × neue Upload-Quelle, Durchschnitt je Spieler | von Hand, bei jedem Upload einer neuen Rangliste |
 | `data/rosters-live.js` | ESPN API | täglich automatisch |
 | `data/livescores-daily.js` / `-aggregate.js` | ESPN Boxscores | täglich automatisch |
 | `data/offseason-rankings.js` | Summer League + Preseason CSVs | täglich automatisch |
