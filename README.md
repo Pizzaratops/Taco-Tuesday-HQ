@@ -8,6 +8,9 @@ Fantasy-Basketball-Hub für eine 12-Team H2H 9-Category Dynasty-Liga auf ESPN Fa
 
 ## 📌 Zuletzt gemacht
 
+- **"Player" → "Projections" zeigt jetzt live die andere Page:** statt eines Platzhalters bettet die Unterseite die eigenständige [MFHFBs-NBA-Projections](https://github.com/Pizzaratops/MFHFBs-NBA-Projections) ([Live](https://pizzaratops.github.io/MFHFBs-NBA-Projections/)) per Iframe direkt ein — kein Link, keine eigene Kopie der Daten. Jede Anpassung dort (Gewichtungen, neue Saison-Daten) erscheint automatisch auch hier, weil exakt dieselbe Live-URL geladen wird. Theme läuft synchron: beim ersten Laden per `?theme=`-URL-Parameter, danach live per `postMessage` bei jedem Theme-Toggle in Taco Tuesday HQ.
+- **Draft-Dropdown in 2026 / 2027 aufgeteilt:** die vier bisherigen Draft-Reiter (Full Draft Board, Prospect Database, MFHFBs Big Board, 2026 Lottery) stehen jetzt unter einem "2026"-Label, darunter ein leeres "2027"-Label ("Kommt bald") als Platzhalter für den nächsten Draft-Jahrgang.
+- **Volle Bildschirmbreite für Tabellen-/Board-Seiten:** neue CSS-Klasse `page-wide` (kein `max-width`, fluides Padding) für alle datenlastigen Seiten — Full Draft Board, 2026/27 Rankings, Projections, Live Scores, Dynasty Rankings, Hashtag Rankings, Best Available, Team Analytics, Rolling Rankings, Prospect Database, MFHFBs Big Board sowie das Team-Grid auf Home. Text-/Formular-Seiten (Rules, Trade-Tools, Admin Settings, Standings-Chart etc.) bleiben bei `max-width:1280px` für Lesbarkeit.
 - **Dynasty-Ranking-Workflow umgestellt auf laufendes Blending:** `data/rankings.js` wird ab jetzt nicht mehr komplett ersetzt, sondern bei jedem Upload einer neuen externen Rangliste (CSV/xlsx) mit dem bisherigen MFHFB-Rang gemittelt: neuer Rang je Spieler = Durchschnitt aus (bisherigem MFHFB-Rang, neuem Quellen-Rang), danach komplett neu sortiert und 1..764 durchnummeriert. Spieler, die im Update nicht auftauchen, behalten ihren bisherigen Rang unverändert. Namens-Matching läuft über `normalizeName()`/`aliases.js` plus ein paar manuelle Overrides für Tippfehler/Namensreihenfolge in der Quelle (z.B. "Yang Hansen" vs. "Hansen Yang"). Neue Spieler, die nur in der neuen Quelle auftauchen, werden mit deren Rang neu ins Board aufgenommen (aktuell: Bogoljub Marković, DOB manuell nachgetragen). Nach jedem Update automatisch mit-aktualisiert: `dynasty-live.js` (Live-Nudge-Basis) und `best-available-board.js` (Dynasty-Rang-Gewicht 0.35) — Trade Analyzer, Rosters etc. lesen `DYNASTY_PLAYERS` ohnehin live, keine weiteren Schritte nötig. Erstes Update nach dieser Umstellung: 2026-07-24, Quelle `Dynasty_July.csv` (320 gerankte Spieler, 319 gematcht, 1 neu).
 - **CSV-Export-Button** bei Weekly/Monthly Live Scores — lädt exakt das herunter, was gerade auf dem Bildschirm steht (aktuelle Sortierung + Min.-Spiele-Filter), nicht die ungefilterten Rohdaten.
 - **Merge-Fix:** Workflow-Datei war in zwei parallelen Chats unabhängig voneinander geändert worden (robusterer Cron-Zeitplan in einem, korrigierte Schritt-Reihenfolge im anderen) — zusammengeführt, beide Verbesserungen jetzt zusammen live.
@@ -34,7 +37,7 @@ Fantasy-Basketball-Hub für eine 12-Team H2H 9-Category Dynasty-Liga auf ESPN Fa
 3. **BBM-Datei erneut hochladen**, sobald sie die 2026er-Rookies enthält (Alter + echte Season-Stats statt nur Tankathon-Fallback).
 4. **Team Analytics automatisieren** — aktuell noch eine komplett statische Momentaufnahme (`js/analytics.js`, `AN_ROSTER` hardcoded).
 5. **Draft Duel reaktivieren**, sobald 2027er Prospects verfügbar sind.
-6. **"2026/27 Projections"-Spalte** in Best Available hat noch keine Datenquelle — bleibt leer, bis geklärt ist, woher Projections kommen sollen.
+6. **"2026/27 Projections"-Spalte in Best Available** hat noch keine Datenquelle — bleibt leer, bis geklärt ist, woher die Werte kommen sollen. (Nicht zu verwechseln mit der Projections-*Seite* unter "Player" — die zeigt seit Kurzem live das Board aus dem separaten Projections-Repo, ist aber unabhängig von dieser Tabellenspalte.)
 7. **Aufräumen:** doppelte `draft-capital-2026.js` (liegt sowohl in `scripts/` als auch `data/` — nur die Version in `data/` wird gebraucht), eine verrutschte `daily-9cat.js` in `.github/workflows/` (gehört nach `scripts/`, liegt dort auch schon korrekt), sowie drei weitere Verrutscher in `js/`: `build-postdraft-board.js` (gehört nach `scripts/`), `draft2026.js` und `draft2027.js` (gehören nach `data/`) — alle drei sind identische Kopien der korrekten Dateien, können einfach aus `js/` gelöscht werden. ~88 Spieler in `data/rankings.js` (v.a. tiefe 2026er Draft-Picks) haben noch keine Positions-Angabe, da sie weder in der xlsx noch im Pre-Draft Big Board mit Position auftauchen.
 
 ---
@@ -52,6 +55,7 @@ flowchart TD
     TANK["Tankathon Draft-Ergebnisse<br/>(manuell, 1×/Draft-Jahrgang)"]
     SLM["Summer-League-Modell Repo<br/>(externer Live-Fetch, Sticky Score)"]
     MATT["Matt Lawson & Hashtag Basketball<br/>(manuell gepflegte Vergleichslisten)"]
+    PROJ["MFHFBs-NBA-Projections Repo<br/>(eigenes Repo, eigene GitHub Page)"]
   end
 
   subgraph DAILY["Täglicher Workflow (6/8/22 Uhr Berlin)"]
@@ -91,6 +95,7 @@ flowchart TD
     P4["Live Scores"]
     P5["Big Board"]
     P6["Team Analytics<br/>⚠️ noch NICHT automatisiert"]
+    P7["Projections<br/>(Live-Iframe-Embed)"]
   end
 
   ESPN --> S1 --> D1
@@ -115,6 +120,7 @@ flowchart TD
   S8 --> D7
   XLSX -.manuell hochladen.-> M1
   BBM -.manuell hochladen.-> M2
+  PROJ -.Live-Iframe, kein Datenabgleich.-> P7
 
   M1 --> P1
   D7 --> P1
@@ -136,6 +142,7 @@ flowchart TD
 | **Trade Analyzer** | `rankings.js` live | folgt manuellen Updates sofort, keine eigene Automatisierung nötig |
 | **Live Scores** | `livescores-daily.js` + `livescores-aggregate.js` | komplett automatisch |
 | **Big Board** | `draft2026.js` / `draft2027.js` | manuell (neuer Draft-Jahrgang = neue Datei) |
+| **Projections** | Live-Iframe von [MFHFBs-NBA-Projections](https://pizzaratops.github.io/MFHFBs-NBA-Projections/) (separates Repo) | komplett automatisch — identische Live-Quelle, kein eigener Datenabgleich nötig. Theme läuft synchron (URL-Parameter beim Laden + `postMessage` bei Theme-Toggle) |
 | **Team Analytics** | statisches `AN_ROSTER` in `js/analytics.js` | ⚠️ **nicht automatisiert**, siehe "Als Nächstes" |
 | **Draft Duel** | `js/draft-duel.js` | deaktiviert bis 2027er Prospects da sind |
 
