@@ -60,9 +60,25 @@ function showPlayerRankings() {
   prInit();
 }
 
+const PROJECTIONS_URL = 'https://pizzaratops.github.io/MFHFBs-NBA-Projections/';
+
 function showPlayerProjections() {
   navigate('playerProjectionsPage');
+  const frame = document.getElementById('projectionsFrame');
+  if (frame && !frame.src) frame.src = PROJECTIONS_URL;
+  _prSizeProjectionsFrame();
 }
+
+function _prSizeProjectionsFrame() {
+  const frame = document.getElementById('projectionsFrame');
+  if (!frame || !frame.offsetParent) return;
+  requestAnimationFrame(() => {
+    const top = frame.getBoundingClientRect().top;
+    const h = window.innerHeight - top - 24;
+    frame.style.height = Math.max(500, h) + 'px';
+  });
+}
+window.addEventListener('resize', _prSizeProjectionsFrame);
 
 function prInit() {
   document.getElementById('prSubtabOffSeason').classList.toggle('active', prCurrentTab === 'offseason');
