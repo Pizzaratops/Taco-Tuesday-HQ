@@ -258,6 +258,9 @@
   }
   .page { display: none; padding: 28px 32px; max-width: 1280px; margin: 0 auto; }
   .page.active { display: block; }
+  /* Tabellen- & Board-lastige Seiten nutzen die volle Bildschirmbreite,
+     Text-/Formular-Seiten bleiben bei max-width:1280px fuer Lesbarkeit. */
+  .page.page-wide { max-width: none; padding-left: clamp(24px, 3vw, 64px); padding-right: clamp(24px, 3vw, 64px); }
   .home-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; margin-bottom: 6px; color: var(--text); }
   .home-sub { color: var(--muted); margin-bottom: 28px; font-size: 14px; }
   .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
