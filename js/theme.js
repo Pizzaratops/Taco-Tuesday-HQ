@@ -9,6 +9,12 @@ function toggleTheme() {
   } else {
     body.classList.add('light'); btn.textContent = '🌙 Dark'; localStorage.setItem('theme','light');
   }
+  // Eingebettete Projections-Page (Iframe) live auf's gleiche Theme umstellen
+  const projectionsFrame = document.getElementById('projectionsFrame');
+  if (projectionsFrame && projectionsFrame.contentWindow) {
+    const theme = body.classList.contains('light') ? 'light' : 'dark';
+    projectionsFrame.contentWindow.postMessage({ type: 'mfhfb-theme', theme }, 'https://pizzaratops.github.io');
+  }
   // Re-render standings chart if visible so legend/axis colors update
   const standingsPage = document.getElementById('standingsPage');
   if (standingsPage && standingsPage.classList.contains('active')) {

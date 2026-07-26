@@ -62,10 +62,14 @@ function showPlayerRankings() {
 
 const PROJECTIONS_URL = 'https://pizzaratops.github.io/MFHFBs-NBA-Projections/';
 
+function _prCurrentTheme() {
+  return document.body.classList.contains('light') ? 'light' : 'dark';
+}
+
 function showPlayerProjections() {
   navigate('playerProjectionsPage');
   const frame = document.getElementById('projectionsFrame');
-  if (frame && !frame.src) frame.src = PROJECTIONS_URL;
+  if (frame && !frame.src) frame.src = PROJECTIONS_URL + '?theme=' + _prCurrentTheme();
   _prSizeProjectionsFrame();
 }
 
