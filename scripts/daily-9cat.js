@@ -38,8 +38,17 @@ const OUT_DIR = dirArg ? dirArg.split('=')[1] : path.join(__dirname, 'data');
 if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
 
 function todayYYYYMMDD() {
-  const d = new Date();
-  return d.toISOString().slice(0, 10);
+  // WICHTIG: Nicht das UTC-Kalenderdatum nehmen. ESPN datiert NBA-Spiele
+  // (Preseason wie reguläre Saison) nach US-Ostküstenzeit, und unsere
+  // GitHub-Action-Läufe passieren früh morgens UTC (z.B. 04:07/06:07 UTC) —
+  // das ist in Eastern Time noch der VORABEND. Mit UTC-Kalenderdatum würde
+  // deshalb systematisch "morgen" abgefragt, Spiele die in Eastern Time
+  // noch gar nicht stattgefunden haben.
+  const fmt = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/New_York',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+  });
+  return fmt.format(new Date()); // en-CA liefert direkt YYYY-MM-DD
 }
 
 function toEspnDate(dateStr) {

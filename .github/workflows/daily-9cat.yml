@@ -73,13 +73,14 @@ jobs:
           # Der 22-Uhr-Lauf ist bewusst ein NACHTRÄGLICHER Korrektur-Check:
           # ESPN aktualisiert Boxscore-Stats manchmal noch Stunden nach
           # Spielende. 6-8 Uhr holen automatisch den frischen "gestrigen"
-          # Las-Vegas-Spieltag (siehe todayYYYYMMDD() in daily-9cat.js).
-          # Um 22 Uhr Berlin ist es in Las Vegas aber erst früher Nachmittag
-          # (heutiger Tag, noch kaum gespielt) — deshalb hier explizit
-          # nochmal den GESTRIGEN Las-Vegas-Tag anfragen, nicht den heutigen.
+          # Spieltag (siehe todayYYYYMMDD() in daily-9cat.js, Eastern Time).
+          # Um 22 Uhr Berlin ist es an der US-Ostküste aber erst früher
+          # Nachmittag (heutiger Tag, noch kaum gespielt) — deshalb hier
+          # explizit nochmal den GESTRIGEN Eastern-Tag anfragen, nicht den
+          # heutigen.
           if [ "${{ steps.check_time.outputs.hour }}" = "22" ] && [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
-            DATE=$(TZ=America/Los_Angeles date -d "yesterday" +%F)
-            echo "22-Uhr-Korrekturlauf: verwende gestrigen LA-Tag ($DATE) statt heutigem."
+            DATE=$(TZ=America/New_York date -d "yesterday" +%F)
+            echo "22-Uhr-Korrekturlauf: verwende gestrigen Eastern-Tag ($DATE) statt heutigem."
             echo "date=${DATE}" >> "$GITHUB_OUTPUT"
           else
             echo "date=" >> "$GITHUB_OUTPUT"
