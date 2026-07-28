@@ -147,7 +147,7 @@ function renderNbaTrades() {
   Object.values(ROSTERS).forEach(roster => roster.forEach(p => fantasyNames.add(p.name)));
   const raw = localStorage.getItem('nbaTrades');
   if (!raw) {
-    container.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--muted);"><div style="font-size:36px;margin-bottom:12px;">📡</div><div style="font-size:14px;font-weight:600;color:var(--text);">Noch keine Daten — klicke Aktualisieren</div></div>';
+    container.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--muted);"><div style="font-size:36px;margin-bottom:12px;">⚠️</div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Feature aktuell pausiert</div><div style="font-size:13px;max-width:420px;margin:0 auto;">Die bisherige Datenquelle (Balldontlie-API) bietet den Trades-Endpoint nicht mehr an. Sobald es eine kostenlose Alternative gibt, kommt das Feature zurück.</div></div>';
     return;
   }
   let trades = [];

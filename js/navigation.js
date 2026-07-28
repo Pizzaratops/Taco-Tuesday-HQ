@@ -389,17 +389,17 @@ html += `<td>
 const SUBNAV_PAGES = {
   homePage:'home', draftboardPage:'draftboard', draft26Page:'draft26', draft27Page:'draft27', bigBoardPage:'bigBoard',
   duelPage:'duel', duelBoardPage:'duelboard', duelSettingsPage:'duelsettings',
-  lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings',
+  lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings', dynastyRollingPage:'dynastyrolling',
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
   tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', nbaTradesPage:'nbatrades', adminSettingsPage:'adminsettings', standingsPage:'standings', rulesPage:'rules',
   liveScoresPage:'livescores', playerRankingsPage:'playerrankings', playerProjectionsPage:'playerprojections',
 };
 
 const SNAV_GROUP = {
-  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer',
+  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer', rankings: 'snavPlayer', dynastyrolling: 'snavPlayer',
   draft26: 'snavDraft', draft27: 'snavDraft', lottery: 'snavDraft',
   duel: 'snavDuel', duelboard: 'snavDuel', duelsettings: 'snavDuel',
-  rankings:   'snavAnalytics', bestavail: 'snavAnalytics', analytics: 'snavAnalytics', rollingrankings: 'snavAnalytics',
+  bestavail: 'snavAnalytics', analytics: 'snavAnalytics', rollingrankings: 'snavAnalytics',
   trade:      'snavTrade', tradefinder: 'snavTrade', tradehistory: 'snavTrade',
 };
 
@@ -485,6 +485,7 @@ function _rerenderPage(pageId) {
   if (pageId === 'draftboardPage')       showDraftboard();
   if (pageId === 'bestAvailPage')        showBestAvail();
   if (pageId === 'rankingsPage')         showRankings();
+  if (pageId === 'dynastyRollingPage')   showDynastyRolling();
   if (pageId === 'hashtagRankingsPage')  showHashtagRankings();
   if (pageId === 'analyticsPage')        showAnalytics();
   if (pageId === 'rollingRankingsPage')  showRollingRankings();

@@ -67,6 +67,8 @@
         <div class="snav-dropdown">
           <button class="snav-dropdown-item" data-page="playerrankings"    onclick="showPlayerRankings()">🏅 2026/27 Rankings</button>
           <button class="snav-dropdown-item" data-page="playerprojections" onclick="showPlayerProjections()">🔮 2026/27 Projections</button>
+          <button class="snav-dropdown-item" data-page="rankings"          onclick="showRankings()">🏅 Dynasty Rankings</button>
+          <button class="snav-dropdown-item" data-page="dynastyrolling"    onclick="showDynastyRolling()">📈 Dynasty Rolling Rankings</button>
         </div>
       </div>
       <div class="snav-divider"></div>
@@ -87,7 +89,6 @@
       <div class="snav-group">
         <button class="snav-group-btn" id="snavAnalytics">📊 Analytics <span class="snav-arrow">▾</span></button>
         <div class="snav-dropdown">
-          <button class="snav-dropdown-item" data-page="rankings"  onclick="showRankings()">🏅 Dynasty Rankings</button>
           <button class="snav-dropdown-item" data-page="bestavail" onclick="showBestAvail()">🆓 Best Available</button>
           <button class="snav-dropdown-item" data-page="analytics" onclick="showAnalytics()">📊 Team Analytics</button>
           <button class="snav-dropdown-item" data-page="rollingrankings" onclick="showRollingRankings()">📈 Rolling Rankings</button>
@@ -141,6 +142,8 @@
         <div class="subnav-mobile-label">Player</div>
         <button class="subnav-mobile-btn" data-page="playerrankings"    onclick="showPlayerRankings();closeMobileNav()">🏅 2026/27 Rankings</button>
         <button class="subnav-mobile-btn" data-page="playerprojections" onclick="showPlayerProjections();closeMobileNav()">🔮 2026/27 Projections</button>
+        <button class="subnav-mobile-btn" data-page="rankings"          onclick="showRankings();closeMobileNav()">🏅 Dynasty Rankings</button>
+        <button class="subnav-mobile-btn" data-page="dynastyrolling"    onclick="showDynastyRolling();closeMobileNav()">📈 Dynasty Rolling Rankings</button>
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Draft 2026</div>
@@ -155,13 +158,10 @@
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Rankings & Analytics</div>
-        <button class="subnav-mobile-btn" data-page="rankings"  onclick="showRankings();closeMobileNav()">🏅 Dynasty Rankings</button>
         <button class="subnav-mobile-btn" data-page="bestavail" onclick="showBestAvail();closeMobileNav()">🆓 Best Available</button>
         <button class="subnav-mobile-btn" data-page="analytics" onclick="showAnalytics();closeMobileNav()">📊 Team Analytics</button>
         <button class="subnav-mobile-btn" data-page="rollingrankings" onclick="showRollingRankings();closeMobileNav()">📈 Rolling Rankings</button>
       </div>
-      <div class="subnav-mobile-group">
-              </div>
       <!-- Draft Duel deaktiviert bis 2027er Prospects da sind — Block einfach wieder auskommentieren
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Draft Duel</div>
@@ -361,7 +361,7 @@
 <!-- DYNASTY RANKINGS -->
 <div class="page page-wide" id="rankingsPage">
   <h2 style="margin-bottom:6px;">Dynasty Rankings</h2>
-<p style="color:var(--muted);font-size:13px;margin-bottom:20px;">450 players · 2025–26 Season · MFHFBs DR = your ranking · Matt DR = Matt Lawson's ranking · #️⃣ = Hashtag Basketball</p>
+<p style="color:var(--muted);font-size:13px;margin-bottom:20px;">811 players · MFHFBs DR = your ranking (Stand 28. Jul 2026) · Matt DR = Matt Lawson's ranking · #️⃣ = Hashtag Basketball</p>
   <div id="dynEditToolbarAnchor"></div>
   <div class="rankings-search">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -389,6 +389,29 @@
     </table>
     <div class="r-no-results" id="rankingsNoResults" style="display:none;">No players found.</div>
   </div>
+</div>
+
+<!-- DYNASTY ROLLING RANKINGS -->
+<div class="page page-wide" id="dynastyRollingPage">
+  <h2 style="margin-bottom:6px;">📈 Dynasty Rolling Rankings</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Verlauf deiner MFHFBs Dynasty Ranks über die Zeit · nur MFHFBs DR, keine externen Quellen · wächst mit jedem Update</p>
+  <div class="rankings-search">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" id="dynRollSearch" placeholder="Spieler, Team oder Position suchen…" oninput="filterDynastyRolling()"/>
+  </div>
+
+  <div class="rankings-table-wrap" id="dynRollTableWrap">
+    <table class="rankings-table">
+      <thead>
+        <tr id="dynRollHeaderRow"></tr>
+      </thead>
+      <tbody id="dynRollBody"></tbody>
+    </table>
+    <div class="r-no-results" id="dynRollNoResults" style="display:none;">Keine Spieler gefunden.</div>
+  </div>
+  <div class="ls-status" id="dynRollEmpty" style="display:none;">Noch keine Snapshot-Historie verfügbar.</div>
 </div>
 
 <!-- HASHTAG RANKINGS -->
@@ -1128,10 +1151,10 @@
 <div class="page" id="nbaTradesPage">
   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
     <div>
-      <h2 style="margin-bottom:4px;">🏀 NBA Trades 2025/26</h2>
-      <p style="color:var(--muted);font-size:13px;">Aktuelle NBA Trades via Balldontlie · Spieler in deiner Liga sind markiert</p>
+      <h2 style="margin-bottom:4px;">🏀 NBA Trades</h2>
+      <p style="color:var(--muted);font-size:13px;">⚠️ Pausiert: die bisherige Datenquelle (Balldontlie) bietet den Trades-Endpoint nicht mehr an, kostenlosen Ersatz gibt es aktuell nicht.</p>
     </div>
-    <button onclick="fetchNbaTrades().then(renderNbaTrades)" style="background:rgba(0,104,183,0.12);border:1.5px solid rgba(0,104,183,0.35);color:#0068b7;border-radius:20px;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">🔄 Aktualisieren</button>
+    <button disabled title="Keine kostenlose Trades-API verfügbar — siehe Hinweis" style="background:var(--surface2);border:1.5px solid var(--border);color:var(--muted);border-radius:20px;padding:7px 16px;font-size:12px;font-weight:700;cursor:not-allowed;font-family:'DM Sans',sans-serif;">🔄 Aktualisieren</button>
   </div>
   <div id="nbaTradesList">
     <div style="text-align:center;padding:60px 20px;color:var(--muted);">
@@ -1407,6 +1430,7 @@
 <script src="data/rosters-live.js?v=1"></script>
 <script src="data/picks.js?v=5"></script>
 <script src="data/rankings.js?v=5"></script>
+<script src="data/dynasty-rolling.js?v=1"></script>
 <script src="data/dynasty-live.js?v=1"></script>
 <script src="data/hashtag.js?v=5"></script>
 <script src="data/aliases.js?v=5"></script>
@@ -1421,6 +1445,7 @@
 <script src="js/nba-teams.js?v=5"></script>
 <script src="js/standings.js?v=5"></script>
 <script src="js/rankings-ui.js?v=5"></script>
+<script src="js/dynasty-rolling-ui.js?v=1"></script>
 <script src="js/dynasty-edit.js?v=5"></script>
 <script src="js/best-available.js?v=5"></script>
 <script src="js/trade-analyzer.js?v=5"></script>
