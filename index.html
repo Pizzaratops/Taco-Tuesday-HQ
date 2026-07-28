@@ -372,11 +372,19 @@
   <h2 style="margin-bottom:6px;">Dynasty Rankings</h2>
 <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">811 players · MFHFBs DR = your ranking (Stand 28. Jul 2026) · Matt DR = Matt Lawson's ranking · #️⃣ = Hashtag Basketball</p>
   <div id="dynEditToolbarAnchor"></div>
-  <div class="rankings-search">
-    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-    </svg>
-    <input type="text" id="rankSearch" placeholder="Search player, team, or position…" oninput="filterRankings()"/>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px;">
+    <div class="rankings-search" style="margin-bottom:0;flex:1;min-width:220px;">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="rankSearch" placeholder="Search player, team, or position…" oninput="filterRankings()"/>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <label for="dynChangeSince" style="font-size:11px;color:var(--muted);font-weight:700;white-space:nowrap;">Änderung seit</label>
+      <select id="dynChangeSince" onchange="setDynChangeSince(this.value)"
+        style="background:var(--surface2);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;padding:6px 10px;border-radius:8px;outline:none;">
+      </select>
+    </div>
   </div>
 
   <div class="rankings-table-wrap">

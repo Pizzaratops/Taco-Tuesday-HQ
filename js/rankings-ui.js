@@ -36,12 +36,36 @@ function showHashtagRankings() { renderHashtag(hCurrentData); navigate('hashtagR
 // ============================================================
 var rSortCol=0, rSortAsc=true, rCurrentData=[...DYNASTY_PLAYERS];
 
+let _dynChangeSinceDate = null; // null = Default (vorletzter Snapshot, d.h. "seit letztem Update")
+
+function _dynPopulateChangeSinceDropdown() {
+  const sel = document.getElementById('dynChangeSince');
+  if (!sel) return;
+  const snaps = (typeof DYNASTY_ROLLING !== 'undefined') ? DYNASTY_ROLLING : [];
+  if (snaps.length < 2) { sel.innerHTML = '<option value="">— keine Historie —</option>'; sel.disabled = true; return; }
+  sel.disabled = false;
+  // Alle Snapshots außer dem allerletzten sind moeglich Vergleichspunkte ("seit X")
+  const options = snaps.slice(0, -1).map((s, i) => {
+    const isDefault = i === snaps.length - 2; // vorletzter Snapshot = Default ("seit letztem Update")
+    const isSelected = _dynChangeSinceDate === null ? isDefault : (s.date === _dynChangeSinceDate);
+    return `<option value="${s.date}"${isSelected ? ' selected' : ''}>Seit ${s.label}${isDefault ? ' (letztes Update)' : ''}</option>`;
+  });
+  sel.innerHTML = options.join('');
+}
+
+function setDynChangeSince(dateStr) {
+  _dynChangeSinceDate = dateStr || null;
+  renderDynastyRankings(rCurrentData);
+}
+
 function _dynRankChangeBadge(name, currentRank) {
-  if (typeof DYNASTY_ROLLING === 'undefined' || DYNASTY_ROLLING.length < 2) return '';
-  const latest = DYNASTY_ROLLING[DYNASTY_ROLLING.length - 1];
-  const prev   = DYNASTY_ROLLING[DYNASTY_ROLLING.length - 2];
+  const snaps = (typeof DYNASTY_ROLLING !== 'undefined') ? DYNASTY_ROLLING : [];
+  if (snaps.length < 2) return '';
+  const compareDate = _dynChangeSinceDate || snaps[snaps.length - 2].date;
+  const prev = snaps.find(s => s.date === compareDate);
+  if (!prev) return '';
   const prevRank = prev.ranks[name];
-  if (prevRank == null) return ''; // neuer Spieler seit letztem Snapshot, kein Vergleichswert
+  if (prevRank == null) return ''; // kein Wert im gewählten Vergleichs-Snapshot (z.B. Spieler noch nicht dabei)
   const delta = prevRank - currentRank; // >0 = Rang verbessert (nach oben)
   if (delta === 0) return '';
   return delta > 0
@@ -110,6 +134,7 @@ function sortRankings(col) {
 }
 
 function showRankings() {
+  _dynPopulateChangeSinceDropdown();
   renderDynastyRankings(rCurrentData);
   navigate('rankingsPage');
   // Edit-Toolbar nur für Admin sichtbar machen
