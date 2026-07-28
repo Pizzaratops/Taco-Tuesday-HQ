@@ -67,10 +67,11 @@
         <div class="snav-dropdown">
           <button class="snav-dropdown-item" data-page="playerrankings"    onclick="showPlayerRankings()">🏅 2026/27 Rankings</button>
           <button class="snav-dropdown-item" data-page="playerprojections" onclick="showPlayerProjections()">🔮 2026/27 Projections</button>
-          <button class="snav-dropdown-item" data-page="rankings"          onclick="showRankings()">🏅 Dynasty Rankings</button>
           <button class="snav-dropdown-item" data-page="dynastyrolling"    onclick="showDynastyRolling()">📈 Dynasty Rolling Rankings</button>
         </div>
       </div>
+
+      <button class="snav-single" data-page="rankings" onclick="showRankings()">🏅 Dynasty Rankings</button>
       <div class="snav-divider"></div>
 
       <div class="snav-group">
@@ -142,8 +143,10 @@
         <div class="subnav-mobile-label">Player</div>
         <button class="subnav-mobile-btn" data-page="playerrankings"    onclick="showPlayerRankings();closeMobileNav()">🏅 2026/27 Rankings</button>
         <button class="subnav-mobile-btn" data-page="playerprojections" onclick="showPlayerProjections();closeMobileNav()">🔮 2026/27 Projections</button>
-        <button class="subnav-mobile-btn" data-page="rankings"          onclick="showRankings();closeMobileNav()">🏅 Dynasty Rankings</button>
         <button class="subnav-mobile-btn" data-page="dynastyrolling"    onclick="showDynastyRolling();closeMobileNav()">📈 Dynasty Rolling Rankings</button>
+      </div>
+      <div class="subnav-mobile-group">
+        <button class="subnav-mobile-btn" data-page="rankings" onclick="showRankings();closeMobileNav()">🏅 Dynasty Rankings</button>
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Draft 2026</div>
@@ -393,25 +396,32 @@
 
 <!-- DYNASTY ROLLING RANKINGS -->
 <div class="page page-wide" id="dynastyRollingPage">
-  <h2 style="margin-bottom:6px;">📈 Dynasty Rolling Rankings</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Verlauf deiner MFHFBs Dynasty Ranks über die Zeit · nur MFHFBs DR, keine externen Quellen · wächst mit jedem Update</p>
-  <div class="rankings-search">
-    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-    </svg>
-    <input type="text" id="dynRollSearch" placeholder="Spieler, Team oder Position suchen…" oninput="filterDynastyRolling()"/>
+  <div class="rr-layout">
+    <div class="rr-sidebar">
+      <div class="rr-sidebar-header">
+        <div style="flex:1;">
+          <div style="font-size:15px;font-weight:800;color:var(--text);">📈 Dynasty Rolling Rankings</div>
+          <div id="drSnapshotSubtitle" style="font-size:11px;color:var(--muted);margin-top:2px;">MFHFBs DR</div>
+        </div>
+        <div style="position:relative;">
+          <span style="position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;pointer-events:none;">🔍</span>
+          <input id="drSearch" class="rr-search" placeholder="Suchen…" oninput="drFilter()">
+        </div>
+      </div>
+      <div id="drToolbar" class="rr-toolbar"></div>
+      <div class="rr-list-scroll">
+        <div id="drListCols" class="rr-list-cols"></div>
+        <div id="drListBody"></div>
+      </div>
+    </div>
+    <div class="rr-main" id="drChartPanel">
+      <div style="margin:auto;text-align:center;color:var(--muted);">
+        <div style="font-size:40px;margin-bottom:12px;">📈</div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;">Spieler auswählen</div>
+        <div style="font-size:13px;">Klicke links auf einen Spieler um seinen Dynasty-Rang-Verlauf zu sehen</div>
+      </div>
+    </div>
   </div>
-
-  <div class="rankings-table-wrap" id="dynRollTableWrap">
-    <table class="rankings-table">
-      <thead>
-        <tr id="dynRollHeaderRow"></tr>
-      </thead>
-      <tbody id="dynRollBody"></tbody>
-    </table>
-    <div class="r-no-results" id="dynRollNoResults" style="display:none;">Keine Spieler gefunden.</div>
-  </div>
-  <div class="ls-status" id="dynRollEmpty" style="display:none;">Noch keine Snapshot-Historie verfügbar.</div>
 </div>
 
 <!-- HASHTAG RANKINGS -->
@@ -892,6 +902,8 @@
   /* ── Rolling Rankings ───────────────────────── */
   #rollingRankingsPage { padding: 0; overflow: hidden; }
   #rollingRankingsPage.active { display: flex; flex-direction: column; height: calc(100vh - 120px); }
+  #dynastyRollingPage { padding: 0; overflow: hidden; }
+  #dynastyRollingPage.active { display: flex; flex-direction: column; height: calc(100vh - 120px); }
   .rr-layout { display: grid; grid-template-columns: 340px 1fr; flex: 1; overflow: hidden; }
   .rr-sidebar { border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
   .rr-sidebar-header { padding: 14px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: var(--surface); }
@@ -943,6 +955,7 @@
   @media (max-width: 768px) {
     .rr-layout { grid-template-columns: 1fr; }
     #rollingRankingsPage.active { height: auto; }
+    #dynastyRollingPage.active { height: auto; }
     .rr-sidebar { height: 50vh; border-right: none; border-bottom: 1px solid var(--border); }
     .rr-main { padding: 16px; }
     .rr-toolbar { padding: 8px 12px; }
