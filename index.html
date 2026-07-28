@@ -67,11 +67,16 @@
         <div class="snav-dropdown">
           <button class="snav-dropdown-item" data-page="playerrankings"    onclick="showPlayerRankings()">🏅 2026/27 Rankings</button>
           <button class="snav-dropdown-item" data-page="playerprojections" onclick="showPlayerProjections()">🔮 2026/27 Projections</button>
-          <button class="snav-dropdown-item" data-page="dynastyrolling"    onclick="showDynastyRolling()">📈 Dynasty Rolling Rankings</button>
         </div>
       </div>
 
-      <button class="snav-single" data-page="rankings" onclick="showRankings()">🏅 Dynasty Rankings</button>
+      <div class="snav-group">
+        <button class="snav-group-btn" id="snavDynasty">🏅 Dynasty Rankings <span class="snav-arrow">▾</span></button>
+        <div class="snav-dropdown">
+          <button class="snav-dropdown-item" data-page="rankings"       onclick="showRankings()">🏅 Rankings</button>
+          <button class="snav-dropdown-item" data-page="dynastyrolling" onclick="showDynastyRolling()">📈 Rolling Rankings</button>
+        </div>
+      </div>
       <div class="snav-divider"></div>
 
       <div class="snav-group">
@@ -143,10 +148,11 @@
         <div class="subnav-mobile-label">Player</div>
         <button class="subnav-mobile-btn" data-page="playerrankings"    onclick="showPlayerRankings();closeMobileNav()">🏅 2026/27 Rankings</button>
         <button class="subnav-mobile-btn" data-page="playerprojections" onclick="showPlayerProjections();closeMobileNav()">🔮 2026/27 Projections</button>
-        <button class="subnav-mobile-btn" data-page="dynastyrolling"    onclick="showDynastyRolling();closeMobileNav()">📈 Dynasty Rolling Rankings</button>
       </div>
       <div class="subnav-mobile-group">
-        <button class="subnav-mobile-btn" data-page="rankings" onclick="showRankings();closeMobileNav()">🏅 Dynasty Rankings</button>
+        <div class="subnav-mobile-label">Dynasty Rankings</div>
+        <button class="subnav-mobile-btn" data-page="rankings"       onclick="showRankings();closeMobileNav()">🏅 Rankings</button>
+        <button class="subnav-mobile-btn" data-page="dynastyrolling" onclick="showDynastyRolling();closeMobileNav()">📈 Rolling Rankings</button>
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Draft 2026</div>

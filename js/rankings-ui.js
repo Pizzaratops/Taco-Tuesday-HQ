@@ -36,6 +36,19 @@ function showHashtagRankings() { renderHashtag(hCurrentData); navigate('hashtagR
 // ============================================================
 var rSortCol=0, rSortAsc=true, rCurrentData=[...DYNASTY_PLAYERS];
 
+function _dynRankChangeBadge(name, currentRank) {
+  if (typeof DYNASTY_ROLLING === 'undefined' || DYNASTY_ROLLING.length < 2) return '';
+  const latest = DYNASTY_ROLLING[DYNASTY_ROLLING.length - 1];
+  const prev   = DYNASTY_ROLLING[DYNASTY_ROLLING.length - 2];
+  const prevRank = prev.ranks[name];
+  if (prevRank == null) return ''; // neuer Spieler seit letztem Snapshot, kein Vergleichswert
+  const delta = prevRank - currentRank; // >0 = Rang verbessert (nach oben)
+  if (delta === 0) return '';
+  return delta > 0
+    ? ` <span style="font-size:10px;font-weight:800;color:#6dddaa;white-space:nowrap;" title="Seit ${prev.label}: ${delta} Plätze nach oben">▲${delta}</span>`
+    : ` <span style="font-size:10px;font-weight:800;color:#ff8fa3;white-space:nowrap;" title="Seit ${prev.label}: ${Math.abs(delta)} Plätze nach unten">▼${Math.abs(delta)}</span>`;
+}
+
 function renderDynastyRankings(data) {
   const tbody = document.getElementById('rankingsBody');
   const noR   = document.getElementById('rankingsNoResults');
@@ -72,7 +85,7 @@ function renderDynastyRankings(data) {
       <td><span class="r-name">${p[1]}</span></td>
       <td><span class="r-team">${p[2]}</span></td>
       <td><span class="r-pos">${p[3]}</span></td>
-      <td style="text-align:center;"><span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(p[0])};color:${dynastyRankColor(p[0])};">#${p[0]}</span></td>
+      <td style="text-align:center;white-space:nowrap;"><span style="font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:${dynastyRankBg(p[0])};color:${dynastyRankColor(p[0])};">#${p[0]}</span>${_dynRankChangeBadge(p[1], p[0])}</td>
       <td style="text-align:center;">${liveBadge}</td>
       <td style="text-align:center;">${mBadge}</td>
       <td style="text-align:center;">${hBadge}</td>

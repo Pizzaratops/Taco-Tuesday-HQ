@@ -396,7 +396,8 @@ const SUBNAV_PAGES = {
 };
 
 const SNAV_GROUP = {
-  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer', dynastyrolling: 'snavPlayer',
+  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer',
+  rankings: 'snavDynasty', dynastyrolling: 'snavDynasty',
   draft26: 'snavDraft', draft27: 'snavDraft', lottery: 'snavDraft',
   duel: 'snavDuel', duelboard: 'snavDuel', duelsettings: 'snavDuel',
   bestavail: 'snavAnalytics', analytics: 'snavAnalytics', rollingrankings: 'snavAnalytics',
