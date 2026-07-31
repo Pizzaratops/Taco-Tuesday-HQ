@@ -1,0 +1,56 @@
+# Eine Fantrax-Liga-ID pro Zeile. Optional ", Label" dahinter für lesbarere
+# Logs -- und fürs "🏁 Liga-Fortschritt"-Fenster auf der Draft-Board-Seite:
+# steht "Roto"/"H2H"/"Points" im Label, wird die Liga in der
+# Fertig-Zusammenfassung entsprechend gruppiert (z.B. "3x Roto, 4x H2H").
+# Ohne Label wird die ID selbst genutzt (landet dann unter "unbekannt").
+# "#"-Kommentare & Leerzeilen okay. Neue Liga = einfach eine Zeile
+# anhängen, fertig.
+pct4k2a6mr9s4u1f, H2H Draft Only 1
+a0bbqypimrablmbu, H2H Draft Only 2
+25j965mmmrannqbz, H2H Draft Only 3
+hembf3mtmraokwom, H2H Draft Only 4
+0n42joz7mrapinh5, H2H Draft Only 5
+286ct4uzmrapm5fq, H2H Draft Only 6
+auubwpqdmrbmpk3h, 8Cat / ROTO 
+ua02ifq1mrbtljjl, 8Cat / ROTO 
+jkfwddasmrc2ubfh, 8Cat / ROTO 
+4cjjvk4dmrcvjknk, 8Cat / ROTO 
+j3mu7ixymrfucic8, Points 1
+hdvwmdermrfwbgdo, Points 2
+amyt53qkmrh14vqu, H2H Draft Only 7
+8z56gxfmmryvrj3z, H2H Draft Only 24
+3qbcc7h4mryvugwe, H2H Draft Only 25
+lc1upts1mryvxbzs, H2H Draft Only 26
+kedazw7ems00gyg5, H2H Draft Only 27
+4ts05ifgms00js0h, H2H Draft Only 28
+yfdi4zc8ms00mlr5, H2H Draft Only 29
+kjuxwfi4mrh17ll1, H2H Draft Only 8
+emeu5xuymrh1a5id, H2H Draft Only 9
+osd7cxhzmrhramh2, 8Cat / ROTO 6
+6s4kfft0mrhrd71n, 8Cat / ROTO 5
+t6wu7qhgmrhrgajw, H2H Draft Only 10
+1ycl5y6pmrhrjicv, H2H Draft Only 11
+bbw1narimrkdo0xy, H2H Draft Only 12
+i4wkf62umrkds58d, H2H Draft Only 13
+f4s6y7hlmrkduxh8, H2H Draft Only 14
+2xpavvsdmrkgdwvm, 8Cat / ROTO 7
+y2el57a9mrkgi9hu, 8Cat / ROTO 8
+vlz39pmpmrr5uzt8, H2H Draft Only 15
+1qrd7f0ymrr5zner, H2H Draft Only 16
+jj3rvaenmrr62dhn, H2H Draft Only 17
+i4z6qm61mrshvc99, H2H Draft Only 18
+hjqxljyfmrshydd4, H2H Draft Only 19
+t0n2ie3mmrsi15yu, H2H Draft Only 20
+xzqt1t8hmrsi4529, 8Cat / ROTO 9
+4x4efw5amrsi6w88, 8Cat / ROTO 10
+m8gqld41mrsi9o7z, 8Cat / ROTO 11
+kzsdzgcrmrtq3iro, H2H Draft Only 21
+kxmpizhrmrtq6amu, H2H Draft Only 22
+hfw2srjjmrtq935q, H2H Draft Only 23
+5nntjivvmrtqvmsk, 8Cat / ROTO 12
+oxyp65xomrtqyfcs, 8Cat / ROTO 13
+fjj7naxums0ceiks, 8Cat / ROTO 14
+gcz20krlms0chzf6, 8Cat / ROTO 15
+41yiazntms3rsd0p, H2H Draft Only 30
+nzorb453ms3s0muc, H2H Draft Only 31
+78e6978qms3s49aw, H2H Draft Only 32

@@ -60,7 +60,11 @@ function showPlayerRankings() {
   prInit();
 }
 
-const PROJECTIONS_URL = 'https://pizzaratops.github.io/MFHFBs-NBA-Projections/';
+// War bis 2026-07-31 die externe GitHub-Pages-URL des eigenstaendigen
+// MFHFBs-NBA-Projections-Repos. Jetzt lokal, weil der komplette Projections-
+// Toolkit (Projections/Teams/Draft Board) als Unterordner projections/
+// in dieses Repo uebernommen wurde — ein Projekt statt zwei, siehe README.
+const PROJECTIONS_URL = 'projections/index.html';
 
 function _prCurrentTheme() {
   return document.body.classList.contains('light') ? 'light' : 'dark';

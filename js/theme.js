@@ -13,7 +13,10 @@ function toggleTheme() {
   const projectionsFrame = document.getElementById('projectionsFrame');
   if (projectionsFrame && projectionsFrame.contentWindow) {
     const theme = body.classList.contains('light') ? 'light' : 'dark';
-    projectionsFrame.contentWindow.postMessage({ type: 'mfhfb-theme', theme }, 'https://pizzaratops.github.io');
+    // Seit dem Merge des Projections-Toolkits (projections/) ins gleiche Repo
+    // ist der Iframe same-origin — targetOrigin daher window.location.origin
+    // statt der frueheren externen GitHub-Pages-Domain.
+    projectionsFrame.contentWindow.postMessage({ type: 'mfhfb-theme', theme }, window.location.origin);
   }
   // Re-render standings chart if visible so legend/axis colors update
   const standingsPage = document.getElementById('standingsPage');
