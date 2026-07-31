@@ -161,7 +161,14 @@ if (fs.existsSync(CSV_DIR)) {
 console.log(`${filesRead} Tages-CSV(s) für Liga "${leagueArg}" eingelesen, ${totals.size} Spieler mit echten Stats.`);
 
 // ── Blenden ──────────────────────────────────────────────────
-const STAT_KEYS = ['pts', 'reb', 'ast', 'stl', 'blk', 'tpm', 'tov', 'fgm', 'fga', 'ftm', 'fta'];
+// PTS/REB/AST/STL/BLK/3PM/TOV sind normale Counting-Stats -> generische
+// Blend-Formel. FGM/FGA/FTM/FTA brauchen Sonderbehandlung, wenn die
+// Baseline nur FG%/FT% ohne Volumen hat (pctOnly, siehe
+// import-projections-baseline.js) — reine Counting-Stat-Blend würde
+// sonst faelschlich Baseline-Volumen von 0 einmischen und FGA/FTA
+// künstlich runterziehen.
+const COUNTING_KEYS = ['pts', 'reb', 'ast', 'stl', 'blk', 'tpm', 'tov'];
+const SHOOTING_PAIRS = [['fgm', 'fga', 'fgPct'], ['ftm', 'fta', 'ftPct']];
 const allNames = new Set([...Object.keys(PROJECTIONS_BASELINE), ...totals.keys()]);
 
 const live = {};
@@ -169,18 +176,54 @@ allNames.forEach(name => {
   const base = PROJECTIONS_BASELINE[name] || null;
   const actual = totals.get(name) || null;
   const games = actual ? actual.games : 0;
+  const pctOnly = !!(base && base.pctOnly);
 
   const blended = {};
-  STAT_KEYS.forEach(k => {
+  COUNTING_KEYS.forEach(k => {
     const baseVal = base ? (base[k] || 0) : 0;
     const actualSum = actual ? (actual[k] || 0) : 0;
     const w = base ? BASELINE_WEIGHT : 0; // kein Baseline-Eintrag -> reiner Saison-Schnitt
     const denom = w + games;
     blended[k] = denom > 0 ? (baseVal * w + actualSum) / denom : 0;
   });
+
+  SHOOTING_PAIRS.forEach(([mKey, aKey, pctKey]) => {
+    if (pctOnly) {
+      // Kein Baseline-Volumen bekannt: solange keine echten Spiele vorliegen,
+      // einfach die Baseline-Prozentzahl unveraendert zeigen. Sobald echte
+      // Spiele da sind, wird das TATSAECHLICHE Wurfvolumen der echten Spiele
+      // auch fuer die "virtuellen" Baseline-Spiele angenommen (kein
+      // erfundener Fixwert) — das reduziert sich mathematisch exakt auf
+      // einen game-gewichteten Prozent-Durchschnitt zwischen Baseline-%
+      // und Saison-%, ohne die Attempts-Verzerrung eines naiven simplen
+      // Prozent-Mittelwerts über unterschiedlich große Stichproben.
+      if (games > 0) {
+        const avgAttPerGame = actual[aKey] / games;
+        const virtualAttTotal = avgAttPerGame * BASELINE_WEIGHT;
+        const virtualMadeTotal = virtualAttTotal * (base[pctKey] / 100);
+        const denom = BASELINE_WEIGHT + games;
+        blended[mKey] = (virtualMadeTotal + actual[mKey]) / denom;
+        blended[aKey] = (virtualAttTotal + actual[aKey]) / denom;
+      } else {
+        blended[mKey] = 0;
+        blended[aKey] = 0;
+        blended[pctKey] = base[pctKey];
+      }
+    } else {
+      const baseVal = base ? (base[mKey] || 0) : 0;
+      const baseAtt = base ? (base[aKey] || 0) : 0;
+      const actualMade = actual ? (actual[mKey] || 0) : 0;
+      const actualAtt = actual ? (actual[aKey] || 0) : 0;
+      const w = base ? BASELINE_WEIGHT : 0;
+      const denom = w + games;
+      blended[mKey] = denom > 0 ? (baseVal * w + actualMade) / denom : 0;
+      blended[aKey] = denom > 0 ? (baseAtt * w + actualAtt) / denom : 0;
+    }
+  });
+
   blended.min = base ? base.min : 0; // MIN wird nicht season-live geblendet, reine Baseline-Info
-  blended.fgPct = blended.fga > 0 ? (blended.fgm / blended.fga) * 100 : 0;
-  blended.ftPct = blended.fta > 0 ? (blended.ftm / blended.fta) * 100 : 0;
+  if (blended.fgPct === undefined) blended.fgPct = blended.fga > 0 ? (blended.fgm / blended.fga) * 100 : 0;
+  if (blended.ftPct === undefined) blended.ftPct = blended.fta > 0 ? (blended.ftm / blended.fta) * 100 : 0;
   blended.gamesPlayed = games;
   blended.hasBaseline = !!base;
 

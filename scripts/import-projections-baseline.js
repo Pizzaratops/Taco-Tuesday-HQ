@@ -127,10 +127,19 @@ const idx = {
   fgmfga: header.findIndex(h => /^FGM.?FGA$/i.test(h)),
   ftmfta: header.findIndex(h => /^FTM.?FTA$/i.test(h)),
   fgm: col('FGM'), fga: col('FGA'), ftm: col('FTM'), fta: col('FTA'),
+  fgPct: col('FG%'), ftPct: col('FT%'),
 };
 if (idx.player === -1 || idx.pts === -1) {
   console.error('Pflichtspalten fehlen (Player/Name, PTS).');
   process.exit(1);
+}
+const hasVolumeData = idx.fgmfga !== -1 || (idx.fgm !== -1 && idx.fga !== -1);
+if (!hasVolumeData && idx.fgPct !== -1) {
+  console.log('⚠️  Keine FGM/FGA-Spalte gefunden, nur FG%/FT% — Datei liefert also keine Wurf-Volumen-Daten.');
+  console.log('    Fallback: FG%/FT% werden als reine Prozentwerte übernommen (kein Makes/Attempts-Blend möglich,');
+  console.log('    solange keine Spiele vorliegen). Sobald echte Spiele reinkommen, blendet build-live-projections.js');
+  console.log('    die Prozente game-gewichtet unter Annahme des tatsächlichen Wurfvolumens der echten Spiele.');
+  console.log('    Für exaktere Ergebnisse: Export mit FGM-FGA/FTM-FTA-Spalten verwenden, falls verfügbar.');
 }
 
 function num(v) { const n = parseFloat(v); return Number.isFinite(n) ? n : 0; }
@@ -149,17 +158,24 @@ for (let i = headerRowIdx + 1; i < rows.length; i++) {
   const canon = canonicalName(rawName);
   if (canon !== stripDiacritics(rawName).trim()) matched++;
 
-  let fgm, fga, ftm, fta;
+  let fgm = 0, fga = 0, ftm = 0, fta = 0, pctOnly = false;
   if (idx.fgmfga !== -1) [fgm, fga] = splitCombined(r[idx.fgmfga]);
-  else { fgm = num(r[idx.fgm]); fga = num(r[idx.fga]); }
+  else if (idx.fgm !== -1 && idx.fga !== -1) { fgm = num(r[idx.fgm]); fga = num(r[idx.fga]); }
+  else pctOnly = true;
   if (idx.ftmfta !== -1) [ftm, fta] = splitCombined(r[idx.ftmfta]);
-  else { ftm = num(r[idx.ftm]); fta = num(r[idx.fta]); }
+  else if (idx.ftm !== -1 && idx.fta !== -1) { ftm = num(r[idx.ftm]); fta = num(r[idx.fta]); }
+  else pctOnly = true;
 
-  baseline[canon] = {
+  const entry = {
     min: num(r[idx.min]), pts: num(r[idx.pts]), reb: num(r[idx.reb]), ast: num(r[idx.ast]),
     stl: num(r[idx.stl]), blk: num(r[idx.blk]), tpm: num(r[idx.tpm]), tov: num(r[idx.tov]),
-    fgm, fga, ftm, fta,
+    fgm, fga, ftm, fta, pctOnly,
   };
+  if (pctOnly) {
+    entry.fgPct = num(r[idx.fgPct]);
+    entry.ftPct = num(r[idx.ftPct]);
+  }
+  baseline[canon] = entry;
   count++;
 }
 console.log(`Baseline geladen: ${count} Spieler (${matched} auf bekannte Namen gemappt).`);
@@ -167,7 +183,8 @@ console.log(`Baseline geladen: ${count} Spieler (${matched} auf bekannte Namen g
 function serialize(obj) {
   const lines = Object.entries(obj).map(([name, s]) => {
     const escaped = name.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-    return `  "${escaped}": { min:${s.min}, pts:${s.pts}, reb:${s.reb}, ast:${s.ast}, stl:${s.stl}, blk:${s.blk}, tpm:${s.tpm}, tov:${s.tov}, fgm:${s.fgm}, fga:${s.fga}, ftm:${s.ftm}, fta:${s.fta} }`;
+    const extra = s.pctOnly ? `, pctOnly:true, fgPct:${s.fgPct}, ftPct:${s.ftPct}` : '';
+    return `  "${escaped}": { min:${s.min}, pts:${s.pts}, reb:${s.reb}, ast:${s.ast}, stl:${s.stl}, blk:${s.blk}, tpm:${s.tpm}, tov:${s.tov}, fgm:${s.fgm}, fga:${s.fga}, ftm:${s.ftm}, fta:${s.fta}${extra} }`;
   });
   return lines.join(',\n');
 }
@@ -186,6 +203,8 @@ const out = `// ============================================================
 //  Shape: PROJECTIONS_BASELINE["Spielername"] = {
 //    min, pts, reb, ast, stl, blk, tpm, tov,   // Pro-Spiel-Schnitte
 //    fgm, fga, ftm, fta                          // Pro-Spiel-Schnitte (Makes/Attempts, NICHT Prozent!)
+//    // Falls die Quelldatei keine Makes/Attempts hatte (nur FG%/FT%):
+//    pctOnly, fgPct, ftPct                       // fgm/fga/ftm/fta sind dann 0, siehe build-live-projections.js
 //  }
 // ============================================================
 
