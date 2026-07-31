@@ -226,15 +226,81 @@ allNames.forEach(name => {
   if (blended.ftPct === undefined) blended.ftPct = blended.fta > 0 ? (blended.ftm / blended.fta) * 100 : 0;
   blended.gamesPlayed = games;
   blended.hasBaseline = !!base;
+  // zFloor/zDepth/adpVal: statische Baseline-Werte, kein Live-Recalc (Formel
+  // aus dem Projections-Repo nicht bekannt) — "z" selbst wird unten frisch
+  // ueber den kompletten Pool neu berechnet (gleiche Mathe wie ueberall
+  // sonst im Projekt, siehe scripts/build-offseason-rankings.js).
+  blended.zFloor = base ? base.zFloor : 0;
+  blended.zDepth = base ? base.zDepth : 0;
+  blended.adpVal = base ? base.adpVal : 0;
+  blended.z = base ? base.z : 0; // Fallback: Original-Baseline-Z, wird unten ggf. live neu berechnet
 
   live[name] = blended;
 });
+
+// ── Z-Score frisch ueber den kompletten Pool berechnen ────────
+// Exakt gleiche Mathematik wie scripts/build-offseason-rankings.js /
+// scripts/aggregate-core.js: pro Kategorie (mean, stdDev) ueber den
+// gesamten Pool, FG%/FT% als "Impact" (Abweichung vom Pool-Schnitt,
+// gewichtet mit dem Attempt-Volumen), TOV invertiert (weniger TOV = besser).
+//
+// WICHTIG: Nur neu berechnen, wenn es ueberhaupt schon echte Saison-Daten
+// gibt (filesRead > 0). Vorher haben ALLE Spieler fgm=fga=0 (pctOnly-
+// Baseline ohne Spiele, siehe oben) — der FG%/FT%-Einfluss würde dann für
+// den kompletten Pool auf 0 fallen und die Original-Baseline-Z-Werte
+// (die volle Wurf-Volumen-Daten hatten) verschlechtern statt verbessern.
+// Vor Saisonstart bleibt daher einfach der Original-Z aus der Baseline
+// unverändert stehen.
+if (filesRead > 0) {
+  function mean(arr) { return arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0; }
+  function stdDev(arr, m) {
+    if (arr.length < 2) return 0;
+    const variance = arr.reduce((s, v) => s + (v - m) * (v - m), 0) / arr.length;
+    return Math.sqrt(variance);
+  }
+  const liveEntries = Object.entries(live);
+  const poolFgSum = liveEntries.reduce((s, [, p]) => s + p.fgm, 0);
+  const poolFgaSum = liveEntries.reduce((s, [, p]) => s + p.fga, 0);
+  const poolFtSum = liveEntries.reduce((s, [, p]) => s + p.ftm, 0);
+  const poolFtaSum = liveEntries.reduce((s, [, p]) => s + p.fta, 0);
+  const poolFgPct = poolFgaSum > 0 ? poolFgSum / poolFgaSum : 0;
+  const poolFtPct = poolFtaSum > 0 ? poolFtSum / poolFtaSum : 0;
+  liveEntries.forEach(([, p]) => {
+    p._fgImpact = p.fga > 0 ? ((p.fgm / p.fga) - poolFgPct) * p.fga : 0;
+    p._ftImpact = p.fta > 0 ? ((p.ftm / p.fta) - poolFtPct) * p.fta : 0;
+  });
+  const Z_CATS = [
+    { key: 'pts' }, { key: 'reb' }, { key: 'ast' }, { key: 'stl' }, { key: 'blk' }, { key: 'tpm' },
+    { key: '_fgImpact' }, { key: '_ftImpact' }, { key: 'tov', invert: true },
+  ];
+  const zStats = {};
+  Z_CATS.forEach(cat => {
+    const values = liveEntries.map(([, p]) => p[cat.key]);
+    const m = mean(values);
+    zStats[cat.key] = { mean: m, sd: stdDev(values, m) };
+  });
+  liveEntries.forEach(([, p]) => {
+    let composite = 0;
+    Z_CATS.forEach(cat => {
+      const { mean: m, sd } = zStats[cat.key];
+      let z = sd > 0 ? (p[cat.key] - m) / sd : 0;
+      if (cat.invert) z = -z;
+      composite += z;
+    });
+    p.z = composite;
+    delete p._fgImpact;
+    delete p._ftImpact;
+  });
+  console.log('Z-Scores frisch über den Live-Pool berechnet (echte Saison-Daten vorhanden).');
+} else {
+  console.log('Noch keine echten Saison-Daten — Original-Z aus der Baseline bleibt unverändert.');
+}
 
 function serialize(obj) {
   const lines = Object.entries(obj).map(([name, s]) => {
     const escaped = name.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
     const round = n => Math.round(n * 100) / 100;
-    return `  "${escaped}": { min:${round(s.min)}, pts:${round(s.pts)}, reb:${round(s.reb)}, ast:${round(s.ast)}, stl:${round(s.stl)}, blk:${round(s.blk)}, tpm:${round(s.tpm)}, tov:${round(s.tov)}, fgm:${round(s.fgm)}, fga:${round(s.fga)}, ftm:${round(s.ftm)}, fta:${round(s.fta)}, fgPct:${round(s.fgPct)}, ftPct:${round(s.ftPct)}, gamesPlayed:${s.gamesPlayed}, hasBaseline:${s.hasBaseline} }`;
+    return `  "${escaped}": { min:${round(s.min)}, pts:${round(s.pts)}, reb:${round(s.reb)}, ast:${round(s.ast)}, stl:${round(s.stl)}, blk:${round(s.blk)}, tpm:${round(s.tpm)}, tov:${round(s.tov)}, fgm:${round(s.fgm)}, fga:${round(s.fga)}, ftm:${round(s.ftm)}, fta:${round(s.fta)}, fgPct:${round(s.fgPct)}, ftPct:${round(s.ftPct)}, gamesPlayed:${s.gamesPlayed}, hasBaseline:${s.hasBaseline}, z:${round(s.z)}, zFloor:${round(s.zFloor)}, zDepth:${round(s.zDepth)}, adpVal:${round(s.adpVal)} }`;
   });
   return lines.join(',\n');
 }
@@ -255,6 +321,8 @@ const out = `// ============================================================
 //    fgPct, ftPct,        // aus geblendeten Makes/Attempts berechnet, NICHT gemittelt
 //    gamesPlayed,          // echte Spiele bisher in dieser Liga
 //    hasBaseline,          // false = kein Preseason-Wert vorhanden, reiner Saison-Schnitt
+//    z,                    // frisch ueber den kompletten Pool berechneter 9cat-Composite-Z-Score
+//    zFloor, zDepth, adpVal, // statische Baseline-Werte (kein Live-Recalc, Formel aus Projections-Repo)
 //  }
 // ============================================================
 

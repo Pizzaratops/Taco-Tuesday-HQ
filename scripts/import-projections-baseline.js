@@ -128,6 +128,7 @@ const idx = {
   ftmfta: header.findIndex(h => /^FTM.?FTA$/i.test(h)),
   fgm: col('FGM'), fga: col('FGA'), ftm: col('FTM'), fta: col('FTA'),
   fgPct: col('FG%'), ftPct: col('FT%'),
+  z: col('Z'), zFloor: col('Z-Floor'), zDepth: col('Z-Depth'), adpVal: col('ADP-Val'),
 };
 if (idx.player === -1 || idx.pts === -1) {
   console.error('Pflichtspalten fehlen (Player/Name, PTS).');
@@ -170,6 +171,10 @@ for (let i = headerRowIdx + 1; i < rows.length; i++) {
     min: num(r[idx.min]), pts: num(r[idx.pts]), reb: num(r[idx.reb]), ast: num(r[idx.ast]),
     stl: num(r[idx.stl]), blk: num(r[idx.blk]), tpm: num(r[idx.tpm]), tov: num(r[idx.tov]),
     fgm, fga, ftm, fta, pctOnly,
+    z: idx.z !== -1 ? num(r[idx.z]) : 0,
+    zFloor: idx.zFloor !== -1 ? num(r[idx.zFloor]) : 0,
+    zDepth: idx.zDepth !== -1 ? num(r[idx.zDepth]) : 0,
+    adpVal: idx.adpVal !== -1 ? num(r[idx.adpVal]) : 0,
   };
   if (pctOnly) {
     entry.fgPct = num(r[idx.fgPct]);
@@ -184,7 +189,7 @@ function serialize(obj) {
   const lines = Object.entries(obj).map(([name, s]) => {
     const escaped = name.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
     const extra = s.pctOnly ? `, pctOnly:true, fgPct:${s.fgPct}, ftPct:${s.ftPct}` : '';
-    return `  "${escaped}": { min:${s.min}, pts:${s.pts}, reb:${s.reb}, ast:${s.ast}, stl:${s.stl}, blk:${s.blk}, tpm:${s.tpm}, tov:${s.tov}, fgm:${s.fgm}, fga:${s.fga}, ftm:${s.ftm}, fta:${s.fta}${extra} }`;
+    return `  "${escaped}": { min:${s.min}, pts:${s.pts}, reb:${s.reb}, ast:${s.ast}, stl:${s.stl}, blk:${s.blk}, tpm:${s.tpm}, tov:${s.tov}, fgm:${s.fgm}, fga:${s.fga}, ftm:${s.ftm}, fta:${s.fta}${extra}, z:${s.z}, zFloor:${s.zFloor}, zDepth:${s.zDepth}, adpVal:${s.adpVal} }`;
   });
   return lines.join(',\n');
 }
@@ -205,6 +210,10 @@ const out = `// ============================================================
 //    fgm, fga, ftm, fta                          // Pro-Spiel-Schnitte (Makes/Attempts, NICHT Prozent!)
 //    // Falls die Quelldatei keine Makes/Attempts hatte (nur FG%/FT%):
 //    pctOnly, fgPct, ftPct                       // fgm/fga/ftm/fta sind dann 0, siehe build-live-projections.js
+//    z, zFloor, zDepth, adpVal                   // 1:1 aus der Quelldatei übernommen (Projections-Repo-eigene Berechnung,
+//                                                  // hier nicht nachgebaut). "z" wird ab dem ersten Spieltag von
+//                                                  // build-live-projections.js live neu berechnet; zFloor/zDepth/adpVal
+//                                                  // bleiben statische Baseline-Werte (kein Live-Recalc, Formel unbekannt).
 //  }
 // ============================================================
 

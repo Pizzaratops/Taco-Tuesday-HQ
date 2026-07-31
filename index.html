@@ -277,33 +277,29 @@
 <div class="page page-wide" id="liveProjectionsPage">
   <h2 style="margin-bottom:6px;">🧪 Live Projections (Test)</h2>
   <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Vorschau auf den Season-Start-Flow: Preseason-Baseline + echte Boxscore-Stats geblendet. Noch nicht die aktive Projections-Seite — siehe README "Season-Start-Plan: Projections-Flow".</p>
-  <div class="rankings-search">
-    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-    </svg>
-    <input type="text" id="lpSearch" placeholder="Spieler, Team oder Position suchen…" oninput="filterLiveProjections()"/>
+
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px;">
+    <div class="rankings-search" style="margin-bottom:0;flex:1;min-width:220px;">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="lpSearch" placeholder="Spieler, Team oder Position suchen…" oninput="filterLiveProjections()"/>
+    </div>
+    <button id="lpFilterToggleBtn" onclick="toggleLiveProjectionsFilterPanel()"
+      style="background:var(--surface2);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;padding:8px 14px;border-radius:8px;cursor:pointer;">▼ Filter</button>
+    <button onclick="resetLiveProjectionsFilters()"
+      style="background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12px;padding:8px 14px;border-radius:8px;cursor:pointer;">Zurücksetzen</button>
   </div>
+
+  <div id="lpFilterPanel" style="display:none;flex-wrap:wrap;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
+    <div id="lpFilterFields" style="display:flex;flex-wrap:wrap;gap:14px;"></div>
+  </div>
+
   <div id="lpMeta" style="color:var(--muted);font-size:12px;margin-bottom:14px;"></div>
   <div class="rankings-table-wrap">
     <table class="rankings-table">
       <thead>
-        <tr>
-          <th>#</th>
-          <th onclick="sortLiveProjections('name')" style="text-align:left;">Name</th>
-          <th onclick="sortLiveProjections('team')">Team</th>
-          <th onclick="sortLiveProjections('pos')">Pos</th>
-          <th onclick="sortLiveProjections('min')">MIN</th>
-          <th onclick="sortLiveProjections('pts')">PTS</th>
-          <th onclick="sortLiveProjections('reb')">REB</th>
-          <th onclick="sortLiveProjections('ast')">AST</th>
-          <th onclick="sortLiveProjections('stl')">STL</th>
-          <th onclick="sortLiveProjections('blk')">BLK</th>
-          <th onclick="sortLiveProjections('tpm')">3PM</th>
-          <th onclick="sortLiveProjections('fgPct')">FG%</th>
-          <th onclick="sortLiveProjections('ftPct')">FT%</th>
-          <th onclick="sortLiveProjections('tov')">TOV</th>
-          <th>Status</th>
-        </tr>
+        <tr id="lpHeaderRow"></tr>
       </thead>
       <tbody id="lpBody"></tbody>
     </table>
