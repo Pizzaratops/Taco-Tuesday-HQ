@@ -67,7 +67,10 @@
         <div class="snav-dropdown">
           <button class="snav-dropdown-item" data-page="playerrankings"    onclick="showPlayerRankings()">🏅 2026/27 Rankings</button>
           <button class="snav-dropdown-item" data-page="playerprojections" onclick="showPlayerProjections()">🔮 2026/27 Projections</button>
-          <button class="snav-dropdown-item" data-page="liveprojections" onclick="showLiveProjections()">🧪 Live Projections (Test)</button>
+          <div class="snav-dropdown-label">Live Projections (Test)</div>
+          <button class="snav-dropdown-item" data-page="liveprojections"     onclick="showLiveProjections()">🧪 Projections</button>
+          <button class="snav-dropdown-item" data-page="liveprojectionsteams" onclick="showLiveProjTeams()">🏀 NBA Teams</button>
+          <button class="snav-dropdown-item" data-page="liveprojectionsdraft" onclick="showLiveProjDraft()">📋 Draft Board</button>
         </div>
       </div>
 
@@ -149,7 +152,9 @@
         <div class="subnav-mobile-label">Player</div>
         <button class="subnav-mobile-btn" data-page="playerrankings"    onclick="showPlayerRankings();closeMobileNav()">🏅 2026/27 Rankings</button>
         <button class="subnav-mobile-btn" data-page="playerprojections" onclick="showPlayerProjections();closeMobileNav()">🔮 2026/27 Projections</button>
-        <button class="subnav-mobile-btn" data-page="liveprojections" onclick="showLiveProjections();closeMobileNav()">🧪 Live Projections (Test)</button>
+        <button class="subnav-mobile-btn" data-page="liveprojections"      onclick="showLiveProjections();closeMobileNav()">🧪 Live Projections (Test): Projections</button>
+        <button class="subnav-mobile-btn" data-page="liveprojectionsteams" onclick="showLiveProjTeams();closeMobileNav()">🏀 Live Projections (Test): NBA Teams</button>
+        <button class="subnav-mobile-btn" data-page="liveprojectionsdraft" onclick="showLiveProjDraft();closeMobileNav()">📋 Live Projections (Test): Draft Board</button>
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Dynasty Rankings</div>
@@ -280,11 +285,32 @@
      (Projections/NBA Teams/Draft Board, interne Navigation innerhalb des
      Iframes). Ersetzt seit 2026-07-31 die vorherige native TTHQ-
      Baseline+Blend-Preview-Tabelle (js/live-projections-ui.js ist seitdem
-     unangebunden, siehe README). -->
+     unangebunden, siehe README). Seit 2026-07-31 (2. Nachbesserung) als
+     3 eigene Nav-Eintraege statt einer einzelnen Seite mit reiner interner
+     Navigation — jede Unterseite hat ihren eigenen Iframe/Page-Container,
+     gleiche Iframe-Lade-/Resize-Logik wie unten (js/player-rankings.js).-->
 <div class="page page-wide" id="liveProjectionsPage">
   <iframe
     id="projectionsFrame"
     title="MFHFBs NBA Projections"
+    style="width:100%; border:none; border-radius:14px; display:block; background:var(--surface);"
+    loading="lazy">
+  </iframe>
+</div>
+
+<div class="page page-wide" id="liveProjTeamsPage">
+  <iframe
+    id="projTeamsFrame"
+    title="MFHFBs NBA Teams"
+    style="width:100%; border:none; border-radius:14px; display:block; background:var(--surface);"
+    loading="lazy">
+  </iframe>
+</div>
+
+<div class="page page-wide" id="liveProjDraftPage">
+  <iframe
+    id="projDraftFrame"
+    title="MFHFBs Draft Board"
     style="width:100%; border:none; border-radius:14px; display:block; background:var(--surface);"
     loading="lazy">
   </iframe>

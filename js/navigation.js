@@ -393,11 +393,11 @@ const SUBNAV_PAGES = {
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
   tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', nbaTradesPage:'nbatrades', adminSettingsPage:'adminsettings', standingsPage:'standings', rulesPage:'rules',
   liveScoresPage:'livescores', playerRankingsPage:'playerrankings', playerProjectionsPage:'playerprojections',
-  liveProjectionsPage:'liveprojections',
+  liveProjectionsPage:'liveprojections', liveProjTeamsPage:'liveprojectionsteams', liveProjDraftPage:'liveprojectionsdraft',
 };
 
 const SNAV_GROUP = {
-  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer', liveprojections: 'snavPlayer',
+  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer', liveprojections: 'snavPlayer', liveprojectionsteams: 'snavPlayer', liveprojectionsdraft: 'snavPlayer',
   rankings: 'snavDynasty', dynastyrolling: 'snavDynasty',
   draft26: 'snavDraft', draft27: 'snavDraft', lottery: 'snavDraft',
   duel: 'snavDuel', duelboard: 'snavDuel', duelsettings: 'snavDuel',
@@ -489,6 +489,8 @@ function _rerenderPage(pageId) {
   if (pageId === 'rankingsPage')         showRankings();
   if (pageId === 'dynastyRollingPage')   showDynastyRolling();
   if (pageId === 'liveProjectionsPage')  showLiveProjections();
+  if (pageId === 'liveProjTeamsPage')    showLiveProjTeams();
+  if (pageId === 'liveProjDraftPage')    showLiveProjDraft();
   if (pageId === 'hashtagRankingsPage')  showHashtagRankings();
   if (pageId === 'analyticsPage')        showAnalytics();
   if (pageId === 'rollingRankingsPage')  showRollingRankings();

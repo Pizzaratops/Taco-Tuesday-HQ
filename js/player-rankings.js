@@ -64,13 +64,19 @@ function showPlayerRankings() {
 // MFHFBs-NBA-Projections-Repos. Jetzt lokal, weil der komplette Projections-
 // Toolkit (Projections/Teams/Draft Board) als Unterordner projections/
 // in dieses Repo uebernommen wurde — ein Projekt statt zwei, siehe README.
-const PROJECTIONS_URL = 'projections/index.html';
+// Seit 2026-07-31 (2. Nachbesserung) 3 eigene Nav-Eintraege/Seiten statt
+// einer einzelnen Seite mit nur interner Navigation — ein Eintrag pro
+// Unterseite des Toolkits, gleiche Iframe-Mechanik fuer alle drei.
+const LIVE_PROJ_EMBEDS = {
+  liveProjectionsPage: { frameId: 'projectionsFrame', src: 'projections/index.html' },
+  liveProjTeamsPage:   { frameId: 'projTeamsFrame',   src: 'projections/teams.html' },
+  liveProjDraftPage:   { frameId: 'projDraftFrame',   src: 'projections/draft.html' },
+};
+const _prResizeObservers = {};
 
 function _prCurrentTheme() {
   return document.body.classList.contains('light') ? 'light' : 'dark';
 }
-
-let _prFrameResizeObserver = null;
 
 function showPlayerProjections() {
   // Bewusst leer — noch keine eigene Datenquelle, siehe index.html-Kommentar
@@ -78,20 +84,19 @@ function showPlayerProjections() {
   navigate('playerProjectionsPage');
 }
 
-// Eingebetteter MFHFBs-Toolkit lebt seit 2026-07-31 unter "Live Projections
-// (Test)" statt unter "2026/27 Projections" — ersetzt dort die vorherige
-// native Baseline+Blend-Preview-Tabelle (js/live-projections-ui.js, jetzt
-// auskommentiert). Iframe-Element (id="projectionsFrame") wurde entsprechend
-// mit umgezogen, von playerProjectionsPage nach liveProjectionsPage.
-function showLiveProjections() {
-  navigate('liveProjectionsPage');
-  const frame = document.getElementById('projectionsFrame');
+function _prShowEmbed(pageId) {
+  navigate(pageId);
+  const cfg = LIVE_PROJ_EMBEDS[pageId];
+  const frame = document.getElementById(cfg.frameId);
   if (frame && !frame.src) {
-    frame.addEventListener('load', _prOnFrameLoad);
-    frame.src = PROJECTIONS_URL + '?theme=' + _prCurrentTheme();
+    frame.addEventListener('load', () => _prOnFrameLoad(cfg.frameId));
+    frame.src = cfg.src + '?theme=' + _prCurrentTheme();
   }
-  _prSizeProjectionsFrame();
+  _prSizeFrame(cfg.frameId);
 }
+function showLiveProjections() { _prShowEmbed('liveProjectionsPage'); }
+function showLiveProjTeams()   { _prShowEmbed('liveProjTeamsPage'); }
+function showLiveProjDraft()   { _prShowEmbed('liveProjDraftPage'); }
 
 // Same-origin seit dem Merge von projections/ ins Repo (2026-07-31) — daher
 // koennen wir die tatsaechliche Inhaltshoehe des Iframes auslesen und den
@@ -100,8 +105,8 @@ function showLiveProjections() {
 // dann INTERN zusaetzlich zur aeusseren Seite — daher das doppelte Scrollen.
 // Jetzt: Iframe waechst/schrumpft mit seinem Inhalt, nur die TTHQ-Seite
 // scrollt, wie bei jeder anderen Seite auch.
-function _prSizeProjectionsFrame() {
-  const frame = document.getElementById('projectionsFrame');
+function _prSizeFrame(frameId) {
+  const frame = document.getElementById(frameId);
   if (!frame || !frame.offsetParent) return;
   let doc;
   try { doc = frame.contentDocument; } catch (e) { doc = null; }
@@ -115,23 +120,26 @@ function _prSizeProjectionsFrame() {
   frame.style.height = Math.max(500, h + 4) + 'px';
 }
 
-function _prOnFrameLoad() {
-  _prSizeProjectionsFrame();
-  const frame = document.getElementById('projectionsFrame');
+function _prOnFrameLoad(frameId) {
+  _prSizeFrame(frameId);
+  const frame = document.getElementById(frameId);
   let doc;
   try { doc = frame.contentDocument; } catch (e) { doc = null; }
   if (!doc) return;
   // Beobachtet Groessenaenderungen im eingebetteten Inhalt (z.B. Filter-Panel
-  // auf-/zuklappen, Tabellensortierung, interne Navigation Projections <->
-  // NBA Teams <-> Draft Board loest ohnehin ein neues "load" aus) und passt
-  // die Iframe-Hoehe live an, statt einer internen Scrollbar.
-  if (_prFrameResizeObserver) _prFrameResizeObserver.disconnect();
+  // auf-/zuklappen, Tabellensortierung, interne Navigation innerhalb der
+  // eingebetteten Seite loest ohnehin ein neues "load" aus) und passt die
+  // Iframe-Hoehe live an, statt einer internen Scrollbar.
+  if (_prResizeObservers[frameId]) _prResizeObservers[frameId].disconnect();
   if (typeof ResizeObserver !== 'undefined' && doc.body) {
-    _prFrameResizeObserver = new ResizeObserver(() => _prSizeProjectionsFrame());
-    _prFrameResizeObserver.observe(doc.body);
+    _prResizeObservers[frameId] = new ResizeObserver(() => _prSizeFrame(frameId));
+    _prResizeObservers[frameId].observe(doc.body);
   }
 }
-window.addEventListener('resize', _prSizeProjectionsFrame);
+window.addEventListener('resize', () => {
+  Object.values(LIVE_PROJ_EMBEDS).forEach(cfg => _prSizeFrame(cfg.frameId));
+});
+
 
 function prInit() {
   document.getElementById('prSubtabOffSeason').classList.toggle('active', prCurrentTab === 'offseason');
