@@ -283,18 +283,42 @@ function mfhfbSetPoolSize(v) {
   localStorage.setItem(MFHFB_POOL_KEY, v);
 }
 
-// Excel-artige bedingte Formatierung: interpoliert zwischen Rot (schlecht)
-// und Grün (gut) je nach Position von `value` zwischen `min` und `max`.
+// Excel-artige bedingte Formatierung: interpoliert zwischen "schlecht" und
+// "gut" je nach Position von `value` zwischen `min` und `max`.
 // invert=true für Kategorien, bei denen weniger besser ist (z.B. TOV).
 // Setzt NUR die Hintergrundfarbe (leicht transparent) — die Textfarbe bleibt
 // die Theme-Textfarbe, damit es in Dark UND Light Mode lesbar ist.
+//
+// War frueher ein hartcodierter HSL-Regenbogen (hue 0..120, rot->gruen ueber
+// alle Zwischentoene) unabhaengig vom Theme — dadurch sahen die mittleren
+// Werte "verwaschen" aus (Oliv/Gelb-Stich) und passten nicht zu TTHQs warmer
+// Cream/Rost-Palette. Jetzt: echte lineare RGB-Interpolation zwischen den
+// CSS-Variablen --bad und --good, live aus dem Theme ausgelesen — bleibt
+// automatisch synchron, falls sich die Theme-Farben mal aendern.
+const _mfhfbHeatColorCache = { theme: null, bad: null, good: null };
+function _mfhfbHexToRgb(hex) {
+  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex.trim());
+  return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [128, 128, 128];
+}
+function _mfhfbHeatColors() {
+  const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+  if (_mfhfbHeatColorCache.theme === theme) return _mfhfbHeatColorCache;
+  const cs = getComputedStyle(document.documentElement);
+  _mfhfbHeatColorCache.theme = theme;
+  _mfhfbHeatColorCache.bad = _mfhfbHexToRgb(cs.getPropertyValue('--bad') || '#ff6584');
+  _mfhfbHeatColorCache.good = _mfhfbHexToRgb(cs.getPropertyValue('--good') || '#4caf81');
+  return _mfhfbHeatColorCache;
+}
 function mfhfbHeatStyle(value, min, max, invert) {
   if (max === min || !isFinite(min) || !isFinite(max)) return '';
   let t = (value - min) / (max - min);
   if (invert) t = 1 - t;
   t = Math.max(0, Math.min(1, t));
-  const hue = Math.round(t * 120); // 0 = rot, 120 = grün
-  return `background-color:hsla(${hue},70%,45%,0.22);`;
+  const { bad, good } = _mfhfbHeatColors();
+  const r = Math.round(bad[0] + (good[0] - bad[0]) * t);
+  const g = Math.round(bad[1] + (good[1] - bad[1]) * t);
+  const b = Math.round(bad[2] + (good[2] - bad[2]) * t);
+  return `background-color:rgba(${r},${g},${b},0.22);`;
 }
 
 // --- Aktuelles Team pro Spieler (aus dem täglichen ESPN-Roster-Fetch) ---

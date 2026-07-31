@@ -73,7 +73,18 @@ function _prCurrentTheme() {
 let _prFrameResizeObserver = null;
 
 function showPlayerProjections() {
+  // Bewusst leer — noch keine eigene Datenquelle, siehe index.html-Kommentar
+  // bei playerProjectionsPage und README "Season-Start-Plan: Projections-Flow".
   navigate('playerProjectionsPage');
+}
+
+// Eingebetteter MFHFBs-Toolkit lebt seit 2026-07-31 unter "Live Projections
+// (Test)" statt unter "2026/27 Projections" — ersetzt dort die vorherige
+// native Baseline+Blend-Preview-Tabelle (js/live-projections-ui.js, jetzt
+// auskommentiert). Iframe-Element (id="projectionsFrame") wurde entsprechend
+// mit umgezogen, von playerProjectionsPage nach liveProjectionsPage.
+function showLiveProjections() {
+  navigate('liveProjectionsPage');
   const frame = document.getElementById('projectionsFrame');
   if (frame && !frame.src) {
     frame.addEventListener('load', _prOnFrameLoad);

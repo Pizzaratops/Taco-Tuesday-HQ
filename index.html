@@ -263,48 +263,31 @@
   <div id="prContent"></div>
 </div>
 
-<!-- PLAYER PROJECTIONS -->
-<div class="page page-wide" id="playerProjectionsPage">
+<!-- PLAYER PROJECTIONS — bewusst leer. War bis 2026-07-31 der Iframe-Host fuer
+     den MFHFBs-Toolkit, der jetzt unter "Live Projections (Test)" laeuft
+     (siehe unten). Kuenftig vorgesehen fuer die native TTHQ-Baseline+Blend-
+     Berechnung (scripts/build-live-projections.js + data/live-projections.js
+     existieren bereits, sind aber unangebunden) — siehe README
+     "Season-Start-Plan: Projections-Flow". -->
+<div class="page" id="playerProjectionsPage">
+  <div style="max-width:640px;">
+    <h2 style="margin-bottom:6px;">🔮 2026/27 Projections</h2>
+    <p style="color:var(--muted);font-size:13px;">Noch keine eigene Datenquelle angebunden. Die MFHFBs-Projections findest du aktuell unter "Player" → "🧪 Live Projections (Test)".</p>
+  </div>
+</div>
+
+<!-- LIVE PROJECTIONS (TEST) — eingebetteter MFHFBs-NBA-Projections-Toolkit
+     (Projections/NBA Teams/Draft Board, interne Navigation innerhalb des
+     Iframes). Ersetzt seit 2026-07-31 die vorherige native TTHQ-
+     Baseline+Blend-Preview-Tabelle (js/live-projections-ui.js ist seitdem
+     unangebunden, siehe README). -->
+<div class="page page-wide" id="liveProjectionsPage">
   <iframe
     id="projectionsFrame"
-    title="NBA Projections"
+    title="MFHFBs NBA Projections"
     style="width:100%; border:none; border-radius:14px; display:block; background:var(--surface);"
     loading="lazy">
   </iframe>
-</div>
-
-<!-- LIVE PROJECTIONS (TEST — noch nicht live verlinkt, siehe README Season-Start-Plan) -->
-<div class="page page-wide" id="liveProjectionsPage">
-  <h2 style="margin-bottom:6px;">🧪 Live Projections (Test)</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Vorschau auf den Season-Start-Flow: Preseason-Baseline + echte Boxscore-Stats geblendet. Noch nicht die aktive Projections-Seite — siehe README "Season-Start-Plan: Projections-Flow".</p>
-
-  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px;">
-    <div class="rankings-search" style="margin-bottom:0;flex:1;min-width:220px;">
-      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-      </svg>
-      <input type="text" id="lpSearch" placeholder="Spieler, Team oder Position suchen…" oninput="filterLiveProjections()"/>
-    </div>
-    <button id="lpFilterToggleBtn" onclick="toggleLiveProjectionsFilterPanel()"
-      style="background:var(--surface2);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;padding:8px 14px;border-radius:8px;cursor:pointer;">▼ Filter</button>
-    <button onclick="resetLiveProjectionsFilters()"
-      style="background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12px;padding:8px 14px;border-radius:8px;cursor:pointer;">Zurücksetzen</button>
-  </div>
-
-  <div id="lpFilterPanel" style="display:none;flex-wrap:wrap;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:16px;">
-    <div id="lpFilterFields" style="display:flex;flex-wrap:wrap;gap:14px;"></div>
-  </div>
-
-  <div id="lpMeta" style="color:var(--muted);font-size:12px;margin-bottom:14px;"></div>
-  <div class="rankings-table-wrap">
-    <table class="rankings-table">
-      <thead>
-        <tr id="lpHeaderRow"></tr>
-      </thead>
-      <tbody id="lpBody"></tbody>
-    </table>
-    <div class="r-no-results" id="lpNoResults" style="display:none;">Keine Spieler gefunden.</div>
-  </div>
 </div>
 
 <!-- LIVE SCORES -->
@@ -1510,7 +1493,13 @@
 <script src="js/nba-teams.js?v=5"></script>
 <script src="js/standings.js?v=5"></script>
 <script src="js/rankings-ui.js?v=5"></script>
+<!-- Seit 2026-07-31 unangebunden: "Live Projections (Test)" zeigt jetzt den
+     eingebetteten MFHFBs-Toolkit statt der nativen Baseline+Blend-Tabelle,
+     die dieses Script rendert (Details siehe index.html-Kommentar bei
+     liveProjectionsPage). Auskommentiert statt geloescht, siehe README —
+     gleiches Prinzip wie beim Draft-Duel-Block weiter oben.
 <script src="js/live-projections-ui.js?v=1"></script>
+-->
 <script src="js/dynasty-rolling-ui.js?v=1"></script>
 <script src="js/dynasty-edit.js?v=5"></script>
 <script src="js/best-available.js?v=5"></script>
