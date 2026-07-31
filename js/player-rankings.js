@@ -70,21 +70,55 @@ function _prCurrentTheme() {
   return document.body.classList.contains('light') ? 'light' : 'dark';
 }
 
+let _prFrameResizeObserver = null;
+
 function showPlayerProjections() {
   navigate('playerProjectionsPage');
   const frame = document.getElementById('projectionsFrame');
-  if (frame && !frame.src) frame.src = PROJECTIONS_URL + '?theme=' + _prCurrentTheme();
+  if (frame && !frame.src) {
+    frame.addEventListener('load', _prOnFrameLoad);
+    frame.src = PROJECTIONS_URL + '?theme=' + _prCurrentTheme();
+  }
   _prSizeProjectionsFrame();
 }
 
+// Same-origin seit dem Merge von projections/ ins Repo (2026-07-31) — daher
+// koennen wir die tatsaechliche Inhaltshoehe des Iframes auslesen und den
+// Rahmen exakt darauf setzen. Vorher (externe Cross-Origin-URL) ging das
+// nicht, deshalb wurde der Iframe auf Viewport-Hoehe gedeckelt und scrollte
+// dann INTERN zusaetzlich zur aeusseren Seite — daher das doppelte Scrollen.
+// Jetzt: Iframe waechst/schrumpft mit seinem Inhalt, nur die TTHQ-Seite
+// scrollt, wie bei jeder anderen Seite auch.
 function _prSizeProjectionsFrame() {
   const frame = document.getElementById('projectionsFrame');
   if (!frame || !frame.offsetParent) return;
-  requestAnimationFrame(() => {
-    const top = frame.getBoundingClientRect().top;
-    const h = window.innerHeight - top - 24;
-    frame.style.height = Math.max(500, h) + 'px';
-  });
+  let doc;
+  try { doc = frame.contentDocument; } catch (e) { doc = null; }
+  if (!doc || !doc.documentElement) {
+    // Noch nicht geladen (erster Aufruf vor "load") — vorlaeufig grosszuegige
+    // Mindesthoehe, wird beim "load"-Event bzw. ResizeObserver sofort korrigiert.
+    frame.style.height = Math.max(600, window.innerHeight - frame.getBoundingClientRect().top - 24) + 'px';
+    return;
+  }
+  const h = Math.max(doc.documentElement.scrollHeight, doc.body ? doc.body.scrollHeight : 0);
+  frame.style.height = Math.max(500, h + 4) + 'px';
+}
+
+function _prOnFrameLoad() {
+  _prSizeProjectionsFrame();
+  const frame = document.getElementById('projectionsFrame');
+  let doc;
+  try { doc = frame.contentDocument; } catch (e) { doc = null; }
+  if (!doc) return;
+  // Beobachtet Groessenaenderungen im eingebetteten Inhalt (z.B. Filter-Panel
+  // auf-/zuklappen, Tabellensortierung, interne Navigation Projections <->
+  // NBA Teams <-> Draft Board loest ohnehin ein neues "load" aus) und passt
+  // die Iframe-Hoehe live an, statt einer internen Scrollbar.
+  if (_prFrameResizeObserver) _prFrameResizeObserver.disconnect();
+  if (typeof ResizeObserver !== 'undefined' && doc.body) {
+    _prFrameResizeObserver = new ResizeObserver(() => _prSizeProjectionsFrame());
+    _prFrameResizeObserver.observe(doc.body);
+  }
 }
 window.addEventListener('resize', _prSizeProjectionsFrame);
 
