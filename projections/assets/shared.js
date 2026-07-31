@@ -301,7 +301,16 @@ function _mfhfbHexToRgb(hex) {
   return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [128, 128, 128];
 }
 function _mfhfbHeatColors() {
-  const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+  // Zwei Theme-Mechanismen moeglich: data-theme-Attribut auf <html> (wenn
+  // diese Seite noch als eigenstaendiges Dokument/Iframe laeuft, siehe
+  // <script> im <head> von index.html/teams.html/draft.html) ODER die
+  // body.light-Klasse (wenn diese Seite nativ in Taco Tuesday HQ eingebaut
+  // ist, seit 2026-08-01 der Fall fuer die Projections-Tabelle). Beide
+  // pruefen, sonst haengt der Cache in der nativen Variante permanent auf
+  // 'dark' fest, weil data-theme dort nie gesetzt wird.
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light'
+    || document.body.classList.contains('light');
+  const theme = isLight ? 'light' : 'dark';
   if (_mfhfbHeatColorCache.theme === theme) return _mfhfbHeatColorCache;
   const cs = getComputedStyle(document.documentElement);
   _mfhfbHeatColorCache.theme = theme;

@@ -61,16 +61,14 @@ function showPlayerRankings() {
 }
 
 // War bis 2026-07-31 die externe GitHub-Pages-URL des eigenstaendigen
-// MFHFBs-NBA-Projections-Repos. Jetzt lokal, weil der komplette Projections-
-// Toolkit (Projections/Teams/Draft Board) als Unterordner projections/
-// in dieses Repo uebernommen wurde — ein Projekt statt zwei, siehe README.
-// Seit 2026-07-31 (2. Nachbesserung) 3 eigene Nav-Eintraege/Seiten statt
-// einer einzelnen Seite mit nur interner Navigation — ein Eintrag pro
-// Unterseite des Toolkits, gleiche Iframe-Mechanik fuer alle drei.
+// MFHFBs-NBA-Projections-Repos, dann lokal per Iframe. Seit 2026-08-01 ist
+// "Projections" selbst eine ECHTE TTHQ-Seite (kein Iframe mehr) — siehe
+// css/projections.css + js/projections-native.js. NBA Teams/Draft Board
+// laufen vorerst noch als Iframe weiter (gleiches Muster wie bisher),
+// werden ggf. in einem naechsten Schritt ebenfalls nativ umgebaut.
 const LIVE_PROJ_EMBEDS = {
-  liveProjectionsPage: { frameId: 'projectionsFrame', src: 'projections/index.html' },
-  liveProjTeamsPage:   { frameId: 'projTeamsFrame',   src: 'projections/teams.html' },
-  liveProjDraftPage:   { frameId: 'projDraftFrame',   src: 'projections/draft.html' },
+  liveProjTeamsPage: { frameId: 'projTeamsFrame', src: 'projections/teams.html' },
+  liveProjDraftPage: { frameId: 'projDraftFrame', src: 'projections/draft.html' },
 };
 const _prResizeObservers = {};
 
@@ -84,6 +82,54 @@ function showPlayerProjections() {
   navigate('playerProjectionsPage');
 }
 
+// Daten+Logik fuer die native Projections-Seite werden erst beim ersten
+// Besuch nachgeladen (~2,4 MB — players-data.js allein ist 1,9 MB), nicht
+// statisch in index.html eingebunden, sonst wuerde JEDER TTHQ-Besuch das
+// mitladen, egal ob die Seite je aufgerufen wird. Gleiche Grundidee wie
+// vorher beim Iframe (frame.src nur beim ersten Aufruf gesetzt), nur jetzt
+// als echte <script>-Injection statt Iframe-Navigation.
+const LIVE_PROJ_NATIVE_SCRIPTS = [
+  'projections/players-data.js',
+  'projections/projected-minutes.js',
+  'projections/adp-data.js',
+  'projections/rosters-data.js',
+  'projections/rookie-projections.js',
+  'projections/assets/shared.js',
+  'projections/assets/inseason-blend.js',
+  'js/projections-native.js',
+];
+let _liveProjNativeState = 'unloaded'; // 'unloaded' | 'loading' | 'ready'
+
+function _loadScriptsSequentially(srcs, i, onDone) {
+  if (i >= srcs.length) { onDone(); return; }
+  const s = document.createElement('script');
+  s.src = srcs[i];
+  // onerror statt Abbruch: adp-data.js/rosters-data.js/rookie-projections.js
+  // hatten im Original schon ein onerror-Attribut (optional, Seite laeuft
+  // auch ohne sie), gleiches Verhalten hier fuer alle beibehalten.
+  s.onload = () => _loadScriptsSequentially(srcs, i + 1, onDone);
+  s.onerror = () => _loadScriptsSequentially(srcs, i + 1, onDone);
+  document.body.appendChild(s);
+}
+
+function showLiveProjections() {
+  navigate('liveProjectionsPage');
+  if (_liveProjNativeState === 'ready') return;
+  if (_liveProjNativeState === 'loading') return;
+  _liveProjNativeState = 'loading';
+  const countEl = document.getElementById('count');
+  if (countEl) countEl.textContent = 'Lade Projections…';
+  _loadScriptsSequentially(LIVE_PROJ_NATIVE_SCRIPTS, 0, () => {
+    _liveProjNativeState = 'ready';
+    if (typeof initLiveProjectionsNative === 'function') {
+      initLiveProjectionsNative();
+    } else {
+      console.error('initLiveProjectionsNative() nicht gefunden — js/projections-native.js korrekt geladen?');
+      if (countEl) countEl.textContent = 'Fehler beim Laden — siehe Browser-Konsole.';
+    }
+  });
+}
+
 function _prShowEmbed(pageId) {
   navigate(pageId);
   const cfg = LIVE_PROJ_EMBEDS[pageId];
@@ -94,9 +140,9 @@ function _prShowEmbed(pageId) {
   }
   _prSizeFrame(cfg.frameId);
 }
-function showLiveProjections() { _prShowEmbed('liveProjectionsPage'); }
 function showLiveProjTeams()   { _prShowEmbed('liveProjTeamsPage'); }
 function showLiveProjDraft()   { _prShowEmbed('liveProjDraftPage'); }
+
 
 // Same-origin seit dem Merge von projections/ ins Repo (2026-07-31) — daher
 // koennen wir die tatsaechliche Inhaltshoehe des Iframes auslesen und den

@@ -10,9 +10,10 @@
   <link rel="manifest" href="manifest.json?v=5">
   <link rel="stylesheet" href="css/style.css?v=5">
   <link rel="stylesheet" href="css/big-board.css?v=5">
+  <link rel="stylesheet" href="css/projections.css?v=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -281,21 +282,136 @@
   </div>
 </div>
 
-<!-- LIVE PROJECTIONS (TEST) — eingebetteter MFHFBs-NBA-Projections-Toolkit
-     (Projections/NBA Teams/Draft Board, interne Navigation innerhalb des
-     Iframes). Ersetzt seit 2026-07-31 die vorherige native TTHQ-
-     Baseline+Blend-Preview-Tabelle (js/live-projections-ui.js ist seitdem
-     unangebunden, siehe README). Seit 2026-07-31 (2. Nachbesserung) als
-     3 eigene Nav-Eintraege statt einer einzelnen Seite mit reiner interner
-     Navigation — jede Unterseite hat ihren eigenen Iframe/Page-Container,
-     gleiche Iframe-Lade-/Resize-Logik wie unten (js/player-rankings.js).-->
+<!-- Nativ portiert aus projections/index.html am 2026-08-01 (vorher Iframe).
+     Daten+Logik werden erst beim ersten Aufruf von showLiveProjections()
+     nachgeladen (siehe js/player-rankings.js), NICHT hier statisch
+     eingebunden — sonst wuerden alle TTHQ-Nutzer bei JEDEM Seitenaufruf
+     ~2,4 MB Projections-Daten mitladen, auch wenn sie diese Seite nie
+     besuchen. Markup selbst ist klein und bleibt daher statisch da. -->
 <div class="page page-wide" id="liveProjectionsPage">
-  <iframe
-    id="projectionsFrame"
-    title="MFHFBs NBA Projections"
-    style="width:100%; border:none; border-radius:14px; display:block; background:var(--surface);"
-    loading="lazy">
-  </iframe>
+  <div class="hero" style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;">
+    <h1>NBA Projections</h1>
+    <button class="theme-toggle" id="adminToggle" title="Eigenes Passwort, unabhängig vom TTHQ-Admin — schaltet den Bereich für externe Quellen frei"></button>
+  </div>
+
+  <div class="panel collapsed" id="weightPanel">
+    <div class="panel-head" id="weightPanelHead">
+      <div class="panel-title">Gewichtung <span class="badge" id="seasonBadge"></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="panel-body">
+      <div class="pool-title">Z-Score-Basis (Ranking-Population)</div>
+      <div class="pool-toggle" id="poolToggle">
+        <button class="pool-btn" data-pool="200">Top 200</button>
+        <button class="pool-btn" data-pool="400">Top 400</button>
+        <button class="pool-btn" data-pool="all">Alle</button>
+      </div>
+      <div class="pool-hint">Bestimmt, welche Spieler in die Mittelwert-/Streuungsberechnung für den Z-Score einfließen (sortiert nach projizierten Punkten). Kleinere Basis = strengerer Maßstab, größere Basis = mehr Grundrauschen von Tiefenkader-Spielern.</div>
+
+      <div class="weight-grid">
+        <div class="weight-row">
+          <div class="weight-label"><span id="w1Label">Vorletztes Jahr</span><span class="weight-val" id="w1val">1.50×</span></div>
+          <input type="range" id="w1" min="1" max="2" step="0.25" value="1.5">
+          <div class="weight-hint">Gewicht der zweitjüngsten Saison, die für den jeweiligen Spieler vorliegt.</div>
+        </div>
+        <div class="weight-row">
+          <div class="weight-label"><span id="w2Label">Letztes Jahr</span><span class="weight-val" id="w2val">1.75×</span></div>
+          <input type="range" id="w2" min="1" max="2" step="0.25" value="1.75">
+          <div class="weight-hint">Gewicht der jüngsten Saison, die für den jeweiligen Spieler vorliegt.</div>
+        </div>
+      </div>
+
+      <div class="cat-weight-title">Kategorie-Gewichtung (fließt in den Z-Score ein)</div>
+      <div class="cat-grid" id="catGrid"></div>
+      <button class="reset-weights" onclick="resetWeights()">Alle Gewichtungen zurücksetzen</button>
+    </div>
+  </div>
+
+  <div class="panel collapsed" id="livePanel">
+    <div class="panel-head" id="livePanelHead">
+      <div class="panel-title">Live &amp; externe Quellen <span class="badge" id="liveBadge">…</span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="panel-body">
+      <div class="pool-hint" id="liveStatusText">Lade Live-Daten…</div>
+      <button class="reset-weights" onclick="refreshLiveData()">🔄 Live-Daten neu laden</button>
+
+      <div id="adminExtProjArea" style="display:none; margin-top:16px; border-top:1px solid var(--border); padding-top:14px;">
+        <div class="pool-title">Anzeige-Modus (nur du siehst das, Admin)</div>
+        <label style="display:flex; align-items:center; gap:7px; font-size:12.5px; margin:6px 0 14px;">
+          <input type="checkbox" id="baselineOnlyToggle">
+          Nur eigene Minuten-Baseline zeigen (externe Quellen &amp; Live-Blend ignorieren)
+        </label>
+
+        <div class="pool-title">Externe Projections — Bulk-Import</div>
+        <div class="pool-hint">Erste Zeile = Header (Name, Min, PTS, REB, AST, STL, BLK, 3PM, TOV, FG%, FT% — beliebige Reihenfolge, Komma oder Tab getrennt). Direkt aus Excel/Sheets reinkopierbar.</div>
+        <input type="text" id="extSourceName" placeholder="Quellenname (z.B. FantasyEdge, Josh Lloyd)" style="width:100%; margin:8px 0 6px; padding:6px 8px; background:var(--bg); border:1px solid var(--border); border-radius:6px; color:var(--text); font-size:12.5px;">
+        <textarea id="extBulkText" rows="6" placeholder="Name,PTS,REB,AST&#10;Shai Gilgeous-Alexander,32,5.5,6.1&#10;Nikola Jokic,26,12.8,10.2" style="width:100%; padding:8px; background:var(--bg); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'DM Mono',monospace; font-size:11.5px; resize:vertical;"></textarea>
+        <button class="reset-weights" onclick="runBulkImport()">⬆ Importieren</button>
+        <div id="bulkImportResult" class="pool-hint" style="margin-top:6px;"></div>
+
+        <div class="pool-title" style="margin-top:16px;">Einzelner Spieler</div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:8px;">
+          <input type="text" id="extPlayerSearch" placeholder="Spielername…" style="flex:1; min-width:160px; padding:6px 8px; background:var(--bg); border:1px solid var(--border); border-radius:6px; color:var(--text); font-size:12.5px;">
+          <input type="text" id="extPlayerSource" placeholder="Quelle" style="width:140px; padding:6px 8px; background:var(--bg); border:1px solid var(--border); border-radius:6px; color:var(--text); font-size:12.5px;">
+        </div>
+        <div class="cat-grid" id="extSingleGrid"></div>
+        <button class="reset-weights" onclick="saveSingleExternal()">💾 Quelle speichern</button>
+        <div id="extPlayerSourcesList" class="pool-hint" style="margin-top:8px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="cmpModal" style="display:none; position:fixed; inset:0; z-index:50; background:rgba(0,0,0,0.55); padding:40px 16px;">
+    <div style="max-width:520px; margin:0 auto; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px; max-height:85vh; overflow:auto;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <div class="panel-title" id="cmpTitle" style="font-size:15px;"></div>
+        <button class="reset-btn" style="font-size:16px;" onclick="closeComparison()">✕</button>
+      </div>
+      <div id="cmpBody"></div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="search-row">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search" placeholder="Spieler, Team oder Position suchen…">
+    </div>
+    <button class="csv-btn" onclick="downloadCSV()">⬇ CSV Export</button>
+  </div>
+  <div class="count" id="count">Lade Projections…</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-k="rank">#</th>
+          <th data-k="name">Name</th>
+          <th data-k="team">Team</th>
+          <th data-k="pos">Pos</th>
+          <th data-k="min" class="sep-col">Min</th>
+          <th data-k="pts">PTS</th>
+          <th data-k="reb">REB</th>
+          <th data-k="ast">AST</th>
+          <th data-k="stl">STL</th>
+          <th data-k="blk">BLK</th>
+          <th data-k="fg3m">3PM</th>
+          <th data-k="fga" title="Field Goals Made-Attempted">FGM-FGA</th>
+          <th data-k="fgpct">FG%</th>
+          <th data-k="fta" title="Free Throws Made-Attempted">FTM-FTA</th>
+          <th data-k="ftpct">FT%</th>
+          <th data-k="tov">TOV</th>
+          <th data-k="z">Z</th>
+          <th data-k="zFloor" title="Z ohne schlechteste Kat — Boden/Floor">Z-Floor</th>
+          <th data-k="zDepth" title="Z ohne beste Kat — Tiefe ohne Signature-Stärke">Z-Depth</th>
+          <th data-k="adpVal" title="Z ÷ ADP × 10 — grün = unterbewertet">ADP-Val</th>
+        </tr>
+      </thead>
+      <tbody id="body"></tbody>
+    </table>
+  </div>
+
+  <footer id="footerText"></footer>
 </div>
 
 <div class="page page-wide" id="liveProjTeamsPage">

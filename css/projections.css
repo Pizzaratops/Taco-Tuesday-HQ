@@ -1,0 +1,100 @@
+/* ============================================================
+   PROJECTIONS (nativ) — "Player > Live Projections (Test) > Projections"
+   ============================================================
+   Uebernommen aus dem eigenstaendigen MFHFBs-NBA-Projections-Toolkit
+   (projections/index.html), das bis 2026-08-01 per Iframe eingebettet war.
+   Jetzt echte TTHQ-Seite, kein Iframe mehr fuer diesen Teil.
+
+   Ausgelassen ggue. dem Original, weil TTHQ das schon global mitbringt:
+   - :root-Farbvariablen (--bg/--surface/--text/... sind in css/style.css
+     bereits 1:1 identisch definiert, siehe Merge-Historie im README)
+   - *{box-sizing:border-box} (schon global in css/style.css)
+   - body{...} Basis-Styling (kommt von TTHQ)
+   - .theme-toggle (TTHQ hat schon eine fast identische Klasse, wird fuer
+     den Admin-Button hier mitbenutzt statt dupliziert)
+   - .topnav/.topnav-links/.wrap (TTHQ hat seine eigene Navigation/Seiten-
+     Container, siehe .page.page-wide)
+
+   Neu ggue. dem Original:
+   - --good/--warn/--bad: gab's nur in der Projections-eigenen :root-
+     Definition, TTHQs eigenes css/style.css kennt diese Namen nicht.
+     Hier ergaenzt, damit die Heatmap-Funktion (mfhfbHeatStyle in
+     projections/assets/shared.js) weiter funktioniert.
+   ============================================================ */
+
+:root {
+  --good: #4caf81; --warn: #f5c842; --bad: #ff6584;
+}
+body.light {
+  --good: #3d8a5c; --warn: #a8710a; --bad: #b43c64;
+}
+
+#liveProjectionsPage .hero { margin-bottom: 26px; }
+#liveProjectionsPage .eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 8px; }
+#liveProjectionsPage h1 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 34px; margin: 0 0 6px; letter-spacing: -0.01em; }
+#liveProjectionsPage .sub { color: var(--muted); font-size: 13.5px; line-height: 1.5; max-width: 680px; }
+
+#liveProjectionsPage .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 18px; overflow: hidden; }
+#liveProjectionsPage .panel-head { padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
+#liveProjectionsPage .panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+#liveProjectionsPage .badge { font-family: 'DM Mono', monospace; font-size: 10px; background: var(--surface2); border: 1px solid var(--border); color: var(--warn); padding: 2px 8px; border-radius: 20px; text-transform: none; letter-spacing: 0; }
+#liveProjectionsPage .chevron { color: var(--muted); font-size: 12px; transition: transform 0.15s; }
+#liveProjectionsPage .panel.collapsed .chevron { transform: rotate(-90deg); }
+#liveProjectionsPage .panel-body { padding: 0 20px 18px; }
+#liveProjectionsPage .panel.collapsed .panel-body { display: none; }
+
+#liveProjectionsPage .pool-title { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+#liveProjectionsPage .pool-toggle { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+#liveProjectionsPage .pool-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 600; padding: 7px 14px; border-radius: 20px; cursor: pointer; }
+#liveProjectionsPage .pool-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+#liveProjectionsPage .pool-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent2); }
+#liveProjectionsPage .pool-hint { font-size: 11.5px; color: var(--muted); line-height: 1.4; margin: -10px 0 18px; }
+
+#liveProjectionsPage .weight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 18px; }
+@media (max-width: 640px) { #liveProjectionsPage .weight-grid { grid-template-columns: 1fr; } }
+#liveProjectionsPage .weight-row { display: flex; flex-direction: column; gap: 8px; }
+#liveProjectionsPage .weight-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; }
+#liveProjectionsPage .weight-val { font-family: 'DM Mono', monospace; color: var(--accent2); font-size: 13px; }
+#liveProjectionsPage input[type=range] { -webkit-appearance: none; width: 100%; height: 4px; border-radius: 4px; background: var(--surface2); outline: none; }
+#liveProjectionsPage input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); cursor: pointer; border: 2px solid var(--bg); }
+#liveProjectionsPage .weight-hint { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+
+#liveProjectionsPage .cat-weight-title { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 4px 0 12px; padding-top: 14px; border-top: 1px solid var(--border); }
+#liveProjectionsPage .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px 20px; }
+#liveProjectionsPage .cat-row { display: flex; flex-direction: column; gap: 6px; }
+#liveProjectionsPage .cat-label { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; }
+#liveProjectionsPage .cat-val { font-family: 'DM Mono', monospace; color: var(--accent2); font-size: 12px; }
+#liveProjectionsPage .reset-weights { margin-top: 16px; background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 11.5px; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+#liveProjectionsPage .reset-weights:hover { border-color: var(--accent); color: var(--accent2); }
+#liveProjectionsPage .reset-btn { background: transparent; border: none; color: var(--muted); cursor: pointer; font-family: 'DM Sans', sans-serif; }
+#liveProjectionsPage .reset-btn:hover { color: var(--bad); }
+
+#liveProjectionsPage .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px; }
+#liveProjectionsPage .search-row { position: relative; flex: 1; min-width: 220px; }
+#liveProjectionsPage .search-row input { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 11px 16px 11px 40px; border-radius: 10px; outline: none; }
+#liveProjectionsPage .search-row input:focus { border-color: var(--accent); }
+#liveProjectionsPage .search-row svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+#liveProjectionsPage .csv-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 600; padding: 10px 16px; border-radius: 10px; cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
+#liveProjectionsPage .csv-btn:hover { border-color: var(--accent); color: var(--accent2); }
+#liveProjectionsPage .count { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+
+#liveProjectionsPage .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow-x: auto; }
+#liveProjectionsPage table { width: 100%; border-collapse: collapse; min-width: 920px; }
+#liveProjectionsPage thead th { position: sticky; top: 0; background: var(--surface2); text-align: right; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 9px 10px; border-bottom: 1px solid var(--border); cursor: pointer; white-space: nowrap; }
+#liveProjectionsPage thead th:nth-child(1) { text-align: center; }
+#liveProjectionsPage thead th:nth-child(2), #liveProjectionsPage thead th:nth-child(3), #liveProjectionsPage thead th:nth-child(4) { text-align: left; }
+#liveProjectionsPage thead th:hover { color: var(--text); }
+#liveProjectionsPage thead th.sep-col { border-left: 1px solid var(--border); }
+#liveProjectionsPage tbody td { padding: 9px 10px; border-bottom: 1px solid var(--border); text-align: right; font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+#liveProjectionsPage tbody tr:last-child td { border-bottom: none; }
+#liveProjectionsPage tbody tr:hover td:not([style*="background-color"]) { background: var(--surface2); }
+#liveProjectionsPage td.rank-cell { text-align: center; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 12px; }
+#liveProjectionsPage td.name-cell { text-align: left; }
+#liveProjectionsPage .p-name { font-weight: 700; font-size: 13.5px; }
+#liveProjectionsPage .ext-badge { display: inline-block; margin-left: 6px; font-size: 9.5px; font-weight: 700; background: var(--accent-light, rgba(108,99,255,0.12)); color: var(--accent); border: 1px solid var(--border); border-radius: 8px; padding: 1px 6px; cursor: pointer; white-space: nowrap; }
+#liveProjectionsPage .ext-badge:hover { border-color: var(--accent); }
+#liveProjectionsPage .p-meta { color: var(--muted); font-size: 11px; margin-top: 1px; font-family: 'DM Mono', monospace; }
+#liveProjectionsPage td.left { text-align: left; }
+#liveProjectionsPage td.sep-col { border-left: 1px solid var(--border); }
+#liveProjectionsPage .col-z { font-weight: 700; }
+#liveProjectionsPage footer { margin-top: 22px; margin-bottom: 40px; font-size: 11.5px; color: var(--muted); line-height: 1.6; }

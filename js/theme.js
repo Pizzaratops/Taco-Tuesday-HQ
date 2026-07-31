@@ -9,12 +9,14 @@ function toggleTheme() {
   } else {
     body.classList.add('light'); btn.textContent = '🌙 Dark'; localStorage.setItem('theme','light');
   }
-  // Eingebettete Projections-Toolkit-Seiten (3 Iframes: Projections/NBA
-  // Teams/Draft Board, seit 2026-07-31 eigene Nav-Eintraege) live auf's
-  // gleiche Theme umstellen — nur die, die schon geladen wurden (frame.src
-  // gesetzt), sonst laeuft der ?theme=-URL-Parameter beim ersten Laden.
+  // Eingebettete Projections-Toolkit-Seiten (Iframes: NBA Teams/Draft
+  // Board) live auf's gleiche Theme umstellen — nur die, die schon geladen
+  // wurden (frame.src gesetzt), sonst laeuft der ?theme=-URL-Parameter beim
+  // ersten Laden. "Projections" selbst braucht das seit 2026-08-01 NICHT
+  // mehr: echte native TTHQ-Seite (kein Iframe mehr), erbt die CSS-
+  // Variablen automatisch ueber die normale DOM-Kaskade.
   const theme = body.classList.contains('light') ? 'light' : 'dark';
-  ['projectionsFrame', 'projTeamsFrame', 'projDraftFrame'].forEach(id => {
+  ['projTeamsFrame', 'projDraftFrame'].forEach(id => {
     const frame = document.getElementById(id);
     if (frame && frame.src && frame.contentWindow) {
       // Seit dem Merge des Projections-Toolkits (projections/) ins gleiche
@@ -41,6 +43,13 @@ function toggleTheme() {
   const homePage = document.getElementById('homePage');
   if (homePage && homePage.classList.contains('active')) {
     setTimeout(renderHome, 50);
+  }
+  // Native Projections-Tabelle neu rendern, falls sichtbar UND schon
+  // geladen — Heatmap-Zellfarben sind fixe Inline-Styles, ziehen sonst
+  // nicht automatisch nach (siehe js/projections-native.js).
+  const liveProjectionsPage = document.getElementById('liveProjectionsPage');
+  if (liveProjectionsPage && liveProjectionsPage.classList.contains('active') && typeof window.reRenderLiveProjections === 'function') {
+    setTimeout(window.reRenderLiveProjections, 50);
   }
 }
 if (localStorage.getItem('theme') === 'light') {
