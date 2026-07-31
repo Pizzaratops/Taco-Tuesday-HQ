@@ -393,10 +393,11 @@ const SUBNAV_PAGES = {
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
   tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', nbaTradesPage:'nbatrades', adminSettingsPage:'adminsettings', standingsPage:'standings', rulesPage:'rules',
   liveScoresPage:'livescores', playerRankingsPage:'playerrankings', playerProjectionsPage:'playerprojections',
+  liveProjectionsPage:'liveprojections',
 };
 
 const SNAV_GROUP = {
-  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer',
+  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer', liveprojections: 'snavPlayer',
   rankings: 'snavDynasty', dynastyrolling: 'snavDynasty',
   draft26: 'snavDraft', draft27: 'snavDraft', lottery: 'snavDraft',
   duel: 'snavDuel', duelboard: 'snavDuel', duelsettings: 'snavDuel',
@@ -487,6 +488,7 @@ function _rerenderPage(pageId) {
   if (pageId === 'bestAvailPage')        showBestAvail();
   if (pageId === 'rankingsPage')         showRankings();
   if (pageId === 'dynastyRollingPage')   showDynastyRolling();
+  if (pageId === 'liveProjectionsPage')  showLiveProjections();
   if (pageId === 'hashtagRankingsPage')  showHashtagRankings();
   if (pageId === 'analyticsPage')        showAnalytics();
   if (pageId === 'rollingRankingsPage')  showRollingRankings();

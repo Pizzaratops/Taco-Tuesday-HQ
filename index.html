@@ -67,6 +67,7 @@
         <div class="snav-dropdown">
           <button class="snav-dropdown-item" data-page="playerrankings"    onclick="showPlayerRankings()">🏅 2026/27 Rankings</button>
           <button class="snav-dropdown-item" data-page="playerprojections" onclick="showPlayerProjections()">🔮 2026/27 Projections</button>
+          <button class="snav-dropdown-item" data-page="liveprojections" onclick="showLiveProjections()">🧪 Live Projections (Test)</button>
         </div>
       </div>
 
@@ -148,6 +149,7 @@
         <div class="subnav-mobile-label">Player</div>
         <button class="subnav-mobile-btn" data-page="playerrankings"    onclick="showPlayerRankings();closeMobileNav()">🏅 2026/27 Rankings</button>
         <button class="subnav-mobile-btn" data-page="playerprojections" onclick="showPlayerProjections();closeMobileNav()">🔮 2026/27 Projections</button>
+        <button class="subnav-mobile-btn" data-page="liveprojections" onclick="showLiveProjections();closeMobileNav()">🧪 Live Projections (Test)</button>
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Dynasty Rankings</div>
@@ -269,6 +271,44 @@
     style="width:100%; border:none; border-radius:14px; display:block; background:var(--surface);"
     loading="lazy">
   </iframe>
+</div>
+
+<!-- LIVE PROJECTIONS (TEST — noch nicht live verlinkt, siehe README Season-Start-Plan) -->
+<div class="page page-wide" id="liveProjectionsPage">
+  <h2 style="margin-bottom:6px;">🧪 Live Projections (Test)</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Vorschau auf den Season-Start-Flow: Preseason-Baseline + echte Boxscore-Stats geblendet. Noch nicht die aktive Projections-Seite — siehe README "Season-Start-Plan: Projections-Flow".</p>
+  <div class="rankings-search">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" id="lpSearch" placeholder="Spieler, Team oder Position suchen…" oninput="filterLiveProjections()"/>
+  </div>
+  <div id="lpMeta" style="color:var(--muted);font-size:12px;margin-bottom:14px;"></div>
+  <div class="rankings-table-wrap">
+    <table class="rankings-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th onclick="sortLiveProjections('name')" style="text-align:left;">Name</th>
+          <th onclick="sortLiveProjections('team')">Team</th>
+          <th onclick="sortLiveProjections('pos')">Pos</th>
+          <th onclick="sortLiveProjections('min')">MIN</th>
+          <th onclick="sortLiveProjections('pts')">PTS</th>
+          <th onclick="sortLiveProjections('reb')">REB</th>
+          <th onclick="sortLiveProjections('ast')">AST</th>
+          <th onclick="sortLiveProjections('stl')">STL</th>
+          <th onclick="sortLiveProjections('blk')">BLK</th>
+          <th onclick="sortLiveProjections('tpm')">3PM</th>
+          <th onclick="sortLiveProjections('fgPct')">FG%</th>
+          <th onclick="sortLiveProjections('ftPct')">FT%</th>
+          <th onclick="sortLiveProjections('tov')">TOV</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="lpBody"></tbody>
+    </table>
+    <div class="r-no-results" id="lpNoResults" style="display:none;">Keine Spieler gefunden.</div>
+  </div>
 </div>
 
 <!-- LIVE SCORES -->
@@ -1457,6 +1497,8 @@
 <script src="data/rosters-live.js?v=1"></script>
 <script src="data/picks.js?v=5"></script>
 <script src="data/rankings.js?v=5"></script>
+<script src="data/projections-baseline.js?v=1"></script>
+<script src="data/live-projections.js?v=1"></script>
 <script src="data/dynasty-rolling.js?v=1"></script>
 <script src="data/dynasty-live.js?v=1"></script>
 <script src="data/hashtag.js?v=5"></script>
@@ -1472,6 +1514,7 @@
 <script src="js/nba-teams.js?v=5"></script>
 <script src="js/standings.js?v=5"></script>
 <script src="js/rankings-ui.js?v=5"></script>
+<script src="js/live-projections-ui.js?v=1"></script>
 <script src="js/dynasty-rolling-ui.js?v=1"></script>
 <script src="js/dynasty-edit.js?v=5"></script>
 <script src="js/best-available.js?v=5"></script>

@@ -6,6 +6,9 @@ Fantasy-Basketball-Hub für eine 12-Team H2H 9-Category Dynasty-Liga auf ESPN Fa
 
 ---
 
+## 📌 Zuletzt gemacht
+
+- **Season-Start-Plan "Projections-Flow" gebaut und getestet (noch nicht live geschaltet):** `scripts/import-projections-baseline.js` (Preseason-Baseline-Import aus xlsx) + `scripts/build-live-projections.js` (blendet Baseline mit den echten Saison-Stats aus den täglichen CSVs) + `js/live-projections-ui.js` mit neuer Seite `liveProjectionsPage` (sortierbare/durchsuchbare Tabelle, Status-Badge LIVE/BASELINE pro Spieler). FG%/FT% werden korrekt über geblendete Makes/Attempts berechnet, nicht als Prozent-Mittelwert. Mit echten Daten getestet (Cedric Coward/Jalen Slawson, `nba-summer-las-vegas`-Boxscores als Stand-in) — Ergebnis von Hand nachgerechnet, stimmt exakt. Testweise unter "Player" → "🧪 Live Projections (Test)" erreichbar, `data/projections-baseline.js`/`data/live-projections.js` bewusst leer committet. Details, offene Schritte bis zur echten Umschaltung: siehe eigene Sektion "🔮 Season-Start-Plan: Projections-Flow" weiter oben.
 - **Trade Calculator gegen Matt Lawsons Trade Values gegengecheckt:** Spearman-Rangkorrelation zwischen Matt Lawsons Punktesystem (`ALL_ACCESS_-_BETA_-_NBA_Dynasty_Trade_Calculator`, "Values"-Sheet, 525 Spieler) und unserem `data/rankings.js`: **0.97** in den Top 300, **0.94** über alle 525 gematchten Spieler (525/525 Namen matchen 1:1 über `NAME_ALIASES`). Top 10 beider Systeme sind praktisch identisch (Wembanyama/SGA/Doncic/Jokic in gleicher Reihenfolge). Größte Abweichungen liegen bei frisch gedrafteten Rookies (Beringer, Maluach, Coward — deren Bewertung naturgemäß noch stark schwankt) und ein paar Achtungserfolg-Vets (Norman Powell, Siakam). Fazit: beide Systeme sind aktuell gut kongruent, kein Nachziehen nötig. `js/trade-analyzer.js` selbst nutzt weiterhin eine eigene rang- und alters-basierte Wertkurve (`dynastyValue()`), nicht Matt Lawsons absolute Punktwerte — falls die absoluten Werte künftig direkt übernommen werden sollen, wäre das ein separater Umbau.
 - **Datumslogik von Pacific auf Eastern umgestellt — dabei einen echten, aktiven Bug gefunden und gefixt:** Die schon länger als "erledigt" geglaubte Pacific-Zeit-Korrektur (`todayYYYYMMDD()` in `daily-9cat.js`, siehe "Key learnings") steckte tatsächlich nur in einer verrutschten Kopie unter `.github/workflows/daily-9cat.js`, die **niemals ausgeführt wurde** — die YAML ruft `scripts/daily-9cat.js` auf, und genau diese Version hatte immer noch das rohe UTC-Datum (`new Date().toISOString()`). Für die 06-08-Uhr-Läufe ohne explizites `DATE_ARG` bedeutete das: systematisch das falsche Kalenderdatum abgefragt, seit die Pacific-Korrektur ursprünglich "gefixt" wurde. Jetzt behoben — direkt auf Eastern Time umgestellt (spart später den Zwischenschritt Pacific→Eastern), betrifft `scripts/daily-9cat.js` (`todayYYYYMMDD()`) und den 22-Uhr-Korrekturlauf in `.github/workflows/daily-9cat.yml` (`TZ=America/New_York` statt `TZ=America/Los_Angeles`). Die tote `.github/workflows/daily-9cat.js`-Kopie ist gelöscht.
 - **`LEAGUE_ARG` bewusst noch NICHT umgestellt:** 2026-27-Preseason startet laut aktuellem Stand ca. 5.–16. Oktober (Global Games Macau: 9./11. Okt.), reguläre Saison ca. 20./21. Oktober. Bis dahin liefert `nba-summer-las-vegas` sowieso nur noch leere Scoreboards (Summer League ist seit 19. Juli vorbei) — das Umstellen jetzt schon hätte keinen Vorteil, nur ein zusätzliches Datum zum Dran-Denken. Sinnvoller Zeitpunkt: kurz vor Preseason-Start auf `nba-preseason`, kurz vor Regular-Season-Start auf `nba`.
@@ -46,6 +49,37 @@ Fantasy-Basketball-Hub für eine 12-Team H2H 9-Category Dynasty-Liga auf ESPN Fa
 7. **Aufräumen:** doppelte `draft-capital-2026.js` (liegt sowohl in `scripts/` als auch `data/` — nur die Version in `data/` wird gebraucht), sowie drei Verrutscher in `js/`: `build-postdraft-board.js` (gehört nach `scripts/`), `draft2026.js` und `draft2027.js` (gehören nach `data/`) — alle drei sind identische Kopien der korrekten Dateien, können einfach aus `js/` gelöscht werden. ~88 Spieler in `data/rankings.js` (v.a. tiefe 2026er Draft-Picks) haben noch keine Positions-Angabe, da sie weder in der xlsx noch im Pre-Draft Big Board mit Position auftauchen.
 
 ---
+
+## 🔮 Season-Start-Plan: Projections-Flow
+
+Wie sich "Player → Projections" von der Off-Season zur regulären Saison verändern soll.
+
+**Jetzt (Off-Season):** Projections ist ein Live-Iframe von [MFHFBs-NBA-Projections](https://pizzaratops.github.io/MFHFBs-NBA-Projections/). Bleibt genau so bis Saisonstart — keine Änderung nötig, der Iframe ist unverändert aktiv.
+
+**Ab Saisonstart:** Der Iframe wird entfernt. Projections wird eine eigenständige Seite innerhalb von Taco Tuesday HQ.
+
+**Status: Backend + UI gebaut und mit echten Daten getestet, aber noch NICHT live geschaltet.**
+
+Ablauf:
+1. Beyaz lädt vor Saisonstart seine finalen Preseason-Projections hoch (`node scripts/import-projections-baseline.js <xlsx>`) — eine Baseline pro Spieler und Statistik (MIN, PTS, REB, AST, STL, BLK, 3PM, TOV, FGM/FGA, FTM/FTA). Schreibt `data/projections-baseline.js`.
+2. Ab dem ersten Spieltag liest `scripts/build-live-projections.js` alle taeglichen CSVs aus `scripts/data/daily-9cat_<league>_*.csv` (dieselbe Quelle, die auch "Player → 2026/27 Rankings" speist), summiert pro Spieler die echten Stats der bisherigen Saison auf und blendet sie mit der Baseline. Schreibt `data/live-projections.js`.
+3. Blend-Formel je Counting-Stat (PTS, REB, AST, STL, BLK, 3PM, TOV, FGM, FGA, FTM, FTA):
+   ```
+   Live-Projection = (Baseline × BASELINE_WEIGHT + Σ echte Spielwerte) / (BASELINE_WEIGHT + Anzahl gespielter Spiele)
+   ```
+   `BASELINE_WEIGHT = 2` (die Baseline zählt wie 2 "virtuelle" Spiele — Kompromiss zwischen Gewicht 1, das nach 3-4 Spielen kaum noch zählt, und mehr Bestand gegen Kleine-Stichprobe-Ausreißer in den ersten Wochen). Per `--weight=` überschreibbar, falls sich das nicht bewährt.
+   Beispielrechnung (Baseline 22,5 PPG, Gewicht 1, danach zwei Spiele mit 20 und 30 Punkten): `(22,5 + 20 + 30) / 3 = 24,1666… PPG` ✅ — mit Gewicht 2 wären es `(22,5×2 + 50) / 4 = 23,75 PPG`.
+4. **FG%/FT% werden NICHT als Prozent-Mittelwert geblendet** (das würde Spieler mit wenigen, aber extremen Versuchen verzerren) — stattdessen werden Makes und Attempts separat wie Counting-Stats geblendet, und FG%/FT% erst danach aus den geblendeten Makes/Attempts berechnet. Die Baseline muss dafür ihre eigenen Makes/Attempts mitbringen (nicht nur einen Prozentwert), siehe Import-Script.
+5. `js/live-projections-ui.js` + Seite `liveProjectionsPage` zeigen das Ergebnis als sortierbare/durchsuchbare Tabelle (gleiches `.rankings-table`-Pattern wie überall sonst) — inkl. Badge pro Spieler, ob schon echte Spiele eingeflossen sind ("LIVE · X GP") oder es noch die reine Baseline ist.
+
+**Getestet mit echten Daten** (Cedric Coward & Jalen Slawson, echte Boxscores aus `nba-summer-las-vegas` als Stand-in für "Saison bisher", synthetische Test-Baseline): Ergebnis von Hand nachgerechnet, stimmt exakt überein (u.a. Coward 6 Spiele PTS-Summe 114 + Baseline 12×2 → `(24+114)/8 = 17,25 PPG`, FG% aus geblendeten Makes/Attempts `45/8 ÷ 103/8 = 43,69%`).
+
+**Aktuell erreichbar, aber noch nicht live verlinkt:** Unter "Player" steht testweise ein Eintrag "🧪 Live Projections (Test)" — zeigt die neue Tabelle mit echten (aktuell leeren) Daten. `data/projections-baseline.js` und `data/live-projections.js` sind bewusst leer committet (keine Test-/Fake-Daten im echten Repo).
+
+**Was noch fehlt, bis es live geschaltet werden kann:**
+- Preseason-Baseline-xlsx von Beyaz hochladen (`node scripts/import-projections-baseline.js <xlsx>`).
+- `scripts/build-live-projections.js` in `daily-9cat.yml` einhängen, damit es automatisch nach jedem Spieltag mitläuft (aktuell nur manuell aufrufbar).
+- Iframe in `playerProjectionsPage` durch den Inhalt von `liveProjectionsPage` ersetzen (oder einfach den Nav-Eintrag "Projections" auf `showLiveProjections()` umbiegen und den Test-Eintrag entfernen) — bewusst erst kurz vor/bei Saisonstart, nicht vorher.
 
 ## 🗺️ Architektur & Datenfluss
 
