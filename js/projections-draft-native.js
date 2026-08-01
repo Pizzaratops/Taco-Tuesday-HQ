@@ -21,7 +21,7 @@ function initLiveProjDraftNative() {
   // Kommentar in index.html / assets/shared.js) -- muss VOR dem ersten
   // buildPlayers()-Aufruf passieren, der p.team in row.team kopiert.
   if (typeof ROSTERS_DATA !== 'undefined') { mfhfbApplyCurrentTeams(PLAYER_RATES); mfhfbSyncManualTeams(); }
-  document.getElementById('seasonBadgeDraft').textContent = 'MFHFB · ' + SEASON_LABELS.join(' · ');
+  // Season-Label-Liste (2018-19 · 2019-20 · ...) auf Wunsch entfernt — der Badge bleibt leer/ungenutzt.
   document.getElementById('footerTextDraft').textContent =
     'Nutzt dieselben Projections wie die Projections-Seite (inkl. Gewichtungen, Minuten-Overrides und manuellen Rookie-Stats). ' +
     'Änderungen an Gewichtung/Z-Basis auf der Projections-Seite wirken sich sofort hier aus. ' +

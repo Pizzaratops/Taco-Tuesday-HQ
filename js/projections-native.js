@@ -18,6 +18,8 @@
 function initLiveProjectionsNative() {
   let sortKey = 'z', sortAsc = false;
   let query = '';
+  let posFilter = null;
+  let statFilters = [null, null, null];
   let showBaselineOnly = false;
 
   const NEWEST_LABEL = SEASON_LABELS[SEASON_LABELS.length - 1];
@@ -27,13 +29,76 @@ function initLiveProjectionsNative() {
   const HEAT_COLS = ['min', 'pts', 'reb', 'ast', 'stl', 'blk', 'fg3m', 'fgpct', 'ftpct', 'tov', 'z', 'zFloor', 'zDepth'];
   const HEAT_INVERT = { tov: true };
 
+  const POSITIONS = ['PG', 'SG', 'SF', 'PF', 'C'];
+  const STAT_FILTER_CATS = [
+    { key: 'pts', label: 'PTS' }, { key: 'reb', label: 'REB' }, { key: 'ast', label: 'AST' },
+    { key: 'stl', label: 'STL' }, { key: 'blk', label: 'BLK' }, { key: 'fg3m', label: '3PM' },
+    { key: 'fgpct', label: 'FG%' }, { key: 'ftpct', label: 'FT%' }, { key: 'tov', label: 'TOV' },
+    { key: 'z', label: 'Z-Score' },
+  ];
+  const STAT_FILTER_OPS = ['>', '>=', '<', '<='];
+
+  function statFilterValue(row, cat) {
+    return cat === 'z' ? row.z : row.s[cat];
+  }
+  function passesStatFilters(row) {
+    return statFilters.every(f => {
+      if (!f || !f.cat || !f.op || f.val === null || f.val === undefined || f.val === '') return true;
+      const v = statFilterValue(row, f.cat);
+      const target = Number(f.val);
+      if (Number.isNaN(target)) return true;
+      switch (f.op) {
+        case '>': return v > target;
+        case '>=': return v >= target;
+        case '<': return v < target;
+        case '<=': return v <= target;
+        default: return true;
+      }
+    });
+  }
+
+  function renderStatFilterRows() {
+    const container = document.getElementById('statFilterRows');
+    container.innerHTML = statFilters.map((f, i) => `
+      <div style="display:flex; gap:6px; align-items:center; margin-bottom:6px;">
+        <select data-i="${i}" data-field="cat" style="padding:5px 8px; border-radius:6px; background:var(--surface2); border:1px solid var(--border); color:var(--text);">
+          <option value="">–</option>
+          ${STAT_FILTER_CATS.map(c => `<option value="${c.key}" ${f && f.cat === c.key ? 'selected' : ''}>${c.label}</option>`).join('')}
+        </select>
+        <select data-i="${i}" data-field="op" style="padding:5px 8px; border-radius:6px; background:var(--surface2); border:1px solid var(--border); color:var(--text);">
+          ${STAT_FILTER_OPS.map(o => `<option value="${o}" ${f && f.op === o ? 'selected' : ''}>${o}</option>`).join('')}
+        </select>
+        <input data-i="${i}" data-field="val" type="number" step="0.1" placeholder="Wert" value="${f && f.val !== undefined ? f.val : ''}"
+          style="width:90px; padding:5px 8px; border-radius:6px; background:var(--surface2); border:1px solid var(--border); color:var(--text);">
+      </div>
+    `).join('');
+    container.querySelectorAll('select,input').forEach(el => {
+      el.addEventListener('change', () => {
+        const i = Number(el.dataset.i), field = el.dataset.field;
+        if (!statFilters[i]) statFilters[i] = { cat: '', op: '>', val: '' };
+        statFilters[i][field] = el.value;
+        if (!statFilters[i].cat) statFilters[i] = null;
+        render();
+      });
+    });
+  }
+
+  function renderPosFilters() {
+    const container = document.getElementById('posFilters');
+    const all = [{ k: null, l: 'Alle' }].concat(POSITIONS.map(p => ({ k: p, l: p })));
+    container.innerHTML = all.map(o => `<div class="tag-btn ${posFilter === o.k ? 'active' : ''}" data-k="${o.k ?? ''}">${o.l}</div>`).join('');
+    container.querySelectorAll('.tag-btn').forEach(btn => {
+      btn.addEventListener('click', () => { posFilter = btn.dataset.k || null; renderPosFilters(); render(); });
+    });
+  }
+
   // Team-Anzeige auf AKTUELLES Team umstellen (aus dem täglichen ESPN-Fetch,
   // rosters-data.js) statt dem historischen Team der letzten gespielten
   // Saison aus players-data.js -- z.B. nach Trades wie Giannis -> Miami.
   // Einmalig beim Laden, danach lesen alle Renders einfach p.team wie bisher.
   if (typeof ROSTERS_DATA !== 'undefined') { mfhfbApplyCurrentTeams(PLAYER_RATES); mfhfbSyncManualTeams(); }
 
-  document.getElementById('seasonBadge').textContent = SEASON_LABELS.join(' · ');
+  // Season-Label-Liste (2018-19 · 2019-20 · ...) auf Wunsch entfernt — der Badge bleibt leer/ungenutzt.
 
   if (SEASON_LABELS.length >= 2) {
     document.getElementById('w1Label').textContent = `Vorletztes Jahr (${SEASON_LABELS[SEASON_LABELS.length - 2]})`;
@@ -228,6 +293,8 @@ function initLiveProjectionsNative() {
     rows = rows.filter(r =>
       !q || r.p.name.toLowerCase().includes(q) || r.p.team.toLowerCase().includes(q) || r.p.pos.toLowerCase().includes(q)
     );
+    if (posFilter) rows = rows.filter(r => (r.p.pos || '-').split('/').includes(posFilter));
+    rows = rows.filter(passesStatFilters);
 
     rows.sort((x, y) => {
       let av, bv;
@@ -326,6 +393,20 @@ function initLiveProjectionsNative() {
 
   document.getElementById('search').addEventListener('input', e => { query = e.target.value; render(); });
 
+  renderPosFilters();
+  renderStatFilterRows();
+  document.getElementById('statFilterToggle').addEventListener('click', e => {
+    const panel = document.getElementById('statFilterPanel');
+    const nowVisible = panel.style.display === 'none';
+    panel.style.display = nowVisible ? 'block' : 'none';
+    e.target.classList.toggle('active', nowVisible);
+  });
+  document.getElementById('statFilterClear').addEventListener('click', () => {
+    statFilters = [null, null, null];
+    renderStatFilterRows();
+    render();
+  });
+
   document.querySelectorAll('#liveProjectionsPage thead th').forEach(th => {
     th.addEventListener('click', () => {
       const k = th.dataset.k;
@@ -348,7 +429,7 @@ function initLiveProjectionsNative() {
   });
 
   document.getElementById('footerText').textContent =
-    `Pro-Minute-Raten aus Season-Totals ÷ MPG je Saison (${SEASON_LABELS.join(', ')}). Z-Score wird kategorienweise über die gewählte Ranking-Population berechnet und mit den Kategorie-Gewichtungen kombiniert (TOV invertiert). Farben markieren je Spalte den besten (grün) bis schlechtesten (rot) Wert der aktuell angezeigten Spieler. Minuten-Änderungen kommen von der Teams-Seite (localStorage, geräteweit noch nicht synchronisiert).`;
+    `Pro-Minute-Raten aus Season-Totals ÷ MPG je Saison. Z-Score wird kategorienweise über die gewählte Ranking-Population berechnet und mit den Kategorie-Gewichtungen kombiniert (TOV invertiert). Farben markieren je Spalte den besten (grün) bis schlechtesten (rot) Wert der aktuell angezeigten Spieler. Minuten-Änderungen kommen von der Teams-Seite (localStorage, geräteweit noch nicht synchronisiert).`;
 
   // Live-Update, wenn auf der Teams-Seite (anderer Tab) Minuten geändert werden
   window.addEventListener('storage', (e) => {
@@ -429,7 +510,7 @@ function initLiveProjectionsNative() {
     const badge = document.getElementById('liveBadge');
     const text = document.getElementById('liveStatusText');
     if (nPlayers === 0) {
-      badge.textContent = 'Vorsaison';
+      badge.textContent = 'Preseason';
       text.textContent = 'Noch keine Live-Saison-Daten von Taco Tuesday HQ (vor Saisonstart normal) — Projections laufen auf der (ggf. mit externen Quellen geblendeten) Preseason-Projection.';
     } else {
       badge.textContent = nPlayers + ' Spieler live';

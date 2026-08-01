@@ -296,7 +296,7 @@
 
   <div class="panel collapsed" id="weightPanel">
     <div class="panel-head" id="weightPanelHead">
-      <div class="panel-title">Gewichtung <span class="badge" id="seasonBadge"></span></div>
+      <div class="panel-title">Gewichtung</div>
       <span class="chevron">▾</span>
     </div>
     <div class="panel-body">
@@ -377,8 +377,19 @@
       <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="text" id="search" placeholder="Spieler, Team oder Position suchen…">
     </div>
+    <div id="posFilters" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+    <button class="tag-btn" id="statFilterToggle">Stat-Filter</button>
     <button class="csv-btn" onclick="downloadCSV()">⬇ CSV Export</button>
   </div>
+
+  <div id="statFilterPanel" class="panel" style="display:none; padding:12px 14px;">
+    <div class="pool-hint" style="margin-bottom:8px;">
+      Bis zu 3 Bedingungen gleichzeitig (UND-verknüpft), z.B. FG% &gt; 50 UND AST &gt; 5,5 (Position über die Filter-Buttons oben kombinieren).
+    </div>
+    <div id="statFilterRows"></div>
+    <button class="reset-weights" id="statFilterClear">Zurücksetzen</button>
+  </div>
+
   <div class="count" id="count">Lade Projections…</div>
 
   <div class="table-wrap">
@@ -443,7 +454,7 @@
 </div>
 
 <!-- Nativ portiert aus projections/draft.html am 2026-08-01 (vorher Iframe,
-     letzte der 3 Toolkit-Seiten). IDs seasonBadgeDraft/footerTextDraft statt
+     letzte der 3 Toolkit-Seiten). ID footerTextDraft statt
      der kollidierenden Originale, Side-Panel-Tabs als dtab/dtabs/dtabpane
      (TTHQ definiert .tab/.tabs global fuer die Roster-Seite). Daten+Logik
      laden erst beim ersten Aufruf von showLiveProjDraft(), gemeinsame
@@ -451,8 +462,7 @@
 <div class="page page-wide" id="liveProjDraftPage">
 <div class="hero">
     <div>
-      <div class="eyebrow" id="seasonBadgeDraft"></div>
-      <h1>Draft Board</h1>
+            <h1>Draft Board</h1>
       <div class="sub">Live-Draft-Tracker auf Basis deiner aktuellen Projections. Trage jeden Pick ein, sobald er in Fantrax fällt.</div>
     </div>
     <a class="settings-link" href="#" onclick="showLiveProjections();return false;">Gewichtungen &amp; Z-Basis anpassen →</a>
