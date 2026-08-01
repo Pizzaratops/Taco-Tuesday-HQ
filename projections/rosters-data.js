@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-07-31T11:28:36.252Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-01T10:27:55.794Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-07-31T11:28:36.252Z",
+ "fetchedAt": "2026-08-01T10:27:55.794Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -3088,7 +3088,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 6\"",
      "weight": "215 lbs",
-     "age": 25,
+     "age": 26,
      "espnId": "4432847"
     },
     {
@@ -3784,7 +3784,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 4\"",
      "weight": "180 lbs",
-     "age": 20,
+     "age": 21,
      "espnId": "5124612"
     },
     {
