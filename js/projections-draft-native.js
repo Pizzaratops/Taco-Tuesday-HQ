@@ -1048,7 +1048,14 @@ function initLiveProjDraftNative() {
       <div class="adp-pick-list">
         ${p.ownPicks.map(x => `<span class="adp-pick-chip ${x.pick===min?'lo':''}${x.pick===max?'hi':''}" title="${shortSource(x.source)}">${x.pick}</span>`).join('')}
       </div>`;
-    document.body.appendChild(el);
+    // WICHTIG: an #liveProjDraftPage haengen, nicht document.body -- die
+    // komplette Popover-Optik (.adp-popover, position:fixed, z-index usw.)
+    // ist wie der Rest der Seite auf #liveProjDraftPage gescoped (siehe
+    // css/projections.css). An document.body gehaengt wuerden keine dieser
+    // Regeln greifen (unsichtbar/unstyled). position:fixed positioniert
+    // trotzdem relativ zum Viewport, nicht zum Elternelement -- die
+    // Platzierung unten funktioniert davon unabhaengig.
+    document.getElementById('liveProjDraftPage').appendChild(el);
 
     // Position: unter der geklickten Zelle, aber im Viewport bleiben.
     const rect = anchorEl.getBoundingClientRect();
