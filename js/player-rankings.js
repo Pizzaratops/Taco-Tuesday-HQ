@@ -61,20 +61,14 @@ function showPlayerRankings() {
 }
 
 // War bis 2026-07-31 die externe GitHub-Pages-URL des eigenstaendigen
-// MFHFBs-NBA-Projections-Repos, dann lokal per Iframe. Seit 2026-08-01 ist
-// "Projections" selbst eine ECHTE TTHQ-Seite (kein Iframe mehr) — siehe
-// css/projections.css + js/projections-native.js. NBA Teams/Draft Board
-// laufen vorerst noch als Iframe weiter (gleiches Muster wie bisher),
-// werden ggf. in einem naechsten Schritt ebenfalls nativ umgebaut.
-const LIVE_PROJ_EMBEDS = {
-  liveProjTeamsPage: { frameId: 'projTeamsFrame', src: 'projections/teams.html' },
-  liveProjDraftPage: { frameId: 'projDraftFrame', src: 'projections/draft.html' },
-};
-const _prResizeObservers = {};
-
-function _prCurrentTheme() {
-  return document.body.classList.contains('light') ? 'light' : 'dark';
-}
+// MFHFBs-NBA-Projections-Repos, dann lokal per Iframe, seit 2026-08-01
+// schrittweise nativ portiert. Inzwischen sind ALLE 3 Toolkit-Seiten
+// (Projections, NBA Teams, Draft Board) echte TTHQ-Seiten — die komplette
+// Iframe-Mechanik (Resize-Observer, postMessage-Theme-Sync, ?theme=-URL-
+// Parameter) ist damit entfernt. projections/index.html, teams.html und
+// draft.html existieren als Standalone-Dateien weiter (werden von TTHQ
+// aber nicht mehr geladen); die Daten- und assets-Dateien darunter sind
+// weiterhin die aktive Quelle fuer die nativen Seiten.
 
 function showPlayerProjections() {
   // Bewusst leer — noch keine eigene Datenquelle, siehe index.html-Kommentar
@@ -100,16 +94,34 @@ const LIVE_PROJ_NATIVE_SCRIPTS = [
 ];
 let _liveProjNativeState = 'unloaded'; // 'unloaded' | 'loading' | 'ready'
 
+// Mehrere Projections-Unterseiten (Projections/NBA Teams/[Draft Board])
+// brauchen teilweise DIESELBEN Datendateien (players-data.js, shared.js,
+// ...). Die nutzen "const" auf Top-Level -- ein zweites Mal geladen wuerfe
+// "Identifier bereits deklariert". Deshalb global tracken, was schon laeuft
+// oder fertig geladen ist, und beim zweiten Aufruf einfach ueberspringen.
+const _loadedProjScripts = new Set(); // fertig geladen
+const _loadingProjScripts = new Map(); // src -> Promise, waehrend des Ladens
+
+function _loadScriptOnce(src) {
+  if (_loadedProjScripts.has(src)) return Promise.resolve();
+  if (_loadingProjScripts.has(src)) return _loadingProjScripts.get(src);
+  const p = new Promise((resolve) => {
+    const s = document.createElement('script');
+    s.src = src;
+    // onerror statt Abbruch: adp-data.js/rosters-data.js/rookie-projections.js
+    // hatten im Original schon ein onerror-Attribut (optional, Seite laeuft
+    // auch ohne sie), gleiches Verhalten hier fuer alle beibehalten.
+    s.onload = () => { _loadedProjScripts.add(src); resolve(); };
+    s.onerror = () => { _loadedProjScripts.add(src); resolve(); };
+    document.body.appendChild(s);
+  });
+  _loadingProjScripts.set(src, p);
+  return p;
+}
+
 function _loadScriptsSequentially(srcs, i, onDone) {
   if (i >= srcs.length) { onDone(); return; }
-  const s = document.createElement('script');
-  s.src = srcs[i];
-  // onerror statt Abbruch: adp-data.js/rosters-data.js/rookie-projections.js
-  // hatten im Original schon ein onerror-Attribut (optional, Seite laeuft
-  // auch ohne sie), gleiches Verhalten hier fuer alle beibehalten.
-  s.onload = () => _loadScriptsSequentially(srcs, i + 1, onDone);
-  s.onerror = () => _loadScriptsSequentially(srcs, i + 1, onDone);
-  document.body.appendChild(s);
+  _loadScriptOnce(srcs[i]).then(() => _loadScriptsSequentially(srcs, i + 1, onDone));
 }
 
 function showLiveProjections() {
@@ -130,61 +142,74 @@ function showLiveProjections() {
   });
 }
 
-function _prShowEmbed(pageId) {
-  navigate(pageId);
-  const cfg = LIVE_PROJ_EMBEDS[pageId];
-  const frame = document.getElementById(cfg.frameId);
-  if (frame && !frame.src) {
-    frame.addEventListener('load', () => _prOnFrameLoad(cfg.frameId));
-    frame.src = cfg.src + '?theme=' + _prCurrentTheme();
-  }
-  _prSizeFrame(cfg.frameId);
-}
-function showLiveProjTeams()   { _prShowEmbed('liveProjTeamsPage'); }
-function showLiveProjDraft()   { _prShowEmbed('liveProjDraftPage'); }
+// NBA Teams braucht zum Teil dieselben Dateien wie Projections
+// (players-data.js, rosters-data.js, assets/shared.js, assets/inseason-blend.js)
+// -- ueber _loadScriptOnce() global dedupliziert, egal in welcher
+// Reihenfolge die beiden Seiten zuerst besucht werden. adp-data.js wird
+// hier NICHT gebraucht (nur auf der Projections-Seite selbst).
+const LIVE_PROJ_TEAMS_SCRIPTS = [
+  'projections/players-data.js',
+  'projections/projected-minutes.js',
+  'projections/rookie-projections.js',
+  'projections/rosters-data.js',
+  'projections/assets/shared.js',
+  'projections/assets/inseason-blend.js',
+  'js/projections-teams-native.js',
+];
+let _liveProjTeamsState = 'unloaded'; // 'unloaded' | 'loading' | 'ready'
 
-
-// Same-origin seit dem Merge von projections/ ins Repo (2026-07-31) — daher
-// koennen wir die tatsaechliche Inhaltshoehe des Iframes auslesen und den
-// Rahmen exakt darauf setzen. Vorher (externe Cross-Origin-URL) ging das
-// nicht, deshalb wurde der Iframe auf Viewport-Hoehe gedeckelt und scrollte
-// dann INTERN zusaetzlich zur aeusseren Seite — daher das doppelte Scrollen.
-// Jetzt: Iframe waechst/schrumpft mit seinem Inhalt, nur die TTHQ-Seite
-// scrollt, wie bei jeder anderen Seite auch.
-function _prSizeFrame(frameId) {
-  const frame = document.getElementById(frameId);
-  if (!frame || !frame.offsetParent) return;
-  let doc;
-  try { doc = frame.contentDocument; } catch (e) { doc = null; }
-  if (!doc || !doc.documentElement) {
-    // Noch nicht geladen (erster Aufruf vor "load") — vorlaeufig grosszuegige
-    // Mindesthoehe, wird beim "load"-Event bzw. ResizeObserver sofort korrigiert.
-    frame.style.height = Math.max(600, window.innerHeight - frame.getBoundingClientRect().top - 24) + 'px';
-    return;
-  }
-  const h = Math.max(doc.documentElement.scrollHeight, doc.body ? doc.body.scrollHeight : 0);
-  frame.style.height = Math.max(500, h + 4) + 'px';
+function showLiveProjTeams() {
+  navigate('liveProjTeamsPage');
+  if (_liveProjTeamsState === 'ready' || _liveProjTeamsState === 'loading') return;
+  _liveProjTeamsState = 'loading';
+  const contentEl = document.getElementById('teamsContent');
+  if (contentEl) contentEl.textContent = 'Lade NBA Teams…';
+  _loadScriptsSequentially(LIVE_PROJ_TEAMS_SCRIPTS, 0, () => {
+    _liveProjTeamsState = 'ready';
+    if (typeof initLiveProjTeamsNative === 'function') {
+      initLiveProjTeamsNative();
+    } else {
+      console.error('initLiveProjTeamsNative() nicht gefunden — js/projections-teams-native.js korrekt geladen?');
+      if (contentEl) contentEl.textContent = 'Fehler beim Laden — siehe Browser-Konsole.';
+    }
+  });
 }
 
-function _prOnFrameLoad(frameId) {
-  _prSizeFrame(frameId);
-  const frame = document.getElementById(frameId);
-  let doc;
-  try { doc = frame.contentDocument; } catch (e) { doc = null; }
-  if (!doc) return;
-  // Beobachtet Groessenaenderungen im eingebetteten Inhalt (z.B. Filter-Panel
-  // auf-/zuklappen, Tabellensortierung, interne Navigation innerhalb der
-  // eingebetteten Seite loest ohnehin ein neues "load" aus) und passt die
-  // Iframe-Hoehe live an, statt einer internen Scrollbar.
-  if (_prResizeObservers[frameId]) _prResizeObservers[frameId].disconnect();
-  if (typeof ResizeObserver !== 'undefined' && doc.body) {
-    _prResizeObservers[frameId] = new ResizeObserver(() => _prSizeFrame(frameId));
-    _prResizeObservers[frameId].observe(doc.body);
-  }
+// Draft Board braucht zusaetzlich adp-data.js und assets/fantrax-live.js
+// (Live-Sync mit Fantrax) — Rest identisch mit Projections, ueber
+// _loadScriptOnce() dedupliziert.
+const LIVE_PROJ_DRAFT_SCRIPTS = [
+  'projections/players-data.js',
+  'projections/projected-minutes.js',
+  'projections/adp-data.js',
+  'projections/rosters-data.js',
+  'projections/rookie-projections.js',
+  'projections/assets/shared.js',
+  'projections/assets/inseason-blend.js',
+  'projections/assets/fantrax-live.js',
+  'js/projections-draft-native.js',
+];
+let _liveProjDraftState = 'unloaded'; // 'unloaded' | 'loading' | 'ready'
+
+function showLiveProjDraft() {
+  navigate('liveProjDraftPage');
+  if (_liveProjDraftState === 'ready' || _liveProjDraftState === 'loading') return;
+  _liveProjDraftState = 'loading';
+  const bodyEl = document.getElementById('poolBody');
+  if (bodyEl) bodyEl.innerHTML = '<tr><td colspan="22" style="padding:16px;color:var(--muted);">Lade Draft Board…</td></tr>';
+  _loadScriptsSequentially(LIVE_PROJ_DRAFT_SCRIPTS, 0, () => {
+    _liveProjDraftState = 'ready';
+    if (typeof initLiveProjDraftNative === 'function') {
+      initLiveProjDraftNative();
+    } else {
+      console.error('initLiveProjDraftNative() nicht gefunden — js/projections-draft-native.js korrekt geladen?');
+      if (bodyEl) bodyEl.innerHTML = '<tr><td colspan="22" style="padding:16px;color:var(--bad);">Fehler beim Laden — siehe Browser-Konsole.</td></tr>';
+    }
+  });
 }
-window.addEventListener('resize', () => {
-  Object.values(LIVE_PROJ_EMBEDS).forEach(cfg => _prSizeFrame(cfg.frameId));
-});
+
+
+
 
 
 function prInit() {

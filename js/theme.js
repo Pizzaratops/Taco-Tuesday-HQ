@@ -9,22 +9,10 @@ function toggleTheme() {
   } else {
     body.classList.add('light'); btn.textContent = '🌙 Dark'; localStorage.setItem('theme','light');
   }
-  // Eingebettete Projections-Toolkit-Seiten (Iframes: NBA Teams/Draft
-  // Board) live auf's gleiche Theme umstellen — nur die, die schon geladen
-  // wurden (frame.src gesetzt), sonst laeuft der ?theme=-URL-Parameter beim
-  // ersten Laden. "Projections" selbst braucht das seit 2026-08-01 NICHT
-  // mehr: echte native TTHQ-Seite (kein Iframe mehr), erbt die CSS-
-  // Variablen automatisch ueber die normale DOM-Kaskade.
-  const theme = body.classList.contains('light') ? 'light' : 'dark';
-  ['projTeamsFrame', 'projDraftFrame'].forEach(id => {
-    const frame = document.getElementById(id);
-    if (frame && frame.src && frame.contentWindow) {
-      // Seit dem Merge des Projections-Toolkits (projections/) ins gleiche
-      // Repo ist der Iframe same-origin — targetOrigin daher
-      // window.location.origin statt der frueheren externen GitHub-Pages-Domain.
-      frame.contentWindow.postMessage({ type: 'mfhfb-theme', theme }, window.location.origin);
-    }
-  });
+  // Alle 3 Projections-Toolkit-Seiten sind seit 2026-08-01 native TTHQ-
+  // Seiten — kein Iframe-/postMessage-Theme-Sync mehr noetig, die CSS-
+  // Variablen greifen automatisch. Nur die als Inline-Styles gerenderten
+  // Heatmap-/Statusfarben brauchen ein explizites Re-Render (unten).
   // Re-render standings chart if visible so legend/axis colors update
   const standingsPage = document.getElementById('standingsPage');
   if (standingsPage && standingsPage.classList.contains('active')) {
@@ -44,12 +32,21 @@ function toggleTheme() {
   if (homePage && homePage.classList.contains('active')) {
     setTimeout(renderHome, 50);
   }
-  // Native Projections-Tabelle neu rendern, falls sichtbar UND schon
-  // geladen — Heatmap-Zellfarben sind fixe Inline-Styles, ziehen sonst
-  // nicht automatisch nach (siehe js/projections-native.js).
+  // Native Projections-/NBA-Teams-Tabellen neu rendern, falls sichtbar UND
+  // schon geladen — Heatmap-Zellfarben sind fixe Inline-Styles, ziehen
+  // sonst nicht automatisch nach (siehe js/projections-native.js bzw.
+  // js/projections-teams-native.js).
   const liveProjectionsPage = document.getElementById('liveProjectionsPage');
   if (liveProjectionsPage && liveProjectionsPage.classList.contains('active') && typeof window.reRenderLiveProjections === 'function') {
     setTimeout(window.reRenderLiveProjections, 50);
+  }
+  const liveProjTeamsPage = document.getElementById('liveProjTeamsPage');
+  if (liveProjTeamsPage && liveProjTeamsPage.classList.contains('active') && typeof window.reRenderLiveProjTeams === 'function') {
+    setTimeout(window.reRenderLiveProjTeams, 50);
+  }
+  const liveProjDraftPage = document.getElementById('liveProjDraftPage');
+  if (liveProjDraftPage && liveProjDraftPage.classList.contains('active') && typeof window.reRenderLiveProjDraft === 'function') {
+    setTimeout(window.reRenderLiveProjDraft, 50);
   }
 }
 if (localStorage.getItem('theme') === 'light') {

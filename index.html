@@ -414,22 +414,268 @@
   <footer id="footerText"></footer>
 </div>
 
+<!-- Nativ portiert aus projections/teams.html am 2026-08-01 (vorher Iframe).
+     IDs mit "Teams"-Suffix, wo die Projections-Seite denselben Namen schon
+     benutzt (search/footerText/adminToggle) -- siehe js/projections-teams-native.js.
+     Daten+Logik werden erst beim ersten Aufruf von showLiveProjTeams()
+     nachgeladen, gemeinsame Dateien mit Projections (players-data.js,
+     shared.js usw.) werden dabei nicht doppelt geladen (siehe
+     js/player-rankings.js, _loadScriptOnce()). -->
 <div class="page page-wide" id="liveProjTeamsPage">
-  <iframe
-    id="projTeamsFrame"
-    title="MFHFBs NBA Teams"
-    style="width:100%; border:none; border-radius:14px; display:block; background:var(--surface);"
-    loading="lazy">
-  </iframe>
+  <div class="hero" style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;">
+    <div>
+      <h1>NBA Teams</h1>
+      <p class="sub" id="teamsHeroSub">Pro Team zwei Spalten: links der aktuelle Kader mit deinen Minuten (editierbar, 9-Cat-Stats basierend auf letzter Saison), rechts zum Vergleich die tatsächliche End-Rotation der letzten Saison.</p>
+    </div>
+    <button class="theme-toggle" id="adminToggleTeams" title="Eigenes Passwort, unabhängig vom TTHQ-Admin — schaltet Minuten-Bearbeitung frei"></button>
+  </div>
+
+  <div class="search-row">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="searchTeams" placeholder="Team oder Spieler suchen…">
+  </div>
+
+  <div class="lock-note" id="lockNote"></div>
+
+  <div id="teamsContent">Lade NBA Teams…</div>
+
+  <footer id="footerTextTeams"></footer>
 </div>
 
+<!-- Nativ portiert aus projections/draft.html am 2026-08-01 (vorher Iframe,
+     letzte der 3 Toolkit-Seiten). IDs seasonBadgeDraft/footerTextDraft statt
+     der kollidierenden Originale, Side-Panel-Tabs als dtab/dtabs/dtabpane
+     (TTHQ definiert .tab/.tabs global fuer die Roster-Seite). Daten+Logik
+     laden erst beim ersten Aufruf von showLiveProjDraft(), gemeinsame
+     Dateien mit Projections/NBA Teams dedupliziert (js/player-rankings.js). -->
 <div class="page page-wide" id="liveProjDraftPage">
-  <iframe
-    id="projDraftFrame"
-    title="MFHFBs Draft Board"
-    style="width:100%; border:none; border-radius:14px; display:block; background:var(--surface);"
-    loading="lazy">
-  </iframe>
+<div class="hero">
+    <div>
+      <div class="eyebrow" id="seasonBadgeDraft"></div>
+      <h1>Draft Board</h1>
+      <div class="sub">Live-Draft-Tracker auf Basis deiner aktuellen Projections. Trage jeden Pick ein, sobald er in Fantrax fällt.</div>
+    </div>
+    <a class="settings-link" href="#" onclick="showLiveProjections();return false;">Gewichtungen &amp; Z-Basis anpassen →</a>
+  </div>
+
+  <div class="statusbar">
+    <div class="chip"><span class="num" id="pickNo">1</span><span class="lbl">Pick</span></div>
+    <div class="chip"><span class="num" id="roundNo">1</span><span class="lbl">Runde</span></div>
+    <div class="onclock" id="onClockChip">Team 1 an der Reihe</div>
+    <button class="sb-btn" id="leagueProgressBtn">🏁 Liga-Fortschritt</button>
+    <button class="sb-btn" id="undoBtn">↩ Undo</button>
+    <span class="save-indicator" id="saveIndicator"></span>
+  </div>
+
+  <div class="modal-overlay" id="leagueProgressOverlay" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="panel-title">Fortschritt in allen Ligen</div>
+        <button class="sb-btn" id="leagueProgressClose">✕</button>
+      </div>
+      <div class="note" id="leagueProgressSummary" style="margin:0 0 10px;">lädt…</div>
+      <div id="leagueProgressList"></div>
+    </div>
+  </div>
+
+  <div class="panel" id="setupPanel">
+    <div class="panel-head" id="setupHead">
+      <div class="panel-title">Draft-Einstellungen</div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="panel-body">
+      <div class="field">
+        <label>Mein Draft-Slot (1–12)</label>
+        <select id="myTeamSel"></select>
+      </div>
+      <div class="field">
+        <label>Liga-Format (steuert die Empfehlungen)</label>
+        <select id="formatSel"></select>
+      </div>
+      <div class="field" id="puntWrap">
+        <label>Punt-Kategorien (bei Empfehlungen ignorieren)</label>
+        <div class="punt-cats" id="puntCats"></div>
+      </div>
+      <div class="field" id="pointsWeightsWrap" style="display:none;">
+        <label>Punkte je Stat</label>
+        <div class="punt-cats" id="pointsWeights"></div>
+      </div>
+      <div class="field">
+        <button class="sb-btn danger" id="resetBtn">Draft zurücksetzen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="leaguePanel">
+    <div class="panel-head" id="leagueHead">
+      <div class="panel-title">🔗 Live-Sync mit Fantrax — <span id="liveSyncStatus" class="cloud-status">nicht verbunden</span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="panel-body" style="flex-direction:column; align-items:stretch;">
+      <div class="note" style="margin:0 0 10px;">
+        Liga-ID eingeben (aus der Fantrax-URL: fantrax.com/fantasy/league/<b>ABC123XYZ</b>/...) und laden —
+        der aktuelle Draft-Stand kommt live direkt von Fantrax. Einmal gespeicherte Ligen tauchen unten
+        im Dropdown auf und lassen sich ohne erneute Eingabe der ID nachladen (praktisch am Handy).
+      </div>
+      <div class="field" style="margin-bottom:10px;">
+        <label>Gespeicherte Liga</label>
+        <select id="savedLeagueSelect"><option value="">— Neue Liga eingeben —</option></select>
+      </div>
+      <div class="league-sync-row">
+        <input type="text" id="liveLeagueLabel" placeholder="Name (z.B. FBI Roto 01)" style="flex:0 0 40%;">
+        <input type="text" id="liveLeagueId" placeholder="Liga-ID…">
+      </div>
+      <div class="league-sync-row" style="margin-top:8px;">
+        <button class="sb-btn" id="liveLoadBtn" style="flex:1;">🔄 Laden &amp; speichern</button>
+        <button class="sb-btn danger" id="liveDeleteBtn" style="display:none;">🗑 Entfernen</button>
+      </div>
+      <div class="field" id="liveTeamPickWrap" style="display:none; margin-top:10px;">
+        <label>Welches Team ist deins?</label>
+        <select id="liveTeamPick"></select>
+      </div>
+      <div class="note" id="liveSyncDetail" style="margin-top:8px;"></div>
+      <div class="field" id="liveAutoWrap" style="display:none; margin-top:8px; flex-direction:row; align-items:center; gap:8px;">
+        <input type="checkbox" id="liveAutoRefresh" style="width:auto;">
+        <label for="liveAutoRefresh" style="text-transform:none; font-size:12px; letter-spacing:0; cursor:pointer;">Während des Drafts alle 30s automatisch aktualisieren</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div>
+      <div class="pool-toolbar">
+        <div class="search-row">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" autocomplete="off" placeholder="Spieler, Team oder Position suchen…">
+        </div>
+        <div id="posFilters" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+        <button class="tag-btn" id="statFilterToggle">Stat-Filter</button>
+        <button class="tag-btn" id="hideDraftedBtn">Gedraftete ausblenden</button>
+      </div>
+
+      <div id="statFilterPanel" class="panel" style="display:none; padding:12px 14px;">
+        <div class="note" style="margin-bottom:8px;">
+          Bis zu 3 Bedingungen gleichzeitig (UND-verknüpft), z.B. FG% &gt; 50 UND AST &gt; 5,5 UND POS = C
+          (Position über die Filter-Buttons oben kombinieren). Wirkt zusätzlich zur Text-/Positionssuche.
+        </div>
+        <div id="statFilterRows"></div>
+        <button class="tag-btn" id="statFilterClear" style="margin-top:6px;">Zurücksetzen</button>
+      </div>
+
+      <div class="table-wrap">
+        <table id="poolTable">
+          <thead>
+            <tr>
+              <th data-k="rk">#</th>
+              <th data-k="name">Spieler</th>
+              <th data-k="pos">Pos</th>
+              <th data-k="pts">PTS</th>
+              <th data-k="reb">REB</th>
+              <th data-k="ast">AST</th>
+              <th data-k="stl">STL</th>
+              <th data-k="blk">BLK</th>
+              <th data-k="fg3m">3PM</th>
+              <th data-k="fga" title="Field Goals Made-Attempted — die Basis, aus der der volumen-gewichtete FG%-Score berechnet wird (siehe Z-Spalte)">FGM-FGA</th>
+              <th data-k="fgpct">FG%</th>
+              <th data-k="fta" title="Free Throws Made-Attempted — die Basis, aus der der volumen-gewichtete FT%-Score berechnet wird (siehe Z-Spalte)">FTM-FTA</th>
+              <th data-k="ftpct">FT%</th>
+              <th data-k="tov">TOV</th>
+              <th data-k="z">Z</th>
+              <th data-k="zFloor" title="Z-Score ohne die schlechteste Kategorie des Spielers — zeigt den Boden/Floor">Z-Floor</th>
+              <th data-k="zDepth" title="Z-Score ohne die beste Kategorie — entlarvt One-Cat-Wonders; hoher Wert = gut in der Tiefe">Z-Depth</th>
+              <th data-k="zPunt" title="Z-Score mit deinen aktuellen Punt-Kategorien auf Gewicht 0 — wie Basketball Monsters 'Punt Columns': kompletter Rerank ohne die gepuntete(n) Kategorie(n), Guard-/Big-Build-Spieler steigen dadurch automatisch">Z-Punt</th>
+              <th data-k="hscore" title="H-Score (Beta) — vereinfachte Umsetzung von Rosenof (2024) H-Scoring: simuliert den kompletten Rest-Draft in echter Snake-Reihenfolge (ein gemeinsam schrumpfender Pool) über bis zu 2 gepuntete Kategorien und schätzt die Ø-Kategorie-Gewinnwahrscheinlichkeit gegen die Liga (0-9). Nur für die Top ~80 verfügbaren Spieler berechnet — Tiefenkader/Free Agents zeigen bewusst '—'.">H-Score</th>
+              <th data-k="adpVal" title="ADP-Rang minus unser Z-Rang — grün = unterbewertet, rot = überbewertet">ADP-Val</th>
+              <th data-k="adp" title="Ø Draft-Position aus deinen erfassten Fantrax Draft Results">ADP</th>
+              <th data-k="fadp" title="Fantrax' eigener aktueller ADP-Snapshot (data/fantrax-adp.csv)">F-ADP</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="poolBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <div class="side-card">
+        <div class="dtabs">
+          <div class="dtab active" data-tab="myteam">Mein Team</div>
+          <div class="dtab" data-tab="matrix">9-Cat Ranks</div>
+          <div class="dtab" data-tab="scarcity">Scarcity</div>
+          <div class="dtab" data-tab="puntplan">Punt-Planer</div>
+          <div class="dtab" data-tab="power">Best Ball Z</div>
+          <div class="dtab" data-tab="log">Pick-Log</div>
+        </div>
+
+        <div class="dtabpane active" id="pane-myteam">
+          <h3>Slots (14 Starter, kein Bench)</h3>
+          <div class="slot-grid" id="slotGrid"></div>
+          <h3>Kategorie-Ranks (1 = beste von 12)</h3>
+          <div id="catRanks"></div>
+          <div class="note">Rang unter allen 12 Teams, live nach aktuellem Draft-Stand. Grün = stark, Rot = schwach.</div>
+        </div>
+
+        <div class="dtabpane" id="pane-matrix">
+          <h3>Team vs. Team — Rang je Kategorie</h3>
+          <div class="matrix-wrap" id="matrixWrap"></div>
+          <div class="note">1 = bestes Team, 12 = schlechtestes. Deine Spalte ist hervorgehoben.</div>
+        </div>
+
+        <div class="dtabpane" id="pane-scarcity">
+          <h3>Wann kippt eine Kategorie?</h3>
+          <div class="note" style="margin-bottom:8px;">
+            Ø Kategorie-Z der noch verfügbaren Spieler, gebündelt nach Runde (12 Picks = 1 Runde).
+            Zeigt, wo eine Kategorie im verbleibenden Pool noch Tiefe hat und wo es steil bergab geht —
+            z.B. AST/PTS konzentrieren sich früh, danach reißt die Versorgung schneller ab als bei STL/BLK.
+            In jeder Zelle der stärkste noch verfügbare Name dieser Runde/Kategorie.
+          </div>
+          <div class="matrix-wrap" id="scarcityWrap"></div>
+          <div class="note" style="margin-top:8px;" id="scarcityCliffNote"></div>
+        </div>
+
+        <div class="dtabpane" id="pane-puntplan">
+          <h3>Punt-Planer — Wochen-Matchup-Simulation</h3>
+          <div class="note" style="margin-bottom:8px;">
+            Rechnet deinen aktuellen Kader (Starter, live nach Draft-Stand) gegen jedes andere Team
+            kategorienweise durch. Punt-Kategorien werden als bewusst abgegebene Punkte behandelt,
+            nicht als Niederlage gezählt — Ziel ist die verbleibenden Kategorien möglichst breit zu gewinnen
+            (idealerweise 6-3, im Zweifel 5-4). Nutzt dieselben Punt-Kategorien wie "Empfehlungen" links.
+          </div>
+          <div class="field" style="margin-bottom:10px;">
+            <label>Punt-Kategorien (auch hier änderbar)</label>
+            <div class="punt-cats" id="puntCatsPlan"></div>
+          </div>
+          <div id="puntSummary" class="note" style="margin-bottom:10px;"></div>
+          <div class="matrix-wrap" id="puntMatchupWrap"></div>
+          <div class="note" style="margin-top:8px;">
+            ⚠ = Team liegt in einer deiner Punt-Kategorien selbst unter den schwächsten im Ligavergleich
+            (mögliche Mirror-Punt) — gegen dieses Team fällt die Kategorie faktisch weg, die "Gewinn-Marge"-Spalte
+            zeigt, in welcher deiner NICHT gepunteten Kategorien du gegen genau dieses Team am knappsten liegst
+            (dort lohnt sich zusätzliche Stärke am meisten).
+          </div>
+        </div>
+
+        <div class="dtabpane" id="pane-power">
+          <h3>Gesamtwert-Ranking (Σ Z-Score im Kader)</h3>
+          <div id="powerRank"></div>
+          <div class="note">Reine Wertsumme aller gestarteten Spieler, unabhängig von Kategorie-Balance — die Best-Ball-Sichtweise.</div>
+        </div>
+
+        <div class="dtabpane" id="pane-log">
+          <h3>Letzte Picks</h3>
+          <div class="picklog" id="pickLog"></div>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3>Empfehlungen für dein Team</h3>
+        <div id="recoList"></div>
+        <div class="note">Gewichtet nach deinen aktuell schwächsten Kategorien (Punt-Kategorien ausgeschlossen). Kein Ersatz für eigenes Scouting.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footerTextDraft"></footer>
 </div>
 
 <!-- LIVE SCORES -->
