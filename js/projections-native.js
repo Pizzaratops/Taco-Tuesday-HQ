@@ -179,7 +179,7 @@ function initLiveProjectionsNative() {
   function computeAll() {
     const overrides = mfhfbGetOverrides();
     const rows = PLAYER_RATES
-      .filter(p => mfhfbIsValidCurrentTeam(p.team))
+      .filter(p => mfhfbIsOnCurrentRoster(p.name, p.team))
       .map(p => {
       const latest = mfhfbLatestSeason(p);
       const key = mfhfbNormalizeName(p.name);
@@ -200,6 +200,7 @@ function initLiveProjectionsNative() {
       const hasProduction = PROD_CATS.some(c => m[c] !== undefined && m[c] !== 0);
       if (!hasProduction) return;
       if (!m.team || !m.team.trim()) return;
+      if (!mfhfbIsOnCurrentRoster(m.name, m.team)) return;
       const s = {
         min: m.min || 0, pts: m.pts || 0, reb: m.reb || 0, ast: m.ast || 0,
         stl: m.stl || 0, blk: m.blk || 0, fg3m: m.fg3m || 0, tov: m.tov || 0,

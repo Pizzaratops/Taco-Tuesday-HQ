@@ -122,7 +122,7 @@ function initLiveProjDraftNative() {
     const overrides = mfhfbGetOverrides();
 
     let rows = PLAYER_RATES
-      .filter(p => mfhfbIsValidCurrentTeam(p.team))
+      .filter(p => mfhfbIsOnCurrentRoster(p.name, p.team))
       .map((p, idx) => {
       const latest = mfhfbLatestSeason(p);
       const key = mfhfbNormalizeName(p.name);
@@ -156,6 +156,7 @@ function initLiveProjDraftNative() {
       // werden könnte, dem trägst du auf teams.html ein Team ein, dann taucht
       // er automatisch wieder auf.
       if (!m.team || !m.team.trim()) return;
+      if (!mfhfbIsOnCurrentRoster(m.name, m.team)) return;
       const min = m.min || 0;
       // Sicherheitsnetz: negative Counting-Stats können nie korrekt sein, egal
       // woher der manuelle Eintrag kommt (Rookie-Vorbelegung oder von Hand).

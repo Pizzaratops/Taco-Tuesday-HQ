@@ -410,6 +410,25 @@ function mfhfbApplyCurrentTeams(playerRates) {
   return updated;
 }
 
+// "Ist DIESER Spieler gerade auf einem echten NBA-Roster" -- anders als
+// mfhfbIsValidCurrentTeam(), das nur prueft, ob p.team wie ein gueltiges
+// Team-Kuerzel AUSSIEHT (z.B. "UTA"). Ein Spieler, der die Liga verlassen
+// hat, behaelt in PLAYER_RATES oft noch sein letztes echtes Team als Feld
+// stehen -- das ist weiterhin ein gueltiges Kuerzel, der Spieler ist aber
+// laengst nicht mehr dort. mfhfbIsValidCurrentTeam() liess solche Spieler
+// faelschlich durch (Bug-Report 2026-08-01: Hassan Whiteside, Nikola
+// Mirotic tauchten im Draft Board/den Projections auf, obwohl sie auf
+// keinem der 30 ESPN-Roster stehen). Fallback auf die alte, laxere Pruefung
+// NUR wenn rosters-data.js gar nicht geladen ist (Index leer) -- sonst
+// wuerde ein Netzwerk-/Ladefehler die komplette Seite leerraeumen statt nur
+// die abgemeldeten Spieler rauszufiltern.
+function mfhfbIsOnCurrentRoster(playerName, fallbackTeam) {
+  const idx = mfhfbBuildCurrentTeamIndex();
+  if (idx.size === 0) return mfhfbIsValidCurrentTeam(fallbackTeam); // Rosterdaten nicht geladen -- Notbremse
+  return idx.has(mfhfbNormalizeName(playerName));
+}
+
+
 // Dasselbe für manuelle/Rookie-Einträge (mfhfbGetManualStats()) -- deren
 // "team"-Feld ist ein STATISCHES Vorab-Schätzung (z.B. Pre-Draft-Mock in
 // rookie-projections.js) und wird NIE automatisch aktualisiert, wenn der
