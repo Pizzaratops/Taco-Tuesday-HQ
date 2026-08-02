@@ -1668,7 +1668,11 @@ function initLiveProjDraftNative() {
     // Dieselbe simple Zeilen-Liste, die auch scripts/fetch-draft-results.mjs
     // nutzt -- wird hier direkt aus dem Repo nachgeladen (relativ zur Seite,
     // funktioniert auf GitHub Pages ohne eigenes Backend).
-    const res = await fetch('data/fantrax-leagues.txt');
+    // War 'data/fantrax-leagues.txt', relativ korrekt, solange dieser Code
+    // noch in projections/draft.html lief. Seit der nativen Portierung
+    // (2026-08-01) laeuft er von TTHQs eigenem index.html im Repo-Root aus,
+    // der relative Pfad muss daher den projections/-Ordner mit angeben.
+    const res = await fetch('projections/data/fantrax-leagues.txt');
     if(!res.ok) throw new Error(`HTTP ${res.status}`);
     const raw = await res.text();
     return raw.split('\n')
