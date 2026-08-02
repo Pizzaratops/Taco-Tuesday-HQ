@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-01T10:27:55.794Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-02T10:27:24.794Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-08-01T10:27:55.794Z",
+ "fetchedAt": "2026-08-02T10:27:24.794Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -883,7 +883,7 @@ const ROSTERS_DATA = {
      "position": "C",
      "height": "6' 9\"",
      "weight": "248 lbs",
-     "age": 28,
+     "age": 29,
      "espnId": "3934723"
     },
     {
@@ -4212,6 +4212,15 @@ const ROSTERS_DATA = {
      "weight": "210 lbs",
      "age": 23,
      "espnId": "4914336"
+    },
+    {
+     "name": "Jeremy Sochan",
+     "jersey": "20",
+     "position": "F",
+     "height": "6' 8\"",
+     "weight": "230 lbs",
+     "age": 23,
+     "espnId": "4610139"
     },
     {
      "name": "John Tonje",
