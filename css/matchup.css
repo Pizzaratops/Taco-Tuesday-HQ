@@ -83,26 +83,21 @@
 .mp-status.err { color: var(--accent2); }
 .mp-status.ok { color: var(--green); }
 
-/* ─── Basis-Regler ───────────────────────────────────────── */
-.mp-basis-head {
-  display: flex; justify-content: space-between; align-items: baseline;
-  font-size: 12px; margin-bottom: 8px; gap: 12px; flex-wrap: wrap;
+/* ─── Basis-Auswahl ──────────────────────────────────────── */
+.mp-basis {
+  display: flex; gap: 7px; flex-wrap: wrap; align-items: center;
 }
-.mp-basis-end { color: var(--muted); font-weight: 600; }
-.mp-basis-val {
-  font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); font-weight: 500;
-}
-.mp-slider { width: 100%; accent-color: var(--accent); cursor: pointer; }
-.mp-quick { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
-.mp-quick-btn {
-  padding: 5px 11px; font-size: 11.5px; font-weight: 600;
+.mp-basis-btn {
+  padding: 8px 14px; font-size: 12.5px; font-weight: 600;
   background: var(--surface2); border: 1px solid var(--border);
   color: var(--muted); border-radius: 20px; cursor: pointer;
   font-family: 'DM Sans', sans-serif; transition: all 0.15s;
+  white-space: nowrap;
 }
-.mp-quick-btn:hover { color: var(--text); border-color: var(--accent); }
+.mp-basis-btn:hover { color: var(--text); border-color: var(--accent); }
+.mp-basis-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
-.mp-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+.mp-opts { display: grid; grid-template-columns: minmax(260px, 460px); gap: 18px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
 .mp-hint { font-size: 11.5px; color: var(--muted); line-height: 1.55; margin-top: 6px; }
 
 /* ─── Ergebnis-Kopf ──────────────────────────────────────── */
@@ -177,30 +172,85 @@
 .mp-prob.lean   { color: #f5c842; }
 .mp-prob.toss   { color: var(--muted); }
 
-/* ─── Kader-Spalten ──────────────────────────────────────── */
-.mp-rosters { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
-.mp-roster { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
-.mp-roster-head {
-  padding: 13px 16px; border-bottom: 1px solid var(--border);
-  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+/* ─── Spielplan-Raster ───────────────────────────────────── */
+.mp-grid-tools {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; flex-wrap: wrap; margin: 18px 0 10px;
 }
-.mp-roster-name { font-size: 13px; font-weight: 700; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.mp-roster-count { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; }
-.mp-plist { max-height: 460px; overflow-y: auto; }
-.mp-prow {
-  display: grid; grid-template-columns: 22px 1fr auto;
-  gap: 9px; align-items: center;
-  padding: 8px 16px; border-bottom: 1px solid var(--border);
-  font-size: 12.5px;
+.mp-grid-tip { font-size: 11.5px; color: var(--muted); line-height: 1.5; flex: 1; min-width: 240px; }
+.mp-grid-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.mp-gridwrap {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden; margin-bottom: 16px;
 }
-.mp-prow:last-child { border-bottom: none; }
-.mp-prow.bench { opacity: 0.42; }
-.mp-prow-num { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--muted); }
-.mp-prow-name { color: var(--text); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.mp-prow-meta { font-size: 10.5px; color: var(--muted); font-weight: 400; }
-.mp-prow-z { font-family: 'DM Mono', monospace; font-size: 11.5px; color: var(--accent); white-space: nowrap; }
-.mp-prow-z.neg { color: var(--accent2); }
-.mp-prow-z.none { color: var(--border); }
+.mp-grid-head {
+  padding: 12px 16px; border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 12px; flex-wrap: wrap;
+}
+.mp-grid-team { font-size: 14px; font-weight: 700; }
+.mp-grid-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+
+.mp-grid-scroll { overflow-x: auto; }
+.mp-grid { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 900px; }
+
+.mp-grid th {
+  padding: 8px 6px; text-align: center;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--muted);
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.mp-grid td {
+  padding: 6px; text-align: center;
+  border-bottom: 1px solid var(--border);
+  font-family: 'DM Mono', monospace; font-size: 11.5px;
+}
+.mp-grid tbody tr:hover td { background: var(--accent-light); }
+.mp-grid tr.idle { opacity: 0.42; }
+
+/* Spaltenkoepfe der Wochentage sind klickbar */
+.mp-grid th.mp-g-day { cursor: pointer; user-select: none; }
+.mp-grid th.mp-g-day:hover { color: var(--accent); }
+.mp-g-date { display: block; font-weight: 400; font-size: 9px; opacity: 0.75; letter-spacing: 0; }
+
+/* Spielername */
+.mp-grid .mp-g-name {
+  text-align: left; font-family: 'DM Sans', sans-serif;
+  min-width: 190px; cursor: pointer; user-select: none;
+}
+.mp-grid th.mp-g-name { cursor: default; }
+.mp-g-pname { display: block; font-weight: 600; color: var(--text); font-size: 12.5px; }
+.mp-g-pmeta { display: block; font-size: 10px; color: var(--muted); margin-top: 1px; }
+.mp-grid .mp-g-name:hover .mp-g-pname { color: var(--accent); }
+
+.mp-g-g { font-weight: 700; color: var(--accent); width: 34px; }
+.mp-g-stat { min-width: 44px; }
+
+/* Spielzellen */
+.mp-g-cell {
+  min-width: 62px; cursor: pointer; user-select: none;
+  transition: background 0.12s;
+}
+.mp-g-cell:empty { cursor: default; }
+.mp-g-opp { font-size: 11px; color: var(--text); margin-right: 4px; }
+.mp-g-box {
+  display: inline-block; width: 14px; height: 14px; line-height: 13px;
+  border-radius: 3px; font-size: 10px; vertical-align: middle;
+  background: var(--accent); color: #fff;
+  border: 1px solid var(--accent);
+}
+.mp-g-cell.off .mp-g-opp { color: var(--muted); text-decoration: line-through; opacity: 0.6; }
+.mp-g-cell.off .mp-g-box { background: transparent; border-color: var(--border); }
+
+/* Summenzeile */
+.mp-grid tfoot td {
+  background: var(--surface2); font-weight: 700; color: var(--text);
+  border-bottom: none; border-top: 1px solid var(--border);
+}
+.mp-grid tfoot .mp-g-name { font-family: 'DM Sans', sans-serif; font-size: 12px; cursor: default; }
 
 /* ─── Leerzustand ────────────────────────────────────────── */
 .mp-empty {
@@ -210,9 +260,6 @@
 }
 
 /* ─── Mobile ─────────────────────────────────────────────── */
-@media (max-width: 860px) {
-  .mp-rosters { grid-template-columns: 1fr; }
-}
 @media (max-width: 620px) {
   .mp-teams { grid-template-columns: 1fr; }
   .mp-vs { display: none; }

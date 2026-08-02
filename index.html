@@ -271,16 +271,16 @@
 
 <!-- MATCHUP PLANER -->
 <!-- Logik: js/matchup-planner.js · Styling: css/matchup.css
-     Der ESPN-Knopf holt NUR den Liga-Spielplan (welches Team spielt in
-     Woche N gegen welches), nicht den NBA-Spielplan der einzelnen
-     Spieler. Games-Left pro Spieler ist bewusst noch nicht dabei,
-     "Spiele je Spieler" unten ist ein Pauschalwert. -->
+     Der ESPN-Knopf holt zwei Dinge: den Liga-Spielplan (welches Team
+     spielt in Woche N gegen welches, und welche Spieltage zu Woche N
+     gehoeren) und den NBA-Spielplan aller Pro-Teams. Daraus baut
+     js/matchup-planner.js das anklickbare Wochenraster. -->
 <div class="page page-wide" id="matchupPage">
   <div class="mp-eyebrow">Head to Head</div>
   <h2 style="margin-bottom:6px;">⚔️ Matchup Planer</h2>
   <div class="mp-sub">
     Stell Deinen Kader dem Gegner gegenüber und sieh, wie das Duell über alle neun Kategorien ausgeht.
-    Als Grundlage lassen sich gespielte Stats, Projections oder eine Mischung aus beidem wählen.
+    Grundlage sind die real angesetzten NBA Spiele der Woche, jedes einzeln an- und abwählbar.
   </div>
 
   <div class="mp-panel">
@@ -298,32 +298,24 @@
     </div>
 
     <div class="mp-row" style="margin-top:16px;">
-      <button class="mp-btn mp-btn-primary" id="mpSchedBtn" onclick="mpFetchSchedule()">↻ ESPN Matchups laden</button>
+      <button class="mp-btn mp-btn-primary" id="mpSchedBtn" onclick="mpFetchSchedule()">↻ ESPN Spielplan laden</button>
       <select class="mp-select" id="mpWeekSelect" style="width:auto;min-width:250px;" onchange="mpPickWeek()" disabled>
         <option value="">— Spielplan noch nicht geladen —</option>
       </select>
     </div>
     <div class="mp-status" id="mpSchedStatus" style="margin-top:9px;">
-      Lädt den Liga-Spielplan aus ESPN. Danach lässt sich jede Woche der Saison auswählen, nicht nur die laufende.
+      Holt den Liga-Spielplan und den NBA Spielplan. Danach lässt sich jede Woche der Saison durchrechnen, nicht nur die laufende.
     </div>
   </div>
 
   <div class="mp-panel">
     <div class="mp-panel-title">Berechnungsgrundlage</div>
-
-    <div class="mp-basis-head">
-      <span class="mp-basis-end">Rankings</span>
-      <span class="mp-basis-val" id="mpBasisVal">50 % Rankings · 50 % Projections</span>
-      <span class="mp-basis-end">Projections</span>
-    </div>
-    <input type="range" class="mp-slider" id="mpBasisSlider" min="0" max="100" step="5" value="50"
-           oninput="mpSetBasis(this.value)">
-    <div class="mp-quick">
-      <button class="mp-quick-btn" onclick="mpSetBasis(0)">Nur Rankings</button>
-      <button class="mp-quick-btn" onclick="mpSetBasis(25)">75 / 25</button>
-      <button class="mp-quick-btn" onclick="mpSetBasis(50)">50 / 50</button>
-      <button class="mp-quick-btn" onclick="mpSetBasis(75)">25 / 75</button>
-      <button class="mp-quick-btn" onclick="mpSetBasis(100)">Nur Projections</button>
+    <div class="mp-basis">
+      <button class="mp-basis-btn" data-pct="0"   onclick="mpSetBasis(0)">Nur Rankings</button>
+      <button class="mp-basis-btn" data-pct="25"  onclick="mpSetBasis(25)">75 / 25</button>
+      <button class="mp-basis-btn" data-pct="50"  onclick="mpSetBasis(50)">50 / 50</button>
+      <button class="mp-basis-btn" data-pct="75"  onclick="mpSetBasis(75)">25 / 75</button>
+      <button class="mp-basis-btn" data-pct="100" onclick="mpSetBasis(100)">Nur Projections</button>
     </div>
     <div class="mp-hint">
       Rankings sind tatsächlich gespielte Stats, Projections sind die Erwartung aus Baseline und Live Blend.
@@ -336,33 +328,7 @@
         <select class="mp-select" id="mpRankSource" onchange="mpSetRankSource(this.value)"></select>
         <div class="mp-hint">
           Die Prozentzahl sagt, wie viele der gerosterten Spieler in dieser Quelle überhaupt vorkommen.
-          In der Summer League tauchen kaum etablierte Spieler auf, deshalb ist die Vorsaison in der Off Season meist die brauchbarere Grundlage.
-        </div>
-      </div>
-      <div>
-        <div class="mp-label">Spiele je Spieler in der Woche</div>
-        <div class="mp-basis-head" style="margin-bottom:6px;">
-          <span class="mp-basis-end">1,0</span>
-          <span class="mp-basis-val" id="mpGamesVal">3.5 Spiele</span>
-          <span class="mp-basis-end">4,5</span>
-        </div>
-        <input type="range" class="mp-slider" id="mpGamesSlider" min="1" max="4.5" step="0.5" value="3.5"
-               oninput="mpSetGames(this.value)">
-        <div class="mp-hint">
-          Pauschalwert für alle Spieler. Ein echter NBA Spielplan steckt noch nicht dahinter, Back to Backs und Ruhetage sind also nicht abgebildet.
-        </div>
-      </div>
-      <div>
-        <div class="mp-label">Aufgestellte Spieler</div>
-        <div class="mp-basis-head" style="margin-bottom:6px;">
-          <span class="mp-basis-end">6</span>
-          <span class="mp-basis-val" id="mpLineupVal">10 Spieler</span>
-          <span class="mp-basis-end">14</span>
-        </div>
-        <input type="range" class="mp-slider" id="mpLineupSlider" min="6" max="14" step="1" value="10"
-               oninput="mpSetLineup(this.value)">
-        <div class="mp-hint">
-          Es zählen die besten Spieler nach gewichtetem Z-Score. Wer keine Daten hat, landet immer auf der Bank.
+          In der Summer League tauchen kaum etablierte Spieler auf, deshalb sind die Preseason-Stats in der Off Season meist die brauchbarere Grundlage.
         </div>
       </div>
     </div>

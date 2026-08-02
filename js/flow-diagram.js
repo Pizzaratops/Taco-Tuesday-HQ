@@ -190,7 +190,7 @@ const FLOW_STAGES = [
       },
       {
         icon: '🆓', kind: 'view', title: 'Best Available',
-        text: 'Freie Spieler nach einem zusammengesetzten Wert aus Dynasty Rang, Vorsaison, aktueller Form und Draft Kapital.',
+        text: 'Freie Spieler nach einem zusammengesetzten Wert aus Dynasty Rang, Preseason, aktueller Form und Draft Kapital.',
         page: 'showBestAvail',
       },
       {
@@ -200,7 +200,7 @@ const FLOW_STAGES = [
       },
       {
         icon: '⚔️', kind: 'new', title: 'Matchup Planer',
-        text: 'Stellt zwei Kader über alle neun Kategorien gegenüber und schätzt, wie das direkte Duell ausgeht.',
+        text: 'Stellt zwei Kader über alle neun Kategorien gegenüber, auf Basis der real angesetzten NBA Spiele der Woche.',
         page: 'showMatchupPlanner',
         badge: 'neu',
         badgeHot: true,
