@@ -393,6 +393,7 @@ const SUBNAV_PAGES = {
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
   tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', nbaTradesPage:'nbatrades', adminSettingsPage:'adminsettings', standingsPage:'standings', rulesPage:'rules',
   liveScoresPage:'livescores', playerRankingsPage:'playerrankings', playerProjectionsPage:'playerprojections',
+  matchupPage:'matchup',
   liveProjectionsPage:'liveprojections', liveProjTeamsPage:'liveprojectionsteams', liveProjDraftPage:'liveprojectionsdraft',
 };
 
@@ -505,6 +506,7 @@ function _rerenderPage(pageId) {
   if (pageId === 'duelSettingsPage')     typeof showDuelSettings === 'function' && showDuelSettings();
   if (pageId === 'rulesPage')            showRules();
   if (pageId === 'liveScoresPage')       typeof lsInit === 'function' && lsInit();
+  if (pageId === 'matchupPage')          typeof _mpEnsureData === 'function' && _mpEnsureData(mpInit);
 }
 function toggleRule(header){header.parentElement.classList.toggle('collapsed');}
 

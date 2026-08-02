@@ -5,6 +5,9 @@
   // Replace current history entry with proper state
   try { history.replaceState({ pageId: initPageId }, '', initHash || '#home'); } catch(e) {}
   renderHome(); // always render home data in background
+  // Flow-Diagramm gehoert zur Home-Seite und wird deshalb hier gleich
+  // mitgerendert, unabhaengig davon, welche Seite gerade offen ist.
+  if (typeof initFlowDiagram === 'function') initFlowDiagram();
   if (initPageId !== 'homePage' && initHash) {
     _applyPage(initPageId);
     // Einziger Ort fuer "welche Seite braucht welche Init-Funktion" ist

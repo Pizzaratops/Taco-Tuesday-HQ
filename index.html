@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="css/style.css?v=5">
   <link rel="stylesheet" href="css/big-board.css?v=5">
   <link rel="stylesheet" href="css/projections.css?v=1">
+  <link rel="stylesheet" href="css/flow.css?v=1">
+  <link rel="stylesheet" href="css/matchup.css?v=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -117,6 +119,7 @@
       </div>
 
       <div class="snav-divider"></div>
+      <button class="snav-single" data-page="matchup" onclick="showMatchupPlanner()">⚔️ Matchup Planer</button>
       <button class="snav-single" data-page="livescores" onclick="showLiveScores()">🔴 Live Scores</button>
       <button class="snav-single" data-page="standings" onclick="showStandings()">📈 Standings</button>
       <button class="snav-single" data-page="rules"     onclick="showRules()">📜 Rules</button>
@@ -145,6 +148,7 @@
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Navigation</div>
         <button class="subnav-mobile-btn" data-page="home"      onclick="goHome();closeMobileNav()">🏠 Home</button>
+        <button class="subnav-mobile-btn" data-page="matchup"    onclick="showMatchupPlanner();closeMobileNav()">⚔️ Matchup Planer</button>
         <button class="subnav-mobile-btn" data-page="livescores" onclick="showLiveScores();closeMobileNav()">🔴 Live Scores</button>
         <button class="subnav-mobile-btn" data-page="standings" onclick="showStandings();closeMobileNav()">📈 Standings</button>
         <button class="subnav-mobile-btn" data-page="rules"     onclick="showRules();closeMobileNav()">📜 Rules</button>
@@ -201,10 +205,39 @@
 
 <!-- HOME -->
 <div class="page active page-wide" id="homePage">
-  <div style="max-width:960px;margin:0 auto;">
+  <div style="max-width:1280px;margin:0 auto;">
     <div class="home-title">The Taco Tuesday League</div>
     <div class="home-sub">Klick auf Dein Team für Deine Spieler und Deine Picks</div>
     <div class="team-grid" id="teamGrid"></div>
+
+    <!-- Datenfluss-Visualisierung. Markup ist bewusst leer, der Inhalt
+         steht als Datenstruktur in js/flow-diagram.js (FLOW_STAGES) und
+         wird von initFlowDiagram() aus js/init.js gerendert. -->
+    <div class="flow-section" id="flowSection">
+      <div class="flow-head">
+        <div class="flow-eyebrow">Unter der Haube</div>
+        <div class="flow-title">Wo die Zahlen herkommen</div>
+        <div class="flow-sub">
+          Jede Zahl auf dieser Seite laeuft denselben Weg: von den ESPN Boxscores ueber die taegliche
+          Aggregation und die Z-Score Normierung bis in die Rankings, Projections und Werkzeuge.
+          Nichts davon wird von Hand gepflegt, bis auf die Preseason Baseline und das Dynasty Ranking.
+        </div>
+        <div class="flow-toggle">
+          <button class="flow-toggle-btn active" data-mode="compact"  onclick="flowSetMode('compact')">Kompakt</button>
+          <button class="flow-toggle-btn"        data-mode="detailed" onclick="flowSetMode('detailed')">Ausführlich</button>
+        </div>
+      </div>
+
+      <div id="flowDiagram"></div>
+
+      <div class="flow-foot">
+        <strong>Warum Z-Scores?</strong> In einer 9-Cat Liga zaehlt jede Kategorie gleich viel, aber die Rohzahlen
+        sind voellig unterschiedlich gross. Zehn Punkte mehr sind Alltag, ein Block mehr pro Spiel ist eine
+        Ausnahmeerscheinung. Der Z-Score rechnet jede Kategorie auf dieselbe Skala um, indem er misst, wie weit
+        ein Spieler vom Ligadurchschnitt entfernt liegt. Erst dadurch laesst sich ein Center mit Blocks
+        ueberhaupt sinnvoll gegen einen Guard mit Dreiern stellen.
+      </div>
+    </div>
   </div>
 </div>
 
@@ -234,6 +267,108 @@
   </div>
   <div class="draftboard-grid" id="draftboardContent"></div>
   <div class="edit-hint">✏️ After trades, update <code>currentOwner</code> in the <code>PICKS</code> array</div>
+</div>
+
+<!-- MATCHUP PLANER -->
+<!-- Logik: js/matchup-planner.js · Styling: css/matchup.css
+     Der ESPN-Knopf holt NUR den Liga-Spielplan (welches Team spielt in
+     Woche N gegen welches), nicht den NBA-Spielplan der einzelnen
+     Spieler. Games-Left pro Spieler ist bewusst noch nicht dabei,
+     "Spiele je Spieler" unten ist ein Pauschalwert. -->
+<div class="page page-wide" id="matchupPage">
+  <div class="mp-eyebrow">Head to Head</div>
+  <h2 style="margin-bottom:6px;">⚔️ Matchup Planer</h2>
+  <div class="mp-sub">
+    Stell Deinen Kader dem Gegner gegenüber und sieh, wie das Duell über alle neun Kategorien ausgeht.
+    Als Grundlage lassen sich gespielte Stats, Projections oder eine Mischung aus beidem wählen.
+  </div>
+
+  <div class="mp-panel">
+    <div class="mp-panel-title">Teams</div>
+    <div class="mp-teams">
+      <div class="mp-field">
+        <div class="mp-label">Dein Team</div>
+        <select class="mp-select" id="mpTeamA" onchange="mpSetTeam('a')"></select>
+      </div>
+      <div class="mp-vs">vs</div>
+      <div class="mp-field">
+        <div class="mp-label">Gegner</div>
+        <select class="mp-select" id="mpTeamB" onchange="mpSetTeam('b')"></select>
+      </div>
+    </div>
+
+    <div class="mp-row" style="margin-top:16px;">
+      <button class="mp-btn mp-btn-primary" id="mpSchedBtn" onclick="mpFetchSchedule()">↻ ESPN Matchups laden</button>
+      <select class="mp-select" id="mpWeekSelect" style="width:auto;min-width:250px;" onchange="mpPickWeek()" disabled>
+        <option value="">— Spielplan noch nicht geladen —</option>
+      </select>
+    </div>
+    <div class="mp-status" id="mpSchedStatus" style="margin-top:9px;">
+      Lädt den Liga-Spielplan aus ESPN. Danach lässt sich jede Woche der Saison auswählen, nicht nur die laufende.
+    </div>
+  </div>
+
+  <div class="mp-panel">
+    <div class="mp-panel-title">Berechnungsgrundlage</div>
+
+    <div class="mp-basis-head">
+      <span class="mp-basis-end">Rankings</span>
+      <span class="mp-basis-val" id="mpBasisVal">50 % Rankings · 50 % Projections</span>
+      <span class="mp-basis-end">Projections</span>
+    </div>
+    <input type="range" class="mp-slider" id="mpBasisSlider" min="0" max="100" step="5" value="50"
+           oninput="mpSetBasis(this.value)">
+    <div class="mp-quick">
+      <button class="mp-quick-btn" onclick="mpSetBasis(0)">Nur Rankings</button>
+      <button class="mp-quick-btn" onclick="mpSetBasis(25)">75 / 25</button>
+      <button class="mp-quick-btn" onclick="mpSetBasis(50)">50 / 50</button>
+      <button class="mp-quick-btn" onclick="mpSetBasis(75)">25 / 75</button>
+      <button class="mp-quick-btn" onclick="mpSetBasis(100)">Nur Projections</button>
+    </div>
+    <div class="mp-hint">
+      Rankings sind tatsächlich gespielte Stats, Projections sind die Erwartung aus Baseline und Live Blend.
+      Gemischt wird auf Ebene der Rohwerte, nicht der Ränge.
+    </div>
+
+    <div class="mp-opts">
+      <div>
+        <div class="mp-label">Quelle für Rankings</div>
+        <select class="mp-select" id="mpRankSource" onchange="mpSetRankSource(this.value)"></select>
+        <div class="mp-hint">
+          Die Prozentzahl sagt, wie viele der gerosterten Spieler in dieser Quelle überhaupt vorkommen.
+          In der Summer League tauchen kaum etablierte Spieler auf, deshalb ist die Vorsaison in der Off Season meist die brauchbarere Grundlage.
+        </div>
+      </div>
+      <div>
+        <div class="mp-label">Spiele je Spieler in der Woche</div>
+        <div class="mp-basis-head" style="margin-bottom:6px;">
+          <span class="mp-basis-end">1,0</span>
+          <span class="mp-basis-val" id="mpGamesVal">3.5 Spiele</span>
+          <span class="mp-basis-end">4,5</span>
+        </div>
+        <input type="range" class="mp-slider" id="mpGamesSlider" min="1" max="4.5" step="0.5" value="3.5"
+               oninput="mpSetGames(this.value)">
+        <div class="mp-hint">
+          Pauschalwert für alle Spieler. Ein echter NBA Spielplan steckt noch nicht dahinter, Back to Backs und Ruhetage sind also nicht abgebildet.
+        </div>
+      </div>
+      <div>
+        <div class="mp-label">Aufgestellte Spieler</div>
+        <div class="mp-basis-head" style="margin-bottom:6px;">
+          <span class="mp-basis-end">6</span>
+          <span class="mp-basis-val" id="mpLineupVal">10 Spieler</span>
+          <span class="mp-basis-end">14</span>
+        </div>
+        <input type="range" class="mp-slider" id="mpLineupSlider" min="6" max="14" step="1" value="10"
+               oninput="mpSetLineup(this.value)">
+        <div class="mp-hint">
+          Es zählen die besten Spieler nach gewichtetem Z-Score. Wer keine Daten hat, landet immer auf der Bank.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="mpResult"></div>
 </div>
 
 <!-- STANDINGS -->
@@ -1888,6 +2023,7 @@
 <!-- App logic -->
 <script src="js/theme.js?v=5"></script>
 <script src="js/navigation.js?v=5"></script>
+<script src="js/flow-diagram.js?v=1"></script>
 <script src="js/nba-teams.js?v=5"></script>
 <script src="js/standings.js?v=5"></script>
 <script src="js/rankings-ui.js?v=5"></script>
@@ -1914,6 +2050,8 @@
 <script src="js/admin-workflow-trigger.js?v=1"></script>
 <script src="js/espn-sync.js?v=5"></script>
 <script src="js/espn-trade-detect.js?v=5"></script>
+<!-- Muss nach espn-trade-detect.js stehen: nutzt dessen _fetchEspnViaProxy() -->
+<script src="js/matchup-planner.js?v=1"></script>
 
 <!-- Init runs last, after all scripts are loaded -->
 <script src="data/rolling-rankings.js?v=5"></script>
