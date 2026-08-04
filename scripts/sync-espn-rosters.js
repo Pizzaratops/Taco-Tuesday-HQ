@@ -85,7 +85,18 @@ async function main() {
       const posId = (p.eligibleSlots || [])[0] ?? 0;
       const pos = cfg.ESPN_POS_MAP[posId] || 'SF';
       const nbaTeam = cfg.ESPN_NBA_MAP[p.proTeamId] || 'FA';
-      return name ? { name, pos, team: nbaTeam } : null;
+      if (!name) return null;
+      const player = { name, pos, team: nbaTeam };
+      // Verletzungsstatus aus demselben Payload. Nur abweichende Status
+      // werden geschrieben (ACTIVE = kein Feld), damit die Datei klein
+      // bleibt. ESPN liefert u.a. OUT, DAY_TO_DAY, SUSPENSION.
+      const inj = p.injuryStatus;
+      if (inj && inj !== 'ACTIVE') {
+        player.inj = inj === 'DAY_TO_DAY' ? 'DTD'
+                   : inj === 'SUSPENSION' ? 'SUSP'
+                   : inj; // OUT und alles Unbekannte unveraendert
+      }
+      return player;
     }).filter(Boolean);
 
     // W-L-T Bilanz aus mTeam. Fehlt der Block (z.B. vor dem ersten

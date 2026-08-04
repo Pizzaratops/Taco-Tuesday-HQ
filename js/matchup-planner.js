@@ -457,7 +457,7 @@ function _mpTeamBreakdown(teamId, index) {
       .filter(d => sched[d.sp])
       .map(d => ({ sp: d.sp, opp: sched[d.sp].opp, home: sched[d.sp].home, off: false }));
     return {
-      name: p.name, key: k, pos: p.pos, nbaTeam: p.team,
+      name: p.name, key: k, pos: p.pos, nbaTeam: p.team, inj: p.inj || null,
       stats: hit ? hit.stats : null,
       z: hit ? hit.z : null,
       composite: hit ? hit.composite : null,
@@ -1051,7 +1051,7 @@ function _mpGrid(T, team, days) {
     const srcTag = { proj: 'nur Projection', rank: 'nur Stats', none: 'keine Daten' }[p.src] || '';
     return `<tr class="${p.played ? '' : 'idle'}">
       <td class="mp-g-name" onclick="mpTogglePlayer(${T.teamId},'${p.key}')" title="ganze Zeile umschalten">
-        <span class="mp-g-pname">${_mpEsc(p.name)}</span>
+        <span class="mp-g-pname">${_mpEsc(p.name)}${typeof injuryBadge === 'function' ? injuryBadge(p.inj) : ''}</span>
         <span class="mp-g-pmeta">${_mpEsc(p.pos || '')} · ${_mpEsc(p.nbaTeam || '')}${srcTag ? ' · ' + srcTag : ''}</span>
       </td>
       <td class="mp-g-g">${p.played || ''}</td>

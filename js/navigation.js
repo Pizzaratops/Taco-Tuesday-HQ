@@ -7,6 +7,21 @@ TEAMS.forEach(t=>teamMap[t.id]=t);
 
 function getInitials(name){return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
 
+// ── Injury-Badge ─────────────────────────────────────────────
+//  p.inj kommt aus dem taeglichen ESPN-Sync (data/rosters-live.js):
+//  OUT, DTD (Day-to-Day) oder SUSP (Sperre). Gesunde Spieler haben
+//  kein inj-Feld. Zentral hier, damit Roster-Ansicht und Matchup
+//  Planner identische Badges zeigen.
+function injuryBadge(inj) {
+  if (!inj) return '';
+  const cfg = {
+    OUT:  { label: 'OUT',  color: '#ef5350', bg: 'rgba(239,83,80,0.15)' },
+    DTD:  { label: 'DTD',  color: '#f5c842', bg: 'rgba(245,200,66,0.15)' },
+    SUSP: { label: 'SUSP', color: 'var(--muted)', bg: 'rgba(123,127,158,0.15)' },
+  }[inj] || { label: inj, color: '#ef5350', bg: 'rgba(239,83,80,0.15)' };
+  return `<span title="${cfg.label === 'DTD' ? 'Day to Day (fraglich)' : cfg.label === 'OUT' ? 'Fällt aus' : cfg.label === 'SUSP' ? 'Gesperrt' : cfg.label}" style="font-size:9px;font-weight:800;letter-spacing:0.05em;padding:1px 6px;border-radius:8px;margin-left:5px;vertical-align:middle;background:${cfg.bg};color:${cfg.color};">${cfg.label}</span>`;
+}
+
 // ── Team-Bilanz ──────────────────────────────────────────────
 //  Live-Bilanzen kommen taeglich aus dem ESPN-Sync (TEAM_RECORDS_LIVE
 //  in data/rosters-live.js). Gating ueber die Saisonkennung: solange
@@ -283,7 +298,7 @@ function renderRoster(id) {
         <div style="flex:1;min-width:0;">
           <!-- Desktop: single line -->
           <div class="roster-desktop-row">
-            <div class="player-name" style="flex:1;cursor:pointer;" onclick="showRollingRankings('${p.name}')" title="📈 Rolling Rankings ansehen">${p.name}${ageStr}</div>
+            <div class="player-name" style="flex:1;cursor:pointer;" onclick="showRollingRankings('${p.name}')" title="📈 Rolling Rankings ansehen">${p.name}${ageStr}${injuryBadge(p.inj)}</div>
             <span class="roster-col-nba player-team r-team-link"
               onclick="window.isAdmin?adminEditPlayerField(event,this,'${p.name}',${id},'team','${p.team}'):showNBATeam('${p.team}')"
               style="${_teamStyle}"
@@ -295,7 +310,7 @@ function renderRoster(id) {
           <!-- Mobile: two lines -->
           <div class="roster-mobile-row">
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
-              <span class="player-name" style="font-size:13px;">${p.name}${ageStr}</span>
+              <span class="player-name" style="font-size:13px;">${p.name}${ageStr}${injuryBadge(p.inj)}</span>
               <span class="player-team r-team-link" onclick="showNBATeam('${p.team}')" style="font-size:11px;">${p.team}</span>
             </div>
             <div style="display:flex;gap:4px;flex-wrap:wrap;">

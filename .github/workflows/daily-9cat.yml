@@ -132,6 +132,16 @@ jobs:
             node scripts/update-all-aggregates.js --keep=180
           fi
 
+      - name: Live Projections neu blenden (Baseline + Saisondaten, BASELINE_WEIGHT=2)
+        if: steps.check_time.outputs.skip != 'true'
+        run: |
+          node scripts/build-live-projections.js --league=nba
+
+      - name: Team Analytics aus Projections + Live-Rostern bauen
+        if: steps.check_time.outputs.skip != 'true'
+        run: |
+          node scripts/build-team-analytics.js
+
       - name: Off-Season-Rankings fortschreiben (Summer League + Preseason)
         if: steps.check_time.outputs.skip != 'true'
         run: |
