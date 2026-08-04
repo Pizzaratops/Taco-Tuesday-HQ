@@ -1,4 +1,39 @@
 // ============================================================
+//  TOAST (kurze Statusmeldung unten am Bildschirmrand)
+// ============================================================
+//  Wird von admin-settings.js, admin-workflow-trigger.js, admin-inline.js,
+//  admin.js, draft-duel.js, espn-trade-detect.js, trade-history.js und
+//  index.html aufgerufen. Bis 2026-08-04 existierte diese Funktion nirgends
+//  im Repo -- jeder Aufruf war ein ReferenceError, der die jeweils
+//  laufende Funktion abgebrochen hat (z.B. Team speichern, Pick anlegen,
+//  Trade History leeren -- die Aktion selbst lief, aber die Erfolgs-
+//  Meldung crashte den Rest der Funktion).
+let _toastTimer = null;
+function toast(msg) {
+  let el = document.getElementById('ttToast');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'ttToast';
+    el.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);' +
+      'background:var(--surface,#1a1d27);color:var(--text,#e8eaf6);border:1px solid var(--border,#2e3250);' +
+      'padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;font-family:DM Sans,sans-serif;' +
+      'box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:9999;opacity:0;transition:opacity .2s,transform .2s;' +
+      'pointer-events:none;max-width:90vw;text-align:center;';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  clearTimeout(_toastTimer);
+  requestAnimationFrame(() => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateX(-50%) translateY(0)';
+  });
+  _toastTimer = setTimeout(() => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 2600);
+}
+
+// ============================================================
 //  THEME
 // ============================================================
 function toggleTheme() {

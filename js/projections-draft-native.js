@@ -814,7 +814,7 @@ function initLiveProjDraftNative() {
   }
 
   function renderStatFilterRows(){
-    const container = document.getElementById('statFilterRows');
+    const container = document.getElementById('dStatFilterRows');
     container.innerHTML = state.statFilters.map((f, i) => `
       <div style="display:flex; gap:6px; align-items:center; margin-bottom:6px;">
         <select data-i="${i}" data-field="cat" style="padding:5px 8px; border-radius:6px; background:var(--surface2); border:1px solid var(--border); color:var(--text);">
@@ -1404,7 +1404,7 @@ function initLiveProjDraftNative() {
     });
   }
   function renderPosFilters(){
-    const container = document.getElementById('posFilters');
+    const container = document.getElementById('dPosFilters');
     const all = [{k:null,l:'Alle'}].concat(POSITIONS.map(p=>({k:p,l:p})));
     container.innerHTML = all.map(o => `<div class="tag-btn ${state.posFilter===o.k?'active':''}" data-k="${o.k??''}">${o.l}</div>`).join('');
     container.querySelectorAll('.tag-btn').forEach(btn => {
@@ -1855,13 +1855,13 @@ function initLiveProjDraftNative() {
       e.target.classList.toggle('active', state.hideDrafted);
       renderPool(); scheduleSave();
     });
-    document.getElementById('statFilterToggle').addEventListener('click', e => {
-      const panel = document.getElementById('statFilterPanel');
+    document.getElementById('dStatFilterToggle').addEventListener('click', e => {
+      const panel = document.getElementById('dStatFilterPanel');
       const nowVisible = panel.style.display === 'none';
       panel.style.display = nowVisible ? 'block' : 'none';
       e.target.classList.toggle('active', nowVisible);
     });
-    document.getElementById('statFilterClear').addEventListener('click', () => {
+    document.getElementById('dStatFilterClear').addEventListener('click', () => {
       state.statFilters = [null, null, null];
       renderStatFilterRows(); renderPool(); scheduleSave();
     });

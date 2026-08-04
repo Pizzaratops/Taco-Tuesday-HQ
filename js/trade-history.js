@@ -4,22 +4,11 @@
 const TH_STORAGE_KEY = 'taco_trade_history';
 let TH_MODE = 'dynasty';
 
-// Hardcoded base trades - always visible, independent of localStorage
-const HARDCODED_TRADES = [
-  {"id":1700000014,"date":"Mai 2026","savedMode":"dynasty","sideA":[{"isPick":false,"rank":215,"name":"Noa Essengue","nba":"CHI","pos":"PF","dob":"2006-12-18","ownerName":"Always Money In The BananaStand"},{"isPick":true,"pickKey":"2026_R3_T7","year":2026,"round":3,"name":"2026 R3 · Always Money In The BananaStand","baseValue":61,"origName":"Always Money In The BananaStand","currName":"Always Money In The BananaStand","traded":false},{"isPick":false,"rank":187,"name":"Ayo Dosunmu","nba":"MIN","pos":"PG","dob":"2000-01-17","ownerName":"Always Money In The BananaStand"}],"sideB":[{"isPick":true,"pickKey":"2026_R1_T12","year":2026,"round":1,"name":"2026 R1 · Vancouver Curry-Wurst","baseValue":610,"origName":"Vancouver Curry-Wurst","currName":"Vancouver Curry-Wurst","traded":false},{"isPick":true,"pickKey":"2026_R3_T12","year":2026,"round":3,"name":"2026 R3 · Vancouver Curry-Wurst","baseValue":81,"origName":"Vancouver Curry-Wurst","currName":"Vancouver Curry-Wurst","traded":false}],"frozen":{"dynasty":{"valA":249,"valB":691,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"26.5","pctB":"73.5"},"raw":{"valA":249,"valB":691,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"26.5","pctB":"73.5"},"winnow":{"valA":249,"valB":691,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"26.5","pctB":"73.5"}}},
-  {"id":1700000013,"date":"Mai 2026","savedMode":"dynasty","sideA":[{"isPick":false,"rank":17,"name":"Evan Mobley","nba":"CLE","pos":"PF/C","dob":"2001-06-18","ownerName":"Always Money In The BananaStand"}],"sideB":[{"isPick":false,"rank":54,"name":"Ivica Zubac","nba":"IND","pos":"C","dob":"1997-03-18","ownerName":"Fighting Illini"},{"isPick":false,"rank":45,"name":"Karl-Anthony Towns","nba":"NYK","pos":"PF/C","dob":"1995-11-15","ownerName":"Fighting Illini"},{"isPick":false,"rank":60,"name":"Jalen Suggs","nba":"ORL","pos":"PG/SG","dob":"2001-06-03","ownerName":"Fighting Illini"}],"frozen":{"dynasty":{"valA":850,"valB":1018,"verdict":"Fair Trade","cls":"fair","pctA":"45.5","pctB":"54.5"},"raw":{"valA":850,"valB":1018,"verdict":"Fair Trade","cls":"fair","pctA":"45.5","pctB":"54.5"},"winnow":{"valA":850,"valB":1018,"verdict":"Fair Trade","cls":"fair","pctA":"45.5","pctB":"54.5"}}},
-  {"id":1700000012,"date":"April 2026","savedMode":"dynasty","sideA":[{"isPick":false,"rank":155,"name":"Moussa Diabate","nba":"CHA","pos":"PF","dob":null,"ownerName":"Fighting Illini"}],"sideB":[{"isPick":true,"pickKey":"2028_R2_T6","year":2028,"round":2,"name":"2028 R2 · 3-POINT MAFIA","baseValue":65,"origName":"3-POINT MAFIA","currName":"3-POINT MAFIA","traded":false}],"frozen":{"dynasty":{"valA":135,"valB":65,"verdict":"Side A Wins Big","cls":"lopsided","pctA":"67.5","pctB":"32.5"},"raw":{"valA":135,"valB":65,"verdict":"Side A Wins Big","cls":"lopsided","pctA":"67.5","pctB":"32.5"},"winnow":{"valA":135,"valB":65,"verdict":"Side A Wins Big","cls":"lopsided","pctA":"67.5","pctB":"32.5"}}},
-  {"id":1700000011,"date":"Februar 2026","savedMode":"dynasty","sideA":[{"isPick":false,"rank":47,"name":"Desmond Bane","nba":"ORL","pos":"SG/SF","dob":"1998-06-25","ownerName":"S-Town Grizzlies"}],"sideB":[{"isPick":false,"rank":86,"name":"Immanuel Quickley","nba":"TOR","pos":"PG","dob":"1999-06-17","ownerName":"Fighting Illini"}],"frozen":{"dynasty":{"valA":364,"valB":232,"verdict":"Slight Edge: Side A","cls":"slight","pctA":"61.1","pctB":"38.9"},"raw":{"valA":364,"valB":232,"verdict":"Slight Edge: Side A","cls":"slight","pctA":"61.1","pctB":"38.9"},"winnow":{"valA":364,"valB":232,"verdict":"Slight Edge: Side A","cls":"slight","pctA":"61.1","pctB":"38.9"}}},
-  {"id":1700000010,"date":"Februar 2026","savedMode":"dynasty","sideA":[{"isPick":false,"rank":8,"name":"Anthony Edwards","nba":"MIN","pos":"SG/SF","dob":"2001-08-05","ownerName":"S-Town Grizzlies"}],"sideB":[{"isPick":false,"rank":29,"name":"Trey Murphy III","nba":"NOR","pos":"SG/SF/PF","dob":"2000-06-18","ownerName":"Fighting Illini"},{"isPick":false,"rank":21,"name":"Jalen Williams","nba":"OKC","pos":"SG/SF/PF","dob":"2001-04-14","ownerName":"Fighting Illini"},{"isPick":false,"rank":95,"name":"Mark Williams","nba":"PHO","pos":"C","dob":"2001-12-16","ownerName":"Fighting Illini"}],"frozen":{"dynasty":{"valA":1180,"valB":1505,"verdict":"Slight Edge: Side B","cls":"slight","pctA":"43.9","pctB":"56.1"},"raw":{"valA":1180,"valB":1505,"verdict":"Slight Edge: Side B","cls":"slight","pctA":"43.9","pctB":"56.1"},"winnow":{"valA":1180,"valB":1505,"verdict":"Slight Edge: Side B","cls":"slight","pctA":"43.9","pctB":"56.1"}}},
-  {"id":1700000002,"date":"April 2026","savedMode":"dynasty",
-   "sideA":[{"isPick":false,"rank":109,"name":"Devin Vassell","nba":"SAS","pos":"SG","dob":"2001-04-13","ownerName":"S-Town Grizzlies"},{"isPick":false,"rank":317,"name":"Ron Holland II","nba":"DET","pos":"SF","dob":"2005-07-07","ownerName":"S-Town Grizzlies"}],
-   "sideB":[{"isPick":true,"pickKey":"2027_R1_T9","year":2027,"round":1,"name":"2027 R1 · Cooking Show","baseValue":275,"origName":"Cooking Show","currName":"Cooking Show","traded":false},{"isPick":false,"rank":304,"name":"Kasparas Jakucionis","nba":"MIA","pos":"PG","dob":"2005-01-01","ownerName":"Cooking Show"}],
-   "frozen":{"dynasty":{"valA":74,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"21.2","pctB":"78.8"},"raw":{"valA":70,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"20.3","pctB":"79.7"},"winnow":{"valA":70,"valB":275,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"20.3","pctB":"79.7"}}},
-  {"id":1700000001,"date":"April 2026","savedMode":"dynasty",
-   "sideA":[{"isPick":false,"rank":86,"name":"Collin Murray-Boyles","nba":"TOR","pos":"PF","dob":"2005-06-10","ownerName":"Cooking Show"}],
-   "sideB":[{"isPick":true,"pickKey":"2026_R3_T2","year":2026,"round":3,"name":"2026 R3 · Seagulls","baseValue":61,"origName":"Seagulls","currName":"Seagulls","traded":false},{"isPick":true,"pickKey":"2026_R4_T2","year":2026,"round":4,"name":"2026 R4 · Seagulls","baseValue":25,"origName":"Seagulls","currName":"Seagulls","traded":false},{"isPick":true,"pickKey":"2027_R3_T2","year":2027,"round":3,"name":"2027 R3 · Seagulls","baseValue":27,"origName":"Seagulls","currName":"Seagulls","traded":false}],
-   "frozen":{"dynasty":{"valA":151,"valB":89,"verdict":"Side A Wins Big","cls":"lopsided","pctA":"62.9","pctB":"37.1"},"raw":{"valA":128,"valB":92,"verdict":"Slight Edge: Side A","cls":"slight","pctA":"58.2","pctB":"41.8"},"winnow":{"valA":105,"valB":104,"verdict":"Fair Trade","cls":"fair","pctA":"50.2","pctB":"49.8"}}}
-];
+// Basis-Trades kommen aus data/trade-history.js (TRADE_HISTORY_BASE) --
+// dort committed = fuer alle Ligamitglieder sichtbar. localStorage ist
+// nur das Staging des Admins fuer noch nicht committete Trades; der
+// Export-Button unten erzeugt die naechste Version der Datendatei.
+const HARDCODED_TRADES = (typeof TRADE_HISTORY_BASE !== 'undefined') ? TRADE_HISTORY_BASE : [];
 
 function setTHMode(mode) {
   TH_MODE = mode;
@@ -103,6 +92,72 @@ function showTradeHistory() {
   navigate('tradeHistoryPage');
 }
 
+// ── EXPORT FÜR REPO (nur Admin) ──────────────────────────────
+//  Erzeugt die komplette nächste Version von data/trade-history.js:
+//  Basis-Trades + alle nur-lokalen Trades aus localStorage, sortiert
+//  nach ID absteigend (= neueste zuerst, IDs sind Date.now()-Timestamps
+//  bzw. feste 17xxxxxxxxx-Nummern der Alt-Trades). Die Datei wird als
+//  Download angeboten — MANUELL als data/trade-history.js committen.
+//  Nach dem Commit greift der ID-Filter in loadTradeHistory() und die
+//  localStorage-Kopien werden automatisch ignoriert.
+function exportTradeHistoryFile() {
+  if (!isAdmin) { toast('⛔ Nur für Admins'); return; }
+  const all = loadTradeHistory(); // user-Trades zuerst, dann Basis
+  const merged = [...all].sort((a, b) => (b.id || 0) - (a.id || 0));
+  const localCount = all.length - HARDCODED_TRADES.length;
+
+  const header = [
+    '// ============================================================',
+    '//  TRADE HISTORY — Basis-Daten (für alle Ligamitglieder sichtbar)',
+    '// ============================================================',
+    '//  Diese Datei ist die einzige dauerhafte Quelle der Trade History.',
+    '//  Neue Trades landen zunächst nur im localStorage des Admins',
+    '//  (Staging). Der Button "⬇ Für Repo exportieren" auf der Trade-',
+    '//  History-Seite (nur Admin) erzeugt eine neue Version dieser Datei',
+    '//  mit allen lokalen Trades eingearbeitet — die heruntergeladene',
+    '//  Datei dann einfach als data/trade-history.js committen.',
+    '//  Nach dem Commit werden die localStorage-Kopien automatisch',
+    '//  ignoriert (ID-Abgleich in loadTradeHistory()).',
+    '//',
+    '//  MANUELL: Der Commit passiert nicht automatisch — Datei herunter-',
+    '//  laden und ins Repo pushen ist ein bewusst manueller Schritt',
+    '//  (kein Contents-Schreibtoken im öffentlichen Client-JS).',
+    '//',
+    '//  Zuletzt exportiert: ' + new Date().toISOString().slice(0, 10),
+    '// ============================================================',
+    'const TRADE_HISTORY_BASE = [',
+  ].join('\n');
+  const body = merged.map(t => '  ' + JSON.stringify(t)).join(',\n');
+  const fileContent = header + '\n' + body + '\n];\n';
+
+  const blob = new Blob([fileContent], { type: 'text/javascript' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'trade-history.js';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+  toast('⬇ ' + merged.length + ' Trades exportiert (' + localCount + ' neu) — als data/trade-history.js committen');
+}
+
+// Zeigt dem Admin auf der Trade-History-Seite an, wie viele Trades nur
+// lokal (noch nicht committed) existieren, und blendet den Export-Button ein.
+function _thUpdateExportUI() {
+  const btn = document.getElementById('thExportBtn');
+  if (!btn) return;
+  if (!isAdmin) { btn.style.display = 'none'; return; }
+  const localCount = loadTradeHistory().length - HARDCODED_TRADES.length;
+  btn.style.display = '';
+  btn.textContent = localCount > 0
+    ? '⬇ Für Repo exportieren (' + localCount + ' neu)'
+    : '⬇ Für Repo exportieren';
+  btn.style.borderColor = localCount > 0 ? 'var(--accent)' : 'var(--border)';
+  btn.style.color = localCount > 0 ? 'var(--accent)' : 'var(--muted)';
+}
+
 function adminAddPickToTrade(tradeId) {
   const year  = prompt('Pick Jahr (z.B. 2026):');
   if (!year) return;
@@ -184,6 +239,7 @@ function deleteTradeEntry(id) {
 }
 
 function renderTradeHistory() {
+  _thUpdateExportUI();
   const trades = loadTradeHistory();
   const container = document.getElementById('tradeHistoryList');
   if (!container) return;

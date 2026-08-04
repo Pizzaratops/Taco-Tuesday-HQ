@@ -179,17 +179,6 @@ async function duelSkip() {
   duelShowDuel();
 }
 
-function duelComputeScores() {
-  const wins = {};
-  DRAFT_2026.forEach(p => { wins[p.pick] = 0; });
-  Object.entries(duelVotes).forEach(([k, v]) => {
-    const m = k.match(/^w(\d+)_l(\d+)$/);
-    if (m) { const id = parseInt(m[1]); wins[id] = (wins[id]||0) + v; }
-  });
-  return wins;
-}
-
-
 // ── ELO ENGINE ───────────────────────────────────────────────────────────────
 
 // Starting ELO based on draft position: Pick 1 = 1800, Pick 60 = 1100
@@ -279,17 +268,6 @@ function duelGetNextPair() {
     if (rand <= 0) return c.pair;
   }
   return candidates[0].pair;
-}
-
-// Legacy stub — kept for compatibility
-function duelComputeScores() {
-  const wins = {};
-  DRAFT_2026.forEach(p => { wins[p.pick] = 0; });
-  Object.entries(duelVotes).forEach(([k, v]) => {
-    const m = k.match(/^w(\d+)_l(\d+)$/);
-    if (m) { const id = parseInt(m[1]); wins[id] = (wins[id] || 0) + v; }
-  });
-  return wins;
 }
 
 // ── BOARD (ELO-sorted) ───────────────────────────────────────────────────────

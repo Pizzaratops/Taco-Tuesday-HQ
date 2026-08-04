@@ -497,7 +497,7 @@ function _rerenderPage(pageId) {
   if (pageId === 'rollingRankingsPage')  showRollingRankings();
   if (pageId === 'bigBoardPage')         showBigBoard();
   if (pageId === 'draft26Page')          showDraft26();
-  if (pageId === 'draft27Page')          showDraft27();
+  if (pageId === 'draft27Page')          typeof showDraft27 === 'function' && showDraft27();
   if (pageId === 'lotteryPage')          showLottery();
   if (pageId === 'tradePage')            typeof showTrade === 'function' && showTrade();
   if (pageId === 'tradeFinderPage')      typeof showTradeFinder === 'function' && showTradeFinder();

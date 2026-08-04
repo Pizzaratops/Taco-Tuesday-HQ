@@ -659,18 +659,18 @@
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" id="searchInput" autocomplete="off" placeholder="Spieler, Team oder Position suchen…">
         </div>
-        <div id="posFilters" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
-        <button class="tag-btn" id="statFilterToggle">Stat-Filter</button>
+        <div id="dPosFilters" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+        <button class="tag-btn" id="dStatFilterToggle">Stat-Filter</button>
         <button class="tag-btn" id="hideDraftedBtn">Gedraftete ausblenden</button>
       </div>
 
-      <div id="statFilterPanel" class="panel" style="display:none; padding:12px 14px;">
+      <div id="dStatFilterPanel" class="panel" style="display:none; padding:12px 14px;">
         <div class="note" style="margin-bottom:8px;">
           Bis zu 3 Bedingungen gleichzeitig (UND-verknüpft), z.B. FG% &gt; 50 UND AST &gt; 5,5 UND POS = C
           (Position über die Filter-Buttons oben kombinieren). Wirkt zusätzlich zur Text-/Positionssuche.
         </div>
-        <div id="statFilterRows"></div>
-        <button class="tag-btn" id="statFilterClear" style="margin-top:6px;">Zurücksetzen</button>
+        <div id="dStatFilterRows"></div>
+        <button class="tag-btn" id="dStatFilterClear" style="margin-top:6px;">Zurücksetzen</button>
       </div>
 
       <div class="table-wrap">
@@ -1682,10 +1682,13 @@
       <h2 style="margin-bottom:4px;">📜 Trade History</h2>
       <p style="color:var(--muted);font-size:13px;">Alle gespeicherten Trades · Werte eingefroren zum Zeitpunkt des Trades</p>
     </div>
-    <div style="display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px;flex-shrink:0;">
+    <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+      <button id="thExportBtn" onclick="exportTradeHistoryFile()" style="display:none;padding:6px 14px;border-radius:10px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);transition:all 0.15s;" title="Erzeugt die nächste Version von data/trade-history.js zum Committen — erst nach dem Commit sind neue Trades für alle sichtbar">⬇ Für Repo exportieren</button>
+      <div style="display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px;">
       <button id="thModeDynasty" onclick="setTHMode('dynasty')" style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:var(--accent);color:white;transition:all 0.15s;">🏗️ Dynasty</button>
       <button id="thModeRaw" onclick="setTHMode('raw')" style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">📊 Raw</button>
       <button id="thModeWinnow" onclick="setTHMode('winnow')" style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">🏆 Win-Now</button>
+      </div>
     </div>
   </div>
   <div id="tradeHistoryList"></div>
@@ -2005,7 +2008,8 @@
 <script src="js/best-available.js?v=5"></script>
 <script src="js/trade-analyzer.js?v=5"></script>
 <script src="js/trade-finder.js?v=5"></script>
-<script src="js/trade-history.js?v=5"></script>
+<script src="data/trade-history.js?v=1"></script>
+<script src="js/trade-history.js?v=6"></script>
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
