@@ -7,13 +7,61 @@ TEAMS.forEach(t=>teamMap[t.id]=t);
 
 function getInitials(name){return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
 
+// ── Team-Bilanz ──────────────────────────────────────────────
+//  Live-Bilanzen kommen taeglich aus dem ESPN-Sync (TEAM_RECORDS_LIVE
+//  in data/rosters-live.js). Gating ueber die Saisonkennung: solange
+//  ESPN_SEASON in js/espn-sync.js noch auf 2026 (= archivierte Saison
+//  2025/26) steht, wird die statische 0-0-0 aus teams-rosters.js
+//  gezeigt. Nach dem Saisonwechsel-Update im Oktober (ESPN_SEASON ->
+//  2027) erscheinen die echten Bilanzen automatisch — kein weiterer
+//  manueller Schritt noetig. Die 2025/26-Endstaende liegen im Archiv
+//  (data/season-2025-26.js, Seite "Saison 2025/26").
+function _displayRecord(t) {
+  if (typeof TEAM_RECORDS_LIVE !== 'undefined'
+      && TEAM_RECORDS_LIVE.season >= 2027
+      && TEAM_RECORDS_LIVE.records
+      && TEAM_RECORDS_LIVE.records[t.id]) {
+    return TEAM_RECORDS_LIVE.records[t.id];
+  }
+  return t.record;
+}
+
+// ── Projection-Ranks fuer das Team-Staerke-Badge ─────────────
+//  Rangliste aller Spieler nach Composite-Z aus LIVE_PROJECTIONS
+//  (Baseline + Live Blend, wird taeglich neu gebaut). Einmal pro
+//  Seitenaufruf berechnet und gecacht. Das Badge ist damit genauso
+//  automatisiert wie die Projections selbst.
+let _projRankMap = null;
+function _getProjRankMap() {
+  if (_projRankMap) return _projRankMap;
+  _projRankMap = new Map();
+  if (typeof LIVE_PROJECTIONS !== 'undefined') {
+    Object.entries(LIVE_PROJECTIONS)
+      .filter(([, s]) => typeof s.z === 'number')
+      .sort((a, b) => b[1].z - a[1].z)
+      .forEach(([name], i) => {
+        _projRankMap.set(normalizeName(name).toLowerCase(), i + 1);
+      });
+  }
+  return _projRankMap;
+}
+
 function teamStrengthBadge(teamId) {
   const roster = ROSTERS[teamId] || [];
-  const ranks = roster
-    .map(p => getDynastyRank(p.name))
-    .filter(r => r !== null)
-    .sort((a, b) => a - b)
-    .slice(0, 10);
+  const projMap = _getProjRankMap();
+
+  // Basis: aktuelle Projections. Fallback auf Dynasty-Ranks nur, wenn
+  // (noch) keine Projections geladen sind — damit die Karte nie leer ist.
+  let ranks = roster
+    .map(p => projMap.get(normalizeName(p.name).toLowerCase()) ?? null)
+    .filter(r => r !== null);
+  let label = 'Ø Top-20 Rank';
+  let tip = 'Durchschnittlicher Projections Rang der 20 besten Spieler des Kaders (Basis: aktuelle 2026/27 Projections, täglich aktualisiert)';
+  if (!ranks.length) {
+    ranks = roster.map(p => getDynastyRank(p.name)).filter(r => r !== null);
+    tip = 'Durchschnittlicher Dynasty Rang der 20 besten Spieler des Kaders';
+  }
+  ranks = ranks.sort((a, b) => a - b).slice(0, 20);
   if (!ranks.length) return '';
   const avg = Math.round(ranks.reduce((a, b) => a + b, 0) / ranks.length);
   // Farbe nach Stärke
@@ -31,8 +79,8 @@ function teamStrengthBadge(teamId) {
     else if (avg <= 150) { color = '#2a7ab8'; bg = 'rgba(42,122,184,0.15)'; }
     else                 { color = 'var(--muted)'; bg = 'rgba(123,127,158,0.12)'; }
   }
-  return `<div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;">
-    <span style="font-size:10px;color:var(--muted);font-weight:600;">Ø Top-10 Rank</span>
+  return `<div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;" title="${tip}">
+    <span style="font-size:10px;color:var(--muted);font-weight:600;">${label}</span>
     <span style="font-size:11px;font-weight:800;padding:2px 9px;border-radius:20px;background:${bg};color:${color};">#${avg}</span>
   </div>`;
 }
@@ -44,10 +92,39 @@ function renderHome() {
       <div class="team-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</div>
       <div class="team-name">${t.name}</div>
       <div class="team-owner">${t.owner}</div>
-      <div class="team-record">📊 ${t.record}</div>
+      <div class="team-record">📊 ${_displayRecord(t)}</div>
       ${teamStrengthBadge(t.id)}
     </div>`;
   }).join('');
+}
+
+// ── Saison-Archiv 2025/26 ────────────────────────────────────
+//  Rendert die eingefrorene Abschlusstabelle aus data/season-2025-26.js
+//  auf der Archivseite. Team-Name/Owner/Farbe kommen live aus TEAMS,
+//  damit Umbenennungen nicht rueckwirkend die Archivdaten aendern
+//  muessen — nur die Bilanzen selbst sind eingefroren.
+function renderSeasonArchive() {
+  const host = document.getElementById('seasonArchiveTable');
+  if (!host || typeof SEASON_2025_26 === 'undefined') return;
+  host.innerHTML = SEASON_2025_26.standings.map(row => {
+    const t = teamMap[row.teamId];
+    if (!t) return '';
+    const c = getTeamColor(t);
+    const medal = row.place === 1 ? '🥇' : row.place === 2 ? '🥈' : row.place === 3 ? '🥉' : '';
+    return `<div class="archive-row" onclick="showTeam(${t.id})">
+      <span class="archive-place">${row.place}</span>
+      <span class="archive-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</span>
+      <span class="archive-team">
+        <span class="archive-team-name">${t.name} ${medal}</span>
+        <span class="archive-team-owner">${t.owner}</span>
+      </span>
+      <span class="archive-record">${row.record}</span>
+    </div>`;
+  }).join('');
+}
+function showSeasonArchive() {
+  renderSeasonArchive();
+  navigate('season2526Page');
 }
 
 function showTeam(id){
@@ -66,7 +143,7 @@ function showTeam(id){
     <div class="team-page-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</div>
     <div>
       <div class="team-page-name">${t.name}</div>
-      <div class="team-page-owner">${t.owner} &nbsp;·&nbsp; <span style="color:var(--green);">📊 ${t.record}</span></div>
+      <div class="team-page-owner">${t.owner} &nbsp;·&nbsp; <span style="color:var(--green);">📊 ${_displayRecord(t)}</span></div>
     </div>`;
   document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',i===0));
   renderTab(); navigate('teamPage');
@@ -387,7 +464,7 @@ html += `<td>
 
 // Which group each page belongs to (for group-button highlighting)
 const SUBNAV_PAGES = {
-  homePage:'home', draftboardPage:'draftboard', draft26Page:'draft26', draft27Page:'draft27', bigBoardPage:'bigBoard',
+  homePage:'home', season2526Page:'season2526', draftboardPage:'draftboard', draft26Page:'draft26', draft27Page:'draft27', bigBoardPage:'bigBoard',
   duelPage:'duel', duelBoardPage:'duelboard', duelSettingsPage:'duelsettings',
   lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings', dynastyRollingPage:'dynastyrolling',
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
@@ -486,6 +563,7 @@ function _rerenderPage(pageId) {
   if (pageId === 'adminSettingsPage')    _asInit();
   if (pageId === 'tradeHistoryPage')     renderTradeHistory();
   if (pageId === 'draftboardPage')       showDraftboard();
+  if (pageId === 'season2526Page')       renderSeasonArchive();
   if (pageId === 'bestAvailPage')        showBestAvail();
   if (pageId === 'rankingsPage')         showRankings();
   if (pageId === 'dynastyRollingPage')   showDynastyRolling();

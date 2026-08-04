@@ -2,18 +2,18 @@
 //  TEAMS
 // ============================================================
 const TEAMS = [
-  { id:1,  name:"Fighting Illini",                 owner:"Kong Power",          record:"112-41-0", color:"#6c63ff", lightColor:"#E84A27" },
-  { id:2,  name:"Seagulls",                        owner:"Möwe",                record:"99-53-1",  color:"#29b6f6", lightColor:"#2a7ab8" },
-  { id:3,  name:"Neukoelln Hustlers",              owner:"Timo Xtremo",         record:"95-57-1",  color:"#ff6584", lightColor:"#b43c64" },
-  { id:4,  name:"Leaveland Cavaliers",             owner:"Sven",                record:"87-65-1",  color:"#4caf81", lightColor:"#2d7a50" },
-  { id:5,  name:"Anadolu Ballers",                 owner:"Murat Oguz",          record:"82-68-3",  color:"#f5c842", lightColor:"#9a6e10" },
-  { id:6,  name:"3-POINT MAFIA",                   owner:"Patrick & Bennet",    record:"77-74-2",  color:"#e040fb", lightColor:"#7b3fa8" },
-  { id:7,  name:"Always Money In The BananaStand", owner:"KraftPaket Knödel",   record:"70-75-8",  color:"#ff9800", lightColor:"#c06020" },
-  { id:8,  name:"Kawhi So Serious",                owner:"Harald Peterson",     record:"73-78-2",  color:"#ef5350", lightColor:"#a83030" },
-  { id:9,  name:"Cooking Show",                    owner:"Stefan Estepham",     record:"65-85-3",  color:"#26c6da", lightColor:"#1a8080" },
-  { id:10, name:"S-Town Grizzlies",                owner:"Jan Schattschneider", record:"62-89-2",  color:"#66bb6a", lightColor:"#3d7a30" },
-  { id:11, name:"Double Dribble Trouble",          owner:"Nils",                record:"45-107-1", color:"#ffa726", lightColor:"#b86020" },
-  { id:12, name:"Vancouver Curry-Wurst",           owner:"German Bratwurst",    record:"39-114-0", color:"#78909c", lightColor:"#607080" },
+  { id:1,  name:"Fighting Illini",                 owner:"Kong Power",          record:"0-0-0", color:"#6c63ff", lightColor:"#E84A27" },
+  { id:2,  name:"Seagulls",                        owner:"Möwe",                record:"0-0-0",  color:"#29b6f6", lightColor:"#2a7ab8" },
+  { id:3,  name:"Neukoelln Hustlers",              owner:"Timo Xtremo",         record:"0-0-0",  color:"#ff6584", lightColor:"#b43c64" },
+  { id:4,  name:"Leaveland Cavaliers",             owner:"Sven",                record:"0-0-0",  color:"#4caf81", lightColor:"#2d7a50" },
+  { id:5,  name:"Anadolu Ballers",                 owner:"Murat Oguz",          record:"0-0-0",  color:"#f5c842", lightColor:"#9a6e10" },
+  { id:6,  name:"3-POINT MAFIA",                   owner:"Patrick & Bennet",    record:"0-0-0",  color:"#e040fb", lightColor:"#7b3fa8" },
+  { id:7,  name:"Always Money In The BananaStand", owner:"KraftPaket Knödel",   record:"0-0-0",  color:"#ff9800", lightColor:"#c06020" },
+  { id:8,  name:"Kawhi So Serious",                owner:"Harald Peterson",     record:"0-0-0",  color:"#ef5350", lightColor:"#a83030" },
+  { id:9,  name:"Cooking Show",                    owner:"Stefan Estepham",     record:"0-0-0",  color:"#26c6da", lightColor:"#1a8080" },
+  { id:10, name:"S-Town Grizzlies",                owner:"Jan Schattschneider", record:"0-0-0",  color:"#66bb6a", lightColor:"#3d7a30" },
+  { id:11, name:"Double Dribble Trouble",          owner:"Nils",                record:"0-0-0", color:"#ffa726", lightColor:"#b86020" },
+  { id:12, name:"Vancouver Curry-Wurst",           owner:"German Bratwurst",    record:"0-0-0", color:"#78909c", lightColor:"#607080" },
 ];
 function getTeamColor(t) { return document.body.classList.contains('light') ? t.lightColor : t.color; }
 

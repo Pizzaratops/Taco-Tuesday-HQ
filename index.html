@@ -209,6 +209,9 @@
     <div class="home-title">The Taco Tuesday League</div>
     <div class="home-sub">Klick auf Dein Team für Deine Spieler und Deine Picks</div>
     <div class="team-grid" id="teamGrid"></div>
+    <div style="margin-top:14px;text-align:right;">
+      <a href="javascript:void(0)" onclick="showSeasonArchive()" style="font-size:12px;color:var(--muted);text-decoration:none;font-weight:600;">📜 Saison 2025/26 ansehen →</a>
+    </div>
 
     <!-- Datenfluss-Visualisierung. Markup ist bewusst leer, der Inhalt
          steht als Datenstruktur in js/flow-diagram.js (FLOW_STAGES) und
@@ -241,6 +244,19 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- SAISON-ARCHIV 2025/26 -->
+<div class="page" id="season2526Page">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:6px;">
+    <h1 style="margin:0;">📜 Saison 2025/26</h1>
+    <a href="javascript:void(0)" onclick="navigate('homePage')" style="font-size:12px;color:var(--muted);text-decoration:none;font-weight:600;">← Zurück zur Übersicht</a>
+  </div>
+  <div class="note" style="margin-bottom:18px;">
+    Abschlusstabelle der Regular Season 2025/26 — eingefroren beim Saisonwechsel.
+    Die Team-Karten auf der Startseite zeigen ab jetzt die laufende Saison 2026/27.
+  </div>
+  <div id="seasonArchiveTable" class="archive-table"></div>
 </div>
 
 <!-- TEAM PAGE -->
@@ -1977,6 +1993,7 @@
 
 <!-- Data (load first — other scripts depend on these constants) -->
 <script src="data/teams-rosters.js?v=5"></script>
+<script src="data/season-2025-26.js?v=1"></script>
 <script src="data/rosters-live.js?v=1"></script>
 <script src="data/picks.js?v=5"></script>
 <script src="data/rankings.js?v=5"></script>

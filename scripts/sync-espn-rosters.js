@@ -73,6 +73,7 @@ async function main() {
   if (!teams.length) throw new Error('Keine Teams in ESPN-Antwort — Liga-ID/Saison prüfen.');
 
   const rosters = {};
+  const records = {};
   teams.forEach(espnTeam => {
     const ttId = cfg.ESPN_TO_TT_TEAM[espnTeam.id];
     if (!ttId) return;
@@ -86,6 +87,11 @@ async function main() {
       const nbaTeam = cfg.ESPN_NBA_MAP[p.proTeamId] || 'FA';
       return name ? { name, pos, team: nbaTeam } : null;
     }).filter(Boolean);
+
+    // W-L-T Bilanz aus mTeam. Fehlt der Block (z.B. vor dem ersten
+    // Spieltag), wird 0-0-0 geschrieben.
+    const ov = espnTeam.record?.overall || {};
+    records[ttId] = `${ov.wins || 0}-${ov.losses || 0}-${ov.ties || 0}`;
   });
 
   const totalPlayers = Object.values(rosters).reduce((s, r) => s + r.length, 0);
@@ -117,6 +123,18 @@ async function main() {
 
 const ROSTERS_LIVE = {
 ${rosterLines.join(',\n')}
+};
+
+// W-L-T Bilanzen je Team aus derselben ESPN-Antwort (mTeam).
+// "season" ist die ESPN-Saisonkennung (2027 = Saison 2026/27). Das UI
+// (js/navigation.js, _displayRecord) zeigt diese Bilanzen nur, wenn
+// season >= 2027 — solange ESPN_SEASON in js/espn-sync.js noch auf der
+// archivierten Vorsaison steht, bleiben die Karten bei 0-0-0. Mit dem
+// Saisonwechsel-Update von ESPN_SEASON im Oktober werden die Bilanzen
+// automatisch taeglich live, ohne weiteren Handgriff.
+const TEAM_RECORDS_LIVE = {
+  season: ${cfg.ESPN_SEASON},
+  records: ${JSON.stringify(records)}
 };
 `;
 
