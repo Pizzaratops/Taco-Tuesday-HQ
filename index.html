@@ -37,6 +37,10 @@
          Standardmaessig versteckt, erscheint nur wenn der Browser das
          beforeinstallprompt-Event feuert (js/init.js). -->
     <button id="pwaInstallBtn" onclick="pwaInstallApp()" style="display:none;background:rgba(108,99,255,0.12);border:1.5px solid rgba(108,99,255,0.35);color:var(--accent);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:6px;">⬇️ App installieren</button>
+    <!-- iOS-Pendant: beforeinstallprompt feuert dort nie, deshalb eigener
+         Button mit den 3 manuellen Schritten (Teilen > Zum Home-Bildschirm).
+         Sichtbarkeit wird rein per JS gesteuert (pwaShowIosHint in init.js). -->
+    <button id="pwaIosHintBtn" onclick="pwaShowIosSteps()" style="display:none;background:rgba(108,99,255,0.12);border:1.5px solid rgba(108,99,255,0.35);color:var(--accent);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:6px;">📲 Zum Home-Bildschirm</button>
     <!-- ESPN Sync Button -->
     <button id="espnSyncBtn" onclick="if(isAdmin)espnSync();else toast('⛔ Nur für Admins')" title="Nur Admins können manuell syncen" style="background:rgba(128,128,128,0.08);border:1.5px solid rgba(128,128,128,0.2);color:var(--muted);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:default;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:6px;">🔄 ESPN Sync</button>
     <!-- Admin Settings link (visible only when logged in) -->

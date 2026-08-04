@@ -58,4 +58,22 @@ window.addEventListener('appinstalled', () => {
   if (btn) btn.style.display = 'none';
 });
 
+// iOS: kein beforeinstallprompt moeglich -- eigener Button mit Anleitung.
+// Nur zeigen wenn (a) iOS Safari/Chrome-auf-iOS (technisch immer Safari-
+// Engine, Apple erzwingt das) UND (b) noch nicht bereits als installierte
+// App gestartet (dann macht "installieren" keinen Sinn mehr).
+(function () {
+  const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS meldet sich als Mac
+  const isStandalone = window.navigator.standalone === true ||
+    window.matchMedia('(display-mode: standalone)').matches;
+  if (isIos && !isStandalone) {
+    const btn = document.getElementById('pwaIosHintBtn');
+    if (btn) btn.style.display = '';
+  }
+})();
+function pwaShowIosSteps() {
+  toast('📲 Teilen-Symbol tippen → "Zum Home-Bildschirm"');
+}
+
 // ============================================================
