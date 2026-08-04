@@ -223,12 +223,14 @@
           Nichts davon wird von Hand gepflegt, bis auf die Preseason Baseline und das Dynasty Ranking.
         </div>
         <div class="flow-toggle">
-          <button class="flow-toggle-btn active" data-mode="compact"  onclick="flowSetMode('compact')">Kompakt</button>
+          <button class="flow-toggle-btn active" data-mode="compact"   onclick="flowSetMode('compact')">Kompakt</button>
           <button class="flow-toggle-btn"        data-mode="detailed" onclick="flowSetMode('detailed')">Ausführlich</button>
+          <button class="flow-toggle-btn"        data-mode="flowchart" onclick="flowSetMode('flowchart')">Flow-Chart</button>
         </div>
       </div>
 
       <div id="flowDiagram"></div>
+      <div id="flowChartDiagram" style="display:none;"></div>
 
       <div class="flow-foot">
         <strong>Warum Z-Scores?</strong> In einer 9-Cat Liga zählt jede Kategorie gleich viel, aber die Rohzahlen

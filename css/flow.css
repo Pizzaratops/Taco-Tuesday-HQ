@@ -242,6 +242,19 @@
 }
 .flow-foot strong { color: var(--text); font-weight: 700; }
 
+/* ─── Flow-Chart-Ansicht (SVG, js/flow-diagram.js renderFlowChart) ─── */
+.flowchart-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+}
+.flowchart-scroll svg { display: block; height: auto; }
+
+.flowchart-node rect:first-child { transition: stroke 0.15s; }
+.flowchart-node.is-clickable { cursor: pointer; }
+.flowchart-node.is-clickable:hover rect:first-child { stroke: var(--accent); }
+.flowchart-node.is-clickable:hover text { fill: var(--accent); }
+
 /* ─── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 720px) {
   .flow-stage, .flow-connector { grid-template-columns: 1fr; gap: 12px; }

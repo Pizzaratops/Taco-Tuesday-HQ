@@ -276,10 +276,186 @@ function _flowEsc(s) {
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+// ============================================================
+//  FLOW-CHART-ANSICHT — dieselben FLOW_STAGES als echtes
+//  Boxen-und-Pfeile-Diagramm statt Kartenraster. Wird als SVG
+//  gerendert, damit es sich (wie der Rest der Seite) frei
+//  skaliert und ohne externe Library auskommt.
+//
+//  Layout: Stufe für Stufe von oben nach unten. Je Stufe eine
+//  Zeile aus Boxen (eine je Karte), dazwischen ein einzelner
+//  Pfeil von der Zeilenmitte zur naechsten Zeilenmitte -- das
+//  entspricht genau dem "connector"-Text, der in der Kartenan-
+//  sicht schon zwischen den Stufen steht, nur jetzt als echte
+//  Linie mit Pfeilspitze statt als Text mit ▼-Symbol.
+//
+//  Textumbruch ist eine grobe Schaetzung (Zeichenbreite ≈ 0.58
+//  × Schriftgroesse), keine echte Textmessung -- bei den kurzen,
+//  kuratierten Titeln reicht das. Faellt ein Titel doch zu lang
+//  aus, wird er nicht abgeschnitten, sondern die Box waechst in
+//  der Hoehe leicht mit (kein Datenverlust).
+// ============================================================
+
+function _flowWrap(text, maxWidth, fontSize) {
+  const charW = fontSize * 0.58;
+  const maxChars = Math.max(4, Math.floor(maxWidth / charW));
+  const words = String(text).split(/\s+/);
+  const lines = [];
+  let cur = '';
+  words.forEach(w => {
+    const candidate = cur ? cur + ' ' + w : w;
+    if (candidate.length > maxChars && cur) {
+      lines.push(cur);
+      cur = w;
+    } else {
+      cur = candidate;
+    }
+  });
+  if (cur) lines.push(cur);
+  return lines;
+}
+
+function _flowChartKindColor(kind) {
+  return {
+    source: 'var(--accent2)',
+    script: 'var(--accent)',
+    data: 'var(--green)',
+    view: '#f5c842',
+    new: 'var(--accent2)',
+  }[kind] || 'var(--border)';
+}
+
+const FLOW_CHART_KIND_LABELS = [
+  ['source', 'Quelle'],
+  ['script', 'Skript'],
+  ['data', 'Daten'],
+  ['view', 'Ansicht'],
+  ['new', 'Neu'],
+];
+
+function _flowChartSvg() {
+  const W = 1180;
+  const GAP = 14;
+  const NODE_H = 60;
+  const STAGE_LABEL_GAP = 6;
+  const CONNECTOR_H = 44;
+  const PAD_TOP = 8;
+  const titleFS = 12.5, noteFS = 11, connFS = 10.5, nameFS = 13.5, numFS = 10.5;
+
+  let y = PAD_TOP;
+  const parts = [];
+
+  FLOW_STAGES.forEach((stage, si) => {
+    // ── Stufen-Label (Nummer, Name, Notiz) ──
+    const noteLines = _flowWrap(stage.note, W - 4, noteFS);
+    const labelY0 = y;
+    parts.push(`<text x="0" y="${y + numFS}" font-family="DM Mono, monospace" font-size="${numFS}" letter-spacing="1.4" fill="var(--accent)" font-weight="600">STUFE ${_flowEsc(stage.num)}</text>`);
+    parts.push(`<text x="112" y="${y + numFS}" font-family="DM Sans, sans-serif" font-size="${nameFS}" fill="var(--text)" font-weight="700">${_flowEsc(stage.name)}</text>`);
+    y += numFS + 5;
+    noteLines.forEach(line => {
+      parts.push(`<text x="0" y="${y + noteFS}" font-family="DM Sans, sans-serif" font-size="${noteFS}" fill="var(--muted)">${_flowEsc(line)}</text>`);
+      y += noteFS + 4;
+    });
+    y += STAGE_LABEL_GAP;
+
+    // ── Knoten-Zeile ──
+    const n = stage.cards.length;
+    const nodeW = (W - GAP * (n - 1)) / n;
+    let x = 0;
+    const rowTop = y;
+    const nodePad = 24; // 12px oben + 12px unten
+    stage.cards.forEach(c => {
+      const color = _flowChartKindColor(c.kind);
+      const linked = c.page && typeof window[c.page] === 'function';
+      const cls = 'flowchart-node' + (linked ? ' is-clickable' : '');
+      const click = linked ? ` onclick="${c.page}()"` : '';
+      const titleLines = _flowWrap(c.icon + ' ' + c.title, nodeW - 20, titleFS).slice(0, 2);
+      const nodeHActual = Math.max(NODE_H, titleLines.length * (titleFS + 4) + nodePad);
+      // Lokale y-Koordinate (relativ zur Gruppe, die schon per transform
+      // um rowTop verschoben ist -- rowTop hier NICHT nochmal addieren).
+      const firstLineY = (nodeHActual - titleLines.length * (titleFS + 4)) / 2 + titleFS;
+
+      const tooltip = (c.files && c.files.length)
+        ? `<title>${_flowEsc(c.files.join(', '))}</title>` : '';
+
+      const textLines = titleLines.map((line, li) =>
+        `<text x="${nodeW / 2}" y="${firstLineY + li * (titleFS + 4)}" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="${titleFS}" font-weight="700" fill="var(--text)">${_flowEsc(line)}</text>`
+      ).join('');
+
+      parts.push(`<g class="${cls}" transform="translate(${x},${rowTop})"${click}>${tooltip}
+        <rect width="${nodeW}" height="${nodeHActual}" rx="10" fill="var(--surface)" stroke="var(--border)" stroke-width="1.3"/>
+        <rect width="4" height="${nodeHActual}" rx="2" fill="${color}"/>
+        ${textLines}
+      </g>`);
+      x += nodeW + GAP;
+    });
+
+    const maxNodeH = Math.max(NODE_H, ...stage.cards.map(c => {
+      const lines = _flowWrap(c.icon + ' ' + c.title, nodeW - 20, titleFS).slice(0, 2).length;
+      return lines * (titleFS + 4) + nodePad;
+    }));
+    y = rowTop + maxNodeH;
+
+    // ── Pfeil zur naechsten Stufe ──
+    if (si < FLOW_STAGES.length - 1 && stage.connector) {
+      const lineX = W / 2;
+      const lineY0 = y + 8;
+      const lineY1 = y + CONNECTOR_H - 10;
+      parts.push(`<line x1="${lineX}" y1="${lineY0}" x2="${lineX}" y2="${lineY1}" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#flowArrowHead)"/>`);
+      const connLines = _flowWrap(stage.connector, W / 2 - 30, connFS);
+      connLines.forEach((line, li) => {
+        parts.push(`<text x="${lineX + 12}" y="${(lineY0 + lineY1) / 2 - (connLines.length - 1) * 6 + li * 12 + 4}" font-family="DM Mono, monospace" font-size="${connFS}" fill="var(--muted)">${_flowEsc(line)}</text>`);
+      });
+      y += CONNECTOR_H;
+    } else {
+      y += 10;
+    }
+  });
+
+  // ── Legende ──
+  y += 14;
+  parts.push(`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="var(--border)" stroke-width="1"/>`);
+  y += 22;
+  let lx = 0;
+  FLOW_CHART_KIND_LABELS.forEach(([kind, label]) => {
+    const color = _flowChartKindColor(kind);
+    parts.push(`<rect x="${lx}" y="${y - 9}" width="10" height="10" rx="3" fill="${color}"/>`);
+    parts.push(`<text x="${lx + 16}" y="${y}" font-family="DM Sans, sans-serif" font-size="11" fill="var(--muted)">${_flowEsc(label)}</text>`);
+    lx += 16 + label.length * 6.4 + 26;
+  });
+  y += 16;
+
+  return { width: W, height: y, body: parts.join('') };
+}
+
+function renderFlowChart() {
+  const host = document.getElementById('flowChartDiagram');
+  if (!host) return;
+  const { width, height, body } = _flowChartSvg();
+  host.innerHTML = `<div class="flowchart-scroll"><svg viewBox="0 0 ${width} ${height}" width="${width}" style="min-width:720px;">
+    <defs>
+      <marker id="flowArrowHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/>
+      </marker>
+    </defs>
+    ${body}
+  </svg></div>`;
+  host.dataset.rendered = '1';
+}
+
 function flowSetMode(mode) {
   const sec = document.getElementById('flowSection');
   if (!sec) return;
   sec.classList.toggle('detailed', mode === 'detailed');
+  const cardsHost = document.getElementById('flowDiagram');
+  const chartHost = document.getElementById('flowChartDiagram');
+  if (cardsHost) cardsHost.style.display = mode === 'flowchart' ? 'none' : '';
+  if (chartHost) {
+    chartHost.style.display = mode === 'flowchart' ? '' : 'none';
+    // Lazy: erst beim ersten Wechsel in den Flow-Chart-Modus rendern,
+    // Detail-Umschaltung braucht keinen Re-Render (statisches Diagramm).
+    if (mode === 'flowchart' && !chartHost.dataset.rendered) renderFlowChart();
+  }
   document.querySelectorAll('.flow-toggle-btn').forEach(b =>
     b.classList.toggle('active', b.dataset.mode === mode));
   try { localStorage.setItem('tthqFlowMode', mode); } catch (e) { /* Privatmodus */ }
