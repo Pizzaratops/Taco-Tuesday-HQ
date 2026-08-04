@@ -31,6 +31,14 @@
     --pick-traded-color: #b43c64;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    /* Sicherheitsnetz: verhindert, dass ein einzelnes zu breites Element
+       irgendwo in der App (z.B. ein nicht schrumpfendes Input-Feld in
+       einer Flex-Reihe) die GESAMTE Seite horizontal verschiebt. Einzelne
+       Container mit gewolltem Scroll (z.B. .draftboard-grid, .ls-table-wrap)
+       nutzen weiterhin ihr eigenes overflow-x:auto und sind davon unberührt. */
+    overflow-x: hidden;
+  }
   body {
     background: var(--bg);
     color: var(--text);

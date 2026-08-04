@@ -7,7 +7,15 @@
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taco Tuesday HQ 🌮</title>
-  <link rel="manifest" href="manifest.json?v=5">
+  <link rel="manifest" href="manifest.json?v=6">
+  <!-- iOS Safari nutzt manifest.json kaum -- fuer "Zum Home-Bildschirm" (Teilen-Menü,
+       immer vorhanden, aber ohne diese Tags nur ein Screenshot-Lesezeichen statt
+       eines echten App-Icons im Vollbild) braucht es diese Apple-eigenen Tags. -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Taco Tuesday HQ">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="theme-color" content="#fff5ee">
   <link rel="stylesheet" href="css/style.css?v=5">
   <link rel="stylesheet" href="css/big-board.css?v=5">
   <link rel="stylesheet" href="css/projections.css?v=1">
@@ -23,6 +31,12 @@
   <button class="back-btn" id="backBtn" onclick="goHome()">← Back</button>
   <div class="logo">🌮 Taco Tuesday <span>HQ</span></div>
   <div class="header-right">
+    <!-- App-Installieren-Button (nur Android/Chrome/Edge -- iOS hat keinen
+         programmatischen Install-Trigger, dort bleibt nur "Teilen > Zum
+         Home-Bildschirm", siehe apple-mobile-web-app-* Tags im <head>).
+         Standardmaessig versteckt, erscheint nur wenn der Browser das
+         beforeinstallprompt-Event feuert (js/init.js). -->
+    <button id="pwaInstallBtn" onclick="pwaInstallApp()" style="display:none;background:rgba(108,99,255,0.12);border:1.5px solid rgba(108,99,255,0.35);color:var(--accent);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:6px;">⬇️ App installieren</button>
     <!-- ESPN Sync Button -->
     <button id="espnSyncBtn" onclick="if(isAdmin)espnSync();else toast('⛔ Nur für Admins')" title="Nur Admins können manuell syncen" style="background:rgba(128,128,128,0.08);border:1.5px solid rgba(128,128,128,0.2);color:var(--muted);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:default;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:6px;">🔄 ESPN Sync</button>
     <!-- Admin Settings link (visible only when logged in) -->
@@ -2053,6 +2067,22 @@
 <script src="data/offseason-rankings.js?v=1"></script>
 <script src="js/player-rankings.js?v=1"></script>
   <script src="js/init.js?v=5"></script>
+
+<script>
+  // Service Worker existierte im Repo, war aber nie registriert. Er cached
+  // bewusst NICHTS (siehe service-worker.js) -- passt zur No-Cache-Philosophie
+  // der App (siehe Meta-Tags oben) -- erfuellt aber das Installierbarkeits-
+  // Kriterium fuer Android/Chrome (Adressleisten-Icon bzw. Mini-Infobar) und
+  // raeumt beim ersten Aktivieren alte Caches aus fruaheren SW-Versionen auf.
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js?v=1').catch(() => {
+        // Kein Beinbruch -- die Seite funktioniert auch ohne SW einwandfrei,
+        // er ist nur fuer die "Installierbar"-Erkennung von Android/Chrome da.
+      });
+    });
+  }
+</script>
 
 </body>
 </html>

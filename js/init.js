@@ -25,3 +25,37 @@ initEspnSyncBtn();
 espnSync(true);
 
 // ============================================================
+//  PWA-INSTALL-BUTTON (Android/Chrome/Edge)
+// ============================================================
+//  iOS Safari feuert dieses Event NIE -- dort gibt es grundsaetzlich
+//  keinen programmatischen Install-Trigger, nur den manuellen Weg ueber
+//  "Teilen > Zum Home-Bildschirm" (siehe apple-mobile-web-app-* Tags im
+//  <head> fuer ein sauberes Ergebnis dabei). Auf Android/Chrome/Edge
+//  wird der Button eingeblendet, sobald der Browser die Seite als
+//  installierbar erkennt (gueltiges Manifest + registrierter Service
+//  Worker + HTTPS -- alles seit diesem Update erfuellt).
+let _pwaDeferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  _pwaDeferredPrompt = e;
+  const btn = document.getElementById('pwaInstallBtn');
+  if (btn) btn.style.display = '';
+});
+function pwaInstallApp() {
+  if (!_pwaDeferredPrompt) return;
+  _pwaDeferredPrompt.prompt();
+  _pwaDeferredPrompt.userChoice.finally(() => {
+    _pwaDeferredPrompt = null;
+    const btn = document.getElementById('pwaInstallBtn');
+    if (btn) btn.style.display = 'none';
+  });
+}
+// Bereits installiert (oder Browser ohne beforeinstallprompt-Unterstuetzung,
+// z.B. iOS/Firefox) -- Button bleibt dauerhaft versteckt, kein Fehlerfall.
+window.addEventListener('appinstalled', () => {
+  _pwaDeferredPrompt = null;
+  const btn = document.getElementById('pwaInstallBtn');
+  if (btn) btn.style.display = 'none';
+});
+
+// ============================================================

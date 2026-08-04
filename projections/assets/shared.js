@@ -71,6 +71,7 @@ const MFHFB_NAME_ALIASES = {
   'alex sarr': 'alexandre sarr',
   'cam boozer': 'cameron boozer',
   'cameron johnson': 'cam johnson',
+  'nic claxton': 'nicolas claxton',
 };
 function mfhfbResolveAlias(normalizedName) {
   return MFHFB_NAME_ALIASES[normalizedName] || normalizedName;
@@ -391,7 +392,8 @@ function mfhfbBuildCurrentTeamIndex() {
 // historische Team aus PLAYER_RATES weiterverwenden statt "-" anzuzeigen).
 function mfhfbCurrentTeamAbbr(playerName, fallbackAbbr) {
   const idx = mfhfbBuildCurrentTeamIndex();
-  return idx.get(mfhfbNormalizeName(playerName)) || fallbackAbbr;
+  const norm = mfhfbNormalizeName(playerName);
+  return idx.get(norm) || idx.get(mfhfbResolveAliasReverse(norm)) || fallbackAbbr;
 }
 
 // Überschreibt in-place das "team"-Feld einer Liste von Spielerobjekten
@@ -425,7 +427,13 @@ function mfhfbApplyCurrentTeams(playerRates) {
 function mfhfbIsOnCurrentRoster(playerName, fallbackTeam) {
   const idx = mfhfbBuildCurrentTeamIndex();
   if (idx.size === 0) return mfhfbIsValidCurrentTeam(fallbackTeam); // Rosterdaten nicht geladen -- Notbremse
-  return idx.has(mfhfbNormalizeName(playerName));
+  const norm = mfhfbNormalizeName(playerName);
+  // playerName kommt hier im PLAYER_RATES-Format (z.B. "Alexandre Sarr"),
+  // ROSTERS_DATA (ESPN) nutzt teils Kurzformen (z.B. "Alex Sarr"). Ohne die
+  // Alias-Aufloesung fielen betroffene Spieler schon HIER durchs Raster --
+  // bevor applyFantraxPicks() überhaupt zum Zug kam, und ohne dass die
+  // dortige Alias-Behandlung das reparieren konnte.
+  return idx.has(norm) || idx.has(mfhfbResolveAliasReverse(norm));
 }
 
 
