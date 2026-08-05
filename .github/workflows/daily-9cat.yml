@@ -178,7 +178,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/livescores-daily.js data/livescores-aggregate.js data/rolling-rankings-2026-27.js data/offseason-rankings.js data/postdraft-board.js data/best-available-board.js data/dynasty-live.js data/rosters-live.js scripts/data/
+          git add data/livescores-daily.js data/livescores-aggregate.js data/rolling-rankings-2026-27.js data/offseason-rankings.js data/postdraft-board.js data/best-available-board.js data/dynasty-live.js data/rosters-live.js data/trade-history.js scripts/data/
           if git diff --cached --quiet; then
             echo "Keine Änderungen (vermutlich keine Spiele an diesem Tag)."
           else

@@ -2,17 +2,33 @@
 //  TRADE HISTORY — Basis-Daten (für alle Ligamitglieder sichtbar)
 // ============================================================
 //  Diese Datei ist die einzige dauerhafte Quelle der Trade History.
-//  Neue Trades landen zunächst nur im localStorage des Admins
-//  (Staging). Der Button "⬇ Für Repo exportieren" auf der Trade-
-//  History-Seite (nur Admin) erzeugt eine neue Version dieser Datei
-//  mit allen lokalen Trades eingearbeitet — die heruntergeladene
-//  Datei dann einfach als data/trade-history.js committen.
-//  Nach dem Commit werden die localStorage-Kopien automatisch
-//  ignoriert (ID-Abgleich in loadTradeHistory()).
 //
-//  MANUELL: Der Commit passiert nicht automatisch — Datei herunter-
-//  laden und ins Repo pushen ist ein bewusst manueller Schritt
-//  (kein Contents-Schreibtoken im öffentlichen Client-JS).
+//  SEIT 05.08.2026 GIBT ES ZWEI WEGE, WIE HIER EINTRÄGE LANDEN:
+//
+//  1) AUTOMATISCH (Regelfall während laufender ESPN-Saison):
+//     scripts/detect-espn-trades.js läuft als Teil des täglichen
+//     Sync-Workflows (aufgerufen aus sync-espn-rosters.js) und
+//     vergleicht den alten mit dem neuen Rosterstand. Erkannte
+//     Team-Wechsel werden bewertet (dieselbe Logik wie
+//     js/trade-analyzer.js) und direkt hier eingefügt — der Workflow
+//     committet die Datei automatisch mit. source:"espn-sync-auto"
+//     markiert solche Einträge. Kein manueller Schritt nötig.
+//
+//  2) MANUELL (Fallback -- z.B. Trades außerhalb der ESPN-Saison,
+//     Draft-Pick-Trades, die aus einem reinen Rosterabgleich nicht
+//     erkennbar sind, oder falls der automatische Lauf mal ausfällt):
+//     Neue Trades landen zunächst im localStorage des Admins
+//     (Staging). Der Button "⬇ Für Repo exportieren" auf der Trade-
+//     History-Seite (nur Admin) erzeugt eine neue Version dieser
+//     Datei mit allen lokalen Trades eingearbeitet — die
+//     heruntergeladene Datei dann als data/trade-history.js committen.
+//     Nach dem Commit werden die localStorage-Kopien automatisch
+//     ignoriert (ID-Abgleich in loadTradeHistory()).
+//
+//  Grund für den manuellen Fallback: Der Browser-Export hat KEIN
+//  Contents-Schreibtoken im öffentlichen Client-JS (aus gutem Grund).
+//  Der GitHub-Actions-Workflow dagegen hat ohnehin schon Schreibzugriff
+//  für seine anderen taeglichen Datei-Updates -- genau den nutzt Weg 1.
 // ============================================================
 const TRADE_HISTORY_BASE = [
   {"id":1700000014,"date":"Mai 2026","savedMode":"dynasty","sideA":[{"isPick":false,"rank":215,"name":"Noa Essengue","nba":"CHI","pos":"PF","dob":"2006-12-18","ownerName":"Always Money In The BananaStand"},{"isPick":true,"pickKey":"2026_R3_T7","year":2026,"round":3,"name":"2026 R3 · Always Money In The BananaStand","baseValue":61,"origName":"Always Money In The BananaStand","currName":"Always Money In The BananaStand","traded":false},{"isPick":false,"rank":187,"name":"Ayo Dosunmu","nba":"MIN","pos":"PG","dob":"2000-01-17","ownerName":"Always Money In The BananaStand"}],"sideB":[{"isPick":true,"pickKey":"2026_R1_T12","year":2026,"round":1,"name":"2026 R1 · Vancouver Curry-Wurst","baseValue":610,"origName":"Vancouver Curry-Wurst","currName":"Vancouver Curry-Wurst","traded":false},{"isPick":true,"pickKey":"2026_R3_T12","year":2026,"round":3,"name":"2026 R3 · Vancouver Curry-Wurst","baseValue":81,"origName":"Vancouver Curry-Wurst","currName":"Vancouver Curry-Wurst","traded":false}],"frozen":{"dynasty":{"valA":249,"valB":691,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"26.5","pctB":"73.5"},"raw":{"valA":249,"valB":691,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"26.5","pctB":"73.5"},"winnow":{"valA":249,"valB":691,"verdict":"Side B Wins Big","cls":"lopsided","pctA":"26.5","pctB":"73.5"}}},
