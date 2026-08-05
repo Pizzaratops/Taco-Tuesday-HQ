@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-04T11:17:09.945Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-05T11:13:06.607Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-08-04T11:17:09.945Z",
+ "fetchedAt": "2026-08-05T11:13:06.607Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -619,7 +619,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 6\"",
      "weight": "215 lbs",
-     "age": 20,
+     "age": 21,
      "espnId": "5061575"
     },
     {
@@ -4662,6 +4662,15 @@ const ROSTERS_DATA = {
      "weight": "190 lbs",
      "age": 28,
      "espnId": "3913176"
+    },
+    {
+     "name": "Andre Jackson Jr.",
+     "jersey": "44",
+     "position": "G",
+     "height": "6' 6\"",
+     "weight": "209 lbs",
+     "age": 24,
+     "espnId": "4432190"
     },
     {
      "name": "Trayce Jackson-Davis",
