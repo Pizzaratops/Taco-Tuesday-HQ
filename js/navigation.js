@@ -172,7 +172,9 @@ function renderHome() {
     const t = row.teamId != null ? teamMap[row.teamId] : null;
     const displayName = row.name || (t ? t.name : '—');
     const c = t ? getTeamColor(t) : 'var(--muted)';
-    const medal = row.place === 1 ? '🥇' : row.place === 2 ? '🥈' : row.place === 3 ? '🥉' : `#${row.place}`;
+    const medal = row.place === 1 ? '🥇' : row.place === 2 ? '🥈' : row.place === 3 ? '🥉'
+      : row.place != null ? `#${row.place}` : 'unbekannt';
+    const recordText = row.record != null ? row.record : 'nicht überliefert';
     const roster = season.rosters ? season.rosters[row.rosterKey || String(row.teamId)] : null;
     const clickable = t && roster;
     const renamed = t && row.name && row.name !== t.name
@@ -182,7 +184,7 @@ function renderHome() {
       <div class="team-name">${displayName}</div>
       <div class="team-owner">${t ? t.owner : 'Team existiert heute nicht mehr'}</div>
       ${renamed}
-      <div class="team-record">📊 ${row.record}</div>
+      <div class="team-record">📊 ${recordText}</div>
       <div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;">
         <span style="font-size:10px;color:var(--muted);font-weight:600;">Abschlussplatz</span>
         <span style="font-size:11px;font-weight:800;padding:2px 9px;border-radius:20px;background:var(--surface2);color:var(--muted);">${medal}</span>
@@ -208,7 +210,7 @@ function showTeam(id){
 	const t=teamMap[id]; const c=getTeamColor(t);
   const season = _viewSeason !== 'current' ? _getSeasonData(_viewSeason) : null;
   const seasonRow = season ? season.standings.find(s => s.teamId === id) : null;
-  const recordDisplay = seasonRow ? seasonRow.record : _displayRecord(t);
+  const recordDisplay = seasonRow ? (seasonRow.record != null ? seasonRow.record : 'nicht überliefert') : _displayRecord(t);
   // In Archiv-Saisons den DAMALIGEN Teamnamen zeigen (Teams wurden teils
   // umbenannt) -- der heutige Name steht dann als Zusatz daneben.
   const histName = seasonRow && seasonRow.name ? seasonRow.name : t.name;
@@ -699,6 +701,8 @@ const SEASON_REGISTRY = [
   { key: '2025-26', label: 'Saison 2025/26', varName: 'SEASON_2025_26' },
   { key: '2024-25', label: 'Saison 2024/25', varName: 'SEASON_2024_25' },
   { key: '2023-24', label: 'Saison 2023/24', varName: 'SEASON_2023_24' },
+  { key: '2022-23', label: 'Saison 2022/23', varName: 'SEASON_2022_23' },
+  { key: '2021-22', label: 'Saison 2021/22 (Gründung)', varName: 'SEASON_2021_22' },
 ];
 let _viewSeason = 'current';
 
@@ -711,6 +715,8 @@ function _getSeasonData(key) {
   if (key === '2025-26') return typeof SEASON_2025_26 !== 'undefined' ? SEASON_2025_26 : null;
   if (key === '2024-25') return typeof SEASON_2024_25 !== 'undefined' ? SEASON_2024_25 : null;
   if (key === '2023-24') return typeof SEASON_2023_24 !== 'undefined' ? SEASON_2023_24 : null;
+  if (key === '2022-23') return typeof SEASON_2022_23 !== 'undefined' ? SEASON_2022_23 : null;
+  if (key === '2021-22') return typeof SEASON_2021_22 !== 'undefined' ? SEASON_2021_22 : null;
   return null;
 }
 
