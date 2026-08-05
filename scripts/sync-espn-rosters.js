@@ -154,10 +154,9 @@ ${rosterLines.join(',\n')}
 // W-L-T Bilanzen je Team aus derselben ESPN-Antwort (mTeam).
 // "season" ist die ESPN-Saisonkennung (2027 = Saison 2026/27). Das UI
 // (js/navigation.js, _displayRecord) zeigt diese Bilanzen nur, wenn
-// season >= 2027 — solange ESPN_SEASON in js/espn-sync.js noch auf der
-// archivierten Vorsaison steht, bleiben die Karten bei 0-0-0. Mit dem
-// Saisonwechsel-Update von ESPN_SEASON im Oktober werden die Bilanzen
-// automatisch taeglich live, ohne weiteren Handgriff.
+// season >= 2027 -- ESPN_SEASON in js/espn-sync.js steht seit 05.08.2026
+// auf 2027, die Bilanzen laufen also bereits live durch diesen Pfad
+// (anfangs plausibel 0-0-0, bis der Spielbetrieb im Oktober beginnt).
 const TEAM_RECORDS_LIVE = {
   season: ${cfg.ESPN_SEASON},
   records: ${JSON.stringify(records)}

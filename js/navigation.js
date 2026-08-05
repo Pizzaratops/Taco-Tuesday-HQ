@@ -24,12 +24,13 @@ function injuryBadge(inj) {
 
 // ── Team-Bilanz ──────────────────────────────────────────────
 //  Live-Bilanzen kommen taeglich aus dem ESPN-Sync (TEAM_RECORDS_LIVE
-//  in data/rosters-live.js). Gating ueber die Saisonkennung: solange
-//  ESPN_SEASON in js/espn-sync.js noch auf 2026 (= archivierte Saison
-//  2025/26) steht, wird die statische 0-0-0 aus teams-rosters.js
-//  gezeigt. Nach dem Saisonwechsel-Update im Oktober (ESPN_SEASON ->
-//  2027) erscheinen die echten Bilanzen automatisch — kein weiterer
-//  manueller Schritt noetig. Die 2025/26-Endstaende liegen im Archiv
+//  in data/rosters-live.js). Gating ueber die Saisonkennung: ESPN_SEASON
+//  in js/espn-sync.js steht seit 05.08.2026 auf 2027 (die aktuelle,
+//  bereits aktive Liga-Instanz -- Beweis: Trades werden dort schon vor
+//  Saisonstart abgewickelt). Records zeigen deshalb ab jetzt echte
+//  Werte, anfangs plausibel 0-0-0, bis der Spielbetrieb im Oktober
+//  beginnt -- ueber den korrekten Datenpfad, nicht mehr blockiert.
+//  Die 2025/26-Endstaende liegen im Archiv
 //  (data/season-2025-26.js, Seite "Saison 2025/26").
 function _displayRecord(t) {
   if (typeof TEAM_RECORDS_LIVE !== 'undefined'
