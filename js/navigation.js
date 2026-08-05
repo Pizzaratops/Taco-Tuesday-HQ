@@ -101,21 +101,22 @@ function teamStrengthBadge(teamId) {
 }
 
 // ── Staerke-Badge fuer archivierte Saisons ───────────────────
-//  Nutzt die AKTUELLEN Dynasty-Rankings, weil fuer die Archiv-Saisons
-//  keine zeitgenoessischen Rankings vorliegen. Beantwortet also "wie
-//  stark waere dieser Kader nach heutigen Massstaeben" -- NICHT "wie
-//  stark galt er damals". Der Tooltip sagt das explizit, damit die Zahl
-//  nicht als historische Bewertung missverstanden wird.
+//  Nutzt die ZEITGENOESSISCHEN BBM-Saisonrankings (data/season-rankings.js),
+//  beantwortet also "wie stark war dieser Kader DAMALS" -- nicht, wie er
+//  heute bewertet wuerde. (Bis 05.08.2026 wurden hier ersatzweise die
+//  aktuellen Dynasty-Ranks benutzt, was fachlich irrefuehrend war.)
 //  Top 10 statt Top 20 wie bei der laufenden Saison: die Kader waren
 //  damals nur ~13-15 Spieler gross, Top 20 wuerde faktisch den ganzen
 //  Kader mitteln und die Unterschiede zwischen Teams einebnen.
-//  Abdeckung liegt bei 98-99% der Spieler; fehlende (z.B. inzwischen
-//  zurueckgetretene) werden einfach uebersprungen, nicht geschaetzt.
-function archivedStrengthBadge(roster) {
+//  Spieler ohne Saisonranking (Langzeitverletzung, Sperre -- sie tauchen
+//  in keinem Saison-Ranking auf) werden uebersprungen, nicht geschaetzt.
+function archivedStrengthBadge(roster, seasonKey) {
   if (!roster || !roster.length) return '';
+  const table = (typeof SEASON_RANKINGS !== 'undefined' && SEASON_RANKINGS[seasonKey]) || null;
+  if (!table) return '';
   const ranks = roster
-    .map(p => getDynastyRank(p.name))
-    .filter(r => r !== null)
+    .map(p => table[p.name])
+    .filter(r => typeof r === 'number')
     .sort((a, b) => a - b)
     .slice(0, 10);
   if (!ranks.length) return '';
@@ -127,9 +128,10 @@ function archivedStrengthBadge(roster) {
   else if (avg <= 100) { color = isLight ? '#2d7a50' : '#6dddaa'; bg = 'rgba(76,175,129,0.15)'; }
   else if (avg <= 150) { color = isLight ? '#2a7ab8' : '#4fc3f7'; bg = 'rgba(41,182,246,0.15)'; }
   else                 { color = 'var(--muted)'; bg = 'rgba(123,127,158,0.12)'; }
-  const tip = 'Durchschnittlicher Dynasty Rang der 10 besten Spieler dieses Kaders — '
-            + 'gemessen an den HEUTIGEN Dynasty Rankings, nicht an den damaligen. '
-            + 'Zeigt, wie stark der Kader nach heutigem Maßstab wäre.';
+  const covered = roster.filter(p => typeof table[p.name] === 'number').length;
+  const tip = 'Durchschnittlicher 9 Cat Rang der 10 besten Spieler dieses Kaders, '
+            + 'gemessen an den Endrankings DIESER Saison (Basketball Monster). '
+            + covered + ' von ' + roster.length + ' Spielern hatten ein Saisonranking.';
   return `<div style="margin-top:8px;display:flex;align-items:center;justify-content:space-between;" title="${tip}">
     <span style="font-size:10px;color:var(--muted);font-weight:600;">Ø Top-10 Rank</span>
     <span style="font-size:11px;font-weight:800;padding:2px 9px;border-radius:20px;background:${bg};color:${color};">#${avg}</span>
@@ -185,7 +187,7 @@ function renderHome() {
         <span style="font-size:10px;color:var(--muted);font-weight:600;">Abschlussplatz</span>
         <span style="font-size:11px;font-weight:800;padding:2px 9px;border-radius:20px;background:var(--surface2);color:var(--muted);">${medal}</span>
       </div>
-      ${archivedStrengthBadge(roster)}
+      ${archivedStrengthBadge(roster, _viewSeason)}
     </div>`;
   }).join('');
 }

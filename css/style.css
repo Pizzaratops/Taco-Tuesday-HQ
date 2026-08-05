@@ -31,14 +31,14 @@
     --pick-traded-color: #b43c64;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    /* Sicherheitsnetz: verhindert, dass ein einzelnes zu breites Element
-       irgendwo in der App (z.B. ein nicht schrumpfendes Input-Feld in
-       einer Flex-Reihe) die GESAMTE Seite horizontal verschiebt. Einzelne
-       Container mit gewolltem Scroll (z.B. .draftboard-grid, .ls-table-wrap)
-       nutzen weiterhin ihr eigenes overflow-x:auto und sind davon unberührt. */
-    overflow-x: hidden;
-  }
+  /* KEIN overflow-x:hidden auf html/body! Wurde 2026-08-04 kurzzeitig als
+     "Sicherheitsnetz" gegen zu breite Einzelelemente gesetzt und am
+     05.08. wieder entfernt: es unterbindet legitimes horizontales
+     Pannen (Desktop-Modus auf dem Handy, page-wide Seiten die breiter
+     als der Viewport sind) und macht abgeschnittene Inhalte damit
+     komplett unerreichbar statt nur unschoen. Zu breite Elemente werden
+     stattdessen gezielt an der Quelle behoben (min-width:0 in
+     Flex-Reihen, siehe css/projections.css .league-sync-row). */
   body {
     background: var(--bg);
     color: var(--text);
