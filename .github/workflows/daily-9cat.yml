@@ -2,30 +2,64 @@ name: Daily 9cat Live Scores
 
 on:
   schedule:
-    # Sommerzeit (CEST, UTC+2): 06:07/06:37/07:07/07:37/08:07/22:07 Berlin -> UTC
+    # ACHTUNG (05.08.2026): Ursprünglich lief dieser Workflow nativ nur
+    # 06-08 Uhr + 22 Uhr Berlin; die Abdeckung tagsüber dazwischen sollte
+    # der externe cron-job.org-Trigger übernehmen. Der ist an diesem Tag
+    # ab ca. 08:35 Uhr ausgefallen (kein einziger Trigger mehr bis in den
+    # Abend) — ein Trade um 15:15 Uhr wurde dadurch stundenlang nicht
+    # erkannt, weil scripts/sync-espn-rosters.js (und damit die
+    # automatische Trade-Erkennung) schlicht nicht lief. Seitdem läuft
+    # dieser Workflow nativ halbstündlich 06-22 Uhr Berlin durch —
+    # braucht cron-job.org als Tagesabdeckung nicht mehr, das kostet bei
+    # einem öffentlichen Repo nichts (GitHub Actions ist dort unlimitiert).
+    # cron-job.org kann als zusätzliche Redundanz bestehen bleiben, ist
+    # aber nicht mehr die einzige Absicherung für die Tagesstunden.
+    #
     # Minute bewusst auf :07/:37 statt :00/:30 gelegt — GitHub selbst empfiehlt das,
     # weil Cron-Jobs exakt zur vollen (halben) Stunde am ehesten verzögert oder bei
     # hoher Last ganz übersprungen werden. Der Zeit-Check-Step unten prüft
     # nur die Stunde, nicht die Minute, das funktioniert also unverändert.
     #
-    # Fünf Läufe im Fenster 06-08 Uhr Berlin statt nur zwei: falls GitHub einen
-    # einzelnen Scheduled Trigger droppt (kommt bei hoher Last vor, keine Garantie
-    # von GitHub), holt der nächste Slot im selben Fenster einfach frische Daten
-    # nach. Reruns sind unbedenklich, da alle Skripte pro Datum überschreiben statt
-    # anzuhängen, und der Commit-Step nur bei echten Änderungen committet.
+    # Jede Berlin-Zeit erscheint zweimal (Sommer- und Winter-UTC-Offset),
+    # der Zeit-Check-Step unten filtert zur Laufzeit anhand der
+    # tatsächlichen Berlin-Stunde, welcher der beiden Läufe wirklich
+    # arbeitet -- der andere bricht sofort ab. Kein manuelles Umstellen
+    # zur Zeitumstellung nötig.
     - cron: '7 4 * * *'    # 06:07 Berlin (Sommer)
+    - cron: '7 5 * * *'    # 06:07 Berlin (Winter) / 07:07 Berlin (Sommer)
     - cron: '37 4 * * *'   # 06:37 Berlin (Sommer)
-    - cron: '7 5 * * *'    # 07:07 Berlin (Sommer) / 06:07 Berlin (Winter)
-    - cron: '37 5 * * *'   # 07:37 Berlin (Sommer) / 06:37 Berlin (Winter)
-    - cron: '7 6 * * *'    # 08:07 Berlin (Sommer) / 07:07 Berlin (Winter)
-    - cron: '37 6 * * *'   # 07:37 Berlin (Winter)
-    - cron: '7 7 * * *'    # 08:07 Berlin (Winter)
-    - cron: '7 20 * * *'   # 22:07 Berlin (Sommer)
+    - cron: '37 5 * * *'   # 06:37 Berlin (Winter) / 07:37 Berlin (Sommer)
+    - cron: '7 6 * * *'    # 07:07 Berlin (Winter) / 08:07 Berlin (Sommer)
+    - cron: '37 6 * * *'   # 07:37 Berlin (Winter) / 08:37 Berlin (Sommer)
+    - cron: '7 7 * * *'    # 08:07 Berlin (Winter) / 09:07 Berlin (Sommer)
+    - cron: '37 7 * * *'   # 08:37 Berlin (Winter) / 09:37 Berlin (Sommer)
+    - cron: '7 8 * * *'    # 09:07 Berlin (Winter) / 10:07 Berlin (Sommer)
+    - cron: '37 8 * * *'   # 09:37 Berlin (Winter) / 10:37 Berlin (Sommer)
+    - cron: '7 9 * * *'    # 10:07 Berlin (Winter) / 11:07 Berlin (Sommer)
+    - cron: '37 9 * * *'   # 10:37 Berlin (Winter) / 11:37 Berlin (Sommer)
+    - cron: '7 10 * * *'   # 11:07 Berlin (Winter) / 12:07 Berlin (Sommer)
+    - cron: '37 10 * * *'  # 11:37 Berlin (Winter) / 12:37 Berlin (Sommer)
+    - cron: '7 11 * * *'   # 12:07 Berlin (Winter) / 13:07 Berlin (Sommer)
+    - cron: '37 11 * * *'  # 12:37 Berlin (Winter) / 13:37 Berlin (Sommer)
+    - cron: '7 12 * * *'   # 13:07 Berlin (Winter) / 14:07 Berlin (Sommer)
+    - cron: '37 12 * * *'  # 13:37 Berlin (Winter) / 14:37 Berlin (Sommer)
+    - cron: '7 13 * * *'   # 14:07 Berlin (Winter) / 15:07 Berlin (Sommer)
+    - cron: '37 13 * * *'  # 14:37 Berlin (Winter) / 15:37 Berlin (Sommer)
+    - cron: '7 14 * * *'   # 15:07 Berlin (Winter) / 16:07 Berlin (Sommer)
+    - cron: '37 14 * * *'  # 15:37 Berlin (Winter) / 16:37 Berlin (Sommer)
+    - cron: '7 15 * * *'   # 16:07 Berlin (Winter) / 17:07 Berlin (Sommer)
+    - cron: '37 15 * * *'  # 16:37 Berlin (Winter) / 17:37 Berlin (Sommer)
+    - cron: '7 16 * * *'   # 17:07 Berlin (Winter) / 18:07 Berlin (Sommer)
+    - cron: '37 16 * * *'  # 17:37 Berlin (Winter) / 18:37 Berlin (Sommer)
+    - cron: '7 17 * * *'   # 18:07 Berlin (Winter) / 19:07 Berlin (Sommer)
+    - cron: '37 17 * * *'  # 18:37 Berlin (Winter) / 19:37 Berlin (Sommer)
+    - cron: '7 18 * * *'   # 19:07 Berlin (Winter) / 20:07 Berlin (Sommer)
+    - cron: '37 18 * * *'  # 19:37 Berlin (Winter) / 20:37 Berlin (Sommer)
+    - cron: '7 19 * * *'   # 20:07 Berlin (Winter) / 21:07 Berlin (Sommer)
+    - cron: '37 19 * * *'  # 20:37 Berlin (Winter) / 21:37 Berlin (Sommer)
+    - cron: '7 20 * * *'   # 21:07 Berlin (Winter) / 22:07 Berlin (Sommer)
+    - cron: '37 20 * * *'  # 21:37 Berlin (Winter) / 22:37 Berlin (Sommer)
     - cron: '7 21 * * *'   # 22:07 Berlin (Winter)
-    # Der Zeit-Check-Step unten sorgt dafür, dass jeweils nur die
-    # tatsächlich passenden Läufe (Sommer- ODER Winterzeit) wirklich arbeiten
-    # und die anderen übersprungen werden. So ist keine manuelle Umstellung
-    # zweimal im Jahr mehr nötig.
 
   workflow_dispatch:
     inputs:
@@ -48,7 +82,7 @@ jobs:
   update-live-scores:
     runs-on: ubuntu-latest
     steps:
-      - name: Prüfe ob aktuelle Zeit 6-8 oder 22 Uhr Berlin ist
+      - name: Prüfe ob aktuelle Zeit 6-22 Uhr Berlin ist
         id: check_time
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
@@ -58,7 +92,9 @@ jobs:
           fi
           HOUR=$(TZ=Europe/Berlin date +%H)
           echo "hour=${HOUR}" >> "$GITHUB_OUTPUT"
-          if [ "$HOUR" = "06" ] || [ "$HOUR" = "07" ] || [ "$HOUR" = "08" ] || [ "$HOUR" = "22" ]; then
+          # Zahlenvergleich statt langer OR-Kette (Grund fuer die
+          # 05.08.2026-Erweiterung siehe Kommentar beim Cron-Zeitplan oben).
+          if [ "$HOUR" -ge 6 ] && [ "$HOUR" -le 22 ]; then
             echo "Berlin-Zeit ist ${HOUR} Uhr, Job läuft weiter."
             echo "skip=false" >> "$GITHUB_OUTPUT"
           else
