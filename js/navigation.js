@@ -100,47 +100,96 @@ function teamStrengthBadge(teamId) {
   </div>`;
 }
 
+// ── Staerke-Badge fuer archivierte Saisons ───────────────────
+//  Nutzt die AKTUELLEN Dynasty-Rankings, weil fuer die Archiv-Saisons
+//  keine zeitgenoessischen Rankings vorliegen. Beantwortet also "wie
+//  stark waere dieser Kader nach heutigen Massstaeben" -- NICHT "wie
+//  stark galt er damals". Der Tooltip sagt das explizit, damit die Zahl
+//  nicht als historische Bewertung missverstanden wird.
+//  Top 10 statt Top 20 wie bei der laufenden Saison: die Kader waren
+//  damals nur ~13-15 Spieler gross, Top 20 wuerde faktisch den ganzen
+//  Kader mitteln und die Unterschiede zwischen Teams einebnen.
+//  Abdeckung liegt bei 98-99% der Spieler; fehlende (z.B. inzwischen
+//  zurueckgetretene) werden einfach uebersprungen, nicht geschaetzt.
+function archivedStrengthBadge(roster) {
+  if (!roster || !roster.length) return '';
+  const ranks = roster
+    .map(p => getDynastyRank(p.name))
+    .filter(r => r !== null)
+    .sort((a, b) => a - b)
+    .slice(0, 10);
+  if (!ranks.length) return '';
+  const avg = Math.round(ranks.reduce((a, b) => a + b, 0) / ranks.length);
+  const isLight = document.body.classList.contains('light');
+  let color, bg;
+  if (avg <= 30)       { color = isLight ? '#9a6e10' : '#f5c842'; bg = 'rgba(245,200,66,0.15)'; }
+  else if (avg <= 60)  { color = isLight ? '#c0622f' : '#a89bff'; bg = 'rgba(108,99,255,0.15)'; }
+  else if (avg <= 100) { color = isLight ? '#2d7a50' : '#6dddaa'; bg = 'rgba(76,175,129,0.15)'; }
+  else if (avg <= 150) { color = isLight ? '#2a7ab8' : '#4fc3f7'; bg = 'rgba(41,182,246,0.15)'; }
+  else                 { color = 'var(--muted)'; bg = 'rgba(123,127,158,0.12)'; }
+  const tip = 'Durchschnittlicher Dynasty Rang der 10 besten Spieler dieses Kaders — '
+            + 'gemessen an den HEUTIGEN Dynasty Rankings, nicht an den damaligen. '
+            + 'Zeigt, wie stark der Kader nach heutigem Maßstab wäre.';
+  return `<div style="margin-top:8px;display:flex;align-items:center;justify-content:space-between;" title="${tip}">
+    <span style="font-size:10px;color:var(--muted);font-weight:600;">Ø Top-10 Rank</span>
+    <span style="font-size:11px;font-weight:800;padding:2px 9px;border-radius:20px;background:${bg};color:${color};">#${avg}</span>
+  </div>`;
+}
+
 function renderHome() {
-  document.getElementById('teamGrid').innerHTML = TEAMS.map(t => {
-    const c = getTeamColor(t);
-    return `<div class="team-card" onclick="showTeam(${t.id})">
-      <div class="team-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</div>
-      <div class="team-name">${t.name}</div>
-      <div class="team-owner">${t.owner}</div>
-      <div class="team-record">📊 ${_displayRecord(t)}</div>
-      ${teamStrengthBadge(t.id)}
+  renderSeasonPicker();
+  const grid = document.getElementById('teamGrid');
+
+  if (_viewSeason === 'current') {
+    grid.innerHTML = TEAMS.map(t => {
+      const c = getTeamColor(t);
+      return `<div class="team-card" onclick="showTeam(${t.id})">
+        <div class="team-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</div>
+        <div class="team-name">${t.name}</div>
+        <div class="team-owner">${t.owner}</div>
+        <div class="team-record">📊 ${_displayRecord(t)}</div>
+        ${teamStrengthBadge(t.id)}
+      </div>`;
+    }).join('');
+    return;
+  }
+
+  // Archivierte Saison: Reihenfolge nach Abschlusstabelle, Name/Owner/
+  // Farbe weiterhin live aus TEAMS (Umbenennungen wirken nicht rueckwirkend
+  // auf die archivierten Bilanzen). Kein Staerke-Badge -- fuer keine
+  // archivierte Saison liegt ein Player-Ranking aus DER JEWEILIGEN Zeit vor;
+  // die aktuellen Dynasty-Ranks auf ein altes Roster anzuwenden waere
+  // irrefuehrend (z.B. Spieler, die es damals noch gar nicht gab).
+  const season = _getSeasonData(_viewSeason);
+  if (!season) { grid.innerHTML = ''; return; }
+  grid.innerHTML = season.standings.map(row => {
+    // Historischer Name der Saison (Teams wurden teils umbenannt).
+    // teamId verweist auf das heutige Team fuer Farbe/Owner/Klick-Ziel;
+    // ist sie null, existiert das Team heute nicht mehr -- dann keine
+    // Verlinkung und ein neutraler Hinweis statt eines Owner-Namens.
+    const t = row.teamId != null ? teamMap[row.teamId] : null;
+    const displayName = row.name || (t ? t.name : '—');
+    const c = t ? getTeamColor(t) : 'var(--muted)';
+    const medal = row.place === 1 ? '🥇' : row.place === 2 ? '🥈' : row.place === 3 ? '🥉' : `#${row.place}`;
+    const roster = season.rosters ? season.rosters[row.rosterKey || String(row.teamId)] : null;
+    const clickable = t && roster;
+    const renamed = t && row.name && row.name !== t.name
+      ? `<div style="font-size:10px;color:var(--muted);margin-top:2px;">heute: ${t.name}</div>` : '';
+    return `<div class="team-card"${clickable ? ` onclick="showTeam(${t.id})"` : ' style="cursor:default;"'}>
+      <div class="team-avatar" style="background:${t ? c + '18' : 'var(--surface2)'};color:${c};">${getInitials(displayName)}</div>
+      <div class="team-name">${displayName}</div>
+      <div class="team-owner">${t ? t.owner : 'Team existiert heute nicht mehr'}</div>
+      ${renamed}
+      <div class="team-record">📊 ${row.record}</div>
+      <div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:10px;color:var(--muted);font-weight:600;">Abschlussplatz</span>
+        <span style="font-size:11px;font-weight:800;padding:2px 9px;border-radius:20px;background:var(--surface2);color:var(--muted);">${medal}</span>
+      </div>
+      ${archivedStrengthBadge(roster)}
     </div>`;
   }).join('');
 }
 
-// ── Saison-Archiv 2025/26 ────────────────────────────────────
-//  Rendert die eingefrorene Abschlusstabelle aus data/season-2025-26.js
-//  auf der Archivseite. Team-Name/Owner/Farbe kommen live aus TEAMS,
-//  damit Umbenennungen nicht rueckwirkend die Archivdaten aendern
-//  muessen — nur die Bilanzen selbst sind eingefroren.
-function renderSeasonArchive() {
-  const host = document.getElementById('seasonArchiveTable');
-  if (!host || typeof SEASON_2025_26 === 'undefined') return;
-  host.innerHTML = SEASON_2025_26.standings.map(row => {
-    const t = teamMap[row.teamId];
-    if (!t) return '';
-    const c = getTeamColor(t);
-    const medal = row.place === 1 ? '🥇' : row.place === 2 ? '🥈' : row.place === 3 ? '🥉' : '';
-    return `<div class="archive-row" onclick="showTeam(${t.id})">
-      <span class="archive-place">${row.place}</span>
-      <span class="archive-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</span>
-      <span class="archive-team">
-        <span class="archive-team-name">${t.name} ${medal}</span>
-        <span class="archive-team-owner">${t.owner}</span>
-      </span>
-      <span class="archive-record">${row.record}</span>
-    </div>`;
-  }).join('');
-}
-function showSeasonArchive() {
-  renderSeasonArchive();
-  navigate('season2526Page');
-}
 
 function showTeam(id){
   currentTeamId=id; currentTab='roster';
@@ -149,16 +198,28 @@ function showTeam(id){
   currentRosterSort = 'pos';
   const sortBtn = document.getElementById('rosterSortBtn');
   if (sortBtn) {
-    sortBtn.style.display = 'block';
+    // Archiv hat keine Ranks zum Sortieren -- Button nur bei "current" zeigen.
+    sortBtn.style.display = _viewSeason === 'current' ? 'block' : 'none';
     const btn = document.getElementById('sortToggleBtn');
     if (btn) { btn.textContent = '📊 Sort by Rank'; btn.style.background='var(--surface)'; btn.style.borderColor='var(--border)'; btn.style.color='var(--muted)'; }
   }
 	const t=teamMap[id]; const c=getTeamColor(t);
+  const season = _viewSeason !== 'current' ? _getSeasonData(_viewSeason) : null;
+  const seasonRow = season ? season.standings.find(s => s.teamId === id) : null;
+  const recordDisplay = seasonRow ? seasonRow.record : _displayRecord(t);
+  // In Archiv-Saisons den DAMALIGEN Teamnamen zeigen (Teams wurden teils
+  // umbenannt) -- der heutige Name steht dann als Zusatz daneben.
+  const histName = seasonRow && seasonRow.name ? seasonRow.name : t.name;
+  const renamedNote = seasonRow && seasonRow.name && seasonRow.name !== t.name
+    ? ` <span style="font-size:11px;color:var(--muted);font-weight:500;">(heute: ${t.name})</span>` : '';
+  const seasonBadge = season
+    ? `<span style="margin-left:8px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);">📜 ${season.label}</span>`
+    : '';
   document.getElementById('teamHeader').innerHTML=`
-    <div class="team-page-avatar" style="background:${c}18;color:${c};">${getInitials(t.name)}</div>
+    <div class="team-page-avatar" style="background:${c}18;color:${c};">${getInitials(histName)}</div>
     <div>
-      <div class="team-page-name">${t.name}</div>
-      <div class="team-page-owner">${t.owner} &nbsp;·&nbsp; <span style="color:var(--green);">📊 ${_displayRecord(t)}</span></div>
+      <div class="team-page-name">${histName}${seasonBadge}</div>
+      <div class="team-page-owner">${t.owner}${renamedNote} &nbsp;·&nbsp; <span style="color:var(--green);">📊 ${recordDisplay}</span></div>
     </div>`;
   document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',i===0));
   renderTab(); navigate('teamPage');
@@ -186,7 +247,61 @@ function toggleRosterSort() {
   renderTab();
 }
 function renderTab(){
+  if (_viewSeason !== 'current') {
+    document.getElementById('tabContent').innerHTML = currentTab === 'roster'
+      ? renderArchivedRoster(currentTeamId) : renderArchivedPicks();
+    return;
+  }
   document.getElementById('tabContent').innerHTML=currentTab==='roster'?renderRoster(currentTeamId):renderPicks(currentTeamId);
+}
+
+// ── Archivierte Rosteransicht ────────────────────────────────
+//  Bewusst deutlich schlanker als renderRoster(): keine Rank-Badges
+//  (keine historischen Rankings vorhanden, siehe SEASON_REGISTRY-
+//  Kommentar), kein Admin-Edit, keine Sortierung -- reiner Snapshot-
+//  Stand mit Slot, Team+Position und Acquisition-Art (Draft/Trade/FA).
+function renderArchivedRoster(teamId) {
+  const season = _getSeasonData(_viewSeason);
+  const row = season ? season.standings.find(s => s.teamId === teamId) : null;
+  const key = row && row.rosterKey ? row.rosterKey : String(teamId);
+  const roster = season && season.rosters ? season.rosters[key] : null;
+  if (!roster) {
+    return `<div style="padding:40px 20px;text-align:center;color:var(--muted);font-size:13px;">
+      Für ${season ? season.label : 'diese Saison'} liegt kein Rosterstand vor.
+    </div>`;
+  }
+  const acqIcon = { Draft: '📋', Trade: '🔄', 'Free Agency': '🆓', Empty: '' };
+  // injStatus ist nur in aelteren Exporten ueberliefert ('O' = Out,
+  // 'DTD' = Day to Day); fehlt er, wird nur ein neutrales Icon gezeigt,
+  // um keinen genaueren Status zu behaupten als bekannt ist.
+  const injBadge = (p) => {
+    if (!p.inj) return '';
+    const label = p.injStatus === 'DTD' ? 'DTD' : p.injStatus === 'O' ? 'OUT' : '⚠';
+    const tip = p.injStatus === 'DTD' ? 'Day to Day (fraglich) zum Exportzeitpunkt'
+              : p.injStatus === 'O' ? 'Fiel zum Exportzeitpunkt aus'
+              : 'Trug zum Exportzeitpunkt ein Verletzungsicon (genauer Status nicht überliefert)';
+    const col = p.injStatus === 'DTD' ? '#f5c842' : '#ef5350';
+    const bgc = p.injStatus === 'DTD' ? 'rgba(245,200,66,0.15)' : 'rgba(239,83,80,0.15)';
+    return `<span title="${tip}" style="font-size:9px;font-weight:800;padding:1px 6px;border-radius:8px;margin-left:5px;vertical-align:middle;background:${bgc};color:${col};">${label}</span>`;
+  };
+  return `<div class="note" style="margin-bottom:14px;">
+    📜 Rosterstand ${season.label} — eingefroren, keine Live-Daten.
+  </div>` + roster.map(p => `<div class="player-row">
+    <div class="pos-badge pos-${(p.pos || '?').split(',')[0].trim() || '?'}">${p.slot}</div>
+    <div style="flex:1;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+      <div class="player-name">${p.name}${injBadge(p)}</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="player-team r-team-link" style="font-size:12px;">${p.team} ${p.pos}</span>
+        <span style="font-size:10px;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:10px;white-space:nowrap;">${acqIcon[p.acq] || ''} ${p.acq}</span>
+      </div>
+    </div>
+  </div>`).join('');
+}
+function renderArchivedPicks() {
+  const season = _getSeasonData(_viewSeason);
+  return `<div style="padding:40px 20px;text-align:center;color:var(--muted);font-size:13px;">
+    "My Owned Picks" ist für archivierte Saisons (${season ? season.label : ''}) nicht verfügbar.
+  </div>`;
 }
 
 function getDynastyRank(name) {
@@ -479,7 +594,7 @@ html += `<td>
 
 // Which group each page belongs to (for group-button highlighting)
 const SUBNAV_PAGES = {
-  homePage:'home', season2526Page:'season2526', draftboardPage:'draftboard', draft26Page:'draft26', draft27Page:'draft27', bigBoardPage:'bigBoard',
+  homePage:'home', draftboardPage:'draftboard', draft26Page:'draft26', draft27Page:'draft27', bigBoardPage:'bigBoard',
   duelPage:'duel', duelBoardPage:'duelboard', duelSettingsPage:'duelsettings',
   lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings', dynastyRollingPage:'dynastyrolling',
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
@@ -567,6 +682,52 @@ function closeMobileNav() {
   document.getElementById('mobileNavDropdown').classList.remove('open');
   document.getElementById('mobileNavArrow').style.transform = '';
 }
+// ── Saison-Auswahl (Dropdown auf der Home-Seite) ────────────
+//  Aendert, welche Saison auf Home-Grid und Team-Detailseite gezeigt
+//  wird. "current" = live (ROSTERS/TEAM_RECORDS_LIVE/Projections wie
+//  gehabt). Alles andere kommt aus einer statischen data/season-*.js.
+//  Neue Saison hinzufuegen = neuer Eintrag hier + neue Datendatei +
+//  ein Fall in _getSeasonData() weiter unten (dort auch der Grund
+//  dafuer erklaert -- kurz: const wird nie zu window.X).
+//  Reset bei jedem Seitenaufruf auf "current" (kein localStorage) --
+//  bewusst so gewuenscht, damit man nie versehentlich in einer alten
+//  Saison "haengen bleibt".
+const SEASON_REGISTRY = [
+  { key: 'current', label: 'Saison 2026/27 (aktuell)' },
+  { key: '2025-26', label: 'Saison 2025/26', varName: 'SEASON_2025_26' },
+  { key: '2024-25', label: 'Saison 2024/25', varName: 'SEASON_2024_25' },
+  { key: '2023-24', label: 'Saison 2023/24', varName: 'SEASON_2023_24' },
+];
+let _viewSeason = 'current';
+
+function _getSeasonData(key) {
+  // WICHTIG: `const X = {...}` in einer Script-Datei erzeugt NIE ein
+  // window.X (anders als `var` oder implizite Globals) -- das gilt in
+  // jedem Browser, nicht nur hier. Deshalb bewusst keine dynamische
+  // window[varName]-Aufloesung, sondern explizite Referenzen. Neue
+  // archivierte Saison = neuer Fall hier + neue Datendatei.
+  if (key === '2025-26') return typeof SEASON_2025_26 !== 'undefined' ? SEASON_2025_26 : null;
+  if (key === '2024-25') return typeof SEASON_2024_25 !== 'undefined' ? SEASON_2024_25 : null;
+  if (key === '2023-24') return typeof SEASON_2023_24 !== 'undefined' ? SEASON_2023_24 : null;
+  return null;
+}
+
+function renderSeasonPicker() {
+  const host = document.getElementById('seasonPicker');
+  if (!host) return;
+  const available = SEASON_REGISTRY.filter(s => s.key === 'current' || _getSeasonData(s.key));
+  if (available.length <= 1) { host.style.display = 'none'; return; }
+  host.style.display = '';
+  host.innerHTML = `<select id="seasonPickerSelect" onchange="setViewSeason(this.value)">
+    ${available.map(s => `<option value="${s.key}" ${s.key === _viewSeason ? 'selected' : ''}>${s.label}</option>`).join('')}
+  </select>`;
+}
+
+function setViewSeason(key) {
+  _viewSeason = key;
+  renderHome();
+}
+
 function goHome(){navigate('homePage');}
 function showRules(){navigate('rulesPage');}
 function showStandings(){navigate('standingsPage');setTimeout(renderStandingsChart,50);}
@@ -578,7 +739,6 @@ function _rerenderPage(pageId) {
   if (pageId === 'adminSettingsPage')    _asInit();
   if (pageId === 'tradeHistoryPage')     renderTradeHistory();
   if (pageId === 'draftboardPage')       showDraftboard();
-  if (pageId === 'season2526Page')       renderSeasonArchive();
   if (pageId === 'bestAvailPage')        showBestAvail();
   if (pageId === 'rankingsPage')         showRankings();
   if (pageId === 'dynastyRollingPage')   showDynastyRolling();

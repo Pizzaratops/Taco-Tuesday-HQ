@@ -1,88 +1,120 @@
 // ============================================================
 //  SAISON-ARCHIV 2025/26 — Rosterstand + finale Bilanzen
 // ============================================================
-//  Quelle: ESPN-Liga-Export als Excel-Datei (Roster + Endstand),
-//  von Beyaz bereitgestellt. Programmatisch aus der Tabelle
-//  extrahiert (Titel-, Slot-, Spieler- und ACQ-Zeilen strukturiert
-//  in der Spreadsheet-Struktur erkannt), nicht von Hand abgetippt.
-//  Jeder Spielername gegen die bestehende Repo-Spielerdatenbank
-//  validiert (0 Abweichungen bei 364 Spielern). Alle 12 Bilanzen
-//  decken sich exakt mit der zuvor unabhaengig erfassten Standings-
-//  Tabelle.
+//  Quelle: ESPN-Liga-Export als Excel-Datei, von Beyaz bereitgestellt.
+//  Programmatisch aus der Tabellenstruktur extrahiert, nicht von Hand
+//  abgetippt. Jeder Spielername gegen die Repo-Spielerdatenbank
+//  validiert (364 Spieler, 0 Abweichungen). Alle Bilanzen decken
+//  sich exakt mit der ESPN-Final-Standings-Tabelle.
 //
-//  "acq" = wie der Spieler zum Team kam (Draft/Trade/Free Agency).
-//  "inj" = trug zum Exportzeitpunkt ESPNs Verletzungs-Icon (historischer
-//  Snapshot, keine aktuelle Aussage).
+//  FELDER JE EINTRAG IN standings[]:
+//    name    Historischer Teamname DIESER Saison (Teams wurden teils
+//            umbenannt, z.B. "Bear Down" -> "Fighting Illini").
+//    teamId  Heutige Team-ID fuer Farbe/Owner/Klick-Ziel, oder null
+//            wenn das Team heute nicht mehr existiert (2023/24:
+//            Angry Ducks, WebEmbiid, Pats Pats).
 //
-//  ACHTUNG: Kein Player-Ranking fuer diese Saison vorhanden -- der
-//  "Ø Top-20 Rank"-Badge wird fuer Archiv-Saisons deshalb ausgeblendet
-//  statt mit falschen/aktuellen Werten befuellt.
+//  FELDER JE SPIELER:
+//    acq     Wie der Spieler zum Team kam (Draft/Trade/Free Agency).
+//    inj     Trug zum Exportzeitpunkt ein ESPN-Verletzungsicon.
+//    injStatus  'O' (Out) oder 'DTD' (Day-to-Day), falls ueberliefert.
+//            Aeltere Exporte (2023/24) nutzen DTD, neuere nur noch O.
+//
+//  Der "Ø Top-10 Rank"-Badge auf den Team-Karten wird zur Laufzeit aus
+//  den AKTUELLEN Dynasty-Rankings berechnet (js/navigation.js), nicht
+//  hier gespeichert -- er beantwortet "wie stark waere dieser Kader nach
+//  heutigen Massstaeben", nicht "wie stark galt er damals".
 //
 //  Taxi Squads absichtlich nicht enthalten (0-0-0, reine Stashes,
 //  erscheinen auch nicht in ESPNs Final-Standings-Tabelle).
 // ============================================================
 
 const SEASON_2025_26 = {
+ "label": "Saison 2025/26",
  "standings": [
   {
    "place": 1,
+   "name": "Fighting Illini",
    "teamId": 1,
-   "record": "112-41-0"
+   "record": "112-41-0",
+   "rosterKey": "1"
   },
   {
    "place": 2,
+   "name": "Seagulls",
    "teamId": 2,
-   "record": "99-53-1"
+   "record": "99-53-1",
+   "rosterKey": "2"
   },
   {
    "place": 3,
+   "name": "Neukoelln Hustlers",
    "teamId": 3,
-   "record": "95-57-1"
+   "record": "95-57-1",
+   "rosterKey": "3"
   },
   {
    "place": 4,
+   "name": "Leaveland Cavaliers",
    "teamId": 4,
-   "record": "87-65-1"
+   "record": "87-65-1",
+   "rosterKey": "4"
   },
   {
    "place": 5,
+   "name": "Anadolu Ballers",
    "teamId": 5,
-   "record": "82-68-3"
+   "record": "82-68-3",
+   "rosterKey": "5"
   },
   {
    "place": 6,
+   "name": "3-POINT MAFIA",
    "teamId": 6,
-   "record": "77-74-2"
+   "record": "77-74-2",
+   "rosterKey": "6"
   },
   {
    "place": 7,
+   "name": "Always Money in the BananaStand",
    "teamId": 7,
-   "record": "70-75-8"
+   "record": "70-75-8",
+   "rosterKey": "7"
   },
   {
    "place": 8,
+   "name": "Kawhi So Serious",
    "teamId": 8,
-   "record": "73-78-2"
+   "record": "73-78-2",
+   "rosterKey": "8"
   },
   {
    "place": 9,
+   "name": "Cooking Show",
    "teamId": 9,
-   "record": "65-85-3"
+   "record": "65-85-3",
+   "rosterKey": "9"
   },
   {
    "place": 10,
+   "name": "S-Town Grizzlies",
    "teamId": 10,
-   "record": "62-89-2"
+   "record": "62-89-2",
+   "rosterKey": "10"
   },
   {
    "place": 11,
+   "name": "Double Dribble Trouble",
    "teamId": 11,
-   "record": "45-107-1"
+   "record": "45-107-1",
+   "rosterKey": "11"
   },
   {
    "place": 12,
+   "name": "Vancouver Curry-Wurst",
    "teamId": 12,
-   "record": "39-114-0"
+   "record": "39-114-0",
+   "rosterKey": "12"
   }
  ],
  "rosters": {
@@ -820,6 +852,256 @@ const SEASON_2025_26 = {
     "inj": true
    }
   ],
+  "4": [
+   {
+    "slot": "PG",
+    "name": "James Harden",
+    "team": "Cle",
+    "pos": "PG, SG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "SG",
+    "name": "Josh Hart",
+    "team": "NY",
+    "pos": "SF, SG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "SF",
+    "name": "Brandon Ingram",
+    "team": "Tor",
+    "pos": "SF",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "PF",
+    "name": "Jerami Grant",
+    "team": "Por",
+    "pos": "PF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "C",
+    "name": "Donovan Clingan",
+    "team": "Por",
+    "pos": "C",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "G/F",
+    "name": "Jrue Holiday",
+    "team": "Por",
+    "pos": "PG, SG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "F/C",
+    "name": "Cam Thomas",
+    "team": "FA",
+    "pos": "SG, SF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "UTIL",
+    "name": "Dennis Schroder",
+    "team": "Cle",
+    "pos": "PG",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "UTIL",
+    "name": "Duncan Robinson",
+    "team": "Det",
+    "pos": "SF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "UTIL",
+    "name": "Svi Mykhailiuk",
+    "team": "Utah",
+    "pos": "SG",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Cedric Coward",
+    "team": "Mem",
+    "pos": "SF, SG",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Danny Wolf",
+    "team": "Bkn",
+    "pos": "PF",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Yanic Konan Niederhauser",
+    "team": "LAC",
+    "pos": "C",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Mouhamed Gueye",
+    "team": "Atl",
+    "pos": "PF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Ty Jerome",
+    "team": "Mem",
+    "pos": "PG",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "De'Andre Hunter",
+    "team": "Sac",
+    "pos": "SF, PF",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Jamal Murray",
+    "team": "Den",
+    "pos": "PG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Corey Kispert",
+    "team": "Atl",
+    "pos": "SF, SG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Zach LaVine",
+    "team": "Sac",
+    "pos": "SG, SF",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Christian Braun",
+    "team": "Den",
+    "pos": "SG, SF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Harrison Barnes",
+    "team": "SA",
+    "pos": "PF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Aaron Nesmith",
+    "team": "Ind",
+    "pos": "SF",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Clint Capela",
+    "team": "Hou",
+    "pos": "C",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Julius Randle",
+    "team": "Min",
+    "pos": "PF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Jalen Smith",
+    "team": "Chi",
+    "pos": "PF, C",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Rui Hachimura",
+    "team": "LAL",
+    "pos": "PF, SF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Jarrett Allen",
+    "team": "Cle",
+    "pos": "C",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Jamal Shead",
+    "team": "Tor",
+    "pos": "PG",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Gary Payton II",
+    "team": "GS",
+    "pos": "SG",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "IR",
+    "name": "Keegan Murray",
+    "team": "Sac",
+    "pos": "PF, SF",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "IR",
+    "name": "Dillon Brooks",
+    "team": "Phx",
+    "pos": "SF, SG",
+    "acq": "Draft",
+    "inj": false
+   }
+  ],
   "5": [
    {
     "slot": "PG",
@@ -1312,6 +1594,240 @@ const SEASON_2025_26 = {
     "inj": true
    }
   ],
+  "7": [
+   {
+    "slot": "PG",
+    "name": "Jalen Brunson",
+    "team": "NY",
+    "pos": "PG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "SG",
+    "name": "Mikal Bridges",
+    "team": "NY",
+    "pos": "SF, SG",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "SF",
+    "name": "Kelly Oubre Jr.",
+    "team": "Phi",
+    "pos": "SF, SG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "PF",
+    "name": "Karl-Anthony Towns",
+    "team": "NY",
+    "pos": "C, PF",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "C",
+    "name": "Myles Turner",
+    "team": "Mil",
+    "pos": "C",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "G/F",
+    "name": "Derrick White",
+    "team": "Bos",
+    "pos": "SG, PG",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "F/C",
+    "name": "Rudy Gobert",
+    "team": "Min",
+    "pos": "C",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "UTIL",
+    "name": "Stephon Castle",
+    "team": "SA",
+    "pos": "PG, SG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "UTIL",
+    "name": "Kevin Huerter",
+    "team": "Det",
+    "pos": "SG, SF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "UTIL",
+    "name": "Keon Ellis",
+    "team": "Cle",
+    "pos": "SG",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Dorian Finney-Smith",
+    "team": "Hou",
+    "pos": "PF, SF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Draymond Green",
+    "team": "GS",
+    "pos": "PF, C",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Andre Drummond",
+    "team": "Phi",
+    "pos": "C",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Wendell Carter Jr.",
+    "team": "Orl",
+    "pos": "C",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Ja Morant",
+    "team": "Mem",
+    "pos": "PG",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Tobias Harris",
+    "team": "Det",
+    "pos": "PF, SF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Naji Marshall",
+    "team": "Dal",
+    "pos": "SF, PF",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Miles Bridges",
+    "team": "Cha",
+    "pos": "SF, PF",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Robert Williams III",
+    "team": "Por",
+    "pos": "C",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Derrick Jones Jr.",
+    "team": "LAC",
+    "pos": "SF",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Brice Sensabaugh",
+    "team": "Utah",
+    "pos": "SF",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Grayson Allen",
+    "team": "Phx",
+    "pos": "SG, PG",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Jericho Sims",
+    "team": "Mil",
+    "pos": "C",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Quenton Jackson",
+    "team": "Ind",
+    "pos": "PG, SG",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Sharife Cooper",
+    "team": "Wsh",
+    "pos": "PG",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "John Konchar",
+    "team": "Utah",
+    "pos": "SG, SF",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Jalen Suggs",
+    "team": "Orl",
+    "pos": "PG, SG",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Ivica Zubac",
+    "team": "Ind",
+    "pos": "C",
+    "acq": "Trade",
+    "inj": true
+   },
+   {
+    "slot": "IR",
+    "name": "Anthony Davis",
+    "team": "Wsh",
+    "pos": "C, PF",
+    "acq": "Draft",
+    "inj": true
+   }
+  ],
   "8": [
    {
     "slot": "PG",
@@ -1552,732 +2068,6 @@ const SEASON_2025_26 = {
     "pos": "PF",
     "acq": "Trade",
     "inj": false
-   }
-  ],
-  "7": [
-   {
-    "slot": "PG",
-    "name": "Jalen Brunson",
-    "team": "NY",
-    "pos": "PG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "SG",
-    "name": "Mikal Bridges",
-    "team": "NY",
-    "pos": "SF, SG",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "SF",
-    "name": "Kelly Oubre Jr.",
-    "team": "Phi",
-    "pos": "SF, SG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "PF",
-    "name": "Karl-Anthony Towns",
-    "team": "NY",
-    "pos": "C, PF",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "C",
-    "name": "Myles Turner",
-    "team": "Mil",
-    "pos": "C",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "G/F",
-    "name": "Derrick White",
-    "team": "Bos",
-    "pos": "SG, PG",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "F/C",
-    "name": "Rudy Gobert",
-    "team": "Min",
-    "pos": "C",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "UTIL",
-    "name": "Stephon Castle",
-    "team": "SA",
-    "pos": "PG, SG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "UTIL",
-    "name": "Kevin Huerter",
-    "team": "Det",
-    "pos": "SG, SF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "UTIL",
-    "name": "Keon Ellis",
-    "team": "Cle",
-    "pos": "SG",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Dorian Finney-Smith",
-    "team": "Hou",
-    "pos": "PF, SF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Draymond Green",
-    "team": "GS",
-    "pos": "PF, C",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Andre Drummond",
-    "team": "Phi",
-    "pos": "C",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Wendell Carter Jr.",
-    "team": "Orl",
-    "pos": "C",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Ja Morant",
-    "team": "Mem",
-    "pos": "PG",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Tobias Harris",
-    "team": "Det",
-    "pos": "PF, SF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Naji Marshall",
-    "team": "Dal",
-    "pos": "SF, PF",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Miles Bridges",
-    "team": "Cha",
-    "pos": "SF, PF",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Robert Williams III",
-    "team": "Por",
-    "pos": "C",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Derrick Jones Jr.",
-    "team": "LAC",
-    "pos": "SF",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Brice Sensabaugh",
-    "team": "Utah",
-    "pos": "SF",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Grayson Allen",
-    "team": "Phx",
-    "pos": "SG, PG",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Jericho Sims",
-    "team": "Mil",
-    "pos": "C",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Quenton Jackson",
-    "team": "Ind",
-    "pos": "PG, SG",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Sharife Cooper",
-    "team": "Wsh",
-    "pos": "PG",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "John Konchar",
-    "team": "Utah",
-    "pos": "SG, SF",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Jalen Suggs",
-    "team": "Orl",
-    "pos": "PG, SG",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Ivica Zubac",
-    "team": "Ind",
-    "pos": "C",
-    "acq": "Trade",
-    "inj": true
-   },
-   {
-    "slot": "IR",
-    "name": "Anthony Davis",
-    "team": "Wsh",
-    "pos": "C, PF",
-    "acq": "Draft",
-    "inj": true
-   }
-  ],
-  "4": [
-   {
-    "slot": "PG",
-    "name": "James Harden",
-    "team": "Cle",
-    "pos": "PG, SG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "SG",
-    "name": "Josh Hart",
-    "team": "NY",
-    "pos": "SF, SG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "SF",
-    "name": "Brandon Ingram",
-    "team": "Tor",
-    "pos": "SF",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "PF",
-    "name": "Jerami Grant",
-    "team": "Por",
-    "pos": "PF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "C",
-    "name": "Donovan Clingan",
-    "team": "Por",
-    "pos": "C",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "G/F",
-    "name": "Jrue Holiday",
-    "team": "Por",
-    "pos": "PG, SG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "F/C",
-    "name": "Cam Thomas",
-    "team": "FA",
-    "pos": "SG, SF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "UTIL",
-    "name": "Dennis Schroder",
-    "team": "Cle",
-    "pos": "PG",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "UTIL",
-    "name": "Duncan Robinson",
-    "team": "Det",
-    "pos": "SF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "UTIL",
-    "name": "Svi Mykhailiuk",
-    "team": "Utah",
-    "pos": "SG",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Cedric Coward",
-    "team": "Mem",
-    "pos": "SF, SG",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Danny Wolf",
-    "team": "Bkn",
-    "pos": "PF",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Yanic Konan Niederhauser",
-    "team": "LAC",
-    "pos": "C",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Mouhamed Gueye",
-    "team": "Atl",
-    "pos": "PF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Ty Jerome",
-    "team": "Mem",
-    "pos": "PG",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "De'Andre Hunter",
-    "team": "Sac",
-    "pos": "SF, PF",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Jamal Murray",
-    "team": "Den",
-    "pos": "PG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Corey Kispert",
-    "team": "Atl",
-    "pos": "SF, SG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Zach LaVine",
-    "team": "Sac",
-    "pos": "SG, SF",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Christian Braun",
-    "team": "Den",
-    "pos": "SG, SF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Harrison Barnes",
-    "team": "SA",
-    "pos": "PF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Aaron Nesmith",
-    "team": "Ind",
-    "pos": "SF",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Clint Capela",
-    "team": "Hou",
-    "pos": "C",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Julius Randle",
-    "team": "Min",
-    "pos": "PF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Jalen Smith",
-    "team": "Chi",
-    "pos": "PF, C",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Rui Hachimura",
-    "team": "LAL",
-    "pos": "PF, SF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Jarrett Allen",
-    "team": "Cle",
-    "pos": "C",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Jamal Shead",
-    "team": "Tor",
-    "pos": "PG",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Gary Payton II",
-    "team": "GS",
-    "pos": "SG",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "IR",
-    "name": "Keegan Murray",
-    "team": "Sac",
-    "pos": "PF, SF",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "IR",
-    "name": "Dillon Brooks",
-    "team": "Phx",
-    "pos": "SF, SG",
-    "acq": "Draft",
-    "inj": false
-   }
-  ],
-  "10": [
-   {
-    "slot": "PG",
-    "name": "Immanuel Quickley",
-    "team": "Tor",
-    "pos": "PG, SG",
-    "acq": "Trade",
-    "inj": true
-   },
-   {
-    "slot": "SG",
-    "name": "Jared McCain",
-    "team": "OKC",
-    "pos": "SG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "SF",
-    "name": "Kyshawn George",
-    "team": "Wsh",
-    "pos": "SG, SF",
-    "acq": "Trade",
-    "inj": true
-   },
-   {
-    "slot": "PF",
-    "name": "Ace Bailey",
-    "team": "Utah",
-    "pos": "SF, PF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "C",
-    "name": "Daniel Gafford",
-    "team": "Dal",
-    "pos": "C",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "G/F",
-    "name": "OG Anunoby",
-    "team": "NY",
-    "pos": "SF, PF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "F/C",
-    "name": "Maxime Raynaud",
-    "team": "Sac",
-    "pos": "C",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "UTIL",
-    "name": "Max Christie",
-    "team": "Dal",
-    "pos": "SG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "UTIL",
-    "name": "Ja'Kobe Walter",
-    "team": "Tor",
-    "pos": "SG",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "UTIL",
-    "name": "Cody Williams",
-    "team": "Utah",
-    "pos": "SG",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Jeremiah Fears",
-    "team": "NO",
-    "pos": "SG, PG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Carter Bryant",
-    "team": "SA",
-    "pos": "SF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Ryan Dunn",
-    "team": "Phx",
-    "pos": "SF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Scoot Henderson",
-    "team": "Por",
-    "pos": "PG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Rob Dillingham",
-    "team": "Chi",
-    "pos": "PG",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Alex Sarr",
-    "team": "Wsh",
-    "pos": "C",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Noah Clowney",
-    "team": "Bkn",
-    "pos": "PF",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Franz Wagner",
-    "team": "Orl",
-    "pos": "SF, PF",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Will Riley",
-    "team": "Wsh",
-    "pos": "SF, SG",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Oso Ighodaro",
-    "team": "Phx",
-    "pos": "PF",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Drake Powell",
-    "team": "Bkn",
-    "pos": "SG",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Kel'el Ware",
-    "team": "Mia",
-    "pos": "C",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Mark Williams",
-    "team": "Phx",
-    "pos": "C",
-    "acq": "Trade",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Trey Murphy III",
-    "team": "NO",
-    "pos": "SF, SG",
-    "acq": "Trade",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Jalen Williams",
-    "team": "OKC",
-    "pos": "PF, SF, C",
-    "acq": "Trade",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Dariq Whitehead",
-    "team": "Mem",
-    "pos": "SF",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Jusuf Nurkic",
-    "team": "Utah",
-    "pos": "C",
-    "acq": "Free Agency",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Kasparas Jakucionis",
-    "team": "Mia",
-    "pos": "PG",
-    "acq": "Trade",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Jalen Slawson",
-    "team": "Ind",
-    "pos": "SF",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "IR",
-    "name": "Jaden Ivey",
-    "team": "FA",
-    "pos": "SG, PG",
-    "acq": "Draft",
-    "inj": true
    }
   ],
   "9": [
@@ -2522,252 +2312,244 @@ const SEASON_2025_26 = {
     "inj": true
    }
   ],
-  "12": [
+  "10": [
    {
     "slot": "PG",
-    "name": "Ryan Nembhard",
-    "team": "Dal",
-    "pos": "PG",
-    "acq": "Free Agency",
-    "inj": false
+    "name": "Immanuel Quickley",
+    "team": "Tor",
+    "pos": "PG, SG",
+    "acq": "Trade",
+    "inj": true
    },
    {
     "slot": "SG",
-    "name": "Terrence Shannon Jr.",
-    "team": "Min",
+    "name": "Jared McCain",
+    "team": "OKC",
     "pos": "SG",
     "acq": "Draft",
     "inj": false
    },
    {
     "slot": "SF",
-    "name": "DeMar DeRozan",
-    "team": "Sac",
-    "pos": "SF, PF",
-    "acq": "Draft",
+    "name": "Kyshawn George",
+    "team": "Wsh",
+    "pos": "SG, SF",
+    "acq": "Trade",
     "inj": true
    },
    {
     "slot": "PF",
-    "name": "Trendon Watford",
-    "team": "Phi",
-    "pos": "PF",
-    "acq": "Free Agency",
+    "name": "Ace Bailey",
+    "team": "Utah",
+    "pos": "SF, PF",
+    "acq": "Draft",
     "inj": false
    },
    {
     "slot": "C",
-    "name": "Yang Hansen",
-    "team": "Por",
+    "name": "Daniel Gafford",
+    "team": "Dal",
     "pos": "C",
     "acq": "Draft",
     "inj": false
    },
    {
     "slot": "G/F",
-    "name": "Nique Clifford",
-    "team": "Sac",
-    "pos": "SG",
+    "name": "OG Anunoby",
+    "team": "NY",
+    "pos": "SF, PF",
     "acq": "Draft",
     "inj": false
    },
    {
     "slot": "F/C",
-    "name": "Al Horford",
-    "team": "GS",
-    "pos": "C, PF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "UTIL",
-    "name": "Will Richard",
-    "team": "GS",
-    "pos": "SG, PF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "UTIL",
-    "name": "T.J. McConnell",
-    "team": "Ind",
-    "pos": "PG",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "UTIL",
-    "name": "Quinten Post",
-    "team": "GS",
+    "name": "Maxime Raynaud",
+    "team": "Sac",
     "pos": "C",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "UTIL",
+    "name": "Max Christie",
+    "team": "Dal",
+    "pos": "SG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "UTIL",
+    "name": "Ja'Kobe Walter",
+    "team": "Tor",
+    "pos": "SG",
     "acq": "Free Agency",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Egor Demin",
-    "team": "Bkn",
-    "pos": "PG",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Bronny James",
-    "team": "LAL",
-    "pos": "PG",
-    "acq": "Draft",
     "inj": false
    },
    {
-    "slot": "Bench",
-    "name": "Ben Saraf",
-    "team": "Bkn",
+    "slot": "UTIL",
+    "name": "Cody Williams",
+    "team": "Utah",
     "pos": "SG",
-    "acq": "Draft",
+    "acq": "Free Agency",
     "inj": false
    },
    {
     "slot": "Bench",
-    "name": "Luke Kennard",
-    "team": "LAL",
-    "pos": "SG",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Johnny Furphy",
-    "team": "Ind",
-    "pos": "SG",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Dalton Knecht",
-    "team": "LAL",
-    "pos": "SG, SF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Norman Powell",
-    "team": "Mia",
-    "pos": "SG, SF",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Brook Lopez",
-    "team": "LAC",
-    "pos": "C",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "John Collins",
-    "team": "LAC",
-    "pos": "PF, C",
-    "acq": "Draft",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Collin Sexton",
-    "team": "Chi",
+    "name": "Jeremiah Fears",
+    "team": "NO",
     "pos": "SG, PG",
     "acq": "Draft",
     "inj": false
    },
    {
     "slot": "Bench",
-    "name": "Scotty Pippen Jr.",
-    "team": "Mem",
-    "pos": "PG, SG",
-    "acq": "Draft",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "CJ McCollum",
-    "team": "Atl",
-    "pos": "SG, PG",
+    "name": "Carter Bryant",
+    "team": "SA",
+    "pos": "SF",
     "acq": "Draft",
     "inj": false
    },
    {
     "slot": "Bench",
-    "name": "Josh Minott",
-    "team": "Bkn",
+    "name": "Ryan Dunn",
+    "team": "Phx",
     "pos": "SF",
-    "acq": "Free Agency",
-    "inj": true
-   },
-   {
-    "slot": "Bench",
-    "name": "Coby White",
-    "team": "Cha",
-    "pos": "PG, SG",
-    "acq": "Trade",
+    "acq": "Draft",
     "inj": false
    },
    {
     "slot": "Bench",
-    "name": "Ryan Kalkbrenner",
-    "team": "Cha",
-    "pos": "C",
-    "acq": "Trade",
+    "name": "Scoot Henderson",
+    "team": "Por",
+    "pos": "PG",
+    "acq": "Draft",
     "inj": false
    },
    {
     "slot": "Bench",
-    "name": "Jaxson Hayes",
-    "team": "LAL",
-    "pos": "C",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Jordan Walsh",
-    "team": "Bos",
-    "pos": "SF",
-    "acq": "Free Agency",
-    "inj": false
-   },
-   {
-    "slot": "Bench",
-    "name": "Noa Essengue",
+    "name": "Rob Dillingham",
     "team": "Chi",
+    "pos": "PG",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Alex Sarr",
+    "team": "Wsh",
+    "pos": "C",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Noah Clowney",
+    "team": "Bkn",
     "pos": "PF",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Franz Wagner",
+    "team": "Orl",
+    "pos": "SF, PF",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Will Riley",
+    "team": "Wsh",
+    "pos": "SF, SG",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Oso Ighodaro",
+    "team": "Phx",
+    "pos": "PF",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Drake Powell",
+    "team": "Bkn",
+    "pos": "SG",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Kel'el Ware",
+    "team": "Mia",
+    "pos": "C",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Mark Williams",
+    "team": "Phx",
+    "pos": "C",
     "acq": "Trade",
     "inj": true
    },
    {
     "slot": "Bench",
-    "name": "Ayo Dosunmu",
-    "team": "Min",
-    "pos": "SG",
+    "name": "Trey Murphy III",
+    "team": "NO",
+    "pos": "SF, SG",
+    "acq": "Trade",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Jalen Williams",
+    "team": "OKC",
+    "pos": "PF, SF, C",
+    "acq": "Trade",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Dariq Whitehead",
+    "team": "Mem",
+    "pos": "SF",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Jusuf Nurkic",
+    "team": "Utah",
+    "pos": "C",
+    "acq": "Free Agency",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Kasparas Jakucionis",
+    "team": "Mia",
+    "pos": "PG",
     "acq": "Trade",
     "inj": false
    },
    {
-    "slot": "IR",
-    "name": "Steven Adams",
-    "team": "Hou",
-    "pos": "C",
-    "acq": "Draft",
-    "inj": true
+    "slot": "Bench",
+    "name": "Jalen Slawson",
+    "team": "Ind",
+    "pos": "SF",
+    "acq": "Free Agency",
+    "inj": false
    },
    {
     "slot": "IR",
-    "name": "Tyrese Haliburton",
-    "team": "Ind",
-    "pos": "PG, SG",
+    "name": "Jaden Ivey",
+    "team": "FA",
+    "pos": "SG, PG",
     "acq": "Draft",
     "inj": true
    }
@@ -3018,6 +2800,256 @@ const SEASON_2025_26 = {
     "name": "Jayson Tatum",
     "team": "Bos",
     "pos": "PF, SF",
+    "acq": "Draft",
+    "inj": true
+   }
+  ],
+  "12": [
+   {
+    "slot": "PG",
+    "name": "Ryan Nembhard",
+    "team": "Dal",
+    "pos": "PG",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "SG",
+    "name": "Terrence Shannon Jr.",
+    "team": "Min",
+    "pos": "SG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "SF",
+    "name": "DeMar DeRozan",
+    "team": "Sac",
+    "pos": "SF, PF",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "PF",
+    "name": "Trendon Watford",
+    "team": "Phi",
+    "pos": "PF",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "C",
+    "name": "Yang Hansen",
+    "team": "Por",
+    "pos": "C",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "G/F",
+    "name": "Nique Clifford",
+    "team": "Sac",
+    "pos": "SG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "F/C",
+    "name": "Al Horford",
+    "team": "GS",
+    "pos": "C, PF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "UTIL",
+    "name": "Will Richard",
+    "team": "GS",
+    "pos": "SG, PF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "UTIL",
+    "name": "T.J. McConnell",
+    "team": "Ind",
+    "pos": "PG",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "UTIL",
+    "name": "Quinten Post",
+    "team": "GS",
+    "pos": "C",
+    "acq": "Free Agency",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Egor Demin",
+    "team": "Bkn",
+    "pos": "PG",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Bronny James",
+    "team": "LAL",
+    "pos": "PG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Ben Saraf",
+    "team": "Bkn",
+    "pos": "SG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Luke Kennard",
+    "team": "LAL",
+    "pos": "SG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Johnny Furphy",
+    "team": "Ind",
+    "pos": "SG",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Dalton Knecht",
+    "team": "LAL",
+    "pos": "SG, SF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Norman Powell",
+    "team": "Mia",
+    "pos": "SG, SF",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Brook Lopez",
+    "team": "LAC",
+    "pos": "C",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "John Collins",
+    "team": "LAC",
+    "pos": "PF, C",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Collin Sexton",
+    "team": "Chi",
+    "pos": "SG, PG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Scotty Pippen Jr.",
+    "team": "Mem",
+    "pos": "PG, SG",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "CJ McCollum",
+    "team": "Atl",
+    "pos": "SG, PG",
+    "acq": "Draft",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Josh Minott",
+    "team": "Bkn",
+    "pos": "SF",
+    "acq": "Free Agency",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Coby White",
+    "team": "Cha",
+    "pos": "PG, SG",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Ryan Kalkbrenner",
+    "team": "Cha",
+    "pos": "C",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Jaxson Hayes",
+    "team": "LAL",
+    "pos": "C",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Jordan Walsh",
+    "team": "Bos",
+    "pos": "SF",
+    "acq": "Free Agency",
+    "inj": false
+   },
+   {
+    "slot": "Bench",
+    "name": "Noa Essengue",
+    "team": "Chi",
+    "pos": "PF",
+    "acq": "Trade",
+    "inj": true
+   },
+   {
+    "slot": "Bench",
+    "name": "Ayo Dosunmu",
+    "team": "Min",
+    "pos": "SG",
+    "acq": "Trade",
+    "inj": false
+   },
+   {
+    "slot": "IR",
+    "name": "Steven Adams",
+    "team": "Hou",
+    "pos": "C",
+    "acq": "Draft",
+    "inj": true
+   },
+   {
+    "slot": "IR",
+    "name": "Tyrese Haliburton",
+    "team": "Ind",
+    "pos": "PG, SG",
     "acq": "Draft",
     "inj": true
    }
