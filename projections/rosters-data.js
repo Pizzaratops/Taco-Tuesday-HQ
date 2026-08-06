@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-05T11:13:06.607Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-06T11:13:21.463Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-08-05T11:13:06.607Z",
+ "fetchedAt": "2026-08-06T11:13:21.463Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -243,7 +243,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Paul George",
-     "jersey": "8",
+     "jersey": "13",
      "position": "F",
      "height": "6' 8\"",
      "weight": "220 lbs",
@@ -261,7 +261,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Ron Harper Jr.",
-     "jersey": "13",
+     "jersey": "8",
      "position": "G",
      "height": "6' 5\"",
      "weight": "233 lbs",
@@ -1376,6 +1376,15 @@ const ROSTERS_DATA = {
      "espnId": "4432181"
     },
     {
+     "name": "Lonnie Walker IV",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "205 lbs",
+     "age": 27,
+     "espnId": "4277890"
+    },
+    {
      "name": "Peyton Watson",
      "jersey": "8",
      "position": "G",
@@ -1770,15 +1779,6 @@ const ROSTERS_DATA = {
      "weight": "220 lbs",
      "age": 24,
      "espnId": "4592857"
-    },
-    {
-     "name": "JD Davison",
-     "jersey": "4",
-     "position": "G",
-     "height": "6' 1\"",
-     "weight": "195 lbs",
-     "age": 23,
-     "espnId": "4576085"
     },
     {
      "name": "Kevin Durant",
@@ -4546,7 +4546,7 @@ const ROSTERS_DATA = {
      "position": "C",
      "height": "6' 10\"",
      "weight": "270 lbs",
-     "age": 22,
+     "age": 23,
      "espnId": "5105809"
     },
     {
