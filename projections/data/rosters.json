@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-08-06T11:13:21.463Z",
+ "fetchedAt": "2026-08-07T09:53:07.272Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -998,7 +998,7 @@
      "position": "G",
      "height": "6' 3\"",
      "weight": "190 lbs",
-     "age": 19,
+     "age": 20,
      "espnId": "5041951"
     },
     {
@@ -1683,6 +1683,15 @@
      "espnId": "4432171"
     },
     {
+     "name": "Gary Payton II",
+     "jersey": "0",
+     "position": "G",
+     "height": "6' 2\"",
+     "weight": "195 lbs",
+     "age": 33,
+     "espnId": "3134903"
+    },
+    {
      "name": "Brandin Podziemski",
      "jersey": "2",
      "position": "G",
@@ -2203,6 +2212,15 @@
      "weight": "207 lbs",
      "age": 24,
      "espnId": "4702352"
+    },
+    {
+     "name": "Jamarion Sharp",
+     "jersey": null,
+     "position": "C",
+     "height": "7' 5\"",
+     "weight": "235 lbs",
+     "age": 24,
+     "espnId": "4897696"
     },
     {
      "name": "Keaton Wagler",
@@ -2987,7 +3005,7 @@
      "position": "G",
      "height": "6' 4\"",
      "weight": "225 lbs",
-     "age": 24,
+     "age": 25,
      "espnId": "4594268"
     },
     {
@@ -3343,15 +3361,6 @@
      "weight": "215 lbs",
      "age": 31,
      "espnId": "3062679"
-    },
-    {
-     "name": "Trey Jemison III",
-     "jersey": "50",
-     "position": "F",
-     "height": "6' 10\"",
-     "weight": "270 lbs",
-     "age": 26,
-     "espnId": "4395623"
     },
     {
      "name": "Jack Kayil",
@@ -4678,6 +4687,15 @@
      "weight": "245 lbs",
      "age": 26,
      "espnId": "4431684"
+    },
+    {
+     "name": "Trey Jemison III",
+     "jersey": null,
+     "position": "C",
+     "height": "6' 10\"",
+     "weight": "270 lbs",
+     "age": 26,
+     "espnId": "4395623"
     },
     {
      "name": "A.J. Lawson",
