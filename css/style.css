@@ -402,7 +402,7 @@
   .rankings-search input:focus { border-color: var(--accent); }
   .rankings-search input::placeholder { color: var(--muted); }
   .rankings-search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
-  .rankings-table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .rankings-table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto; }
   .rankings-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .rankings-table thead tr { background: var(--surface2); border-bottom: 1px solid var(--border); }
   .rankings-table thead th {
