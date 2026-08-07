@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-05T11:13:06.607Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-07T09:53:07.272Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-08-05T11:13:06.607Z",
+ "fetchedAt": "2026-08-07T09:53:07.272Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -243,7 +243,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Paul George",
-     "jersey": "8",
+     "jersey": "13",
      "position": "F",
      "height": "6' 8\"",
      "weight": "220 lbs",
@@ -261,7 +261,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Ron Harper Jr.",
-     "jersey": "13",
+     "jersey": "8",
      "position": "G",
      "height": "6' 5\"",
      "weight": "233 lbs",
@@ -1000,7 +1000,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 3\"",
      "weight": "190 lbs",
-     "age": 19,
+     "age": 20,
      "espnId": "5041951"
     },
     {
@@ -1376,6 +1376,15 @@ const ROSTERS_DATA = {
      "espnId": "4432181"
     },
     {
+     "name": "Lonnie Walker IV",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "205 lbs",
+     "age": 27,
+     "espnId": "4277890"
+    },
+    {
      "name": "Peyton Watson",
      "jersey": "8",
      "position": "G",
@@ -1676,6 +1685,15 @@ const ROSTERS_DATA = {
      "espnId": "4432171"
     },
     {
+     "name": "Gary Payton II",
+     "jersey": "0",
+     "position": "G",
+     "height": "6' 2\"",
+     "weight": "195 lbs",
+     "age": 33,
+     "espnId": "3134903"
+    },
+    {
      "name": "Brandin Podziemski",
      "jersey": "2",
      "position": "G",
@@ -1770,15 +1788,6 @@ const ROSTERS_DATA = {
      "weight": "220 lbs",
      "age": 24,
      "espnId": "4592857"
-    },
-    {
-     "name": "JD Davison",
-     "jersey": "4",
-     "position": "G",
-     "height": "6' 1\"",
-     "weight": "195 lbs",
-     "age": 23,
-     "espnId": "4576085"
     },
     {
      "name": "Kevin Durant",
@@ -2205,6 +2214,15 @@ const ROSTERS_DATA = {
      "weight": "207 lbs",
      "age": 24,
      "espnId": "4702352"
+    },
+    {
+     "name": "Jamarion Sharp",
+     "jersey": null,
+     "position": "C",
+     "height": "7' 5\"",
+     "weight": "235 lbs",
+     "age": 24,
+     "espnId": "4897696"
     },
     {
      "name": "Keaton Wagler",
@@ -2989,7 +3007,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 4\"",
      "weight": "225 lbs",
-     "age": 24,
+     "age": 25,
      "espnId": "4594268"
     },
     {
@@ -3345,15 +3363,6 @@ const ROSTERS_DATA = {
      "weight": "215 lbs",
      "age": 31,
      "espnId": "3062679"
-    },
-    {
-     "name": "Trey Jemison III",
-     "jersey": "50",
-     "position": "F",
-     "height": "6' 10\"",
-     "weight": "270 lbs",
-     "age": 26,
-     "espnId": "4395623"
     },
     {
      "name": "Jack Kayil",
@@ -4546,7 +4555,7 @@ const ROSTERS_DATA = {
      "position": "C",
      "height": "6' 10\"",
      "weight": "270 lbs",
-     "age": 22,
+     "age": 23,
      "espnId": "5105809"
     },
     {
@@ -4680,6 +4689,15 @@ const ROSTERS_DATA = {
      "weight": "245 lbs",
      "age": 26,
      "espnId": "4431684"
+    },
+    {
+     "name": "Trey Jemison III",
+     "jersey": null,
+     "position": "C",
+     "height": "6' 10\"",
+     "weight": "270 lbs",
+     "age": 26,
+     "espnId": "4395623"
     },
     {
      "name": "A.J. Lawson",
