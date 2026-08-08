@@ -679,13 +679,17 @@ window.addEventListener('popstate', (e) => {
 function toggleMobileNav() {
   const dd = document.getElementById('mobileNavDropdown');
   const arrow = document.getElementById('mobileNavArrow');
+  const subNav = document.getElementById('subNav');
   const open = dd.classList.toggle('open');
   arrow.style.transform = open ? 'rotate(180deg)' : '';
+  if (subNav) subNav.classList.toggle('mobile-nav-open', open);
 }
 
 function closeMobileNav() {
   document.getElementById('mobileNavDropdown').classList.remove('open');
   document.getElementById('mobileNavArrow').style.transform = '';
+  const subNav = document.getElementById('subNav');
+  if (subNav) subNav.classList.remove('mobile-nav-open');
 }
 // ── Saison-Auswahl (Dropdown auf der Home-Seite) ────────────
 //  Aendert, welche Saison auf Home-Grid und Team-Detailseite gezeigt

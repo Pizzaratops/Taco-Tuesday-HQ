@@ -97,6 +97,14 @@
     z-index: 99;
     transition: background 0.3s ease, border-color 0.3s ease;
   }
+  /* Solange das aufgeklappte Mobile-Menue offen ist, NICHT sticky sein:
+     bei vielen Kategorien wird das Dropdown hoeher als der Bildschirm,
+     und ein sticky-Element haelt sich dann oben "fest", bis man komplett
+     durch seinen eigenen Inhalt gescrollt hat -- fuehlt sich an, als
+     wuerde die Seite erst ganz unten/oben wieder normal scrollen.
+     position:static loest das, weil das Dropdown dann einfach normal
+     mit der restlichen Seite mitscrollt. */
+  .subnav.mobile-nav-open { position: static; }
   body.light .subnav { background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); }
 
   .subnav-inner {
