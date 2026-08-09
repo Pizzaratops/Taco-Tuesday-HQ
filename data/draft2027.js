@@ -6,9 +6,10 @@
 //  Sortiert nach Dynasty-9cat-Wert, NICHT nach NBA-Draft-Slot.
 //  Gleiche Struktur wie DRAFT_2026 (siehe data/draft2026.js), plus:
 //  { pick, nbaRank, name, pos, school, tier, measurements, stats, fantasy, scouting, link }
-//  pick    = MFHFBs Fantasy-Skillset-Rang (1-20, dieses Board)
-//  nbaRank = NBA-Draft-Konsens-Rang (Tankathon)
+//  pick    = Fantasy-Skillset-Einschätzung, MFHFBs eigener Rang (1-20, dieses Board)
+//  nbaRank = Aggregat-Rang aus mehreren Quellen (Dizzle Dynasty, Game Theory Rankings, Tankathon, etc.)
 //  Grosse Kartennummer zeigt beide: nbaRank/ pick
+//  tier    = Fantasy-Archetyp-Qualität, MFHFBs eigene Einordnung (Board-Struktur), Werte aus Pfeifer-Tier-Spalte
 //  tier ist eine von: 'Tier 1','Tier 2','Tier 3','Tier 4' (lokal, s.o.)
 //  link = externer Scouting-Report bei Grinding Tape (grindingtape.com)
 // ============================================================
@@ -241,7 +242,7 @@ function openScoutModal27(idx) {
   const ts = isLight ? TIER_STYLE_LIGHT : TIER_STYLE_DARK;
   const s = ts[p.tier] || ts['Tier 6'];
   const numLabel = (p.nbaRank != null) ? (p.nbaRank + '/ ' + p.pick) : p.pick;
-  document.getElementById('modalPick').textContent = `NBA-Draft-Rang ${p.nbaRank} · Fantasy-Rang #${p.pick} · ${p.tier}`;
+  document.getElementById('modalPick').textContent = `Aggregat-Rang ${p.nbaRank} · Fantasy-Skillset #${p.pick} · ${p.tier}`;
   document.getElementById('modalName').textContent = p.name;
   document.getElementById('modalMeta').innerHTML = `
     <span class="draft26-pos" style="background:${c.bg};color:${c.txt};font-size:12px;font-weight:800;padding:3px 9px;border-radius:6px;">${p.pos}</span>
