@@ -113,7 +113,7 @@
           <button class="snav-dropdown-item" data-page="bigBoard"  onclick="showBigBoard()">📋 MFHFBs Big Board</button>
           <button class="snav-dropdown-item" data-page="lottery"    onclick="showLottery()">🎲 2026 Lottery</button>
           <div class="snav-dropdown-label">2027</div>
-          <div style="padding:10px 16px;font-size:12px;color:var(--muted);font-style:italic;">Kommt bald</div>
+          <button class="snav-dropdown-item" data-page="draft27" onclick="showDraft27()">📋 MFHFBs Big Board</button>
         </div>
       </div>
 
@@ -193,7 +193,7 @@
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Draft 2027</div>
-        <div style="padding:6px 14px;font-size:12px;color:var(--muted);font-style:italic;">Kommt bald</div>
+        <button class="subnav-mobile-btn" data-page="draft27" onclick="showDraft27();closeMobileNav()">📋 MFHFBs Big Board</button>
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Rankings & Analytics</div>
@@ -1979,6 +1979,20 @@
   <div class="draft26-no-results" id="draft26NoResults" style="display:none;">No prospects found.</div>
 </div>
 
+<!-- 2027 DRAFT BOARD -->
+<div class="page page-wide" id="draft27Page">
+  <h2 style="margin-bottom:6px;">📋 MFHFBs Big Board · 2027 Draft</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Fantasy-gewichtetes Top-20 Board, Stand 08.08.2026 · abgeglichen mit Ben Pfeifers Archetyp-Board · sortiert nach Dynasty-9-cat-Wert, NICHT nach NBA-Draft-Slot. Volle Scouting-Reports &amp; Tape verlinkt zu <a href="https://grindingtape.com/board" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;">Grinding Tape</a>.</p>
+  <div class="draft26-search">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" id="draft27Search" placeholder="Search prospect, school, or position…" oninput="filterDraft27()"/>
+  </div>
+  <div id="draft27Grid"></div>
+  <div class="draft26-no-results" id="draft27NoResults" style="display:none;">No prospects found.</div>
+</div>
+
 <!-- BIG BOARD (Interactive, Newspaper-Style) -->
 <div class="page page-wide" id="bigBoardPage"></div>
 
@@ -2017,6 +2031,7 @@
 <script src="data/hashtag.js?v=5"></script>
 <script src="data/aliases.js?v=5"></script>
 <script src="data/draft2026.js?v=5"></script>
+<script src="data/draft2027.js?v=1"></script>
 <script src="data/postdraft-board.js?v=1"></script>
 <script src="data/best-available-board.js?v=1"></script>
 <script src="data/stats.js?v=5"></script>
