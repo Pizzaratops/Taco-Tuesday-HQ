@@ -1,12 +1,15 @@
 // ============================================================
 //  2027 DRAFT BOARD DATA
 // ============================================================
-//  Quelle: MFHFB 2027 Big Board (Fantasy-gewichtet, Top 20) ·
-//  Stand 08.08.2026 · v1.1 (nach Abgleich mit Ben Pfeifers Archetyp-Board)
-//  Sortiert nach Dynasty-9-cat-Wert, NICHT nach NBA-Draft-Slot.
-//  Gleiche Struktur wie DRAFT_2026 (siehe data/draft2026.js):
-//  { pick, name, pos, school, tier, measurements, stats, fantasy, scouting, link }
-//  tier ist eine von: 'Tier 1','Tier 1.5','Tier 2','Tier 3','Tier 4','Tier 5','Tier 6','Mystery'
+//  Quelle: MFHFB 2027 Big Board (Fantasy gewichtet, Top 20) ·
+//  Stand 08.08.2026 · v1.2 (abgeglichen mit Dizzle Dynasty, Game Theory Rankings, Ben Pfeifers Archetyp-Board, etc.)
+//  Sortiert nach Dynasty-9cat-Wert, NICHT nach NBA-Draft-Slot.
+//  Gleiche Struktur wie DRAFT_2026 (siehe data/draft2026.js), plus:
+//  { pick, nbaRank, name, pos, school, tier, measurements, stats, fantasy, scouting, link }
+//  pick    = MFHFBs Fantasy-Skillset-Rang (1-20, dieses Board)
+//  nbaRank = NBA-Draft-Konsens-Rang (Tankathon)
+//  Grosse Kartennummer zeigt beide: nbaRank/ pick
+//  tier ist eine von: 'Tier 1','Tier 2','Tier 3','Tier 4' (lokal, s.o.)
 //  link = externer Scouting-Report bei Grinding Tape (grindingtape.com)
 // ============================================================
 const DRAFT_2027 = [
