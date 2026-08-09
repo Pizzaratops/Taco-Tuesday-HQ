@@ -2,7 +2,7 @@
 //  2027 DRAFT BOARD DATA
 // ============================================================
 //  Quelle: MFHFB 2027 Big Board (Fantasy-gewichtet, Top 20) ·
-//  Stand 08.08.2026 · v1.1 (nach Abgleich mit Ben Pfeifers Archetyp-Board)
+//  Stand 08.08.2026 · v1.1 (nach Abgleich mit Dizzle Dynasty, Game Theory Rankings, Ben Pfeifers Archetyp-Board)
 //  Sortiert nach Dynasty-9-cat-Wert, NICHT nach NBA-Draft-Slot.
 //  Gleiche Struktur wie DRAFT_2026 (siehe data/draft2026.js):
 //  { pick, name, pos, school, tier, measurements, stats, fantasy, scouting, link }
