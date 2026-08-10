@@ -580,3 +580,22 @@ body.light {
   margin-top: 8px;
 }
 .owner-filter:focus { outline: none; border-color: var(--accent); }
+
+/* ─── Fund-Hinweis auf der NBA-Teams-Seite ───────────────────
+   Freier Spieler mit hoher Minutenzahl: viel Rolle in der NBA, aber
+   in keinem Kader der Liga. Bewusst ein Rand links statt einer
+   Flaechenfarbe, damit die Heatmap der Statistikspalten lesbar
+   bleibt. */
+#liveProjTeamsPage tr.fa-find td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent2);
+}
+#liveProjTeamsPage tr.fa-find .name-cell::after {
+  content: 'FREI';
+  font-family: 'DM Mono', monospace;
+  font-size: 8.5px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--accent2);
+  border: 1px solid var(--accent2);
+  border-radius: 4px;
+  padding: 1px 4px; margin-left: 6px;
+  vertical-align: middle;
+}

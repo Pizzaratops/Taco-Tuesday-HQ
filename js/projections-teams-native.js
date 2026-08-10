@@ -17,10 +17,29 @@ function initLiveProjTeamsNative() {
   const NEWEST_LABEL = SEASON_LABELS[SEASON_LABELS.length - 1];
   let query = '';
 
+  // ── Fantasy-Besitz ───────────────────────────────────────
+  // Logik in js/fantasy-owner.js, geteilt mit Projections und Best
+  // Available.
+  //
+  // FUND-SCHWELLE: Ein freier Spieler mit hoher Minutenzahl ist der
+  // interessanteste Fall auf dieser Seite -- viel Spielzeit in einer
+  // NBA-Rotation, aber in keinem Kader der Liga. Solche Zeilen werden
+  // markiert. 24 Minuten als Standard, weil darunter kaum jemand
+  // verlaesslich 9cat-Wert liefert; per Auswahl aenderbar.
+  let ownerFilter = null;
+  let faMinMinutes = 24;
+
+  function isFreeAgentFind(playerName, minutes) {
+    return faMinMinutes > 0 && minutes >= faMinMinutes && !ttOwnerOf(playerName);
+  }
+
   function fmt(v, d=1) { return v.toFixed(d); }
 
-  function statHeaderRow() {
-    return `<tr><th>Spieler</th><th>Pos</th><th>Min</th><th>GP</th><th>PTS</th><th>REB</th><th>AST</th><th>STL</th><th>BLK</th><th>3PM</th><th>FGM-FGA</th><th>FG%</th><th>FTM-FTA</th><th>FT%</th><th>TO</th></tr>`;
+  function statHeaderRow(showOwner) {
+    const own = showOwner
+      ? '<th title="Fantasy Team in der Taco Tuesday League, FA = Free Agent">Fantasy</th>'
+      : '';
+    return `<tr><th>Spieler</th><th>Pos</th>${own}<th>Min</th><th>GP</th><th>PTS</th><th>REB</th><th>AST</th><th>STL</th><th>BLK</th><th>3PM</th><th>FGM-FGA</th><th>FG%</th><th>FTM-FTA</th><th>FT%</th><th>TO</th></tr>`;
   }
 
   const HEAT_COLS = ['min', 'pts', 'reb', 'ast', 'stl', 'blk', 'fg3m', 'fgpct', 'ftpct', 'tov'];
@@ -65,9 +84,12 @@ function initLiveProjTeamsNative() {
       const est = minVal * rate;
       return `<td style="font-size:11px; color:var(--muted);" title="Geschätzte Versuche aus Min × Liga-Schnittrate — keine echten Attempt-Daten für manuelle/Rookie-Einträge">${fmt(est,1)}</td>`;
     };
-    return `<tr ${admin ? 'draggable="true"' : ''} data-key="${key}" data-team="${teamBbmAbbr}" class="manual-row">
+    const mMin = manual.min !== undefined ? manual.min : (projMin !== undefined ? projMin : 0);
+    const mFind = isFreeAgentFind(rp.name, mMin);
+    return `<tr ${admin ? 'draggable="true"' : ''} data-key="${key}" data-team="${teamBbmAbbr}" class="manual-row${mFind ? ' fa-find' : ''}">
       <td class="name-cell">${admin ? '<span class="drag-handle">⠿</span>' : ''}${rp.name}<span class="manual-tag">manuell</span></td>
       <td class="left">${rp.position || '-'}</td>
+      <td class="left">${ttOwnerTag(rp.name)}</td>
       ${field('min', 0.5)}
       ${field('gp', 1)}
       ${field('pts', 0.1)}
@@ -85,7 +107,7 @@ function initLiveProjTeamsNative() {
   }
 
   function renderLeftRows(rosterPlayers, weights, overrides, teamAbbr, teamBbmAbbr) {
-    if (!rosterPlayers.length) return `<tr><td colspan="14" class="no-match-note">Keine Spieler</td></tr>`;
+    if (!rosterPlayers.length) return `<tr><td colspan="16" class="no-match-note">Keine Spieler</td></tr>`;
 
     const admin = mfhfbIsAdmin();
     const manualStats = mfhfbGetManualStats();
@@ -121,9 +143,11 @@ function initLiveProjTeamsNative() {
     return items.map(it => {
       if (!it.match) return renderManualRow(it.rp, teamBbmAbbr, manualRange);
       const { rp, match, isEdited, latest, newestActual, minutes, s, key } = it;
-      return `<tr ${admin ? 'draggable="true"' : ''} data-key="${key}" data-team="${teamAbbr}">
+      const find = isFreeAgentFind(match.name, minutes);
+      return `<tr class="${find ? 'fa-find' : ''}" ${admin ? 'draggable="true"' : ''} data-key="${key}" data-team="${teamAbbr}">
         <td class="name-cell">${admin ? '<span class="drag-handle">⠿</span>' : ''}${match.name}${newestActual.missed ? `<span class="pause-tag">⚠ pausiert ${newestActual.label}</span>` : ''}</td>
         <td class="left">${rp.position || match.pos || '-'}</td>
+        <td class="left">${ttOwnerTag(match.name)}</td>
         <td style="${heatFor(range,'min',minutes)}">
           <input class="min-input ${isEdited ? 'edited' : ''}" type="number" step="0.5" min="0" max="48" ${admin ? '' : 'disabled'}
             value="${fmt(minutes)}" data-name="${match.name.replace(/"/g,'&quot;')}" onchange="onMinutesChange(this)">
@@ -219,9 +243,22 @@ function initLiveProjTeamsNative() {
     document.getElementById('footerTextTeams').textContent =
       `Roster-Stand: ${new Date(ROSTERS_DATA.fetchedAt).toLocaleString('de-DE')} · Quelle: ${ROSTERS_DATA.source} · ${ROSTERS_DATA.teamCount}/30 Teams geladen. Rechte Spalte = End-Rotation ${NEWEST_LABEL}.`;
 
+    // Roster koennen sich per Sync geaendert haben
+    ttOwnerInvalidate();
+    const allPlayers = [];
+    Object.entries(ROSTERS_DATA.rosters).forEach(([abbr, t]) =>
+      (t.players || []).forEach(pl => allPlayers.push({ name: pl.name, team: abbr })));
+    ttFillOwnerFilter(document.getElementById('teamsOwnerFilter'), allPlayers, ownerFilter);
+
+    const findSel = document.getElementById('faMinSelect');
+    if (findSel) findSel.value = String(faMinMinutes);
+
     const teamEntries = Object.entries(ROSTERS_DATA.rosters).sort((a, b) => a[0].localeCompare(b[0]));
 
     const filtered = teamEntries.filter(([abbr, team]) => {
+      // Bei aktivem Besitzfilter Teams weglassen, von denen nichts
+      // uebrig bleibt -- sonst stehen dreissig leere Kaesten da.
+      if (ownerFilter && !team.players.some(p => ttOwnerMatches(ownerFilter, p.name, abbr))) return false;
       if (!q) return true;
       if (team.name.toLowerCase().includes(q) || abbr.toLowerCase().includes(q)) return true;
       return team.players.some(p => p.name.toLowerCase().includes(q));
@@ -231,7 +268,8 @@ function initLiveProjTeamsNative() {
       const bbmAbbr = mfhfbToBbmAbbr(abbr);
       const leftPlayers = q
         ? team.players.filter(p => p.name.toLowerCase().includes(q) || team.name.toLowerCase().includes(q) || abbr.toLowerCase().includes(q))
-        : team.players;
+            .filter(p => ttOwnerMatches(ownerFilter, p.name, abbr))
+        : team.players.filter(p => ttOwnerMatches(ownerFilter, p.name, abbr));
 
       return `<div class="team-block">
         <div class="team-header">
@@ -242,14 +280,14 @@ function initLiveProjTeamsNative() {
           <div class="col">
             <div class="col-title">Aktueller Kader — meine Minuten${admin ? ' (ziehbar für Starting 5)' : ' (gesperrt)'}</div>
             <table class="stat-table left-table">
-              <thead>${statHeaderRow()}</thead>
+              <thead>${statHeaderRow(true)}</thead>
               <tbody>${renderLeftRows(leftPlayers, weights, overrides, abbr, bbmAbbr)}</tbody>
             </table>
           </div>
           <div class="col">
             <div class="col-title right">End-Rotation ${NEWEST_LABEL} (real)</div>
             <table class="stat-table">
-              <thead>${statHeaderRow()}</thead>
+              <thead>${statHeaderRow(false)}</thead>
               <tbody>${renderRightRows(bbmAbbr)}</tbody>
             </table>
           </div>
@@ -334,6 +372,11 @@ function initLiveProjTeamsNative() {
   }
 
   document.getElementById('searchTeams').addEventListener('input', e => { query = e.target.value; render(); });
+
+  // Die Seite laeuft in einer IIFE, die onchange-Handler im Markup
+  // brauchen die Funktionen aber global.
+  window.teamsSetOwnerFilter = (v) => { ownerFilter = v || null; render(); };
+  window.teamsSetFaMin = (v) => { faMinMinutes = parseInt(v, 10) || 0; render(); };
 
   // Onclick/onchange-Attribute im generierten HTML brauchen diese Funktionen
   // im globalen Scope.

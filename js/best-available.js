@@ -75,7 +75,30 @@ const BA_NBA_TEAMS = new Set(['ATL','BOS','BKN','CHA','CHI','CLE','DAL','DEN','D
 // letzte Saison, Off-Season, laufende Saison, Post-Draft-Board fuer
 // Rookies) - taeglich neu von scripts/build-best-available-board.js
 // gebaut. Hier wird nur noch gegen die aktuellen Rosters gefiltert.
-function buildBestAvail() {
+// NBA-Team-Filter. Ein Fantasy-Filter waere hier sinnlos, weil dieses
+// Board per Definition nur Spieler zeigt, die in keinem Kader stehen.
+// Nuetzlich ist die Frage andersherum: welches NBA-Team hat noch freie
+// Spieler mit Rolle?
+let baNbaFilter = '';
+
+function baSetNbaFilter(val) {
+  baNbaFilter = val || '';
+  filterBestAvail();
+}
+
+function baFillNbaFilter() {
+  const el = document.getElementById('baNbaFilter');
+  if (!el) return;
+  const all = buildBestAvailRaw();
+  const teams = [...new Set(all.map(p => p.nbaTeam).filter(Boolean))].sort();
+  el.innerHTML = `<option value="">Alle NBA Teams (${all.length})</option>` +
+    teams.map(t => `<option value="${t}">${t} (${all.filter(p => p.nbaTeam === t).length})</option>`).join('');
+  el.value = baNbaFilter;
+}
+
+// Ohne NBA-Filter, damit die Auswahlliste selbst nicht schrumpft,
+// sobald man etwas auswaehlt.
+function buildBestAvailRaw() {
   const allRosteredNames = new Set();
   Object.values(ROSTERS).forEach(roster => {
     roster.forEach(p => allRosteredNames.add(normalizeName(p.name)));
@@ -90,6 +113,11 @@ function buildBestAvail() {
       ...p,
       source: p.isRookie ? 'postdraft' : (p.dynastyRank ? 'dynasty' : 'fa'),
     }));
+}
+
+function buildBestAvail() {
+  const all = buildBestAvailRaw();
+  return baNbaFilter ? all.filter(p => p.nbaTeam === baNbaFilter) : all;
 }
 
 function baSetExperienceFilter(val) {
@@ -189,6 +217,7 @@ function filterBestAvail() {
 }
 
 function showBestAvail() {
+  baFillNbaFilter();
   baCurrentData = baSortData(buildBestAvail());
   renderBestAvail(baCurrentData);
   baUpdateSortArrows();
