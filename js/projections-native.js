@@ -38,6 +38,78 @@ function initLiveProjectionsNative() {
   ];
   const STAT_FILTER_OPS = ['>', '>=', '<', '<='];
 
+  // ── Fantasy-Besitz (Taco Tuesday League) ──────────────────
+  // Baut einmal je Rendern einen Index normalisierterName -> TT-Team.
+  // Quelle ist ROSTERS aus data/teams-rosters.js, das der Admin-Layer
+  // beim Start aus rosters-live.js hydriert. Wer dort nicht auftaucht,
+  // ist Free Agent.
+  let _ownerIdx = null;
+  function ownerIndex(){
+    if(_ownerIdx) return _ownerIdx;
+    _ownerIdx = new Map();
+    if(typeof ROSTERS === 'undefined') return _ownerIdx;
+    Object.keys(ROSTERS).forEach(tid => {
+      (ROSTERS[tid] || []).forEach(pl => {
+        const k = typeof normalizeName === 'function' ? normalizeName(pl.name) : String(pl.name||'').toLowerCase();
+        if(k && !_ownerIdx.has(k)) _ownerIdx.set(k, parseInt(tid, 10));
+      });
+    });
+    return _ownerIdx;
+  }
+  // TEAMS hat kein Kuerzel-Feld, also aus dem Namen ableiten:
+  // mehrere Woerter -> Initialen, ein Wort -> erste drei Buchstaben.
+  // Der volle Name steht im title-Attribut.
+  function ttShort(name){
+    const w = String(name || '').trim().split(/\s+/).filter(Boolean);
+    if(w.length >= 2) return w.slice(0,3).map(x => x[0]).join('').toUpperCase();
+    return (w[0] || '?').slice(0,3).toUpperCase();
+  }
+
+  function ownerOf(name){
+    const k = typeof normalizeName === 'function' ? normalizeName(name) : String(name||'').toLowerCase();
+    const tid = ownerIndex().get(k);
+    if(!tid) return null;
+    return (typeof teamMap !== 'undefined' && teamMap[tid]) ? teamMap[tid] : { id: tid, name: 'Team ' + tid };
+  }
+
+  // Filter: null = alle, 'FA' = nur Free Agents, 'T:<id>' = ein
+  // Fantasy-Team, 'N:<abk>' = ein NBA-Team.
+  let ownerFilter = null;
+
+  function renderOwnerFilter(){
+    const el = document.getElementById('ownerFilter');
+    if(!el) return;
+    const rows = computeAll();
+    const faCount = rows.filter(r => !ownerOf(r.p.name)).length;
+
+    const nbaTeams = [...new Set(rows.map(r => r.p.team).filter(Boolean))].sort();
+    const ttTeams = (typeof TEAMS !== 'undefined' ? TEAMS : []).slice()
+      .sort((a,b) => a.name.localeCompare(b.name));
+
+    el.innerHTML =
+      `<option value="">Alle Spieler (${rows.length})</option>` +
+      `<option value="FA">Nur Free Agents (${faCount})</option>` +
+      (ttTeams.length ? `<optgroup label="Fantasy Team">` + ttTeams.map(t => {
+        const n = rows.filter(r => { const o = ownerOf(r.p.name); return o && o.id === t.id; }).length;
+        return `<option value="T:${t.id}">${t.name} (${n})</option>`;
+      }).join('') + `</optgroup>` : '') +
+      `<optgroup label="NBA Team">` + nbaTeams.map(t =>
+        `<option value="N:${t}">${t} (${rows.filter(r => r.p.team === t).length})</option>`
+      ).join('') + `</optgroup>`;
+    el.value = ownerFilter || '';
+  }
+
+  function passesOwnerFilter(r){
+    if(!ownerFilter) return true;
+    if(ownerFilter === 'FA') return !ownerOf(r.p.name);
+    if(ownerFilter.startsWith('T:')) {
+      const o = ownerOf(r.p.name);
+      return !!o && o.id === parseInt(ownerFilter.slice(2), 10);
+    }
+    if(ownerFilter.startsWith('N:')) return r.p.team === ownerFilter.slice(2);
+    return true;
+  }
+
   function statFilterValue(row, cat) {
     return cat === 'z' ? row.z : row.s[cat];
   }
@@ -289,12 +361,17 @@ function initLiveProjectionsNative() {
 
   function render() {
    try {
+    // Roster koennen sich zwischen Aufrufen aendern (Trade-Sync),
+    // deshalb den Besitzer-Index je Rendern verwerfen.
+    _ownerIdx = null;
+    renderOwnerFilter();
     const q = query.toLowerCase().trim();
     let rows = computeAll();
     rows = rows.filter(r =>
       !q || r.p.name.toLowerCase().includes(q) || r.p.team.toLowerCase().includes(q) || r.p.pos.toLowerCase().includes(q)
     );
     if (posFilter) rows = rows.filter(r => (r.p.pos || '-').split('/').includes(posFilter));
+    rows = rows.filter(passesOwnerFilter);
     rows = rows.filter(passesStatFilters);
 
     rows.sort((x, y) => {
@@ -337,6 +414,12 @@ function initLiveProjectionsNative() {
           <div class="p-meta">GP: ${manual ? (p.manualGP !== undefined ? p.manualGP : '-') : mfhfbRecentGP(p)}</div>
         </td>
         <td class="left">${p.team}</td>
+        <td class="left">${(() => {
+          const o = ownerOf(p.name);
+          return o
+            ? `<span class="own-tag" style="border-color:${typeof getTeamColor==='function'?getTeamColor(o):'var(--border)'};color:${typeof getTeamColor==='function'?getTeamColor(o):'var(--text)'}" title="${o.name}">${ttShort(o.name)}</span>`
+            : `<span class="own-tag fa">FA</span>`;
+        })()}</td>
         <td class="left">${p.pos}</td>
         <td class="sep-col" style="${edited ? 'color:var(--warn);' : ''}${heat('min', s.min)}">${fmt(s.min)}</td>
         <td style="${heat('pts', s.pts)}">${fmt(s.pts)}</td>
@@ -393,6 +476,7 @@ function initLiveProjectionsNative() {
   }
 
   document.getElementById('search').addEventListener('input', e => { query = e.target.value; render(); });
+  document.getElementById('ownerFilter').addEventListener('change', e => { ownerFilter = e.target.value || null; render(); });
 
   renderPosFilters();
   renderStatFilterRows();

@@ -1831,6 +1831,29 @@ function initLiveProjDraftNative() {
 
   let myPlayersCache = null;      // Ergebnis des letzten Durchlaufs
   let myPlayersShowAll = false;   // false = nur meine Spieler
+  // Sortierung der Tabelle. Standard: meiste eigene Ligen zuerst.
+  let myPlayersSort = { key: 'owned', dir: -1 };
+
+  // Startrichtung je Spalte: bei Zaehlern will man absteigend beginnen
+  // (viel zuerst), bei ADP aufsteigend (frueh zuerst).
+  const MP_SORT_DEFS = {
+    name:    { get: r => r.name.toLowerCase(), dir: 1, text: true },
+    owned:   { get: r => r.owned,   dir: -1 },
+    drafted: { get: r => r.drafted, dir: -1 },
+    adp:     { get: r => r.adp,     dir:  1 },
+    myAdp:   { get: r => r.myAdp,   dir:  1 },
+    delta:   { get: r => r.delta,   dir: -1 },
+  };
+
+  function mpSortBy(key){
+    const def = MP_SORT_DEFS[key];
+    if(!def) return;
+    // Gleiche Spalte erneut: Richtung drehen. Neue Spalte: mit der
+    // Richtung starten, die fuer sie am nuetzlichsten ist.
+    if(myPlayersSort.key === key) myPlayersSort.dir *= -1;
+    else myPlayersSort = { key, dir: def.dir };
+    renderMyPlayersTable();
+  }
 
   function loadMyTeamNames(){
     try{
@@ -1949,10 +1972,23 @@ function initLiveProjDraftNative() {
     const { rows, leagueCount } = myPlayersCache;
 
     let shown = myPlayersShowAll ? rows.slice() : rows.filter(r => r.owned > 0);
-    shown.sort((a, b) =>
-      (b.owned - a.owned) ||
-      (a.adp - b.adp) ||
-      a.name.localeCompare(b.name));
+
+    const def = MP_SORT_DEFS[myPlayersSort.key] || MP_SORT_DEFS.owned;
+    const dir = myPlayersSort.dir;
+    shown.sort((a, b) => {
+      const va = def.get(a), vb = def.get(b);
+      // Spieler ohne eigenen Pick haben kein "Mein ADP" und keine Diff.
+      // Die gehoeren immer ans Ende, egal in welche Richtung sortiert
+      // wird -- sonst wandert beim Umschalten eine Wand aus Strichen
+      // nach oben und verdraengt genau die Zeilen, die man sehen will.
+      const na = va === null || va === undefined || (typeof va === 'number' && !Number.isFinite(va));
+      const nb = vb === null || vb === undefined || (typeof vb === 'number' && !Number.isFinite(vb));
+      if(na !== nb) return na ? 1 : -1;
+      if(na && nb) return a.name.localeCompare(b.name);
+      if(def.text) return va.localeCompare(vb) * dir;
+      if(va !== vb) return (va - vb) * dir;
+      return (a.adp - b.adp) || a.name.localeCompare(b.name);
+    });
 
     if(!shown.length){
       listEl.innerHTML = '<div class="note">Keine Treffer. Stimmen die Teamnamen oben?</div>';
@@ -1971,15 +2007,23 @@ function initLiveProjDraftNative() {
 
     // data-short liefert die Kurzform, die das CSS unter 700px per
     // ::after einblendet, waehrend das <span> ausgeblendet wird.
+    const th = (key, label, short, title) => {
+      const on = myPlayersSort.key === key;
+      const arrow = on ? (myPlayersSort.dir === 1 ? ' ▲' : ' ▼') : '';
+      const cls = 'mp-o-th' + (on ? ' sorted' : '') + (key === 'name' ? ' mp-o-name' : '');
+      return `<th class="${cls}" data-sort="${key}" data-short="${short}${arrow}" title="${title}">`
+           + `<span>${label}${arrow}</span></th>`;
+    };
+
     listEl.innerHTML = `
       <table class="mp-owned">
         <thead><tr>
-          <th class="mp-o-name">Spieler</th>
-          <th data-short="MEINE" title="In wie vielen ausgewerteten Ligen ich ihn gedraftet habe"><span>Meine Ligen</span></th>
-          <th data-short="GEZOGEN" title="In wie vielen Ligen er ueberhaupt gedraftet wurde. Je kleiner die Zahl, desto duenner die Grundlage des ADP."><span>Gedraftet in</span></th>
-          <th data-short="ADP" title="Durchschnittliche Overall-Picknummer ueber alle Ligen, in denen er gedraftet wurde"><span>Overall ADP</span></th>
-          <th data-short="MEIN" title="Durchschnittliche Picknummer, zu der ich ihn geholt habe"><span>Mein ADP</span></th>
-          <th data-short="DIFF" title="Mein ADP minus Overall ADP. Plus heisst spaeter geholt als der Markt."><span>Diff</span></th>
+          ${th('name','Spieler','SPIELER','Nach Namen sortieren')}
+          ${th('owned','Meine Ligen','MEINE','In wie vielen ausgewerteten Ligen ich ihn gedraftet habe')}
+          ${th('drafted','Gedraftet in','GEZOGEN','In wie vielen Ligen er überhaupt gedraftet wurde. Je kleiner die Zahl, desto dünner die Grundlage des ADP.')}
+          ${th('adp','Overall ADP','ADP','Durchschnittliche Overall-Picknummer über alle Ligen, in denen er gedraftet wurde')}
+          ${th('myAdp','Mein ADP','MEIN','Durchschnittliche Picknummer, zu der ich ihn geholt habe')}
+          ${th('delta','Diff','DIFF','Mein ADP minus Overall ADP. Plus heißt später geholt als der Markt.')}
         </tr></thead>
         <tbody>${shown.map(r => `
           <tr title="${r.myLeagues.map(l => `${l.label}: Pick ${l.pick}`).join(' | ').replace(/"/g, '&quot;')}">
@@ -2114,6 +2158,11 @@ function initLiveProjDraftNative() {
       const list = raw.split(',').map(s => s.trim()).filter(Boolean);
       saveMyTeamNames(list.length ? list : [...MFHFB_MYTEAMS_DEFAULT]);
       openMyPlayers(true);
+    });
+    // Delegiert, weil der Tabellenkopf bei jedem Rendern neu entsteht.
+    document.getElementById('myPlayersList').addEventListener('click', (e) => {
+      const th = e.target.closest('th[data-sort]');
+      if(th) mpSortBy(th.dataset.sort);
     });
     document.getElementById('myPlayersShowAll').addEventListener('change', (e) => {
       myPlayersShowAll = e.target.checked;
