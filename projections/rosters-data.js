@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-09T09:30:49.618Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-10T10:09:51.311Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-08-09T09:30:49.618Z",
+ "fetchedAt": "2026-08-10T10:09:51.311Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -2196,15 +2196,6 @@ const ROSTERS_DATA = {
      "weight": "242 lbs",
      "age": 23,
      "espnId": "5108024"
-    },
-    {
-     "name": "Sean Pedulla",
-     "jersey": "00",
-     "position": "G",
-     "height": "6' 1\"",
-     "weight": "195 lbs",
-     "age": 23,
-     "espnId": "4709131"
     },
     {
      "name": "Kobe Sanders",
