@@ -122,7 +122,7 @@ function initLiveProjDraftNative() {
     const overrides = mfhfbGetOverrides();
 
     let rows = PLAYER_RATES
-      .filter(p => mfhfbIsOnCurrentRoster(p.name, p.team))
+      .filter(p => mfhfbIsValidCurrentTeam(p.team))
       .map((p, idx) => {
       const latest = mfhfbLatestSeason(p);
       const key = mfhfbNormalizeName(p.name);
@@ -156,7 +156,6 @@ function initLiveProjDraftNative() {
       // werden könnte, dem trägst du auf teams.html ein Team ein, dann taucht
       // er automatisch wieder auf.
       if (!m.team || !m.team.trim()) return;
-      if (!mfhfbIsOnCurrentRoster(m.name, m.team)) return;
       const min = m.min || 0;
       // Sicherheitsnetz: negative Counting-Stats können nie korrekt sein, egal
       // woher der manuelle Eintrag kommt (Rookie-Vorbelegung oder von Hand).
@@ -814,7 +813,7 @@ function initLiveProjDraftNative() {
   }
 
   function renderStatFilterRows(){
-    const container = document.getElementById('dStatFilterRows');
+    const container = document.getElementById('statFilterRows');
     container.innerHTML = state.statFilters.map((f, i) => `
       <div style="display:flex; gap:6px; align-items:center; margin-bottom:6px;">
         <select data-i="${i}" data-field="cat" style="padding:5px 8px; border-radius:6px; background:var(--surface2); border:1px solid var(--border); color:var(--text);">
@@ -1404,7 +1403,7 @@ function initLiveProjDraftNative() {
     });
   }
   function renderPosFilters(){
-    const container = document.getElementById('dPosFilters');
+    const container = document.getElementById('posFilters');
     const all = [{k:null,l:'Alle'}].concat(POSITIONS.map(p=>({k:p,l:p})));
     container.innerHTML = all.map(o => `<div class="tag-btn ${state.posFilter===o.k?'active':''}" data-k="${o.k??''}">${o.l}</div>`).join('');
     container.querySelectorAll('.tag-btn').forEach(btn => {
@@ -1669,11 +1668,7 @@ function initLiveProjDraftNative() {
     // Dieselbe simple Zeilen-Liste, die auch scripts/fetch-draft-results.mjs
     // nutzt -- wird hier direkt aus dem Repo nachgeladen (relativ zur Seite,
     // funktioniert auf GitHub Pages ohne eigenes Backend).
-    // War 'data/fantrax-leagues.txt', relativ korrekt, solange dieser Code
-    // noch in projections/draft.html lief. Seit der nativen Portierung
-    // (2026-08-01) laeuft er von TTHQs eigenem index.html im Repo-Root aus,
-    // der relative Pfad muss daher den projections/-Ordner mit angeben.
-    const res = await fetch('projections/data/fantrax-leagues.txt');
+    const res = await fetch('data/fantrax-leagues.txt');
     if(!res.ok) throw new Error(`HTTP ${res.status}`);
     const raw = await res.text();
     return raw.split('\n')
@@ -1798,6 +1793,261 @@ function initLiveProjDraftNative() {
     });
   }
 
+  // ---------------- Meine Spieler: Besitz + ADP ueber alle Ligen ----------------
+  //
+  // Wertet ALLE Ligen aus data/fantrax-leagues.txt aus und beantwortet zwei
+  // Fragen je Spieler:
+  //   1. In wie vielen meiner Ligen habe ich ihn gedraftet?
+  //   2. Wie frueh ging er im Schnitt (Overall ADP) und wie frueh habe ICH
+  //      ihn genommen (mein ADP)?
+  //
+  // Die Zuordnung "welches Team gehoert mir" laeuft ueber die Teamnamen, weil
+  // die Fantrax-Team-IDs je Liga verschieden sind. Die Namensliste ist
+  // editierbar und wird lokal gespeichert.
+  //
+  // WICHTIG zur Vergleichbarkeit: ADP ist die Overall-Picknummer. Ligen mit
+  // unterschiedlich vielen Teams sind dadurch nur eingeschraenkt vergleichbar,
+  // eine 10er- und eine 14er-Liga bewerten Pick 20 nicht gleich. Deshalb wird
+  // die Teamzahl je Liga mit erfasst und im Kopf ausgewiesen.
+
+  const MFHFB_MYTEAMS_KEY = 'mfhfb_my_team_names_v1';
+  const MFHFB_MYTEAMS_DEFAULT = ['MFHFBs', 'Steakosaurus', 'Pizzaratops', 'Hawkward'];
+
+  let myPlayersCache = null;      // Ergebnis des letzten Durchlaufs
+  let myPlayersShowAll = false;   // false = nur meine Spieler
+
+  function loadMyTeamNames(){
+    try{
+      const raw = JSON.parse(localStorage.getItem(MFHFB_MYTEAMS_KEY) || 'null');
+      if(Array.isArray(raw) && raw.length) return raw;
+    }catch(e){}
+    return [...MFHFB_MYTEAMS_DEFAULT];
+  }
+  function saveMyTeamNames(list){
+    try{ localStorage.setItem(MFHFB_MYTEAMS_KEY, JSON.stringify(list)); }catch(e){}
+  }
+
+  // Teamnamen tolerant vergleichen: Fantrax laesst Emojis, Bindestriche und
+  // wechselnde Gross-/Kleinschreibung zu, deshalb auf reine Buchstaben und
+  // Ziffern reduzieren und beidseitig auf Teilstring pruefen.
+  function normTeamName(s){
+    return String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  }
+  function makeIsMyTeam(names){
+    const needles = names.map(normTeamName).filter(n => n.length >= 3);
+    return (teamName) => {
+      const t = normTeamName(teamName);
+      if(!t) return false;
+      return needles.some(n => t.includes(n) || n.includes(t));
+    };
+  }
+
+  async function fetchLeagueOwnership(entry, players, isMyTeam){
+    try{
+      const { draft, league } = await mfhfbFetchFantraxLeague(entry.id);
+      const picks = (draft.draftPicks || []).filter(p => p.playerId);
+      const teamInfo = league.teamInfo || {};
+      const teamCount = (draft.draftOrder && draft.draftOrder.length)
+        || Object.keys(teamInfo).length || null;
+
+      const myTeamIds = new Set(
+        Object.keys(teamInfo).filter(id => isMyTeam(teamInfo[id] && teamInfo[id].name))
+      );
+      const myTeamNames = [...myTeamIds].map(id => teamInfo[id].name);
+
+      const rows = picks.map(p => ({
+        playerId: p.playerId,
+        pick: p.pick || 0,
+        mine: myTeamIds.has(p.teamId),
+      })).filter(r => r.pick > 0);
+
+      return {
+        entry, ok: true,
+        apiName: extractLeagueName(league),
+        teamCount, picks: rows,
+        started: rows.length > 0,
+        matched: myTeamIds.size > 0,
+        myTeamNames,
+        allTeamNames: Object.keys(teamInfo).map(id => teamInfo[id].name).filter(Boolean),
+      };
+    }catch(err){
+      return { entry, ok: false, error: err.message };
+    }
+  }
+
+  function buildOwnershipTable(results, players){
+    const usable = results.filter(r => r.ok && r.started);
+    const agg = new Map();
+
+    usable.forEach(r => {
+      r.picks.forEach(pk => {
+        const info = players[pk.playerId];
+        const display = info ? mfhfbFantraxNameToDisplay(info.name) : `Fantrax-ID ${pk.playerId}`;
+        const key = mfhfbNormalizeName(display) || display;
+        if(!agg.has(key)){
+          agg.set(key, {
+            name: display,
+            pos: (info && (info.position || info.pos)) || '',
+            team: (info && (info.team || info.teamShortName)) || '',
+            allPicks: [], myPicks: [], myLeagues: [],
+          });
+        }
+        const a = agg.get(key);
+        a.allPicks.push(pk.pick);
+        if(pk.mine){
+          a.myPicks.push(pk.pick);
+          a.myLeagues.push({ label: r.apiName || r.entry.label || r.entry.id, pick: pk.pick });
+        }
+      });
+    });
+
+    const mean = arr => arr.reduce((s, v) => s + v, 0) / arr.length;
+    const rows = [...agg.values()].map(a => ({
+      ...a,
+      owned: a.myPicks.length,
+      adp: mean(a.allPicks),
+      myAdp: a.myPicks.length ? mean(a.myPicks) : null,
+      drafted: a.allPicks.length,
+    }));
+    rows.forEach(r => { r.delta = r.myAdp === null ? null : r.myAdp - r.adp; });
+
+    return { rows, leagueCount: usable.length };
+  }
+
+  function renderMyPlayersTable(){
+    const listEl = document.getElementById('myPlayersList');
+    if(!myPlayersCache){ listEl.innerHTML = ''; return; }
+    const { rows, leagueCount } = myPlayersCache;
+
+    let shown = myPlayersShowAll ? rows.slice() : rows.filter(r => r.owned > 0);
+    shown.sort((a, b) =>
+      (b.owned - a.owned) ||
+      (a.adp - b.adp) ||
+      a.name.localeCompare(b.name));
+
+    if(!shown.length){
+      listEl.innerHTML = '<div class="note">Keine Treffer. Stimmen die Teamnamen oben?</div>';
+      return;
+    }
+
+    const fmt = v => v === null || v === undefined ? '—' : v.toFixed(1);
+    const deltaCell = r => {
+      if(r.delta === null) return '<td class="mp-o-num">—</td>';
+      // Positiv heisst: ich habe ihn SPAETER geholt als der Schnitt, also
+      // guenstiger eingekauft. Negativ heisst: ich habe hochgegriffen.
+      const cls = r.delta > 0.5 ? 'good' : (r.delta < -0.5 ? 'bad' : '');
+      const sign = r.delta > 0 ? '+' : '';
+      return `<td class="mp-o-num ${cls}">${sign}${r.delta.toFixed(1)}</td>`;
+    };
+
+    listEl.innerHTML = `
+      <table class="mp-owned">
+        <thead><tr>
+          <th style="text-align:left;">Spieler</th>
+          <th title="In wie vielen ausgewerteten Ligen ich ihn gedraftet habe">Meine Ligen</th>
+          <th title="Durchschnittliche Overall-Picknummer ueber alle Ligen, in denen er gedraftet wurde">Overall ADP</th>
+          <th title="Durchschnittliche Picknummer, zu der ich ihn geholt habe">Mein ADP</th>
+          <th title="Mein ADP minus Overall ADP. Plus heisst spaeter geholt als der Markt.">Diff</th>
+        </tr></thead>
+        <tbody>${shown.map(r => `
+          <tr title="${r.myLeagues.map(l => `${l.label}: Pick ${l.pick}`).join(' | ').replace(/"/g, '&quot;')}">
+            <td class="mp-o-name">
+              <span class="mp-o-pname">${r.name.replace(/</g, '&lt;')}</span>
+              <span class="mp-o-pmeta">${[r.pos, r.team].filter(Boolean).join(' · ')}</span>
+            </td>
+            <td class="mp-o-num${r.owned ? ' own' : ''}">${r.owned} / ${leagueCount}</td>
+            <td class="mp-o-num">${fmt(r.adp)}</td>
+            <td class="mp-o-num">${fmt(r.myAdp)}</td>
+            ${deltaCell(r)}
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+  }
+
+  async function openMyPlayers(force){
+    const overlay = document.getElementById('myPlayersOverlay');
+    const summaryEl = document.getElementById('myPlayersSummary');
+    const listEl = document.getElementById('myPlayersList');
+    overlay.style.display = 'flex';
+    document.getElementById('myTeamNamesInput').value = loadMyTeamNames().join(', ');
+
+    if(myPlayersCache && !force){ renderMyPlayersTable(); return; }
+
+    summaryEl.textContent = 'lädt…';
+    listEl.innerHTML = '';
+
+    let entries;
+    try{
+      entries = await loadLeagueDirectoryFromRepo();
+    }catch(err){
+      summaryEl.textContent = `Liga-Liste konnte nicht geladen werden (${err.message}).`;
+      return;
+    }
+    if(!entries.length){ summaryEl.textContent = 'Keine Ligen in data/fantrax-leagues.txt eingetragen.'; return; }
+
+    const isMyTeam = makeIsMyTeam(loadMyTeamNames());
+    let players;
+    try{
+      players = await mfhfbFantraxPlayerIndex();
+    }catch(err){
+      summaryEl.textContent = `Spieler-Index konnte nicht geladen werden (${err.message}).`;
+      return;
+    }
+
+    const results = await runWithConcurrency(entries, 5, e => fetchLeagueOwnership(e, players, isMyTeam));
+    myPlayersCache = buildOwnershipTable(results, players);
+
+    const usable = results.filter(r => r.ok && r.started);
+    const unmatched = usable.filter(r => !r.matched);
+    const failed = results.filter(r => !r.ok);
+    const notStarted = results.filter(r => r.ok && !r.started);
+    const sizes = [...new Set(usable.map(r => r.teamCount).filter(Boolean))].sort((a, b) => a - b);
+
+    let txt = `${usable.length} Ligen ausgewertet`;
+    if(sizes.length > 1) txt += ` (${sizes.join(' bis ')} Teams, ADP daher nur eingeschränkt vergleichbar)`;
+    else if(sizes.length === 1) txt += ` (je ${sizes[0]} Teams)`;
+    if(notStarted.length) txt += ` · ${notStarted.length} noch ohne Picks`;
+    if(failed.length) txt += ` · ${failed.length} nicht erreichbar`;
+    summaryEl.textContent = txt;
+
+    const warnEl = document.getElementById('myPlayersWarn');
+    if(unmatched.length){
+      // Ohne Treffer beim Teamnamen faellt eine ganze Liga aus der
+      // Besitz-Rechnung -- das muss sichtbar sein, sonst wundert man sich
+      // ueber zu niedrige Zaehler.
+      const names = unmatched.slice(0, 3).map(r => (r.apiName || r.entry.label || r.entry.id)).join(', ');
+      warnEl.style.display = '';
+      warnEl.innerHTML = `⚠️ In ${unmatched.length} Liga(en) wurde kein Team mit Deinen Namen gefunden: `
+        + `<b>${names.replace(/</g, '&lt;')}${unmatched.length > 3 ? ` +${unmatched.length - 3} weitere` : ''}</b>. `
+        + `Diese Ligen zählen bei "Overall ADP" mit, aber nicht bei "Meine Ligen". `
+        + `Teamnamen oben ergänzen und neu laden.`;
+    } else {
+      warnEl.style.display = 'none';
+    }
+
+    renderMyPlayersTable();
+  }
+
+  function initMyPlayersModal(){
+    document.getElementById('myPlayersBtn').addEventListener('click', () => openMyPlayers(false));
+    document.getElementById('myPlayersClose').addEventListener('click', () => {
+      document.getElementById('myPlayersOverlay').style.display = 'none';
+    });
+    document.getElementById('myPlayersOverlay').addEventListener('click', (e) => {
+      if(e.target.id === 'myPlayersOverlay') e.currentTarget.style.display = 'none';
+    });
+    document.getElementById('myPlayersReload').addEventListener('click', () => {
+      const raw = document.getElementById('myTeamNamesInput').value;
+      const list = raw.split(',').map(s => s.trim()).filter(Boolean);
+      saveMyTeamNames(list.length ? list : [...MFHFB_MYTEAMS_DEFAULT]);
+      openMyPlayers(true);
+    });
+    document.getElementById('myPlayersShowAll').addEventListener('change', (e) => {
+      myPlayersShowAll = e.target.checked;
+      renderMyPlayersTable();
+    });
+  }
+
   function initLiveSyncPanel(){
     document.getElementById('liveLoadBtn').addEventListener('click', loadFantraxLeague);
     document.getElementById('liveTeamPick').addEventListener('change', onLiveTeamChange);
@@ -1855,13 +2105,13 @@ function initLiveProjDraftNative() {
       e.target.classList.toggle('active', state.hideDrafted);
       renderPool(); scheduleSave();
     });
-    document.getElementById('dStatFilterToggle').addEventListener('click', e => {
-      const panel = document.getElementById('dStatFilterPanel');
+    document.getElementById('statFilterToggle').addEventListener('click', e => {
+      const panel = document.getElementById('statFilterPanel');
       const nowVisible = panel.style.display === 'none';
       panel.style.display = nowVisible ? 'block' : 'none';
       e.target.classList.toggle('active', nowVisible);
     });
-    document.getElementById('dStatFilterClear').addEventListener('click', () => {
+    document.getElementById('statFilterClear').addEventListener('click', () => {
       state.statFilters = [null, null, null];
       renderStatFilterRows(); renderPool(); scheduleSave();
     });
@@ -1911,6 +2161,7 @@ function initLiveProjDraftNative() {
   renderAll();
   initLiveSyncPanel();
   initLeagueProgressModal();
+  initMyPlayersModal();
 
   // Fuer js/theme.js: Heatmap-/Statusfarben teils als Inline-Styles gerendert,
   // bei Theme-Wechsel neu zeichnen.

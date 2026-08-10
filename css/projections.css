@@ -208,12 +208,11 @@ body.light {
 #liveProjDraftPage .panel.collapsed .chevron {transform:rotate(-90deg);}
 #liveProjDraftPage .panel-body {padding:2px 18px 16px; display:flex; gap:22px; flex-wrap:wrap; align-items:flex-end;}
 #liveProjDraftPage .panel.collapsed .panel-body {display:none;}
-#liveProjDraftPage .field {display:flex; flex-direction:column; gap:5px; min-width:0; max-width:100%;}
+#liveProjDraftPage .field {display:flex; flex-direction:column; gap:5px;}
 #liveProjDraftPage .field label {color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.06em;}
 #liveProjDraftPage select {
     background:var(--surface2); border:1px solid var(--border); color:var(--text);
     padding:7px 10px; border-radius:8px; font-size:13px; font-family:'DM Sans',sans-serif;
-    min-width:0; max-width:100%;
   }
 #liveProjDraftPage .punt-cats {display:flex; gap:6px; flex-wrap:wrap;}
 #liveProjDraftPage .punt-chip {
@@ -356,9 +355,9 @@ body.light {
 #liveProjDraftPage .cloud-status {font-size:11px; font-weight:600; text-transform:none; letter-spacing:0;}
 #liveProjDraftPage .cloud-status.ok {color:var(--good);}
 #liveProjDraftPage .cloud-status.err {color:var(--bad);}
-#liveProjDraftPage .league-sync-row {display:flex; gap:8px; width:100%; flex-wrap:wrap;}
+#liveProjDraftPage .league-sync-row {display:flex; gap:8px; width:100%;}
 #liveProjDraftPage .league-sync-row input[type=text] {
-    flex:1 1 140px; min-width:0; background:var(--surface); border:1px solid var(--border); color:var(--text);
+    flex:1; background:var(--surface); border:1px solid var(--border); color:var(--text);
     padding:9px 12px; border-radius:8px; font-size:13px; font-family:'DM Sans',sans-serif; outline:none;
   }
 #liveProjDraftPage .league-sync-row input[type=text]:focus {border-color:var(--accent);}
@@ -382,3 +381,74 @@ body.light {
 #liveProjDraftPage .league-row .lg-status.done { color:var(--good); }
 #liveProjDraftPage .league-row .lg-status.err { color:var(--bad); }
 
+
+/* ─── Meine Spieler: Besitz und ADP ueber alle Ligen ─────────
+   Modal auf der Fantrax-Redraft-Seite, gerendert von
+   js/projections-draft-native.js (openMyPlayers). Nutzt dieselben
+   Theme-Variablen wie der Rest der Seite. */
+#liveProjDraftPage .mp-owned-box { max-width: 760px; width: 100%; }
+
+#liveProjDraftPage .mp-owned-cfg {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+#liveProjDraftPage .mp-owned-lbl {
+  display: block; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 7px;
+}
+#liveProjDraftPage .mp-owned-row { display: flex; gap: 8px; flex-wrap: wrap; }
+#liveProjDraftPage .mp-owned-input {
+  flex: 1; min-width: 220px;
+  padding: 8px 11px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+}
+#liveProjDraftPage .mp-owned-input:focus { outline: none; border-color: var(--accent); }
+
+#liveProjDraftPage .mp-owned-warn {
+  margin: 8px 0 0; padding: 9px 12px;
+  border: 1px solid var(--bad); border-radius: 8px;
+  color: var(--text); line-height: 1.55;
+}
+
+#liveProjDraftPage .mp-owned-toggle {
+  display: flex; align-items: center; gap: 7px;
+  margin: 12px 0 10px; font-size: 12.5px; color: var(--muted); cursor: pointer;
+}
+
+#liveProjDraftPage .mp-owned {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+}
+#liveProjDraftPage .mp-owned th {
+  position: sticky; top: 0; z-index: 1;
+  padding: 9px 8px; text-align: center;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--muted);
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap; cursor: help;
+}
+#liveProjDraftPage .mp-owned td {
+  padding: 8px; text-align: center;
+  border-bottom: 1px solid var(--border);
+  font-family: 'DM Mono', monospace;
+}
+#liveProjDraftPage .mp-owned tr:last-child td { border-bottom: none; }
+#liveProjDraftPage .mp-owned tr:hover td { background: var(--surface2); }
+
+#liveProjDraftPage .mp-owned .mp-o-name {
+  text-align: left; font-family: 'DM Sans', sans-serif; min-width: 170px;
+}
+#liveProjDraftPage .mp-o-pname { display: block; font-weight: 600; color: var(--text); }
+#liveProjDraftPage .mp-o-pmeta { display: block; font-size: 10.5px; color: var(--muted); margin-top: 1px; }
+#liveProjDraftPage .mp-o-num { white-space: nowrap; }
+#liveProjDraftPage .mp-o-num.own { color: var(--accent); font-weight: 700; }
+#liveProjDraftPage .mp-o-num.good { color: var(--good); }
+#liveProjDraftPage .mp-o-num.bad { color: var(--bad); }
