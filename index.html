@@ -504,6 +504,7 @@
       <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="text" id="search" placeholder="Spieler, Team oder Position suchen…">
     </div>
+    <select id="ownerFilter" class="owner-filter" title="Nach Fantasy Team, Free Agents oder NBA Team filtern"></select>
     <div id="posFilters" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
     <button class="tag-btn" id="statFilterToggle">Stat-Filter</button>
     <button class="csv-btn" onclick="downloadCSV()">⬇ CSV Export</button>
@@ -526,6 +527,7 @@
           <th data-k="rank">#</th>
           <th data-k="name">Name</th>
           <th data-k="team">Team</th>
+          <th data-k="owner" title="Fantasy Team in der Taco Tuesday League, FA = Free Agent">Fantasy</th>
           <th data-k="pos">Pos</th>
           <th data-k="min" class="sep-col">Min</th>
           <th data-k="pts">PTS</th>
