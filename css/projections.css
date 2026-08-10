@@ -544,3 +544,39 @@ body.light {
 #liveProjDraftPage .mp-owned-det summary {
   cursor: pointer; font-size: 12px; color: var(--accent); user-select: none;
 }
+
+/* Sortierbare Kopfzeilen im Meine-Spieler-Modal */
+#liveProjDraftPage .mp-owned th.mp-o-th { cursor: pointer; user-select: none; }
+#liveProjDraftPage .mp-owned th.mp-o-th:hover { color: var(--text); }
+#liveProjDraftPage .mp-owned th.mp-o-th.sorted { color: var(--accent); }
+
+/* ─── Fantasy-Besitz auf der Projections-Seite ───────────────
+   Kurzkuerzel statt vollem Teamnamen, weil die Spalte sonst die
+   Statistik-Spalten aus dem sichtbaren Bereich schiebt. Voller Name
+   im title-Attribut. */
+.own-tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  padding: 2px 6px; border-radius: 5px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  white-space: nowrap;
+}
+.own-tag.fa {
+  color: var(--muted);
+  border-style: dashed;
+}
+.owner-filter {
+  padding: 8px 11px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  max-width: 100%;
+  margin-top: 8px;
+}
+.owner-filter:focus { outline: none; border-color: var(--accent); }
