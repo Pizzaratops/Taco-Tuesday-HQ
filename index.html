@@ -7,7 +7,15 @@
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taco Tuesday HQ 🌮</title>
-  <link rel="manifest" href="manifest.json?v=5">
+  <link rel="manifest" href="manifest.json?v=6">
+  <!-- iOS Safari nutzt manifest.json kaum -- fuer "Zum Home-Bildschirm" (Teilen-Menü,
+       immer vorhanden, aber ohne diese Tags nur ein Screenshot-Lesezeichen statt
+       eines echten App-Icons im Vollbild) braucht es diese Apple-eigenen Tags. -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Taco Tuesday HQ">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="theme-color" content="#fff5ee">
   <link rel="stylesheet" href="css/style.css?v=5">
   <link rel="stylesheet" href="css/big-board.css?v=5">
   <link rel="stylesheet" href="css/projections.css?v=1">
@@ -23,6 +31,16 @@
   <button class="back-btn" id="backBtn" onclick="goHome()">← Back</button>
   <div class="logo">🌮 Taco Tuesday <span>HQ</span></div>
   <div class="header-right">
+    <!-- App-Installieren-Button (nur Android/Chrome/Edge -- iOS hat keinen
+         programmatischen Install-Trigger, dort bleibt nur "Teilen > Zum
+         Home-Bildschirm", siehe apple-mobile-web-app-* Tags im <head>).
+         Standardmaessig versteckt, erscheint nur wenn der Browser das
+         beforeinstallprompt-Event feuert (js/init.js). -->
+    <button id="pwaInstallBtn" onclick="pwaInstallApp()" style="display:none;background:rgba(108,99,255,0.12);border:1.5px solid rgba(108,99,255,0.35);color:var(--accent);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:6px;">⬇️ App installieren</button>
+    <!-- iOS-Pendant: beforeinstallprompt feuert dort nie, deshalb eigener
+         Button mit den 3 manuellen Schritten (Teilen > Zum Home-Bildschirm).
+         Sichtbarkeit wird rein per JS gesteuert (pwaShowIosHint in init.js). -->
+    <button id="pwaIosHintBtn" onclick="pwaShowIosSteps()" style="display:none;background:rgba(108,99,255,0.12);border:1.5px solid rgba(108,99,255,0.35);color:var(--accent);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:6px;">📲 Zum Home-Bildschirm</button>
     <!-- ESPN Sync Button -->
     <button id="espnSyncBtn" onclick="if(isAdmin)espnSync();else toast('⛔ Nur für Admins')" title="Nur Admins können manuell syncen" style="background:rgba(128,128,128,0.08);border:1.5px solid rgba(128,128,128,0.2);color:var(--muted);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:default;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:6px;">🔄 ESPN Sync</button>
     <!-- Admin Settings link (visible only when logged in) -->
@@ -95,7 +113,7 @@
           <button class="snav-dropdown-item" data-page="bigBoard"  onclick="showBigBoard()">📋 MFHFBs Big Board</button>
           <button class="snav-dropdown-item" data-page="lottery"    onclick="showLottery()">🎲 2026 Lottery</button>
           <div class="snav-dropdown-label">2027</div>
-          <div style="padding:10px 16px;font-size:12px;color:var(--muted);font-style:italic;">Kommt bald</div>
+          <button class="snav-dropdown-item" data-page="draft27" onclick="showDraft27()">📋 MFHFBs Big Board</button>
         </div>
       </div>
 
@@ -175,7 +193,7 @@
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Draft 2027</div>
-        <div style="padding:6px 14px;font-size:12px;color:var(--muted);font-style:italic;">Kommt bald</div>
+        <button class="subnav-mobile-btn" data-page="draft27" onclick="showDraft27();closeMobileNav()">📋 MFHFBs Big Board</button>
       </div>
       <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Rankings & Analytics</div>
@@ -206,7 +224,13 @@
 <!-- HOME -->
 <div class="page active page-wide" id="homePage">
   <div style="max-width:1280px;margin:0 auto;">
-    <div class="home-title">The Taco Tuesday League</div>
+    <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+      <div class="home-title">The Taco Tuesday League</div>
+      <!-- Saison-Dropdown: baut sich aus SEASON_REGISTRY in js/navigation.js,
+           neue archivierte Saison = neuer Registry-Eintrag + Datendatei,
+           kein weiterer Code hier noetig. -->
+      <div id="seasonPicker" style="display:none;"></div>
+    </div>
     <div class="home-sub">Klick auf Dein Team für Deine Spieler und Deine Picks</div>
     <div class="team-grid" id="teamGrid"></div>
 
@@ -223,12 +247,14 @@
           Nichts davon wird von Hand gepflegt, bis auf die Preseason Baseline und das Dynasty Ranking.
         </div>
         <div class="flow-toggle">
-          <button class="flow-toggle-btn active" data-mode="compact"  onclick="flowSetMode('compact')">Kompakt</button>
+          <button class="flow-toggle-btn active" data-mode="compact"   onclick="flowSetMode('compact')">Kompakt</button>
           <button class="flow-toggle-btn"        data-mode="detailed" onclick="flowSetMode('detailed')">Ausführlich</button>
+          <button class="flow-toggle-btn"        data-mode="flowchart" onclick="flowSetMode('flowchart')">Flow-Chart</button>
         </div>
       </div>
 
       <div id="flowDiagram"></div>
+      <div id="flowChartDiagram" style="display:none;"></div>
 
       <div class="flow-foot">
         <strong>Warum Z-Scores?</strong> In einer 9-Cat Liga zählt jede Kategorie gleich viel, aber die Rohzahlen
@@ -564,7 +590,7 @@
 <div class="hero">
     <div>
             <h1>Fantrax Redraft Board</h1>
-      <div class="sub">Live-Draft-Tracker für Deine Fantrax Redraft Ligen, auf Basis Deiner aktuellen Projections. Nicht zu verwechseln mit dem Full Draft Board unter Draft, das den Dynasty Rookie Draft der Taco Tuesday League abbildet.</div>
+      <div class="sub">Live-Draft-Tracker für Deine Fantrax Redraft Ligen, auf Basis Deiner aktuellen Projections. Nicht zu verwechseln mit den Boards unter Draft, die den Dynasty Rookie Draft der Taco Tuesday League abbilden.</div>
     </div>
     <a class="settings-link" href="#" onclick="showLiveProjections();return false;">Gewichtungen &amp; Z-Basis anpassen →</a>
   </div>
@@ -698,18 +724,18 @@
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" id="searchInput" autocomplete="off" placeholder="Spieler, Team oder Position suchen…">
         </div>
-        <div id="posFilters" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
-        <button class="tag-btn" id="statFilterToggle">Stat-Filter</button>
+        <div id="dPosFilters" style="display:flex; gap:6px; flex-wrap:wrap;"></div>
+        <button class="tag-btn" id="dStatFilterToggle">Stat-Filter</button>
         <button class="tag-btn" id="hideDraftedBtn">Gedraftete ausblenden</button>
       </div>
 
-      <div id="statFilterPanel" class="panel" style="display:none; padding:12px 14px;">
+      <div id="dStatFilterPanel" class="panel" style="display:none; padding:12px 14px;">
         <div class="note" style="margin-bottom:8px;">
           Bis zu 3 Bedingungen gleichzeitig (UND-verknüpft), z.B. FG% &gt; 50 UND AST &gt; 5,5 UND POS = C
           (Position über die Filter-Buttons oben kombinieren). Wirkt zusätzlich zur Text-/Positionssuche.
         </div>
-        <div id="statFilterRows"></div>
-        <button class="tag-btn" id="statFilterClear" style="margin-top:6px;">Zurücksetzen</button>
+        <div id="dStatFilterRows"></div>
+        <button class="tag-btn" id="dStatFilterClear" style="margin-top:6px;">Zurücksetzen</button>
       </div>
 
       <div class="table-wrap">
@@ -1721,10 +1747,13 @@
       <h2 style="margin-bottom:4px;">📜 Trade History</h2>
       <p style="color:var(--muted);font-size:13px;">Alle gespeicherten Trades · Werte eingefroren zum Zeitpunkt des Trades</p>
     </div>
-    <div style="display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px;flex-shrink:0;">
+    <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+      <button id="thExportBtn" onclick="exportTradeHistoryFile()" style="display:none;padding:6px 14px;border-radius:10px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);transition:all 0.15s;" title="Erzeugt die nächste Version von data/trade-history.js zum Committen — erst nach dem Commit sind neue Trades für alle sichtbar">⬇ Für Repo exportieren</button>
+      <div style="display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px;">
       <button id="thModeDynasty" onclick="setTHMode('dynasty')" style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:var(--accent);color:white;transition:all 0.15s;">🏗️ Dynasty</button>
       <button id="thModeRaw" onclick="setTHMode('raw')" style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">📊 Raw</button>
       <button id="thModeWinnow" onclick="setTHMode('winnow')" style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">🏆 Win-Now</button>
+      </div>
     </div>
   </div>
   <div id="tradeHistoryList"></div>
@@ -1989,6 +2018,25 @@
   <div class="draft26-no-results" id="draft26NoResults" style="display:none;">No prospects found.</div>
 </div>
 
+<!-- 2027 DRAFT BOARD -->
+<div class="page page-wide" id="draft27Page">
+  <h2 style="margin-bottom:6px;">📋 MFHFBs Big Board · 2027 Draft</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">Fantasy-gewichtetes Top-20 Board, Stand 08.08.2026 · (abgeglichen mit Dizzle Dynasty, Game Theory Rankings, Ben Pfeifers Archetyp-Board, etc.) · sortiert nach Dynasty-9-cat-Wert, NICHT nach NBA-Draft-Slot. Volle Scouting-Reports &amp; Tape verlinkt zu <a href="https://grindingtape.com/board" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;">Grinding Tape</a>.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+    <span style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:5px 10px;font-size:11px;color:var(--muted);"><b style="color:var(--text);">Tier</b> = Fantasy-Archetyp-Qualität (MFHFBs Einschätzung), unabhängig vom NBA-Draft-Slot</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:5px 10px;font-size:11px;color:var(--muted);"><b style="color:var(--text);">Erste Zahl</b> = Aggregat-Rang (Dizzle Dynasty, Game Theory Rankings, Tankathon, etc.)</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:5px 10px;font-size:11px;color:var(--muted);"><b style="color:var(--text);">Zweite Zahl</b> = Fantasy-Skillset-Einschätzung (MFHFBs)</span>
+  </div>
+  <div class="draft26-search">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" id="draft27Search" placeholder="Search prospect, school, or position…" oninput="filterDraft27()"/>
+  </div>
+  <div id="draft27Grid"></div>
+  <div class="draft26-no-results" id="draft27NoResults" style="display:none;">No prospects found.</div>
+</div>
+
 <!-- BIG BOARD (Interactive, Newspaper-Style) -->
 <div class="page page-wide" id="bigBoardPage"></div>
 
@@ -2011,6 +2059,12 @@
 
 <!-- Data (load first — other scripts depend on these constants) -->
 <script src="data/teams-rosters.js?v=5"></script>
+<script src="data/season-2025-26.js?v=2"></script>
+<script src="data/season-2024-25.js?v=2"></script>
+<script src="data/season-2023-24.js?v=1"></script>
+<script src="data/season-2022-23.js?v=1"></script>
+<script src="data/season-2021-22.js?v=1"></script>
+<script src="data/season-rankings.js?v=2"></script>
 <script src="data/rosters-live.js?v=1"></script>
 <script src="data/picks.js?v=5"></script>
 <script src="data/rankings.js?v=5"></script>
@@ -2021,6 +2075,7 @@
 <script src="data/hashtag.js?v=5"></script>
 <script src="data/aliases.js?v=5"></script>
 <script src="data/draft2026.js?v=5"></script>
+<script src="data/draft2027.js?v=1"></script>
 <script src="data/postdraft-board.js?v=1"></script>
 <script src="data/best-available-board.js?v=1"></script>
 <script src="data/stats.js?v=5"></script>
@@ -2044,11 +2099,13 @@
 <script src="js/best-available.js?v=5"></script>
 <script src="js/trade-analyzer.js?v=5"></script>
 <script src="js/trade-finder.js?v=5"></script>
-<script src="js/trade-history.js?v=5"></script>
+<script src="data/trade-history.js?v=1"></script>
+<script src="js/trade-history.js?v=6"></script>
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<script src="js/analytics.js?v=5"></script>
+<script src="data/team-analytics.js?v=1"></script>
+<script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>
 <script src="js/admin-settings.js?v=5"></script>
@@ -2068,6 +2125,22 @@
 <script src="data/offseason-rankings.js?v=1"></script>
 <script src="js/player-rankings.js?v=1"></script>
   <script src="js/init.js?v=5"></script>
+
+<script>
+  // Service Worker existierte im Repo, war aber nie registriert. Er cached
+  // bewusst NICHTS (siehe service-worker.js) -- passt zur No-Cache-Philosophie
+  // der App (siehe Meta-Tags oben) -- erfuellt aber das Installierbarkeits-
+  // Kriterium fuer Android/Chrome (Adressleisten-Icon bzw. Mini-Infobar) und
+  // raeumt beim ersten Aktivieren alte Caches aus fruaheren SW-Versionen auf.
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js?v=1').catch(() => {
+        // Kein Beinbruch -- die Seite funktioniert auch ohne SW einwandfrei,
+        // er ist nur fuer die "Installierbar"-Erkennung von Android/Chrome da.
+      });
+    });
+  }
+</script>
 
 </body>
 </html>
