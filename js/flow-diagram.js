@@ -41,6 +41,7 @@ const FLOW_STAGES = [
         detail: [
           ['Ziel', 'data/rosters-live.js. Manuelle Korrekturen im Admin bleiben erhalten und werden obendrauf gelegt.'],
           ['Schutz', 'Liefert ESPN eine unvollständige Antwort, bricht der Sync ab statt den letzten guten Stand zu überschreiben.'],
+          ['Cache', 'Nach jedem Lauf bekommt jede Datendatei in index.html eine Versionsnummer aus ihrem Inhalt. Ohne das liefern Browser die alte Fassung aus, obwohl im Repo längst die neue liegt.'],
         ],
       },
     ],
@@ -64,6 +65,16 @@ const FLOW_STAGES = [
         icon: '📋', kind: 'data', title: 'Aktuelle Kader',
         text: 'Der Stand aller zwölf Teams inklusive Position und NBA Team je Spieler.',
         files: ['data/rosters-live.js'],
+      },
+      {
+        icon: '🏷️', kind: 'script', title: 'Besitz-Zuordnung',
+        text: 'Beantwortet an einer einzigen Stelle, wem ein Spieler gehört. Wer nirgends auftaucht, ist Free Agent.',
+        files: ['js/fantasy-owner.js'],
+        detail: [
+          ['Genutzt von', 'Projections, NBA Teams und Best Available. Vorher stand die Logik nur an einer Stelle, beim Ausweiten wäre sie sonst dreimal kopiert worden.'],
+          ['Warum geteilt', 'Der Namensabgleich ist die empfindlichste Stelle. Drei Kopien heißen drei Orte, an denen Aliase und Umlaute auseinanderlaufen können.'],
+          ['Aktualität', 'Der Index wird bei jedem Rendern verworfen und neu gebaut, sonst zeigt die Seite nach einem Trade oder einer Adminänderung noch den Besitz von vorher.'],
+        ],
       },
     ],
   },
@@ -190,13 +201,31 @@ const FLOW_STAGES = [
       },
       {
         icon: '🆓', kind: 'view', title: 'Best Available',
-        text: 'Freie Spieler nach einem zusammengesetzten Wert aus Dynasty Rang, Preseason, aktueller Form und Draft Kapital.',
+        text: 'Freie Spieler nach einem zusammengesetzten Wert aus Dynasty Rang, Preseason, aktueller Form und Draft Kapital. Filterbar nach NBA Team.',
         page: 'showBestAvail',
       },
       {
         icon: '⚖️', kind: 'view', title: 'Trade Analyzer',
         text: 'Bewertet beide Seiten eines Trades über Dynasty Rang und Alter.',
         page: 'showTrade',
+      },
+      {
+        icon: '🏀', kind: 'view', title: 'NBA Teams',
+        text: 'Rotation und Minuten je NBA Team, daneben die tatsächliche End-Rotation der Vorsaison zum Vergleich.',
+        page: 'showLiveProjTeams',
+        detail: [
+          ['Fund-Hinweis', 'Freie Spieler ab einer wählbaren Minutenschwelle werden markiert. Viel Rolle in der NBA, aber in keinem Kader der Liga, ist der interessanteste Fall auf dieser Seite.'],
+          ['Schwelle', 'Standard 24 Minuten, umstellbar auf 18 oder 30 oder ganz aus.'],
+        ],
+      },
+      {
+        icon: '🏆', kind: 'view', title: 'Fantrax Redraft',
+        text: 'Live-Draft-Tracker für die Fantrax Redraft Ligen, mit Besitzquote und ADP über alle Ligen hinweg.',
+        page: 'showLiveProjDraft',
+        detail: [
+          ['Meine Spieler', 'Zeigt je Spieler, in wie vielen Ligen er mir gehört, wie früh er im Schnitt ging und wie früh ich ihn geholt habe.'],
+          ['Nicht verwechseln', 'Das ist der Redraft in fremden Ligen. Die Boards unter Draft bilden den Dynasty Rookie Draft der Taco Tuesday League ab.'],
+        ],
       },
       {
         icon: '⚔️', kind: 'new', title: 'Matchup Planer',

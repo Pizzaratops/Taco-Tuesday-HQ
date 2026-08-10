@@ -6,7 +6,45 @@ Fantasy-Basketball-Hub für eine 12-Team H2H 9-Category Dynasty-Liga auf ESPN Fa
 
 ---
 
+## 🎯 Project Brief
+
+**Was das ist.** Ein Werkzeugkasten für eine einzelne Liga, die MFHFBs auf ESPN Fantasy Basketball. Zwölf Teams, H2H über neun Kategorien, Dynasty-Format. Kein Produkt für Fremde, sondern ein Instrument, um in genau dieser Liga bessere Entscheidungen zu treffen: wen draften, wen traden, wen von der Waiver holen, wie die Woche ausgeht.
+
+**Wofür es gebaut ist**
+
+| Frage | Antwort auf der Seite |
+|---|---|
+| Wer läuft gerade heiß? | Live Scores (Weekly/Monthly), 2026/27 Rankings |
+| Wie entwickelt sich jemand über die Saison? | Rolling Rankings |
+| Was ist ein Spieler langfristig wert? | Dynasty Rankings, Trade Analyzer |
+| Wen kann ich noch holen? | Best Available, NBA Teams mit Fund-Hinweis |
+| Wie geht meine Woche aus? | Matchup Planer |
+| Was mache ich im Draft? | Full Draft Board, MFHFBs Big Board, Fantrax Redraft |
+
+**Grundsätze, die die Architektur erklären**
+
+1. **Automatik vor Handarbeit.** Was ESPN liefert, wird abgerufen, nicht getippt. Von Hand gepflegt sind nur zwei Dinge: die Preseason Baseline und das Dynasty Ranking. Alles andere entsteht täglich aus den Boxscores.
+2. **Eine Quelle je Sachverhalt.** Wenn dieselbe Information an zwei Stellen steht, laufen die beiden irgendwann auseinander. Die Konfiguration wird aus `js/espn-sync.js` gelesen statt kopiert, die Besitz-Zuordnung liegt in `js/fantasy-owner.js` statt dreimal, `init.js` ruft `_rerenderPage()` statt eine zweite Seitenliste zu pflegen. Jede dieser Zusammenlegungen ist die Folge eines Bugs, der genau daran lag.
+3. **Z-Scores statt Rohzahlen.** In einer 9-Cat-Liga zählt jede Kategorie gleich, aber zehn Punkte sind Alltag und ein Block pro Spiel ist eine Ausnahme. Erst die Normierung macht einen Center mit Blocks gegen einen Guard mit Dreiern vergleichbar.
+4. **Keine Zahl ohne Herkunft.** Wo eine Angabe geschätzt, genähert oder unvollständig ist, steht das auf der Seite. Eine Näherung, die wie eine Messung aussieht, ist schlimmer als eine fehlende Angabe.
+5. **Lieber leer als erfunden.** Fehlt der NBA-Spielplan, bleibt der Matchup Planer leer und erklärt warum, statt mit einem Pauschalwert eine Genauigkeit vorzutäuschen, die es nicht gibt.
+6. **Ausfälle dürfen nichts kaputt machen.** Liefert ESPN unvollständig, bricht der Sync ab und der letzte gute Stand bleibt stehen. Scripts sind wiederholbar ohne Doppelzählung und schreiben nur nach `data/`.
+
+**Bewusste Grenzen**
+
+- Kein Backend. Alles läuft als statische Seite auf GitHub Pages, Datenaufbereitung passiert vorab in GitHub Actions.
+- Der Matchup Planer kennt keine Positionsvorgaben bei der automatischen Aufstellung.
+- Prozentwerte werden nach Minuten gewichtet, nicht nach Wurfversuchen, weil die Rankings-Quellen keine Versuche mitliefern.
+- ADP im Fantrax Redraft ist die Overall-Picknummer. Über Ligagrößen hinweg vergleichbar, aber bei Spielern, die nur in tiefen Ligen weggehen, auf wenige Beobachtungen gestützt (Spalte „Gedraftet in").
+
+---
+
 ## 📌 Zuletzt gemacht
+
+- **Fantasy-Besitz seitenübergreifend + Cache-Buster (2026-08-10):** Drei Seiten zeigen und filtern jetzt, wem ein Spieler in der Liga gehört: Projections (Spalte + Filter), NBA Teams (Spalte + Filter + Fund-Hinweis), Best Available (NBA-Team-Filter). Die Logik dafür liegt neu in `js/fantasy-owner.js` (`ttOwnerOf`, `ttShort`, `ttOwnerTag`, `ttOwnerMatches`, `ttFillOwnerFilter`) statt dreimal kopiert — beim Namensabgleich sind Aliase und Umlaute die empfindlichste Stelle, drei Kopien hätten drei Orte zum Auseinanderlaufen bedeutet. Auf der NBA-Teams-Seite werden freie Spieler ab einer wählbaren Minutenschwelle markiert (Standard 24, gegen echte Daten 13 Funde bei 24 Min, 3 bei 30) — viel Rolle in der NBA, aber in keinem Kader, ist der interessanteste Fall dieser Seite.
+  - **Cache-Buster (`scripts/bump-data-version.js`):** `index.html` lud die Datendateien mit fester Versionsnummer (`?v=1`), obwohl sich ihr Inhalt täglich ändert. Browser durften also die alte Fassung ausliefern, während im Repo längst die neue lag — ein Trade wäre im Repo gewesen, aber nicht auf der Seite, ohne dass jemand den Cache verdächtigt hätte. Das Script setzt den Parameter je Datei auf einen SHA1-Kurz-Hash ihres Inhalts, läuft im Daily-Workflow nach allen `data/`-Schritten und vor dem Commit. Nur `data/`-Skripte, `js/` und `css/` bleiben von Hand versioniert. Idempotent, fängt eigene Fehler ab (ein kaputter Cache-Buster darf den Workflow nicht stoppen).
+  - **Fantrax Redraft, „Meine Spieler":** Besitzquote und ADP über alle 66 Ligen aus `projections/data/fantrax-leagues.txt`. Sortierbar nach allen sechs Spalten; Spieler ohne eigenen Pick bleiben in jeder Sortierrichtung unten, sonst verdrängt eine Wand aus Strichen genau die Zeilen, die man sehen will. Teamnamen-Zuordnung nur noch vorwärts (Teamname enthält Eingabe) — die Rückwärtsrichtung war nicht sicher zu bekommen, „Stern" zu „Sternhold" ist strukturell nicht von „Steak" zu „Steakosaurus" zu unterscheiden, und ein falsch zugeordnetes Team hätte die Quoten still verfälscht. Erkannte Teams stehen als Chips über der Tabelle.
+  - **Umbenennung:** Das Fantrax-Tool hieß „Draft Board" wie das Dynasty-Board unter Draft. Jetzt „Fantrax Redraft".
 
 - **Phantom-Spieler (Retired/nicht-existent) aus Projections & Draft Board gefiltert (2026-08-01):** Bug-Report: Hassan Whiteside (nicht mehr in der NBA), Nikola Mirotic (nicht mehr in der NBA) und ein erfundener manueller Eintrag "Carlton Wilson" tauchten in beiden Seiten auf, obwohl keiner der drei auf der NBA-Teams-Seite zu finden war. Ursache: `mfhfbIsValidCurrentTeam(p.team)` prueft nur, ob das im Spieler-Datensatz gespeicherte Team-Kuerzel wie ein ECHTES Team-Kuerzel AUSSIEHT (z.B. "UTA") -- nicht, ob DIESER SPIELER gerade tatsaechlich auf diesem Roster steht. Ein Spieler, der die Liga verlassen hat, behaelt in `players-data.js` oft noch sein letztes echtes Team stehen, das bleibt ein gueltiges Kuerzel, der Pruefung reicht das. Gleiches Muster bei manuellen Eintraegen (`teams.html`-Admin-Formular): geprueft wurde nur "ist ueberhaupt ein Team-Text eingetragen", nicht ob der Spieler wirklich auf einem ESPN-Roster steht.
   - **Fix, zentral in `projections/assets/shared.js`:** neue Funktion `mfhfbIsOnCurrentRoster(name, fallbackTeam)` -- prueft den SPIELERNAMEN direkt gegen den ESPN-Roster-Index (`mfhfbBuildCurrentTeamIndex()`, taeglich aktuell via `scripts/fetch-rosters.mjs`), nicht nur das Team-Feld. Fallback auf die alte, laxere Pruefung NUR wenn Rosterdaten gar nicht geladen sind (Index leer, z.B. Netzwerkfehler) -- sonst wuerde ein Ladefehler die komplette Seite leerraeumen statt nur die abgemeldeten Spieler rauszufiltern. In `js/projections-native.js` und `js/projections-draft-native.js` an beiden Stellen angewendet (echte Spieler-Liste UND manuelle Eintraege).
@@ -249,6 +287,7 @@ js/                      Frontend-Logik (eine Datei pro Feature-Bereich)
 data/                    Datendateien — teils statisch (von Hand gepflegt),
                          teils automatisch generiert (siehe unten)
 scripts/                 Node-Scripts für die tägliche GitHub Action
+js/fantasy-owner.js      └ geteilte Besitz-Zuordnung (wem gehört wer)
 scripts/lib/              └ stale Duplikat von aggregate-core.js, nicht mehr verwenden
 scripts/data/            └ tägliche ESPN-Boxscore-CSVs (Rohdaten, per Workflow committed)
 .github/workflows/       Die tägliche Automatisierung
@@ -285,7 +324,8 @@ scripts/data/            └ tägliche ESPN-Boxscore-CSVs (Rohdaten, per Workflo
 7. **Rolling-Rankings-Archiv fortschreiben** (muss vor Best Available laufen, da dieses davon liest)
 8. **Best Available Board fortschreiben**
 9. **Dynasty Live Nudge fortschreiben**
-10. **Committen & pushen** (nur wenn sich tatsächlich was geändert hat)
+10. **Cache-Buster setzen** (`bump-data-version.js`) — schreibt in `index.html` je `data/`-Datei einen Hash ihres Inhalts als `?v=`. Muss nach allen Schritten laufen, die `data/` schreiben, und vor dem Commit
+11. **Committen & pushen** (nur wenn sich tatsächlich was geändert hat)
 
 Manueller Trigger jederzeit möglich über den "Run workflow"-Button (Actions-Tab → Daily 9cat Live Scores → Run workflow), optional mit eigenem Datum/Liga.
 
@@ -296,7 +336,7 @@ node scripts/build-best-available-board.js   # z.B. einzelnes Script testen
 node --check <datei>                          # Syntax-Check vor jedem Commit
 ```
 
-Alle Build-Scripts sind idempotent und schreiben nur nach `data/` — kein Risiko, etwas kaputt zu machen, einfach nochmal laufen lassen.
+Alle Build-Scripts sind idempotent und schreiben nur nach `data/` — kein Risiko, etwas kaputt zu machen, einfach nochmal laufen lassen. **Eine Ausnahme:** `bump-data-version.js` schreibt in `index.html`, ändert dort aber ausschließlich die `?v=`-Parameter der `data/`-Skripte. `js/` und `css/` bleiben unberührt, die versionierst Du weiterhin selbst.
 
 ## 📝 Konventionen
 
