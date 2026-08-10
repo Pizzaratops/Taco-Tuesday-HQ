@@ -208,11 +208,12 @@ body.light {
 #liveProjDraftPage .panel.collapsed .chevron {transform:rotate(-90deg);}
 #liveProjDraftPage .panel-body {padding:2px 18px 16px; display:flex; gap:22px; flex-wrap:wrap; align-items:flex-end;}
 #liveProjDraftPage .panel.collapsed .panel-body {display:none;}
-#liveProjDraftPage .field {display:flex; flex-direction:column; gap:5px;}
+#liveProjDraftPage .field {display:flex; flex-direction:column; gap:5px; min-width:0; max-width:100%;}
 #liveProjDraftPage .field label {color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.06em;}
 #liveProjDraftPage select {
     background:var(--surface2); border:1px solid var(--border); color:var(--text);
     padding:7px 10px; border-radius:8px; font-size:13px; font-family:'DM Sans',sans-serif;
+    min-width:0; max-width:100%;
   }
 #liveProjDraftPage .punt-cats {display:flex; gap:6px; flex-wrap:wrap;}
 #liveProjDraftPage .punt-chip {
@@ -355,9 +356,9 @@ body.light {
 #liveProjDraftPage .cloud-status {font-size:11px; font-weight:600; text-transform:none; letter-spacing:0;}
 #liveProjDraftPage .cloud-status.ok {color:var(--good);}
 #liveProjDraftPage .cloud-status.err {color:var(--bad);}
-#liveProjDraftPage .league-sync-row {display:flex; gap:8px; width:100%;}
+#liveProjDraftPage .league-sync-row {display:flex; gap:8px; width:100%; flex-wrap:wrap;}
 #liveProjDraftPage .league-sync-row input[type=text] {
-    flex:1; background:var(--surface); border:1px solid var(--border); color:var(--text);
+    flex:1 1 140px; min-width:0; background:var(--surface); border:1px solid var(--border); color:var(--text);
     padding:9px 12px; border-radius:8px; font-size:13px; font-family:'DM Sans',sans-serif; outline:none;
   }
 #liveProjDraftPage .league-sync-row input[type=text]:focus {border-color:var(--accent);}
@@ -380,7 +381,6 @@ body.light {
 #liveProjDraftPage .league-row .lg-status { text-align:right; white-space:nowrap; font-family:'DM Mono',monospace; }
 #liveProjDraftPage .league-row .lg-status.done { color:var(--good); }
 #liveProjDraftPage .league-row .lg-status.err { color:var(--bad); }
-
 
 /* ─── Meine Spieler: Besitz und ADP ueber alle Ligen ─────────
    Modal auf der Fantrax-Redraft-Seite, gerendert von

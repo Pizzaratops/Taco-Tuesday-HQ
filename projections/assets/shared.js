@@ -71,6 +71,7 @@ const MFHFB_NAME_ALIASES = {
   'alex sarr': 'alexandre sarr',
   'cam boozer': 'cameron boozer',
   'cameron johnson': 'cam johnson',
+  'herbert jones': 'herb jones',
   'nic claxton': 'nicolas claxton',
 };
 function mfhfbResolveAlias(normalizedName) {
