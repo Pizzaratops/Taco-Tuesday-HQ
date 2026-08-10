@@ -1805,10 +1805,17 @@ function initLiveProjDraftNative() {
   // die Fantrax-Team-IDs je Liga verschieden sind. Die Namensliste ist
   // editierbar und wird lokal gespeichert.
   //
-  // WICHTIG zur Vergleichbarkeit: ADP ist die Overall-Picknummer. Ligen mit
-  // unterschiedlich vielen Teams sind dadurch nur eingeschraenkt vergleichbar,
-  // eine 10er- und eine 14er-Liga bewerten Pick 20 nicht gleich. Deshalb wird
-  // die Teamzahl je Liga mit erfasst und im Kopf ausgewiesen.
+  // ADP ist die Overall-Picknummer und damit ueber Ligagroessen hinweg direkt
+  // vergleichbar: Pick 10 heisst ueberall, dass neun Spieler vorher weg waren.
+  // Die Teamzahl aendert daran nichts, sie aendert nur, in welcher RUNDE
+  // dieser Pick liegt.
+  //
+  // Wo die Ligagroesse doch wirkt, ist allein der hintere Rand: eine 10er-Liga
+  // mit 13 Runden draftet 130 Spieler, eine 14er 182. Ein Spieler um Rang 150
+  // erscheint deshalb nur in den tiefen Ligen, sein ADP steht auf wenigen
+  // Beobachtungen und stammt genau aus den Ligen, in denen ihn jemand wollte.
+  // Das ist eine Stichprobenfrage, kein Skalierungsproblem -- deshalb wird pro
+  // Spieler ausgewiesen, auf wie vielen Ligen sein ADP beruht.
 
   const MFHFB_MYTEAMS_KEY = 'mfhfb_my_team_names_v1';
   const MFHFB_MYTEAMS_DEFAULT = ['MFHFBs', 'Steakosaurus', 'Pizzaratops', 'Hawkward'];
@@ -1945,6 +1952,7 @@ function initLiveProjDraftNative() {
         <thead><tr>
           <th style="text-align:left;">Spieler</th>
           <th title="In wie vielen ausgewerteten Ligen ich ihn gedraftet habe">Meine Ligen</th>
+          <th title="In wie vielen Ligen er ueberhaupt gedraftet wurde. Je kleiner die Zahl, desto duenner die Grundlage des ADP.">Gedraftet in</th>
           <th title="Durchschnittliche Overall-Picknummer ueber alle Ligen, in denen er gedraftet wurde">Overall ADP</th>
           <th title="Durchschnittliche Picknummer, zu der ich ihn geholt habe">Mein ADP</th>
           <th title="Mein ADP minus Overall ADP. Plus heisst spaeter geholt als der Markt.">Diff</th>
@@ -1956,6 +1964,7 @@ function initLiveProjDraftNative() {
               <span class="mp-o-pmeta">${[r.pos, r.team].filter(Boolean).join(' · ')}</span>
             </td>
             <td class="mp-o-num${r.owned ? ' own' : ''}">${r.owned} / ${leagueCount}</td>
+            <td class="mp-o-num${r.drafted < leagueCount ? ' thin' : ''}">${r.drafted} / ${leagueCount}</td>
             <td class="mp-o-num">${fmt(r.adp)}</td>
             <td class="mp-o-num">${fmt(r.myAdp)}</td>
             ${deltaCell(r)}
@@ -2004,7 +2013,7 @@ function initLiveProjDraftNative() {
     const sizes = [...new Set(usable.map(r => r.teamCount).filter(Boolean))].sort((a, b) => a - b);
 
     let txt = `${usable.length} Ligen ausgewertet`;
-    if(sizes.length > 1) txt += ` (${sizes.join(' bis ')} Teams, ADP daher nur eingeschränkt vergleichbar)`;
+    if(sizes.length > 1) txt += ` (${sizes.join(' bis ')} Teams)`;
     else if(sizes.length === 1) txt += ` (je ${sizes[0]} Teams)`;
     if(notStarted.length) txt += ` · ${notStarted.length} noch ohne Picks`;
     if(failed.length) txt += ` · ${failed.length} nicht erreichbar`;

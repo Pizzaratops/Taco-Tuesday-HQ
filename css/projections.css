@@ -452,3 +452,6 @@ body.light {
 #liveProjDraftPage .mp-o-num.own { color: var(--accent); font-weight: 700; }
 #liveProjDraftPage .mp-o-num.good { color: var(--good); }
 #liveProjDraftPage .mp-o-num.bad { color: var(--bad); }
+/* Duenne Stichprobe: Spieler ging nicht in allen Ligen weg, sein ADP
+   beruht entsprechend auf weniger Beobachtungen. */
+#liveProjDraftPage .mp-o-num.thin { color: var(--muted); }
