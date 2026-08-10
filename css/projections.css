@@ -384,9 +384,20 @@ body.light {
 
 /* ─── Meine Spieler: Besitz und ADP ueber alle Ligen ─────────
    Modal auf der Fantrax-Redraft-Seite, gerendert von
-   js/projections-draft-native.js (openMyPlayers). Nutzt dieselben
-   Theme-Variablen wie der Rest der Seite. */
-#liveProjDraftPage .mp-owned-box { max-width: 760px; width: 100%; }
+   js/projections-draft-native.js (openMyPlayers).
+
+   Das Fenster ist bewusst breiter als die uebrigen Modals: die
+   Tabelle hat fuenf Zahlenspalten plus Spielername, bei 640px wurde
+   die letzte Spalte abgeschnitten. Breite haengt an der Viewport-
+   breite (min aus 1100px und 94vw), damit es auf grossen Schirmen
+   viel Platz hat und auf dem Handy nicht ueber den Rand laeuft. */
+#liveProjDraftPage .mp-owned-box {
+  max-width: min(1100px, 94vw);
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
 
 #liveProjDraftPage .mp-owned-cfg {
   background: var(--surface2);
@@ -401,7 +412,7 @@ body.light {
 }
 #liveProjDraftPage .mp-owned-row { display: flex; gap: 8px; flex-wrap: wrap; }
 #liveProjDraftPage .mp-owned-input {
-  flex: 1; min-width: 220px;
+  flex: 1 1 220px; min-width: 0;
   padding: 8px 11px;
   background: var(--bg);
   border: 1px solid var(--border);
@@ -411,6 +422,17 @@ body.light {
   font-size: 13px;
 }
 #liveProjDraftPage .mp-owned-input:focus { outline: none; border-color: var(--accent); }
+#liveProjDraftPage .mp-owned-row .sb-btn { flex: 0 0 auto; }
+
+/* Erkannte Teams, damit sich die Zuordnung nachpruefen laesst */
+#liveProjDraftPage .mp-owned-hits {
+  margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px;
+}
+#liveProjDraftPage .mp-owned-hit {
+  font-family: 'DM Mono', monospace; font-size: 10.5px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 2px 9px; color: var(--muted);
+}
 
 #liveProjDraftPage .mp-owned-warn {
   margin: 8px 0 0; padding: 9px 12px;
@@ -423,11 +445,21 @@ body.light {
   margin: 12px 0 10px; font-size: 12.5px; color: var(--muted); cursor: pointer;
 }
 
+/* Eigener Scrollbereich, damit Kopf und Einstellungen stehen bleiben
+   und nur die Spielerliste rollt. */
+#liveProjDraftPage .mp-owned-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
 #liveProjDraftPage .mp-owned {
-  width: 100%; border-collapse: collapse; font-size: 13px;
+  width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px;
 }
 #liveProjDraftPage .mp-owned th {
-  position: sticky; top: 0; z-index: 1;
+  position: sticky; top: 0; z-index: 2;
   padding: 9px 8px; text-align: center;
   font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
   text-transform: uppercase; color: var(--muted);
@@ -441,11 +473,18 @@ body.light {
   font-family: 'DM Mono', monospace;
 }
 #liveProjDraftPage .mp-owned tr:last-child td { border-bottom: none; }
-#liveProjDraftPage .mp-owned tr:hover td { background: var(--surface2); }
+#liveProjDraftPage .mp-owned tbody tr:hover td { background: var(--surface2); }
 
+/* Spielername bleibt beim Querscrollen stehen, sonst weiss man auf
+   schmalen Schirmen nicht mehr, zu wem die Zahlen gehoeren. */
 #liveProjDraftPage .mp-owned .mp-o-name {
-  text-align: left; font-family: 'DM Sans', sans-serif; min-width: 170px;
+  position: sticky; left: 0; z-index: 1;
+  text-align: left; font-family: 'DM Sans', sans-serif;
+  min-width: 150px;
+  background: var(--surface);
 }
+#liveProjDraftPage .mp-owned th.mp-o-name { z-index: 3; background: var(--surface2); }
+#liveProjDraftPage .mp-owned tbody tr:hover .mp-o-name { background: var(--surface2); }
 #liveProjDraftPage .mp-o-pname { display: block; font-weight: 600; color: var(--text); }
 #liveProjDraftPage .mp-o-pmeta { display: block; font-size: 10.5px; color: var(--muted); margin-top: 1px; }
 #liveProjDraftPage .mp-o-num { white-space: nowrap; }
@@ -455,3 +494,53 @@ body.light {
 /* Duenne Stichprobe: Spieler ging nicht in allen Ligen weg, sein ADP
    beruht entsprechend auf weniger Beobachtungen. */
 #liveProjDraftPage .mp-o-num.thin { color: var(--muted); }
+
+/* ─── Mobile ─────────────────────────────────────────────────
+   Unter 700px wird das Modal randlos und nutzt die volle Hoehe, die
+   Tabelle rollt quer mit fixierter Namensspalte. Kopfzeilen werden
+   gekuerzt (siehe data-short-Attribute im JS), weil "Overall ADP"
+   und "Gedraftet in" sonst dreimal umbrechen. */
+@media (max-width: 700px) {
+  #liveProjDraftPage .modal-overlay { padding: 0; align-items: stretch; }
+  #liveProjDraftPage .mp-owned-box {
+    max-width: 100%; max-height: 100%; border-radius: 0;
+    border: none; padding: 14px;
+  }
+  #liveProjDraftPage .mp-owned { font-size: 12px; }
+  #liveProjDraftPage .mp-owned th { padding: 7px 6px; font-size: 9.5px; }
+  #liveProjDraftPage .mp-owned td { padding: 7px 6px; font-size: 11.5px; }
+  #liveProjDraftPage .mp-owned .mp-o-name { min-width: 118px; }
+  #liveProjDraftPage .mp-o-pname { font-size: 12px; }
+  #liveProjDraftPage .mp-o-pmeta { font-size: 9.5px; }
+  /* Lange Kopfzeilen durch Kurzform ersetzen */
+  #liveProjDraftPage .mp-owned th[data-short]::after { content: attr(data-short); }
+  #liveProjDraftPage .mp-owned th[data-short] span { display: none; }
+  #liveProjDraftPage .mp-owned-row .sb-btn { flex: 1 1 100%; }
+}
+
+/* Betroffene Ligen (nicht erreichbar / kein eigenes Team gefunden).
+   Zeilennummer bezieht sich auf projections/data/fantrax-leagues.txt,
+   damit sich die Zeile bei 66 Eintraegen direkt finden laesst. */
+#liveProjDraftPage .mp-owned-fail-box {
+  margin: 8px 0 0; padding: 9px 12px;
+  border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text); line-height: 1.55;
+}
+#liveProjDraftPage .mp-owned-fails {
+  display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px;
+}
+#liveProjDraftPage .mp-owned-fail {
+  font-size: 11px; background: var(--surface2);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 3px 8px; color: var(--muted);
+}
+#liveProjDraftPage .mp-owned-fail-ln {
+  font-family: 'DM Mono', monospace; color: var(--accent); font-weight: 600;
+}
+#liveProjDraftPage .mp-owned-fail code {
+  font-family: 'DM Mono', monospace; font-size: 10.5px; opacity: 0.8;
+}
+#liveProjDraftPage .mp-owned-det { margin-top: 8px; }
+#liveProjDraftPage .mp-owned-det summary {
+  cursor: pointer; font-size: 12px; color: var(--accent); user-select: none;
+}

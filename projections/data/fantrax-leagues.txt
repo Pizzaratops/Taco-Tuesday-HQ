@@ -5,43 +5,43 @@
 # Ohne Label wird die ID selbst genutzt (landet dann unter "unbekannt").
 # "#"-Kommentare & Leerzeilen okay. Neue Liga = einfach eine Zeile
 # anhängen, fertig.
-pct4k2a6mr9s4u1f, H2H Draft Only 1
-a0bbqypimrablmbu, H2H Draft Only 2
-25j965mmmrannqbz, H2H Draft Only 3
-hembf3mtmraokwom, H2H Draft Only 4
-0n42joz7mrapinh5, H2H Draft Only 5
-286ct4uzmrapm5fq, H2H Draft Only 6
-auubwpqdmrbmpk3h, 8Cat / ROTO 
-ua02ifq1mrbtljjl, 8Cat / ROTO 
-jkfwddasmrc2ubfh, 8Cat / ROTO 
-4cjjvk4dmrcvjknk, 8Cat / ROTO 
-j3mu7ixymrfucic8, Points 1
-hdvwmdermrfwbgdo, Points 2
-amyt53qkmrh14vqu, H2H Draft Only 7
+pct4k2a6mr9s4u1f, H2H Draft Only 01
+a0bbqypimrablmbu, H2H Draft Only 02
+25j965mmmrannqbz, H2H Draft Only 03
+hembf3mtmraokwom, H2H Draft Only 04
+0n42joz7mrapinh5, H2H Draft Only 05
+286ct4uzmrapm5fq, H2H Draft Only 06
+auubwpqdmrbmpk3h, 8Cat / ROTO 01
+ua02ifq1mrbtljjl, 8Cat / ROTO 02
+jkfwddasmrc2ubfh, 8Cat / ROTO 03
+4cjjvk4dmrcvjknk, 8Cat / ROTO 04
+j3mu7ixymrfucic8, Points 01
+hdvwmdermrfwbgdo, Points 02
+amyt53qkmrh14vqu, H2H Draft Only 07
 8z56gxfmmryvrj3z, H2H Draft Only 24
 3qbcc7h4mryvugwe, H2H Draft Only 25
 lc1upts1mryvxbzs, H2H Draft Only 26
 kedazw7ems00gyg5, H2H Draft Only 27
 4ts05ifgms00js0h, H2H Draft Only 28
 yfdi4zc8ms00mlr5, H2H Draft Only 29
-kjuxwfi4mrh17ll1, H2H Draft Only 8
-emeu5xuymrh1a5id, H2H Draft Only 9
-osd7cxhzmrhramh2, 8Cat / ROTO 6
-6s4kfft0mrhrd71n, 8Cat / ROTO 5
+kjuxwfi4mrh17ll1, H2H Draft Only 08
+emeu5xuymrh1a5id, H2H Draft Only 09
+osd7cxhzmrhramh2, 8Cat / ROTO 06
+6s4kfft0mrhrd71n, 8Cat / ROTO 05
 t6wu7qhgmrhrgajw, H2H Draft Only 10
 1ycl5y6pmrhrjicv, H2H Draft Only 11
 bbw1narimrkdo0xy, H2H Draft Only 12
 i4wkf62umrkds58d, H2H Draft Only 13
 f4s6y7hlmrkduxh8, H2H Draft Only 14
-2xpavvsdmrkgdwvm, 8Cat / ROTO 7
-y2el57a9mrkgi9hu, 8Cat / ROTO 8
+2xpavvsdmrkgdwvm, 8Cat / ROTO 07
+y2el57a9mrkgi9hu, 8Cat / ROTO 08
 vlz39pmpmrr5uzt8, H2H Draft Only 15
 1qrd7f0ymrr5zner, H2H Draft Only 16
 jj3rvaenmrr62dhn, H2H Draft Only 17
 i4z6qm61mrshvc99, H2H Draft Only 18
 hjqxljyfmrshydd4, H2H Draft Only 19
 t0n2ie3mmrsi15yu, H2H Draft Only 20
-xzqt1t8hmrsi4529, 8Cat / ROTO 9
+xzqt1t8hmrsi4529, 8Cat / ROTO 09
 4x4efw5amrsi6w88, 8Cat / ROTO 10
 m8gqld41mrsi9o7z, 8Cat / ROTO 11
 kzsdzgcrmrtq3iro, H2H Draft Only 21
@@ -64,5 +64,10 @@ ogg27gbcmsd9rd6h, H2H Draft Only 37
 z5m3tx1cmsd9u4ux, H2H Draft Only 38
 kmazgu13msd9wz8p, H2H Draft Only 39
 741ennjbmsda00b2, H2H Draft Only 40
+e371q461msmpmpi9, H2H Draft Only 41
+tw4cwsbjmsmppmmr, H2H Draft Only 42
+sus8zcbdmsmpsd5b, H2H Draft Only 43
+16x1go6gmsmpvpou, H2H Draft Only 44
+3igozgbhmsmpyzis, H2H Draft Only 45
 vbca3qmbmse3a33c, 8Cat / ROTO 18
 0unun3ipmse3o6cs, 8Cat / ROTO 19

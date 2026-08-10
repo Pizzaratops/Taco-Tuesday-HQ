@@ -1676,12 +1676,16 @@ function initLiveProjDraftNative() {
     const res = await fetch('projections/data/fantrax-leagues.txt');
     if(!res.ok) throw new Error(`HTTP ${res.status}`);
     const raw = await res.text();
+    // Zeilennummer der Datei mitfuehren: bei 66 Ligen ist "Liga X nicht
+    // erreichbar" ohne Fundstelle kaum nachzuverfolgen. lineNo zaehlt ab 1
+    // inklusive Kommentar- und Leerzeilen, entspricht also genau dem, was
+    // ein Editor anzeigt.
     return raw.split('\n')
-      .map(l => l.split('#')[0].trim())
-      .filter(Boolean)
-      .map(l => {
-        const [id, ...rest] = l.split(',').map(s => s.trim());
-        return { id, label: rest.join(',') || id };
+      .map((l, i) => ({ lineNo: i + 1, text: l.split('#')[0].trim() }))
+      .filter(e => e.text)
+      .map(e => {
+        const [id, ...rest] = e.text.split(',').map(s => s.trim());
+        return { id, label: rest.join(',') || id, lineNo: e.lineNo };
       });
   }
   // Grobe Format-Erkennung nur aus dem selbstvergebenen Label (Roto/H2H/Points
@@ -1777,15 +1781,15 @@ function initLiveProjDraftNative() {
     listEl.innerHTML = sorted.map(r => {
       const name = (r.ok && r.apiName ? r.apiName : (r.entry.label || r.entry.id)).replace(/</g,'&lt;');
       if(!r.ok){
-        return `<div class="league-row"><div><div class="lg-name">${name}</div><div class="lg-id">${r.entry.id}</div></div><div class="lg-status err">nicht erreichbar</div></div>`;
+        return `<div class="league-row"><div><div class="lg-name">${name}</div><div class="lg-id">Zeile ${r.entry.lineNo} · ${r.entry.id}</div></div><div class="lg-status err">nicht erreichbar</div></div>`;
       }
       if(r.finished){
-        return `<div class="league-row"><div><div class="lg-name">${name}</div><div class="lg-id">${r.entry.id}</div></div><div class="lg-status done">✓ Fertig</div></div>`;
+        return `<div class="league-row"><div><div class="lg-name">${name}</div><div class="lg-id">Zeile ${r.entry.lineNo} · ${r.entry.id}</div></div><div class="lg-status done">✓ Fertig</div></div>`;
       }
       if(r.total === 0){
-        return `<div class="league-row"><div><div class="lg-name">${name}</div><div class="lg-id">${r.entry.id}</div></div><div class="lg-status">noch nicht gestartet</div></div>`;
+        return `<div class="league-row"><div><div class="lg-name">${name}</div><div class="lg-id">Zeile ${r.entry.lineNo} · ${r.entry.id}</div></div><div class="lg-status">noch nicht gestartet</div></div>`;
       }
-      return `<div class="league-row"><div><div class="lg-name">${name}</div><div class="lg-id">${r.entry.id}</div></div><div class="lg-status">Pick ${r.round}.${r.pickInRound} / #${r.overall} von ${r.total}</div></div>`;
+      return `<div class="league-row"><div><div class="lg-name">${name}</div><div class="lg-id">Zeile ${r.entry.lineNo} · ${r.entry.id}</div></div><div class="lg-status">Pick ${r.round}.${r.pickInRound} / #${r.overall} von ${r.total}</div></div>`;
     }).join('');
   }
   function initLeagueProgressModal(){
@@ -1845,12 +1849,25 @@ function initLiveProjDraftNative() {
   function normTeamName(s){
     return String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
   }
+  // Nur EINE Richtung: der Teamname muss meine Eingabe enthalten.
+  //
+  // Die umgekehrte Richtung (Eingabe enthaelt den Teamnamen) gab es
+  // frueher, damit "Steakosaurus" auch ein Team namens "Steak" findet.
+  // Sie ist aber grundsaetzlich nicht sicher zu bekommen: bei der
+  // Eingabe "Sternhold" passt ein fremdes Team namens "Stern" nach
+  // genau derselben Regel wie "Steak" zu "Steakosaurus" -- gleiche
+  // Laenge, gleicher Praefix, kein Merkmal unterscheidet die beiden.
+  // Eine Laengenschwelle verschiebt das Problem nur. Ein faelschlich
+  // zugeordnetes Team verfaelscht die Besitzquoten still, deshalb
+  // lieber die vorhersagbare Regel: eingeben, was IM Teamnamen steht.
+  // Was erkannt wurde, steht als Chips ueber der Tabelle.
+  const MP_MIN_NEEDLE = 3;
   function makeIsMyTeam(names){
-    const needles = names.map(normTeamName).filter(n => n.length >= 3);
+    const needles = names.map(normTeamName).filter(n => n.length >= MP_MIN_NEEDLE);
     return (teamName) => {
       const t = normTeamName(teamName);
       if(!t) return false;
-      return needles.some(n => t.includes(n) || n.includes(t));
+      return needles.some(n => t.includes(n));
     };
   }
 
@@ -1952,15 +1969,17 @@ function initLiveProjDraftNative() {
       return `<td class="mp-o-num ${cls}">${sign}${r.delta.toFixed(1)}</td>`;
     };
 
+    // data-short liefert die Kurzform, die das CSS unter 700px per
+    // ::after einblendet, waehrend das <span> ausgeblendet wird.
     listEl.innerHTML = `
       <table class="mp-owned">
         <thead><tr>
-          <th style="text-align:left;">Spieler</th>
-          <th title="In wie vielen ausgewerteten Ligen ich ihn gedraftet habe">Meine Ligen</th>
-          <th title="In wie vielen Ligen er ueberhaupt gedraftet wurde. Je kleiner die Zahl, desto duenner die Grundlage des ADP.">Gedraftet in</th>
-          <th title="Durchschnittliche Overall-Picknummer ueber alle Ligen, in denen er gedraftet wurde">Overall ADP</th>
-          <th title="Durchschnittliche Picknummer, zu der ich ihn geholt habe">Mein ADP</th>
-          <th title="Mein ADP minus Overall ADP. Plus heisst spaeter geholt als der Markt.">Diff</th>
+          <th class="mp-o-name">Spieler</th>
+          <th data-short="MEINE" title="In wie vielen ausgewerteten Ligen ich ihn gedraftet habe"><span>Meine Ligen</span></th>
+          <th data-short="GEZOGEN" title="In wie vielen Ligen er ueberhaupt gedraftet wurde. Je kleiner die Zahl, desto duenner die Grundlage des ADP."><span>Gedraftet in</span></th>
+          <th data-short="ADP" title="Durchschnittliche Overall-Picknummer ueber alle Ligen, in denen er gedraftet wurde"><span>Overall ADP</span></th>
+          <th data-short="MEIN" title="Durchschnittliche Picknummer, zu der ich ihn geholt habe"><span>Mein ADP</span></th>
+          <th data-short="DIFF" title="Mein ADP minus Overall ADP. Plus heisst spaeter geholt als der Markt."><span>Diff</span></th>
         </tr></thead>
         <tbody>${shown.map(r => `
           <tr title="${r.myLeagues.map(l => `${l.label}: Pick ${l.pick}`).join(' | ').replace(/"/g, '&quot;')}">
@@ -2024,17 +2043,57 @@ function initLiveProjDraftNative() {
     if(failed.length) txt += ` · ${failed.length} nicht erreichbar`;
     summaryEl.textContent = txt;
 
+    // Welche Teams als meine erkannt wurden, offen ausweisen. Ohne das
+    // laesst sich ein Fehlgriff der Namenssuche nicht bemerken -- ein
+    // faelschlich zugeordnetes Team wuerde die Besitzquoten still
+    // verfaelschen.
+    const hitsEl = document.getElementById('myPlayersHits');
+    if(hitsEl){
+      const hits = {};
+      usable.forEach(r => r.myTeamNames.forEach(n => { hits[n] = (hits[n]||0) + 1; }));
+      const names = Object.keys(hits).sort((a,b) => hits[b]-hits[a] || a.localeCompare(b));
+      hitsEl.innerHTML = names.length
+        ? `<span class="mp-owned-hit" style="border:none;padding-left:0;">Erkannt als Deine Teams:</span>` +
+          names.map(n => `<span class="mp-owned-hit">${n.replace(/</g,'&lt;')}${hits[n]>1?` ×${hits[n]}`:''}</span>`).join('')
+        : '';
+    }
+
+    // Nicht erreichbare Ligen mit Fundstelle auflisten, sonst bleibt
+    // "3 nicht erreichbar" eine Sackgasse.
+    const failEl = document.getElementById('myPlayersFailed');
+    if(failEl){
+      if(failed.length){
+        failEl.style.display = '';
+        failEl.innerHTML = `<b>${failed.length} Liga(en) nicht erreichbar.</b> `
+          + `Entweder ist die ID in projections/data/fantrax-leagues.txt veraltet oder Fantrax hat gerade gehakt.`
+          + `<div class="mp-owned-fails">`
+          + failed.map(r => `<span class="mp-owned-fail">`
+              + `<span class="mp-owned-fail-ln">Zeile ${r.entry.lineNo}</span> `
+              + `${(r.entry.label || '').replace(/</g,'&lt;')} `
+              + `<code>${(r.entry.id || '').replace(/</g,'&lt;')}</code>`
+              + `</span>`).join('')
+          + `</div>`;
+      } else {
+        failEl.style.display = 'none';
+      }
+    }
+
     const warnEl = document.getElementById('myPlayersWarn');
     if(unmatched.length){
       // Ohne Treffer beim Teamnamen faellt eine ganze Liga aus der
       // Besitz-Rechnung -- das muss sichtbar sein, sonst wundert man sich
       // ueber zu niedrige Zaehler.
-      const names = unmatched.slice(0, 3).map(r => (r.apiName || r.entry.label || r.entry.id)).join(', ');
       warnEl.style.display = '';
-      warnEl.innerHTML = `⚠️ In ${unmatched.length} Liga(en) wurde kein Team mit Deinen Namen gefunden: `
-        + `<b>${names.replace(/</g, '&lt;')}${unmatched.length > 3 ? ` +${unmatched.length - 3} weitere` : ''}</b>. `
+      warnEl.innerHTML = `⚠️ In <b>${unmatched.length}</b> Liga(en) wurde kein Team mit Deinen Namen gefunden. `
         + `Diese Ligen zählen bei "Overall ADP" mit, aber nicht bei "Meine Ligen". `
-        + `Teamnamen oben ergänzen und neu laden.`;
+        + `Entweder bist Du dort nicht dabei, oder der Teamname fehlt oben.`
+        + `<details class="mp-owned-det"><summary>Betroffene Ligen anzeigen</summary>`
+        + `<div class="mp-owned-fails">`
+        + unmatched.map(r => `<span class="mp-owned-fail">`
+            + `<span class="mp-owned-fail-ln">Zeile ${r.entry.lineNo}</span> `
+            + `${(r.apiName || r.entry.label || r.entry.id).replace(/</g,'&lt;')}`
+            + `</span>`).join('')
+        + `</div></details>`;
     } else {
       warnEl.style.display = 'none';
     }

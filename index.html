@@ -633,9 +633,12 @@
                  placeholder="MFHFBs, Steakosaurus, Pizzaratops, Hawkward">
           <button class="sb-btn" id="myPlayersReload">↻ Neu auswerten</button>
         </div>
+        <div class="mp-owned-hits" id="myPlayersHits"></div>
         <div class="note" style="margin:6px 0 0;">
           Die Zuordnung läuft über den Teamnamen, weil die Fantrax Team IDs je Liga verschieden sind.
-          Groß und Kleinschreibung, Emojis und Bindestriche sind egal, Teiltreffer genügen.<br>
+          Groß und Kleinschreibung, Emojis und Sonderzeichen sind egal. Der Teamname muss Deine Eingabe enthalten,
+          umgekehrt gilt es nicht: für ein Team namens <b>Steak</b> gib <b>Steak</b> ein, nicht Steakosaurus.
+          Oben siehst Du, welche Teams erkannt wurden.<br>
           ADP ist die Overall Picknummer und über Ligagrößen hinweg direkt vergleichbar.
           Die Spalte <b>Gedraftet in</b> zeigt, auf wie vielen Ligen der Wert beruht.
           Steht dort eine kleine Zahl, ging der Spieler in den flacheren Ligen gar nicht weg und der ADP stammt nur aus denen, in denen ihn jemand wollte.
@@ -644,13 +647,14 @@
 
       <div class="note" id="myPlayersSummary" style="margin:12px 0 0;">lädt…</div>
       <div class="note mp-owned-warn" id="myPlayersWarn" style="display:none;"></div>
+      <div class="note mp-owned-fail-box" id="myPlayersFailed" style="display:none;"></div>
 
       <label class="mp-owned-toggle">
         <input type="checkbox" id="myPlayersShowAll">
         Auch Spieler zeigen, die ich nirgends habe
       </label>
 
-      <div id="myPlayersList"></div>
+      <div class="mp-owned-scroll"><div id="myPlayersList"></div></div>
     </div>
   </div>
 
