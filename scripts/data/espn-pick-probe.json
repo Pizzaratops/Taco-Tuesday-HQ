@@ -1,0 +1,180 @@
+{
+  "erstellt": "2026-08-11T20:20:58.005Z",
+  "liga": 44361109,
+  "saisons": [
+    {
+      "saison": 2027,
+      "abgefragt": {
+        "mDraftDetail": {
+          "ok": true,
+          "vorhanden": true,
+          "draftAbgeschlossen": false,
+          "anzahlPicks": 360,
+          "felderJePick": [
+            "autoDraftTypeId",
+            "bidAmount",
+            "id",
+            "keeper",
+            "lineupSlotId",
+            "nominatingTeamId",
+            "overallPickNumber",
+            "owningTeamIds",
+            "playerId",
+            "reservedForKeeper",
+            "roundId",
+            "roundPickNumber",
+            "teamId",
+            "tradeLocked"
+          ],
+          "moeglicheBesitzerFelder": [
+            "nominatingTeamId",
+            "owningTeamIds",
+            "teamId"
+          ],
+          "aufHandelPruefbar": 0,
+          "erkannteGehandeltePicks": 0,
+          "beispiele": []
+        },
+        "mSettings": {
+          "ok": true,
+          "vorhanden": true,
+          "ligaName": "The Taco Tuesday League",
+          "tradeSettingsFelder": [
+            "allowOutOfUniverse",
+            "max",
+            "revisionHours",
+            "vetoVotesRequired"
+          ],
+          "draftSettingsFelder": [
+            "auctionBudget",
+            "availableDate",
+            "date",
+            "isTradingEnabled",
+            "keeperCount",
+            "keeperCountFuture",
+            "keeperDeadlineDate",
+            "keeperDeadlineFutureDate",
+            "keeperOrderType",
+            "leagueSubType",
+            "orderType",
+            "pickOrder",
+            "timePerSelection",
+            "type"
+          ],
+          "draftType": "LINEAR",
+          "pickHandelHinweis": [
+            "pickOrder"
+          ]
+        },
+        "mTransactions2": {
+          "ok": true,
+          "vorhanden": true,
+          "anzahl": 33,
+          "typen": {
+            "TRADE_ACCEPT": 21,
+            "ROSTER": 10,
+            "TRADE_PROPOSAL": 2
+          },
+          "mitItems": 33,
+          "itemsOhneSpielerId": 0,
+          "beispieleOhneSpielerId": []
+        },
+        "mPendingTransactions": {
+          "ok": true,
+          "vorhanden": false,
+          "hinweis": "Keine transactions in der Antwort."
+        }
+      },
+      "bewertung": "NEIN: draftDetail enthält 360 Picks, aber kein Feld für den ursprünglichen Besitzer (vorhandene Felder: autoDraftTypeId, bidAmount, id, keeper, lineupSlotId, nominatingTeamId, overallPickNumber, owningTeamIds, playerId, reservedForKeeper, roundId, roundPickNumber, teamId, tradeLocked). Gehandelte Picks sind daraus nicht ableitbar."
+    },
+    {
+      "saison": 2026,
+      "abgefragt": {
+        "mDraftDetail": {
+          "ok": true,
+          "vorhanden": true,
+          "draftAbgeschlossen": true,
+          "anzahlPicks": 406,
+          "felderJePick": [
+            "autoDraftTypeId",
+            "bidAmount",
+            "id",
+            "keeper",
+            "lineupSlotId",
+            "memberId",
+            "nominatingTeamId",
+            "overallPickNumber",
+            "owningTeamIds",
+            "playerId",
+            "reservedForKeeper",
+            "roundId",
+            "roundPickNumber",
+            "teamId",
+            "tradeLocked"
+          ],
+          "moeglicheBesitzerFelder": [
+            "nominatingTeamId",
+            "owningTeamIds",
+            "teamId"
+          ],
+          "aufHandelPruefbar": 0,
+          "erkannteGehandeltePicks": 0,
+          "beispiele": []
+        },
+        "mSettings": {
+          "ok": true,
+          "vorhanden": true,
+          "ligaName": "The Taco Tuesday League",
+          "tradeSettingsFelder": [
+            "allowOutOfUniverse",
+            "max",
+            "revisionHours",
+            "vetoVotesRequired"
+          ],
+          "draftSettingsFelder": [
+            "auctionBudget",
+            "availableDate",
+            "date",
+            "isTradingEnabled",
+            "keeperCount",
+            "keeperCountFuture",
+            "keeperDeadlineDate",
+            "keeperDeadlineFutureDate",
+            "keeperOrderType",
+            "leagueSubType",
+            "orderType",
+            "pickOrder",
+            "timePerSelection",
+            "type"
+          ],
+          "draftType": "SNAKE",
+          "pickHandelHinweis": [
+            "pickOrder"
+          ]
+        },
+        "mTransactions2": {
+          "ok": true,
+          "vorhanden": true,
+          "anzahl": 29,
+          "typen": {
+            "TRADE_UPHOLD": 3,
+            "ROSTER": 15,
+            "TRADE_PROPOSAL": 1,
+            "TRADE_ACCEPT": 6,
+            "FREEAGENT": 1,
+            "TRADE_DECLINE": 3
+          },
+          "mitItems": 21,
+          "itemsOhneSpielerId": 0,
+          "beispieleOhneSpielerId": []
+        },
+        "mPendingTransactions": {
+          "ok": true,
+          "vorhanden": false,
+          "hinweis": "Keine transactions in der Antwort."
+        }
+      },
+      "bewertung": "NEIN: draftDetail enthält 406 Picks, aber kein Feld für den ursprünglichen Besitzer (vorhandene Felder: autoDraftTypeId, bidAmount, id, keeper, lineupSlotId, memberId, nominatingTeamId, overallPickNumber, owningTeamIds, playerId, reservedForKeeper, roundId, roundPickNumber, teamId, tradeLocked). Gehandelte Picks sind daraus nicht ableitbar."
+    }
+  ]
+}
