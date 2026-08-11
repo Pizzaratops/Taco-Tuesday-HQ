@@ -159,25 +159,22 @@ function analyzeDraftDetail(data, cfg) {
 }
 
 // ── Auswertung: Transaktionsprotokoll ────────────────────────
-function analyzeTransactions(data) {
+//  KORREKTUR gegenueber der vorigen Fassung: dort wurden nur die
+//  ersten 8 verdaechtigen Items ausgegeben. Fuer eine echte
+//  Gegenpruefung gegen bekannte Trades reicht das nicht -- der
+//  gesuchte Trade koennte an Position 9 oder 60 stehen. Jetzt werden
+//  ALLE DRAFT_TRADE-Items ausgegeben, mit aufgeloesten TT-Teamnamen
+//  und explizit markiert, ob Team 1 oder Team 12 beteiligt ist (die
+//  beiden Seiten des bekannten Trades aus dem 11.08.2026), damit man
+//  ihn im Bericht direkt sieht statt ihn suchen zu muessen.
+function analyzeTransactions(data, cfg) {
   const tx = (data && (data.transactions || data.topics)) || null;
   if (!tx) return { vorhanden: false, hinweis: 'Keine transactions in der Antwort.' };
 
   const typen = {};
   let mitItems = 0;
-  const nichtSpielerItems = [];
-
-  // ERWEITERUNG: Nicht nur Items ohne playerId zaehlen, sondern auch
-  // pruefen, ob ESPN fuer Picks eine Pseudo-playerId nutzt statt das
-  // Feld leer zu lassen. Anhaltspunkt dafuer: Felder, die nur bei
-  // Picks Sinn ergeben (overallPickNumber, roundId, pickId,
-  // draftPickId), zusammen MIT einer playerId. In der ersten Fassung
-  // waeren solche Items unentdeckt geblieben, weil nur auf eine
-  // fehlende playerId geprueft wurde.
-  const pickVerdaechtigeFelder = /overallpick|roundid|pickid|draftpick/i;
   const itemTypWerte = new Set();
-  const pickVerdaechtigeItems = [];
-  const tradeBeispiele = [];
+  const draftTrades = [];
 
   tx.forEach(t => {
     const typ = t.type || 'unbekannt';
@@ -185,20 +182,17 @@ function analyzeTransactions(data) {
     const items = Array.isArray(t.items) ? t.items : [];
     if (items.length) mitItems++;
 
-    if (typ === 'TRADE_ACCEPT' && tradeBeispiele.length < 3) {
-      tradeBeispiele.push({ transaktionId: t.id, items });
-    }
-
     items.forEach(it => {
       if (it.type) itemTypWerte.add(it.type);
-      const hatVerdaechtigesFeld = Object.keys(it).some(k => pickVerdaechtigeFelder.test(k));
-      if (hatVerdaechtigesFeld) {
-        pickVerdaechtigeItems.push({ transaktionstyp: typ, item: it });
-      }
-      if (it.playerId === undefined || it.playerId === null) {
-        if (nichtSpielerItems.length < 8) {
-          nichtSpielerItems.push({ transaktionstyp: typ, itemFelder: Object.keys(it), item: it });
-        }
+      if (it.type === 'DRAFT_TRADE') {
+        draftTrades.push({
+          transaktionId: t.id,
+          zeitpunkt: t.proposedDate ? new Date(t.proposedDate).toISOString() : (t.processDate ? new Date(t.processDate).toISOString() : null),
+          overallPickNumber: it.overallPickNumber,
+          fromTeamEspn: it.fromTeamId, toTeamEspn: it.toTeamId,
+          fromTeamTT: cfg.ESPN_TO_TT_TEAM[it.fromTeamId] ?? null,
+          toTeamTT: cfg.ESPN_TO_TT_TEAM[it.toTeamId] ?? null,
+        });
       }
     });
   });
@@ -209,14 +203,11 @@ function analyzeTransactions(data) {
     typen,
     mitItems,
     itemTypWerte: [...itemTypWerte],
-    itemsOhneSpielerId: nichtSpielerItems.length,
-    beispieleOhneSpielerId: nichtSpielerItems,
-    pickVerdaechtigeItemsAnzahl: pickVerdaechtigeItems.length,
-    pickVerdaechtigeItems: pickVerdaechtigeItems.slice(0, 8),
-    // Volle Items aus bis zu 3 TRADE_ACCEPT-Transaktionen, ungefiltert.
-    // Das ist der verlaesslichste Weg zu sehen, wie ein Pick in einem
-    // Trade tatsaechlich aussieht, statt es aus Feldnamen zu erraten.
-    tradeAcceptBeispiele: tradeBeispiele,
+    draftTradeAnzahl: draftTrades.length,
+    // ALLE DRAFT_TRADE-Eintraege, sortiert nach Pick-Nummer -- so
+    // findet man einen bekannten Trade auf einen Blick, ohne 60
+    // Eintraege durchsuchen zu muessen.
+    draftTrades: draftTrades.sort((a, b) => (a.overallPickNumber || 0) - (b.overallPickNumber || 0)),
   };
 }
 
@@ -244,8 +235,8 @@ async function probe(cfg, season) {
   const versuche = [
     ['mDraftDetail', `${b}?view=mDraftDetail`, analyzeDraftDetail],
     ['mSettings', `${b}?view=mSettings`, analyzeSettings],
-    ['mTransactions2', `${b}?view=mTransactions2`, analyzeTransactions],
-    ['mPendingTransactions', `${b}?view=mPendingTransactions`, analyzeTransactions],
+    ['mTransactions2', `${b}?view=mTransactions2`, (d) => analyzeTransactions(d, cfg)],
+    ['mPendingTransactions', `${b}?view=mPendingTransactions`, (d) => analyzeTransactions(d, cfg)],
   ];
 
   for (const [name, url, auswerten] of versuche) {
@@ -273,25 +264,19 @@ function bewerten(ergebnis) {
          + `ob ESPN Pick-Trades kennt -- nur, dass wir von hier aus nicht nachsehen konnten.`;
   }
 
+  if (tx.ok && tx.draftTradeAnzahl > 0) {
+    return `JA: mTransactions2 enthält ${tx.draftTradeAnzahl} DRAFT_TRADE-Einträge für ${ergebnis.saison}, `
+         + `jeder mit eindeutigem fromTeamId/toTeamId/overallPickNumber. Das ist eine gerichtete, `
+         + `unzweideutige Aufzeichnung -- der verlässlichere Fund gegenüber draftDetail.owningTeamIds. `
+         + `Siehe "draftTrades" im Bericht.`;
+  }
   if (dd.ok && dd.erkannteGehandeltePicks > 0) {
-    return `JA: draftDetail.owningTeamIds zeigt für ${ergebnis.saison} ${dd.erkannteGehandeltePicks} Pick(s), `
-         + `deren erster und letzter Eintrag auseinanderfallen -- das liest sich als Besitzerkette mit Handel drin. `
-         + `Siehe "beispiele" im Bericht zur Gegenprüfung gegen bekannte Trades.`;
+    return `JA (schwächer): draftDetail.owningTeamIds zeigt für ${ergebnis.saison} ${dd.erkannteGehandeltePicks} Pick(s) `
+         + `mit abweichender Kette, aber keine DRAFT_TRADE-Einträge im Transaktionsprotokoll gefunden. `
+         + `Vorsicht: teamId und der letzte Ketteneintrag stimmten in Stichproben nicht immer überein.`;
   }
-  if (tx.ok && tx.pickVerdaechtigeItemsAnzahl > 0) {
-    return `MÖGLICH: Im Transaktionsprotokoll stehen ${tx.pickVerdaechtigeItemsAnzahl} Items mit Feldern, `
-         + `die auf einen Pick hindeuten (overallPickNumber/roundId/pickId/draftPickId). `
-         + `Siehe "pickVerdaechtigeItems" und "tradeAcceptBeispiele" im Bericht für die genaue Form.`;
-  }
-  if (dd.ok && dd.aufHandelPruefbar > 0 && dd.erkannteGehandeltePicks === 0) {
-    return `NEIN: owningTeamIds ist bei allen ${dd.aufHandelPruefbar} geprüften Picks eine Kette der Länge 1 `
-         + `(Verteilung: ${JSON.stringify(dd.laengenVerteilungOwningTeamIds)}) -- kein Hinweis auf einen Besitzerwechsel. `
-         + `Prüfe trotzdem "tradeAcceptBeispiele" im Bericht von Hand gegen einen bekannten Trade, `
-         + `bevor das als endgültig gilt.`;
-  }
-  if (dd.ok && dd.anzahlPicks > 0 && dd.aufHandelPruefbar === 0) {
-    return `NEIN: draftDetail enthält ${dd.anzahlPicks} Picks, aber kein owningTeamIds-Array `
-         + `(vorhandene Felder: ${(dd.felderJePick || []).join(', ')}). Gehandelte Picks sind daraus nicht ableitbar.`;
+  if (dd.ok && dd.aufHandelPruefbar > 0) {
+    return `NEIN: Weder draftDetail.owningTeamIds noch DRAFT_TRADE-Einträge deuten auf gehandelte Picks für ${ergebnis.saison} hin.`;
   }
   return `NEIN: Abfragen kamen durch (${erreichbar.length} von ${alle.length}), aber kein Hinweis auf Pick-Trades. `
        + `Picks müssen für ${ergebnis.saison} von Hand gepflegt werden.`;
