@@ -104,25 +104,41 @@ function analyzeDraftDetail(data, cfg) {
   const picks = Array.isArray(dd.picks) ? dd.picks : [];
   const felder = picks.length ? Object.keys(picks[0]) : [];
 
-  // Welche Felder koennten den urspruenglichen Besitzer tragen?
-  const ownerFelder = felder.filter(f => /owner|team|origin|from/i.test(f));
+  // KORREKTUR gegenueber der ersten Fassung: das Feld heisst
+  // "owningTeamIds" (Mehrzahl, ein Array), nicht "originalTeamId" oder
+  // "owningTeamId". Die erste Fassung hat nach den falschen Namen
+  // gesucht und faelschlich "kein Herkunftsfeld" gemeldet, obwohl ein
+  // Array mit genau dieser Bedeutung die ganze Zeit da war.
+  //
+  // Annahme, die diese Probe jetzt prueft statt voraussetzt: wenn
+  // owningTeamIds die Kette der Besitzer eines Picks ist, dann zeigt
+  // das erste Element den urspruenglichen Besitzer, das letzte den
+  // aktuellen (== teamId). Bei einem Pick ohne Handel waeren beide
+  // gleich und das Array haette Laenge 1.
+  const arrayFelder = felder.filter(f => Array.isArray(picks[0][f]));
 
-  let gehandelt = 0, pruefbar = 0;
+  let mitMehrerenEintraegen = 0, pruefbar = 0, gehandeltVermutet = 0;
   const beispiele = [];
+  const laengenVerteilung = {};
+
   picks.forEach(p => {
-    const zieher = p.teamId;
-    const herkunft = p.originalTeamId !== undefined ? p.originalTeamId
-                   : (p.owningTeamId !== undefined ? p.owningTeamId : undefined);
-    if (herkunft === undefined || zieher === undefined) return;
+    const chain = p.owningTeamIds;
+    if (!Array.isArray(chain)) return;
     pruefbar++;
-    if (herkunft !== zieher) {
-      gehandelt++;
-      if (beispiele.length < 5) {
+    laengenVerteilung[chain.length] = (laengenVerteilung[chain.length] || 0) + 1;
+    if (chain.length > 1) mitMehrerenEintraegen++;
+
+    const erster = chain[0], letzter = chain[chain.length - 1];
+    if (erster !== undefined && letzter !== undefined && erster !== letzter) {
+      gehandeltVermutet++;
+      if (beispiele.length < 8) {
         beispiele.push({
           runde: p.roundId, pickImDurchgang: p.roundPickNumber,
-          vonTeamEspn: herkunft, anTeamEspn: zieher,
-          vonTeamTT: cfg.ESPN_TO_TT_TEAM[herkunft] || null,
-          anTeamTT: cfg.ESPN_TO_TT_TEAM[zieher] || null,
+          overallPickNumber: p.overallPickNumber,
+          owningTeamIds: chain,
+          teamId: p.teamId,
+          vonTeamTT: cfg.ESPN_TO_TT_TEAM[erster] || null,
+          anTeamTT: cfg.ESPN_TO_TT_TEAM[letzter] || null,
         });
       }
     }
@@ -133,9 +149,11 @@ function analyzeDraftDetail(data, cfg) {
     draftAbgeschlossen: !!dd.drafted,
     anzahlPicks: picks.length,
     felderJePick: felder,
-    moeglicheBesitzerFelder: ownerFelder,
+    arrayFelder,
     aufHandelPruefbar: pruefbar,
-    erkannteGehandeltePicks: gehandelt,
+    picksMitKettenlaengeUeber1: mitMehrerenEintraegen,
+    erkannteGehandeltePicks: gehandeltVermutet,
+    laengenVerteilungOwningTeamIds: laengenVerteilung,
     beispiele,
   };
 }
@@ -149,14 +167,34 @@ function analyzeTransactions(data) {
   let mitItems = 0;
   const nichtSpielerItems = [];
 
+  // ERWEITERUNG: Nicht nur Items ohne playerId zaehlen, sondern auch
+  // pruefen, ob ESPN fuer Picks eine Pseudo-playerId nutzt statt das
+  // Feld leer zu lassen. Anhaltspunkt dafuer: Felder, die nur bei
+  // Picks Sinn ergeben (overallPickNumber, roundId, pickId,
+  // draftPickId), zusammen MIT einer playerId. In der ersten Fassung
+  // waeren solche Items unentdeckt geblieben, weil nur auf eine
+  // fehlende playerId geprueft wurde.
+  const pickVerdaechtigeFelder = /overallpick|roundid|pickid|draftpick/i;
+  const itemTypWerte = new Set();
+  const pickVerdaechtigeItems = [];
+  const tradeBeispiele = [];
+
   tx.forEach(t => {
     const typ = t.type || 'unbekannt';
     typen[typ] = (typen[typ] || 0) + 1;
     const items = Array.isArray(t.items) ? t.items : [];
     if (items.length) mitItems++;
+
+    if (typ === 'TRADE_ACCEPT' && tradeBeispiele.length < 3) {
+      tradeBeispiele.push({ transaktionId: t.id, items });
+    }
+
     items.forEach(it => {
-      // Ein Item ohne playerId ist der interessante Fall: dann geht es
-      // um etwas anderes als einen Spieler, moeglicherweise um einen Pick.
+      if (it.type) itemTypWerte.add(it.type);
+      const hatVerdaechtigesFeld = Object.keys(it).some(k => pickVerdaechtigeFelder.test(k));
+      if (hatVerdaechtigesFeld) {
+        pickVerdaechtigeItems.push({ transaktionstyp: typ, item: it });
+      }
       if (it.playerId === undefined || it.playerId === null) {
         if (nichtSpielerItems.length < 8) {
           nichtSpielerItems.push({ transaktionstyp: typ, itemFelder: Object.keys(it), item: it });
@@ -170,8 +208,15 @@ function analyzeTransactions(data) {
     anzahl: tx.length,
     typen,
     mitItems,
+    itemTypWerte: [...itemTypWerte],
     itemsOhneSpielerId: nichtSpielerItems.length,
     beispieleOhneSpielerId: nichtSpielerItems,
+    pickVerdaechtigeItemsAnzahl: pickVerdaechtigeItems.length,
+    pickVerdaechtigeItems: pickVerdaechtigeItems.slice(0, 8),
+    // Volle Items aus bis zu 3 TRADE_ACCEPT-Transaktionen, ungefiltert.
+    // Das ist der verlaesslichste Weg zu sehen, wie ein Pick in einem
+    // Trade tatsaechlich aussieht, statt es aus Feldnamen zu erraten.
+    tradeAcceptBeispiele: tradeBeispiele,
   };
 }
 
@@ -220,35 +265,33 @@ function bewerten(ergebnis) {
   const dd = ergebnis.abgefragt.mDraftDetail || {};
   const tx = ergebnis.abgefragt.mTransactions2 || {};
 
-  // ZUERST pruefen, ob ueberhaupt etwas abgefragt werden konnte.
-  // "Nichts gefunden" und "nicht nachgesehen" sind zwei verschiedene
-  // Aussagen, und die zweite als die erste auszugeben waere schlimmer
-  // als gar kein Ergebnis -- man wuerde eine Automatisierung
-  // ausschliessen, die vielleicht moeglich ist.
   const alle = Object.values(ergebnis.abgefragt);
   const erreichbar = alle.filter(a => a.ok);
   if (!erreichbar.length) {
     const fehler = [...new Set(alle.map(a => a.fehler))].join(', ');
     return `UNKLAR: Keine der Abfragen kam durch (${fehler}). Das sagt nichts darüber aus, `
-         + `ob ESPN Pick-Trades kennt -- nur, dass wir von hier aus nicht nachsehen konnten. `
-         + `Häufigste Ursachen: Liga nicht öffentlich einsehbar, oder ausgehende Verbindungen gesperrt.`;
+         + `ob ESPN Pick-Trades kennt -- nur, dass wir von hier aus nicht nachsehen konnten.`;
   }
 
   if (dd.ok && dd.erkannteGehandeltePicks > 0) {
-    return `JA: ESPN kennt gehandelte Picks für ${ergebnis.saison}: ${dd.erkannteGehandeltePicks} Stück in draftDetail. `
-         + `Ein automatischer Abgleich für dieses Jahr wäre möglich.`;
+    return `JA: draftDetail.owningTeamIds zeigt für ${ergebnis.saison} ${dd.erkannteGehandeltePicks} Pick(s), `
+         + `deren erster und letzter Eintrag auseinanderfallen -- das liest sich als Besitzerkette mit Handel drin. `
+         + `Siehe "beispiele" im Bericht zur Gegenprüfung gegen bekannte Trades.`;
+  }
+  if (tx.ok && tx.pickVerdaechtigeItemsAnzahl > 0) {
+    return `MÖGLICH: Im Transaktionsprotokoll stehen ${tx.pickVerdaechtigeItemsAnzahl} Items mit Feldern, `
+         + `die auf einen Pick hindeuten (overallPickNumber/roundId/pickId/draftPickId). `
+         + `Siehe "pickVerdaechtigeItems" und "tradeAcceptBeispiele" im Bericht für die genaue Form.`;
+  }
+  if (dd.ok && dd.aufHandelPruefbar > 0 && dd.erkannteGehandeltePicks === 0) {
+    return `NEIN: owningTeamIds ist bei allen ${dd.aufHandelPruefbar} geprüften Picks eine Kette der Länge 1 `
+         + `(Verteilung: ${JSON.stringify(dd.laengenVerteilungOwningTeamIds)}) -- kein Hinweis auf einen Besitzerwechsel. `
+         + `Prüfe trotzdem "tradeAcceptBeispiele" im Bericht von Hand gegen einen bekannten Trade, `
+         + `bevor das als endgültig gilt.`;
   }
   if (dd.ok && dd.anzahlPicks > 0 && dd.aufHandelPruefbar === 0) {
-    return `NEIN: draftDetail enthält ${dd.anzahlPicks} Picks, aber kein Feld für den ursprünglichen Besitzer `
+    return `NEIN: draftDetail enthält ${dd.anzahlPicks} Picks, aber kein owningTeamIds-Array `
          + `(vorhandene Felder: ${(dd.felderJePick || []).join(', ')}). Gehandelte Picks sind daraus nicht ableitbar.`;
-  }
-  if (tx.ok && tx.itemsOhneSpielerId > 0) {
-    return `MÖGLICH: Im Transaktionsprotokoll stehen ${tx.itemsOhneSpielerId} Positionen ohne Spieler-ID. `
-         + `Die Beispiele im Bericht zeigen, ob es sich um Picks handelt.`;
-  }
-  if (dd.ok && dd.anzahlPicks === 0 && tx.ok && tx.anzahl === 0) {
-    return `NEIN: Abfragen kamen durch, ESPN liefert für ${ergebnis.saison} aber weder Draftreihenfolge `
-         + `noch Transaktionen. Für diese Saison ist dort nichts zu holen.`;
   }
   return `NEIN: Abfragen kamen durch (${erreichbar.length} von ${alle.length}), aber kein Hinweis auf Pick-Trades. `
        + `Picks müssen für ${ergebnis.saison} von Hand gepflegt werden.`;
