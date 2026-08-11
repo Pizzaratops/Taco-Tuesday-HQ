@@ -155,6 +155,9 @@ function analyzeDraftDetail(data, cfg) {
     erkannteGehandeltePicks: gehandeltVermutet,
     laengenVerteilungOwningTeamIds: laengenVerteilung,
     beispiele,
+    // Rohliste NUR fuer den internen Kreuzabgleich in probe() -- landet
+    // nicht im Bericht (siehe dort), 360 Eintraege waeren zu viel Rauschen.
+    _rohPicks: picks,
   };
 }
 
@@ -249,6 +252,45 @@ async function probe(cfg, season) {
       console.log(`  ✗ ${name}: ${err.message}`);
     }
   }
+
+  // KREUZABGLEICH: fuer jeden Pick, den mTransactions2 als gehandelt
+  // ausweist, den vollen Rohdatensatz aus draftDetail danebenstellen.
+  // Ziel: von Auge sehen, welches Feld (teamId, nominatingTeamId,
+  // owningTeamIds) tatsaechlich den bekannten Handel widerspiegelt,
+  // BEVOR eine taegliche Automatik sich darauf verlaesst.
+  const dd = ergebnis.abgefragt.mDraftDetail;
+  const tx = ergebnis.abgefragt.mTransactions2;
+  if (dd && dd.ok && dd._rohPicks && tx && tx.ok && tx.draftTrades) {
+    const byPick = new Map(dd._rohPicks.map(p => [p.overallPickNumber, p]));
+    const bekannteOverallPicks = [...new Set(tx.draftTrades.map(t => t.overallPickNumber))];
+    ergebnis.kreuzabgleich = bekannteOverallPicks.map(pn => {
+      const roh = byPick.get(pn);
+      const events = tx.draftTrades.filter(t => t.overallPickNumber === pn);
+      const letztesEvent = events[events.length - 1]; // draftTrades ist nach pn sortiert, nicht nach Zeit -- hier nochmal nach Zeit sortieren
+      const nachZeit = events.slice().sort((a, b) => (a.zeitpunkt || '').localeCompare(b.zeitpunkt || ''));
+      const finalToTT = nachZeit[nachZeit.length - 1].toTeamTT;
+      return {
+        overallPickNumber: pn,
+        ausTransaktionen_finalToTeamTT: finalToTT,
+        anzahlEventsFuerDiesenPick: events.length,
+        draftDetailRoh: roh ? {
+          roundId: roh.roundId, roundPickNumber: roh.roundPickNumber,
+          teamId: roh.teamId, teamIdTT: cfg.ESPN_TO_TT_TEAM[roh.teamId] ?? null,
+          nominatingTeamId: roh.nominatingTeamId, nominatingTeamIdTT: cfg.ESPN_TO_TT_TEAM[roh.nominatingTeamId] ?? null,
+          owningTeamIds: roh.owningTeamIds,
+          // Stimmt teamId (der zur Zeit des Abrufs zustaendige Slot-Team)
+          // mit dem ueberein, was die Transaktion als NEUEN Besitzer nennt?
+          teamIdStimmtMitTransaktionUeberein: cfg.ESPN_TO_TT_TEAM[roh.teamId] === finalToTT,
+        } : null,
+      };
+    });
+    // Rohliste jetzt aus dem eigentlichen Bericht entfernen, sie war nur
+    // Zwischenspeicher fuer den Abgleich oben.
+    delete dd._rohPicks;
+  } else if (dd && dd.ok) {
+    delete dd._rohPicks;
+  }
+
   return ergebnis;
 }
 
