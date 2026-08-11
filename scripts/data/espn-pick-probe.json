@@ -1,5 +1,5 @@
 {
-  "erstellt": "2026-08-11T20:48:33.173Z",
+  "erstellt": "2026-08-11T21:03:10.417Z",
   "liga": 44361109,
   "saisons": [
     {
@@ -386,6 +386,322 @@
           "hinweis": "Keine transactions in der Antwort."
         }
       },
+      "kreuzabgleich": [
+        {
+          "overallPickNumber": 1,
+          "ausTransaktionen_finalToTeamTT": 1,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 1,
+            "roundPickNumber": 1,
+            "teamId": 1,
+            "teamIdTT": 1,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              3
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 2,
+          "ausTransaktionen_finalToTeamTT": 1,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 1,
+            "roundPickNumber": 2,
+            "teamId": 1,
+            "teamIdTT": 1,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              6
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 3,
+          "ausTransaktionen_finalToTeamTT": 1,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 1,
+            "roundPickNumber": 3,
+            "teamId": 1,
+            "teamIdTT": 1,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              8
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 4,
+          "ausTransaktionen_finalToTeamTT": 1,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 1,
+            "roundPickNumber": 4,
+            "teamId": 1,
+            "teamIdTT": 1,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              7
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 5,
+          "ausTransaktionen_finalToTeamTT": 7,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 1,
+            "roundPickNumber": 5,
+            "teamId": 8,
+            "teamIdTT": 7,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              9
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 6,
+          "ausTransaktionen_finalToTeamTT": 1,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 1,
+            "roundPickNumber": 6,
+            "teamId": 1,
+            "teamIdTT": 1,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              14
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 9,
+          "ausTransaktionen_finalToTeamTT": 6,
+          "anzahlEventsFuerDiesenPick": 2,
+          "draftDetailRoh": {
+            "roundId": 1,
+            "roundPickNumber": 9,
+            "teamId": 11,
+            "teamIdTT": 6,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              11,
+              1
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 10,
+          "ausTransaktionen_finalToTeamTT": 1,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 1,
+            "roundPickNumber": 10,
+            "teamId": 1,
+            "teamIdTT": 1,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              4
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 11,
+          "ausTransaktionen_finalToTeamTT": 11,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 1,
+            "roundPickNumber": 11,
+            "teamId": 3,
+            "teamIdTT": 11,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              2
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 13,
+          "ausTransaktionen_finalToTeamTT": 1,
+          "anzahlEventsFuerDiesenPick": 3,
+          "draftDetailRoh": {
+            "roundId": 2,
+            "roundPickNumber": 1,
+            "teamId": 1,
+            "teamIdTT": 1,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              3
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 24,
+          "ausTransaktionen_finalToTeamTT": 12,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 2,
+            "roundPickNumber": 12,
+            "teamId": 9,
+            "teamIdTT": 12,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              1
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 27,
+          "ausTransaktionen_finalToTeamTT": 12,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 3,
+            "roundPickNumber": 3,
+            "teamId": 9,
+            "teamIdTT": 12,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              8
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 29,
+          "ausTransaktionen_finalToTeamTT": 7,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 3,
+            "roundPickNumber": 5,
+            "teamId": 8,
+            "teamIdTT": 7,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              9
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 33,
+          "ausTransaktionen_finalToTeamTT": 12,
+          "anzahlEventsFuerDiesenPick": 2,
+          "draftDetailRoh": {
+            "roundId": 3,
+            "roundPickNumber": 9,
+            "teamId": 9,
+            "teamIdTT": 12,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              11,
+              1
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 35,
+          "ausTransaktionen_finalToTeamTT": 9,
+          "anzahlEventsFuerDiesenPick": 1,
+          "draftDetailRoh": {
+            "roundId": 3,
+            "roundPickNumber": 11,
+            "teamId": 6,
+            "teamIdTT": 9,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              2
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 36,
+          "ausTransaktionen_finalToTeamTT": 12,
+          "anzahlEventsFuerDiesenPick": 3,
+          "draftDetailRoh": {
+            "roundId": 3,
+            "roundPickNumber": 12,
+            "teamId": 9,
+            "teamIdTT": 12,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              1,
+              6,
+              1
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 47,
+          "ausTransaktionen_finalToTeamTT": 9,
+          "anzahlEventsFuerDiesenPick": 3,
+          "draftDetailRoh": {
+            "roundId": 4,
+            "roundPickNumber": 11,
+            "teamId": 6,
+            "teamIdTT": 9,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              2,
+              1,
+              14
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        },
+        {
+          "overallPickNumber": 48,
+          "ausTransaktionen_finalToTeamTT": 2,
+          "anzahlEventsFuerDiesenPick": 3,
+          "draftDetailRoh": {
+            "roundId": 4,
+            "roundPickNumber": 12,
+            "teamId": 2,
+            "teamIdTT": 2,
+            "nominatingTeamId": 0,
+            "nominatingTeamIdTT": null,
+            "owningTeamIds": [
+              1,
+              6,
+              1
+            ],
+            "teamIdStimmtMitTransaktionUeberein": true
+          }
+        }
+      ],
       "bewertung": "JA: mTransactions2 enthält 28 DRAFT_TRADE-Einträge für 2027, jeder mit eindeutigem fromTeamId/toTeamId/overallPickNumber. Das ist eine gerichtete, unzweideutige Aufzeichnung -- der verlässlichere Fund gegenüber draftDetail.owningTeamIds. Siehe \"draftTrades\" im Bericht."
     },
     {
@@ -583,6 +899,7 @@
           "hinweis": "Keine transactions in der Antwort."
         }
       },
+      "kreuzabgleich": [],
       "bewertung": "JA (schwächer): draftDetail.owningTeamIds zeigt für 2026 8 Pick(s) mit abweichender Kette, aber keine DRAFT_TRADE-Einträge im Transaktionsprotokoll gefunden. Vorsicht: teamId und der letzte Ketteneintrag stimmten in Stichproben nicht immer überein."
     }
   ]
