@@ -1,5 +1,5 @@
 {
-  "erstellt": "2026-08-11T20:37:14.734Z",
+  "erstellt": "2026-08-11T20:48:33.173Z",
   "liga": 44361109,
   "saisons": [
     {
@@ -124,160 +124,259 @@
             "LINEUP",
             "DROP"
           ],
-          "itemsOhneSpielerId": 0,
-          "beispieleOhneSpielerId": [],
-          "pickVerdaechtigeItemsAnzahl": 63,
-          "pickVerdaechtigeItems": [
-            {
-              "transaktionstyp": "TRADE_ACCEPT",
-              "item": {
-                "fromLineupSlotId": -1,
-                "fromTeamId": 3,
-                "isKeeper": false,
-                "overallPickNumber": 1,
-                "playerId": 0,
-                "toLineupSlotId": -1,
-                "toTeamId": 1,
-                "type": "DRAFT_TRADE"
-              }
-            },
-            {
-              "transaktionstyp": "TRADE_ACCEPT",
-              "item": {
-                "fromLineupSlotId": -1,
-                "fromTeamId": 1,
-                "isKeeper": false,
-                "overallPickNumber": 48,
-                "playerId": 0,
-                "toLineupSlotId": -1,
-                "toTeamId": 2,
-                "type": "DRAFT_TRADE"
-              }
-            },
-            {
-              "transaktionstyp": "TRADE_ACCEPT",
-              "item": {
-                "fromLineupSlotId": -1,
-                "fromTeamId": 9,
-                "isKeeper": false,
-                "overallPickNumber": 5,
-                "playerId": 0,
-                "toLineupSlotId": -1,
-                "toTeamId": 8,
-                "type": "DRAFT_TRADE"
-              }
-            },
-            {
-              "transaktionstyp": "TRADE_ACCEPT",
-              "item": {
-                "fromLineupSlotId": 12,
-                "fromTeamId": 1,
-                "isKeeper": false,
-                "overallPickNumber": 0,
-                "playerId": 3922230,
-                "toLineupSlotId": 12,
-                "toTeamId": 9,
-                "type": "TRADE"
-              }
-            },
-            {
-              "transaktionstyp": "TRADE_ACCEPT",
-              "item": {
-                "fromLineupSlotId": 12,
-                "fromTeamId": 9,
-                "isKeeper": false,
-                "overallPickNumber": 0,
-                "playerId": 5157066,
-                "toLineupSlotId": 12,
-                "toTeamId": 1,
-                "type": "TRADE"
-              }
-            },
-            {
-              "transaktionstyp": "TRADE_ACCEPT",
-              "item": {
-                "fromLineupSlotId": -1,
-                "fromTeamId": 14,
-                "isKeeper": false,
-                "overallPickNumber": 47,
-                "playerId": 0,
-                "toLineupSlotId": -1,
-                "toTeamId": 6,
-                "type": "DRAFT_TRADE"
-              }
-            },
-            {
-              "transaktionstyp": "TRADE_ACCEPT",
-              "item": {
-                "fromLineupSlotId": -1,
-                "fromTeamId": 1,
-                "isKeeper": false,
-                "overallPickNumber": 36,
-                "playerId": 0,
-                "toLineupSlotId": -1,
-                "toTeamId": 9,
-                "type": "DRAFT_TRADE"
-              }
-            },
-            {
-              "transaktionstyp": "TRADE_ACCEPT",
-              "item": {
-                "fromLineupSlotId": -1,
-                "fromTeamId": 1,
-                "isKeeper": false,
-                "overallPickNumber": 33,
-                "playerId": 0,
-                "toLineupSlotId": -1,
-                "toTeamId": 9,
-                "type": "DRAFT_TRADE"
-              }
-            }
-          ],
-          "tradeAcceptBeispiele": [
+          "draftTradeAnzahl": 28,
+          "draftTrades": [
             {
               "transaktionId": "911192be-68b7-40ca-82b8-1f6623c52c74",
-              "items": [
-                {
-                  "fromLineupSlotId": -1,
-                  "fromTeamId": 3,
-                  "isKeeper": false,
-                  "overallPickNumber": 1,
-                  "playerId": 0,
-                  "toLineupSlotId": -1,
-                  "toTeamId": 1,
-                  "type": "DRAFT_TRADE"
-                }
-              ]
+              "zeitpunkt": "2026-06-15T11:50:15.374Z",
+              "overallPickNumber": 1,
+              "fromTeamEspn": 3,
+              "toTeamEspn": 1,
+              "fromTeamTT": 11,
+              "toTeamTT": 1
             },
             {
-              "transaktionId": "ce630e92-a043-498b-929c-cac01b306f0e",
-              "items": [
-                {
-                  "fromLineupSlotId": -1,
-                  "fromTeamId": 1,
-                  "isKeeper": false,
-                  "overallPickNumber": 48,
-                  "playerId": 0,
-                  "toLineupSlotId": -1,
-                  "toTeamId": 2,
-                  "type": "DRAFT_TRADE"
-                }
-              ]
+              "transaktionId": "c7fc3e68-835f-41da-afb5-3c9bd61ff44b",
+              "zeitpunkt": "2026-06-15T11:53:59.351Z",
+              "overallPickNumber": 2,
+              "fromTeamEspn": 6,
+              "toTeamEspn": 1,
+              "fromTeamTT": 9,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "dd83de8a-64da-4b19-a31f-5d143b13138a",
+              "zeitpunkt": "2026-06-15T11:58:53.158Z",
+              "overallPickNumber": 3,
+              "fromTeamEspn": 8,
+              "toTeamEspn": 1,
+              "fromTeamTT": 7,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "e70d6078-319b-434a-82ce-b674571a72c4",
+              "zeitpunkt": "2026-06-15T11:58:26.685Z",
+              "overallPickNumber": 4,
+              "fromTeamEspn": 7,
+              "toTeamEspn": 1,
+              "fromTeamTT": 4,
+              "toTeamTT": 1
             },
             {
               "transaktionId": "a121957f-b3ab-41df-85fb-a54e9216bcdf",
-              "items": [
-                {
-                  "fromLineupSlotId": -1,
-                  "fromTeamId": 9,
-                  "isKeeper": false,
-                  "overallPickNumber": 5,
-                  "playerId": 0,
-                  "toLineupSlotId": -1,
-                  "toTeamId": 8,
-                  "type": "DRAFT_TRADE"
-                }
-              ]
+              "zeitpunkt": "2026-06-15T11:59:44.915Z",
+              "overallPickNumber": 5,
+              "fromTeamEspn": 9,
+              "toTeamEspn": 8,
+              "fromTeamTT": 12,
+              "toTeamTT": 7
+            },
+            {
+              "transaktionId": "636e1f6b-d234-4994-bc41-18e7d3332936",
+              "zeitpunkt": "2026-06-15T12:00:02.565Z",
+              "overallPickNumber": 6,
+              "fromTeamEspn": 14,
+              "toTeamEspn": 1,
+              "fromTeamTT": 10,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "0edc6411-fee7-44a7-b670-e762e436147c",
+              "zeitpunkt": "2026-06-15T11:57:41.870Z",
+              "overallPickNumber": 9,
+              "fromTeamEspn": 11,
+              "toTeamEspn": 1,
+              "fromTeamTT": 6,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "362073e3-f2d7-4cdf-9db3-2d75212d432c",
+              "zeitpunkt": "2026-08-05T12:40:04.537Z",
+              "overallPickNumber": 9,
+              "fromTeamEspn": 1,
+              "toTeamEspn": 11,
+              "fromTeamTT": 1,
+              "toTeamTT": 6
+            },
+            {
+              "transaktionId": "03add6ac-f0c0-4149-9d2b-733f401b4d20",
+              "zeitpunkt": "2026-06-15T11:56:50.256Z",
+              "overallPickNumber": 10,
+              "fromTeamEspn": 4,
+              "toTeamEspn": 1,
+              "fromTeamTT": 3,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "5f9a2c51-ce1f-419f-b031-c2999202c5bc",
+              "zeitpunkt": "2026-06-15T12:18:23.843Z",
+              "overallPickNumber": 11,
+              "fromTeamEspn": 2,
+              "toTeamEspn": 3,
+              "fromTeamTT": 2,
+              "toTeamTT": 11
+            },
+            {
+              "transaktionId": "a6359ea1-9eb4-4d34-8586-834a3e14f7ce",
+              "zeitpunkt": "2026-08-11T08:16:41.209Z",
+              "overallPickNumber": 13,
+              "fromTeamEspn": 3,
+              "toTeamEspn": 1,
+              "fromTeamTT": 11,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "b3181c44-6c4c-4ffa-bd2e-36f18a4c0c6f",
+              "zeitpunkt": "2026-08-11T08:16:39.794Z",
+              "overallPickNumber": 13,
+              "fromTeamEspn": 3,
+              "toTeamEspn": 1,
+              "fromTeamTT": 11,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "89842a8f-edac-432b-a57b-346d6a26cc54",
+              "zeitpunkt": "2026-08-11T11:37:33.057Z",
+              "overallPickNumber": 13,
+              "fromTeamEspn": 3,
+              "toTeamEspn": 1,
+              "fromTeamTT": 11,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "457b49b6-8cf3-44e1-9fc2-649d7b56d72a",
+              "zeitpunkt": "2026-08-11T09:28:19.876Z",
+              "overallPickNumber": 24,
+              "fromTeamEspn": 1,
+              "toTeamEspn": 9,
+              "fromTeamTT": 1,
+              "toTeamTT": 12
+            },
+            {
+              "transaktionId": "ab6da814-fc4d-4d32-bc1e-3759c0de08f5",
+              "zeitpunkt": "2026-06-15T11:59:25.676Z",
+              "overallPickNumber": 27,
+              "fromTeamEspn": 8,
+              "toTeamEspn": 9,
+              "fromTeamTT": 7,
+              "toTeamTT": 12
+            },
+            {
+              "transaktionId": "ab6da814-fc4d-4d32-bc1e-3759c0de08f5",
+              "zeitpunkt": "2026-06-15T11:59:25.676Z",
+              "overallPickNumber": 29,
+              "fromTeamEspn": 9,
+              "toTeamEspn": 8,
+              "fromTeamTT": 12,
+              "toTeamTT": 7
+            },
+            {
+              "transaktionId": "457b49b6-8cf3-44e1-9fc2-649d7b56d72a",
+              "zeitpunkt": "2026-08-11T09:28:19.876Z",
+              "overallPickNumber": 33,
+              "fromTeamEspn": 1,
+              "toTeamEspn": 9,
+              "fromTeamTT": 1,
+              "toTeamTT": 12
+            },
+            {
+              "transaktionId": "0edc6411-fee7-44a7-b670-e762e436147c",
+              "zeitpunkt": "2026-06-15T11:57:41.870Z",
+              "overallPickNumber": 33,
+              "fromTeamEspn": 11,
+              "toTeamEspn": 1,
+              "fromTeamTT": 6,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "c3635958-a71a-490a-973a-e19bdaa1fa44",
+              "zeitpunkt": "2026-06-15T12:02:19.955Z",
+              "overallPickNumber": 35,
+              "fromTeamEspn": 2,
+              "toTeamEspn": 6,
+              "fromTeamTT": 2,
+              "toTeamTT": 9
+            },
+            {
+              "transaktionId": "457b49b6-8cf3-44e1-9fc2-649d7b56d72a",
+              "zeitpunkt": "2026-08-11T09:28:19.876Z",
+              "overallPickNumber": 36,
+              "fromTeamEspn": 1,
+              "toTeamEspn": 9,
+              "fromTeamTT": 1,
+              "toTeamTT": 12
+            },
+            {
+              "transaktionId": "c37a6b7c-83b8-4b9e-9be5-66fd1c093e56",
+              "zeitpunkt": "2026-06-15T11:55:00.798Z",
+              "overallPickNumber": 36,
+              "fromTeamEspn": 6,
+              "toTeamEspn": 1,
+              "fromTeamTT": 9,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "c7fc3e68-835f-41da-afb5-3c9bd61ff44b",
+              "zeitpunkt": "2026-06-15T11:53:59.351Z",
+              "overallPickNumber": 36,
+              "fromTeamEspn": 1,
+              "toTeamEspn": 6,
+              "fromTeamTT": 1,
+              "toTeamTT": 9
+            },
+            {
+              "transaktionId": "c6c97d20-d9bb-41cb-b674-7ab88233ea6d",
+              "zeitpunkt": "2026-06-15T12:16:01.543Z",
+              "overallPickNumber": 47,
+              "fromTeamEspn": 14,
+              "toTeamEspn": 6,
+              "fromTeamTT": 10,
+              "toTeamTT": 9
+            },
+            {
+              "transaktionId": "cf3c9c02-2a72-4ce6-b7aa-b0fb7a07ac41",
+              "zeitpunkt": "2026-06-15T11:55:40.832Z",
+              "overallPickNumber": 47,
+              "fromTeamEspn": 2,
+              "toTeamEspn": 1,
+              "fromTeamTT": 2,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "b95b3059-5ef4-4678-9d37-c1367e3c4a70",
+              "zeitpunkt": "2026-06-15T12:14:28.369Z",
+              "overallPickNumber": 47,
+              "fromTeamEspn": 1,
+              "toTeamEspn": 14,
+              "fromTeamTT": 1,
+              "toTeamTT": 10
+            },
+            {
+              "transaktionId": "ce630e92-a043-498b-929c-cac01b306f0e",
+              "zeitpunkt": "2026-06-15T12:17:53.407Z",
+              "overallPickNumber": 48,
+              "fromTeamEspn": 1,
+              "toTeamEspn": 2,
+              "fromTeamTT": 1,
+              "toTeamTT": 2
+            },
+            {
+              "transaktionId": "c37a6b7c-83b8-4b9e-9be5-66fd1c093e56",
+              "zeitpunkt": "2026-06-15T11:55:00.798Z",
+              "overallPickNumber": 48,
+              "fromTeamEspn": 6,
+              "toTeamEspn": 1,
+              "fromTeamTT": 9,
+              "toTeamTT": 1
+            },
+            {
+              "transaktionId": "c7fc3e68-835f-41da-afb5-3c9bd61ff44b",
+              "zeitpunkt": "2026-06-15T11:53:59.351Z",
+              "overallPickNumber": 48,
+              "fromTeamEspn": 1,
+              "toTeamEspn": 6,
+              "fromTeamTT": 1,
+              "toTeamTT": 9
             }
           ]
         },
@@ -287,7 +386,7 @@
           "hinweis": "Keine transactions in der Antwort."
         }
       },
-      "bewertung": "JA: draftDetail.owningTeamIds zeigt für 2027 3 Pick(s), deren erster und letzter Eintrag auseinanderfallen -- das liest sich als Besitzerkette mit Handel drin. Siehe \"beispiele\" im Bericht zur Gegenprüfung gegen bekannte Trades."
+      "bewertung": "JA: mTransactions2 enthält 28 DRAFT_TRADE-Einträge für 2027, jeder mit eindeutigem fromTeamId/toTeamId/overallPickNumber. Das ist eine gerichtete, unzweideutige Aufzeichnung -- der verlässlichere Fund gegenüber draftDetail.owningTeamIds. Siehe \"draftTrades\" im Bericht."
     },
     {
       "saison": 2026,
@@ -475,172 +574,8 @@
             "TRADE",
             "ADD"
           ],
-          "itemsOhneSpielerId": 0,
-          "beispieleOhneSpielerId": [],
-          "pickVerdaechtigeItemsAnzahl": 32,
-          "pickVerdaechtigeItems": [
-            {
-              "transaktionstyp": "ROSTER",
-              "item": {
-                "fromLineupSlotId": 10,
-                "fromTeamId": 6,
-                "isKeeper": false,
-                "overallPickNumber": 0,
-                "playerId": 3146557,
-                "toLineupSlotId": -1,
-                "toTeamId": 0,
-                "type": "DROP"
-              }
-            },
-            {
-              "transaktionstyp": "ROSTER",
-              "item": {
-                "fromLineupSlotId": 13,
-                "fromTeamId": 0,
-                "isKeeper": false,
-                "overallPickNumber": 0,
-                "playerId": 4278355,
-                "toLineupSlotId": 10,
-                "toTeamId": 0,
-                "type": "LINEUP"
-              }
-            },
-            {
-              "transaktionstyp": "TRADE_PROPOSAL",
-              "item": {
-                "fromLineupSlotId": 12,
-                "fromTeamId": 8,
-                "isKeeper": false,
-                "overallPickNumber": 0,
-                "playerId": 4397002,
-                "toLineupSlotId": -1,
-                "toTeamId": 9,
-                "type": "TRADE"
-              }
-            },
-            {
-              "transaktionstyp": "TRADE_PROPOSAL",
-              "item": {
-                "fromLineupSlotId": 13,
-                "fromTeamId": 8,
-                "isKeeper": false,
-                "overallPickNumber": 0,
-                "playerId": 5242496,
-                "toLineupSlotId": -1,
-                "toTeamId": 9,
-                "type": "TRADE"
-              }
-            },
-            {
-              "transaktionstyp": "ROSTER",
-              "item": {
-                "fromLineupSlotId": 12,
-                "fromTeamId": 0,
-                "isKeeper": false,
-                "overallPickNumber": 0,
-                "playerId": 5093267,
-                "toLineupSlotId": 3,
-                "toTeamId": 0,
-                "type": "LINEUP"
-              }
-            },
-            {
-              "transaktionstyp": "ROSTER",
-              "item": {
-                "fromLineupSlotId": 13,
-                "fromTeamId": 0,
-                "isKeeper": false,
-                "overallPickNumber": 0,
-                "playerId": 4277961,
-                "toLineupSlotId": 12,
-                "toTeamId": 0,
-                "type": "LINEUP"
-              }
-            },
-            {
-              "transaktionstyp": "ROSTER",
-              "item": {
-                "fromLineupSlotId": 3,
-                "fromTeamId": 0,
-                "isKeeper": false,
-                "overallPickNumber": 0,
-                "playerId": 5093267,
-                "toLineupSlotId": 12,
-                "toTeamId": 0,
-                "type": "LINEUP"
-              }
-            },
-            {
-              "transaktionstyp": "ROSTER",
-              "item": {
-                "fromLineupSlotId": 12,
-                "fromTeamId": 0,
-                "isKeeper": false,
-                "overallPickNumber": 0,
-                "playerId": 4576087,
-                "toLineupSlotId": 3,
-                "toTeamId": 0,
-                "type": "LINEUP"
-              }
-            }
-          ],
-          "tradeAcceptBeispiele": [
-            {
-              "transaktionId": "11c0ce49-1b77-473e-ac02-3191ae3b9a03",
-              "items": [
-                {
-                  "fromLineupSlotId": 12,
-                  "fromTeamId": 3,
-                  "isKeeper": false,
-                  "overallPickNumber": 0,
-                  "playerId": 4433569,
-                  "toLineupSlotId": -1,
-                  "toTeamId": 0,
-                  "type": "DROP"
-                }
-              ]
-            },
-            {
-              "transaktionId": "b8d82f56-e8ad-4217-8d65-b5b9c34aeaaa",
-              "items": [
-                {
-                  "fromLineupSlotId": 12,
-                  "fromTeamId": 9,
-                  "isKeeper": false,
-                  "overallPickNumber": 0,
-                  "playerId": 5175647,
-                  "toLineupSlotId": -1,
-                  "toTeamId": 0,
-                  "type": "DROP"
-                },
-                {
-                  "fromLineupSlotId": 12,
-                  "fromTeamId": 9,
-                  "isKeeper": false,
-                  "overallPickNumber": 0,
-                  "playerId": 4997528,
-                  "toLineupSlotId": -1,
-                  "toTeamId": 0,
-                  "type": "DROP"
-                }
-              ]
-            },
-            {
-              "transaktionId": "0313178c-bac6-49f7-babd-9d3f356d3a31",
-              "items": [
-                {
-                  "fromLineupSlotId": 12,
-                  "fromTeamId": 6,
-                  "isKeeper": false,
-                  "overallPickNumber": 0,
-                  "playerId": 5093267,
-                  "toLineupSlotId": 12,
-                  "toTeamId": 2,
-                  "type": "TRADE"
-                }
-              ]
-            }
-          ]
+          "draftTradeAnzahl": 0,
+          "draftTrades": []
         },
         "mPendingTransactions": {
           "ok": true,
@@ -648,7 +583,7 @@
           "hinweis": "Keine transactions in der Antwort."
         }
       },
-      "bewertung": "JA: draftDetail.owningTeamIds zeigt für 2026 8 Pick(s), deren erster und letzter Eintrag auseinanderfallen -- das liest sich als Besitzerkette mit Handel drin. Siehe \"beispiele\" im Bericht zur Gegenprüfung gegen bekannte Trades."
+      "bewertung": "JA (schwächer): draftDetail.owningTeamIds zeigt für 2026 8 Pick(s) mit abweichender Kette, aber keine DRAFT_TRADE-Einträge im Transaktionsprotokoll gefunden. Vorsicht: teamId und der letzte Ketteneintrag stimmten in Stichproben nicht immer überein."
     }
   ]
 }
