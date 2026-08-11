@@ -1183,3 +1183,96 @@
   font-size: 13px; font-weight: 600; color: var(--green);
   white-space: nowrap;
 }
+
+/* ============================================================
+   HOW-TO-INFOBOX — kleines "ⓘ" mit Schritt-für-Schritt-Anleitung
+   ============================================================
+   Rein informativ, admin-intern (z.B. "wie starte ich diesen
+   Workflow"). Oeffnet bei Hover (Desktop) UND Klick/Tap (Handy,
+   kein Hover vorhanden). Ein Klick ausserhalb schliesst wieder.
+
+   Markup:
+     <span class="howto" tabindex="0">ⓘ
+       <span class="howto-box">
+         <span class="howto-title">…</span>
+         <ol><li>…</li></ol>
+       </span>
+     </span>
+   ============================================================ */
+
+.howto {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: help;
+  margin-left: 6px;
+  vertical-align: middle;
+  user-select: none;
+}
+.howto:hover, .howto:focus, .howto.open { color: var(--accent); border-color: var(--accent); }
+
+.howto-box {
+  display: none;
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 300px;
+  max-width: min(300px, 82vw);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+  cursor: default;
+  text-align: left;
+  white-space: normal;
+}
+/* Hover nur dort, wo echtes Hover existiert (Desktop). Auf
+   Touch-Geraeten uebernimmt die .open-Klasse per Klick, siehe JS. */
+@media (hover: hover) {
+  .howto:hover .howto-box { display: block; }
+}
+.howto.open .howto-box { display: block; }
+
+.howto-title {
+  display: block;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 8px;
+}
+.howto-box ol {
+  margin: 0; padding-left: 18px;
+  font-size: 12px; line-height: 1.6; color: var(--text);
+}
+.howto-box li { margin-bottom: 5px; }
+.howto-box li:last-child { margin-bottom: 0; }
+.howto-box code {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+.howto-box .howto-note {
+  display: block;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+  font-size: 11px; color: var(--muted); line-height: 1.5;
+}
+
+/* Auf schmalen Screens rechtsbuendig oeffnen statt ueber den
+   Bildschirmrand hinaus */
+@media (max-width: 480px) {
+  .howto-box { left: auto; right: 0; }
+}

@@ -572,13 +572,6 @@
 
   <div class="search-row">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <select id="teamsOwnerFilter" class="owner-filter" title="Nach Fantasy Team, Free Agents oder NBA Team filtern" onchange="teamsSetOwnerFilter(this.value)"></select>
-    <select id="faMinSelect" class="owner-filter" title="Freie Spieler ab dieser Minutenzahl hervorheben" onchange="teamsSetFaMin(this.value)">
-      <option value="0">Fund-Hinweis aus</option>
-      <option value="18">Freie ab 18 Min</option>
-      <option value="24">Freie ab 24 Min</option>
-      <option value="30">Freie ab 30 Min</option>
-    </select>
     <input type="text" id="searchTeams" placeholder="Team oder Spieler suchen…">
   </div>
 
@@ -1075,7 +1068,6 @@
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
     </svg>
     <input type="text" id="baSearch" placeholder="Search player, team, or position…" oninput="filterBestAvail()" style="flex:1;"/>
-    <select id="baNbaFilter" onchange="baSetNbaFilter(this.value)" title="Nur freie Spieler eines NBA Teams zeigen" style="padding:8px 12px;border-radius:8px;background:var(--surface2,rgba(255,255,255,.04));border:1px solid var(--border);color:var(--text);font-size:13px;"></select>
     <select id="baExperienceSelect" onchange="baSetExperienceFilter(this.value)" style="padding:8px 12px;border-radius:8px;background:var(--surface2,rgba(255,255,255,.04));border:1px solid var(--border);color:var(--text);font-size:13px;">
       <option value="all">Every Player</option>
       <option value="rookie">Rookies</option>
@@ -1899,6 +1891,35 @@
       <div id="as-sync-status" style="margin-top:10px;font-size:12px;color:var(--muted);"></div>
     </div>
 
+    <!-- Section: ESPN Pick-Trade Diagnose -->
+    <!-- Rein informativ: der eigentliche Diagnoselauf passiert in GitHub
+         Actions, nicht auf der Seite. ESPN kennt keinen Handel mit Picks
+         kuenftiger Jahre, deshalb bleibt die manuelle Pflege sowieso
+         noetig -- diese Box klaert nur, ob 2026er Picks wenigstens
+         teilweise automatisch liefen. -->
+    <div class="admin-section">
+      <div class="admin-section-title">
+        🔍 ESPN Pick-Trade Diagnose
+        <span class="howto" tabindex="0">ⓘ
+          <span class="howto-box">
+            <span class="howto-title">So startest Du die Diagnose</span>
+            <ol>
+              <li>Auf GitHub im Repo <code>Taco-Tuesday-HQ</code> oben auf den Tab <b>Actions</b></li>
+              <li>In der Liste links auf <b>Diagnose – ESPN Pick-Trades</b> klicken</li>
+              <li>Rechts auf <b>Run workflow</b>, das Saison-Feld leer lassen, nochmal <b>Run workflow</b> bestätigen</li>
+              <li>Nach knapp einer Minute läuft ein grüner Haken auf. Draufklicken zeigt den Bericht direkt in der Job-Zusammenfassung</li>
+            </ol>
+            <span class="howto-note">Prüft nur, ob ESPN Pick-Trades überhaupt herausgibt. Ändert nichts an Rostern oder Picks — das Journal weiter unten trägt die tatsächlichen Trades ein.</span>
+          </span>
+        </span>
+      </div>
+      <div class="admin-row">
+        <span style="font-size:12px;color:var(--muted);line-height:1.6;">
+          Läuft manuell in GitHub Actions, nicht hier auf der Seite. Klick auf das ⓘ oben für die Schritte.
+        </span>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -2097,8 +2118,6 @@
 <!-- App logic -->
 <script src="js/theme.js?v=5"></script>
 <script src="js/navigation.js?v=5"></script>
-<!-- Gemeinsame Fantasy-Besitz-Logik fuer Projections, NBA Teams und Best Available -->
-<script src="js/fantasy-owner.js?v=1"></script>
 <script src="js/flow-diagram.js?v=1"></script>
 <script src="js/nba-teams.js?v=5"></script>
 <script src="js/standings.js?v=5"></script>

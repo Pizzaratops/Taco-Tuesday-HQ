@@ -233,3 +233,17 @@ function asClearTradeHistory() {
 }
 
 // ============================================================
+
+
+// ============================================================
+//  HOW-TO-INFOBOX — Klick/Tap zum Auf- und Zuklappen
+// ============================================================
+//  @media (hover: hover) im CSS deckt Desktop-Hover ab. Auf
+//  Touch-Geraeten gibt es kein Hover, deshalb hier zusaetzlich ein
+//  Klick-Toggle. Ein Klick ausserhalb schliesst offene Boxen.
+document.addEventListener('click', (e) => {
+  const trigger = e.target.closest('.howto');
+  const wasOpen = trigger && trigger.classList.contains('open');
+  document.querySelectorAll('.howto.open').forEach(el => el.classList.remove('open'));
+  if (trigger && !wasOpen) trigger.classList.add('open');
+});
