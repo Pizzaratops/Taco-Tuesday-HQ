@@ -3,7 +3,7 @@
 // ============================================================
 //  AUTO-GENERIERT von scripts/sync-espn-rosters.js über die
 //  "Daily 9cat Live Scores" GitHub Action. Nicht von Hand editieren.
-//  Zuletzt synchronisiert: 2026-08-12T14:23:44.929Z
+//  Zuletzt synchronisiert: 2026-08-12T14:39:06.223Z
 //
 //  Wird von js/admin.js beim Seitenstart als Basis für ROSTERS geladen
 //  (ersetzt die statischen Rosters aus data/teams-rosters.js), bevor
