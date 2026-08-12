@@ -105,10 +105,17 @@
       <div class="snav-divider"></div>
 
       <div class="snav-group">
+        <button class="snav-group-btn" id="snavTTHQBoards">🏆 TTHQ Draft Boards <span class="snav-arrow">▾</span></button>
+        <div class="snav-dropdown">
+          <button class="snav-dropdown-item" data-page="draftboard"    onclick="showDraftboard()">📋 Full Draft Board</button>
+          <button class="snav-dropdown-item" data-page="draftresults" onclick="showDraftResults()">🏆 Draft Results</button>
+        </div>
+      </div>
+
+      <div class="snav-group">
         <button class="snav-group-btn" id="snavDraft">📋 Draft <span class="snav-arrow">▾</span></button>
         <div class="snav-dropdown">
           <div class="snav-dropdown-label">2026</div>
-          <button class="snav-dropdown-item" data-page="draftboard" onclick="showDraftboard()">📋 Full Draft Board</button>
           <button class="snav-dropdown-item" data-page="draft26"    onclick="showDraft26()">🔎 Prospect Database</button>
           <button class="snav-dropdown-item" data-page="bigBoard"  onclick="showBigBoard()">📋 MFHFBs Big Board</button>
           <button class="snav-dropdown-item" data-page="lottery"    onclick="showLottery()">🎲 2026 Lottery</button>
@@ -185,8 +192,12 @@
         <button class="subnav-mobile-btn" data-page="dynastyrolling" onclick="showDynastyRolling();closeMobileNav()">📈 Rolling Rankings</button>
       </div>
       <div class="subnav-mobile-group">
+        <div class="subnav-mobile-label">TTHQ Draft Boards</div>
+        <button class="subnav-mobile-btn" data-page="draftboard"    onclick="showDraftboard();closeMobileNav()">📋 Full Draft Board</button>
+        <button class="subnav-mobile-btn" data-page="draftresults" onclick="showDraftResults();closeMobileNav()">🏆 Draft Results</button>
+      </div>
+      <div class="subnav-mobile-group">
         <div class="subnav-mobile-label">Draft 2026</div>
-        <button class="subnav-mobile-btn" data-page="draftboard" onclick="showDraftboard();closeMobileNav()">📋 Full Draft Board</button>
         <button class="subnav-mobile-btn" data-page="draft26"    onclick="showDraft26();closeMobileNav()">🔎 Prospect Database</button>
         <button class="subnav-mobile-btn" data-page="bigBoard"  onclick="showBigBoard();closeMobileNav()">📋 MFHFBs Big Board</button>
         <button class="subnav-mobile-btn" data-page="lottery"    onclick="showLottery();closeMobileNav()">🎲 2026 Lottery</button>
@@ -293,6 +304,20 @@
   </div>
   <div class="draftboard-grid" id="draftboardContent"></div>
   <div class="edit-hint">✏️ After trades, update <code>currentOwner</code> in the <code>PICKS</code> array</div>
+</div>
+
+<!-- DRAFT RESULTS -->
+<!-- Wer hat wen gepickt, fuer bereits abgeschlossene Drafts. Anders als
+     Full Draft Board (Pick-BESITZ ueber alle Jahre) zeigt diese Seite
+     Pick-INHALT fuer EINEN konkreten, vergangenen Draft.
+     Daten: data/draft-results-<saison>.js, geholt von
+     scripts/fetch-draft-results-espn.js (manuell ausgeloest, kein
+     taeglicher Job -- ein abgeschlossener Draft aendert sich nicht mehr).
+     Logik: js/navigation.js (showDraftResults). -->
+<div class="page page-wide" id="draftResultsPage">
+  <h2 style="margin-bottom:6px;">🏆 Draft Results</h2>
+  <p id="draftResultsSub" style="color:var(--muted);font-size:13px;margin-bottom:20px;">Wer hat wen gepickt</p>
+  <div id="draftResultsContent"></div>
 </div>
 
 <!-- MATCHUP PLANER -->
@@ -2103,6 +2128,7 @@
 <script src="data/rosters-live.js?v=1"></script>
 <script src="data/picks.js?v=5"></script>
 <!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=1"></script>
+<!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=1"></script>
 <script src="data/rankings.js?v=5"></script>
 <script src="data/projections-baseline.js?v=1"></script>
 <script src="data/live-projections.js?v=1"></script>

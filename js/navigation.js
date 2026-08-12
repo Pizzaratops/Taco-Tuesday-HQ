@@ -500,12 +500,94 @@ function renderPicks(id){
   return html;
 }
 
+// ============================================================
+//  DRAFT RESULTS -- wer hat wen gepickt (abgeschlossener Draft)
+// ============================================================
+//  Anders als showDraftboard() (Pick-BESITZ ueber alle Jahre, aus dem
+//  handgepflegten PICKS-Array) zeigt diese Seite Pick-INHALT fuer einen
+//  einzelnen, bereits gelaufenen Draft -- welcher Spieler ging an
+//  welches Team, bei welchem Pick. Daten kommen aus
+//  data/draft-results-<saison>.js (siehe scripts/fetch-draft-results-espn.js),
+//  nicht aus PICKS.
+function showDraftResults(){
+  navigate('draftResultsPage');
+  const host = document.getElementById('draftResultsContent');
+  const sub = document.getElementById('draftResultsSub');
+  if (!host) return;
+
+  if (typeof DRAFT_RESULTS === 'undefined' || !DRAFT_RESULTS.picks || !DRAFT_RESULTS.picks.length) {
+    host.innerHTML = `<div style="background:var(--surface);border:1px dashed var(--border);border-radius:12px;padding:32px 20px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6;">
+      Noch keine Draft Results geladen.<br><br>
+      Läuft über <b>Actions → "Draft Results abrufen" → Run workflow</b> für eine bereits abgeschlossene ESPN-Saison.
+      Aktualisiert sich nicht automatisch, weil ein abgeschlossener Draft sich nicht mehr ändert.
+    </div>`;
+    if (sub) sub.textContent = 'Wer hat wen gepickt';
+    return;
+  }
+
+  const rounds = [...new Set(DRAFT_RESULTS.picks.map(p => p.round))].sort((a,b) => a-b);
+  const unresolved = DRAFT_RESULTS.picks.filter(p => p.nameSource === 'unresolved').length;
+
+  if (sub) {
+    const datum = DRAFT_RESULTS.fetchedAt ? new Date(DRAFT_RESULTS.fetchedAt).toLocaleDateString('de-DE') : '';
+    sub.textContent = `ESPN-Saison ${DRAFT_RESULTS.espnSeason} · abgerufen ${datum}`;
+  }
+
+  let html = '';
+  if (unresolved) {
+    html += `<div style="background:var(--accent-light);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--muted);">
+      ⚠️ ${unresolved} Spieler nicht auflösbar (nicht mehr auf einem Roster, deshalb kein Name über die ESPN-Roster-Abfrage verfügbar). Zeigt die ESPN-ID statt des Namens.
+    </div>`;
+  }
+
+  html += '<table><thead><tr><th class="round-label">Rnd</th>';
+  TEAMS.forEach(t => { html += `<th title="${t.owner}">${t.name.split(' ')[0]}</th>`; });
+  html += '</tr></thead><tbody>';
+
+  rounds.forEach(round => {
+    html += `<tr><td style="font-weight:700;color:var(--muted);white-space:nowrap;background:var(--surface);">R${round}</td>`;
+    TEAMS.forEach(t => {
+      const pick = DRAFT_RESULTS.picks.find(p => p.round === round && p.teamId === t.id);
+      if (!pick) { html += `<td><span class="pick-empty">—</span></td>`; return; }
+      const unresolvedTag = pick.nameSource === 'unresolved' ? ' style="opacity:.6;font-style:italic;"' : '';
+      html += `<td>
+  <div class="pick-cell pick-own-cell"${unresolvedTag}>
+    ${pick.nameSource === 'unresolved' ? `ESPN #${pick.playerId}` : pick.playerName}
+    <span style="display:block;font-size:9px;color:var(--muted);margin-top:2px;">Pick ${pick.overallPickNumber}</span>
+  </div>
+</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+
+  host.innerHTML = html;
+}
+
 function showDraftboard(){
   const years=[...new Set(PICKS.map(p=>p.year))].sort();
   const rounds=[...new Set(PICKS.map(p=>p.round))].sort();
   let html='';
   years.forEach(year=>{
     html+=`<h3 style="margin:24px 0 12px;font-size:16px;font-family:'Playfair Display',serif;color:var(--text);">${year} Draft</h3>`;
+
+    // Automatisch erzeugte Trade-Zusammenfassung, aus den tatsaechlichen
+    // PICKS-Daten (inkl. Live-Overrides aus ESPN-Sync und Pick-Journal),
+    // NICHT aus DRAFT_NOTES. Damit taucht ein neuer Pick-Trade sofort im
+    // Header auf, ohne dass jemand den Freitext von Hand nachtragen muss.
+    // DRAFT_NOTES bleibt zusaetzlich bestehen fuer Kontext, den die reinen
+    // Zahlen nicht hergeben (Spielernamen, Trade-Anlass).
+    const movedThisYear = PICKS.filter(p => p.year === year && p.currentOwner !== p.originalOwner);
+    if (movedThisYear.length) {
+      const zeilen = movedThisYear.map(p => {
+        const from = teamMap[p.originalOwner], to = teamMap[p.currentOwner];
+        const fromName = from ? from.name.split(' ')[0] : '?';
+        const toName = to ? to.name.split(' ')[0] : '?';
+        return `${fromName}'s R${p.round} → ${toName}`;
+      });
+      html += `<div style="font-size:11px;color:var(--muted);margin-bottom:8px;">🔄 ${zeilen.join(' · ')}</div>`;
+    }
+
     if(DRAFT_NOTES[year]) html+=`<div style="background:var(--accent-light);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--muted);">${DRAFT_NOTES[year]}</div>`;
 
     // For 2026: show lottery slot order table before the regular pick matrix
@@ -599,7 +681,7 @@ html += `<td>
 
 // Which group each page belongs to (for group-button highlighting)
 const SUBNAV_PAGES = {
-  homePage:'home', draftboardPage:'draftboard', draft26Page:'draft26', draft27Page:'draft27', bigBoardPage:'bigBoard',
+  homePage:'home', draftboardPage:'draftboard', draftResultsPage:'draftresults', draft26Page:'draft26', draft27Page:'draft27', bigBoardPage:'bigBoard',
   duelPage:'duel', duelBoardPage:'duelboard', duelSettingsPage:'duelsettings',
   lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings', dynastyRollingPage:'dynastyrolling',
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
@@ -612,7 +694,8 @@ const SUBNAV_PAGES = {
 const SNAV_GROUP = {
   playerrankings: 'snavPlayer', playerprojections: 'snavPlayer', liveprojections: 'snavPlayer', liveprojectionsteams: 'snavPlayer', liveprojectionsdraft: 'snavPlayer',
   rankings: 'snavDynasty', dynastyrolling: 'snavDynasty',
-  draft26: 'snavDraft', draft27: 'snavDraft', lottery: 'snavDraft',
+  draft26: 'snavDraft', draft27: 'snavDraft', lottery: 'snavDraft', bigBoard: 'snavDraft',
+  draftboard: 'snavTTHQBoards', draftresults: 'snavTTHQBoards',
   duel: 'snavDuel', duelboard: 'snavDuel', duelsettings: 'snavDuel',
   bestavail: 'snavAnalytics', analytics: 'snavAnalytics', rollingrankings: 'snavAnalytics',
   trade:      'snavTrade', tradefinder: 'snavTrade', tradehistory: 'snavTrade',
@@ -752,6 +835,7 @@ function _rerenderPage(pageId) {
   if (pageId === 'adminSettingsPage')    _asInit();
   if (pageId === 'tradeHistoryPage')     renderTradeHistory();
   if (pageId === 'draftboardPage')       showDraftboard();
+  if (pageId === 'draftResultsPage')     showDraftResults();
   if (pageId === 'bestAvailPage')        showBestAvail();
   if (pageId === 'rankingsPage')         showRankings();
   if (pageId === 'dynastyRollingPage')   showDynastyRolling();
