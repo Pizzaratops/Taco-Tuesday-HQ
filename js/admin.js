@@ -234,6 +234,31 @@ function saveExtraPicks(picks) {
 
 // "Originals" = hardcoded picks from data/picks.js + any manually added
 // extra picks from a previous session, so both survive an override reset.
+// Merge die auto-synchronisierten ESPN-Pick-Daten (data/picks-live.js,
+// taeglich aktualisiert von scripts/sync-espn-picks.js ueber die "Daily
+// 9cat Live Scores" GitHub Action) in PICKS als neue Basis -- dasselbe
+// Muster wie _hydrateRostersFromLiveFile oben fuer Roster.
+//
+// Deckt NUR das TTHQ-Jahr des unmittelbar bevorstehenden ESPN-Drafts ab
+// (siehe Kommentar in data/picks-live.js). Fuer weiter in der Zukunft
+// liegende Picks, die ESPN nie sieht, siehe
+// scripts/data/pick-trades-manual.txt.
+//
+// Laeuft VOR _ORIGINAL_PICKS, damit ein manueller Admin-Override wie
+// gehabt das letzte Wort behaelt -- exakt wie beim Roster-Override.
+(function _hydratePicksFromLiveFile() {
+  if (typeof PICKS_LIVE === 'undefined' || !Array.isArray(PICKS_LIVE.updates)) return;
+  PICKS_LIVE.updates.forEach(u => {
+    const p = PICKS.find(x => x.year === u.year && x.round === u.round && x.originalOwner === u.originalOwner);
+    // Kein automatisches Anlegen fehlender Eintraege: ein Pick, den
+    // data/picks.js nicht kennt, deutet auf eine falsche Team-Zuordnung
+    // hin und soll auffallen statt still einen neuen Eintrag zu erzeugen.
+    // (scripts/sync-espn-picks.js prueft das serverseitig schon vorher,
+    // das hier ist nur die zweite Absicherung im Browser.)
+    if (p) p.currentOwner = u.currentOwner;
+  });
+})();
+
 const _ORIGINAL_PICKS = PICKS.map(p => ({...p})).concat(loadExtraPicks());
 
 function loadPickOverrides() {
