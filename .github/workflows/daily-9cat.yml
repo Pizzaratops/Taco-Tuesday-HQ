@@ -218,12 +218,22 @@ jobs:
         run: |
           node scripts/build-dynasty-live.js
 
+      # Muss NACH allen Schritten laufen, die data/ schreiben, und VOR
+      # dem Commit -- war seit dem 10.08. im Repo als Script vorhanden,
+      # aber dieser Schritt fehlte, lief also nie. Ohne ihn liefert der
+      # Browser bei data/-Dateien moeglicherweise eine veraltete Fassung
+      # aus, obwohl im Repo laengst die neue liegt.
+      - name: Cache-Buster für Datendateien setzen
+        if: steps.check_time.outputs.skip != 'true'
+        run: |
+          node scripts/bump-data-version.js
+
       - name: Änderungen committen & pushen
         if: steps.check_time.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/livescores-daily.js data/livescores-aggregate.js data/rolling-rankings-2026-27.js data/offseason-rankings.js data/postdraft-board.js data/best-available-board.js data/dynasty-live.js data/rosters-live.js data/picks-live.js data/trade-history.js scripts/data/
+          git add index.html data/livescores-daily.js data/livescores-aggregate.js data/rolling-rankings-2026-27.js data/offseason-rankings.js data/postdraft-board.js data/best-available-board.js data/dynasty-live.js data/rosters-live.js data/picks-live.js data/trade-history.js scripts/data/
           if git diff --cached --quiet; then
             echo "Keine Änderungen (vermutlich keine Spiele an diesem Tag)."
           else
