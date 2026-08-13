@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-12T09:54:15.387Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-13T09:55:24.675Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-08-12T09:54:15.387Z",
+ "fetchedAt": "2026-08-13T09:55:24.675Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -1340,15 +1340,6 @@ const ROSTERS_DATA = {
      "espnId": "4431690"
     },
     {
-     "name": "Jalen Pickett",
-     "jersey": "24",
-     "position": "G",
-     "height": "6' 2\"",
-     "weight": "202 lbs",
-     "age": 26,
-     "espnId": "4398390"
-    },
-    {
      "name": "David Roddy",
      "jersey": "45",
      "position": "F",
@@ -2196,6 +2187,15 @@ const ROSTERS_DATA = {
      "weight": "242 lbs",
      "age": 23,
      "espnId": "5108024"
+    },
+    {
+     "name": "Jalen Pickett",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 2\"",
+     "weight": "202 lbs",
+     "age": 26,
+     "espnId": "4398390"
     },
     {
      "name": "Kobe Sanders",
@@ -4001,15 +4001,6 @@ const ROSTERS_DATA = {
      "espnId": "4437244"
     },
     {
-     "name": "Haywood Highsmith",
-     "jersey": "7",
-     "position": "F",
-     "height": "6' 5\"",
-     "weight": "220 lbs",
-     "age": 29,
-     "espnId": "4291678"
-    },
-    {
      "name": "CJ Huntley",
      "jersey": "22",
      "position": "F",
@@ -5032,7 +5023,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 7\"",
      "weight": "222 lbs",
-     "age": 34,
+     "age": 35,
      "espnId": "6609"
     },
     {
