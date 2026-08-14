@@ -599,3 +599,76 @@ body.light {
   padding: 1px 4px; margin-left: 6px;
   vertical-align: middle;
 }
+
+/* ─── Consensus Projections (Player → Projections) ───────────
+   Tabelle mit Mittelwerten aus Beyaz' Projections und Josh Lloyd
+   (BBM). Gerendert von js/consensus-projections.js. */
+#playerProjectionsPage .cp-controls {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px;
+}
+#playerProjectionsPage .cp-input {
+  flex: 1 1 280px; min-width: 0;
+  padding: 9px 12px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13px;
+}
+#playerProjectionsPage .cp-input:focus { outline: none; border-color: var(--accent); }
+#playerProjectionsPage .cp-select {
+  padding: 9px 12px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-family: 'DM Sans', sans-serif;
+  font-size: 13px; cursor: pointer;
+}
+
+#playerProjectionsPage .cp-legend {
+  display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+  font-size: 11.5px; color: var(--muted); margin-bottom: 14px;
+}
+#playerProjectionsPage .cp-legend span { display: inline-flex; align-items: center; gap: 5px; }
+
+#playerProjectionsPage .cp-src {
+  font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 600;
+  padding: 2px 6px; border-radius: 5px; border: 1px solid var(--border);
+  white-space: nowrap;
+}
+#playerProjectionsPage .cp-src-both { color: var(--good); border-color: var(--good); }
+#playerProjectionsPage .cp-src-one  { color: var(--muted); }
+#playerProjectionsPage .cp-src-warn { color: var(--bad); border-color: var(--bad); }
+
+#playerProjectionsPage #cpTableWrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+#playerProjectionsPage .cp-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12.5px; }
+#playerProjectionsPage .cp-table th {
+  position: sticky; top: 0; z-index: 2;
+  padding: 9px 8px; text-align: center; white-space: nowrap;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--muted); background: var(--surface2); border-bottom: 1px solid var(--border);
+}
+#playerProjectionsPage .cp-th { cursor: pointer; user-select: none; }
+#playerProjectionsPage .cp-th:hover { color: var(--text); }
+#playerProjectionsPage .cp-th.sorted { color: var(--accent); }
+#playerProjectionsPage .cp-table td {
+  padding: 7px 8px; text-align: center; border-bottom: 1px solid var(--border);
+  font-family: 'DM Mono', monospace;
+}
+#playerProjectionsPage .cp-table tbody tr:hover td { background: var(--surface2); }
+#playerProjectionsPage .cp-rank { color: var(--muted); font-size: 11px; width: 44px; }
+#playerProjectionsPage .cp-table .cp-name {
+  position: sticky; left: 0; z-index: 1;
+  text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 600;
+  color: var(--text); background: var(--surface); min-width: 150px;
+}
+#playerProjectionsPage .cp-table th.cp-name { z-index: 3; background: var(--surface2); }
+#playerProjectionsPage .cp-table tbody tr:hover .cp-name { background: var(--surface2); }
+#playerProjectionsPage .cp-team { color: var(--muted); font-size: 11px; }
+#playerProjectionsPage .cp-num { white-space: nowrap; }
+#playerProjectionsPage .cp-spread { color: var(--muted); font-size: 11px; }
+#playerProjectionsPage .cp-srccell { white-space: nowrap; }
+#playerProjectionsPage .cp-empty {
+  padding: 40px 20px; text-align: center; color: var(--muted); font-size: 13px;
+  background: var(--surface); border: 1px dashed var(--border); border-radius: 12px;
+}
+
+@media (max-width: 700px) {
+  #playerProjectionsPage .cp-table { font-size: 11.5px; }
+  #playerProjectionsPage .cp-table td, #playerProjectionsPage .cp-table th { padding: 6px 5px; }
+  #playerProjectionsPage .cp-table .cp-name { min-width: 110px; }
+  #playerProjectionsPage .cp-legend { font-size: 10.5px; gap: 10px; }
+}

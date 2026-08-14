@@ -73,7 +73,10 @@ function ttShort(name) {
 function ttOwnerTag(name) {
   const o = ttOwnerOf(name);
   if (!o) return '<span class="own-tag fa" title="Free Agent, in keinem Kader">FA</span>';
-  const c = (typeof getTeamColor === 'function') ? getTeamColor(o) : 'var(--border)';
+  // getTeamColor() kann undefined liefern, wenn das Team-Objekt aus einem
+  // Fallback stammt (kein Eintrag in teamMap) -- dann landet sonst
+  // literal "undefined" im style-Attribut. Deshalb zweite Absicherung.
+  const c = ((typeof getTeamColor === 'function') ? getTeamColor(o) : null) || 'var(--border)';
   return `<span class="own-tag" style="border-color:${c};color:${c}" title="${String(o.name).replace(/"/g, '&quot;')}">${ttShort(o.name)}</span>`;
 }
 

@@ -427,11 +427,44 @@
      Berechnung (scripts/build-live-projections.js + data/live-projections.js
      existieren bereits, sind aber unangebunden) — siehe README
      "Season-Start-Plan: Projections-Flow". -->
-<div class="page" id="playerProjectionsPage">
-  <div style="max-width:640px;">
-    <h2 style="margin-bottom:6px;">🔮 2026/27 Projections</h2>
-    <p style="color:var(--muted);font-size:13px;">Noch keine eigene Datenquelle angebunden. Die MFHFBs-Projections findest du aktuell unter "Player" → "🧪 Live Projections (Test)".</p>
+<!-- Consensus Projections: Mittelwert aus Beyaz' eigenen Projections und
+     denen von Josh Lloyd (Basketball Monster). Erzeugt von
+     scripts/build-consensus-projections.js -> data/projections-consensus.js.
+     Daten werden erst beim ersten Aufruf nachgeladen (~360 KB), siehe
+     js/consensus-projections.js. -->
+<div class="page page-wide" id="playerProjectionsPage">
+  <h2 style="margin-bottom:6px;">🔮 2026/27 Projections</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:4px;">
+    Mittelwert aus <b>Beyaz' eigenen Projections</b> und <b>Josh Lloyd</b> (Basketball Monster, August-Stand).
+    Zählstats werden gemittelt, FG%/FT% über die Wurfversuche gewichtet zurückgerechnet.
+  </p>
+  <p id="cpInfo" style="color:var(--muted);font-size:12px;font-family:'DM Mono',monospace;margin-bottom:16px;"></p>
+
+  <div class="cp-controls">
+    <input type="text" id="cpSearch" class="cp-input" placeholder="Spieler, Team oder Position suchen…" oninput="cpSetQuery(this.value)">
+    <select class="cp-select" id="cpPos" onchange="cpSetPos(this.value)" title="Nach Position filtern">
+      <option value="">Alle Positionen</option>
+      <option value="PG">PG</option><option value="SG">SG</option><option value="G">G</option>
+      <option value="SF">SF</option><option value="PF">PF</option><option value="F">F</option>
+      <option value="C">C</option>
+    </select>
+    <select class="cp-select" id="cpSource" onchange="cpSetSource(this.value)" title="Nach Datengrundlage filtern">
+      <option value="">Alle Spieler</option>
+      <option value="both">Nur echter Konsens (beide Quellen)</option>
+      <option value="single">Nur eine Quelle</option>
+      <option value="warn">Nur auffällige Werte</option>
+    </select>
   </div>
+
+  <div class="cp-legend">
+    <span><span class="cp-src cp-src-both">✓✓</span> beide Quellen</span>
+    <span><span class="cp-src cp-src-one">BBM</span> nur Basketball Monster</span>
+    <span><span class="cp-src cp-src-one">B</span> nur Beyaz</span>
+    <span><span class="cp-src cp-src-warn">⚠</span> eigener Wert unplausibel, BBM genutzt</span>
+    <span><b>Δ</b> = Abstand beider Quellen bei den Punkten</span>
+  </div>
+
+  <div id="cpTableWrap"></div>
 </div>
 
 <!-- Nativ portiert aus projections/index.html am 2026-08-01 (vorher Iframe).
@@ -2125,21 +2158,21 @@
 <script src="data/season-2022-23.js?v=ca4beb77"></script>
 <script src="data/season-2021-22.js?v=bb837487"></script>
 <script src="data/season-rankings.js?v=51f908be"></script>
-<script src="data/rosters-live.js?v=3280ac17"></script>
+<script src="data/rosters-live.js?v=dc52b6cb"></script>
 <script src="data/picks.js?v=43f5868b"></script>
-<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=6c313123"></script>
+<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=6bf8d347"></script>
 <!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=c819801f"></script>
 <script src="data/rankings.js?v=3b97f222"></script>
 <script src="data/projections-baseline.js?v=c194f5ad"></script>
-<script src="data/live-projections.js?v=1f8dea11"></script>
+<script src="data/live-projections.js?v=9ceacc28"></script>
 <script src="data/dynasty-rolling.js?v=5a3bad82"></script>
-<script src="data/dynasty-live.js?v=5238abb5"></script>
+<script src="data/dynasty-live.js?v=cdfcad41"></script>
 <script src="data/hashtag.js?v=79b756a3"></script>
 <script src="data/aliases.js?v=35de8e6d"></script>
 <script src="data/draft2026.js?v=7795b40e"></script>
 <script src="data/draft2027.js?v=67c40565"></script>
-<script src="data/postdraft-board.js?v=147857ec"></script>
-<script src="data/best-available-board.js?v=973f4cd5"></script>
+<script src="data/postdraft-board.js?v=cdfc5e02"></script>
+<script src="data/best-available-board.js?v=82be0a34"></script>
 <script src="data/stats.js?v=7b760995"></script>
 
 <!-- App logic -->
@@ -2147,6 +2180,7 @@
 <script src="js/navigation.js?v=5"></script>
 <!-- Gemeinsame Fantasy-Besitz-Logik fuer Projections, NBA Teams und Best Available -->
 <script src="js/fantasy-owner.js?v=1"></script>
+<script src="js/consensus-projections.js?v=1"></script>
 <script src="js/flow-diagram.js?v=1"></script>
 <script src="js/nba-teams.js?v=5"></script>
 <script src="js/standings.js?v=5"></script>
@@ -2168,7 +2202,7 @@
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<script src="data/team-analytics.js?v=16992e89"></script>
+<script src="data/team-analytics.js?v=e403b194"></script>
 <script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>

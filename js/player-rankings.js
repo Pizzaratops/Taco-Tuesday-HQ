@@ -70,11 +70,9 @@ function showPlayerRankings() {
 // aber nicht mehr geladen); die Daten- und assets-Dateien darunter sind
 // weiterhin die aktive Quelle fuer die nativen Seiten.
 
-function showPlayerProjections() {
-  // Bewusst leer — noch keine eigene Datenquelle, siehe index.html-Kommentar
-  // bei playerProjectionsPage und README "Season-Start-Plan: Projections-Flow".
-  navigate('playerProjectionsPage');
-}
+// showPlayerProjections() lebt jetzt in js/consensus-projections.js --
+// die Seite hat seit dem Consensus-Import (Beyaz x Josh Lloyd) eine
+// eigene Datenquelle, siehe data/projections-consensus.js.
 
 // Daten+Logik fuer die native Projections-Seite werden erst beim ersten
 // Besuch nachgeladen (~2,4 MB — players-data.js allein ist 1,9 MB), nicht
