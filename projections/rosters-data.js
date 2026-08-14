@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-13T09:55:24.675Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-14T09:52:47.866Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-08-13T09:55:24.675Z",
+ "fetchedAt": "2026-08-14T09:52:47.866Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -2012,15 +2012,6 @@ const ROSTERS_DATA = {
      "espnId": "5105854"
     },
     {
-     "name": "Ethan Thompson",
-     "jersey": "55",
-     "position": "G",
-     "height": "6' 5\"",
-     "weight": "195 lbs",
-     "age": 27,
-     "espnId": "4278516"
-    },
-    {
      "name": "Obi Toppin",
      "jersey": "1",
      "position": "F",
@@ -2053,6 +2044,15 @@ const ROSTERS_DATA = {
    "teamId": "12",
    "name": "LA Clippers",
    "players": [
+    {
+     "name": "Bradley Beal",
+     "jersey": "0",
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "207 lbs",
+     "age": 33,
+     "espnId": "6580"
+    },
     {
      "name": "Johni Broome",
      "jersey": null,
@@ -4765,7 +4765,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 9\"",
      "weight": "200 lbs",
-     "age": 19,
+     "age": 20,
      "espnId": "4873138"
     },
     {
