@@ -177,6 +177,9 @@ function showLiveProjTeams() {
 // (Live-Sync mit Fantrax) — Rest identisch mit Projections, ueber
 // _loadScriptOnce() dedupliziert.
 const LIVE_PROJ_DRAFT_SCRIPTS = [
+  // Consensus zuerst: shared.js leitet daraus die Pro-Minute-Raten ab
+  // (siehe mfhfbConsensusRatesFor), muss also vorher geladen sein.
+  'data/projections-consensus.js',
   'projections/players-data.js',
   'projections/projected-minutes.js',
   'projections/adp-data.js',

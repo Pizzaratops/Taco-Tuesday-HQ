@@ -728,6 +728,17 @@
         <label>Mein Draft-Slot (1–12)</label>
         <select id="myTeamSel"></select>
       </div>
+      <!-- Datenbasis: Consensus-Projections (Beyaz x Josh Lloyd) vs.
+           historische Pro-Minute-Raten. Umschaltung wirkt sofort, siehe
+           mfhfbConsensusRatesFor() in projections/assets/shared.js. -->
+      <div class="field">
+        <label>Datenbasis für die Projektion</label>
+        <select id="rateSourceSel">
+          <option value="consensus">Consensus-Projections 2026/27 (Beyaz × Josh Lloyd)</option>
+          <option value="history">Historische Raten (Saison-Gewichtung aktiv)</option>
+        </select>
+        <div class="note" id="rateSourceNote" style="margin-top:6px;font-size:11.5px;color:var(--muted);line-height:1.5;"></div>
+      </div>
       <div class="field">
         <label>Liga-Format (steuert die Empfehlungen)</label>
         <select id="formatSel"></select>

@@ -197,7 +197,93 @@ function mfhfbFlatAverageRates(player) {
 // siehe Kommentar dort) — bei stabilen Kategorien (alpha=1) ändert sich
 // dadurch nichts am bisherigen Verhalten, bei volatilen (Steals, FT%) wird
 // ein reiner Ein-Jahres-Ausreißer gedämpft statt voll durchgereicht.
+// ============================================================
+//  CONSENSUS-RATEN fuer das Fantrax Draft Board
+// ============================================================
+//  Das Draft Board rechnet mit Pro-MINUTE-Raten und multipliziert sie
+//  mit der eingestellten Minutenzahl -- nur so koennen die
+//  Minuten-Regler ueberhaupt etwas bewirken. Die Consensus-Datei
+//  (data/projections-consensus.js) enthaelt dagegen fertige
+//  Pro-SPIEL-Werte mit bereits eingerechneten Minuten.
+//
+//  Wuerde man die direkt einsetzen, waeren die Regler wirkungslos:
+//  die Zahl bliebe beim Schieben gleich. Deshalb wird hier
+//  zurueckgerechnet:  Rate = Pro-Spiel-Wert / Consensus-Minuten
+//  Danach gilt wieder  Anzeige = Rate x eingestellte Minuten,
+//  die Regler funktionieren also unveraendert weiter.
+//
+//  NICHT fuer jeden Spieler moeglich: rund die Haelfte der
+//  Consensus-Eintraege stammt nur aus Beyaz' Quelle und hat keine
+//  Wurfversuche (fga/fta = 0). Aus denen liessen sich keine FG%-Raten
+//  ableiten, ohne sie zu erfinden. Fuer diese Spieler faellt die
+//  Berechnung auf die historischen Raten zurueck -- das betrifft in der
+//  Praxis fast nur Spieler ohne NBA-Rolle, weil die Draft-Seite ohnehin
+//  auf aktuelle Roster filtert.
+//
+//  Der Saison-Gewichtungs-Regler (w1/w2) hat im Consensus-Modus keine
+//  Wirkung, weil eine Projection keine Saison-Historie hat. Das ist
+//  kein Fehler, sondern liegt in der Natur der Datenquelle -- die
+//  Draft-Seite weist im Umschalter darauf hin.
+
+const MFHFB_RATE_SOURCE_KEY = 'mfhfb_rate_source_v1';
+
+function mfhfbGetRateSource() {
+  try { return localStorage.getItem(MFHFB_RATE_SOURCE_KEY) || 'consensus'; }
+  catch (e) { return 'consensus'; }
+}
+function mfhfbSetRateSource(v) {
+  try { localStorage.setItem(MFHFB_RATE_SOURCE_KEY, v); } catch (e) {}
+}
+
+let _mfhfbConsensusRateCache = null;
+function _mfhfbConsensusRates() {
+  if (_mfhfbConsensusRateCache) return _mfhfbConsensusRateCache;
+  _mfhfbConsensusRateCache = new Map();
+  if (typeof PROJECTIONS_CONSENSUS === 'undefined') return _mfhfbConsensusRateCache;
+
+  Object.keys(PROJECTIONS_CONSENSUS).forEach(name => {
+    const c = PROJECTIONS_CONSENSUS[name];
+    // Ohne Minuten oder ohne Wurfversuche keine sinnvolle Rate ableitbar
+    if (!c || !(c.min > 0) || !(c.fga > 0)) return;
+    const m = c.min;
+    _mfhfbConsensusRateCache.set(mfhfbNormalizeName(name), {
+      mpg: m,
+      gp: c.g || null,
+      rates: {
+        pts:  (c.pts  || 0) / m,
+        fg3m: (c.tpm  || 0) / m,   // Consensus nennt es tpm, die Raten fg3m
+        reb:  (c.reb  || 0) / m,
+        ast:  (c.ast  || 0) / m,
+        stl:  (c.stl  || 0) / m,
+        blk:  (c.blk  || 0) / m,
+        fgm:  (c.fgm  || 0) / m,
+        fga:  (c.fga  || 0) / m,
+        ftm:  (c.ftm  || 0) / m,
+        fta:  (c.fta  || 0) / m,
+        tov:  (c.tov  || 0) / m,
+      },
+    });
+  });
+  return _mfhfbConsensusRateCache;
+}
+
+// Nach einem Datenwechsel (z.B. neu geladene Consensus-Datei) verwerfen
+function mfhfbInvalidateConsensusRates() { _mfhfbConsensusRateCache = null; }
+
+// Liefert Consensus-Raten fuer einen Spieler, oder null wenn nicht
+// verfuegbar bzw. der Modus ausgeschaltet ist.
+function mfhfbConsensusRatesFor(player) {
+  if (mfhfbGetRateSource() !== 'consensus') return null;
+  const hit = _mfhfbConsensusRates().get(mfhfbNormalizeName(player.name));
+  return hit || null;
+}
+
 function mfhfbWeightedRates(player, weights) {
+  // Consensus-Projections haben Vorrang, wenn aktiviert und ableitbar
+  // (siehe Kommentarblock oben). Fallback: historische Saison-Raten.
+  const consensus = mfhfbConsensusRatesFor(player);
+  if (consensus) return consensus.rates;
+
   const labels = mfhfbPlayedSeasonLabels(player);
   const n = labels.length;
   const sums = {};

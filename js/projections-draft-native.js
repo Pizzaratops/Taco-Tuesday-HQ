@@ -126,7 +126,14 @@ function initLiveProjDraftNative() {
       .map((p, idx) => {
       const latest = mfhfbLatestSeason(p);
       const key = mfhfbNormalizeName(p.name);
-      const minutes = overrides[key] !== undefined ? overrides[key] : mfhfbDefaultMinutes(p.name, latest.mpg, latest.gp);
+      // Im Consensus-Modus stammt auch die VORGESCHLAGENE Minutenzahl aus
+      // der Projection, nicht aus der letzten gespielten Saison -- sonst
+      // wuerde eine 2026/27-Projection mit den Minuten von 2025/26
+      // hochgerechnet. Ein manueller Override sticht wie immer beides.
+      const cons = typeof mfhfbConsensusRatesFor === 'function' ? mfhfbConsensusRatesFor(p) : null;
+      const baseMpg = cons ? cons.mpg : latest.mpg;
+      const baseGp  = cons && cons.gp ? cons.gp : latest.gp;
+      const minutes = overrides[key] !== undefined ? overrides[key] : mfhfbDefaultMinutes(p.name, baseMpg, baseGp);
       const proj = mfhfbComputeProjection(p, minutes, weights);
       // fgm/fga/ftm/fta kommen jetzt direkt aus mfhfbComputeProjection() mit
       // (früher hier separat nachgerechnet, seit dem FG%/FT%-Volumen-Fix
@@ -2218,6 +2225,37 @@ function initLiveProjDraftNative() {
     myTeamSel.innerHTML = Array.from({length:TEAMS},(_,i)=>i+1).map(t=>`<option value="${t}">Team ${t}</option>`).join('');
     myTeamSel.value = state.myTeam;
     myTeamSel.addEventListener('change', () => { state.myTeam = Number(myTeamSel.value); renderAll(); scheduleSave(); });
+
+    // Datenbasis-Umschalter: Consensus-Projections vs. historische Raten.
+    // Der Hinweistext nennt konkret, wie viele Spieler tatsaechlich
+    // Consensus-Raten haben -- ohne das waere unklar, ob die Umstellung
+    // ueberhaupt greift.
+    const rateSel = document.getElementById('rateSourceSel');
+    const rateNote = document.getElementById('rateSourceNote');
+    function updateRateNote() {
+      if (!rateNote) return;
+      const mode = typeof mfhfbGetRateSource === 'function' ? mfhfbGetRateSource() : 'history';
+      if (mode === 'consensus') {
+        const n = (typeof PROJECTIONS_CONSENSUS !== 'undefined')
+          ? Object.values(PROJECTIONS_CONSENSUS).filter(c => c.min > 0 && c.fga > 0).length : 0;
+        rateNote.innerHTML = `Nutzt die gemittelten 2026/27-Projections (${n} Spieler mit ableitbaren Raten). `
+          + `Minuten-Regler wirken normal weiter. Die <b>Saison-Gewichtung</b> hat hier keine Wirkung — `
+          + `eine Projection hat keine Saison-Historie. Spieler ohne Consensus-Raten fallen automatisch auf die historischen Werte zurück.`;
+      } else {
+        rateNote.innerHTML = `Nutzt die Pro-Minute-Raten der letzten Saisons, gewichtet über die Saison-Gewichtung. `
+          + `Das war das bisherige Verhalten vor dem Consensus-Import.`;
+      }
+    }
+    if (rateSel) {
+      rateSel.value = typeof mfhfbGetRateSource === 'function' ? mfhfbGetRateSource() : 'history';
+      updateRateNote();
+      rateSel.addEventListener('change', () => {
+        if (typeof mfhfbSetRateSource === 'function') mfhfbSetRateSource(rateSel.value);
+        if (typeof mfhfbInvalidateConsensusRates === 'function') mfhfbInvalidateConsensusRates();
+        updateRateNote();
+        renderAll();
+      });
+    }
 
     const searchInputEl = document.getElementById('searchInput');
     searchInputEl.value = ''; // gegen Browser-eigene Formularwert-Wiederherstellung beim Reload

@@ -40,6 +40,7 @@ const vm = require('vm');
 
 const ROOT = path.join(__dirname, '..');
 const BASELINE_PATH = path.join(ROOT, 'data', 'projections-baseline.js');
+const CONSENSUS_PATH = path.join(ROOT, 'data', 'projections-consensus.js');
 const RANKINGS_PATH = path.join(ROOT, 'data', 'rankings.js');
 const CSV_DIR = path.join(__dirname, 'data');
 const OUT = path.join(ROOT, 'data', 'live-projections.js');
@@ -77,7 +78,54 @@ function loadVmObject(filePath, varName) {
   return sandbox.__RESULT__;
 }
 
-const PROJECTIONS_BASELINE = loadVmObject(BASELINE_PATH, 'PROJECTIONS_BASELINE') || {};
+// ── Stats-Quelle: Consensus bevorzugt, Baseline als Rueckfall ──
+//  Seit dem Consensus-Import (Beyaz x Josh Lloyd, siehe
+//  scripts/build-consensus-projections.js) ist data/projections-consensus.js
+//  die bessere Grundlage: sie mittelt zwei unabhaengige Quellen und hat
+//  echte Makes/Attempts statt nur Prozente.
+//
+//  ABER: die Consensus-Datei enthaelt NUR Stats, keine Bewertungsfelder.
+//  z / zFloor / zDepth / adpVal gibt es ausschliesslich in der alten
+//  Baseline (Formel stammt aus dem Projections-Repo und ist hier nicht
+//  nachgebaut). Deshalb werden BEIDE geladen:
+//    Stats            -> Consensus, sonst Baseline
+//    z/zFloor/zDepth/adpVal -> immer Baseline
+//  Faellt die Consensus-Datei weg, laeuft alles unveraendert wie vorher.
+const PROJECTIONS_BASELINE_RAW = loadVmObject(BASELINE_PATH, 'PROJECTIONS_BASELINE') || {};
+const PROJECTIONS_CONSENSUS = loadVmObject(CONSENSUS_PATH, 'PROJECTIONS_CONSENSUS') || {};
+
+const PROJECTIONS_BASELINE = (() => {
+  if (!Object.keys(PROJECTIONS_CONSENSUS).length) {
+    console.log('  Hinweis: keine Consensus-Datei gefunden, nutze data/projections-baseline.js.');
+    return PROJECTIONS_BASELINE_RAW;
+  }
+  const merged = {};
+  let fromConsensus = 0, ratingsCarried = 0;
+  Object.keys(PROJECTIONS_CONSENSUS).forEach(name => {
+    const c = PROJECTIONS_CONSENSUS[name];
+    const b = PROJECTIONS_BASELINE_RAW[name] || {};
+    if (b.z !== undefined) ratingsCarried++;
+    fromConsensus++;
+    merged[name] = {
+      min: c.min, pts: c.pts, reb: c.reb, ast: c.ast, stl: c.stl, blk: c.blk,
+      tpm: c.tpm, tov: c.tov,
+      fgm: c.fgm || 0, fga: c.fga || 0, ftm: c.ftm || 0, fta: c.fta || 0,
+      fgPct: c.fgPct, ftPct: c.ftPct,
+      // Ohne Wurfversuche bleibt nur der Prozentwert -- dieselbe
+      // Kennzeichnung wie in der alten Baseline, damit die Blend-Logik
+      // unten unveraendert damit umgehen kann.
+      pctOnly: !(c.fga > 0),
+      z: b.z || 0, zFloor: b.zFloor || 0, zDepth: b.zDepth || 0, adpVal: b.adpVal || 0,
+    };
+  });
+  // Spieler, die nur die alte Baseline kennt, nicht verlieren
+  let baselineOnly = 0;
+  Object.keys(PROJECTIONS_BASELINE_RAW).forEach(name => {
+    if (!merged[name]) { merged[name] = PROJECTIONS_BASELINE_RAW[name]; baselineOnly++; }
+  });
+  console.log(`  Stats-Quelle: ${fromConsensus} aus Consensus, ${baselineOnly} nur aus Baseline, ${ratingsCarried} mit übernommenen z-Werten.`);
+  return merged;
+})();
 const DYNASTY_PLAYERS = loadVmArray(RANKINGS_PATH, 'DYNASTY_PLAYERS') || [];
 const dynastyByName = new Map(DYNASTY_PLAYERS.map(p => [p[1], p]));
 
