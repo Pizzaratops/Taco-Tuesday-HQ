@@ -448,20 +448,62 @@
       <option value="SF">SF</option><option value="PF">PF</option><option value="F">F</option>
       <option value="C">C</option>
     </select>
+    <select class="cp-select" id="cpPool" onchange="cpSetPool(this.value)" title="Vergleichsgruppe für den Z-Score">
+      <option value="100">Z relativ zu Top 100</option>
+      <option value="150">Z relativ zu Top 150</option>
+      <option value="200">Z relativ zu Top 200</option>
+      <option value="250">Z relativ zu Top 250</option>
+      <option value="300">Z relativ zu Top 300</option>
+      <option value="350">Z relativ zu Top 350</option>
+      <option value="400">Z relativ zu Top 400</option>
+      <option value="all">Z relativ zu allen Spielern</option>
+    </select>
     <select class="cp-select" id="cpSource" onchange="cpSetSource(this.value)" title="Nach Datengrundlage filtern">
       <option value="">Alle Spieler</option>
       <option value="both">Nur echter Konsens (beide Quellen)</option>
       <option value="single">Nur eine Quelle</option>
       <option value="warn">Nur auffällige Werte</option>
     </select>
+    <button class="cp-btn" onclick="cpTogglePanel('cpWeightPanel')">⚖️ Gewichtung</button>
+    <button class="cp-btn" onclick="cpTogglePanel('cpFilterPanel')">🔎 Stat-Filter</button>
+  </div>
+
+  <!-- Kategorie-Gewichte als Eingabefelder (Standard 1). Wirken direkt
+       auf den Z-Score, siehe cpComputeZ in js/consensus-projections.js. -->
+  <div class="cp-panel" id="cpWeightPanel">
+    <div class="cp-panel-head">
+      <span>Kategorie-Gewichtung · Standard ist überall 1</span>
+      <button class="cp-btn cp-btn-sm" onclick="cpResetWeights()">↺ Zurücksetzen</button>
+    </div>
+    <div class="cp-wgrid" id="cpWeights"></div>
+    <div class="cp-panel-note">
+      0 blendet eine Kategorie komplett aus (Punt-Strategie), 2 verdoppelt ihr Gewicht.
+      Wirkt sofort auf Z-Score, Sortierung und die Rangdifferenz.
+    </div>
+  </div>
+
+  <!-- Stat-Filter nach Barttorvik-Art: Min/Max je Kategorie. Filtert die
+       Anzeige, verändert aber NICHT den Z-Score — der bleibt relativ zur
+       oben gewählten Pool-Größe, sonst würde jeder Filter die Bewertungs-
+       grundlage unter den Füßen wegziehen. -->
+  <div class="cp-panel" id="cpFilterPanel">
+    <div class="cp-panel-head">
+      <span>Stat-Filter · leer lassen heißt keine Grenze</span>
+      <button class="cp-btn cp-btn-sm" onclick="cpResetFilters()">↺ Zurücksetzen</button>
+    </div>
+    <div class="cp-fgrid" id="cpFilters"></div>
+    <div class="cp-panel-note">
+      Filtert nur die angezeigten Zeilen. Der Z-Score bleibt unverändert, damit die Bewertung
+      vergleichbar bleibt — sonst würde z.B. „nur Center“ die Center gegeneinander neu bewerten.
+    </div>
   </div>
 
   <div class="cp-legend">
     <span><span class="cp-src cp-src-both">✓✓</span> beide Quellen</span>
     <span><span class="cp-src cp-src-one">BBM</span> nur Basketball Monster</span>
     <span><span class="cp-src cp-src-one">B</span> nur Beyaz</span>
-    <span><span class="cp-src cp-src-warn">⚠</span> eigener Wert unplausibel, BBM genutzt</span>
-    <span><b>Δ</b> = Abstand beider Quellen bei den Punkten</span>
+    <span><span class="cp-src cp-src-warn">⚠</span> eigener Wert unplausibel</span>
+    <span><b>Δ Rang</b> = Josh Lloyds Rang minus Deiner · <span class="cp-up">+</span> heißt Du siehst ihn höher</span>
   </div>
 
   <div id="cpTableWrap"></div>
@@ -2169,21 +2211,21 @@
 <script src="data/season-2022-23.js?v=ca4beb77"></script>
 <script src="data/season-2021-22.js?v=bb837487"></script>
 <script src="data/season-rankings.js?v=51f908be"></script>
-<script src="data/rosters-live.js?v=9e075edd"></script>
+<script src="data/rosters-live.js?v=a0c4ef8b"></script>
 <script src="data/picks.js?v=43f5868b"></script>
-<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=1bab433f"></script>
+<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=9666c4b6"></script>
 <!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=c819801f"></script>
 <script src="data/rankings.js?v=3b97f222"></script>
 <script src="data/projections-baseline.js?v=c194f5ad"></script>
-<script src="data/live-projections.js?v=9ceacc28"></script>
+<script src="data/live-projections.js?v=676d6852"></script>
 <script src="data/dynasty-rolling.js?v=5a3bad82"></script>
-<script src="data/dynasty-live.js?v=cdfcad41"></script>
+<script src="data/dynasty-live.js?v=a33fc0f7"></script>
 <script src="data/hashtag.js?v=79b756a3"></script>
 <script src="data/aliases.js?v=35de8e6d"></script>
 <script src="data/draft2026.js?v=7795b40e"></script>
 <script src="data/draft2027.js?v=67c40565"></script>
-<script src="data/postdraft-board.js?v=cdfc5e02"></script>
-<script src="data/best-available-board.js?v=82be0a34"></script>
+<script src="data/postdraft-board.js?v=d670e7dd"></script>
+<script src="data/best-available-board.js?v=b3cece2f"></script>
 <script src="data/stats.js?v=7b760995"></script>
 
 <!-- App logic -->
@@ -2213,7 +2255,7 @@
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<script src="data/team-analytics.js?v=62fb9d0b"></script>
+<script src="data/team-analytics.js?v=89199691"></script>
 <script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>

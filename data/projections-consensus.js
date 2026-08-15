@@ -2,7 +2,7 @@
 //  CONSENSUS PROJECTIONS 2026/27 — Beyaz × Josh Lloyd (BBM)
 // ============================================================
 //  AUTO-GENERIERT von scripts/build-consensus-projections.js.
-//  Erzeugt am: 2026-08-14T11:55:42.566Z
+//  Erzeugt am: 2026-08-14T18:32:39.834Z
 //
 //  Mittelwert aus zwei unabhängigen Projections-Quellen:
 //    A) data/projections-baseline.js (Beyaz)
@@ -45,7 +45,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 6.21,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 32,
+   "pts": 23.2,
+   "reb": 3.1,
+   "ast": 9.4,
+   "stl": 1,
+   "blk": 0.2,
+   "tpm": 2.4,
+   "tov": 3.8,
+   "fga": 15.92,
+   "fgm": 6.92,
+   "fta": 7.16,
+   "ftm": 6.19,
+   "fgPct": 43.5,
+   "ftPct": 86.4
+  },
+  "b": {
+   "min": 33,
+   "pts": 22.6,
+   "reb": 2.6,
+   "ast": 10.1,
+   "stl": 1.06,
+   "blk": 0.14,
+   "tpm": 2.51,
+   "tov": 3.72,
+   "fga": 15.92,
+   "fgm": 6.92,
+   "fta": 7.16,
+   "ftm": 6.23,
+   "fgPct": 43.5,
+   "ftPct": 87
+  }
  },
  "Anthony Davis": {
   "team": "WAS",
@@ -67,7 +99,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.54,
   "sources": "both",
   "spreadPts": 3.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 32,
+   "pts": 22.8,
+   "reb": 10.5,
+   "ast": 3.1,
+   "stl": 1.2,
+   "blk": 2,
+   "tpm": 0.6,
+   "tov": 2,
+   "fga": 14.82,
+   "fgm": 7.71,
+   "fta": 4.62,
+   "ftm": 3.59,
+   "fgPct": 52,
+   "ftPct": 77.8
+  },
+  "b": {
+   "min": 32,
+   "pts": 19.3,
+   "reb": 11.5,
+   "ast": 3,
+   "stl": 1.09,
+   "blk": 1.7,
+   "tpm": 0.37,
+   "tov": 1.9,
+   "fga": 14.82,
+   "fgm": 7.72,
+   "fta": 4.62,
+   "ftm": 3.48,
+   "fgPct": 52.1,
+   "ftPct": 75.4
+  }
  },
  "Alexandre Sarr": {
   "team": "WAS",
@@ -89,7 +153,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.48,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 28,
+   "pts": 15.1,
+   "reb": 7.2,
+   "ast": 2.6,
+   "stl": 0.8,
+   "blk": 1.8,
+   "tpm": 1.3,
+   "tov": 1.8,
+   "fga": 11.4,
+   "fgm": 5.02,
+   "fta": 2.17,
+   "ftm": 1.48,
+   "fgPct": 44,
+   "ftPct": 68.4
+  },
+  "b": {
+   "min": 29,
+   "pts": 13.5,
+   "reb": 6.8,
+   "ast": 2.5,
+   "stl": 0.87,
+   "blk": 1.89,
+   "tpm": 1.17,
+   "tov": 1.36,
+   "fga": 11.4,
+   "fgm": 5.41,
+   "fta": 2.17,
+   "ftm": 1.49,
+   "fgPct": 47.5,
+   "ftPct": 68.7
+  }
  },
  "AJ Dybantsa": {
   "team": "WAS",
@@ -111,7 +207,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.24,
   "sources": "both",
   "spreadPts": 3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 30,
+   "pts": 19,
+   "reb": 4.2,
+   "ast": 2.4,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 1,
+   "tov": 2.1,
+   "fga": 12.78,
+   "fgm": 5.85,
+   "fta": 4.35,
+   "ftm": 3.18,
+   "fgPct": 45.8,
+   "ftPct": 73.3
+  },
+  "b": {
+   "min": 31,
+   "pts": 16,
+   "reb": 5.1,
+   "ast": 2.3,
+   "stl": 0.86,
+   "blk": 0.26,
+   "tpm": 1.34,
+   "tov": 2.57,
+   "fga": 12.78,
+   "fgm": 5.7,
+   "fta": 4.35,
+   "ftm": 3.29,
+   "fgPct": 44.6,
+   "ftPct": 75.8
+  }
  },
  "Kyshawn George": {
   "team": "WAS",
@@ -133,7 +261,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.5,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 29,
+   "pts": 12.1,
+   "reb": 4.8,
+   "ast": 3.6,
+   "stl": 1,
+   "blk": 0.9,
+   "tpm": 1.9,
+   "tov": 2.1,
+   "fga": 9.41,
+   "fgm": 3.86,
+   "fta": 1.88,
+   "ftm": 1.48,
+   "fgPct": 41,
+   "ftPct": 78.4
+  },
+  "b": {
+   "min": 27,
+   "pts": 11.4,
+   "reb": 3.8,
+   "ast": 3.2,
+   "stl": 0.86,
+   "blk": 0.81,
+   "tpm": 1.65,
+   "tov": 1.72,
+   "fga": 9.41,
+   "fgm": 4.11,
+   "fta": 1.88,
+   "ftm": 1.53,
+   "fgPct": 43.7,
+   "ftPct": 81.2
+  }
  },
  "Deandre Ayton": {
   "team": "WAS",
@@ -155,7 +315,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.84,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 18,
+   "pts": 9.2,
+   "reb": 5.9,
+   "ast": 0.9,
+   "stl": 0.4,
+   "blk": 0.6,
+   "tpm": 0,
+   "tov": 1,
+   "fga": 6.36,
+   "fgm": 3.8,
+   "fta": 1.21,
+   "ftm": 0.88,
+   "fgPct": 59.7,
+   "ftPct": 73.1
+  },
+  "b": {
+   "min": 22,
+   "pts": 8.8,
+   "reb": 6.2,
+   "ast": 0.7,
+   "stl": 0.41,
+   "blk": 0.81,
+   "tpm": 0,
+   "tov": 0.85,
+   "fga": 6.36,
+   "fgm": 4.01,
+   "fta": 1.21,
+   "ftm": 0.8,
+   "fgPct": 63.1,
+   "ftPct": 66.5
+  }
  },
  "Bilal Coulibaly": {
   "team": "WAS",
@@ -177,7 +369,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.2,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 24,
+   "pts": 9.3,
+   "reb": 3.8,
+   "ast": 2.2,
+   "stl": 1,
+   "blk": 0.7,
+   "tpm": 0.9,
+   "tov": 1.4,
+   "fga": 6.79,
+   "fgm": 2.89,
+   "fta": 1.63,
+   "ftm": 1.2,
+   "fgPct": 42.5,
+   "ftPct": 73.7
+  },
+  "b": {
+   "min": 23,
+   "pts": 8,
+   "reb": 3.4,
+   "ast": 2,
+   "stl": 1.1,
+   "blk": 0.54,
+   "tpm": 0.85,
+   "tov": 1.12,
+   "fga": 6.79,
+   "fgm": 2.98,
+   "fta": 1.63,
+   "ftm": 1.2,
+   "fgPct": 43.8,
+   "ftPct": 73.9
+  }
  },
  "Will Riley": {
   "team": "WAS",
@@ -199,7 +423,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.43,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 18,
+   "pts": 8.4,
+   "reb": 2.3,
+   "ast": 1.6,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 1,
+   "fga": 6.88,
+   "fgm": 3.02,
+   "fta": 1.79,
+   "ftm": 1.43,
+   "fgPct": 43.9,
+   "ftPct": 80
+  },
+  "b": {
+   "min": 20,
+   "pts": 8.9,
+   "reb": 2.3,
+   "ast": 1.7,
+   "stl": 0.61,
+   "blk": 0.13,
+   "tpm": 0.94,
+   "tov": 0.98,
+   "fga": 6.88,
+   "fgm": 3.28,
+   "fta": 1.79,
+   "ftm": 1.43,
+   "fgPct": 47.7,
+   "ftPct": 80.1
+  }
  },
  "Tre Johnson": {
   "team": "WAS",
@@ -221,7 +477,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.78,
   "sources": "both",
   "spreadPts": 3.9,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 26,
+   "pts": 13.2,
+   "reb": 3.1,
+   "ast": 2.2,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 2.1,
+   "tov": 1.7,
+   "fga": 8.13,
+   "fgm": 3.41,
+   "fta": 0.89,
+   "ftm": 0.77,
+   "fgPct": 41.9,
+   "ftPct": 86.5
+  },
+  "b": {
+   "min": 22,
+   "pts": 9.3,
+   "reb": 2.5,
+   "ast": 1.9,
+   "stl": 0.51,
+   "blk": 0.24,
+   "tpm": 1.51,
+   "tov": 1.17,
+   "fga": 8.13,
+   "fgm": 3.5,
+   "fta": 0.89,
+   "ftm": 0.79,
+   "fgPct": 43.1,
+   "ftPct": 88.2
+  }
  },
  "Khris Middleton": {
   "team": "WAS",
@@ -243,7 +531,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.11,
   "sources": "both",
   "spreadPts": 4.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 20,
+   "pts": 11.3,
+   "reb": 3.5,
+   "ast": 3.2,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 1.3,
+   "tov": 1.5,
+   "fga": 5.99,
+   "fgm": 2.75,
+   "fta": 1.26,
+   "ftm": 1.1,
+   "fgPct": 45.9,
+   "ftPct": 87.8
+  },
+  "b": {
+   "min": 20,
+   "pts": 7,
+   "reb": 3.2,
+   "ast": 2.3,
+   "stl": 0.59,
+   "blk": 0.09,
+   "tpm": 0.85,
+   "tov": 1.5,
+   "fga": 5.99,
+   "fgm": 2.54,
+   "fta": 1.26,
+   "ftm": 1.12,
+   "fgPct": 42.4,
+   "ftPct": 88.7
+  }
  },
  "Justin Champagnie": {
   "team": "WAS",
@@ -265,7 +585,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.53,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 17,
+   "pts": 6.5,
+   "reb": 4.4,
+   "ast": 1.1,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 0.7,
+   "tov": 0.5,
+   "fga": 4.05,
+   "fgm": 1.83,
+   "fta": 0.69,
+   "ftm": 0.54,
+   "fgPct": 45.2,
+   "ftPct": 78.4
+  },
+  "b": {
+   "min": 15,
+   "pts": 5.2,
+   "reb": 3.3,
+   "ast": 0.8,
+   "stl": 0.61,
+   "blk": 0.46,
+   "tpm": 0.54,
+   "tov": 0.52,
+   "fga": 4.05,
+   "fgm": 2.08,
+   "fta": 0.69,
+   "ftm": 0.52,
+   "fgPct": 51.5,
+   "ftPct": 75.5
+  }
  },
  "Cam Whitmore": {
   "team": "WAS",
@@ -287,7 +639,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.63,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 10,
+   "pts": 5.8,
+   "reb": 1.8,
+   "ast": 0.5,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 0.5,
+   "fga": 4.77,
+   "fgm": 2.15,
+   "fta": 0.86,
+   "ftm": 0.62,
+   "fgPct": 45.1,
+   "ftPct": 72.3
+  },
+  "b": {
+   "min": 12,
+   "pts": 5.9,
+   "reb": 2,
+   "ast": 0.6,
+   "stl": 0.44,
+   "blk": 0.23,
+   "tpm": 0.47,
+   "tov": 0.54,
+   "fga": 4.77,
+   "fgm": 2.39,
+   "fta": 0.86,
+   "ftm": 0.64,
+   "fgPct": 50.1,
+   "ftPct": 74.1
+  }
  },
  "Tristan Vukcevic": {
   "team": "WAS",
@@ -309,7 +693,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.81,
   "sources": "both",
   "spreadPts": 3.9,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 14,
+   "pts": 8.8,
+   "reb": 3.3,
+   "ast": 1.1,
+   "stl": 0.4,
+   "blk": 0.6,
+   "tpm": 1,
+   "tov": 1.2,
+   "fga": 3.6,
+   "fgm": 1.71,
+   "fta": 1.04,
+   "ftm": 0.81,
+   "fgPct": 47.6,
+   "ftPct": 77.8
+  },
+  "b": {
+   "min": 11,
+   "pts": 4.9,
+   "reb": 2.3,
+   "ast": 0.7,
+   "stl": 0.32,
+   "blk": 0.52,
+   "tpm": 0.65,
+   "tov": 0.97,
+   "fga": 3.6,
+   "fgm": 1.72,
+   "fta": 1.04,
+   "ftm": 0.82,
+   "fgPct": 47.7,
+   "ftPct": 78.3
+  }
  },
  "Bub Carrington": {
   "team": "WAS",
@@ -331,7 +747,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.38,
   "sources": "both",
   "spreadPts": 2,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 20,
+   "pts": 7.2,
+   "reb": 2.6,
+   "ast": 3.2,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 1.3,
+   "tov": 1.4,
+   "fga": 4.59,
+   "fgm": 1.89,
+   "fta": 0.5,
+   "ftm": 0.39,
+   "fgPct": 41.3,
+   "ftPct": 76.4
+  },
+  "b": {
+   "min": 17,
+   "pts": 5.2,
+   "reb": 1.4,
+   "ast": 2.4,
+   "stl": 0.4,
+   "blk": 0.11,
+   "tpm": 0.98,
+   "tov": 1.08,
+   "fga": 4.59,
+   "fgm": 1.94,
+   "fta": 0.5,
+   "ftm": 0.38,
+   "fgPct": 42.2,
+   "ftPct": 76
+  }
  },
  "Alondes Williams": {
   "team": "WAS",
@@ -353,7 +801,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.42,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 10,
+   "pts": 3.1,
+   "reb": 1.6,
+   "ast": 1.1,
+   "stl": 0.29,
+   "blk": 0.14,
+   "tpm": 0.4,
+   "tov": 0.65,
+   "fga": 2.49,
+   "fgm": 1.13,
+   "fta": 0.57,
+   "ftm": 0.42,
+   "fgPct": 45.3,
+   "ftPct": 74
+  }
  },
  "Julian Reese": {
   "team": "WAS",
@@ -375,7 +840,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.35,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 7,
+   "pts": 2.7,
+   "reb": 2.4,
+   "ast": 0.4,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 1.65,
+   "fgm": 0.87,
+   "fta": 0.54,
+   "ftm": 0.35,
+   "fgPct": 52.9,
+   "ftPct": 63.6
+  },
+  "b": {
+   "min": 8,
+   "pts": 2.1,
+   "reb": 2.6,
+   "ast": 0.4,
+   "stl": 0.29,
+   "blk": 0.21,
+   "tpm": 0,
+   "tov": 0.53,
+   "fga": 1.65,
+   "fgm": 0.89,
+   "fta": 0.54,
+   "ftm": 0.35,
+   "fgPct": 54.1,
+   "ftPct": 65
+  }
  },
  "Felix Okpara": {
   "team": "WAS",
@@ -397,7 +894,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.21,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 8,
+   "pts": 1.8,
+   "reb": 1.8,
+   "ast": 0.2,
+   "stl": 0.15,
+   "blk": 0.37,
+   "tpm": 0.01,
+   "tov": 0.29,
+   "fga": 1.48,
+   "fgm": 0.78,
+   "fta": 0.31,
+   "ftm": 0.21,
+   "fgPct": 52.5,
+   "ftPct": 67.6
+  }
  },
  "Jamir Watkins": {
   "team": "WAS",
@@ -419,7 +933,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 3.6,
-  "spreadMin": 10
+  "spreadMin": 10,
+  "a": {
+   "min": 10,
+   "pts": 3.6,
+   "reb": 1.9,
+   "ast": 0.6,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.6,
+   "ftPct": 69.5
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Lauri Markkanen": {
   "team": "UTA",
@@ -441,7 +987,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.34,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 33,
+   "pts": 20.7,
+   "reb": 7.1,
+   "ast": 1.7,
+   "stl": 0.8,
+   "blk": 0.5,
+   "tpm": 2.8,
+   "tov": 1.5,
+   "fga": 16.29,
+   "fgm": 7.46,
+   "fta": 4.91,
+   "ftm": 4.29,
+   "fgPct": 45.8,
+   "ftPct": 87.5
+  },
+  "b": {
+   "min": 34,
+   "pts": 22,
+   "reb": 6.9,
+   "ast": 2.5,
+   "stl": 0.97,
+   "blk": 0.52,
+   "tpm": 2.4,
+   "tov": 1.56,
+   "fga": 16.29,
+   "fgm": 7.59,
+   "fta": 4.91,
+   "ftm": 4.39,
+   "fgPct": 46.6,
+   "ftPct": 89.5
+  }
  },
  "Jaren Jackson Jr.": {
   "team": "UTA",
@@ -463,7 +1041,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.93,
   "sources": "both",
   "spreadPts": 1.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 31,
+   "pts": 20,
+   "reb": 6.1,
+   "ast": 1.7,
+   "stl": 1.1,
+   "blk": 1.9,
+   "tpm": 1.9,
+   "tov": 2.1,
+   "fga": 14.14,
+   "fgm": 6.62,
+   "fta": 3.68,
+   "ftm": 2.93,
+   "fgPct": 46.8,
+   "ftPct": 79.6
+  },
+  "b": {
+   "min": 32,
+   "pts": 18.5,
+   "reb": 6.3,
+   "ast": 2.4,
+   "stl": 1.34,
+   "blk": 1.68,
+   "tpm": 1.69,
+   "tov": 2.3,
+   "fga": 14.14,
+   "fgm": 6.94,
+   "fta": 3.68,
+   "ftm": 2.94,
+   "fgPct": 49.1,
+   "ftPct": 80
+  }
  },
  "Keyonte George": {
   "team": "UTA",
@@ -485,7 +1095,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.68,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 32,
+   "pts": 19,
+   "reb": 3.6,
+   "ast": 5.7,
+   "stl": 0.8,
+   "blk": 0.2,
+   "tpm": 2.5,
+   "tov": 2.9,
+   "fga": 14.08,
+   "fgm": 5.9,
+   "fta": 5.35,
+   "ftm": 4.6,
+   "fgPct": 41.9,
+   "ftPct": 86
+  },
+  "b": {
+   "min": 33,
+   "pts": 19.8,
+   "reb": 3.2,
+   "ast": 6.8,
+   "stl": 1.09,
+   "blk": 0.22,
+   "tpm": 2.07,
+   "tov": 2.67,
+   "fga": 14.08,
+   "fgm": 6.51,
+   "fta": 5.35,
+   "ftm": 4.76,
+   "fgPct": 46.3,
+   "ftPct": 88.9
+  }
  },
  "Darryn Peterson": {
   "team": "UTA",
@@ -507,7 +1149,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.68,
   "sources": "both",
   "spreadPts": 3.4,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 28,
+   "pts": 18.8,
+   "reb": 3.3,
+   "ast": 2.3,
+   "stl": 0.7,
+   "blk": 0.3,
+   "tpm": 1.4,
+   "tov": 1.8,
+   "fga": 13.16,
+   "fgm": 5.56,
+   "fta": 3.42,
+   "ftm": 2.65,
+   "fgPct": 42.3,
+   "ftPct": 77.4
+  },
+  "b": {
+   "min": 31,
+   "pts": 15.4,
+   "reb": 3.4,
+   "ast": 4.9,
+   "stl": 1.22,
+   "blk": 0.54,
+   "tpm": 1.57,
+   "tov": 3.39,
+   "fga": 13.16,
+   "fgm": 5.58,
+   "fta": 3.42,
+   "ftm": 2.71,
+   "fgPct": 42.4,
+   "ftPct": 79.2
+  }
  },
  "Ace Bailey": {
   "team": "UTA",
@@ -529,7 +1203,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.29,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 28,
+   "pts": 14,
+   "reb": 4.3,
+   "ast": 1.8,
+   "stl": 0.8,
+   "blk": 0.7,
+   "tpm": 1.9,
+   "tov": 1.5,
+   "fga": 12.17,
+   "fgm": 5.39,
+   "fta": 1.7,
+   "ftm": 1.28,
+   "fgPct": 44.3,
+   "ftPct": 75
+  },
+  "b": {
+   "min": 26,
+   "pts": 14.4,
+   "reb": 3.7,
+   "ast": 1.9,
+   "stl": 0.78,
+   "blk": 0.75,
+   "tpm": 1.87,
+   "tov": 1.44,
+   "fga": 12.17,
+   "fgm": 5.6,
+   "fta": 1.7,
+   "ftm": 1.29,
+   "fgPct": 46,
+   "ftPct": 76
+  }
  },
  "Jusuf Nurkic": {
   "team": "UTA",
@@ -551,7 +1257,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.53,
   "sources": "both",
   "spreadPts": 3.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 28,
+   "pts": 13.2,
+   "reb": 10.6,
+   "ast": 3.7,
+   "stl": 1.1,
+   "blk": 1,
+   "tpm": 0.5,
+   "tov": 2.5,
+   "fga": 8.09,
+   "fgm": 4.09,
+   "fta": 2.43,
+   "ftm": 1.65,
+   "fgPct": 50.6,
+   "ftPct": 67.8
+  },
+  "b": {
+   "min": 27,
+   "pts": 10,
+   "reb": 10.7,
+   "ast": 5,
+   "stl": 1,
+   "blk": 0.77,
+   "tpm": 0.55,
+   "tov": 2.53,
+   "fga": 8.09,
+   "fgm": 4.03,
+   "fta": 2.43,
+   "ftm": 1.41,
+   "fgPct": 49.8,
+   "ftPct": 58.2
+  }
  },
  "Jaxson Hayes": {
   "team": "UTA",
@@ -573,7 +1311,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.34,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 17,
+   "pts": 6.8,
+   "reb": 4,
+   "ast": 0.8,
+   "stl": 0.5,
+   "blk": 0.7,
+   "tpm": 0.1,
+   "tov": 0.7,
+   "fga": 4.03,
+   "fgm": 2.71,
+   "fta": 2.02,
+   "ftm": 1.37,
+   "fgPct": 67.2,
+   "ftPct": 68.2
+  },
+  "b": {
+   "min": 19,
+   "pts": 7.3,
+   "reb": 4.5,
+   "ast": 1,
+   "stl": 0.5,
+   "blk": 1,
+   "tpm": 0.02,
+   "tov": 0.58,
+   "fga": 4.03,
+   "fgm": 2.98,
+   "fta": 2.02,
+   "ftm": 1.31,
+   "fgPct": 74,
+   "ftPct": 65.1
+  }
  },
  "Brice Sensabaugh": {
   "team": "UTA",
@@ -595,7 +1365,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.25,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 20,
+   "pts": 11,
+   "reb": 2.9,
+   "ast": 1.6,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 1.8,
+   "tov": 1.5,
+   "fga": 7.86,
+   "fgm": 3.5,
+   "fta": 1.49,
+   "ftm": 1.28,
+   "fgPct": 44.6,
+   "ftPct": 85.9
+  },
+  "b": {
+   "min": 19,
+   "pts": 10.2,
+   "reb": 2.3,
+   "ast": 1.6,
+   "stl": 0.56,
+   "blk": 0.13,
+   "tpm": 1.59,
+   "tov": 1.45,
+   "fga": 7.86,
+   "fgm": 3.71,
+   "fta": 1.49,
+   "ftm": 1.22,
+   "fgPct": 47.3,
+   "ftPct": 81.9
+  }
  },
  "Kyle Filipowski": {
   "team": "UTA",
@@ -617,7 +1419,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.98,
   "sources": "both",
   "spreadPts": 2,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 20,
+   "pts": 9.4,
+   "reb": 6,
+   "ast": 2,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 0.9,
+   "tov": 1.4,
+   "fga": 5.54,
+   "fgm": 2.75,
+   "fta": 1.33,
+   "ftm": 0.94,
+   "fgPct": 49.7,
+   "ftPct": 70.6
+  },
+  "b": {
+   "min": 17,
+   "pts": 7.4,
+   "reb": 5.5,
+   "ast": 2,
+   "stl": 0.63,
+   "blk": 0.38,
+   "tpm": 0.7,
+   "tov": 1.19,
+   "fga": 5.54,
+   "fgm": 2.83,
+   "fta": 1.33,
+   "ftm": 1.01,
+   "fgPct": 51,
+   "ftPct": 76.2
+  }
  },
  "Isaiah Collier": {
   "team": "UTA",
@@ -639,7 +1473,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.48,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 20,
+   "pts": 7.9,
+   "reb": 2.3,
+   "ast": 5.2,
+   "stl": 0.8,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 2.1,
+   "fga": 6.06,
+   "fgm": 2.8,
+   "fta": 2.07,
+   "ftm": 1.46,
+   "fgPct": 46.1,
+   "ftPct": 70.7
+  },
+  "b": {
+   "min": 18,
+   "pts": 7.9,
+   "reb": 1.7,
+   "ast": 4.7,
+   "stl": 0.78,
+   "blk": 0.25,
+   "tpm": 0.3,
+   "tov": 1.81,
+   "fga": 6.06,
+   "fgm": 3.04,
+   "fta": 2.07,
+   "ftm": 1.5,
+   "fgPct": 50.1,
+   "ftPct": 72.4
+  }
  },
  "Mo Bamba": {
   "team": "UTA",
@@ -661,7 +1527,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.49,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 10,
+   "pts": 3.6,
+   "reb": 3.6,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.8,
+   "tpm": 0.4,
+   "tov": 0.5,
+   "fga": 3.61,
+   "fgm": 1.71,
+   "fta": 0.72,
+   "ftm": 0.49,
+   "fgPct": 47.2,
+   "ftPct": 67.4
+  },
+  "b": {
+   "min": 13,
+   "pts": 4.6,
+   "reb": 4.6,
+   "ast": 0.5,
+   "stl": 0.31,
+   "blk": 0.88,
+   "tpm": 0.39,
+   "tov": 0.65,
+   "fga": 3.61,
+   "fgm": 1.85,
+   "fta": 0.72,
+   "ftm": 0.49,
+   "fgPct": 51.3,
+   "ftPct": 67.3
+  }
  },
  "Josh Okogie": {
   "team": "UTA",
@@ -683,7 +1581,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.55,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 16,
+   "pts": 5.3,
+   "reb": 2.5,
+   "ast": 0.9,
+   "stl": 0.8,
+   "blk": 0.3,
+   "tpm": 0.6,
+   "tov": 0.7,
+   "fga": 3.61,
+   "fgm": 1.5,
+   "fta": 0.79,
+   "ftm": 0.58,
+   "fgPct": 41.7,
+   "ftPct": 73
+  },
+  "b": {
+   "min": 17,
+   "pts": 4.2,
+   "reb": 2.6,
+   "ast": 1.1,
+   "stl": 0.9,
+   "blk": 0.3,
+   "tpm": 0.68,
+   "tov": 0.63,
+   "fga": 3.61,
+   "fgm": 1.53,
+   "fta": 0.79,
+   "ftm": 0.52,
+   "fgPct": 42.4,
+   "ftPct": 65.5
+  }
  },
  "Svi Mykhailiuk": {
   "team": "UTA",
@@ -705,7 +1635,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.2,
   "sources": "both",
   "spreadPts": 1.9,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 17,
+   "pts": 6.9,
+   "reb": 1.9,
+   "ast": 1.5,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 1.4,
+   "tov": 0.8,
+   "fga": 4.07,
+   "fgm": 1.68,
+   "fta": 0.24,
+   "ftm": 0.18,
+   "fgPct": 41.2,
+   "ftPct": 75.7
+  },
+  "b": {
+   "min": 14,
+   "pts": 5,
+   "reb": 1.6,
+   "ast": 1.1,
+   "stl": 0.29,
+   "blk": 0.06,
+   "tpm": 1.13,
+   "tov": 0.6,
+   "fga": 4.07,
+   "fgm": 1.85,
+   "fta": 0.24,
+   "ftm": 0.21,
+   "fgPct": 45.3,
+   "ftPct": 85.2
+  }
  },
  "John Konchar": {
   "team": "UTA",
@@ -727,7 +1689,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.21,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 10,
+   "pts": 2.4,
+   "reb": 2.4,
+   "ast": 0.9,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 2.02,
+   "fgm": 0.99,
+   "fta": 0.28,
+   "ftm": 0.21,
+   "fgPct": 48.9,
+   "ftPct": 74.1
+  },
+  "b": {
+   "min": 12,
+   "pts": 2.4,
+   "reb": 2.7,
+   "ast": 1,
+   "stl": 0.66,
+   "blk": 0.29,
+   "tpm": 0.31,
+   "tov": 0.41,
+   "fga": 2.02,
+   "fgm": 0.95,
+   "fta": 0.28,
+   "ftm": 0.21,
+   "fgPct": 47.1,
+   "ftPct": 75.3
+  }
  },
  "Cody Williams": {
   "team": "UTA",
@@ -749,7 +1743,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.6,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 12,
+   "pts": 3.5,
+   "reb": 1.4,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.5,
+   "fga": 4.04,
+   "fgm": 1.63,
+   "fta": 0.83,
+   "ftm": 0.59,
+   "fgPct": 40.4,
+   "ftPct": 71.2
+  },
+  "b": {
+   "min": 12,
+   "pts": 4.6,
+   "reb": 1.4,
+   "ast": 0.9,
+   "stl": 0.35,
+   "blk": 0.2,
+   "tpm": 0.18,
+   "tov": 0.53,
+   "fga": 4.04,
+   "fgm": 1.9,
+   "fta": 0.83,
+   "ftm": 0.6,
+   "fgPct": 46.9,
+   "ftPct": 72.6
+  }
  },
  "Blake Hinson": {
   "team": "UTA",
@@ -771,7 +1797,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.38,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 7,
+   "pts": 4.1,
+   "reb": 0.8,
+   "ast": 0.4,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.9,
+   "tov": 0.1,
+   "fga": 3.95,
+   "fgm": 2.03,
+   "fta": 0.51,
+   "ftm": 0.38,
+   "fgPct": 51.3,
+   "ftPct": 75
+  },
+  "b": {
+   "min": 11,
+   "pts": 5,
+   "reb": 1.5,
+   "ast": 0.5,
+   "stl": 0.22,
+   "blk": 0.1,
+   "tpm": 1.05,
+   "tov": 0.37,
+   "fga": 3.95,
+   "fgm": 1.79,
+   "fta": 0.51,
+   "ftm": 0.37,
+   "fgPct": 45.4,
+   "ftPct": 72.1
+  }
  },
  "Trey Alexander": {
   "team": "UTA",
@@ -793,7 +1851,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.19,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 7,
+   "pts": 2.5,
+   "reb": 0.7,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.2,
+   "fga": 2.1,
+   "fgm": 0.87,
+   "fta": 0.27,
+   "ftm": 0.18,
+   "fgPct": 41.3,
+   "ftPct": 66.5
+  },
+  "b": {
+   "min": 7,
+   "pts": 2.2,
+   "reb": 0.7,
+   "ast": 0.6,
+   "stl": 0.21,
+   "blk": 0.08,
+   "tpm": 0.28,
+   "tov": 0.32,
+   "fga": 2.1,
+   "fgm": 0.85,
+   "fta": 0.27,
+   "ftm": 0.21,
+   "fgPct": 40.4,
+   "ftPct": 75.2
+  }
  },
  "Tamar Bates": {
   "team": "UTA",
@@ -815,7 +1905,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.27,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 7,
+   "pts": 2.2,
+   "reb": 0.7,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.05,
+   "tpm": 0.28,
+   "tov": 0.31,
+   "fga": 1.94,
+   "fgm": 0.82,
+   "fta": 0.31,
+   "ftm": 0.27,
+   "fgPct": 42.3,
+   "ftPct": 85.5
+  }
  },
  "Harrison Ingram": {
   "team": "UTA",
@@ -837,7 +1944,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 3.7
+  "spreadMin": 3.7,
+  "a": {
+   "min": 3.7,
+   "pts": 1,
+   "reb": 0.7,
+   "ast": 0.2,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 72.2,
+   "ftPct": 0
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Kawhi Leonard": {
   "team": "TOR",
@@ -859,7 +1998,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5.05,
   "sources": "both",
   "spreadPts": 2.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 33,
+   "pts": 25.1,
+   "reb": 6.5,
+   "ast": 3.8,
+   "stl": 1.7,
+   "blk": 0.5,
+   "tpm": 2.2,
+   "tov": 2,
+   "fga": 20,
+   "fgm": 10.02,
+   "fta": 5.8,
+   "ftm": 5.05,
+   "fgPct": 50.1,
+   "ftPct": 87.1
+  },
+  "b": {
+   "min": 32,
+   "pts": 27.9,
+   "reb": 6,
+   "ast": 3.4,
+   "stl": 1.6,
+   "blk": 0.33,
+   "tpm": 2.87,
+   "tov": 1.8,
+   "fga": 20,
+   "fgm": 9.98,
+   "fta": 5.8,
+   "ftm": 5.05,
+   "fgPct": 49.9,
+   "ftPct": 87.1
+  }
  },
  "Scottie Barnes": {
   "team": "TOR",
@@ -881,7 +2052,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.95,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 34,
+   "pts": 17.9,
+   "reb": 7.6,
+   "ast": 5.4,
+   "stl": 1.3,
+   "blk": 1.1,
+   "tpm": 1,
+   "tov": 2.5,
+   "fga": 13.74,
+   "fgm": 6.51,
+   "fta": 3.77,
+   "ftm": 2.92,
+   "fgPct": 47.4,
+   "ftPct": 77.4
+  },
+  "b": {
+   "min": 34,
+   "pts": 17.6,
+   "reb": 6.4,
+   "ast": 7.1,
+   "stl": 1.35,
+   "blk": 1.2,
+   "tpm": 0.85,
+   "tov": 2.75,
+   "fga": 13.74,
+   "fgm": 6.9,
+   "fta": 3.77,
+   "ftm": 2.99,
+   "fgPct": 50.2,
+   "ftPct": 79.3
+  }
  },
  "RJ Barrett": {
   "team": "TOR",
@@ -903,7 +2106,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.58,
   "sources": "both",
   "spreadPts": 3.5,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 28,
+   "pts": 16.6,
+   "reb": 4.8,
+   "ast": 3.1,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 1.5,
+   "tov": 1.9,
+   "fga": 15.47,
+   "fgm": 7.04,
+   "fta": 5.1,
+   "ftm": 3.53,
+   "fgPct": 45.5,
+   "ftPct": 69.2
+  },
+  "b": {
+   "min": 32,
+   "pts": 20.1,
+   "reb": 5.3,
+   "ast": 3.1,
+   "stl": 0.74,
+   "blk": 0.4,
+   "tpm": 1.87,
+   "tov": 1.73,
+   "fga": 15.47,
+   "fgm": 7.29,
+   "fta": 5.1,
+   "ftm": 3.62,
+   "fgPct": 47.2,
+   "ftPct": 71
+  }
  },
  "Collin Murray-Boyles": {
   "team": "TOR",
@@ -925,7 +2160,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.04,
   "sources": "both",
   "spreadPts": 1.9,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 29,
+   "pts": 11.3,
+   "reb": 6.6,
+   "ast": 2.5,
+   "stl": 1.2,
+   "blk": 1.2,
+   "tpm": 0.4,
+   "tov": 1.4,
+   "fga": 8.88,
+   "fgm": 5.14,
+   "fta": 3.11,
+   "ftm": 2.04,
+   "fgPct": 57.9,
+   "ftPct": 65.7
+  },
+  "b": {
+   "min": 26,
+   "pts": 13.2,
+   "reb": 6.1,
+   "ast": 2.2,
+   "stl": 1.1,
+   "blk": 1.3,
+   "tpm": 0.18,
+   "tov": 0.97,
+   "fga": 8.88,
+   "fgm": 5.51,
+   "fta": 3.11,
+   "ftm": 2.03,
+   "fgPct": 62,
+   "ftPct": 65.3
+  }
  },
  "Immanuel Quickley": {
   "team": "TOR",
@@ -947,7 +2214,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.76,
   "sources": "both",
   "spreadPts": 3.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 33,
+   "pts": 18.3,
+   "reb": 4.2,
+   "ast": 5.5,
+   "stl": 1,
+   "blk": 0.1,
+   "tpm": 2.8,
+   "tov": 1.7,
+   "fga": 11.6,
+   "fgm": 4.91,
+   "fta": 2.09,
+   "ftm": 1.79,
+   "fgPct": 42.3,
+   "ftPct": 85.7
+  },
+  "b": {
+   "min": 32,
+   "pts": 14.5,
+   "reb": 3.6,
+   "ast": 5.9,
+   "stl": 1.07,
+   "blk": 0.07,
+   "tpm": 2.53,
+   "tov": 1.2,
+   "fga": 11.6,
+   "fgm": 5.13,
+   "fta": 2.09,
+   "ftm": 1.72,
+   "fgPct": 44.2,
+   "ftPct": 82.5
+  }
  },
  "Jakob Poeltl": {
   "team": "TOR",
@@ -969,7 +2268,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.27,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 24,
+   "pts": 10,
+   "reb": 7.5,
+   "ast": 2.1,
+   "stl": 0.7,
+   "blk": 1.2,
+   "tpm": 0,
+   "tov": 1.3,
+   "fga": 8.32,
+   "fgm": 5.35,
+   "fta": 2.16,
+   "ftm": 1.22,
+   "fgPct": 64.3,
+   "ftPct": 56.5
+  },
+  "b": {
+   "min": 27,
+   "pts": 12.7,
+   "reb": 7.1,
+   "ast": 2.4,
+   "stl": 1.02,
+   "blk": 0.96,
+   "tpm": 0,
+   "tov": 1.34,
+   "fga": 8.32,
+   "fgm": 5.71,
+   "fta": 2.16,
+   "ftm": 1.32,
+   "fgPct": 68.6,
+   "ftPct": 61
+  }
  },
  "Ja'Kobe Walter": {
   "team": "TOR",
@@ -991,7 +2322,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.52,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 22,
+   "pts": 8.5,
+   "reb": 3,
+   "ast": 1.4,
+   "stl": 1,
+   "blk": 0.2,
+   "tpm": 1.5,
+   "tov": 0.8,
+   "fga": 8.39,
+   "fgm": 3.54,
+   "fta": 1.93,
+   "ftm": 1.53,
+   "fgPct": 42.2,
+   "ftPct": 79.2
+  },
+  "b": {
+   "min": 25,
+   "pts": 11.2,
+   "reb": 3.2,
+   "ast": 1.6,
+   "stl": 1.16,
+   "blk": 0.26,
+   "tpm": 2.35,
+   "tov": 0.62,
+   "fga": 8.39,
+   "fgm": 3.65,
+   "fta": 1.93,
+   "ftm": 1.51,
+   "fgPct": 43.5,
+   "ftPct": 78.3
+  }
  },
  "Jamal Shead": {
   "team": "TOR",
@@ -1013,7 +2376,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.46,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 22,
+   "pts": 7.2,
+   "reb": 1.7,
+   "ast": 5,
+   "stl": 0.9,
+   "blk": 0.2,
+   "tpm": 1,
+   "tov": 1.5,
+   "fga": 6.8,
+   "fgm": 2.64,
+   "fta": 1.84,
+   "ftm": 1.43,
+   "fgPct": 38.8,
+   "ftPct": 77.7
+  },
+  "b": {
+   "min": 23,
+   "pts": 8,
+   "reb": 1.4,
+   "ast": 5.4,
+   "stl": 0.91,
+   "blk": 0.19,
+   "tpm": 1.04,
+   "tov": 1.39,
+   "fga": 6.8,
+   "fgm": 2.73,
+   "fta": 1.84,
+   "ftm": 1.49,
+   "fgPct": 40,
+   "ftPct": 81
+  }
  },
  "Allen Graves": {
   "team": "TOR",
@@ -1035,7 +2430,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.82,
   "sources": "both",
   "spreadPts": 6.5,
-  "spreadMin": 8
+  "spreadMin": 8,
+  "a": {
+   "min": 25,
+   "pts": 13.1,
+   "reb": 4.8,
+   "ast": 1.3,
+   "stl": 0.9,
+   "blk": 0.5,
+   "tpm": 1,
+   "tov": 1.2,
+   "fga": 5.45,
+   "fgm": 2.41,
+   "fta": 1.09,
+   "ftm": 0.84,
+   "fgPct": 44.1,
+   "ftPct": 76.7
+  },
+  "b": {
+   "min": 17,
+   "pts": 6.6,
+   "reb": 4.2,
+   "ast": 1.3,
+   "stl": 0.96,
+   "blk": 0.35,
+   "tpm": 0.9,
+   "tov": 0.89,
+   "fga": 5.45,
+   "fgm": 2.43,
+   "fta": 1.09,
+   "ftm": 0.81,
+   "fgPct": 44.5,
+   "ftPct": 74.3
+  }
  },
  "Kyle Anderson": {
   "team": "TOR",
@@ -1057,7 +2484,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.83,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 19,
+   "pts": 6.3,
+   "reb": 3.7,
+   "ast": 2.7,
+   "stl": 0.8,
+   "blk": 0.6,
+   "tpm": 0.4,
+   "tov": 0.9,
+   "fga": 4.07,
+   "fgm": 1.98,
+   "fta": 1.16,
+   "ftm": 0.82,
+   "fgPct": 48.6,
+   "ftPct": 70.5
+  },
+  "b": {
+   "min": 16,
+   "pts": 5,
+   "reb": 2.7,
+   "ast": 2.3,
+   "stl": 0.76,
+   "blk": 0.54,
+   "tpm": 0.15,
+   "tov": 0.67,
+   "fga": 4.07,
+   "fgm": 2,
+   "fta": 1.16,
+   "ftm": 0.84,
+   "fgPct": 49.1,
+   "ftPct": 72.2
+  }
  },
  "Trayce Jackson-Davis": {
   "team": "TOR",
@@ -1079,7 +2538,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.87,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 12,
+   "pts": 4.9,
+   "reb": 3.7,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0.6,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 3.18,
+   "fgm": 1.92,
+   "fta": 1.59,
+   "ftm": 0.87,
+   "fgPct": 60.4,
+   "ftPct": 54.5
+  },
+  "b": {
+   "min": 12,
+   "pts": 4.5,
+   "reb": 3.3,
+   "ast": 1.1,
+   "stl": 0.35,
+   "blk": 0.57,
+   "tpm": 0,
+   "tov": 0.52,
+   "fga": 3.18,
+   "fgm": 1.8,
+   "fta": 1.59,
+   "ftm": 0.87,
+   "fgPct": 56.8,
+   "ftPct": 54.5
+  }
  },
  "Jamison Battle": {
   "team": "TOR",
@@ -1101,7 +2592,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.36,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 14,
+   "pts": 5.4,
+   "reb": 2.3,
+   "ast": 0.7,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 1.2,
+   "tov": 0.4,
+   "fga": 4.39,
+   "fgm": 2.04,
+   "fta": 0.48,
+   "ftm": 0.36,
+   "fgPct": 46.6,
+   "ftPct": 73.9
+  },
+  "b": {
+   "min": 13,
+   "pts": 5.6,
+   "reb": 2.3,
+   "ast": 0.6,
+   "stl": 0.22,
+   "blk": 0.11,
+   "tpm": 0.94,
+   "tov": 0.38,
+   "fga": 4.39,
+   "fgm": 2.14,
+   "fta": 0.48,
+   "ftm": 0.36,
+   "fgPct": 48.8,
+   "ftPct": 75.2
+  }
  },
  "Alijah Martin": {
   "team": "TOR",
@@ -1123,7 +2646,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.71,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 10,
+   "pts": 3.5,
+   "reb": 1.4,
+   "ast": 0.8,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 0.3,
+   "tov": 0.5,
+   "fga": 3.07,
+   "fgm": 0.98,
+   "fta": 0.92,
+   "ftm": 0.73,
+   "fgPct": 32,
+   "ftPct": 78.9
+  },
+  "b": {
+   "min": 9,
+   "pts": 3.6,
+   "reb": 1.4,
+   "ast": 0.6,
+   "stl": 0.37,
+   "blk": 0.11,
+   "tpm": 0.35,
+   "tov": 0.42,
+   "fga": 3.07,
+   "fgm": 1.27,
+   "fta": 0.92,
+   "ftm": 0.7,
+   "fgPct": 41.3,
+   "ftPct": 75.7
+  }
  },
  "Jaden Bradley": {
   "team": "TOR",
@@ -1145,7 +2700,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.61,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 10,
+   "pts": 3.4,
+   "reb": 1.1,
+   "ast": 1.2,
+   "stl": 0.35,
+   "blk": 0.06,
+   "tpm": 0.11,
+   "tov": 0.83,
+   "fga": 2.96,
+   "fgm": 1.32,
+   "fta": 0.8,
+   "ftm": 0.61,
+   "fgPct": 44.7,
+   "ftPct": 76.8
+  }
  },
  "Chucky Hepburn": {
   "team": "TOR",
@@ -1167,7 +2739,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.2,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 7,
+   "pts": 0,
+   "reb": 0.5,
+   "ast": 1.1,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 2.68,
+   "fgm": 0,
+   "fta": 0.54,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  },
+  "b": {
+   "min": 7,
+   "pts": 2.7,
+   "reb": 0.7,
+   "ast": 0.9,
+   "stl": 0.17,
+   "blk": 0.07,
+   "tpm": 0.62,
+   "tov": 0.44,
+   "fga": 2.68,
+   "fgm": 0.82,
+   "fta": 0.54,
+   "ftm": 0.4,
+   "fgPct": 30.5,
+   "ftPct": 74.6
+  }
  },
  "Andre Jackson Jr.": {
   "team": "TOR",
@@ -1189,7 +2793,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.2,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 2.5
+  "spreadMin": 2.5,
+  "a": {
+   "min": 8.5,
+   "pts": 2.1,
+   "reb": 1.6,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.5,
+   "fga": 1.53,
+   "fgm": 0.62,
+   "fta": 0.34,
+   "ftm": 0.2,
+   "fgPct": 40.7,
+   "ftPct": 61.1
+  },
+  "b": {
+   "min": 6,
+   "pts": 1.6,
+   "reb": 1.1,
+   "ast": 0.5,
+   "stl": 0.21,
+   "blk": 0.08,
+   "tpm": 0.2,
+   "tov": 0.36,
+   "fga": 1.53,
+   "fgm": 0.6,
+   "fta": 0.34,
+   "ftm": 0.2,
+   "fgPct": 39.3,
+   "ftPct": 59
+  }
  },
  "Trey Jemison": {
   "team": "TOR",
@@ -1211,7 +2847,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.12,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 0.2
+  "spreadMin": 0.2,
+  "a": {
+   "min": 6.2,
+   "pts": 1.4,
+   "reb": 1.5,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 1.02,
+   "fgm": 0.58,
+   "fta": 0.21,
+   "ftm": 0.11,
+   "fgPct": 56.6,
+   "ftPct": 56
+  },
+  "b": {
+   "min": 6,
+   "pts": 1.3,
+   "reb": 1.5,
+   "ast": 0.2,
+   "stl": 0.12,
+   "blk": 0.21,
+   "tpm": 0,
+   "tov": 0.41,
+   "fga": 1.02,
+   "fgm": 0.61,
+   "fta": 0.21,
+   "ftm": 0.12,
+   "fgPct": 59.5,
+   "ftPct": 59.5
+  }
  },
  "Victor Wembanyama": {
   "team": "SAS",
@@ -1233,7 +2901,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 6.19,
   "sources": "both",
   "spreadPts": 3.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 32,
+   "pts": 24.9,
+   "reb": 11.6,
+   "ast": 3.6,
+   "stl": 1.2,
+   "blk": 3.6,
+   "tpm": 2.4,
+   "tov": 3.1,
+   "fga": 18.59,
+   "fgm": 9.07,
+   "fta": 7.44,
+   "ftm": 6.11,
+   "fgPct": 48.8,
+   "ftPct": 82.1
+  },
+  "b": {
+   "min": 31,
+   "pts": 28.2,
+   "reb": 12.8,
+   "ast": 3.9,
+   "stl": 1.19,
+   "blk": 3.52,
+   "tpm": 1.96,
+   "tov": 2.09,
+   "fga": 18.59,
+   "fgm": 9.99,
+   "fta": 7.44,
+   "ftm": 6.28,
+   "fgPct": 53.7,
+   "ftPct": 84.5
+  }
  },
  "Stephon Castle": {
   "team": "SAS",
@@ -1255,7 +2955,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.32,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 30,
+   "pts": 16.6,
+   "reb": 4.7,
+   "ast": 6,
+   "stl": 1.1,
+   "blk": 0.3,
+   "tpm": 1.3,
+   "tov": 2.8,
+   "fga": 12.65,
+   "fgm": 5.67,
+   "fta": 5.89,
+   "ftm": 4.3,
+   "fgPct": 44.8,
+   "ftPct": 73
+  },
+  "b": {
+   "min": 31,
+   "pts": 17.6,
+   "reb": 6,
+   "ast": 8,
+   "stl": 0.91,
+   "blk": 0.32,
+   "tpm": 1.36,
+   "tov": 3.05,
+   "fga": 12.65,
+   "fgm": 5.93,
+   "fta": 5.89,
+   "ftm": 4.34,
+   "fgPct": 46.9,
+   "ftPct": 73.6
+  }
  },
  "De'Aaron Fox": {
   "team": "SAS",
@@ -1277,7 +3009,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.85,
   "sources": "both",
   "spreadPts": 3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 30,
+   "pts": 19.7,
+   "reb": 3.6,
+   "ast": 5.7,
+   "stl": 1.3,
+   "blk": 0.4,
+   "tpm": 1.5,
+   "tov": 2.4,
+   "fga": 13.83,
+   "fgm": 6.6,
+   "fta": 2.49,
+   "ftm": 1.87,
+   "fgPct": 47.7,
+   "ftPct": 75.1
+  },
+  "b": {
+   "min": 31,
+   "pts": 16.7,
+   "reb": 3.7,
+   "ast": 6.1,
+   "stl": 1.24,
+   "blk": 0.26,
+   "tpm": 1.64,
+   "tov": 2.02,
+   "fga": 13.83,
+   "fgm": 6.63,
+   "fta": 2.49,
+   "ftm": 1.83,
+   "fgPct": 47.9,
+   "ftPct": 73.5
+  }
  },
  "Dylan Harper": {
   "team": "SAS",
@@ -1299,7 +3063,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.69,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 29,
+   "pts": 15.1,
+   "reb": 4.4,
+   "ast": 5,
+   "stl": 1,
+   "blk": 0.4,
+   "tpm": 1.1,
+   "tov": 1.8,
+   "fga": 11.55,
+   "fgm": 5.83,
+   "fta": 2.19,
+   "ftm": 1.66,
+   "fgPct": 50.5,
+   "ftPct": 75.6
+  },
+  "b": {
+   "min": 28,
+   "pts": 15.1,
+   "reb": 4.1,
+   "ast": 5,
+   "stl": 0.91,
+   "blk": 0.52,
+   "tpm": 1.08,
+   "tov": 1.62,
+   "fga": 11.55,
+   "fgm": 6.15,
+   "fta": 2.19,
+   "ftm": 1.71,
+   "fgPct": 53.3,
+   "ftPct": 78
+  }
  },
  "Tobias Harris": {
   "team": "SAS",
@@ -1321,7 +3117,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.93,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 27,
+   "pts": 13.6,
+   "reb": 5.2,
+   "ast": 2.3,
+   "stl": 0.7,
+   "blk": 0.5,
+   "tpm": 1.2,
+   "tov": 1.1,
+   "fga": 11.17,
+   "fgm": 5.41,
+   "fta": 2.23,
+   "ftm": 1.92,
+   "fgPct": 48.4,
+   "ftPct": 86.1
+  },
+  "b": {
+   "min": 30,
+   "pts": 13.6,
+   "reb": 5.7,
+   "ast": 2.7,
+   "stl": 1.09,
+   "blk": 0.56,
+   "tpm": 1.25,
+   "tov": 1.06,
+   "fga": 11.17,
+   "fgm": 5.2,
+   "fta": 2.23,
+   "ftm": 1.94,
+   "fgPct": 46.5,
+   "ftPct": 86.6
+  }
  },
  "Devin Vassell": {
   "team": "SAS",
@@ -1343,7 +3171,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.25,
   "sources": "both",
   "spreadPts": 3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 31,
+   "pts": 15.2,
+   "reb": 4.2,
+   "ast": 2.8,
+   "stl": 1.1,
+   "blk": 0.5,
+   "tpm": 2.3,
+   "tov": 1.1,
+   "fga": 9.83,
+   "fgm": 4.32,
+   "fta": 1.57,
+   "ftm": 1.27,
+   "fgPct": 44,
+   "ftPct": 80.7
+  },
+  "b": {
+   "min": 29,
+   "pts": 12.2,
+   "reb": 3.8,
+   "ast": 2.3,
+   "stl": 0.79,
+   "blk": 0.31,
+   "tpm": 2.3,
+   "tov": 0.86,
+   "fga": 9.83,
+   "fgm": 4.33,
+   "fta": 1.57,
+   "ftm": 1.23,
+   "fgPct": 44.1,
+   "ftPct": 78
+  }
  },
  "Julian Champagnie": {
   "team": "SAS",
@@ -1365,7 +3225,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.87,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 27,
+   "pts": 11.3,
+   "reb": 4.8,
+   "ast": 1.5,
+   "stl": 0.8,
+   "blk": 0.5,
+   "tpm": 2.4,
+   "tov": 1,
+   "fga": 7.78,
+   "fgm": 3.34,
+   "fta": 1.01,
+   "ftm": 0.86,
+   "fgPct": 42.9,
+   "ftPct": 84.9
+  },
+  "b": {
+   "min": 25,
+   "pts": 10,
+   "reb": 4.7,
+   "ast": 1.4,
+   "stl": 0.62,
+   "blk": 0.48,
+   "tpm": 2.23,
+   "tov": 0.69,
+   "fga": 7.78,
+   "fgm": 3.46,
+   "fta": 1.01,
+   "ftm": 0.88,
+   "fgPct": 44.5,
+   "ftPct": 86.5
+  }
  },
  "Keldon Johnson": {
   "team": "SAS",
@@ -1387,7 +3279,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.49,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 22,
+   "pts": 12,
+   "reb": 4.4,
+   "ast": 1.5,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 1,
+   "fga": 8.75,
+   "fgm": 4.28,
+   "fta": 1.88,
+   "ftm": 1.46,
+   "fgPct": 48.9,
+   "ftPct": 77.3
+  },
+  "b": {
+   "min": 21,
+   "pts": 11,
+   "reb": 4.2,
+   "ast": 1.2,
+   "stl": 0.48,
+   "blk": 0.18,
+   "tpm": 1.02,
+   "tov": 0.76,
+   "fga": 8.75,
+   "fgm": 4.25,
+   "fta": 1.88,
+   "ftm": 1.53,
+   "fgPct": 48.5,
+   "ftPct": 81
+  }
  },
  "Luke Kornet": {
   "team": "SAS",
@@ -1409,7 +3333,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.12,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 18,
+   "pts": 6,
+   "reb": 4.4,
+   "ast": 1.4,
+   "stl": 0.4,
+   "blk": 1,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 3.56,
+   "fgm": 1.93,
+   "fta": 1.42,
+   "ftm": 1.09,
+   "fgPct": 54.2,
+   "ftPct": 76.6
+  },
+  "b": {
+   "min": 19,
+   "pts": 5.8,
+   "reb": 5.3,
+   "ast": 1.6,
+   "stl": 0.48,
+   "blk": 0.68,
+   "tpm": 0,
+   "tov": 0.36,
+   "fga": 3.56,
+   "fgm": 2.35,
+   "fta": 1.42,
+   "ftm": 1.15,
+   "fgPct": 65.9,
+   "ftPct": 81
+  }
  },
  "Harrison Barnes": {
   "team": "SAS",
@@ -1431,7 +3387,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.84,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 18,
+   "pts": 8,
+   "reb": 2.5,
+   "ast": 1.1,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 1.1,
+   "tov": 0.6,
+   "fga": 5.43,
+   "fgm": 2.55,
+   "fta": 1.03,
+   "ftm": 0.85,
+   "fgPct": 47,
+   "ftPct": 82.3
+  },
+  "b": {
+   "min": 20,
+   "pts": 7.2,
+   "reb": 2.1,
+   "ast": 1.4,
+   "stl": 0.45,
+   "blk": 0.13,
+   "tpm": 1.42,
+   "tov": 0.55,
+   "fga": 5.43,
+   "fgm": 2.47,
+   "fta": 1.03,
+   "ftm": 0.84,
+   "fgPct": 45.4,
+   "ftPct": 81.1
+  }
  },
  "Carter Bryant": {
   "team": "SAS",
@@ -1453,7 +3441,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.75,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 18,
+   "pts": 6.6,
+   "reb": 3.9,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.5,
+   "tpm": 1.1,
+   "tov": 0.7,
+   "fga": 4.98,
+   "fgm": 2.03,
+   "fta": 1.05,
+   "ftm": 0.75,
+   "fgPct": 40.8,
+   "ftPct": 71.4
+  },
+  "b": {
+   "min": 16,
+   "pts": 6.3,
+   "reb": 3.4,
+   "ast": 1.1,
+   "stl": 0.31,
+   "blk": 0.54,
+   "tpm": 0.92,
+   "tov": 0.67,
+   "fga": 4.98,
+   "fgm": 2.3,
+   "fta": 1.05,
+   "ftm": 0.75,
+   "fgPct": 46.1,
+   "ftPct": 71.4
+  }
  },
  "Jordan McLaughlin": {
   "team": "SAS",
@@ -1475,7 +3495,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.29,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 10,
+   "pts": 3,
+   "reb": 1,
+   "ast": 1.8,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.5,
+   "fga": 2.52,
+   "fgm": 1.11,
+   "fta": 0.38,
+   "ftm": 0.29,
+   "fgPct": 43.9,
+   "ftPct": 75.8
+  },
+  "b": {
+   "min": 11,
+   "pts": 3,
+   "reb": 1.2,
+   "ast": 1.4,
+   "stl": 0.69,
+   "blk": 0.07,
+   "tpm": 0.52,
+   "tov": 0.49,
+   "fga": 2.52,
+   "fgm": 1.1,
+   "fta": 0.38,
+   "ftm": 0.3,
+   "fgPct": 43.8,
+   "ftPct": 79.4
+  }
  },
  "Ja'Kobi Gillespie": {
   "team": "SAS",
@@ -1497,7 +3549,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.39,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 10,
+   "pts": 3.7,
+   "reb": 0.9,
+   "ast": 1.2,
+   "stl": 0.53,
+   "blk": 0.08,
+   "tpm": 0.5,
+   "tov": 0.84,
+   "fga": 3.32,
+   "fgm": 1.39,
+   "fta": 0.5,
+   "ftm": 0.39,
+   "fgPct": 41.7,
+   "ftPct": 78.2
+  }
  },
  "David Jones Garcia": {
   "team": "SAS",
@@ -1519,7 +3588,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.34,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 7,
+   "pts": 3.3,
+   "reb": 1.3,
+   "ast": 1.9,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.5,
+   "fga": 2.99,
+   "fgm": 1.56,
+   "fta": 0.56,
+   "ftm": 0.28,
+   "fgPct": 52,
+   "ftPct": 50
+  },
+  "b": {
+   "min": 8,
+   "pts": 3.5,
+   "reb": 1.3,
+   "ast": 1,
+   "stl": 0.37,
+   "blk": 0.12,
+   "tpm": 0.21,
+   "tov": 0.5,
+   "fga": 2.99,
+   "fgm": 1.43,
+   "fta": 0.56,
+   "ftm": 0.41,
+   "fgPct": 47.6,
+   "ftPct": 73.3
+  }
  },
  "Tarris Reed Jr.": {
   "team": "SAS",
@@ -1541,7 +3642,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.47,
   "sources": "both",
   "spreadPts": 8.4,
-  "spreadMin": 10.5
+  "spreadMin": 10.5,
+  "a": {
+   "min": 19.5,
+   "pts": 11.2,
+   "reb": 4.9,
+   "ast": 0.9,
+   "stl": 0.3,
+   "blk": 0.8,
+   "tpm": 0.2,
+   "tov": 1,
+   "fga": 2.25,
+   "fgm": 1.11,
+   "fta": 0.72,
+   "ftm": 0.49,
+   "fgPct": 49.4,
+   "ftPct": 67.4
+  },
+  "b": {
+   "min": 9,
+   "pts": 2.8,
+   "reb": 2.4,
+   "ast": 0.4,
+   "stl": 0.25,
+   "blk": 0.38,
+   "tpm": 0.02,
+   "tov": 0.64,
+   "fga": 2.25,
+   "fgm": 1.16,
+   "fta": 0.72,
+   "ftm": 0.46,
+   "fgPct": 51.7,
+   "ftPct": 63.5
+  }
  },
  "Jayden Quaintance": {
   "team": "SAS",
@@ -1563,7 +3696,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.34,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 7,
+   "pts": 2.3,
+   "reb": 1.6,
+   "ast": 0.4,
+   "stl": 0.22,
+   "blk": 0.37,
+   "tpm": 0.05,
+   "tov": 0.37,
+   "fga": 2.05,
+   "fgm": 0.96,
+   "fta": 0.61,
+   "ftm": 0.34,
+   "fgPct": 46.6,
+   "ftPct": 55.2
+  }
  },
  "Maliq Brown": {
   "team": "SAS",
@@ -1585,7 +3735,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.14,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 8,
+   "pts": 1.3,
+   "reb": 1.7,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0.17,
+   "tpm": 0.12,
+   "tov": 0.59,
+   "fga": 1.16,
+   "fgm": 0.54,
+   "fta": 0.22,
+   "ftm": 0.14,
+   "fgPct": 46.2,
+   "ftPct": 64.3
+  }
  },
  "Taelon Peter": {
   "team": "SAS",
@@ -1607,7 +3774,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 4.5,
-  "spreadMin": 12.9
+  "spreadMin": 12.9,
+  "a": {
+   "min": 12.9,
+   "pts": 4.5,
+   "reb": 1.6,
+   "ast": 1.1,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 1.1,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38,
+   "ftPct": 62.5
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Domantas Sabonis": {
   "team": "SAC",
@@ -1629,7 +3828,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.7,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 32,
+   "pts": 17.5,
+   "reb": 11.9,
+   "ast": 5.3,
+   "stl": 0.8,
+   "blk": 0.4,
+   "tpm": 0.5,
+   "tov": 2.8,
+   "fga": 12.58,
+   "fgm": 7.17,
+   "fta": 5.03,
+   "ftm": 3.67,
+   "fgPct": 57,
+   "ftPct": 73
+  },
+  "b": {
+   "min": 33,
+   "pts": 18.7,
+   "reb": 12.7,
+   "ast": 6.5,
+   "stl": 0.9,
+   "blk": 0.27,
+   "tpm": 0.48,
+   "tov": 3.09,
+   "fga": 12.58,
+   "fgm": 7.27,
+   "fta": 5.03,
+   "ftm": 3.73,
+   "fgPct": 57.8,
+   "ftPct": 74.1
+  }
  },
  "Zach LaVine": {
   "team": "SAC",
@@ -1651,7 +3882,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.58,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 32,
+   "pts": 21.5,
+   "reb": 4,
+   "ast": 3.6,
+   "stl": 0.8,
+   "blk": 0.3,
+   "tpm": 2.6,
+   "tov": 2.5,
+   "fga": 14.4,
+   "fgm": 6.93,
+   "fta": 4.18,
+   "ftm": 3.52,
+   "fgPct": 48.1,
+   "ftPct": 84.3
+  },
+  "b": {
+   "min": 32,
+   "pts": 20.2,
+   "reb": 2.7,
+   "ast": 3.5,
+   "stl": 0.74,
+   "blk": 0.2,
+   "tpm": 2.59,
+   "tov": 2.06,
+   "fga": 14.4,
+   "fgm": 6.98,
+   "fta": 4.18,
+   "ftm": 3.64,
+   "fgPct": 48.5,
+   "ftPct": 87.2
+  }
  },
  "Keegan Murray": {
   "team": "SAC",
@@ -1673,7 +3936,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.78,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 35,
+   "pts": 14,
+   "reb": 6.1,
+   "ast": 1.6,
+   "stl": 1,
+   "blk": 1.1,
+   "tpm": 2.1,
+   "tov": 1,
+   "fga": 12.47,
+   "fgm": 5.47,
+   "fta": 2.24,
+   "ftm": 1.79,
+   "fgPct": 43.9,
+   "ftPct": 79.7
+  },
+  "b": {
+   "min": 35,
+   "pts": 14.9,
+   "reb": 5.6,
+   "ast": 2,
+   "stl": 1.03,
+   "blk": 1.09,
+   "tpm": 1.69,
+   "tov": 1.31,
+   "fga": 12.47,
+   "fgm": 5.7,
+   "fta": 2.24,
+   "ftm": 1.77,
+   "fgPct": 45.7,
+   "ftPct": 79
+  }
  },
  "De'Andre Hunter": {
   "team": "SAC",
@@ -1695,7 +3990,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.36,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 30,
+   "pts": 15.5,
+   "reb": 4.3,
+   "ast": 1.7,
+   "stl": 0.7,
+   "blk": 0.3,
+   "tpm": 1.9,
+   "tov": 1.5,
+   "fga": 12,
+   "fgm": 5.36,
+   "fta": 3.96,
+   "ftm": 3.3,
+   "fgPct": 44.7,
+   "ftPct": 83.4
+  },
+  "b": {
+   "min": 30,
+   "pts": 16,
+   "reb": 4,
+   "ast": 1.9,
+   "stl": 0.84,
+   "blk": 0.18,
+   "tpm": 2.11,
+   "tov": 1.44,
+   "fga": 12,
+   "fgm": 5.24,
+   "fta": 3.96,
+   "ftm": 3.41,
+   "fgPct": 43.7,
+   "ftPct": 86.2
+  }
  },
  "Darius Acuff Jr.": {
   "team": "SAC",
@@ -1717,7 +4044,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.71,
   "sources": "both",
   "spreadPts": 2.9,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 30,
+   "pts": 18.3,
+   "reb": 2.5,
+   "ast": 4.1,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 1.4,
+   "tov": 1.7,
+   "fga": 14.13,
+   "fgm": 5.98,
+   "fta": 3.39,
+   "ftm": 2.77,
+   "fgPct": 42.3,
+   "ftPct": 81.8
+  },
+  "b": {
+   "min": 32,
+   "pts": 15.4,
+   "reb": 2.3,
+   "ast": 5.6,
+   "stl": 0.73,
+   "blk": 0.27,
+   "tpm": 1.81,
+   "tov": 3.07,
+   "fga": 14.13,
+   "fgm": 5.47,
+   "fta": 3.39,
+   "ftm": 2.65,
+   "fgPct": 38.7,
+   "ftPct": 78.1
+  }
  },
  "Malik Monk": {
   "team": "SAC",
@@ -1739,7 +4098,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.68,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 22,
+   "pts": 12,
+   "reb": 2.5,
+   "ast": 3,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 1.7,
+   "tov": 1.6,
+   "fga": 9.72,
+   "fgm": 4.25,
+   "fta": 1.94,
+   "ftm": 1.66,
+   "fgPct": 43.7,
+   "ftPct": 85.3
+  },
+  "b": {
+   "min": 22,
+   "pts": 12.3,
+   "reb": 1.8,
+   "ast": 4.1,
+   "stl": 0.55,
+   "blk": 0.41,
+   "tpm": 1.88,
+   "tov": 1.7,
+   "fga": 9.72,
+   "fgm": 4.37,
+   "fta": 1.94,
+   "ftm": 1.69,
+   "fgPct": 45,
+   "ftPct": 87.1
+  }
  },
  "Maxime Raynaud": {
   "team": "SAC",
@@ -1761,7 +4152,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.77,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 20,
+   "pts": 9.4,
+   "reb": 5.7,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.4,
+   "tpm": 0.2,
+   "tov": 1,
+   "fga": 7.42,
+   "fgm": 4.24,
+   "fta": 2.23,
+   "ftm": 1.75,
+   "fgPct": 57.1,
+   "ftPct": 78.6
+  },
+  "b": {
+   "min": 22,
+   "pts": 11,
+   "reb": 6.2,
+   "ast": 1,
+   "stl": 0.44,
+   "blk": 0.43,
+   "tpm": 0.45,
+   "tov": 1.13,
+   "fga": 7.42,
+   "fgm": 4.39,
+   "fta": 2.23,
+   "ftm": 1.79,
+   "fgPct": 59.1,
+   "ftPct": 80.5
+  }
  },
  "Precious Achiuwa": {
   "team": "SAC",
@@ -1783,7 +4206,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.71,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 20,
+   "pts": 7.7,
+   "reb": 5.6,
+   "ast": 1,
+   "stl": 0.6,
+   "blk": 0.6,
+   "tpm": 0.3,
+   "tov": 0.9,
+   "fga": 5.14,
+   "fgm": 2.58,
+   "fta": 1.23,
+   "ftm": 0.72,
+   "fgPct": 50.2,
+   "ftPct": 58.7
+  },
+  "b": {
+   "min": 17,
+   "pts": 6.5,
+   "reb": 4.9,
+   "ast": 1,
+   "stl": 0.56,
+   "blk": 0.55,
+   "tpm": 0.16,
+   "tov": 0.73,
+   "fga": 5.14,
+   "fgm": 2.8,
+   "fta": 1.23,
+   "ftm": 0.71,
+   "fgPct": 54.6,
+   "ftPct": 57.3
+  }
  },
  "Nique Clifford": {
   "team": "SAC",
@@ -1805,7 +4260,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.86,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 20,
+   "pts": 6.9,
+   "reb": 3,
+   "ast": 1.9,
+   "stl": 0.7,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 1.2,
+   "fga": 6.13,
+   "fgm": 2.55,
+   "fta": 1.16,
+   "ftm": 0.84,
+   "fgPct": 41.7,
+   "ftPct": 72.2
+  },
+  "b": {
+   "min": 20,
+   "pts": 7.2,
+   "reb": 3,
+   "ast": 2.3,
+   "stl": 0.67,
+   "blk": 0.22,
+   "tpm": 0.76,
+   "tov": 1.29,
+   "fga": 6.13,
+   "fgm": 2.78,
+   "fta": 1.16,
+   "ftm": 0.87,
+   "fgPct": 45.3,
+   "ftPct": 75.1
+  }
  },
  "Daeqwon Plowden": {
   "team": "SAC",
@@ -1827,7 +4314,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.01,
   "sources": "both",
   "spreadPts": 3.1,
-  "spreadMin": 9
+  "spreadMin": 9,
+  "a": {
+   "min": 9,
+   "pts": 4.5,
+   "reb": 1.2,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.9,
+   "tov": 0.4,
+   "fga": 6,
+   "fgm": 3.23,
+   "fta": 1.14,
+   "ftm": 1.03,
+   "fgPct": 53.8,
+   "ftPct": 90.4
+  },
+  "b": {
+   "min": 18,
+   "pts": 7.6,
+   "reb": 2,
+   "ast": 1,
+   "stl": 0.43,
+   "blk": 0.15,
+   "tpm": 1.45,
+   "tov": 0.62,
+   "fga": 6,
+   "fgm": 2.59,
+   "fta": 1.14,
+   "ftm": 0.98,
+   "fgPct": 43.2,
+   "ftPct": 86.3
+  }
  },
  "Dylan Cardwell": {
   "team": "SAC",
@@ -1849,7 +4368,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.37,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 18,
+   "pts": 4.7,
+   "reb": 6.6,
+   "ast": 1.2,
+   "stl": 0.6,
+   "blk": 1.3,
+   "tpm": 0,
+   "tov": 0.8,
+   "fga": 2.8,
+   "fgm": 1.64,
+   "fta": 0.72,
+   "ftm": 0.37,
+   "fgPct": 58.7,
+   "ftPct": 51
+  },
+  "b": {
+   "min": 14,
+   "pts": 3.7,
+   "reb": 5.1,
+   "ast": 1.1,
+   "stl": 0.45,
+   "blk": 1.05,
+   "tpm": 0.03,
+   "tov": 0.63,
+   "fga": 2.8,
+   "fgm": 1.67,
+   "fta": 0.72,
+   "ftm": 0.37,
+   "fgPct": 59.7,
+   "ftPct": 51
+  }
  },
  "Emanuel Sharp": {
   "team": "SAC",
@@ -1871,7 +4422,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.82,
   "sources": "both",
   "spreadPts": 11.1,
-  "spreadMin": 6.2
+  "spreadMin": 6.2,
+  "a": {
+   "min": 21.2,
+   "pts": 16.8,
+   "reb": 2.9,
+   "ast": 1.8,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 1,
+   "tov": 1.1,
+   "fga": 4.75,
+   "fgm": 2.21,
+   "fta": 1.04,
+   "ftm": 0.78,
+   "fgPct": 46.5,
+   "ftPct": 74.6
+  },
+  "b": {
+   "min": 15,
+   "pts": 5.7,
+   "reb": 1.7,
+   "ast": 0.7,
+   "stl": 0.66,
+   "blk": 0.06,
+   "tpm": 1.32,
+   "tov": 0.78,
+   "fga": 4.75,
+   "fgm": 1.74,
+   "fta": 1.04,
+   "ftm": 0.86,
+   "fgPct": 36.7,
+   "ftPct": 82.1
+  }
  },
  "Jonathan Mogbo": {
   "team": "SAC",
@@ -1893,7 +4476,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.41,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 9,
+   "pts": 2.5,
+   "reb": 2.3,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0.1,
+   "tov": 0.5,
+   "fga": 1.74,
+   "fgm": 0.87,
+   "fta": 0.57,
+   "ftm": 0.4,
+   "fgPct": 49.8,
+   "ftPct": 69
+  },
+  "b": {
+   "min": 11,
+   "pts": 2.5,
+   "reb": 3.2,
+   "ast": 1.2,
+   "stl": 0.45,
+   "blk": 0.3,
+   "tpm": 0.01,
+   "tov": 0.6,
+   "fga": 1.74,
+   "fgm": 1.04,
+   "fta": 0.57,
+   "ftm": 0.42,
+   "fgPct": 59.7,
+   "ftPct": 72.7
+  }
  },
  "Alex Karaban": {
   "team": "SAC",
@@ -1915,7 +4530,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.24,
   "sources": "both",
   "spreadPts": 7.9,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 15,
+   "pts": 11.4,
+   "reb": 1.8,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.3,
+   "fga": 3.15,
+   "fgm": 1.33,
+   "fta": 0.32,
+   "ftm": 0.23,
+   "fgPct": 42.2,
+   "ftPct": 73.9
+  },
+  "b": {
+   "min": 12,
+   "pts": 3.5,
+   "reb": 1.7,
+   "ast": 0.5,
+   "stl": 0.28,
+   "blk": 0.25,
+   "tpm": 0.56,
+   "tov": 0.5,
+   "fga": 3.15,
+   "fgm": 1.34,
+   "fta": 0.32,
+   "ftm": 0.25,
+   "fgPct": 42.6,
+   "ftPct": 80.3
+  }
  },
  "Adam Flagler": {
   "team": "SAC",
@@ -1937,7 +4584,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.09,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 7,
+   "pts": 1.9,
+   "reb": 0.5,
+   "ast": 1.2,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.1,
+   "fga": 2.87,
+   "fgm": 0.57,
+   "fta": 0.14,
+   "ftm": 0.07,
+   "fgPct": 20,
+   "ftPct": 50
+  },
+  "b": {
+   "min": 8,
+   "pts": 2.5,
+   "reb": 0.8,
+   "ast": 0.6,
+   "stl": 0.25,
+   "blk": 0.06,
+   "tpm": 0.62,
+   "tov": 0.27,
+   "fga": 2.87,
+   "fgm": 0.9,
+   "fta": 0.14,
+   "ftm": 0.1,
+   "fgPct": 31.3,
+   "ftPct": 69.9
+  }
  },
  "Damian Lillard": {
   "team": "POR",
@@ -1959,7 +4638,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5.12,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 30,
+   "pts": 22.1,
+   "reb": 3.7,
+   "ast": 6,
+   "stl": 0.8,
+   "blk": 0.2,
+   "tpm": 2.9,
+   "tov": 2.4,
+   "fga": 16.13,
+   "fgm": 7.12,
+   "fta": 5.65,
+   "ftm": 5.14,
+   "fgPct": 44.1,
+   "ftPct": 91.1
+  },
+  "b": {
+   "min": 32,
+   "pts": 22.7,
+   "reb": 3.7,
+   "ast": 5.2,
+   "stl": 0.8,
+   "blk": 0.2,
+   "tpm": 3.37,
+   "tov": 2.2,
+   "fga": 16.13,
+   "fgm": 7.12,
+   "fta": 5.65,
+   "ftm": 5.1,
+   "fgPct": 44.2,
+   "ftPct": 90.4
+  }
  },
  "Deni Avdija": {
   "team": "POR",
@@ -1981,7 +4692,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5.08,
   "sources": "both",
   "spreadPts": 4.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 32,
+   "pts": 16,
+   "reb": 7.2,
+   "ast": 4.1,
+   "stl": 0.9,
+   "blk": 0.5,
+   "tpm": 1.5,
+   "tov": 2.4,
+   "fga": 13.89,
+   "fgm": 6.42,
+   "fta": 6.53,
+   "ftm": 5.05,
+   "fgPct": 46.2,
+   "ftPct": 77.4
+  },
+  "b": {
+   "min": 33,
+   "pts": 20.1,
+   "reb": 7.4,
+   "ast": 5,
+   "stl": 0.76,
+   "blk": 0.62,
+   "tpm": 1.47,
+   "tov": 2.61,
+   "fga": 13.89,
+   "fgm": 6.77,
+   "fta": 6.53,
+   "ftm": 5.12,
+   "fgPct": 48.7,
+   "ftPct": 78.4
+  }
  },
  "Ja Morant": {
   "team": "POR",
@@ -2003,7 +4746,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.22,
   "sources": "both",
   "spreadPts": 2.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 30,
+   "pts": 21.4,
+   "reb": 4.2,
+   "ast": 7.3,
+   "stl": 1,
+   "blk": 0.3,
+   "tpm": 1.3,
+   "tov": 3.3,
+   "fga": 14.98,
+   "fgm": 6.82,
+   "fta": 5.09,
+   "ftm": 4.08,
+   "fgPct": 45.5,
+   "ftPct": 80.1
+  },
+  "b": {
+   "min": 31,
+   "pts": 19.2,
+   "reb": 3.3,
+   "ast": 6.5,
+   "stl": 1.1,
+   "blk": 0.19,
+   "tpm": 1.09,
+   "tov": 2.91,
+   "fga": 14.98,
+   "fgm": 6.9,
+   "fta": 5.09,
+   "ftm": 4.36,
+   "fgPct": 46,
+   "ftPct": 85.5
+  }
  },
  "Donovan Clingan": {
   "team": "POR",
@@ -2025,7 +4800,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.68,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 28,
+   "pts": 10.9,
+   "reb": 11.5,
+   "ast": 1.9,
+   "stl": 0.7,
+   "blk": 2,
+   "tpm": 0.7,
+   "tov": 1.4,
+   "fga": 8.63,
+   "fgm": 4.57,
+   "fta": 2.52,
+   "ftm": 1.62,
+   "fgPct": 52.9,
+   "ftPct": 64.2
+  },
+  "b": {
+   "min": 28,
+   "pts": 11.7,
+   "reb": 11.9,
+   "ast": 1.8,
+   "stl": 0.64,
+   "blk": 1.98,
+   "tpm": 1.04,
+   "tov": 1.34,
+   "fga": 8.63,
+   "fgm": 4.48,
+   "fta": 2.52,
+   "ftm": 1.74,
+   "fgPct": 51.9,
+   "ftPct": 69
+  }
  },
  "Toumani Camara": {
   "team": "POR",
@@ -2047,7 +4854,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.03,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 32,
+   "pts": 11.5,
+   "reb": 5.5,
+   "ast": 2.1,
+   "stl": 1.3,
+   "blk": 0.5,
+   "tpm": 1.9,
+   "tov": 1.5,
+   "fga": 10.04,
+   "fgm": 4.51,
+   "fta": 1.39,
+   "ftm": 1.01,
+   "fgPct": 44.9,
+   "ftPct": 72.7
+  },
+  "b": {
+   "min": 33,
+   "pts": 12,
+   "reb": 5,
+   "ast": 2.2,
+   "stl": 1.37,
+   "blk": 0.41,
+   "tpm": 2.47,
+   "tov": 1.31,
+   "fga": 10.04,
+   "fgm": 4.25,
+   "fta": 1.39,
+   "ftm": 1.04,
+   "fgPct": 42.4,
+   "ftPct": 74.5
+  }
  },
  "Shaedon Sharpe": {
   "team": "POR",
@@ -2069,7 +4908,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.62,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 24,
+   "pts": 14,
+   "reb": 3.5,
+   "ast": 2,
+   "stl": 0.8,
+   "blk": 0.2,
+   "tpm": 1.5,
+   "tov": 1.8,
+   "fga": 12.95,
+   "fgm": 5.8,
+   "fta": 2.07,
+   "ftm": 1.63,
+   "fgPct": 44.8,
+   "ftPct": 78.6
+  },
+  "b": {
+   "min": 28,
+   "pts": 15.1,
+   "reb": 4,
+   "ast": 2.5,
+   "stl": 0.88,
+   "blk": 0.12,
+   "tpm": 1.72,
+   "tov": 2.33,
+   "fga": 12.95,
+   "fgm": 5.87,
+   "fta": 2.07,
+   "ftm": 1.61,
+   "fgPct": 45.3,
+   "ftPct": 77.8
+  }
  },
  "Scoot Henderson": {
   "team": "POR",
@@ -2091,7 +4962,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.1,
   "sources": "both",
   "spreadPts": 2.5,
-  "spreadMin": 6
+  "spreadMin": 6,
+  "a": {
+   "min": 20,
+   "pts": 10.3,
+   "reb": 2.2,
+   "ast": 3.5,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 1.3,
+   "tov": 2.1,
+   "fga": 10.67,
+   "fgm": 4.39,
+   "fta": 2.56,
+   "ftm": 2.07,
+   "fgPct": 41.1,
+   "ftPct": 80.9
+  },
+  "b": {
+   "min": 26,
+   "pts": 12.8,
+   "reb": 2.6,
+   "ast": 3.4,
+   "stl": 0.87,
+   "blk": 0.22,
+   "tpm": 1.74,
+   "tov": 1.84,
+   "fga": 10.67,
+   "fgm": 4.49,
+   "fta": 2.56,
+   "ftm": 2.13,
+   "fgPct": 42.1,
+   "ftPct": 83
+  }
  },
  "Jrue Holiday": {
   "team": "POR",
@@ -2113,7 +5016,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.94,
   "sources": "both",
   "spreadPts": 3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 28,
+   "pts": 14.2,
+   "reb": 4.1,
+   "ast": 5.2,
+   "stl": 1.1,
+   "blk": 0.4,
+   "tpm": 1.8,
+   "tov": 2.1,
+   "fga": 9.45,
+   "fgm": 4.44,
+   "fta": 1.13,
+   "ftm": 0.91,
+   "fgPct": 47,
+   "ftPct": 80.1
+  },
+  "b": {
+   "min": 28,
+   "pts": 11.2,
+   "reb": 4.2,
+   "ast": 3.7,
+   "stl": 0.87,
+   "blk": 0.12,
+   "tpm": 1.89,
+   "tov": 1.58,
+   "fga": 9.45,
+   "fgm": 4.15,
+   "fta": 1.13,
+   "ftm": 0.97,
+   "fgPct": 43.9,
+   "ftPct": 85.4
+  }
  },
  "Robert Williams III": {
   "team": "POR",
@@ -2135,7 +5070,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.69,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 19,
+   "pts": 6.8,
+   "reb": 6.6,
+   "ast": 1.1,
+   "stl": 0.8,
+   "blk": 1.7,
+   "tpm": 0,
+   "tov": 0.9,
+   "fga": 4.54,
+   "fgm": 3.18,
+   "fta": 1.05,
+   "ftm": 0.71,
+   "fgPct": 70,
+   "ftPct": 68.3
+  },
+  "b": {
+   "min": 18,
+   "pts": 6.9,
+   "reb": 7.4,
+   "ast": 0.9,
+   "stl": 0.6,
+   "blk": 1.42,
+   "tpm": 0.11,
+   "tov": 0.82,
+   "fga": 4.54,
+   "fgm": 3.06,
+   "fta": 1.05,
+   "ftm": 0.66,
+   "fgPct": 67.5,
+   "ftPct": 62.6
+  }
  },
  "Micah Potter": {
   "team": "POR",
@@ -2157,7 +5124,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.07,
   "sources": "both",
   "spreadPts": 2.5,
-  "spreadMin": 7
+  "spreadMin": 7,
+  "a": {
+   "min": 10,
+   "pts": 3.7,
+   "reb": 2.6,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.4,
+   "fga": 4.29,
+   "fgm": 2.16,
+   "fta": 1.25,
+   "ftm": 1.08,
+   "fgPct": 50.5,
+   "ftPct": 86.3
+  },
+  "b": {
+   "min": 17,
+   "pts": 6.2,
+   "reb": 4.4,
+   "ast": 1.2,
+   "stl": 0.38,
+   "blk": 0.29,
+   "tpm": 0.97,
+   "tov": 0.79,
+   "fga": 4.29,
+   "fgm": 2.11,
+   "fta": 1.25,
+   "ftm": 1.05,
+   "fgPct": 49.3,
+   "ftPct": 83.9
+  }
  },
  "Branden Carlson": {
   "team": "POR",
@@ -2179,7 +5178,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.5,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 10,
+   "pts": 5,
+   "reb": 2.4,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.7,
+   "tpm": 0.8,
+   "tov": 0.3,
+   "fga": 4.93,
+   "fgm": 2.39,
+   "fta": 0.74,
+   "ftm": 0.51,
+   "fgPct": 48.4,
+   "ftPct": 69.3
+  },
+  "b": {
+   "min": 13,
+   "pts": 6.4,
+   "reb": 3.5,
+   "ast": 0.8,
+   "stl": 0.22,
+   "blk": 0.7,
+   "tpm": 0.76,
+   "tov": 0.41,
+   "fga": 4.93,
+   "fgm": 2.58,
+   "fta": 0.74,
+   "ftm": 0.49,
+   "fgPct": 52.2,
+   "ftPct": 66
+  }
  },
  "Vit Krejci": {
   "team": "POR",
@@ -2201,7 +5232,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.42,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 18,
+   "pts": 5.7,
+   "reb": 2.3,
+   "ast": 1.7,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 1.2,
+   "tov": 0.7,
+   "fga": 4.7,
+   "fgm": 2.13,
+   "fta": 0.56,
+   "ftm": 0.42,
+   "fgPct": 45.4,
+   "ftPct": 74.4
+  },
+  "b": {
+   "min": 16,
+   "pts": 5.7,
+   "reb": 1.9,
+   "ast": 1.1,
+   "stl": 0.51,
+   "blk": 0.24,
+   "tpm": 1.18,
+   "tov": 0.51,
+   "fga": 4.7,
+   "fgm": 2.06,
+   "fta": 0.56,
+   "ftm": 0.42,
+   "fgPct": 43.9,
+   "ftPct": 75
+  }
  },
  "Jeremy Sochan": {
   "team": "POR",
@@ -2223,7 +5286,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.63,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 2.3
+  "spreadMin": 2.3,
+  "a": {
+   "min": 10.7,
+   "pts": 4.3,
+   "reb": 2.5,
+   "ast": 1,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.6,
+   "fga": 3.82,
+   "fgm": 1.87,
+   "fta": 0.85,
+   "ftm": 0.61,
+   "fgPct": 49,
+   "ftPct": 71.8
+  },
+  "b": {
+   "min": 13,
+   "pts": 4.8,
+   "reb": 3.1,
+   "ast": 1.1,
+   "stl": 0.43,
+   "blk": 0.25,
+   "tpm": 0.31,
+   "tov": 0.54,
+   "fga": 3.82,
+   "fgm": 1.92,
+   "fta": 0.85,
+   "ftm": 0.65,
+   "fgPct": 50.4,
+   "ftPct": 76.4
+  }
  },
  "Sidy Cissoko": {
   "team": "POR",
@@ -2245,7 +5340,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.45,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 14,
+   "pts": 4,
+   "reb": 2.1,
+   "ast": 1.4,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.9,
+   "fga": 3.19,
+   "fgm": 1.37,
+   "fta": 0.73,
+   "ftm": 0.43,
+   "fgPct": 43.1,
+   "ftPct": 58.9
+  },
+  "b": {
+   "min": 18,
+   "pts": 3.7,
+   "reb": 2.1,
+   "ast": 1.4,
+   "stl": 0.68,
+   "blk": 0.34,
+   "tpm": 0.49,
+   "tov": 0.86,
+   "fga": 3.19,
+   "fgm": 1.36,
+   "fta": 0.73,
+   "ftm": 0.48,
+   "fgPct": 42.6,
+   "ftPct": 65.2
+  }
  },
  "Yang Hansen": {
   "team": "POR",
@@ -2267,7 +5394,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.69,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 6
+  "spreadMin": 6,
+  "a": {
+   "min": 15,
+   "pts": 4.8,
+   "reb": 3.3,
+   "ast": 1.1,
+   "stl": 0.1,
+   "blk": 0.5,
+   "tpm": 0.3,
+   "tov": 1.6,
+   "fga": 3.04,
+   "fgm": 0.94,
+   "fta": 0.89,
+   "ftm": 0.73,
+   "fgPct": 31,
+   "ftPct": 82.3
+  },
+  "b": {
+   "min": 9,
+   "pts": 3.4,
+   "reb": 2,
+   "ast": 0.4,
+   "stl": 0.17,
+   "blk": 0.36,
+   "tpm": 0.26,
+   "tov": 0.66,
+   "fga": 3.04,
+   "fgm": 1.24,
+   "fta": 0.89,
+   "ftm": 0.65,
+   "fgPct": 40.9,
+   "ftPct": 73.6
+  }
  },
  "Chris Youngblood": {
   "team": "POR",
@@ -2289,7 +5448,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.34,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 7,
+   "pts": 2.7,
+   "reb": 1.1,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.1,
+   "fga": 2.8,
+   "fgm": 0.98,
+   "fta": 0.39,
+   "ftm": 0.35,
+   "fgPct": 34.9,
+   "ftPct": 90
+  },
+  "b": {
+   "min": 7,
+   "pts": 3.3,
+   "reb": 0.9,
+   "ast": 0.6,
+   "stl": 0.17,
+   "blk": 0.1,
+   "tpm": 0.89,
+   "tov": 0.23,
+   "fga": 2.8,
+   "fgm": 1.06,
+   "fta": 0.39,
+   "ftm": 0.32,
+   "fgPct": 37.8,
+   "ftPct": 81.5
+  }
  },
  "John Tonje": {
   "team": "POR",
@@ -2311,7 +5502,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.59,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 7,
+   "pts": 2.5,
+   "reb": 1,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.5,
+   "tov": 0,
+   "fga": 2.7,
+   "fgm": 0.77,
+   "fta": 0.65,
+   "ftm": 0.65,
+   "fgPct": 28.6,
+   "ftPct": 100
+  },
+  "b": {
+   "min": 8,
+   "pts": 2.7,
+   "reb": 1.1,
+   "ast": 0.4,
+   "stl": 0.19,
+   "blk": 0.06,
+   "tpm": 0.43,
+   "tov": 0.35,
+   "fga": 2.7,
+   "fgm": 0.85,
+   "fta": 0.65,
+   "ftm": 0.53,
+   "fgPct": 31.5,
+   "ftPct": 82.3
+  }
  },
  "Jayson Kent": {
   "team": "POR",
@@ -2333,7 +5556,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.18,
   "sources": "both",
   "spreadPts": 1.7,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 7,
+   "pts": 3.1,
+   "reb": 1.6,
+   "ast": 0,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0.3,
+   "tov": 0,
+   "fga": 1.27,
+   "fgm": 0.72,
+   "fta": 0.2,
+   "ftm": 0.2,
+   "fgPct": 57.1,
+   "ftPct": 100
+  },
+  "b": {
+   "min": 4,
+   "pts": 1.4,
+   "reb": 0.7,
+   "ast": 0.1,
+   "stl": 0.1,
+   "blk": 0.05,
+   "tpm": 0.19,
+   "tov": 0.16,
+   "fga": 1.27,
+   "fgm": 0.53,
+   "fta": 0.2,
+   "ftm": 0.15,
+   "fgPct": 41.9,
+   "ftPct": 74.1
+  }
  },
  "Devin Booker": {
   "team": "PHO",
@@ -2355,7 +5610,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 6.88,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 33,
+   "pts": 24.8,
+   "reb": 4,
+   "ast": 5.7,
+   "stl": 0.8,
+   "blk": 0.3,
+   "tpm": 2,
+   "tov": 2.9,
+   "fga": 18.51,
+   "fgm": 8.76,
+   "fta": 7.82,
+   "ftm": 6.87,
+   "fgPct": 47.3,
+   "ftPct": 87.9
+  },
+  "b": {
+   "min": 34,
+   "pts": 26,
+   "reb": 3.8,
+   "ast": 6,
+   "stl": 0.7,
+   "blk": 0.21,
+   "tpm": 2.03,
+   "tov": 2.88,
+   "fga": 18.51,
+   "fgm": 8.52,
+   "fta": 7.82,
+   "ftm": 6.9,
+   "fgPct": 46,
+   "ftPct": 88.2
+  }
  },
  "Jalen Green": {
   "team": "PHO",
@@ -2377,7 +5664,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.44,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 30,
+   "pts": 19.1,
+   "reb": 4,
+   "ast": 3.1,
+   "stl": 0.8,
+   "blk": 0.3,
+   "tpm": 2.4,
+   "tov": 2.3,
+   "fga": 17.42,
+   "fgm": 7.35,
+   "fta": 3.14,
+   "ftm": 2.47,
+   "fgPct": 42.2,
+   "ftPct": 78.9
+  },
+  "b": {
+   "min": 32,
+   "pts": 19.9,
+   "reb": 4.6,
+   "ast": 3.4,
+   "stl": 0.92,
+   "blk": 0.33,
+   "tpm": 2.46,
+   "tov": 2.44,
+   "fga": 17.42,
+   "fgm": 7.51,
+   "fta": 3.14,
+   "ftm": 2.41,
+   "fgPct": 43.1,
+   "ftPct": 77
+  }
  },
  "Miles Bridges": {
   "team": "PHO",
@@ -2399,7 +5718,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.02,
   "sources": "both",
   "spreadPts": 1.7,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 31,
+   "pts": 16.2,
+   "reb": 6.3,
+   "ast": 2.9,
+   "stl": 0.7,
+   "blk": 0.7,
+   "tpm": 1.8,
+   "tov": 1.6,
+   "fga": 11.76,
+   "fgm": 5.36,
+   "fta": 2.47,
+   "ftm": 2.05,
+   "fgPct": 45.6,
+   "ftPct": 83
+  },
+  "b": {
+   "min": 30,
+   "pts": 14.5,
+   "reb": 6,
+   "ast": 3.4,
+   "stl": 0.62,
+   "blk": 0.43,
+   "tpm": 1.54,
+   "tov": 1.55,
+   "fga": 11.76,
+   "fgm": 5.47,
+   "fta": 2.47,
+   "ftm": 2,
+   "fgPct": 46.6,
+   "ftPct": 81
+  }
  },
  "Mark Williams": {
   "team": "PHO",
@@ -2421,7 +5772,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.93,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 23,
+   "pts": 11.8,
+   "reb": 8.3,
+   "ast": 1.3,
+   "stl": 0.8,
+   "blk": 1,
+   "tpm": 0,
+   "tov": 1.1,
+   "fga": 7.4,
+   "fgm": 4.65,
+   "fta": 2.52,
+   "ftm": 1.9,
+   "fgPct": 62.9,
+   "ftPct": 75.6
+  },
+  "b": {
+   "min": 23,
+   "pts": 11.4,
+   "reb": 7.9,
+   "ast": 0.7,
+   "stl": 0.71,
+   "blk": 0.95,
+   "tpm": 0,
+   "tov": 1.19,
+   "fga": 7.4,
+   "fgm": 4.73,
+   "fta": 2.52,
+   "ftm": 1.96,
+   "fgPct": 63.9,
+   "ftPct": 77.9
+  }
  },
  "Dillon Brooks": {
   "team": "PHO",
@@ -2443,7 +5826,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.8,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 30,
+   "pts": 15.9,
+   "reb": 3.3,
+   "ast": 2,
+   "stl": 1,
+   "blk": 0.2,
+   "tpm": 2,
+   "tov": 1.5,
+   "fga": 14.41,
+   "fgm": 6.07,
+   "fta": 2.16,
+   "ftm": 1.76,
+   "fgPct": 42.1,
+   "ftPct": 81.5
+  },
+  "b": {
+   "min": 29,
+   "pts": 15.7,
+   "reb": 3.5,
+   "ast": 1.7,
+   "stl": 0.83,
+   "blk": 0.18,
+   "tpm": 1.72,
+   "tov": 1.44,
+   "fga": 14.41,
+   "fgm": 6.07,
+   "fta": 2.16,
+   "ftm": 1.83,
+   "fgPct": 42.1,
+   "ftPct": 84.6
+  }
  },
  "Collin Gillespie": {
   "team": "PHO",
@@ -2465,7 +5880,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.46,
   "sources": "both",
   "spreadPts": 1.9,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 28,
+   "pts": 11.8,
+   "reb": 4,
+   "ast": 4.4,
+   "stl": 1.3,
+   "blk": 0.2,
+   "tpm": 2.5,
+   "tov": 1.4,
+   "fga": 8.9,
+   "fgm": 3.85,
+   "fta": 0.53,
+   "ftm": 0.43,
+   "fgPct": 43.2,
+   "ftPct": 80.7
+  },
+  "b": {
+   "min": 26,
+   "pts": 9.9,
+   "reb": 3.7,
+   "ast": 4,
+   "stl": 0.99,
+   "blk": 0.16,
+   "tpm": 2.4,
+   "tov": 1.23,
+   "fga": 8.9,
+   "fgm": 3.5,
+   "fta": 0.53,
+   "ftm": 0.48,
+   "fgPct": 39.3,
+   "ftPct": 90.6
+  }
  },
  "Jordan Goodwin": {
   "team": "PHO",
@@ -2487,7 +5934,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.5,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 20,
+   "pts": 5.9,
+   "reb": 4.1,
+   "ast": 1.8,
+   "stl": 0.9,
+   "blk": 0.3,
+   "tpm": 0.9,
+   "tov": 0.8,
+   "fga": 6.37,
+   "fgm": 2.07,
+   "fta": 0.68,
+   "ftm": 0.51,
+   "fgPct": 32.5,
+   "ftPct": 75
+  },
+  "b": {
+   "min": 21,
+   "pts": 7.3,
+   "reb": 4.3,
+   "ast": 1.9,
+   "stl": 1.32,
+   "blk": 0.22,
+   "tpm": 1.48,
+   "tov": 0.83,
+   "fga": 6.37,
+   "fgm": 2.65,
+   "fta": 0.68,
+   "ftm": 0.48,
+   "fgPct": 41.6,
+   "ftPct": 71.1
+  }
  },
  "Khaman Maluach": {
   "team": "PHO",
@@ -2509,7 +5988,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.18,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 20,
+   "pts": 6.8,
+   "reb": 6.5,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 1.6,
+   "tpm": 0.2,
+   "tov": 1.2,
+   "fga": 5.31,
+   "fgm": 2.83,
+   "fta": 1.65,
+   "ftm": 1.17,
+   "fgPct": 53.3,
+   "ftPct": 71
+  },
+  "b": {
+   "min": 18,
+   "pts": 7.5,
+   "reb": 6.3,
+   "ast": 0.4,
+   "stl": 0.26,
+   "blk": 1.41,
+   "tpm": 0.34,
+   "tov": 0.74,
+   "fga": 5.31,
+   "fgm": 2.96,
+   "fta": 1.65,
+   "ftm": 1.2,
+   "fgPct": 55.8,
+   "ftPct": 72.9
+  }
  },
  "Luke Kennard": {
   "team": "PHO",
@@ -2531,7 +6042,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.76,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 5
+  "spreadMin": 5,
+  "a": {
+   "min": 18,
+   "pts": 7.5,
+   "reb": 2.1,
+   "ast": 1.9,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 1.5,
+   "tov": 0.7,
+   "fga": 6.07,
+   "fgm": 2.87,
+   "fta": 0.84,
+   "ftm": 0.75,
+   "fgPct": 47.2,
+   "ftPct": 89.1
+  },
+  "b": {
+   "min": 23,
+   "pts": 8.2,
+   "reb": 2.6,
+   "ast": 2.9,
+   "stl": 0.71,
+   "blk": 0.14,
+   "tpm": 1.48,
+   "tov": 0.95,
+   "fga": 6.07,
+   "fgm": 2.96,
+   "fta": 0.84,
+   "ftm": 0.76,
+   "fgPct": 48.7,
+   "ftPct": 91
+  }
  },
  "Oso Ighodaro": {
   "team": "PHO",
@@ -2553,7 +6096,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.71,
   "sources": "both",
   "spreadPts": 1.5,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 17,
+   "pts": 4.6,
+   "reb": 3.8,
+   "ast": 1.4,
+   "stl": 0.6,
+   "blk": 0.5,
+   "tpm": 0,
+   "tov": 0.8,
+   "fga": 4.04,
+   "fgm": 2.55,
+   "fta": 1.46,
+   "ftm": 0.74,
+   "fgPct": 63,
+   "ftPct": 50.7
+  },
+  "b": {
+   "min": 20,
+   "pts": 6.1,
+   "reb": 4.3,
+   "ast": 2.3,
+   "stl": 0.72,
+   "blk": 0.7,
+   "tpm": 0,
+   "tov": 0.87,
+   "fga": 4.04,
+   "fgm": 2.69,
+   "fta": 1.46,
+   "ftm": 0.67,
+   "fgPct": 66.5,
+   "ftPct": 46.3
+  }
  },
  "Rasheer Fleming": {
   "team": "PHO",
@@ -2575,7 +6150,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.57,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 17,
+   "pts": 6,
+   "reb": 3.1,
+   "ast": 0.4,
+   "stl": 0.6,
+   "blk": 0.5,
+   "tpm": 1.1,
+   "tov": 0.7,
+   "fga": 5.31,
+   "fgm": 2.14,
+   "fta": 1.01,
+   "ftm": 0.56,
+   "fgPct": 40.3,
+   "ftPct": 55.9
+  },
+  "b": {
+   "min": 16,
+   "pts": 6.3,
+   "reb": 2.8,
+   "ast": 0.4,
+   "stl": 0.53,
+   "blk": 0.5,
+   "tpm": 1.1,
+   "tov": 0.68,
+   "fga": 5.31,
+   "fgm": 2.3,
+   "fta": 1.01,
+   "ftm": 0.58,
+   "fgPct": 43.3,
+   "ftPct": 57.3
+  }
  },
  "Ryan Dunn": {
   "team": "PHO",
@@ -2597,7 +6204,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.24,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 17,
+   "pts": 5.6,
+   "reb": 3.5,
+   "ast": 1,
+   "stl": 0.6,
+   "blk": 0.4,
+   "tpm": 0.8,
+   "tov": 0.6,
+   "fga": 3.41,
+   "fgm": 1.5,
+   "fta": 0.51,
+   "ftm": 0.25,
+   "fgPct": 44,
+   "ftPct": 48.8
+  },
+  "b": {
+   "min": 14,
+   "pts": 4,
+   "reb": 3.5,
+   "ast": 1.2,
+   "stl": 0.56,
+   "blk": 0.29,
+   "tpm": 0.57,
+   "tov": 0.56,
+   "fga": 3.41,
+   "fgm": 1.59,
+   "fta": 0.51,
+   "ftm": 0.24,
+   "fgPct": 46.6,
+   "ftPct": 46.5
+  }
  },
  "Jamaree Bouyea": {
   "team": "PHO",
@@ -2619,7 +6258,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.28,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 12,
+   "pts": 3.6,
+   "reb": 1.4,
+   "ast": 1.5,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 0.3,
+   "tov": 1,
+   "fga": 3.54,
+   "fgm": 1.57,
+   "fta": 0.42,
+   "ftm": 0.28,
+   "fgPct": 44.4,
+   "ftPct": 65.4
+  },
+  "b": {
+   "min": 11,
+   "pts": 3.6,
+   "reb": 1.4,
+   "ast": 1.6,
+   "stl": 0.47,
+   "blk": 0.25,
+   "tpm": 0.3,
+   "tov": 0.66,
+   "fga": 3.54,
+   "fgm": 1.53,
+   "fta": 0.42,
+   "ftm": 0.29,
+   "fgPct": 43.1,
+   "ftPct": 67.4
+  }
  },
  "Pat Spencer": {
   "team": "PHO",
@@ -2641,7 +6312,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.29,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 10,
+   "pts": 3.4,
+   "reb": 1.6,
+   "ast": 1.9,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.6,
+   "fga": 3.54,
+   "fgm": 1.5,
+   "fta": 0.39,
+   "ftm": 0.29,
+   "fgPct": 42.4,
+   "ftPct": 75
+  },
+  "b": {
+   "min": 11,
+   "pts": 3.8,
+   "reb": 1.4,
+   "ast": 1.8,
+   "stl": 0.41,
+   "blk": 0.05,
+   "tpm": 0.5,
+   "tov": 0.68,
+   "fga": 3.54,
+   "fgm": 1.48,
+   "fta": 0.39,
+   "ftm": 0.29,
+   "fgPct": 41.8,
+   "ftPct": 75.4
+  }
  },
  "Koa Peat": {
   "team": "PHO",
@@ -2663,7 +6366,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.55,
   "sources": "both",
   "spreadPts": 9.1,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 15,
+   "pts": 12.7,
+   "reb": 2.5,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0.2,
+   "tov": 0.5,
+   "fga": 3.13,
+   "fgm": 1.44,
+   "fta": 0.85,
+   "ftm": 0.54,
+   "fgPct": 45.9,
+   "ftPct": 63.5
+  },
+  "b": {
+   "min": 11,
+   "pts": 3.6,
+   "reb": 2,
+   "ast": 0.8,
+   "stl": 0.32,
+   "blk": 0.2,
+   "tpm": 0.05,
+   "tov": 0.77,
+   "fga": 3.13,
+   "fgm": 1.52,
+   "fta": 0.85,
+   "ftm": 0.56,
+   "fgPct": 48.5,
+   "ftPct": 66.2
+  }
  },
  "Koby Brea": {
   "team": "PHO",
@@ -2685,7 +6420,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.17,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 7,
+   "pts": 3.8,
+   "reb": 0.7,
+   "ast": 0.8,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 1.1,
+   "tov": 0.3,
+   "fga": 2.74,
+   "fgm": 1.14,
+   "fta": 0.19,
+   "ftm": 0.19,
+   "fgPct": 41.7,
+   "ftPct": 100
+  },
+  "b": {
+   "min": 8,
+   "pts": 3.3,
+   "reb": 0.8,
+   "ast": 0.5,
+   "stl": 0.14,
+   "blk": 0.07,
+   "tpm": 0.88,
+   "tov": 0.33,
+   "fga": 2.74,
+   "fgm": 1.14,
+   "fta": 0.19,
+   "ftm": 0.15,
+   "fgPct": 41.8,
+   "ftPct": 80.1
+  }
  },
  "CJ Huntley": {
   "team": "PHO",
@@ -2707,7 +6474,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.11,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 7,
+   "pts": 2.1,
+   "reb": 0.9,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 1.99,
+   "fgm": 1.09,
+   "fta": 0.34,
+   "ftm": 0,
+   "fgPct": 54.5,
+   "ftPct": 0
+  },
+  "b": {
+   "min": 7,
+   "pts": 2.5,
+   "reb": 1.2,
+   "ast": 0.2,
+   "stl": 0.15,
+   "blk": 0.12,
+   "tpm": 0.13,
+   "tov": 0.21,
+   "fga": 1.99,
+   "fgm": 1.06,
+   "fta": 0.34,
+   "ftm": 0.23,
+   "fgPct": 53,
+   "ftPct": 67.2
+  }
  },
  "Joel Embiid": {
   "team": "PHI",
@@ -2729,7 +6528,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 7.71,
   "sources": "both",
   "spreadPts": 14,
-  "spreadMin": 18
+  "spreadMin": 18,
+  "a": {
+   "min": 15,
+   "pts": 13,
+   "reb": 4.7,
+   "ast": 1.9,
+   "stl": 0.4,
+   "blk": 0.6,
+   "tpm": 0.6,
+   "tov": 1.5,
+   "fga": 18.05,
+   "fgm": 8.92,
+   "fta": 9.03,
+   "ftm": 7.65,
+   "fgPct": 49.4,
+   "ftPct": 84.8
+  },
+  "b": {
+   "min": 33,
+   "pts": 27,
+   "reb": 7.9,
+   "ast": 3.7,
+   "stl": 0.63,
+   "blk": 1.18,
+   "tpm": 1.7,
+   "tov": 2.64,
+   "fga": 18.05,
+   "fgm": 8.76,
+   "fta": 9.03,
+   "ftm": 7.76,
+   "fgPct": 48.5,
+   "ftPct": 86
+  }
  },
  "Tyrese Maxey": {
   "team": "PHI",
@@ -2751,7 +6582,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.04,
   "sources": "both",
   "spreadPts": 2.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 35,
+   "pts": 22.7,
+   "reb": 3.4,
+   "ast": 5.2,
+   "stl": 1.2,
+   "blk": 0.5,
+   "tpm": 2.5,
+   "tov": 1.8,
+   "fga": 19.15,
+   "fgm": 8.77,
+   "fta": 4.6,
+   "ftm": 4.02,
+   "fgPct": 45.8,
+   "ftPct": 87.4
+  },
+  "b": {
+   "min": 37,
+   "pts": 25,
+   "reb": 4,
+   "ast": 5.2,
+   "stl": 1.48,
+   "blk": 0.54,
+   "tpm": 2.95,
+   "tov": 1.95,
+   "fga": 19.15,
+   "fgm": 8.96,
+   "fta": 4.6,
+   "ftm": 4.07,
+   "fgPct": 46.8,
+   "ftPct": 88.6
+  }
  },
  "Jaylen Brown": {
   "team": "PHI",
@@ -2773,7 +6636,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.18,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 34,
+   "pts": 23.5,
+   "reb": 6.1,
+   "ast": 3.7,
+   "stl": 1.1,
+   "blk": 0.4,
+   "tpm": 2.1,
+   "tov": 2.7,
+   "fga": 18.18,
+   "fgm": 8.69,
+   "fta": 5.45,
+   "ftm": 4.11,
+   "fgPct": 47.8,
+   "ftPct": 75.3
+  },
+  "b": {
+   "min": 36,
+   "pts": 24,
+   "reb": 7.2,
+   "ast": 4.1,
+   "stl": 1.14,
+   "blk": 0.38,
+   "tpm": 2.11,
+   "tov": 2.58,
+   "fga": 18.18,
+   "fgm": 8.84,
+   "fta": 5.45,
+   "ftm": 4.26,
+   "fgPct": 48.6,
+   "ftPct": 78.1
+  }
  },
  "LeBron James": {
   "team": "PHI",
@@ -2795,7 +6690,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.29,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 6
+  "spreadMin": 6,
+  "a": {
+   "min": 28,
+   "pts": 20.4,
+   "reb": 6.1,
+   "ast": 6.3,
+   "stl": 0.9,
+   "blk": 0.5,
+   "tpm": 1.6,
+   "tov": 2.8,
+   "fga": 14.88,
+   "fgm": 7.63,
+   "fta": 4.46,
+   "ftm": 3.26,
+   "fgPct": 51.3,
+   "ftPct": 73
+  },
+  "b": {
+   "min": 34,
+   "pts": 19.7,
+   "reb": 6.9,
+   "ast": 8.9,
+   "stl": 1.22,
+   "blk": 0.57,
+   "tpm": 1.64,
+   "tov": 3.21,
+   "fga": 14.88,
+   "fgm": 7.36,
+   "fta": 4.46,
+   "ftm": 3.31,
+   "fgPct": 49.5,
+   "ftPct": 74.2
+  }
  },
  "VJ Edgecombe": {
   "team": "PHI",
@@ -2817,7 +6744,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.19,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 33,
+   "pts": 15.1,
+   "reb": 5.3,
+   "ast": 4,
+   "stl": 1.3,
+   "blk": 0.5,
+   "tpm": 1.9,
+   "tov": 1.7,
+   "fga": 12.02,
+   "fgm": 5.26,
+   "fta": 1.44,
+   "ftm": 1.18,
+   "fgPct": 43.8,
+   "ftPct": 81.8
+  },
+  "b": {
+   "min": 34,
+   "pts": 14.2,
+   "reb": 5.8,
+   "ast": 3.1,
+   "stl": 1.57,
+   "blk": 0.57,
+   "tpm": 1.95,
+   "tov": 1.43,
+   "fga": 12.02,
+   "fgm": 5.51,
+   "fta": 1.44,
+   "ftm": 1.2,
+   "fgPct": 45.8,
+   "ftPct": 83
+  }
  },
  "Anfernee Simons": {
   "team": "PHI",
@@ -2839,7 +6798,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.85,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 24,
+   "pts": 13.3,
+   "reb": 2.3,
+   "ast": 2.7,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 2.2,
+   "tov": 1.4,
+   "fga": 9.82,
+   "fgm": 4.24,
+   "fta": 0.98,
+   "ftm": 0.82,
+   "fgPct": 43.2,
+   "ftPct": 83.2
+  },
+  "b": {
+   "min": 23,
+   "pts": 11.7,
+   "reb": 2.3,
+   "ast": 1.7,
+   "stl": 0.48,
+   "blk": 0.1,
+   "tpm": 2.34,
+   "tov": 1.11,
+   "fga": 9.82,
+   "fgm": 4.25,
+   "fta": 0.98,
+   "ftm": 0.88,
+   "fgPct": 43.2,
+   "ftPct": 89.6
+  }
  },
  "Dean Wade": {
   "team": "PHI",
@@ -2861,7 +6852,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.13,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 22,
+   "pts": 5.8,
+   "reb": 4.2,
+   "ast": 1.2,
+   "stl": 0.7,
+   "blk": 0.5,
+   "tpm": 1.2,
+   "tov": 0.4,
+   "fga": 3.82,
+   "fgm": 1.74,
+   "fta": 0.19,
+   "ftm": 0.12,
+   "fgPct": 45.4,
+   "ftPct": 63.3
+  },
+  "b": {
+   "min": 23,
+   "pts": 4.6,
+   "reb": 4.8,
+   "ast": 1.1,
+   "stl": 0.73,
+   "blk": 0.39,
+   "tpm": 1.09,
+   "tov": 0.29,
+   "fga": 3.82,
+   "fgm": 1.67,
+   "fta": 0.19,
+   "ftm": 0.13,
+   "fgPct": 43.7,
+   "ftPct": 69.8
+  }
  },
  "Adem Bona": {
   "team": "PHI",
@@ -2883,7 +6906,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.92,
   "sources": "both",
   "spreadPts": 2.5,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 21,
+   "pts": 6.8,
+   "reb": 5.5,
+   "ast": 0.6,
+   "stl": 0.6,
+   "blk": 1.5,
+   "tpm": 0,
+   "tov": 1.2,
+   "fga": 2.61,
+   "fgm": 1.71,
+   "fta": 1.3,
+   "ftm": 0.9,
+   "fgPct": 65.4,
+   "ftPct": 68.7
+  },
+  "b": {
+   "min": 18,
+   "pts": 4.3,
+   "reb": 4.6,
+   "ast": 0.5,
+   "stl": 0.45,
+   "blk": 0.98,
+   "tpm": 0,
+   "tov": 0.91,
+   "fga": 2.61,
+   "fgm": 1.66,
+   "fta": 1.3,
+   "ftm": 0.93,
+   "fgPct": 63.5,
+   "ftPct": 71.6
+  }
  },
  "Dominick Barlow": {
   "team": "PHI",
@@ -2905,7 +6960,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.62,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 20,
+   "pts": 6.8,
+   "reb": 4.6,
+   "ast": 1.2,
+   "stl": 0.6,
+   "blk": 0.8,
+   "tpm": 0.2,
+   "tov": 0.5,
+   "fga": 2.99,
+   "fgm": 1.58,
+   "fta": 0.9,
+   "ftm": 0.61,
+   "fgPct": 52.7,
+   "ftPct": 68.5
+  },
+  "b": {
+   "min": 18,
+   "pts": 4.1,
+   "reb": 3.7,
+   "ast": 0.8,
+   "stl": 0.62,
+   "blk": 0.58,
+   "tpm": 0.12,
+   "tov": 0.54,
+   "fga": 2.99,
+   "fgm": 1.68,
+   "fta": 0.9,
+   "ftm": 0.63,
+   "fgPct": 56.2,
+   "ftPct": 69.8
+  }
  },
  "Kentavious Caldwell-Pope": {
   "team": "PHI",
@@ -2927,7 +7014,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.56,
   "sources": "both",
   "spreadPts": 2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 19,
+   "pts": 6.9,
+   "reb": 1.8,
+   "ast": 1.5,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.7,
+   "fga": 4.26,
+   "fgm": 1.86,
+   "fta": 0.64,
+   "ftm": 0.55,
+   "fgPct": 43.7,
+   "ftPct": 86.7
+  },
+  "b": {
+   "min": 17,
+   "pts": 4.9,
+   "reb": 1.8,
+   "ast": 1.3,
+   "stl": 0.62,
+   "blk": 0.15,
+   "tpm": 0.91,
+   "tov": 0.61,
+   "fga": 4.26,
+   "fgm": 1.73,
+   "fta": 0.64,
+   "ftm": 0.57,
+   "fgPct": 40.7,
+   "ftPct": 88.6
+  }
  },
  "Justin Edwards": {
   "team": "PHI",
@@ -2949,7 +7068,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.29,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 15,
+   "pts": 5.9,
+   "reb": 1.7,
+   "ast": 1.1,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 1,
+   "tov": 0.6,
+   "fga": 4.05,
+   "fgm": 1.83,
+   "fta": 0.36,
+   "ftm": 0.28,
+   "fgPct": 45.1,
+   "ftPct": 77.1
+  },
+  "b": {
+   "min": 13,
+   "pts": 4.8,
+   "reb": 1.1,
+   "ast": 0.7,
+   "stl": 0.77,
+   "blk": 0.17,
+   "tpm": 0.83,
+   "tov": 0.41,
+   "fga": 4.05,
+   "fgm": 1.84,
+   "fta": 0.36,
+   "ftm": 0.29,
+   "fgPct": 45.4,
+   "ftPct": 79.7
+  }
  },
  "Labaron Philon Jr.": {
   "team": "PHI",
@@ -2971,7 +7122,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.65,
   "sources": "both",
   "spreadPts": 11,
-  "spreadMin": 10
+  "spreadMin": 10,
+  "a": {
+   "min": 20,
+   "pts": 15.2,
+   "reb": 2,
+   "ast": 2,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.8,
+   "tov": 1.2,
+   "fga": 3.54,
+   "fgm": 1.47,
+   "fta": 0.81,
+   "ftm": 0.67,
+   "fgPct": 41.5,
+   "ftPct": 83
+  },
+  "b": {
+   "min": 10,
+   "pts": 4.2,
+   "reb": 1.2,
+   "ast": 1.5,
+   "stl": 0.44,
+   "blk": 0.08,
+   "tpm": 0.62,
+   "tov": 0.67,
+   "fga": 3.54,
+   "fgm": 1.46,
+   "fta": 0.81,
+   "ftm": 0.62,
+   "fgPct": 41.2,
+   "ftPct": 76.7
+  }
  },
  "Jabari Walker": {
   "team": "PHI",
@@ -2993,7 +7176,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.59,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 12,
+   "pts": 4.6,
+   "reb": 3.2,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.5,
+   "fga": 2.71,
+   "fgm": 1.27,
+   "fta": 0.81,
+   "ftm": 0.59,
+   "fgPct": 46.9,
+   "ftPct": 72.9
+  },
+  "b": {
+   "min": 10,
+   "pts": 3.7,
+   "reb": 2.2,
+   "ast": 0.5,
+   "stl": 0.29,
+   "blk": 0.13,
+   "tpm": 0.38,
+   "tov": 0.38,
+   "fga": 2.71,
+   "fgm": 1.35,
+   "fta": 0.81,
+   "ftm": 0.59,
+   "fgPct": 49.6,
+   "ftPct": 72.7
+  }
  },
  "Ariel Hukporti": {
   "team": "PHI",
@@ -3015,7 +7230,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.34,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 16,
+   "pts": 3.6,
+   "reb": 4.4,
+   "ast": 0.9,
+   "stl": 0.2,
+   "blk": 1,
+   "tpm": 0,
+   "tov": 1.3,
+   "fga": 1.74,
+   "fgm": 1.07,
+   "fta": 0.51,
+   "ftm": 0.32,
+   "fgPct": 61.7,
+   "ftPct": 63.3
+  },
+  "b": {
+   "min": 12,
+   "pts": 2.4,
+   "reb": 3.9,
+   "ast": 0.7,
+   "stl": 0.18,
+   "blk": 0.66,
+   "tpm": 0.02,
+   "tov": 0.88,
+   "fga": 1.74,
+   "fgm": 1,
+   "fta": 0.51,
+   "ftm": 0.37,
+   "fgPct": 57.6,
+   "ftPct": 73.1
+  }
  },
  "Rayan Rupert": {
   "team": "PHI",
@@ -3037,7 +7284,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.46,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 7,
+   "pts": 2.1,
+   "reb": 1.1,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 2.92,
+   "fgm": 1.13,
+   "fta": 0.58,
+   "ftm": 0.45,
+   "fgPct": 38.8,
+   "ftPct": 76.9
+  },
+  "b": {
+   "min": 10,
+   "pts": 3.3,
+   "reb": 1.6,
+   "ast": 0.6,
+   "stl": 0.42,
+   "blk": 0.09,
+   "tpm": 0.43,
+   "tov": 0.52,
+   "fga": 2.92,
+   "fgm": 1.22,
+   "fta": 0.58,
+   "ftm": 0.48,
+   "fgPct": 41.6,
+   "ftPct": 82.1
+  }
  },
  "Caleb Love": {
   "team": "PHI",
@@ -3059,7 +7338,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.21,
   "sources": "both",
   "spreadPts": 4.9,
-  "spreadMin": 10
+  "spreadMin": 10,
+  "a": {
+   "min": 17,
+   "pts": 8.5,
+   "reb": 1.9,
+   "ast": 2.1,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 1.6,
+   "tov": 1,
+   "fga": 3.36,
+   "fgm": 1.3,
+   "fta": 0.28,
+   "ftm": 0.21,
+   "fgPct": 38.8,
+   "ftPct": 73.5
+  },
+  "b": {
+   "min": 7,
+   "pts": 3.6,
+   "reb": 0.6,
+   "ast": 0.6,
+   "stl": 0.16,
+   "blk": 0.03,
+   "tpm": 0.68,
+   "tov": 0.45,
+   "fga": 3.36,
+   "fgm": 1.36,
+   "fta": 0.28,
+   "ftm": 0.21,
+   "fgPct": 40.6,
+   "ftPct": 73.6
+  }
  },
  "Paolo Banchero": {
   "team": "ORL",
@@ -3081,7 +7392,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 6.48,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 35,
+   "pts": 23.4,
+   "reb": 7.7,
+   "ast": 4.9,
+   "stl": 0.8,
+   "blk": 0.6,
+   "tpm": 1.5,
+   "tov": 3,
+   "fga": 15.62,
+   "fgm": 7.04,
+   "fta": 8.59,
+   "ftm": 6.38,
+   "fgPct": 45.1,
+   "ftPct": 74.3
+  },
+  "b": {
+   "min": 35,
+   "pts": 22.9,
+   "reb": 7.7,
+   "ast": 5.5,
+   "stl": 0.82,
+   "blk": 0.45,
+   "tpm": 1.13,
+   "tov": 3.27,
+   "fga": 15.62,
+   "fgm": 7.62,
+   "fta": 8.59,
+   "ftm": 6.57,
+   "fgPct": 48.8,
+   "ftPct": 76.5
+  }
  },
  "Franz Wagner": {
   "team": "ORL",
@@ -3103,7 +7446,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.48,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 34,
+   "pts": 21.6,
+   "reb": 5.4,
+   "ast": 4,
+   "stl": 1.1,
+   "blk": 0.4,
+   "tpm": 1.6,
+   "tov": 2,
+   "fga": 15.3,
+   "fgm": 7.25,
+   "fta": 5.31,
+   "ftm": 4.49,
+   "fgPct": 47.4,
+   "ftPct": 84.7
+  },
+  "b": {
+   "min": 32,
+   "pts": 20.8,
+   "reb": 5.2,
+   "ast": 3.8,
+   "stl": 1.03,
+   "blk": 0.34,
+   "tpm": 1.49,
+   "tov": 1.89,
+   "fga": 15.3,
+   "fgm": 7.42,
+   "fta": 5.31,
+   "ftm": 4.46,
+   "fgPct": 48.5,
+   "ftPct": 84.1
+  }
  },
  "Desmond Bane": {
   "team": "ORL",
@@ -3125,7 +7500,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.77,
   "sources": "both",
   "spreadPts": 1.9,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 34,
+   "pts": 20.4,
+   "reb": 5.1,
+   "ast": 4.4,
+   "stl": 1.1,
+   "blk": 0.4,
+   "tpm": 2.7,
+   "tov": 2.1,
+   "fga": 12.92,
+   "fgm": 6.15,
+   "fta": 4.23,
+   "ftm": 3.76,
+   "fgPct": 47.6,
+   "ftPct": 88.9
+  },
+  "b": {
+   "min": 32,
+   "pts": 18.5,
+   "reb": 3.6,
+   "ast": 3.5,
+   "stl": 1.15,
+   "blk": 0.41,
+   "tpm": 2.06,
+   "tov": 1.63,
+   "fga": 12.92,
+   "fgm": 6.35,
+   "fta": 4.23,
+   "ftm": 3.79,
+   "fgPct": 49.1,
+   "ftPct": 89.5
+  }
  },
  "Jalen Suggs": {
   "team": "ORL",
@@ -3147,7 +7554,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.13,
   "sources": "both",
   "spreadPts": 2.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 30,
+   "pts": 14.7,
+   "reb": 4,
+   "ast": 4.5,
+   "stl": 1.6,
+   "blk": 0.8,
+   "tpm": 2,
+   "tov": 2.8,
+   "fga": 10.53,
+   "fgm": 4.4,
+   "fta": 1.37,
+   "ftm": 1.11,
+   "fgPct": 41.8,
+   "ftPct": 80.9
+  },
+  "b": {
+   "min": 28,
+   "pts": 12.4,
+   "reb": 3.7,
+   "ast": 5.4,
+   "stl": 1.72,
+   "blk": 0.65,
+   "tpm": 2.21,
+   "tov": 2.63,
+   "fga": 10.53,
+   "fgm": 4.54,
+   "fta": 1.37,
+   "ftm": 1.15,
+   "fgPct": 43.1,
+   "ftPct": 83.8
+  }
  },
  "Anthony Black": {
   "team": "ORL",
@@ -3169,7 +7608,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.28,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 29,
+   "pts": 11.9,
+   "reb": 3.6,
+   "ast": 3.4,
+   "stl": 1.2,
+   "blk": 0.7,
+   "tpm": 1.2,
+   "tov": 1.9,
+   "fga": 10.39,
+   "fgm": 4.57,
+   "fta": 3.12,
+   "ftm": 2.25,
+   "fgPct": 44,
+   "ftPct": 72.2
+  },
+  "b": {
+   "min": 26,
+   "pts": 13.1,
+   "reb": 3,
+   "ast": 2.8,
+   "stl": 1.3,
+   "blk": 0.67,
+   "tpm": 1.41,
+   "tov": 1.44,
+   "fga": 10.39,
+   "fgm": 4.68,
+   "fta": 3.12,
+   "ftm": 2.32,
+   "fgPct": 45.1,
+   "ftPct": 74.3
+  }
  },
  "Wendell Carter Jr.": {
   "team": "ORL",
@@ -3191,7 +7662,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.75,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 28,
+   "pts": 11.8,
+   "reb": 8.1,
+   "ast": 2,
+   "stl": 0.7,
+   "blk": 0.7,
+   "tpm": 0.7,
+   "tov": 1.5,
+   "fga": 7.26,
+   "fgm": 3.67,
+   "fta": 3.56,
+   "ftm": 2.64,
+   "fgPct": 50.6,
+   "ftPct": 74.2
+  },
+  "b": {
+   "min": 28,
+   "pts": 11,
+   "reb": 7.1,
+   "ast": 1.5,
+   "stl": 0.65,
+   "blk": 0.54,
+   "tpm": 0.7,
+   "tov": 1.25,
+   "fga": 7.26,
+   "fgm": 3.72,
+   "fta": 3.56,
+   "ftm": 2.85,
+   "fgPct": 51.3,
+   "ftPct": 80.2
+  }
  },
  "Nikola Vucevic": {
   "team": "ORL",
@@ -3213,7 +7716,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.96,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 20,
+   "pts": 11.6,
+   "reb": 6.5,
+   "ast": 2.2,
+   "stl": 0.5,
+   "blk": 0.5,
+   "tpm": 1,
+   "tov": 1,
+   "fga": 10.29,
+   "fgm": 5.12,
+   "fta": 1.17,
+   "ftm": 0.95,
+   "fgPct": 49.8,
+   "ftPct": 80.7
+  },
+  "b": {
+   "min": 22,
+   "pts": 12.2,
+   "reb": 6.8,
+   "ast": 2.7,
+   "stl": 0.45,
+   "blk": 0.62,
+   "tpm": 1.45,
+   "tov": 1.08,
+   "fga": 10.29,
+   "fgm": 4.89,
+   "fta": 1.17,
+   "ftm": 0.98,
+   "fgPct": 47.5,
+   "ftPct": 83.8
+  }
  },
  "Tristan Da Silva": {
   "team": "ORL",
@@ -3235,7 +7770,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.46,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 24,
+   "pts": 8.7,
+   "reb": 3.6,
+   "ast": 1.6,
+   "stl": 0.7,
+   "blk": 0.3,
+   "tpm": 1.3,
+   "tov": 0.8,
+   "fga": 7.65,
+   "fgm": 3.3,
+   "fta": 1.68,
+   "ftm": 1.48,
+   "fgPct": 43.2,
+   "ftPct": 87.9
+  },
+  "b": {
+   "min": 24,
+   "pts": 10.1,
+   "reb": 3.5,
+   "ast": 1.7,
+   "stl": 0.81,
+   "blk": 0.36,
+   "tpm": 1.26,
+   "tov": 0.82,
+   "fga": 7.65,
+   "fgm": 3.68,
+   "fta": 1.68,
+   "ftm": 1.45,
+   "fgPct": 48.2,
+   "ftPct": 86
+  }
  },
  "Noah Penda": {
   "team": "ORL",
@@ -3257,7 +7824,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.91,
   "sources": "both",
   "spreadPts": 1.8,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 15,
+   "pts": 4.5,
+   "reb": 3.7,
+   "ast": 1.4,
+   "stl": 0.6,
+   "blk": 0.4,
+   "tpm": 0.6,
+   "tov": 0.8,
+   "fga": 5.06,
+   "fgm": 2.04,
+   "fta": 1.27,
+   "ftm": 0.87,
+   "fgPct": 40.4,
+   "ftPct": 68.8
+  },
+  "b": {
+   "min": 17,
+   "pts": 6.3,
+   "reb": 3.3,
+   "ast": 1.8,
+   "stl": 0.58,
+   "blk": 0.39,
+   "tpm": 0.99,
+   "tov": 0.87,
+   "fga": 5.06,
+   "fgm": 2.16,
+   "fta": 1.27,
+   "ftm": 0.95,
+   "fgPct": 42.8,
+   "ftPct": 74.5
+  }
  },
  "Jamal Cain": {
   "team": "ORL",
@@ -3279,7 +7878,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.02,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 17,
+   "pts": 6.9,
+   "reb": 2.9,
+   "ast": 0.8,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.8,
+   "tov": 0.6,
+   "fga": 4.59,
+   "fgm": 2.16,
+   "fta": 1.29,
+   "ftm": 0.99,
+   "fgPct": 47,
+   "ftPct": 76.8
+  },
+  "b": {
+   "min": 16,
+   "pts": 6.5,
+   "reb": 2.7,
+   "ast": 0.9,
+   "stl": 0.51,
+   "blk": 0.2,
+   "tpm": 0.87,
+   "tov": 0.64,
+   "fga": 4.59,
+   "fgm": 2.3,
+   "fta": 1.29,
+   "ftm": 1.05,
+   "fgPct": 50,
+   "ftPct": 81.5
+  }
  },
  "Goga Bitadze": {
   "team": "ORL",
@@ -3301,7 +7932,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.97,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 15,
+   "pts": 5.7,
+   "reb": 4.4,
+   "ast": 1.2,
+   "stl": 0.5,
+   "blk": 1.1,
+   "tpm": 0.2,
+   "tov": 0.7,
+   "fga": 3.04,
+   "fgm": 1.69,
+   "fta": 1.43,
+   "ftm": 0.96,
+   "fgPct": 55.5,
+   "ftPct": 67.3
+  },
+  "b": {
+   "min": 13,
+   "pts": 5,
+   "reb": 4.4,
+   "ast": 1.1,
+   "stl": 0.44,
+   "blk": 0.66,
+   "tpm": 0.02,
+   "tov": 0.61,
+   "fga": 3.04,
+   "fgm": 2,
+   "fta": 1.43,
+   "ftm": 0.98,
+   "fgPct": 66,
+   "ftPct": 68.3
+  }
  },
  "Jase Richardson": {
   "team": "ORL",
@@ -3323,7 +7986,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.94,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 16,
+   "pts": 6.5,
+   "reb": 1.7,
+   "ast": 1.6,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 0.7,
+   "fga": 4.46,
+   "fgm": 2.11,
+   "fta": 1.25,
+   "ftm": 0.9,
+   "fgPct": 47.3,
+   "ftPct": 71.7
+  },
+  "b": {
+   "min": 14,
+   "pts": 6.1,
+   "reb": 1.6,
+   "ast": 1.2,
+   "stl": 0.51,
+   "blk": 0.08,
+   "tpm": 0.58,
+   "tov": 0.48,
+   "fga": 4.46,
+   "fgm": 2.26,
+   "fta": 1.25,
+   "ftm": 0.99,
+   "fgPct": 50.7,
+   "ftPct": 79.2
+  }
  },
  "Jonathan Isaac": {
   "team": "ORL",
@@ -3345,7 +8040,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.79,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 10,
+   "pts": 3.6,
+   "reb": 2.7,
+   "ast": 0.4,
+   "stl": 0.6,
+   "blk": 0.6,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 2.46,
+   "fgm": 1.08,
+   "fta": 1.18,
+   "ftm": 0.8,
+   "fgPct": 43.9,
+   "ftPct": 67.9
+  },
+  "b": {
+   "min": 11,
+   "pts": 3.1,
+   "reb": 2.6,
+   "ast": 0.6,
+   "stl": 0.47,
+   "blk": 0.7,
+   "tpm": 0.14,
+   "tov": 0.35,
+   "fga": 2.46,
+   "fgm": 1.08,
+   "fta": 1.18,
+   "ftm": 0.78,
+   "fgPct": 44,
+   "ftPct": 66.1
+  }
  },
  "Jevon Carter": {
   "team": "ORL",
@@ -3367,7 +8094,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.16,
   "sources": "both",
   "spreadPts": 2.3,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 18,
+   "pts": 6.6,
+   "reb": 2,
+   "ast": 1.9,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 1.5,
+   "tov": 0.7,
+   "fga": 4.17,
+   "fgm": 1.61,
+   "fta": 0.2,
+   "ftm": 0.16,
+   "fgPct": 38.7,
+   "ftPct": 79.5
+  },
+  "b": {
+   "min": 14,
+   "pts": 4.3,
+   "reb": 1.3,
+   "ast": 1.4,
+   "stl": 0.59,
+   "blk": 0.18,
+   "tpm": 0.98,
+   "tov": 0.54,
+   "fga": 4.17,
+   "fgm": 1.58,
+   "fta": 0.2,
+   "ftm": 0.16,
+   "fgPct": 37.9,
+   "ftPct": 77.7
+  }
  },
  "Izaiyah Nelson": {
   "team": "ORL",
@@ -3389,7 +8148,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.31,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 6,
+   "pts": 1.7,
+   "reb": 1.4,
+   "ast": 0.2,
+   "stl": 0.19,
+   "blk": 0.31,
+   "tpm": 0.05,
+   "tov": 0.31,
+   "fga": 1.41,
+   "fgm": 0.69,
+   "fta": 0.45,
+   "ftm": 0.31,
+   "fgPct": 49.1,
+   "ftPct": 69.7
+  }
  },
  "Colin Castleton": {
   "team": "ORL",
@@ -3411,7 +8187,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.38,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 7,
+   "pts": 2,
+   "reb": 2.1,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 1.53,
+   "fgm": 0.71,
+   "fta": 0.46,
+   "ftm": 0.41,
+   "fgPct": 46.6,
+   "ftPct": 89.9
+  },
+  "b": {
+   "min": 6,
+   "pts": 1.9,
+   "reb": 1.6,
+   "ast": 0.3,
+   "stl": 0.13,
+   "blk": 0.18,
+   "tpm": 0,
+   "tov": 0.33,
+   "fga": 1.53,
+   "fgm": 0.77,
+   "fta": 0.46,
+   "ftm": 0.36,
+   "fgPct": 50,
+   "ftPct": 77.8
+  }
  },
  "Alex Morales": {
   "team": "ORL",
@@ -3433,7 +8241,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.36,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 7,
+   "pts": 2.4,
+   "reb": 0.9,
+   "ast": 1.2,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 1.2,
+   "fga": 1.59,
+   "fgm": 0.68,
+   "fta": 0.41,
+   "ftm": 0.41,
+   "fgPct": 42.9,
+   "ftPct": 100
+  },
+  "b": {
+   "min": 5,
+   "pts": 1.7,
+   "reb": 0.7,
+   "ast": 0.7,
+   "stl": 0.18,
+   "blk": 0.05,
+   "tpm": 0.12,
+   "tov": 0.36,
+   "fga": 1.59,
+   "fgm": 0.65,
+   "fta": 0.41,
+   "ftm": 0.3,
+   "fgPct": 40.9,
+   "ftPct": 73.3
+  }
  },
  "Shai Gilgeous-Alexander": {
   "team": "OKC",
@@ -3455,7 +8295,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 7.7,
   "sources": "both",
   "spreadPts": 2.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 34,
+   "pts": 26.8,
+   "reb": 4.8,
+   "ast": 5.7,
+   "stl": 1.4,
+   "blk": 0.8,
+   "tpm": 1.5,
+   "tov": 2.4,
+   "fga": 18.91,
+   "fgm": 9.68,
+   "fta": 8.88,
+   "ftm": 7.66,
+   "fgPct": 51.2,
+   "ftPct": 86.3
+  },
+  "b": {
+   "min": 33,
+   "pts": 29.6,
+   "reb": 3.9,
+   "ast": 6.2,
+   "stl": 1.37,
+   "blk": 0.69,
+   "tpm": 1.82,
+   "tov": 2.13,
+   "fga": 18.91,
+   "fgm": 10.04,
+   "fta": 8.88,
+   "ftm": 7.73,
+   "fgPct": 53.1,
+   "ftPct": 87
+  }
  },
  "Jalen Williams": {
   "team": "OKC",
@@ -3477,7 +8349,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.02,
   "sources": "both",
   "spreadPts": 1.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 32,
+   "pts": 19.2,
+   "reb": 5,
+   "ast": 5.1,
+   "stl": 1.4,
+   "blk": 0.5,
+   "tpm": 1.3,
+   "tov": 2,
+   "fga": 15.33,
+   "fgm": 7.65,
+   "fta": 4.91,
+   "ftm": 3.99,
+   "fgPct": 49.9,
+   "ftPct": 81.3
+  },
+  "b": {
+   "min": 32,
+   "pts": 20.7,
+   "reb": 5.3,
+   "ast": 5.2,
+   "stl": 1.27,
+   "blk": 0.39,
+   "tpm": 1.22,
+   "tov": 1.98,
+   "fga": 15.33,
+   "fgm": 7.69,
+   "fta": 4.91,
+   "ftm": 4.05,
+   "fgPct": 50.2,
+   "ftPct": 82.6
+  }
  },
  "Chet Holmgren": {
   "team": "OKC",
@@ -3499,7 +8403,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.57,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 30,
+   "pts": 17,
+   "reb": 8.8,
+   "ast": 2.1,
+   "stl": 0.7,
+   "blk": 2.2,
+   "tpm": 1.5,
+   "tov": 1.7,
+   "fga": 10.87,
+   "fgm": 5.71,
+   "fta": 4.57,
+   "ftm": 3.55,
+   "fgPct": 52.5,
+   "ftPct": 77.7
+  },
+  "b": {
+   "min": 29,
+   "pts": 16.9,
+   "reb": 8.9,
+   "ast": 1.7,
+   "stl": 0.73,
+   "blk": 1.93,
+   "tpm": 1.38,
+   "tov": 1.39,
+   "fga": 10.87,
+   "fgm": 5.95,
+   "fta": 4.57,
+   "ftm": 3.59,
+   "fgPct": 54.7,
+   "ftPct": 78.7
+  }
  },
  "Ajay Mitchell": {
   "team": "OKC",
@@ -3521,7 +8457,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.99,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 30,
+   "pts": 13.8,
+   "reb": 3.6,
+   "ast": 3.7,
+   "stl": 1.4,
+   "blk": 0.3,
+   "tpm": 1.2,
+   "tov": 1.6,
+   "fga": 10.13,
+   "fgm": 4.95,
+   "fta": 2.33,
+   "ftm": 1.99,
+   "fgPct": 48.9,
+   "ftPct": 85.6
+  },
+  "b": {
+   "min": 27,
+   "pts": 13.1,
+   "reb": 3.3,
+   "ast": 3.8,
+   "stl": 1.2,
+   "blk": 0.33,
+   "tpm": 1.28,
+   "tov": 1.29,
+   "fga": 10.13,
+   "fgm": 4.91,
+   "fta": 2.33,
+   "ftm": 2,
+   "fgPct": 48.5,
+   "ftPct": 85.7
+  }
  },
  "Cason Wallace": {
   "team": "OKC",
@@ -3543,7 +8511,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.85,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 30,
+   "pts": 9.5,
+   "reb": 3.5,
+   "ast": 2.7,
+   "stl": 1.9,
+   "blk": 0.5,
+   "tpm": 1.4,
+   "tov": 1,
+   "fga": 8.75,
+   "fgm": 4.03,
+   "fta": 1.05,
+   "ftm": 0.84,
+   "fgPct": 46,
+   "ftPct": 80.4
+  },
+  "b": {
+   "min": 30,
+   "pts": 10.3,
+   "reb": 3.5,
+   "ast": 2.8,
+   "stl": 1.88,
+   "blk": 0.49,
+   "tpm": 1.77,
+   "tov": 0.87,
+   "fga": 8.75,
+   "fgm": 3.83,
+   "fta": 1.05,
+   "ftm": 0.86,
+   "fgPct": 43.8,
+   "ftPct": 82
+  }
  },
  "Isaiah Hartenstein": {
   "team": "OKC",
@@ -3565,7 +8565,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.37,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 25,
+   "pts": 9.1,
+   "reb": 8.4,
+   "ast": 2.7,
+   "stl": 0.9,
+   "blk": 1.1,
+   "tpm": 0.1,
+   "tov": 1.5,
+   "fga": 6.5,
+   "fgm": 3.85,
+   "fta": 2.06,
+   "ftm": 1.39,
+   "fgPct": 59.2,
+   "ftPct": 67.4
+  },
+  "b": {
+   "min": 26,
+   "pts": 9.7,
+   "reb": 10.3,
+   "ast": 3.4,
+   "stl": 1.04,
+   "blk": 0.91,
+   "tpm": 0.03,
+   "tov": 1.63,
+   "fga": 6.5,
+   "fgm": 4.16,
+   "fta": 2.06,
+   "ftm": 1.35,
+   "fgPct": 64,
+   "ftPct": 65.3
+  }
  },
  "Jared McCain": {
   "team": "OKC",
@@ -3587,7 +8619,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.93,
   "sources": "both",
   "spreadPts": 2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 24,
+   "pts": 12.9,
+   "reb": 2.6,
+   "ast": 2.1,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 2.1,
+   "tov": 1.3,
+   "fga": 8.89,
+   "fgm": 3.94,
+   "fta": 1.07,
+   "ftm": 0.93,
+   "fgPct": 44.3,
+   "ftPct": 87.1
+  },
+  "b": {
+   "min": 22,
+   "pts": 10.9,
+   "reb": 2.3,
+   "ast": 1.4,
+   "stl": 0.55,
+   "blk": 0.09,
+   "tpm": 2.01,
+   "tov": 1.01,
+   "fga": 8.89,
+   "fgm": 3.99,
+   "fta": 1.07,
+   "ftm": 0.92,
+   "fgPct": 44.9,
+   "ftPct": 86.5
+  }
  },
  "Jaylin Williams": {
   "team": "OKC",
@@ -3609,7 +8673,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.92,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 20,
+   "pts": 6.9,
+   "reb": 5.8,
+   "ast": 2.5,
+   "stl": 0.6,
+   "blk": 0.6,
+   "tpm": 1.4,
+   "tov": 0.9,
+   "fga": 5.15,
+   "fgm": 2.21,
+   "fta": 1.18,
+   "ftm": 0.91,
+   "fgPct": 43,
+   "ftPct": 77
+  },
+  "b": {
+   "min": 19,
+   "pts": 6.9,
+   "reb": 5.9,
+   "ast": 2.1,
+   "stl": 0.43,
+   "blk": 0.64,
+   "tpm": 1.54,
+   "tov": 0.99,
+   "fga": 5.15,
+   "fgm": 2.2,
+   "fta": 1.18,
+   "ftm": 0.94,
+   "fgPct": 42.7,
+   "ftPct": 79.3
+  }
  },
  "Alex Caruso": {
   "team": "OKC",
@@ -3631,7 +8727,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.58,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 19,
+   "pts": 6.3,
+   "reb": 2.6,
+   "ast": 2.4,
+   "stl": 1.2,
+   "blk": 0.4,
+   "tpm": 0.9,
+   "tov": 1,
+   "fga": 4.87,
+   "fgm": 2.13,
+   "fta": 0.73,
+   "ftm": 0.57,
+   "fgPct": 43.6,
+   "ftPct": 77.3
+  },
+  "b": {
+   "min": 18,
+   "pts": 5.8,
+   "reb": 2.4,
+   "ast": 1.9,
+   "stl": 1.13,
+   "blk": 0.34,
+   "tpm": 1.13,
+   "tov": 0.79,
+   "fga": 4.87,
+   "fgm": 2.03,
+   "fta": 0.73,
+   "ftm": 0.59,
+   "fgPct": 41.6,
+   "ftPct": 80.5
+  }
  },
  "Kenrich Williams": {
   "team": "OKC",
@@ -3653,7 +8781,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.35,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 17,
+   "pts": 5.8,
+   "reb": 3.6,
+   "ast": 1.5,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.8,
+   "tov": 0.6,
+   "fga": 4.06,
+   "fgm": 1.9,
+   "fta": 0.59,
+   "ftm": 0.34,
+   "fgPct": 46.8,
+   "ftPct": 57.6
+  },
+  "b": {
+   "min": 13,
+   "pts": 4.9,
+   "reb": 2.8,
+   "ast": 1.1,
+   "stl": 0.48,
+   "blk": 0.08,
+   "tpm": 0.7,
+   "tov": 0.58,
+   "fga": 4.06,
+   "fgm": 1.93,
+   "fta": 0.59,
+   "ftm": 0.36,
+   "fgPct": 47.6,
+   "ftPct": 62.2
+  }
  },
  "Nikola Topic": {
   "team": "OKC",
@@ -3675,7 +8835,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.34,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 14,
+   "pts": 4.5,
+   "reb": 1.7,
+   "ast": 3.8,
+   "stl": 0.4,
+   "blk": 0,
+   "tpm": 0.5,
+   "tov": 2.2,
+   "fga": 5,
+   "fgm": 2.15,
+   "fta": 0.6,
+   "ftm": 0.24,
+   "fgPct": 43.1,
+   "ftPct": 40
+  },
+  "b": {
+   "min": 15,
+   "pts": 5.5,
+   "reb": 1.7,
+   "ast": 3.4,
+   "stl": 0.44,
+   "blk": 0.07,
+   "tpm": 0.61,
+   "tov": 1.56,
+   "fga": 5,
+   "fgm": 2.24,
+   "fta": 0.6,
+   "ftm": 0.44,
+   "fgPct": 44.9,
+   "ftPct": 73.4
+  }
  },
  "Thomas Sorber": {
   "team": "OKC",
@@ -3697,7 +8889,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.66,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 12,
+   "pts": 3.9,
+   "reb": 2.8,
+   "ast": 0.8,
+   "stl": 0.43,
+   "blk": 0.5,
+   "tpm": 0.21,
+   "tov": 0.75,
+   "fga": 3.38,
+   "fgm": 1.53,
+   "fta": 0.91,
+   "ftm": 0.66,
+   "fgPct": 45.4,
+   "ftPct": 72.6
+  }
  },
  "Aday Mara": {
   "team": "OKC",
@@ -3719,7 +8928,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.66,
   "sources": "both",
   "spreadPts": 8.4,
-  "spreadMin": 6.9
+  "spreadMin": 6.9,
+  "a": {
+   "min": 17.9,
+   "pts": 12.5,
+   "reb": 4.1,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 1.1,
+   "tpm": 0.3,
+   "tov": 1,
+   "fga": 3.44,
+   "fgm": 2.07,
+   "fta": 1.03,
+   "ftm": 0.66,
+   "fgPct": 60.3,
+   "ftPct": 64.1
+  },
+  "b": {
+   "min": 11,
+   "pts": 4.1,
+   "reb": 3.1,
+   "ast": 0.8,
+   "stl": 0.21,
+   "blk": 0.71,
+   "tpm": 0.06,
+   "tov": 0.92,
+   "fga": 3.44,
+   "fgm": 1.71,
+   "fta": 1.03,
+   "ftm": 0.66,
+   "fgPct": 49.6,
+   "ftPct": 63.7
+  }
  },
  "Bennett Stirtz": {
   "team": "OKC",
@@ -3741,7 +8982,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.51,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 12,
+   "pts": 4.5,
+   "reb": 1.1,
+   "ast": 1.5,
+   "stl": 0.43,
+   "blk": 0.1,
+   "tpm": 0.78,
+   "tov": 0.82,
+   "fga": 3.83,
+   "fgm": 1.61,
+   "fta": 0.65,
+   "ftm": 0.51,
+   "fgPct": 42.1,
+   "ftPct": 78.8
+  }
  },
  "Brooks Barnhizer": {
   "team": "OKC",
@@ -3763,7 +9021,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.2,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 11,
+   "pts": 2.2,
+   "reb": 2.5,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.3,
+   "fga": 1.87,
+   "fgm": 0.71,
+   "fta": 0.28,
+   "ftm": 0.2,
+   "fgPct": 38,
+   "ftPct": 70
+  },
+  "b": {
+   "min": 9,
+   "pts": 2,
+   "reb": 1.7,
+   "ast": 0.5,
+   "stl": 0.31,
+   "blk": 0.14,
+   "tpm": 0.24,
+   "tov": 0.26,
+   "fga": 1.87,
+   "fgm": 0.79,
+   "fta": 0.28,
+   "ftm": 0.21,
+   "fgPct": 42,
+   "ftPct": 73.4
+  }
  },
  "Otega Oweh": {
   "team": "OKC",
@@ -3785,7 +9075,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.3,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 8,
+   "pts": 2.8,
+   "reb": 1.1,
+   "ast": 0.5,
+   "stl": 0.35,
+   "blk": 0.1,
+   "tpm": 0.24,
+   "tov": 0.67,
+   "fga": 2.6,
+   "fgm": 1.12,
+   "fta": 0.42,
+   "ftm": 0.3,
+   "fgPct": 43.1,
+   "ftPct": 72.4
+  }
  },
  "Josh Dix": {
   "team": "OKC",
@@ -3807,7 +9114,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.17,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 7,
+   "pts": 2.5,
+   "reb": 0.7,
+   "ast": 0.6,
+   "stl": 0.18,
+   "blk": 0.07,
+   "tpm": 0.51,
+   "tov": 0.36,
+   "fga": 2.18,
+   "fgm": 0.91,
+   "fta": 0.22,
+   "ftm": 0.17,
+   "fgPct": 41.7,
+   "ftPct": 78.9
+  }
  },
  "Jalen Brunson": {
   "team": "NYK",
@@ -3829,7 +9153,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.49,
   "sources": "both",
   "spreadPts": 3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 35,
+   "pts": 22.1,
+   "reb": 3.7,
+   "ast": 6.3,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 2,
+   "tov": 2.2,
+   "fga": 19.39,
+   "fgm": 9.37,
+   "fta": 5.43,
+   "ftm": 4.47,
+   "fgPct": 48.3,
+   "ftPct": 82.3
+  },
+  "b": {
+   "min": 35,
+   "pts": 25.1,
+   "reb": 3.3,
+   "ast": 7.1,
+   "stl": 0.84,
+   "blk": 0.14,
+   "tpm": 2.39,
+   "tov": 2.45,
+   "fga": 19.39,
+   "fgm": 9.1,
+   "fta": 5.43,
+   "ftm": 4.52,
+   "fgPct": 47,
+   "ftPct": 83.2
+  }
  },
  "Karl-Anthony Towns": {
   "team": "NYK",
@@ -3851,7 +9207,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.57,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 31,
+   "pts": 21.6,
+   "reb": 10.2,
+   "ast": 3.4,
+   "stl": 0.8,
+   "blk": 0.8,
+   "tpm": 1.9,
+   "tov": 2.7,
+   "fga": 13.52,
+   "fgm": 6.88,
+   "fta": 5.41,
+   "ftm": 4.55,
+   "fgPct": 50.9,
+   "ftPct": 84.2
+  },
+  "b": {
+   "min": 31,
+   "pts": 20.2,
+   "reb": 12.3,
+   "ast": 3.3,
+   "stl": 0.87,
+   "blk": 0.43,
+   "tpm": 1.35,
+   "tov": 2.41,
+   "fga": 13.52,
+   "fgm": 7.15,
+   "fta": 5.41,
+   "ftm": 4.58,
+   "fgPct": 52.9,
+   "ftPct": 84.8
+  }
  },
  "OG Anunoby": {
   "team": "NYK",
@@ -3873,7 +9261,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.4,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 33,
+   "pts": 15,
+   "reb": 4.9,
+   "ast": 2,
+   "stl": 1.4,
+   "blk": 0.7,
+   "tpm": 2,
+   "tov": 1.5,
+   "fga": 11.35,
+   "fgm": 5.4,
+   "fta": 2.95,
+   "ftm": 2.3,
+   "fgPct": 47.6,
+   "ftPct": 77.9
+  },
+  "b": {
+   "min": 33,
+   "pts": 15.8,
+   "reb": 5.2,
+   "ast": 2,
+   "stl": 1.32,
+   "blk": 0.73,
+   "tpm": 2.45,
+   "tov": 1.65,
+   "fga": 11.35,
+   "fgm": 5.44,
+   "fta": 2.95,
+   "ftm": 2.5,
+   "fgPct": 47.9,
+   "ftPct": 84.6
+  }
  },
  "Mikal Bridges": {
   "team": "NYK",
@@ -3895,7 +9315,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.02,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 32,
+   "pts": 14,
+   "reb": 3.7,
+   "ast": 2.8,
+   "stl": 1.2,
+   "blk": 0.6,
+   "tpm": 1.7,
+   "tov": 1.2,
+   "fga": 10.75,
+   "fgm": 5.25,
+   "fta": 1.21,
+   "ftm": 1.01,
+   "fgPct": 48.8,
+   "ftPct": 83.9
+  },
+  "b": {
+   "min": 32,
+   "pts": 13.2,
+   "reb": 3.4,
+   "ast": 3.2,
+   "stl": 1.1,
+   "blk": 0.7,
+   "tpm": 1.77,
+   "tov": 0.95,
+   "fga": 10.75,
+   "fgm": 5.18,
+   "fta": 1.21,
+   "ftm": 1.02,
+   "fgPct": 48.2,
+   "ftPct": 84.6
+  }
  },
  "Miles McBride": {
   "team": "NYK",
@@ -3917,7 +9369,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.12,
   "sources": "both",
   "spreadPts": 3.6,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 24,
+   "pts": 9,
+   "reb": 2.2,
+   "ast": 2.5,
+   "stl": 0.9,
+   "blk": 0.2,
+   "tpm": 1.8,
+   "tov": 0.6,
+   "fga": 10.26,
+   "fgm": 4.08,
+   "fta": 1.44,
+   "ftm": 1.09,
+   "fgPct": 39.8,
+   "ftPct": 76.2
+  },
+  "b": {
+   "min": 27,
+   "pts": 12.6,
+   "reb": 2.8,
+   "ast": 2.8,
+   "stl": 0.92,
+   "blk": 0.22,
+   "tpm": 2.65,
+   "tov": 0.92,
+   "fga": 10.26,
+   "fgm": 4.4,
+   "fta": 1.44,
+   "ftm": 1.15,
+   "fgPct": 42.9,
+   "ftPct": 80
+  }
  },
  "Josh Hart": {
   "team": "NYK",
@@ -3939,7 +9423,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.23,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 32,
+   "pts": 11.4,
+   "reb": 7.6,
+   "ast": 3.8,
+   "stl": 1.1,
+   "blk": 0.3,
+   "tpm": 1.4,
+   "tov": 1.6,
+   "fga": 8.34,
+   "fgm": 3.99,
+   "fta": 1.67,
+   "ftm": 1.25,
+   "fgPct": 47.9,
+   "ftPct": 75.1
+  },
+  "b": {
+   "min": 30,
+   "pts": 10.2,
+   "reb": 7.4,
+   "ast": 4.3,
+   "stl": 1.08,
+   "blk": 0.18,
+   "tpm": 1.2,
+   "tov": 1.56,
+   "fga": 8.34,
+   "fgm": 3.9,
+   "fta": 1.67,
+   "ftm": 1.2,
+   "fgPct": 46.7,
+   "ftPct": 72.1
+  }
  },
  "Andre Drummond": {
   "team": "NYK",
@@ -3961,7 +9477,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.72,
   "sources": "both",
   "spreadPts": 1.8,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 19,
+   "pts": 8.4,
+   "reb": 8.7,
+   "ast": 1.1,
+   "stl": 0.9,
+   "blk": 0.7,
+   "tpm": 0.1,
+   "tov": 1.4,
+   "fga": 5.68,
+   "fgm": 2.98,
+   "fta": 1.19,
+   "ftm": 0.7,
+   "fgPct": 52.5,
+   "ftPct": 58.5
+  },
+  "b": {
+   "min": 22,
+   "pts": 6.6,
+   "reb": 8.8,
+   "ast": 1.8,
+   "stl": 0.72,
+   "blk": 0.74,
+   "tpm": 0.58,
+   "tov": 0.97,
+   "fga": 5.68,
+   "fgm": 2.66,
+   "fta": 1.19,
+   "ftm": 0.75,
+   "fgPct": 46.8,
+   "ftPct": 62.6
+  }
  },
  "Landry Shamet": {
   "team": "NYK",
@@ -3983,7 +9531,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.84,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 22,
+   "pts": 8.8,
+   "reb": 1.8,
+   "ast": 1.5,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 1.9,
+   "tov": 0.7,
+   "fga": 6.9,
+   "fgm": 2.91,
+   "fta": 1.1,
+   "ftm": 0.89,
+   "fgPct": 42.2,
+   "ftPct": 80.3
+  },
+  "b": {
+   "min": 25,
+   "pts": 8.8,
+   "reb": 1.9,
+   "ast": 1.5,
+   "stl": 0.66,
+   "blk": 0.2,
+   "tpm": 1.91,
+   "tov": 0.65,
+   "fga": 6.9,
+   "fgm": 3.05,
+   "fta": 1.1,
+   "ftm": 0.8,
+   "fgPct": 44.2,
+   "ftPct": 72.7
+  }
  },
  "Jose Alvarado": {
   "team": "NYK",
@@ -4005,7 +9585,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.45,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 15,
+   "pts": 6,
+   "reb": 1.7,
+   "ast": 2.5,
+   "stl": 0.9,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 0.8,
+   "fga": 5.7,
+   "fgm": 2.35,
+   "fta": 0.6,
+   "ftm": 0.45,
+   "fgPct": 41.2,
+   "ftPct": 75.3
+  },
+  "b": {
+   "min": 16,
+   "pts": 6.2,
+   "reb": 2,
+   "ast": 3.1,
+   "stl": 0.72,
+   "blk": 0.13,
+   "tpm": 1.04,
+   "tov": 1.06,
+   "fga": 5.7,
+   "fgm": 2.36,
+   "fta": 0.6,
+   "ftm": 0.45,
+   "fgPct": 41.5,
+   "ftPct": 75.2
+  }
  },
  "Jordan Clarkson": {
   "team": "NYK",
@@ -4027,7 +9639,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.75,
   "sources": "both",
   "spreadPts": 2.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 15,
+   "pts": 8.9,
+   "reb": 1.8,
+   "ast": 1.6,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 1.2,
+   "tov": 1.1,
+   "fga": 5.64,
+   "fgm": 2.44,
+   "fta": 0.9,
+   "ftm": 0.75,
+   "fgPct": 43.2,
+   "ftPct": 83.4
+  },
+  "b": {
+   "min": 15,
+   "pts": 6.6,
+   "reb": 1.7,
+   "ast": 1.4,
+   "stl": 0.35,
+   "blk": 0.09,
+   "tpm": 0.45,
+   "tov": 0.66,
+   "fga": 5.64,
+   "fgm": 2.68,
+   "fta": 0.9,
+   "ftm": 0.74,
+   "fgPct": 47.5,
+   "ftPct": 82.5
+  }
  },
  "Mohamed Diawara": {
   "team": "NYK",
@@ -4049,7 +9693,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.56,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 15,
+   "pts": 5.8,
+   "reb": 2.2,
+   "ast": 1.3,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 1.1,
+   "tov": 0.7,
+   "fga": 4.5,
+   "fgm": 1.9,
+   "fta": 0.76,
+   "ftm": 0.57,
+   "fgPct": 42.3,
+   "ftPct": 75
+  },
+  "b": {
+   "min": 13,
+   "pts": 5.2,
+   "reb": 1.7,
+   "ast": 1.3,
+   "stl": 0.33,
+   "blk": 0.13,
+   "tpm": 0.95,
+   "tov": 0.57,
+   "fga": 4.5,
+   "fgm": 1.85,
+   "fta": 0.76,
+   "ftm": 0.55,
+   "fgPct": 41.2,
+   "ftPct": 72.2
+  }
  },
  "Tyler Kolek": {
   "team": "NYK",
@@ -4071,7 +9747,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.34,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 12,
+   "pts": 3.9,
+   "reb": 1.4,
+   "ast": 2.8,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 0.8,
+   "fga": 3.79,
+   "fgm": 1.47,
+   "fta": 0.46,
+   "ftm": 0.34,
+   "fgPct": 38.8,
+   "ftPct": 74.4
+  },
+  "b": {
+   "min": 12,
+   "pts": 4.4,
+   "reb": 1.4,
+   "ast": 3,
+   "stl": 0.39,
+   "blk": 0.1,
+   "tpm": 0.77,
+   "tov": 0.77,
+   "fga": 3.79,
+   "fgm": 1.65,
+   "fta": 0.46,
+   "ftm": 0.33,
+   "fgPct": 43.4,
+   "ftPct": 73
+  }
  },
  "Pacome Dadiet": {
   "team": "NYK",
@@ -4093,7 +9801,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.32,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 8,
+   "pts": 2.5,
+   "reb": 1.4,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.2,
+   "fga": 2.14,
+   "fgm": 0.7,
+   "fta": 0.43,
+   "ftm": 0.32,
+   "fgPct": 32.9,
+   "ftPct": 75.8
+  },
+  "b": {
+   "min": 6,
+   "pts": 2.3,
+   "reb": 1.2,
+   "ast": 0.4,
+   "stl": 0.16,
+   "blk": 0.06,
+   "tpm": 0.37,
+   "tov": 0.22,
+   "fga": 2.14,
+   "fgm": 0.78,
+   "fta": 0.43,
+   "ftm": 0.32,
+   "fgPct": 36.7,
+   "ftPct": 74.7
+  }
  },
  "Tyler Nickel": {
   "team": "NYK",
@@ -4115,7 +9855,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.12,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 5,
+   "pts": 1.7,
+   "reb": 0.5,
+   "ast": 0.2,
+   "stl": 0.11,
+   "blk": 0.06,
+   "tpm": 0.42,
+   "tov": 0.13,
+   "fga": 1.48,
+   "fgm": 0.57,
+   "fta": 0.15,
+   "ftm": 0.12,
+   "fgPct": 38.6,
+   "ftPct": 79.7
+  }
  },
  "Trey Murphy III": {
   "team": "NOR",
@@ -4137,7 +9894,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.43,
   "sources": "both",
   "spreadPts": 2.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 34,
+   "pts": 18.3,
+   "reb": 5.2,
+   "ast": 2.8,
+   "stl": 1.1,
+   "blk": 0.5,
+   "tpm": 3,
+   "tov": 1.3,
+   "fga": 15.62,
+   "fgm": 7.09,
+   "fta": 3.91,
+   "ftm": 3.43,
+   "fgPct": 45.4,
+   "ftPct": 87.7
+  },
+  "b": {
+   "min": 35,
+   "pts": 21.1,
+   "reb": 5.5,
+   "ast": 3.5,
+   "stl": 1.28,
+   "blk": 0.45,
+   "tpm": 3.5,
+   "tov": 1.43,
+   "fga": 15.62,
+   "fgm": 7.09,
+   "fta": 3.91,
+   "ftm": 3.43,
+   "fgPct": 45.4,
+   "ftPct": 87.7
+  }
  },
  "Zion Williamson": {
   "team": "NOR",
@@ -4159,7 +9948,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5.19,
   "sources": "both",
   "spreadPts": 4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 31,
+   "pts": 24.3,
+   "reb": 6.7,
+   "ast": 4.2,
+   "stl": 1,
+   "blk": 0.7,
+   "tpm": 0.1,
+   "tov": 2.7,
+   "fga": 12.1,
+   "fgm": 7.1,
+   "fta": 7.38,
+   "ftm": 5.06,
+   "fgPct": 58.7,
+   "ftPct": 68.6
+  },
+  "b": {
+   "min": 30,
+   "pts": 20.3,
+   "reb": 5.4,
+   "ast": 2.8,
+   "stl": 0.9,
+   "blk": 0.58,
+   "tpm": 0,
+   "tov": 1.61,
+   "fga": 12.1,
+   "fgm": 7.49,
+   "fta": 7.38,
+   "ftm": 5.32,
+   "fgPct": 61.9,
+   "ftPct": 72
+  }
  },
  "Dejounte Murray": {
   "team": "NOR",
@@ -4181,7 +10002,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.55,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 31,
+   "pts": 17.2,
+   "reb": 6.1,
+   "ast": 6.4,
+   "stl": 1.7,
+   "blk": 0.3,
+   "tpm": 1.4,
+   "tov": 2.7,
+   "fga": 15.54,
+   "fgm": 6.99,
+   "fta": 3.11,
+   "ftm": 2.55,
+   "fgPct": 45,
+   "ftPct": 82.1
+  },
+  "b": {
+   "min": 34,
+   "pts": 18.5,
+   "reb": 6.9,
+   "ast": 7.7,
+   "stl": 1.53,
+   "blk": 0.29,
+   "tpm": 1.8,
+   "tov": 3.72,
+   "fga": 15.54,
+   "fgm": 7.1,
+   "fta": 3.11,
+   "ftm": 2.54,
+   "fgPct": 45.7,
+   "ftPct": 81.8
+  }
  },
  "Jeremiah Fears": {
   "team": "NOR",
@@ -4203,7 +10056,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.98,
   "sources": "both",
   "spreadPts": 2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 27,
+   "pts": 14.9,
+   "reb": 3.8,
+   "ast": 3.6,
+   "stl": 1.2,
+   "blk": 0.4,
+   "tpm": 1.3,
+   "tov": 2.3,
+   "fga": 13.46,
+   "fgm": 5.84,
+   "fta": 3.77,
+   "ftm": 2.97,
+   "fgPct": 43.4,
+   "ftPct": 78.9
+  },
+  "b": {
+   "min": 28,
+   "pts": 16.9,
+   "reb": 3.6,
+   "ast": 4,
+   "stl": 1.33,
+   "blk": 0.48,
+   "tpm": 1.63,
+   "tov": 1.86,
+   "fga": 13.46,
+   "fgm": 6.13,
+   "fta": 3.77,
+   "ftm": 2.98,
+   "fgPct": 45.5,
+   "ftPct": 79
+  }
  },
  "Derik Queen": {
   "team": "NOR",
@@ -4225,7 +10110,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.07,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 28,
+   "pts": 13.1,
+   "reb": 7.9,
+   "ast": 4.1,
+   "stl": 1.2,
+   "blk": 1,
+   "tpm": 0.3,
+   "tov": 2.6,
+   "fga": 10.08,
+   "fgm": 4.77,
+   "fta": 3.83,
+   "ftm": 3.05,
+   "fgPct": 47.3,
+   "ftPct": 79.5
+  },
+  "b": {
+   "min": 27,
+   "pts": 13.6,
+   "reb": 7.8,
+   "ast": 3,
+   "stl": 1.18,
+   "blk": 0.97,
+   "tpm": 0.34,
+   "tov": 2.32,
+   "fga": 10.08,
+   "fgm": 5.1,
+   "fta": 3.83,
+   "ftm": 3.09,
+   "fgPct": 50.6,
+   "ftPct": 80.6
+  }
  },
  "Saddiq Bey": {
   "team": "NOR",
@@ -4247,7 +10164,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.32,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 28,
+   "pts": 13.6,
+   "reb": 5,
+   "ast": 1.8,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 1.9,
+   "tov": 0.9,
+   "fga": 11.91,
+   "fgm": 5.02,
+   "fta": 2.74,
+   "ftm": 2.31,
+   "fgPct": 42.2,
+   "ftPct": 84.2
+  },
+  "b": {
+   "min": 31,
+   "pts": 15,
+   "reb": 4.8,
+   "ast": 2.3,
+   "stl": 0.92,
+   "blk": 0.13,
+   "tpm": 1.85,
+   "tov": 1.14,
+   "fga": 11.91,
+   "fgm": 5.41,
+   "fta": 2.74,
+   "ftm": 2.33,
+   "fgPct": 45.5,
+   "ftPct": 84.9
+  }
  },
  "Herb Jones": {
   "team": "NOR",
@@ -4269,7 +10218,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.94,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 30,
+   "pts": 9.7,
+   "reb": 3.7,
+   "ast": 2.7,
+   "stl": 1.6,
+   "blk": 0.6,
+   "tpm": 1.2,
+   "tov": 1.4,
+   "fga": 7.59,
+   "fgm": 3.33,
+   "fta": 1.14,
+   "ftm": 0.93,
+   "fgPct": 43.9,
+   "ftPct": 81.9
+  },
+  "b": {
+   "min": 29,
+   "pts": 8.6,
+   "reb": 3.4,
+   "ast": 2.5,
+   "stl": 1.69,
+   "blk": 0.5,
+   "tpm": 1.28,
+   "tov": 1.24,
+   "fga": 7.59,
+   "fgm": 3.17,
+   "fta": 1.14,
+   "ftm": 0.95,
+   "fgPct": 41.7,
+   "ftPct": 83.3
+  }
  },
  "Jordan Poole": {
   "team": "NOR",
@@ -4291,7 +10272,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.79,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 18,
+   "pts": 10.8,
+   "reb": 1.7,
+   "ast": 2.4,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 1.7,
+   "tov": 1.4,
+   "fga": 8.93,
+   "fgm": 3.66,
+   "fta": 2.05,
+   "ftm": 1.79,
+   "fgPct": 41,
+   "ftPct": 87.3
+  },
+  "b": {
+   "min": 20,
+   "pts": 11,
+   "reb": 1.8,
+   "ast": 2.5,
+   "stl": 0.54,
+   "blk": 0.3,
+   "tpm": 2.11,
+   "tov": 1.46,
+   "fga": 8.93,
+   "fgm": 3.56,
+   "fta": 2.05,
+   "ftm": 1.79,
+   "fgPct": 39.9,
+   "ftPct": 87.4
+  }
  },
  "Yves Missi": {
   "team": "NOR",
@@ -4313,7 +10326,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.12,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 21,
+   "pts": 6.6,
+   "reb": 6.3,
+   "ast": 1.2,
+   "stl": 0.4,
+   "blk": 1.3,
+   "tpm": 0,
+   "tov": 0.9,
+   "fga": 4.89,
+   "fgm": 2.67,
+   "fta": 1.91,
+   "ftm": 1.13,
+   "fgPct": 54.6,
+   "ftPct": 59.5
+  },
+  "b": {
+   "min": 23,
+   "pts": 6.4,
+   "reb": 7.1,
+   "ast": 1.6,
+   "stl": 0.35,
+   "blk": 1.97,
+   "tpm": 0,
+   "tov": 0.93,
+   "fga": 4.89,
+   "fgm": 2.65,
+   "fta": 1.91,
+   "ftm": 1.11,
+   "fgPct": 54.3,
+   "ftPct": 58
+  }
  },
  "Karlo Matkovic": {
   "team": "NOR",
@@ -4335,7 +10380,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.64,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 15,
+   "pts": 6,
+   "reb": 3.9,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 0.8,
+   "tpm": 0.5,
+   "tov": 0.7,
+   "fga": 5,
+   "fgm": 2.94,
+   "fta": 0.86,
+   "ftm": 0.65,
+   "fgPct": 58.8,
+   "ftPct": 75.4
+  },
+  "b": {
+   "min": 17,
+   "pts": 7.2,
+   "reb": 4.4,
+   "ast": 1,
+   "stl": 0.48,
+   "blk": 0.98,
+   "tpm": 0.76,
+   "tov": 0.58,
+   "fga": 5,
+   "fgm": 2.89,
+   "fta": 0.86,
+   "ftm": 0.63,
+   "fgPct": 57.8,
+   "ftPct": 74.1
+  }
  },
  "Micah Peavy": {
   "team": "NOR",
@@ -4357,7 +10434,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.51,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 17,
+   "pts": 4.9,
+   "reb": 2.2,
+   "ast": 1.1,
+   "stl": 0.8,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.4,
+   "fga": 4.22,
+   "fgm": 1.63,
+   "fta": 0.68,
+   "ftm": 0.51,
+   "fgPct": 38.5,
+   "ftPct": 75.9
+  },
+  "b": {
+   "min": 16,
+   "pts": 4.8,
+   "reb": 1.9,
+   "ast": 1,
+   "stl": 0.76,
+   "blk": 0.17,
+   "tpm": 0.53,
+   "tov": 0.41,
+   "fga": 4.22,
+   "fgm": 1.86,
+   "fta": 0.68,
+   "ftm": 0.51,
+   "fgPct": 44.1,
+   "ftPct": 75.9
+  }
  },
  "Jordan Hawkins": {
   "team": "NOR",
@@ -4379,7 +10488,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.52,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 14,
+   "pts": 5.9,
+   "reb": 1.7,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.6,
+   "fga": 5.23,
+   "fgm": 1.94,
+   "fta": 0.63,
+   "ftm": 0.52,
+   "fgPct": 37.2,
+   "ftPct": 83.1
+  },
+  "b": {
+   "min": 14,
+   "pts": 5.6,
+   "reb": 1.8,
+   "ast": 0.9,
+   "stl": 0.27,
+   "blk": 0.21,
+   "tpm": 0.95,
+   "tov": 0.67,
+   "fga": 5.23,
+   "fgm": 2.07,
+   "fta": 0.63,
+   "ftm": 0.52,
+   "fgPct": 39.6,
+   "ftPct": 83.2
+  }
  },
  "DeAndre Jordan": {
   "team": "NOR",
@@ -4401,7 +10542,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.56,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 12,
+   "pts": 3.9,
+   "reb": 4.8,
+   "ast": 0.8,
+   "stl": 0.2,
+   "blk": 0.5,
+   "tpm": 0,
+   "tov": 0.7,
+   "fga": 1.98,
+   "fgm": 1.33,
+   "fta": 1.01,
+   "ftm": 0.57,
+   "fgPct": 67.1,
+   "ftPct": 56
+  },
+  "b": {
+   "min": 13,
+   "pts": 3.1,
+   "reb": 4.7,
+   "ast": 0.7,
+   "stl": 0.28,
+   "blk": 0.56,
+   "tpm": 0,
+   "tov": 0.56,
+   "fga": 1.98,
+   "fgm": 1.29,
+   "fta": 1.01,
+   "ftm": 0.55,
+   "fgPct": 64.9,
+   "ftPct": 54.3
+  }
  },
  "Kobe Bufkin": {
   "team": "NOR",
@@ -4423,7 +10596,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.6,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 8,
+   "pts": 3.4,
+   "reb": 0.9,
+   "ast": 0.8,
+   "stl": 0.24,
+   "blk": 0.16,
+   "tpm": 0.4,
+   "tov": 0.41,
+   "fga": 2.99,
+   "fgm": 1.18,
+   "fta": 0.72,
+   "ftm": 0.6,
+   "fgPct": 39.7,
+   "ftPct": 83.2
+  }
  },
  "Hunter Dickinson": {
   "team": "NOR",
@@ -4445,7 +10635,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.42,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 1.4
+  "spreadMin": 1.4,
+  "a": {
+   "min": 6.6,
+   "pts": 1.9,
+   "reb": 0.8,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 2.57,
+   "fgm": 0.92,
+   "fta": 0.48,
+   "ftm": 0.48,
+   "fgPct": 35.7,
+   "ftPct": 100
+  },
+  "b": {
+   "min": 8,
+   "pts": 3,
+   "reb": 2,
+   "ast": 0.3,
+   "stl": 0.19,
+   "blk": 0.26,
+   "tpm": 0.19,
+   "tov": 0.44,
+   "fga": 2.57,
+   "fgm": 1.21,
+   "fta": 0.48,
+   "ftm": 0.36,
+   "fgPct": 47,
+   "ftPct": 74.4
+  }
  },
  "Jaron Pierre": {
   "team": "NOR",
@@ -4467,7 +10689,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.29,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 8,
+   "pts": 3.3,
+   "reb": 0.9,
+   "ast": 0.4,
+   "stl": 0.21,
+   "blk": 0.07,
+   "tpm": 0.51,
+   "tov": 0.45,
+   "fga": 3.16,
+   "fgm": 1.26,
+   "fta": 0.38,
+   "ftm": 0.29,
+   "fgPct": 40,
+   "ftPct": 76.1
+  }
  },
  "Christian Koloko": {
   "team": "NOR",
@@ -4489,7 +10728,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 3.1,
-  "spreadMin": 13.2
+  "spreadMin": 13.2,
+  "a": {
+   "min": 13.2,
+   "pts": 3.1,
+   "reb": 3.2,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0.8,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50.3,
+   "ftPct": 66.6
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Caleb Houstan": {
   "team": "NOR",
@@ -4511,7 +10782,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Anthony Edwards": {
   "team": "MIN",
@@ -4533,7 +10821,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 6.45,
   "sources": "both",
   "spreadPts": 3.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 36,
+   "pts": 26.1,
+   "reb": 5.4,
+   "ast": 4.2,
+   "stl": 1.4,
+   "blk": 0.7,
+   "tpm": 3.2,
+   "tov": 3,
+   "fga": 19.93,
+   "fgm": 9.11,
+   "fta": 7.97,
+   "ftm": 6.4,
+   "fgPct": 45.7,
+   "ftPct": 80.3
+  },
+  "b": {
+   "min": 35,
+   "pts": 29.4,
+   "reb": 5.7,
+   "ast": 3.9,
+   "stl": 1.34,
+   "blk": 0.82,
+   "tpm": 3.47,
+   "tov": 3.12,
+   "fga": 19.93,
+   "fgm": 9.7,
+   "fta": 7.97,
+   "ftm": 6.5,
+   "fgPct": 48.7,
+   "ftPct": 81.5
+  }
  },
  "LaMelo Ball": {
   "team": "MIN",
@@ -4555,7 +10875,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.31,
   "sources": "both",
   "spreadPts": 1.9,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 29,
+   "pts": 20.2,
+   "reb": 5.1,
+   "ast": 6.9,
+   "stl": 1.3,
+   "blk": 0.3,
+   "tpm": 3.2,
+   "tov": 3,
+   "fga": 18.29,
+   "fgm": 7.61,
+   "fta": 2.66,
+   "ftm": 2.25,
+   "fgPct": 41.6,
+   "ftPct": 84.7
+  },
+  "b": {
+   "min": 32,
+   "pts": 22.1,
+   "reb": 5.6,
+   "ast": 8,
+   "stl": 1.22,
+   "blk": 0.27,
+   "tpm": 4.08,
+   "tov": 3.09,
+   "fga": 18.29,
+   "fgm": 7.81,
+   "fta": 2.66,
+   "ftm": 2.36,
+   "fgPct": 42.7,
+   "ftPct": 89
+  }
  },
  "Jaden McDaniels": {
   "team": "MIN",
@@ -4577,7 +10929,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.28,
   "sources": "both",
   "spreadPts": 4.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 32,
+   "pts": 12.3,
+   "reb": 4.7,
+   "ast": 2,
+   "stl": 1,
+   "blk": 1,
+   "tpm": 1.4,
+   "tov": 1.4,
+   "fga": 12.55,
+   "fgm": 6.13,
+   "fta": 2.89,
+   "ftm": 2.25,
+   "fgPct": 48.8,
+   "ftPct": 77.8
+  },
+  "b": {
+   "min": 33,
+   "pts": 16.9,
+   "reb": 5.6,
+   "ast": 2.5,
+   "stl": 1.2,
+   "blk": 1.26,
+   "tpm": 1.47,
+   "tov": 1.75,
+   "fga": 12.55,
+   "fgm": 6.58,
+   "fta": 2.89,
+   "ftm": 2.32,
+   "fgPct": 52.4,
+   "ftPct": 80.4
+  }
  },
  "Rudy Gobert": {
   "team": "MIN",
@@ -4599,7 +10983,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.49,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 31,
+   "pts": 12.9,
+   "reb": 11.9,
+   "ast": 1.5,
+   "stl": 0.7,
+   "blk": 1.8,
+   "tpm": 0,
+   "tov": 1.5,
+   "fga": 7.34,
+   "fgm": 4.97,
+   "fta": 4.11,
+   "ftm": 2.6,
+   "fgPct": 67.7,
+   "ftPct": 63.3
+  },
+  "b": {
+   "min": 32,
+   "pts": 12.2,
+   "reb": 12.4,
+   "ast": 1.7,
+   "stl": 0.82,
+   "blk": 1.63,
+   "tpm": 0.01,
+   "tov": 1.49,
+   "fga": 7.34,
+   "fgm": 4.92,
+   "fta": 4.11,
+   "ftm": 2.39,
+   "fgPct": 67.1,
+   "ftPct": 58
+  }
  },
  "Ayo Dosunmu": {
   "team": "MIN",
@@ -4621,7 +11037,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.54,
   "sources": "both",
   "spreadPts": 2.9,
-  "spreadMin": 5
+  "spreadMin": 5,
+  "a": {
+   "min": 28,
+   "pts": 11.8,
+   "reb": 3.1,
+   "ast": 3.6,
+   "stl": 0.9,
+   "blk": 0.3,
+   "tpm": 1.3,
+   "tov": 1.4,
+   "fga": 11.64,
+   "fgm": 5.88,
+   "fta": 1.86,
+   "ftm": 1.51,
+   "fgPct": 50.5,
+   "ftPct": 81.1
+  },
+  "b": {
+   "min": 33,
+   "pts": 14.7,
+   "reb": 4.9,
+   "ast": 4.7,
+   "stl": 1.16,
+   "blk": 0.27,
+   "tpm": 1.42,
+   "tov": 1.79,
+   "fga": 11.64,
+   "fgm": 5.87,
+   "fta": 1.86,
+   "ftm": 1.57,
+   "fgPct": 50.4,
+   "ftPct": 84.2
+  }
  },
  "Joan Beringer": {
   "team": "MIN",
@@ -4643,7 +11091,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.11,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 20,
+   "pts": 9.9,
+   "reb": 5.9,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 1.7,
+   "tpm": 0,
+   "tov": 0.7,
+   "fga": 6.63,
+   "fgm": 4.4,
+   "fta": 2.98,
+   "ftm": 2.1,
+   "fgPct": 66.3,
+   "ftPct": 70.3
+  },
+  "b": {
+   "min": 20,
+   "pts": 11.2,
+   "reb": 6,
+   "ast": 0.7,
+   "stl": 0.47,
+   "blk": 1.57,
+   "tpm": 0,
+   "tov": 0.68,
+   "fga": 6.63,
+   "fgm": 4.54,
+   "fta": 2.98,
+   "ftm": 2.12,
+   "fgPct": 68.4,
+   "ftPct": 70.9
+  }
  },
  "Terrence Shannon Jr.": {
   "team": "MIN",
@@ -4665,7 +11145,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.92,
   "sources": "both",
   "spreadPts": 4.9,
-  "spreadMin": 7
+  "spreadMin": 7,
+  "a": {
+   "min": 17,
+   "pts": 7.3,
+   "reb": 2,
+   "ast": 1.4,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 0.8,
+   "fga": 8.47,
+   "fgm": 3.95,
+   "fta": 3.64,
+   "ftm": 2.92,
+   "fgPct": 46.7,
+   "ftPct": 80.3
+  },
+  "b": {
+   "min": 24,
+   "pts": 12.2,
+   "reb": 2.7,
+   "ast": 1.9,
+   "stl": 0.61,
+   "blk": 0.15,
+   "tpm": 1.27,
+   "tov": 0.82,
+   "fga": 8.47,
+   "fgm": 4.01,
+   "fta": 3.64,
+   "ftm": 2.92,
+   "fgPct": 47.4,
+   "ftPct": 80.2
+  }
  },
  "Bones Hyland": {
   "team": "MIN",
@@ -4687,7 +11199,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.3,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 18,
+   "pts": 10,
+   "reb": 2,
+   "ast": 2.7,
+   "stl": 0.8,
+   "blk": 0.3,
+   "tpm": 1.9,
+   "tov": 1.4,
+   "fga": 7.91,
+   "fgm": 3.24,
+   "fta": 1.58,
+   "ftm": 1.33,
+   "fgPct": 41,
+   "ftPct": 84.1
+  },
+  "b": {
+   "min": 19,
+   "pts": 10.1,
+   "reb": 2.1,
+   "ast": 2.5,
+   "stl": 0.78,
+   "blk": 0.28,
+   "tpm": 2.05,
+   "tov": 1.01,
+   "fga": 7.91,
+   "fgm": 3.41,
+   "fta": 1.58,
+   "ftm": 1.27,
+   "fgPct": 43.1,
+   "ftPct": 80
+  }
  },
  "Trey Lyles": {
   "team": "MIN",
@@ -4709,7 +11253,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.85,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 18,
+   "pts": 7,
+   "reb": 4.3,
+   "ast": 1.1,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 1,
+   "tov": 0.7,
+   "fga": 5.86,
+   "fgm": 2.6,
+   "fta": 1.17,
+   "ftm": 0.87,
+   "fgPct": 44.4,
+   "ftPct": 74
+  },
+  "b": {
+   "min": 20,
+   "pts": 7.4,
+   "reb": 4.8,
+   "ast": 1.3,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 1.37,
+   "tov": 0.59,
+   "fga": 5.86,
+   "fgm": 2.61,
+   "fta": 1.17,
+   "ftm": 0.82,
+   "fgPct": 44.5,
+   "ftPct": 70.1
+  }
  },
  "Jaylen Clark": {
   "team": "MIN",
@@ -4731,7 +11307,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.7,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 16,
+   "pts": 5,
+   "reb": 1.9,
+   "ast": 0.8,
+   "stl": 1,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 0.3,
+   "fga": 4.69,
+   "fgm": 2.11,
+   "fta": 0.99,
+   "ftm": 0.71,
+   "fgPct": 45,
+   "ftPct": 71.8
+  },
+  "b": {
+   "min": 16,
+   "pts": 5.7,
+   "reb": 2.1,
+   "ast": 1,
+   "stl": 0.94,
+   "blk": 0.13,
+   "tpm": 0.77,
+   "tov": 0.37,
+   "fga": 4.69,
+   "fgm": 2.11,
+   "fta": 0.99,
+   "ftm": 0.68,
+   "fgPct": 44.9,
+   "ftPct": 69.4
+  }
  },
  "Josh Green": {
   "team": "MIN",
@@ -4753,7 +11361,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.54,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 18,
+   "pts": 5.2,
+   "reb": 2.2,
+   "ast": 1.2,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 0.7,
+   "fga": 4.16,
+   "fgm": 1.97,
+   "fta": 0.73,
+   "ftm": 0.51,
+   "fgPct": 47.2,
+   "ftPct": 70.4
+  },
+  "b": {
+   "min": 20,
+   "pts": 5.5,
+   "reb": 2.1,
+   "ast": 1.2,
+   "stl": 0.82,
+   "blk": 0.13,
+   "tpm": 1.21,
+   "tov": 0.89,
+   "fga": 4.16,
+   "fgm": 1.84,
+   "fta": 0.73,
+   "ftm": 0.57,
+   "fgPct": 44.2,
+   "ftPct": 78.5
+  }
  },
  "Isaiah Evans": {
   "team": "MIN",
@@ -4775,7 +11415,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.28,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 12,
+   "pts": 3.9,
+   "reb": 1.2,
+   "ast": 0.6,
+   "stl": 0.28,
+   "blk": 0.18,
+   "tpm": 1.03,
+   "tov": 0.61,
+   "fga": 3.52,
+   "fgm": 1.28,
+   "fta": 0.35,
+   "ftm": 0.28,
+   "fgPct": 36.3,
+   "ftPct": 80.7
+  }
  },
  "Zyon Pullin": {
   "team": "MIN",
@@ -4797,7 +11454,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.51,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 10,
+   "pts": 2.7,
+   "reb": 0.4,
+   "ast": 1.1,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.4,
+   "fga": 2.18,
+   "fgm": 0.67,
+   "fta": 0.57,
+   "ftm": 0.57,
+   "fgPct": 30.5,
+   "ftPct": 100
+  },
+  "b": {
+   "min": 7,
+   "pts": 2.8,
+   "reb": 0.9,
+   "ast": 1.2,
+   "stl": 0.18,
+   "blk": 0.03,
+   "tpm": 0.18,
+   "tov": 0.45,
+   "fga": 2.18,
+   "fgm": 1.08,
+   "fta": 0.57,
+   "ftm": 0.45,
+   "fgPct": 49.6,
+   "ftPct": 78.3
+  }
  },
  "Rocco Zikarsky": {
   "team": "MIN",
@@ -4819,7 +11508,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.38,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 7,
+   "pts": 2.7,
+   "reb": 2.7,
+   "ast": 0.4,
+   "stl": 0,
+   "blk": 1,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 1.36,
+   "fgm": 0.85,
+   "fta": 0.46,
+   "ftm": 0.46,
+   "fgPct": 62.5,
+   "ftPct": 100
+  },
+  "b": {
+   "min": 5,
+   "pts": 2.1,
+   "reb": 1.6,
+   "ast": 0.1,
+   "stl": 0.11,
+   "blk": 0.38,
+   "tpm": 0,
+   "tov": 0.25,
+   "fga": 1.36,
+   "fgm": 0.9,
+   "fta": 0.46,
+   "ftm": 0.29,
+   "fgPct": 65.9,
+   "ftPct": 62.6
+  }
  },
  "Enrique Freeman": {
   "team": "MIN",
@@ -4841,7 +11562,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.45,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 7,
+   "pts": 2.1,
+   "reb": 1.5,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.3,
+   "tpm": 0.2,
+   "tov": 0.3,
+   "fga": 1.61,
+   "fgm": 0.75,
+   "fta": 0.64,
+   "ftm": 0.45,
+   "fgPct": 46.7,
+   "ftPct": 70.2
+  },
+  "b": {
+   "min": 7,
+   "pts": 2,
+   "reb": 1.8,
+   "ast": 0.4,
+   "stl": 0.16,
+   "blk": 0.23,
+   "tpm": 0.2,
+   "tov": 0.35,
+   "fga": 1.61,
+   "fgm": 0.66,
+   "fta": 0.64,
+   "ftm": 0.44,
+   "fgPct": 41.2,
+   "ftPct": 68.4
+  }
  },
  "Trey Kaufman-Renn": {
   "team": "MIN",
@@ -4863,7 +11616,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.23,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 5,
+   "pts": 1.6,
+   "reb": 1.1,
+   "ast": 0.3,
+   "stl": 0.11,
+   "blk": 0.05,
+   "tpm": 0.07,
+   "tov": 0.24,
+   "fga": 1.36,
+   "fgm": 0.64,
+   "fta": 0.34,
+   "ftm": 0.23,
+   "fgPct": 47.2,
+   "ftPct": 66.4
+  }
  },
  "Donte DiVincenzo": {
   "team": "MIN",
@@ -4885,7 +11655,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 9.8,
-  "spreadMin": 24
+  "spreadMin": 24,
+  "a": {
+   "min": 24,
+   "pts": 9.8,
+   "reb": 3.8,
+   "ast": 2.8,
+   "stl": 1.1,
+   "blk": 0.3,
+   "tpm": 2.1,
+   "tov": 1.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.7,
+   "ftPct": 77.3
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Tyler Herro": {
   "team": "MIL",
@@ -4907,7 +11709,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.17,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 32,
+   "pts": 19.5,
+   "reb": 4.9,
+   "ast": 4.1,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 2.7,
+   "tov": 2.1,
+   "fga": 14.74,
+   "fgm": 6.71,
+   "fta": 3.54,
+   "ftm": 3.11,
+   "fgPct": 45.5,
+   "ftPct": 88
+  },
+  "b": {
+   "min": 31,
+   "pts": 19.2,
+   "reb": 4.5,
+   "ast": 4.4,
+   "stl": 0.78,
+   "blk": 0.33,
+   "tpm": 2.45,
+   "tov": 2.09,
+   "fga": 14.74,
+   "fgm": 6.76,
+   "fta": 3.54,
+   "ftm": 3.22,
+   "fgPct": 45.8,
+   "ftPct": 91
+  }
  },
  "Ryan Rollins": {
   "team": "MIL",
@@ -4929,7 +11763,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.09,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 30,
+   "pts": 14.3,
+   "reb": 4.5,
+   "ast": 4.4,
+   "stl": 1.8,
+   "blk": 0.6,
+   "tpm": 1.8,
+   "tov": 3.4,
+   "fga": 13.44,
+   "fgm": 6.25,
+   "fta": 2.55,
+   "ftm": 2.1,
+   "fgPct": 46.5,
+   "ftPct": 82.3
+  },
+  "b": {
+   "min": 31,
+   "pts": 17,
+   "reb": 4.2,
+   "ast": 5.5,
+   "stl": 1.43,
+   "blk": 0.39,
+   "tpm": 2.44,
+   "tov": 2.94,
+   "fga": 13.44,
+   "fgm": 6.26,
+   "fta": 2.55,
+   "ftm": 2.08,
+   "fgPct": 46.6,
+   "ftPct": 81.4
+  }
  },
  "Kel'el Ware": {
   "team": "MIL",
@@ -4951,7 +11817,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.14,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 28,
+   "pts": 12.8,
+   "reb": 10.4,
+   "ast": 1.1,
+   "stl": 0.9,
+   "blk": 1.4,
+   "tpm": 1.1,
+   "tov": 1.1,
+   "fga": 10.18,
+   "fgm": 5.51,
+   "fta": 1.63,
+   "ftm": 1.17,
+   "fgPct": 54.1,
+   "ftPct": 72
+  },
+  "b": {
+   "min": 26,
+   "pts": 13.2,
+   "reb": 10,
+   "ast": 1.4,
+   "stl": 0.84,
+   "blk": 1.37,
+   "tpm": 1.72,
+   "tov": 0.81,
+   "fga": 10.18,
+   "fgm": 5.21,
+   "fta": 1.63,
+   "ftm": 1.1,
+   "fgPct": 51.2,
+   "ftPct": 67.5
+  }
  },
  "Jaime Jaquez Jr.": {
   "team": "MIL",
@@ -4973,7 +11871,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.89,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 28,
+   "pts": 13.1,
+   "reb": 5.1,
+   "ast": 3.7,
+   "stl": 1,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 1.9,
+   "fga": 11.65,
+   "fgm": 5.67,
+   "fta": 2.43,
+   "ftm": 1.88,
+   "fgPct": 48.7,
+   "ftPct": 77.2
+  },
+  "b": {
+   "min": 27,
+   "pts": 14.5,
+   "reb": 4.2,
+   "ast": 3.5,
+   "stl": 0.85,
+   "blk": 0.28,
+   "tpm": 0.98,
+   "tov": 1.48,
+   "fga": 11.65,
+   "fgm": 5.83,
+   "fta": 2.43,
+   "ftm": 1.9,
+   "fgPct": 50,
+   "ftPct": 78.1
+  }
  },
  "Myles Turner": {
   "team": "MIL",
@@ -4995,7 +11925,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.95,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 27,
+   "pts": 13.2,
+   "reb": 6.1,
+   "ast": 1.3,
+   "stl": 0.7,
+   "blk": 2.1,
+   "tpm": 1.6,
+   "tov": 1.3,
+   "fga": 9.43,
+   "fgm": 4.59,
+   "fta": 2.58,
+   "ftm": 1.97,
+   "fgPct": 48.7,
+   "ftPct": 76.3
+  },
+  "b": {
+   "min": 27,
+   "pts": 12.4,
+   "reb": 5.3,
+   "ast": 1.4,
+   "stl": 0.69,
+   "blk": 1.7,
+   "tpm": 1.91,
+   "tov": 1.3,
+   "fga": 9.43,
+   "fgm": 4.3,
+   "fta": 2.58,
+   "ftm": 1.92,
+   "fgPct": 45.6,
+   "ftPct": 74.2
+  }
  },
  "Kevin Porter Jr.": {
   "team": "MIL",
@@ -5017,7 +11979,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.18,
   "sources": "both",
   "spreadPts": 2.1,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 20,
+   "pts": 10.2,
+   "reb": 3.1,
+   "ast": 3.6,
+   "stl": 0.9,
+   "blk": 0.2,
+   "tpm": 1,
+   "tov": 1.9,
+   "fga": 9.9,
+   "fgm": 4.38,
+   "fta": 2.67,
+   "ftm": 2.06,
+   "fgPct": 44.3,
+   "ftPct": 77.1
+  },
+  "b": {
+   "min": 24,
+   "pts": 12.3,
+   "reb": 4,
+   "ast": 4.3,
+   "stl": 1.21,
+   "blk": 0.36,
+   "tpm": 0.67,
+   "tov": 1.87,
+   "fga": 9.9,
+   "fgm": 4.67,
+   "fta": 2.67,
+   "ftm": 2.3,
+   "fgPct": 47.2,
+   "ftPct": 86.2
+  }
  },
  "Kyle Kuzma": {
   "team": "MIL",
@@ -5039,7 +12033,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.59,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 20,
+   "pts": 10.6,
+   "reb": 3.9,
+   "ast": 1.8,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 1.1,
+   "tov": 1.4,
+   "fga": 9.68,
+   "fgm": 4.4,
+   "fta": 2.23,
+   "ftm": 1.6,
+   "fgPct": 45.5,
+   "ftPct": 71.7
+  },
+  "b": {
+   "min": 23,
+   "pts": 11.9,
+   "reb": 4.4,
+   "ast": 2.2,
+   "stl": 0.52,
+   "blk": 0.34,
+   "tpm": 1.27,
+   "tov": 1.56,
+   "fga": 9.68,
+   "fgm": 4.54,
+   "fta": 2.23,
+   "ftm": 1.58,
+   "fgPct": 46.9,
+   "ftPct": 71
+  }
  },
  "Brayden Burries": {
   "team": "MIL",
@@ -5061,7 +12087,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.34,
   "sources": "both",
   "spreadPts": 5.4,
-  "spreadMin": 0.2
+  "spreadMin": 0.2,
+  "a": {
+   "min": 22.8,
+   "pts": 15.5,
+   "reb": 2.5,
+   "ast": 1.6,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 1,
+   "fga": 8.52,
+   "fgm": 3.48,
+   "fta": 1.7,
+   "ftm": 1.35,
+   "fgPct": 40.8,
+   "ftPct": 79.5
+  },
+  "b": {
+   "min": 23,
+   "pts": 10.1,
+   "reb": 3.1,
+   "ast": 1.7,
+   "stl": 0.87,
+   "blk": 0.19,
+   "tpm": 1.41,
+   "tov": 1.21,
+   "fga": 8.52,
+   "fgm": 3.66,
+   "fta": 1.7,
+   "ftm": 1.33,
+   "fgPct": 42.9,
+   "ftPct": 77.8
+  }
  },
  "AJ Green": {
   "team": "MIL",
@@ -5083,7 +12141,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.49,
   "sources": "both",
   "spreadPts": 1.7,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 25,
+   "pts": 9.3,
+   "reb": 2.6,
+   "ast": 1.6,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 2.6,
+   "tov": 0.7,
+   "fga": 5.93,
+   "fgm": 2.52,
+   "fta": 0.56,
+   "ftm": 0.49,
+   "fgPct": 42.5,
+   "ftPct": 87.4
+  },
+  "b": {
+   "min": 22,
+   "pts": 7.6,
+   "reb": 2.2,
+   "ast": 1.3,
+   "stl": 0.36,
+   "blk": 0.09,
+   "tpm": 2.18,
+   "tov": 0.8,
+   "fga": 5.93,
+   "fgm": 2.47,
+   "fta": 0.56,
+   "ftm": 0.49,
+   "fgPct": 41.7,
+   "ftPct": 88.1
+  }
  },
  "Gary Trent Jr.": {
   "team": "MIL",
@@ -5105,7 +12195,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.55,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 20,
+   "pts": 8.9,
+   "reb": 1.6,
+   "ast": 1,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 1.7,
+   "tov": 0.5,
+   "fga": 6.65,
+   "fgm": 2.71,
+   "fta": 0.7,
+   "ftm": 0.54,
+   "fgPct": 40.7,
+   "ftPct": 77
+  },
+  "b": {
+   "min": 17,
+   "pts": 7.6,
+   "reb": 1.2,
+   "ast": 0.9,
+   "stl": 0.54,
+   "blk": 0.04,
+   "tpm": 1.73,
+   "tov": 0.51,
+   "fga": 6.65,
+   "fgm": 2.68,
+   "fta": 0.7,
+   "ftm": 0.56,
+   "fgPct": 40.2,
+   "ftPct": 79.5
+  }
  },
  "Kasparas Jakucionis": {
   "team": "MIL",
@@ -5127,7 +12249,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.11,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 17,
+   "pts": 5.9,
+   "reb": 2.5,
+   "ast": 2.5,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 1.2,
+   "tov": 0.9,
+   "fga": 4.2,
+   "fgm": 1.8,
+   "fta": 1.26,
+   "ftm": 1.11,
+   "fgPct": 42.9,
+   "ftPct": 87.9
+  },
+  "b": {
+   "min": 15,
+   "pts": 5.8,
+   "reb": 1.7,
+   "ast": 2.4,
+   "stl": 0.49,
+   "blk": 0.1,
+   "tpm": 1.02,
+   "tov": 0.77,
+   "fga": 4.2,
+   "fgm": 1.81,
+   "fta": 1.26,
+   "ftm": 1.11,
+   "fgPct": 43.2,
+   "ftPct": 87.9
+  }
  },
  "Ousmane Dieng": {
   "team": "MIL",
@@ -5149,7 +12303,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.49,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 15,
+   "pts": 5.5,
+   "reb": 2.6,
+   "ast": 1.5,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.8,
+   "tov": 0.8,
+   "fga": 4.54,
+   "fgm": 1.93,
+   "fta": 0.68,
+   "ftm": 0.5,
+   "fgPct": 42.5,
+   "ftPct": 72.8
+  },
+  "b": {
+   "min": 13,
+   "pts": 5.1,
+   "reb": 2.5,
+   "ast": 1.1,
+   "stl": 0.31,
+   "blk": 0.2,
+   "tpm": 0.61,
+   "tov": 0.74,
+   "fga": 4.54,
+   "fgm": 2,
+   "fta": 0.68,
+   "ftm": 0.49,
+   "fgPct": 44.1,
+   "ftPct": 71.8
+  }
  },
  "Jericho Sims": {
   "team": "MIL",
@@ -5171,7 +12357,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.56,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 15,
+   "pts": 2.9,
+   "reb": 4.4,
+   "ast": 0.8,
+   "stl": 0.2,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.7,
+   "fga": 2.3,
+   "fgm": 1.66,
+   "fta": 0.92,
+   "ftm": 0.54,
+   "fgPct": 72.4,
+   "ftPct": 59.1
+  },
+  "b": {
+   "min": 14,
+   "pts": 3.9,
+   "reb": 4.1,
+   "ast": 0.7,
+   "stl": 0.2,
+   "blk": 0.35,
+   "tpm": 0,
+   "tov": 0.59,
+   "fga": 2.3,
+   "fgm": 1.69,
+   "fta": 0.92,
+   "ftm": 0.57,
+   "fgPct": 73.5,
+   "ftPct": 62.2
+  }
  },
  "Nate Ament": {
   "team": "MIL",
@@ -5193,7 +12411,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.94,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 14,
+   "pts": 4.6,
+   "reb": 2.9,
+   "ast": 0.7,
+   "stl": 0.41,
+   "blk": 0.24,
+   "tpm": 0.68,
+   "tov": 0.82,
+   "fga": 4.07,
+   "fgm": 1.48,
+   "fta": 1.22,
+   "ftm": 0.94,
+   "fgPct": 36.3,
+   "ftPct": 76.9
+  }
  },
  "Bogoljub Markovic": {
   "team": "MIL",
@@ -5215,7 +12450,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.68,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 11,
+   "pts": 4.4,
+   "reb": 2.1,
+   "ast": 0.8,
+   "stl": 0.32,
+   "blk": 0.23,
+   "tpm": 0.66,
+   "tov": 0.69,
+   "fga": 3.61,
+   "fgm": 1.54,
+   "fta": 0.87,
+   "ftm": 0.68,
+   "fgPct": 42.6,
+   "ftPct": 79
+  }
  },
  "Cormac Ryan": {
   "team": "MIL",
@@ -5237,7 +12489,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.42,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 7,
+   "pts": 4.1,
+   "reb": 0.7,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.4,
+   "fga": 2.79,
+   "fgm": 1.45,
+   "fta": 0.47,
+   "ftm": 0.44,
+   "fgPct": 52,
+   "ftPct": 92.3
+  },
+  "b": {
+   "min": 9,
+   "pts": 3.6,
+   "reb": 0.9,
+   "ast": 0.6,
+   "stl": 0.29,
+   "blk": 0.1,
+   "tpm": 0.61,
+   "tov": 0.57,
+   "fga": 2.79,
+   "fgm": 1.31,
+   "fta": 0.47,
+   "ftm": 0.41,
+   "fgPct": 47.1,
+   "ftPct": 86
+  }
  },
  "Kam Jones": {
   "team": "MIL",
@@ -5259,7 +12543,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.14,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 7,
+   "pts": 1.8,
+   "reb": 0.7,
+   "ast": 1.4,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.4,
+   "fga": 2.78,
+   "fgm": 1.12,
+   "fta": 0.25,
+   "ftm": 0.13,
+   "fgPct": 40.2,
+   "ftPct": 50
+  },
+  "b": {
+   "min": 9,
+   "pts": 3.1,
+   "reb": 0.9,
+   "ast": 1.2,
+   "stl": 0.25,
+   "blk": 0.01,
+   "tpm": 0.43,
+   "tov": 0.42,
+   "fga": 2.78,
+   "fgm": 1.23,
+   "fta": 0.25,
+   "ftm": 0.15,
+   "fgPct": 44.4,
+   "ftPct": 61.6
+  }
  },
  "Pete Nance": {
   "team": "MIL",
@@ -5281,7 +12597,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 4.2,
-  "spreadMin": 15.7
+  "spreadMin": 15.7,
+  "a": {
+   "min": 15.7,
+   "pts": 4.2,
+   "reb": 2.4,
+   "ast": 0.9,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.9,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.7,
+   "ftPct": 15.7
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Caris LeVert": {
   "team": "MIL",
@@ -5303,7 +12651,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 5,
-  "spreadMin": 10
+  "spreadMin": 10,
+  "a": {
+   "min": 10,
+   "pts": 5,
+   "reb": 1.3,
+   "ast": 1.4,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.6,
+   "ftPct": 73
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Malique Lewis": {
   "team": "MIL",
@@ -5325,7 +12705,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Giannis Antetokounmpo": {
   "team": "MIA",
@@ -5347,7 +12744,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 7.99,
   "sources": "both",
   "spreadPts": 1.9,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 33,
+   "pts": 30,
+   "reb": 11.8,
+   "ast": 6.1,
+   "stl": 1,
+   "blk": 1.1,
+   "tpm": 0.7,
+   "tov": 3.5,
+   "fga": 19.69,
+   "fgm": 11.52,
+   "fta": 12.21,
+   "ftm": 8.09,
+   "fgPct": 58.5,
+   "ftPct": 66.3
+  },
+  "b": {
+   "min": 33,
+   "pts": 31.9,
+   "reb": 11.7,
+   "ast": 6.7,
+   "stl": 1.09,
+   "blk": 0.99,
+   "tpm": 0.37,
+   "tov": 3.54,
+   "fga": 19.69,
+   "fgm": 11.83,
+   "fta": 12.21,
+   "ftm": 7.88,
+   "fgPct": 60.1,
+   "ftPct": 64.6
+  }
  },
  "Bam Adebayo": {
   "team": "MIA",
@@ -5369,7 +12798,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.39,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 33,
+   "pts": 18,
+   "reb": 9.7,
+   "ast": 3.9,
+   "stl": 1.2,
+   "blk": 0.9,
+   "tpm": 0.6,
+   "tov": 2.2,
+   "fga": 15.44,
+   "fgm": 7.92,
+   "fta": 5.71,
+   "ftm": 4.35,
+   "fgPct": 51.3,
+   "ftPct": 76.2
+  },
+  "b": {
+   "min": 33,
+   "pts": 20.7,
+   "reb": 9.2,
+   "ast": 4.2,
+   "stl": 1.27,
+   "blk": 0.64,
+   "tpm": 2.16,
+   "tov": 1.49,
+   "fga": 15.44,
+   "fgm": 7.04,
+   "fta": 5.71,
+   "ftm": 4.42,
+   "fgPct": 45.6,
+   "ftPct": 77.4
+  }
  },
  "Andrew Wiggins": {
   "team": "MIA",
@@ -5391,7 +12852,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.94,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 31,
+   "pts": 16.9,
+   "reb": 4.7,
+   "ast": 2.5,
+   "stl": 1,
+   "blk": 0.8,
+   "tpm": 2,
+   "tov": 1.6,
+   "fga": 12.22,
+   "fgm": 5.57,
+   "fta": 2.57,
+   "ftm": 1.85,
+   "fgPct": 45.6,
+   "ftPct": 72
+  },
+  "b": {
+   "min": 32,
+   "pts": 15.3,
+   "reb": 4.5,
+   "ast": 2.4,
+   "stl": 1.19,
+   "blk": 0.82,
+   "tpm": 2.19,
+   "tov": 1.37,
+   "fga": 12.22,
+   "fgm": 5.53,
+   "fta": 2.57,
+   "ftm": 2.04,
+   "fgPct": 45.3,
+   "ftPct": 79.3
+  }
  },
  "Pelle Larsson": {
   "team": "MIA",
@@ -5413,7 +12906,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.5,
   "sources": "both",
   "spreadPts": 2.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 28,
+   "pts": 10.6,
+   "reb": 3.5,
+   "ast": 3,
+   "stl": 0.9,
+   "blk": 0.2,
+   "tpm": 1,
+   "tov": 1.2,
+   "fga": 8.71,
+   "fgm": 4.09,
+   "fta": 3.22,
+   "ftm": 2.41,
+   "fgPct": 46.9,
+   "ftPct": 74.9
+  },
+  "b": {
+   "min": 29,
+   "pts": 12.9,
+   "reb": 3.1,
+   "ast": 3.2,
+   "stl": 0.81,
+   "blk": 0.25,
+   "tpm": 1.01,
+   "tov": 1.62,
+   "fga": 8.71,
+   "fgm": 4.65,
+   "fta": 3.22,
+   "ftm": 2.58,
+   "fgPct": 53.4,
+   "ftPct": 79.9
+  }
  },
  "Bobby Portis": {
   "team": "MIA",
@@ -5435,7 +12960,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.82,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 24,
+   "pts": 13,
+   "reb": 7.4,
+   "ast": 1.5,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 1.4,
+   "tov": 1.1,
+   "fga": 10.84,
+   "fgm": 5.2,
+   "fta": 1.08,
+   "ftm": 0.84,
+   "fgPct": 48,
+   "ftPct": 77.3
+  },
+  "b": {
+   "min": 25,
+   "pts": 12.5,
+   "reb": 6.4,
+   "ast": 1.8,
+   "stl": 0.7,
+   "blk": 0.27,
+   "tpm": 1.65,
+   "tov": 1.02,
+   "fga": 10.84,
+   "fgm": 5.01,
+   "fta": 1.08,
+   "ftm": 0.8,
+   "fgPct": 46.3,
+   "ftPct": 74
+  }
  },
  "Tim Hardaway Jr.": {
   "team": "MIA",
@@ -5457,7 +13014,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.57,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 27,
+   "pts": 13.5,
+   "reb": 2.9,
+   "ast": 1.7,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 2.5,
+   "tov": 0.8,
+   "fga": 9.73,
+   "fgm": 4.06,
+   "fta": 1.95,
+   "ftm": 1.59,
+   "fgPct": 41.7,
+   "ftPct": 81.8
+  },
+  "b": {
+   "min": 27,
+   "pts": 12.5,
+   "reb": 2.8,
+   "ast": 1.5,
+   "stl": 0.58,
+   "blk": 0.12,
+   "tpm": 2.85,
+   "tov": 0.64,
+   "fga": 9.73,
+   "fgm": 4.03,
+   "fta": 1.95,
+   "ftm": 1.55,
+   "fgPct": 41.4,
+   "ftPct": 79.6
+  }
  },
  "Davion Mitchell": {
   "team": "MIA",
@@ -5479,7 +13068,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.56,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 29,
+   "pts": 9.6,
+   "reb": 2.4,
+   "ast": 5,
+   "stl": 0.9,
+   "blk": 0.2,
+   "tpm": 1.3,
+   "tov": 1.5,
+   "fga": 8.31,
+   "fgm": 3.81,
+   "fta": 0.83,
+   "ftm": 0.57,
+   "fgPct": 45.8,
+   "ftPct": 68.8
+  },
+  "b": {
+   "min": 32,
+   "pts": 10.2,
+   "reb": 2.5,
+   "ast": 6.2,
+   "stl": 0.89,
+   "blk": 0.2,
+   "tpm": 1.54,
+   "tov": 1.58,
+   "fga": 8.31,
+   "fgm": 4.07,
+   "fta": 0.83,
+   "ftm": 0.55,
+   "fgPct": 49,
+   "ftPct": 66.1
+  }
  },
  "Nikola Jovic": {
   "team": "MIA",
@@ -5501,7 +13122,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.62,
   "sources": "both",
   "spreadPts": 2.2,
-  "spreadMin": 5
+  "spreadMin": 5,
+  "a": {
+   "min": 18,
+   "pts": 7.5,
+   "reb": 3.2,
+   "ast": 1.9,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 1.1,
+   "tov": 1.1,
+   "fga": 7.95,
+   "fgm": 3.29,
+   "fta": 2.16,
+   "ftm": 1.68,
+   "fgPct": 41.4,
+   "ftPct": 77.8
+  },
+  "b": {
+   "min": 23,
+   "pts": 9.7,
+   "reb": 4,
+   "ast": 2.6,
+   "stl": 0.74,
+   "blk": 0.34,
+   "tpm": 1.45,
+   "tov": 1.43,
+   "fga": 7.95,
+   "fgm": 3.33,
+   "fta": 2.16,
+   "ftm": 1.55,
+   "fgPct": 41.9,
+   "ftPct": 71.5
+  }
  },
  "Dru Smith": {
   "team": "MIA",
@@ -5523,7 +13176,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.93,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 18,
+   "pts": 5.8,
+   "reb": 2.5,
+   "ast": 2.2,
+   "stl": 1.4,
+   "blk": 0.4,
+   "tpm": 0.8,
+   "tov": 0.8,
+   "fga": 4.29,
+   "fgm": 1.91,
+   "fta": 1.11,
+   "ftm": 0.93,
+   "fgPct": 44.5,
+   "ftPct": 83.6
+  },
+  "b": {
+   "min": 18,
+   "pts": 5.5,
+   "reb": 2.7,
+   "ast": 2.6,
+   "stl": 1.51,
+   "blk": 0.35,
+   "tpm": 0.56,
+   "tov": 0.81,
+   "fga": 4.29,
+   "fgm": 2.01,
+   "fta": 1.11,
+   "ftm": 0.92,
+   "fgPct": 46.8,
+   "ftPct": 82.9
+  }
  },
  "Simone Fontecchio": {
   "team": "MIA",
@@ -5545,7 +13230,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.18,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 17,
+   "pts": 7.3,
+   "reb": 2.7,
+   "ast": 1.1,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 1.4,
+   "tov": 0.7,
+   "fga": 6.2,
+   "fgm": 2.53,
+   "fta": 1.41,
+   "ftm": 1.17,
+   "fgPct": 40.8,
+   "ftPct": 82.9
+  },
+  "b": {
+   "min": 19,
+   "pts": 7.9,
+   "reb": 3.2,
+   "ast": 1.5,
+   "stl": 0.58,
+   "blk": 0.16,
+   "tpm": 1.52,
+   "tov": 0.69,
+   "fga": 6.2,
+   "fgm": 2.61,
+   "fta": 1.41,
+   "ftm": 1.18,
+   "fgPct": 42.2,
+   "ftPct": 84.2
+  }
  },
  "Myron Gardner": {
   "team": "MIA",
@@ -5567,7 +13284,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.42,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 10,
+   "pts": 4,
+   "reb": 3,
+   "ast": 1.1,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.4,
+   "fga": 3.6,
+   "fgm": 1.73,
+   "fta": 0.58,
+   "ftm": 0.42,
+   "fgPct": 48,
+   "ftPct": 73.1
+  },
+  "b": {
+   "min": 12,
+   "pts": 4.6,
+   "reb": 3.1,
+   "ast": 1.2,
+   "stl": 0.49,
+   "blk": 0.2,
+   "tpm": 0.71,
+   "tov": 0.61,
+   "fga": 3.6,
+   "fgm": 1.73,
+   "fta": 0.58,
+   "ftm": 0.42,
+   "fgPct": 47.9,
+   "ftPct": 73.7
+  }
  },
  "Ryan Conwell": {
   "team": "MIA",
@@ -5589,7 +13338,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.51,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 15,
+   "pts": 5.4,
+   "reb": 1.9,
+   "ast": 1.3,
+   "stl": 0.48,
+   "blk": 0.1,
+   "tpm": 0.97,
+   "tov": 0.97,
+   "fga": 4.89,
+   "fgm": 1.98,
+   "fta": 0.64,
+   "ftm": 0.51,
+   "fgPct": 40.5,
+   "ftPct": 79.8
+  }
  },
  "Vladislav Goldin": {
   "team": "MIA",
@@ -5611,7 +13377,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.29,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 9,
+   "pts": 2.6,
+   "reb": 3.4,
+   "ast": 1.1,
+   "stl": 0,
+   "blk": 1.1,
+   "tpm": 0,
+   "tov": 1.1,
+   "fga": 0.98,
+   "fgm": 0.73,
+   "fta": 0.34,
+   "ftm": 0.34,
+   "fgPct": 75,
+   "ftPct": 100
+  },
+  "b": {
+   "min": 5,
+   "pts": 1.5,
+   "reb": 1.6,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0.42,
+   "tpm": 0,
+   "tov": 0.34,
+   "fga": 0.98,
+   "fgm": 0.65,
+   "fta": 0.34,
+   "ftm": 0.24,
+   "fgPct": 66.6,
+   "ftPct": 70
+  }
  },
  "Tre Donaldson": {
   "team": "MIA",
@@ -5633,7 +13431,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.13,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 6,
+   "pts": 1.7,
+   "reb": 0.7,
+   "ast": 0.9,
+   "stl": 0.21,
+   "blk": 0.04,
+   "tpm": 0.19,
+   "tov": 0.52,
+   "fga": 1.62,
+   "fgm": 0.7,
+   "fta": 0.18,
+   "ftm": 0.13,
+   "fgPct": 43,
+   "ftPct": 72.8
+  }
  },
  "Zach Edey": {
   "team": "MEM",
@@ -5655,7 +13470,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.69,
   "sources": "both",
   "spreadPts": 2.1,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 27,
+   "pts": 13,
+   "reb": 11,
+   "ast": 1.2,
+   "stl": 0.7,
+   "blk": 1.8,
+   "tpm": 0.2,
+   "tov": 2.1,
+   "fga": 9.83,
+   "fgm": 5.97,
+   "fta": 3.54,
+   "ftm": 2.65,
+   "fgPct": 60.8,
+   "ftPct": 74.9
+  },
+  "b": {
+   "min": 27,
+   "pts": 15.1,
+   "reb": 11.7,
+   "ast": 1.5,
+   "stl": 0.66,
+   "blk": 1.81,
+   "tpm": 0.16,
+   "tov": 1.99,
+   "fga": 9.83,
+   "fgm": 6.08,
+   "fta": 3.54,
+   "ftm": 2.73,
+   "fgPct": 61.9,
+   "ftPct": 77.2
+  }
  },
  "Cedric Coward": {
   "team": "MEM",
@@ -5677,7 +13524,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.36,
   "sources": "both",
   "spreadPts": 2,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 29,
+   "pts": 15.3,
+   "reb": 6.6,
+   "ast": 3.1,
+   "stl": 0.7,
+   "blk": 0.5,
+   "tpm": 1.7,
+   "tov": 1.9,
+   "fga": 12.5,
+   "fgm": 5.89,
+   "fta": 4,
+   "ftm": 3.37,
+   "fgPct": 47.1,
+   "ftPct": 84.3
+  },
+  "b": {
+   "min": 29,
+   "pts": 17.3,
+   "reb": 5,
+   "ast": 3.3,
+   "stl": 0.88,
+   "blk": 0.5,
+   "tpm": 1.83,
+   "tov": 1.7,
+   "fga": 12.5,
+   "fgm": 6.07,
+   "fta": 4,
+   "ftm": 3.35,
+   "fgPct": 48.5,
+   "ftPct": 83.8
+  }
  },
  "Cameron Boozer": {
   "team": "MEM",
@@ -5699,7 +13578,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.62,
   "sources": "both",
   "spreadPts": 2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 32,
+   "pts": 18.8,
+   "reb": 7,
+   "ast": 3.1,
+   "stl": 0.8,
+   "blk": 0.5,
+   "tpm": 1,
+   "tov": 2.4,
+   "fga": 13.43,
+   "fgm": 6.34,
+   "fta": 3.36,
+   "ftm": 2.63,
+   "fgPct": 47.2,
+   "ftPct": 78.3
+  },
+  "b": {
+   "min": 31,
+   "pts": 16.8,
+   "reb": 7.7,
+   "ast": 4.7,
+   "stl": 1.34,
+   "blk": 0.47,
+   "tpm": 1.56,
+   "tov": 3.09,
+   "fga": 13.43,
+   "fgm": 6.32,
+   "fta": 3.36,
+   "ftm": 2.62,
+   "fgPct": 47.1,
+   "ftPct": 78
+  }
  },
  "Ty Jerome": {
   "team": "MEM",
@@ -5721,7 +13632,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.29,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 28,
+   "pts": 14.9,
+   "reb": 3.2,
+   "ast": 5.1,
+   "stl": 1,
+   "blk": 0.2,
+   "tpm": 2,
+   "tov": 1.7,
+   "fga": 12.05,
+   "fgm": 5.54,
+   "fta": 2.65,
+   "ftm": 2.26,
+   "fgPct": 46,
+   "ftPct": 85.3
+  },
+  "b": {
+   "min": 27,
+   "pts": 15.5,
+   "reb": 2.9,
+   "ast": 5.5,
+   "stl": 1.17,
+   "blk": 0.11,
+   "tpm": 2.13,
+   "tov": 1.84,
+   "fga": 12.05,
+   "fgm": 5.56,
+   "fta": 2.65,
+   "ftm": 2.31,
+   "fgPct": 46.1,
+   "ftPct": 87.1
+  }
  },
  "Jerami Grant": {
   "team": "MEM",
@@ -5743,7 +13686,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.91,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 29,
+   "pts": 15.8,
+   "reb": 3.6,
+   "ast": 1.9,
+   "stl": 0.7,
+   "blk": 0.8,
+   "tpm": 1.9,
+   "tov": 1.5,
+   "fga": 12.13,
+   "fgm": 5.35,
+   "fta": 4.81,
+   "ftm": 3.92,
+   "fgPct": 44.1,
+   "ftPct": 81.5
+  },
+  "b": {
+   "min": 28,
+   "pts": 17.2,
+   "reb": 3,
+   "ast": 2.2,
+   "stl": 0.65,
+   "blk": 0.68,
+   "tpm": 2.37,
+   "tov": 1.9,
+   "fga": 12.13,
+   "fgm": 5.47,
+   "fta": 4.81,
+   "ftm": 3.9,
+   "fgPct": 45.1,
+   "ftPct": 81
+  }
  },
  "Isaiah Stewart": {
   "team": "MEM",
@@ -5765,7 +13740,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.14,
   "sources": "both",
   "spreadPts": 2.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 25,
+   "pts": 9.2,
+   "reb": 6.7,
+   "ast": 1.4,
+   "stl": 0.4,
+   "blk": 1.4,
+   "tpm": 0.6,
+   "tov": 1.2,
+   "fga": 7.49,
+   "fgm": 3.91,
+   "fta": 2.85,
+   "ftm": 2.11,
+   "fgPct": 52.2,
+   "ftPct": 74.1
+  },
+  "b": {
+   "min": 24,
+   "pts": 11.3,
+   "reb": 5.1,
+   "ast": 1.4,
+   "stl": 0.37,
+   "blk": 1.35,
+   "tpm": 0.62,
+   "tov": 1.19,
+   "fga": 7.49,
+   "fgm": 4.27,
+   "fta": 2.85,
+   "ftm": 2.18,
+   "fgPct": 57,
+   "ftPct": 76.6
+  }
  },
  "Jaylen Wells": {
   "team": "MEM",
@@ -5787,7 +13794,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.82,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 28,
+   "pts": 12.3,
+   "reb": 3.5,
+   "ast": 1.8,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 1.9,
+   "tov": 1,
+   "fga": 9.15,
+   "fgm": 3.92,
+   "fta": 2.29,
+   "ftm": 1.83,
+   "fgPct": 42.8,
+   "ftPct": 80
+  },
+  "b": {
+   "min": 25,
+   "pts": 11.8,
+   "reb": 2.7,
+   "ast": 1.5,
+   "stl": 0.81,
+   "blk": 0.16,
+   "tpm": 1.89,
+   "tov": 0.81,
+   "fga": 9.15,
+   "fgm": 4.04,
+   "fta": 2.29,
+   "ftm": 1.81,
+   "fgPct": 44.1,
+   "ftPct": 79
+  }
  },
  "Scotty Pippen Jr.": {
   "team": "MEM",
@@ -5809,7 +13848,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.34,
   "sources": "both",
   "spreadPts": 2.2,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 23,
+   "pts": 11.3,
+   "reb": 3,
+   "ast": 4.2,
+   "stl": 1.6,
+   "blk": 0.5,
+   "tpm": 1.1,
+   "tov": 2.2,
+   "fga": 6.93,
+   "fgm": 3.09,
+   "fta": 1.87,
+   "ftm": 1.25,
+   "fgPct": 44.5,
+   "ftPct": 66.9
+  },
+  "b": {
+   "min": 20,
+   "pts": 9.1,
+   "reb": 2.3,
+   "ast": 4,
+   "stl": 1.38,
+   "blk": 0.35,
+   "tpm": 1,
+   "tov": 1.74,
+   "fga": 6.93,
+   "fgm": 3.31,
+   "fta": 1.87,
+   "ftm": 1.43,
+   "fgPct": 47.8,
+   "ftPct": 76.5
+  }
  },
  "GG Jackson II": {
   "team": "MEM",
@@ -5831,7 +13902,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.84,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 16,
+   "pts": 8.5,
+   "reb": 3.1,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.4,
+   "tpm": 1.1,
+   "tov": 1.1,
+   "fga": 8.23,
+   "fgm": 3.56,
+   "fta": 2.47,
+   "ftm": 1.83,
+   "fgPct": 43.3,
+   "ftPct": 74
+  },
+  "b": {
+   "min": 20,
+   "pts": 11.2,
+   "reb": 3.5,
+   "ast": 1.6,
+   "stl": 0.47,
+   "blk": 0.66,
+   "tpm": 1.06,
+   "tov": 1.44,
+   "fga": 8.23,
+   "fgm": 4.16,
+   "fta": 2.47,
+   "ftm": 1.85,
+   "fgPct": 50.5,
+   "ftPct": 74.8
+  }
  },
  "Quinten Post": {
   "team": "MEM",
@@ -5853,7 +13956,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.58,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 18,
+   "pts": 8.4,
+   "reb": 4,
+   "ast": 1.5,
+   "stl": 0.4,
+   "blk": 0.5,
+   "tpm": 1.7,
+   "tov": 0.9,
+   "fga": 6.17,
+   "fgm": 2.74,
+   "fta": 0.74,
+   "ftm": 0.58,
+   "fgPct": 44.4,
+   "ftPct": 78.4
+  },
+  "b": {
+   "min": 16,
+   "pts": 7.8,
+   "reb": 4,
+   "ast": 1.4,
+   "stl": 0.38,
+   "blk": 0.48,
+   "tpm": 1.39,
+   "tov": 0.79,
+   "fga": 6.17,
+   "fgm": 2.92,
+   "fta": 0.74,
+   "ftm": 0.58,
+   "fgPct": 47.3,
+   "ftPct": 78.8
+  }
  },
  "Taylor Hendricks": {
   "team": "MEM",
@@ -5875,7 +14010,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.69,
   "sources": "both",
   "spreadPts": 3.3,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 12,
+   "pts": 3.6,
+   "reb": 2.4,
+   "ast": 0.5,
+   "stl": 0.6,
+   "blk": 0.5,
+   "tpm": 0.6,
+   "tov": 0.4,
+   "fga": 5.3,
+   "fgm": 2,
+   "fta": 0.96,
+   "ftm": 0.7,
+   "fgPct": 37.7,
+   "ftPct": 72.6
+  },
+  "b": {
+   "min": 16,
+   "pts": 6.9,
+   "reb": 3.2,
+   "ast": 0.7,
+   "stl": 0.76,
+   "blk": 0.55,
+   "tpm": 0.99,
+   "tov": 0.7,
+   "fga": 5.3,
+   "fgm": 2.59,
+   "fta": 0.96,
+   "ftm": 0.69,
+   "fgPct": 48.8,
+   "ftPct": 72.5
+  }
  },
  "Cam Spencer": {
   "team": "MEM",
@@ -5897,7 +14064,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.94,
   "sources": "both",
   "spreadPts": 4.5,
-  "spreadMin": 8
+  "spreadMin": 8,
+  "a": {
+   "min": 25,
+   "pts": 11.1,
+   "reb": 2.8,
+   "ast": 4.6,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 2,
+   "tov": 1,
+   "fga": 4.97,
+   "fgm": 2.21,
+   "fta": 0.99,
+   "ftm": 0.96,
+   "fgPct": 44.4,
+   "ftPct": 97
+  },
+  "b": {
+   "min": 17,
+   "pts": 6.6,
+   "reb": 1.5,
+   "ast": 3.4,
+   "stl": 0.49,
+   "blk": 0.11,
+   "tpm": 1.17,
+   "tov": 0.91,
+   "fga": 4.97,
+   "fgm": 2.25,
+   "fta": 0.99,
+   "ftm": 0.91,
+   "fgPct": 45.3,
+   "ftPct": 91.4
+  }
  },
  "Olivier-Maxence Prosper": {
   "team": "MEM",
@@ -5919,7 +14118,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.91,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 15,
+   "pts": 6.4,
+   "reb": 3.1,
+   "ast": 0.9,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.5,
+   "fga": 3.92,
+   "fgm": 1.81,
+   "fta": 1.28,
+   "ftm": 0.89,
+   "fgPct": 46.1,
+   "ftPct": 69.3
+  },
+  "b": {
+   "min": 13,
+   "pts": 5.7,
+   "reb": 2.3,
+   "ast": 0.7,
+   "stl": 0.56,
+   "blk": 0.17,
+   "tpm": 0.59,
+   "tov": 0.55,
+   "fga": 3.92,
+   "fgm": 2.11,
+   "fta": 1.28,
+   "ftm": 0.93,
+   "fgPct": 53.8,
+   "ftPct": 72.8
+  }
  },
  "Javon Small": {
   "team": "MEM",
@@ -5941,7 +14172,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.89,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 14,
+   "pts": 6.7,
+   "reb": 2.2,
+   "ast": 2.5,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 1,
+   "tov": 0.9,
+   "fga": 4.22,
+   "fgm": 1.96,
+   "fta": 1.07,
+   "ftm": 0.89,
+   "fgPct": 46.5,
+   "ftPct": 82.9
+  },
+  "b": {
+   "min": 13,
+   "pts": 5.6,
+   "reb": 1.7,
+   "ast": 2,
+   "stl": 0.5,
+   "blk": 0.15,
+   "tpm": 0.83,
+   "tov": 0.9,
+   "fga": 4.22,
+   "fgm": 1.96,
+   "fta": 1.07,
+   "ftm": 0.89,
+   "fgPct": 46.4,
+   "ftPct": 82.9
+  }
  },
  "Walter Clayton Jr.": {
   "team": "MEM",
@@ -5963,7 +14226,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.87,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 14,
+   "pts": 5.3,
+   "reb": 1.4,
+   "ast": 2.8,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 1.2,
+   "fga": 4.03,
+   "fgm": 1.55,
+   "fta": 0.97,
+   "ftm": 0.87,
+   "fgPct": 38.4,
+   "ftPct": 90.1
+  },
+  "b": {
+   "min": 12,
+   "pts": 5,
+   "reb": 1.1,
+   "ast": 2,
+   "stl": 0.36,
+   "blk": 0.16,
+   "tpm": 0.74,
+   "tov": 1.02,
+   "fga": 4.03,
+   "fgm": 1.68,
+   "fta": 0.97,
+   "ftm": 0.86,
+   "fgPct": 41.6,
+   "ftPct": 89.4
+  }
  },
  "Karim Lopez": {
   "team": "MEM",
@@ -5985,7 +14280,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.64,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 14,
+   "pts": 4,
+   "reb": 2.5,
+   "ast": 0.8,
+   "stl": 0.36,
+   "blk": 0.36,
+   "tpm": 0.46,
+   "tov": 1.21,
+   "fga": 3.61,
+   "fgm": 1.46,
+   "fta": 0.87,
+   "ftm": 0.64,
+   "fgPct": 40.3,
+   "ftPct": 73.8
+  }
  },
  "Jahmai Mashack": {
   "team": "MEM",
@@ -6007,7 +14319,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.27,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 8,
+   "pts": 2.3,
+   "reb": 1,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.6,
+   "fga": 2.44,
+   "fgm": 0.96,
+   "fta": 0.46,
+   "ftm": 0.25,
+   "fgPct": 39.5,
+   "ftPct": 54.3
+  },
+  "b": {
+   "min": 9,
+   "pts": 2.7,
+   "reb": 1.1,
+   "ast": 1,
+   "stl": 0.44,
+   "blk": 0.18,
+   "tpm": 0.26,
+   "tov": 0.64,
+   "fga": 2.44,
+   "fgm": 1.06,
+   "fta": 0.46,
+   "ftm": 0.29,
+   "fgPct": 43.6,
+   "ftPct": 63.5
+  }
  },
  "Taj Gibson": {
   "team": "MEM",
@@ -6029,7 +14373,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 2.4,
-  "spreadMin": 7.8
+  "spreadMin": 7.8,
+  "a": {
+   "min": 7.8,
+   "pts": 2.4,
+   "reb": 2,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 51.6,
+   "ftPct": 76
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Kris Murray": {
   "team": "MEM",
@@ -6051,7 +14427,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 10
+  "spreadMin": 10,
+  "a": {
+   "min": 10,
+   "pts": 2.7,
+   "reb": 1.7,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43,
+   "ftPct": 58
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Carson Cooper": {
   "team": "MEM",
@@ -6073,7 +14481,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "D'Angelo Russell": {
   "team": "MEM",
@@ -6095,7 +14520,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 9.9,
-  "spreadMin": 17
+  "spreadMin": 17,
+  "a": {
+   "min": 17,
+   "pts": 9.9,
+   "reb": 1.9,
+   "ast": 3.5,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 1.4,
+   "tov": 1.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.3,
+   "ftPct": 79.3
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Richie Saunders": {
   "team": "MEM",
@@ -6117,7 +14574,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "AJ Johnson": {
   "team": "MEM",
@@ -6139,7 +14613,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 3.1,
-  "spreadMin": 9
+  "spreadMin": 9,
+  "a": {
+   "min": 9,
+   "pts": 3.1,
+   "reb": 1,
+   "ast": 1,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.2,
+   "ftPct": 85.6
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Luka Doncic": {
   "team": "LAL",
@@ -6161,7 +14667,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 8.05,
   "sources": "both",
   "spreadPts": 5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 36,
+   "pts": 30.2,
+   "reb": 8.6,
+   "ast": 8.4,
+   "stl": 1.4,
+   "blk": 0.5,
+   "tpm": 3.4,
+   "tov": 4,
+   "fga": 23.81,
+   "fgm": 11.12,
+   "fta": 10.48,
+   "ftm": 7.95,
+   "fgPct": 46.7,
+   "ftPct": 75.9
+  },
+  "b": {
+   "min": 36,
+   "pts": 35.2,
+   "reb": 7.7,
+   "ast": 8.8,
+   "stl": 1.32,
+   "blk": 0.51,
+   "tpm": 4.39,
+   "tov": 3.97,
+   "fga": 23.81,
+   "fgm": 11.33,
+   "fta": 10.48,
+   "ftm": 8.14,
+   "fgPct": 47.6,
+   "ftPct": 77.7
+  }
  },
  "Austin Reaves": {
   "team": "LAL",
@@ -6183,7 +14721,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 7.05,
   "sources": "both",
   "spreadPts": 6.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 35,
+   "pts": 18.7,
+   "reb": 4.5,
+   "ast": 5.1,
+   "stl": 0.9,
+   "blk": 0.4,
+   "tpm": 2.2,
+   "tov": 2.3,
+   "fga": 16.24,
+   "fgm": 7.81,
+   "fta": 8.12,
+   "ftm": 7.03,
+   "fgPct": 48.1,
+   "ftPct": 86.6
+  },
+  "b": {
+   "min": 36,
+   "pts": 25.3,
+   "reb": 4.4,
+   "ast": 6.1,
+   "stl": 0.96,
+   "blk": 0.37,
+   "tpm": 2.56,
+   "tov": 3.09,
+   "fga": 16.24,
+   "fgm": 7.83,
+   "fta": 8.12,
+   "ftm": 7.07,
+   "fgPct": 48.2,
+   "ftPct": 87.1
+  }
  },
  "Walker Kessler": {
   "team": "LAL",
@@ -6205,7 +14775,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.62,
   "sources": "both",
   "spreadPts": 1.7,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 31,
+   "pts": 12.5,
+   "reb": 11.4,
+   "ast": 1.9,
+   "stl": 0.8,
+   "blk": 2.5,
+   "tpm": 0.5,
+   "tov": 2,
+   "fga": 6.66,
+   "fgm": 4.56,
+   "fta": 2.67,
+   "ftm": 1.6,
+   "fgPct": 68.4,
+   "ftPct": 60.2
+  },
+  "b": {
+   "min": 32,
+   "pts": 10.8,
+   "reb": 10.7,
+   "ast": 1.5,
+   "stl": 0.73,
+   "blk": 2.35,
+   "tpm": 0.25,
+   "tov": 1.44,
+   "fga": 6.66,
+   "fgm": 4.48,
+   "fta": 2.67,
+   "ftm": 1.63,
+   "fgPct": 67.2,
+   "ftPct": 61.3
+  }
  },
  "Sandro Mamukelashvili": {
   "team": "LAL",
@@ -6227,7 +14829,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.47,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 28,
+   "pts": 13.3,
+   "reb": 7.2,
+   "ast": 2.3,
+   "stl": 0.8,
+   "blk": 0.7,
+   "tpm": 1.8,
+   "tov": 1.1,
+   "fga": 8.71,
+   "fgm": 4.27,
+   "fta": 2,
+   "ftm": 1.48,
+   "fgPct": 49.1,
+   "ftPct": 74
+  },
+  "b": {
+   "min": 26,
+   "pts": 11.9,
+   "reb": 5.3,
+   "ast": 2.4,
+   "stl": 0.85,
+   "blk": 0.53,
+   "tpm": 1.7,
+   "tov": 0.94,
+   "fga": 8.71,
+   "fgm": 4.36,
+   "fta": 2,
+   "ftm": 1.47,
+   "fgPct": 50,
+   "ftPct": 73.3
+  }
  },
  "Quentin Grimes": {
   "team": "LAL",
@@ -6249,7 +14883,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.82,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 30,
+   "pts": 13.1,
+   "reb": 3.8,
+   "ast": 2.7,
+   "stl": 1,
+   "blk": 0.3,
+   "tpm": 2.2,
+   "tov": 1.5,
+   "fga": 9.43,
+   "fgm": 4.16,
+   "fta": 2.26,
+   "ftm": 1.78,
+   "fgPct": 44.1,
+   "ftPct": 78.7
+  },
+  "b": {
+   "min": 30,
+   "pts": 12.3,
+   "reb": 3.3,
+   "ast": 2.4,
+   "stl": 0.8,
+   "blk": 0.3,
+   "tpm": 1.55,
+   "tov": 1.35,
+   "fga": 9.43,
+   "fgm": 4.46,
+   "fta": 2.26,
+   "ftm": 1.86,
+   "fgPct": 47.3,
+   "ftPct": 82.1
+  }
  },
  "Collin Sexton": {
   "team": "LAL",
@@ -6271,7 +14937,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2,
   "sources": "both",
   "spreadPts": 2.9,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 24,
+   "pts": 15.2,
+   "reb": 2.3,
+   "ast": 3,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 1.3,
+   "tov": 2,
+   "fga": 9.16,
+   "fgm": 4.35,
+   "fta": 2.38,
+   "ftm": 1.99,
+   "fgPct": 47.5,
+   "ftPct": 83.5
+  },
+  "b": {
+   "min": 22,
+   "pts": 12.3,
+   "reb": 2,
+   "ast": 2.1,
+   "stl": 0.72,
+   "blk": 0.09,
+   "tpm": 1.38,
+   "tov": 1.35,
+   "fga": 9.16,
+   "fgm": 4.45,
+   "fta": 2.38,
+   "ftm": 2.02,
+   "fgPct": 48.5,
+   "ftPct": 84.7
+  }
  },
  "Jake LaRavia": {
   "team": "LAL",
@@ -6293,7 +14991,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.36,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 24,
+   "pts": 8.2,
+   "reb": 4,
+   "ast": 2,
+   "stl": 1,
+   "blk": 0.4,
+   "tpm": 1.2,
+   "tov": 1.2,
+   "fga": 5.95,
+   "fgm": 2.59,
+   "fta": 1.78,
+   "ftm": 1.35,
+   "fgPct": 43.6,
+   "ftPct": 75.9
+  },
+  "b": {
+   "min": 26,
+   "pts": 7.8,
+   "reb": 4,
+   "ast": 1.8,
+   "stl": 1.29,
+   "blk": 0.47,
+   "tpm": 0.95,
+   "tov": 1.11,
+   "fga": 5.95,
+   "fgm": 2.72,
+   "fta": 1.78,
+   "ftm": 1.37,
+   "fgPct": 45.7,
+   "ftPct": 76.7
+  }
  },
  "Ziaire Williams": {
   "team": "LAL",
@@ -6315,7 +15045,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.23,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 18,
+   "pts": 7.4,
+   "reb": 2.6,
+   "ast": 1,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.9,
+   "fga": 6.42,
+   "fgm": 2.7,
+   "fta": 1.48,
+   "ftm": 1.22,
+   "fgPct": 42.1,
+   "ftPct": 82.5
+  },
+  "b": {
+   "min": 22,
+   "pts": 8.2,
+   "reb": 2.2,
+   "ast": 1.1,
+   "stl": 0.9,
+   "blk": 0.27,
+   "tpm": 1.31,
+   "tov": 0.99,
+   "fga": 6.42,
+   "fgm": 2.81,
+   "fta": 1.48,
+   "ftm": 1.25,
+   "fgPct": 43.8,
+   "ftPct": 84.6
+  }
  },
  "Matisse Thybulle": {
   "team": "LAL",
@@ -6337,7 +15099,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.38,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 17,
+   "pts": 4.8,
+   "reb": 2,
+   "ast": 1,
+   "stl": 1.5,
+   "blk": 0.6,
+   "tpm": 0.9,
+   "tov": 0.6,
+   "fga": 3.75,
+   "fgm": 1.66,
+   "fta": 0.56,
+   "ftm": 0.37,
+   "fgPct": 44.4,
+   "ftPct": 66.5
+  },
+  "b": {
+   "min": 18,
+   "pts": 4.5,
+   "reb": 2.2,
+   "ast": 0.9,
+   "stl": 1.47,
+   "blk": 0.59,
+   "tpm": 0.93,
+   "tov": 0.81,
+   "fga": 3.75,
+   "fgm": 1.6,
+   "fta": 0.56,
+   "ftm": 0.39,
+   "fgPct": 42.6,
+   "ftPct": 71
+  }
  },
  "Jarred Vanderbilt": {
   "team": "LAL",
@@ -6359,7 +15153,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.32,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 16,
+   "pts": 4.5,
+   "reb": 4.6,
+   "ast": 1,
+   "stl": 0.9,
+   "blk": 0.3,
+   "tpm": 0.2,
+   "tov": 1,
+   "fga": 2.54,
+   "fgm": 1.33,
+   "fta": 0.51,
+   "ftm": 0.32,
+   "fgPct": 52.5,
+   "ftPct": 63.6
+  },
+  "b": {
+   "min": 15,
+   "pts": 3.1,
+   "reb": 3.9,
+   "ast": 1.1,
+   "stl": 0.73,
+   "blk": 0.22,
+   "tpm": 0.24,
+   "tov": 0.71,
+   "fga": 2.54,
+   "fgm": 1.27,
+   "fta": 0.51,
+   "ftm": 0.32,
+   "fgPct": 50.1,
+   "ftPct": 63.4
+  }
  },
  "Adou Thiero": {
   "team": "LAL",
@@ -6381,7 +15207,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.95,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 12,
+   "pts": 3.8,
+   "reb": 2.3,
+   "ast": 0.8,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.1,
+   "tov": 0.7,
+   "fga": 2.84,
+   "fgm": 1.47,
+   "fta": 1.42,
+   "ftm": 0.9,
+   "fgPct": 51.6,
+   "ftPct": 63.6
+  },
+  "b": {
+   "min": 12,
+   "pts": 4.2,
+   "reb": 2.2,
+   "ast": 0.7,
+   "stl": 0.49,
+   "blk": 0.27,
+   "tpm": 0.2,
+   "tov": 0.55,
+   "fga": 2.84,
+   "fgm": 1.49,
+   "fta": 1.42,
+   "ftm": 1,
+   "fgPct": 52.4,
+   "ftPct": 70.2
+  }
  },
  "Bronny James": {
   "team": "LAL",
@@ -6403,7 +15261,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.28,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 10,
+   "pts": 3.3,
+   "reb": 0.8,
+   "ast": 1.3,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.7,
+   "fga": 3.46,
+   "fgm": 1.23,
+   "fta": 0.35,
+   "ftm": 0.28,
+   "fgPct": 35.7,
+   "ftPct": 80
+  },
+  "b": {
+   "min": 11,
+   "pts": 3.7,
+   "reb": 0.7,
+   "ast": 1.5,
+   "stl": 0.49,
+   "blk": 0.13,
+   "tpm": 0.68,
+   "tov": 0.68,
+   "fga": 3.46,
+   "fgm": 1.39,
+   "fta": 0.35,
+   "ftm": 0.28,
+   "fgPct": 40.3,
+   "ftPct": 81.4
+  }
  },
  "Cameron Carr": {
   "team": "LAL",
@@ -6425,7 +15315,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.51,
   "sources": "both",
   "spreadPts": 9.5,
-  "spreadMin": 13
+  "spreadMin": 13,
+  "a": {
+   "min": 25,
+   "pts": 13.4,
+   "reb": 2.8,
+   "ast": 1.4,
+   "stl": 0.5,
+   "blk": 0.5,
+   "tpm": 0.9,
+   "tov": 1.1,
+   "fga": 3.5,
+   "fgm": 1.5,
+   "fta": 0.7,
+   "ftm": 0.49,
+   "fgPct": 42.7,
+   "ftPct": 69.3
+  },
+  "b": {
+   "min": 12,
+   "pts": 3.9,
+   "reb": 1.5,
+   "ast": 0.5,
+   "stl": 0.29,
+   "blk": 0.34,
+   "tpm": 0.57,
+   "tov": 0.64,
+   "fga": 3.5,
+   "fgm": 1.38,
+   "fta": 0.7,
+   "ftm": 0.54,
+   "fgPct": 39.3,
+   "ftPct": 77.4
+  }
  },
  "Jaden Hardy": {
   "team": "LAL",
@@ -6447,7 +15369,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.54,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 10,
+   "pts": 5.6,
+   "reb": 1.1,
+   "ast": 0.8,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 0.7,
+   "fga": 4.16,
+   "fgm": 1.78,
+   "fta": 0.73,
+   "ftm": 0.55,
+   "fgPct": 42.7,
+   "ftPct": 75.2
+  },
+  "b": {
+   "min": 10,
+   "pts": 5,
+   "reb": 0.8,
+   "ast": 0.6,
+   "stl": 0.19,
+   "blk": 0.06,
+   "tpm": 0.91,
+   "tov": 0.73,
+   "fga": 4.16,
+   "fgm": 1.8,
+   "fta": 0.73,
+   "ftm": 0.54,
+   "fgPct": 43.1,
+   "ftPct": 73.7
+  }
  },
  "Kevon Looney": {
   "team": "LAL",
@@ -6469,7 +15423,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.12,
   "sources": "both",
   "spreadPts": 2.8,
-  "spreadMin": 5
+  "spreadMin": 5,
+  "a": {
+   "min": 16,
+   "pts": 4.3,
+   "reb": 5.6,
+   "ast": 1.6,
+   "stl": 0.5,
+   "blk": 0.5,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 1.39,
+   "fgm": 0.72,
+   "fta": 0.2,
+   "ftm": 0.12,
+   "fgPct": 51.6,
+   "ftPct": 62.9
+  },
+  "b": {
+   "min": 11,
+   "pts": 1.5,
+   "reb": 4,
+   "ast": 1.1,
+   "stl": 0.33,
+   "blk": 0.34,
+   "tpm": 0.05,
+   "tov": 0.36,
+   "fga": 1.39,
+   "fgm": 0.64,
+   "fta": 0.2,
+   "ftm": 0.12,
+   "fgPct": 46.1,
+   "ftPct": 63.8
+  }
  },
  "Dalton Knecht": {
   "team": "LAL",
@@ -6491,7 +15477,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.25,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 10,
+   "pts": 4.4,
+   "reb": 1.4,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 0.3,
+   "fga": 3.14,
+   "fgm": 1.44,
+   "fta": 0.35,
+   "ftm": 0.26,
+   "fgPct": 45.9,
+   "ftPct": 74.8
+  },
+  "b": {
+   "min": 10,
+   "pts": 3.8,
+   "reb": 1.4,
+   "ast": 0.4,
+   "stl": 0.16,
+   "blk": 0.12,
+   "tpm": 0.69,
+   "tov": 0.41,
+   "fga": 3.14,
+   "fgm": 1.46,
+   "fta": 0.35,
+   "ftm": 0.25,
+   "fgPct": 46.3,
+   "ftPct": 71.4
+  }
  },
  "Arthur Kaluma": {
   "team": "LAL",
@@ -6513,7 +15531,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.43,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 7,
+   "pts": 2.7,
+   "reb": 1.3,
+   "ast": 0.4,
+   "stl": 0.16,
+   "blk": 0.11,
+   "tpm": 0.36,
+   "tov": 0.47,
+   "fga": 2.09,
+   "fgm": 0.95,
+   "fta": 0.58,
+   "ftm": 0.43,
+   "fgPct": 45.3,
+   "ftPct": 73.8
+  }
  },
  "Chris Manon": {
   "team": "LAL",
@@ -6535,7 +15570,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.25,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 9,
+   "pts": 1.4,
+   "reb": 2,
+   "ast": 0.6,
+   "stl": 1,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0.96,
+   "fgm": 0.32,
+   "fta": 0.34,
+   "ftm": 0.25,
+   "fgPct": 33.3,
+   "ftPct": 75
+  },
+  "b": {
+   "min": 5,
+   "pts": 1.2,
+   "reb": 0.9,
+   "ast": 0.4,
+   "stl": 0.27,
+   "blk": 0.12,
+   "tpm": 0.16,
+   "tov": 0.26,
+   "fga": 0.96,
+   "fgm": 0.4,
+   "fta": 0.34,
+   "ftm": 0.25,
+   "fgPct": 41.3,
+   "ftPct": 73
+  }
  },
  "AK Okereke": {
   "team": "LAL",
@@ -6557,7 +15624,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.21,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 4,
+   "pts": 1.2,
+   "reb": 0.5,
+   "ast": 0.3,
+   "stl": 0.11,
+   "blk": 0.07,
+   "tpm": 0.18,
+   "tov": 0.18,
+   "fga": 0.92,
+   "fgm": 0.39,
+   "fta": 0.27,
+   "ftm": 0.21,
+   "fgPct": 42,
+   "ftPct": 77
+  }
  },
  "Darius Garland": {
   "team": "LAC",
@@ -6579,7 +15663,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.39,
   "sources": "both",
   "spreadPts": 2.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 33,
+   "pts": 19.3,
+   "reb": 2.7,
+   "ast": 6.8,
+   "stl": 1.1,
+   "blk": 0.1,
+   "tpm": 2.5,
+   "tov": 3,
+   "fga": 16.4,
+   "fgm": 7.46,
+   "fta": 3.94,
+   "ftm": 3.41,
+   "fgPct": 45.5,
+   "ftPct": 86.6
+  },
+  "b": {
+   "min": 32,
+   "pts": 21.8,
+   "reb": 2.9,
+   "ast": 6.8,
+   "stl": 1.15,
+   "blk": 0.2,
+   "tpm": 2.96,
+   "tov": 2.87,
+   "fga": 16.4,
+   "fgm": 7.75,
+   "fta": 3.94,
+   "ftm": 3.37,
+   "fgPct": 47.3,
+   "ftPct": 85.7
+  }
  },
  "Brandon Ingram": {
   "team": "LAC",
@@ -6601,7 +15717,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.32,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 34,
+   "pts": 22.4,
+   "reb": 5.5,
+   "ast": 4.7,
+   "stl": 0.8,
+   "blk": 0.6,
+   "tpm": 1.8,
+   "tov": 2.9,
+   "fga": 17.05,
+   "fgm": 8.08,
+   "fta": 5.29,
+   "ftm": 4.35,
+   "fgPct": 47.4,
+   "ftPct": 82.3
+  },
+  "b": {
+   "min": 33,
+   "pts": 22.1,
+   "reb": 5.8,
+   "ast": 5.2,
+   "stl": 0.69,
+   "blk": 0.69,
+   "tpm": 1.67,
+   "tov": 3.03,
+   "fga": 17.05,
+   "fgm": 8.08,
+   "fta": 5.29,
+   "ftm": 4.29,
+   "fgPct": 47.4,
+   "ftPct": 81.1
+  }
  },
  "Rui Hachimura": {
   "team": "LAC",
@@ -6623,7 +15771,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.22,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 28,
+   "pts": 12.5,
+   "reb": 4.5,
+   "ast": 1.2,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 1.3,
+   "tov": 0.8,
+   "fga": 10.37,
+   "fgm": 5.18,
+   "fta": 1.66,
+   "ftm": 1.25,
+   "fgPct": 49.9,
+   "ftPct": 75.5
+  },
+  "b": {
+   "min": 30,
+   "pts": 13.2,
+   "reb": 5.8,
+   "ast": 1.3,
+   "stl": 0.64,
+   "blk": 0.37,
+   "tpm": 1.88,
+   "tov": 0.87,
+   "fga": 10.37,
+   "fgm": 5.05,
+   "fta": 1.66,
+   "ftm": 1.19,
+   "fgPct": 48.7,
+   "ftPct": 71.4
+  }
  },
  "Brook Lopez": {
   "team": "LAC",
@@ -6645,7 +15825,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.98,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 28,
+   "pts": 12.3,
+   "reb": 4.9,
+   "ast": 1.3,
+   "stl": 0.6,
+   "blk": 1.8,
+   "tpm": 1.7,
+   "tov": 1,
+   "fga": 8.78,
+   "fgm": 4.16,
+   "fta": 1.23,
+   "ftm": 1.01,
+   "fgPct": 47.4,
+   "ftPct": 82.3
+  },
+  "b": {
+   "min": 26,
+   "pts": 10.7,
+   "reb": 4.4,
+   "ast": 1.8,
+   "stl": 0.54,
+   "blk": 1.46,
+   "tpm": 1.69,
+   "tov": 0.92,
+   "fga": 8.78,
+   "fgm": 4.03,
+   "fta": 1.23,
+   "ftm": 0.94,
+   "fgPct": 45.9,
+   "ftPct": 76.9
+  }
  },
  "Derrick Jones Jr.": {
   "team": "LAC",
@@ -6667,7 +15879,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.26,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 25,
+   "pts": 9.1,
+   "reb": 3.9,
+   "ast": 1,
+   "stl": 0.9,
+   "blk": 0.8,
+   "tpm": 0.9,
+   "tov": 0.8,
+   "fga": 7.25,
+   "fgm": 3.68,
+   "fta": 1.72,
+   "ftm": 1.23,
+   "fgPct": 50.7,
+   "ftPct": 71.7
+  },
+  "b": {
+   "min": 24,
+   "pts": 9.7,
+   "reb": 4,
+   "ast": 1.1,
+   "stl": 0.84,
+   "blk": 0.6,
+   "tpm": 1.07,
+   "tov": 0.75,
+   "fga": 7.25,
+   "fgm": 3.67,
+   "fta": 1.72,
+   "ftm": 1.29,
+   "fgPct": 50.7,
+   "ftPct": 74.8
+  }
  },
  "Bradley Beal": {
   "team": "LAC",
@@ -6689,7 +15933,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.25,
   "sources": "both",
   "spreadPts": 5.7,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 28,
+   "pts": 17.4,
+   "reb": 3,
+   "ast": 3.7,
+   "stl": 0.9,
+   "blk": 0.3,
+   "tpm": 1.7,
+   "tov": 2.2,
+   "fga": 9.45,
+   "fgm": 4.4,
+   "fta": 1.51,
+   "ftm": 1.26,
+   "fgPct": 46.6,
+   "ftPct": 83.1
+  },
+  "b": {
+   "min": 24,
+   "pts": 11.7,
+   "reb": 3,
+   "ast": 3,
+   "stl": 0.65,
+   "blk": 0.35,
+   "tpm": 1.44,
+   "tov": 1.7,
+   "fga": 9.45,
+   "fgm": 4.53,
+   "fta": 1.51,
+   "ftm": 1.24,
+   "fgPct": 47.9,
+   "ftPct": 81.8
+  }
  },
  "Keaton Wagler": {
   "team": "LAC",
@@ -6711,7 +15987,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.92,
   "sources": "both",
   "spreadPts": 5.9,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 28,
+   "pts": 17.8,
+   "reb": 3.3,
+   "ast": 2.5,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 1.6,
+   "tov": 1.6,
+   "fga": 10.24,
+   "fgm": 4.05,
+   "fta": 2.46,
+   "ftm": 1.94,
+   "fgPct": 39.6,
+   "ftPct": 78.9
+  },
+  "b": {
+   "min": 27,
+   "pts": 11.9,
+   "reb": 2.8,
+   "ast": 3.3,
+   "stl": 0.68,
+   "blk": 0.28,
+   "tpm": 1.9,
+   "tov": 1.91,
+   "fga": 10.24,
+   "fgm": 4.06,
+   "fta": 2.46,
+   "ftm": 1.9,
+   "fgPct": 39.7,
+   "ftPct": 77.3
+  }
  },
  "Isaiah Jackson": {
   "team": "LAC",
@@ -6733,7 +16041,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.4,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 15,
+   "pts": 6.7,
+   "reb": 4.6,
+   "ast": 0.8,
+   "stl": 0.6,
+   "blk": 1.2,
+   "tpm": 0,
+   "tov": 0.9,
+   "fga": 4.72,
+   "fgm": 2.87,
+   "fta": 2.19,
+   "ftm": 1.36,
+   "fgPct": 60.8,
+   "ftPct": 62.3
+  },
+  "b": {
+   "min": 18,
+   "pts": 7.9,
+   "reb": 5.5,
+   "ast": 1.2,
+   "stl": 0.69,
+   "blk": 1.15,
+   "tpm": 0.01,
+   "tov": 1.13,
+   "fga": 4.72,
+   "fgm": 3.21,
+   "fta": 2.19,
+   "ftm": 1.44,
+   "fgPct": 68,
+   "ftPct": 65.8
+  }
  },
  "Yanic Konan Niederhauser": {
   "team": "LAC",
@@ -6755,7 +16095,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.03,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 19,
+   "pts": 7.9,
+   "reb": 5.2,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 1.3,
+   "tpm": 0,
+   "tov": 1,
+   "fga": 4.11,
+   "fgm": 2.63,
+   "fta": 2.67,
+   "ftm": 2.02,
+   "fgPct": 64,
+   "ftPct": 75.8
+  },
+  "b": {
+   "min": 17,
+   "pts": 7.5,
+   "reb": 5,
+   "ast": 0.5,
+   "stl": 0.28,
+   "blk": 1.28,
+   "tpm": 0.04,
+   "tov": 0.85,
+   "fga": 4.11,
+   "fgm": 2.71,
+   "fta": 2.67,
+   "ftm": 2.03,
+   "fgPct": 65.9,
+   "ftPct": 76
+  }
  },
  "Kris Dunn": {
   "team": "LAC",
@@ -6777,7 +16149,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.55,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 27,
+   "pts": 8,
+   "reb": 3.8,
+   "ast": 4.1,
+   "stl": 1.6,
+   "blk": 0.4,
+   "tpm": 0.7,
+   "tov": 1.6,
+   "fga": 5.56,
+   "fgm": 2.36,
+   "fta": 0.72,
+   "ftm": 0.56,
+   "fgPct": 42.4,
+   "ftPct": 77.9
+  },
+  "b": {
+   "min": 23,
+   "pts": 6.6,
+   "reb": 3.4,
+   "ast": 3.3,
+   "stl": 1.37,
+   "blk": 0.14,
+   "tpm": 0.91,
+   "tov": 1.16,
+   "fga": 5.56,
+   "fgm": 2.57,
+   "fta": 0.72,
+   "ftm": 0.55,
+   "fgPct": 46.2,
+   "ftPct": 75.7
+  }
  },
  "Jordan Miller": {
   "team": "LAC",
@@ -6799,7 +16203,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.1,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 20,
+   "pts": 8.4,
+   "reb": 2.9,
+   "ast": 1.5,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 1,
+   "fga": 5.7,
+   "fgm": 2.84,
+   "fta": 2.62,
+   "ftm": 2.17,
+   "fgPct": 49.8,
+   "ftPct": 82.6
+  },
+  "b": {
+   "min": 18,
+   "pts": 8.8,
+   "reb": 2.3,
+   "ast": 1.9,
+   "stl": 0.67,
+   "blk": 0.15,
+   "tpm": 0.55,
+   "tov": 0.91,
+   "fga": 5.7,
+   "fgm": 3.13,
+   "fta": 2.62,
+   "ftm": 2.03,
+   "fgPct": 54.9,
+   "ftPct": 77.6
+  }
  },
  "Kobe Sanders": {
   "team": "LAC",
@@ -6821,7 +16257,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.04,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 17,
+   "pts": 6.2,
+   "reb": 1.9,
+   "ast": 1.4,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 1,
+   "fga": 5.7,
+   "fgm": 2.66,
+   "fta": 1.25,
+   "ftm": 1.04,
+   "fgPct": 46.6,
+   "ftPct": 82.6
+  },
+  "b": {
+   "min": 18,
+   "pts": 7.6,
+   "reb": 2,
+   "ast": 1.5,
+   "stl": 0.79,
+   "blk": 0.15,
+   "tpm": 1.23,
+   "tov": 0.79,
+   "fga": 5.7,
+   "fgm": 2.68,
+   "fta": 1.25,
+   "ftm": 1.05,
+   "fgPct": 47,
+   "ftPct": 84
+  }
  },
  "Gradey Dick": {
   "team": "LAC",
@@ -6843,7 +16311,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.23,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 5
+  "spreadMin": 5,
+  "a": {
+   "min": 12,
+   "pts": 5.4,
+   "reb": 1.5,
+   "ast": 0.7,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 0.5,
+   "fga": 6.45,
+   "fgm": 2.68,
+   "fta": 1.42,
+   "ftm": 1.23,
+   "fgPct": 41.6,
+   "ftPct": 86.5
+  },
+  "b": {
+   "min": 17,
+   "pts": 8.1,
+   "reb": 2.3,
+   "ast": 0.9,
+   "stl": 0.65,
+   "blk": 0.11,
+   "tpm": 0.92,
+   "tov": 0.74,
+   "fga": 6.45,
+   "fgm": 2.96,
+   "fta": 1.42,
+   "ftm": 1.23,
+   "fgPct": 45.9,
+   "ftPct": 86.6
+  }
  },
  "Johni Broome": {
   "team": "LAC",
@@ -6865,7 +16365,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.32,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 8,
+   "pts": 1.5,
+   "reb": 2.3,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0.4,
+   "fga": 2.8,
+   "fgm": 0.47,
+   "fta": 0.67,
+   "ftm": 0.22,
+   "fgPct": 16.7,
+   "ftPct": 33.3
+  },
+  "b": {
+   "min": 7,
+   "pts": 3.1,
+   "reb": 2,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.23,
+   "tpm": 0.15,
+   "tov": 0.5,
+   "fga": 2.8,
+   "fgm": 1.25,
+   "fta": 0.67,
+   "ftm": 0.42,
+   "fgPct": 44.8,
+   "ftPct": 62.5
+  }
  },
  "Baba Miller": {
   "team": "LAC",
@@ -6887,7 +16419,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.39,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 8,
+   "pts": 2.7,
+   "reb": 1.8,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.33,
+   "tpm": 0.15,
+   "tov": 0.5,
+   "fga": 2.27,
+   "fgm": 1.07,
+   "fta": 0.59,
+   "ftm": 0.39,
+   "fgPct": 47.1,
+   "ftPct": 65.9
+  }
  },
  "Jalen Pickett": {
   "team": "LAC",
@@ -6909,7 +16458,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.24,
   "sources": "both",
   "spreadPts": 2.2,
-  "spreadMin": 7.1
+  "spreadMin": 7.1,
+  "a": {
+   "min": 16.1,
+   "pts": 5.1,
+   "reb": 2,
+   "ast": 2.5,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 0.8,
+   "fga": 2.61,
+   "fgm": 1.11,
+   "fta": 0.31,
+   "ftm": 0.24,
+   "fgPct": 42.6,
+   "ftPct": 76.6
+  },
+  "b": {
+   "min": 9,
+   "pts": 2.9,
+   "reb": 1.2,
+   "ast": 1.2,
+   "stl": 0.18,
+   "blk": 0.06,
+   "tpm": 0.55,
+   "tov": 0.38,
+   "fga": 2.61,
+   "fgm": 1.08,
+   "fta": 0.31,
+   "ftm": 0.24,
+   "fgPct": 41.5,
+   "ftPct": 76.6
+  }
  },
  "Jamarion Sharp": {
   "team": "LAC",
@@ -6931,7 +16512,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.27,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 6,
+   "pts": 1.7,
+   "reb": 1.8,
+   "ast": 0.1,
+   "stl": 0.18,
+   "blk": 0.75,
+   "tpm": 0,
+   "tov": 0.38,
+   "fga": 1.2,
+   "fgm": 0.71,
+   "fta": 0.53,
+   "ftm": 0.27,
+   "fgPct": 58.8,
+   "ftPct": 51
+  }
  },
  "Nick Martinelli": {
   "team": "LAC",
@@ -6953,7 +16551,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.28,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 6,
+   "pts": 1.9,
+   "reb": 1.5,
+   "ast": 0.3,
+   "stl": 0.14,
+   "blk": 0.05,
+   "tpm": 0.06,
+   "tov": 0.23,
+   "fga": 1.7,
+   "fgm": 0.8,
+   "fta": 0.37,
+   "ftm": 0.28,
+   "fgPct": 47,
+   "ftPct": 75.3
+  }
  },
  "Bennedict Mathurin": {
   "team": "LAC",
@@ -6975,7 +16590,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 15.3,
-  "spreadMin": 27
+  "spreadMin": 27,
+  "a": {
+   "min": 27,
+   "pts": 15.3,
+   "reb": 4.6,
+   "ast": 1.9,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 1.3,
+   "tov": 1.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.2,
+   "ftPct": 84.2
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Cam Christie": {
   "team": "LAC",
@@ -6997,7 +16644,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 2.8,
-  "spreadMin": 9
+  "spreadMin": 9,
+  "a": {
+   "min": 9,
+   "pts": 2.8,
+   "reb": 1.6,
+   "ast": 0.8,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 32.9,
+   "ftPct": 65.7
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Yuki Kawamura": {
   "team": "LAC",
@@ -7019,7 +16698,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 3.8,
-  "spreadMin": 11
+  "spreadMin": 11,
+  "a": {
+   "min": 11,
+   "pts": 3.8,
+   "reb": 1.6,
+   "ast": 2.4,
+   "stl": 0.4,
+   "blk": 0,
+   "tpm": 0.7,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 34.9,
+   "ftPct": 83.4
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Tyrese Haliburton": {
   "team": "IND",
@@ -7041,7 +16752,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.41,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 33,
+   "pts": 18.1,
+   "reb": 3.7,
+   "ast": 9.2,
+   "stl": 1.4,
+   "blk": 0.6,
+   "tpm": 2.7,
+   "tov": 2.1,
+   "fga": 14.14,
+   "fgm": 6.75,
+   "fta": 2.83,
+   "ftm": 2.42,
+   "fgPct": 47.7,
+   "ftPct": 85.6
+  },
+  "b": {
+   "min": 32,
+   "pts": 18.4,
+   "reb": 3.4,
+   "ast": 9.7,
+   "stl": 1.29,
+   "blk": 0.54,
+   "tpm": 3.14,
+   "tov": 1.97,
+   "fga": 14.14,
+   "fgm": 6.42,
+   "fta": 2.83,
+   "ftm": 2.4,
+   "fgPct": 45.4,
+   "ftPct": 84.7
+  }
  },
  "Pascal Siakam": {
   "team": "IND",
@@ -7063,7 +16806,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.51,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 33,
+   "pts": 21,
+   "reb": 6.9,
+   "ast": 3.9,
+   "stl": 1,
+   "blk": 0.5,
+   "tpm": 1.4,
+   "tov": 2,
+   "fga": 16.97,
+   "fgm": 8.4,
+   "fta": 4.75,
+   "ftm": 3.58,
+   "fgPct": 49.5,
+   "ftPct": 75.4
+  },
+  "b": {
+   "min": 33,
+   "pts": 22.4,
+   "reb": 6.6,
+   "ast": 3,
+   "stl": 1.06,
+   "blk": 0.42,
+   "tpm": 1.54,
+   "tov": 2.1,
+   "fga": 16.97,
+   "fgm": 8.71,
+   "fta": 4.75,
+   "ftm": 3.44,
+   "fgPct": 51.3,
+   "ftPct": 72.3
+  }
  },
  "Ivica Zubac": {
   "team": "IND",
@@ -7085,7 +16860,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.77,
   "sources": "both",
   "spreadPts": 2.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 30,
+   "pts": 13.7,
+   "reb": 10.8,
+   "ast": 1.9,
+   "stl": 0.5,
+   "blk": 1.2,
+   "tpm": 0,
+   "tov": 1.6,
+   "fga": 10.61,
+   "fgm": 6.53,
+   "fta": 3.82,
+   "ftm": 2.79,
+   "fgPct": 61.6,
+   "ftPct": 73.1
+  },
+  "b": {
+   "min": 31,
+   "pts": 16.5,
+   "reb": 11.5,
+   "ast": 2.1,
+   "stl": 0.4,
+   "blk": 0.99,
+   "tpm": 0,
+   "tov": 1.52,
+   "fga": 10.61,
+   "fgm": 6.85,
+   "fta": 3.82,
+   "ftm": 2.75,
+   "fgPct": 64.6,
+   "ftPct": 72.1
+  }
  },
  "Aaron Nesmith": {
   "team": "IND",
@@ -7107,7 +16914,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.76,
   "sources": "both",
   "spreadPts": 1.9,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 28,
+   "pts": 11.9,
+   "reb": 4.3,
+   "ast": 1.4,
+   "stl": 0.8,
+   "blk": 0.4,
+   "tpm": 1.9,
+   "tov": 1.1,
+   "fga": 10.2,
+   "fgm": 4.58,
+   "fta": 2.06,
+   "ftm": 1.72,
+   "fgPct": 44.9,
+   "ftPct": 83.6
+  },
+  "b": {
+   "min": 30,
+   "pts": 13.8,
+   "reb": 4.3,
+   "ast": 1.6,
+   "stl": 0.89,
+   "blk": 0.57,
+   "tpm": 2.17,
+   "tov": 1.02,
+   "fga": 10.2,
+   "fgm": 4.9,
+   "fta": 2.06,
+   "ftm": 1.79,
+   "fgPct": 48.1,
+   "ftPct": 87.2
+  }
  },
  "Kelly Oubre Jr.": {
   "team": "IND",
@@ -7129,7 +16968,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.06,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 27,
+   "pts": 13.7,
+   "reb": 4.6,
+   "ast": 1.2,
+   "stl": 1.1,
+   "blk": 0.5,
+   "tpm": 1.5,
+   "tov": 1.1,
+   "fga": 10.95,
+   "fgm": 4.93,
+   "fta": 2.74,
+   "ftm": 2.04,
+   "fgPct": 45,
+   "ftPct": 74.7
+  },
+  "b": {
+   "min": 28,
+   "pts": 13.8,
+   "reb": 4.2,
+   "ast": 1.4,
+   "stl": 1.23,
+   "blk": 0.36,
+   "tpm": 1.5,
+   "tov": 1.2,
+   "fga": 10.95,
+   "fgm": 5.14,
+   "fta": 2.74,
+   "ftm": 2.07,
+   "fgPct": 46.9,
+   "ftPct": 75.6
+  }
  },
  "Andrew Nembhard": {
   "team": "IND",
@@ -7151,7 +17022,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.33,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 31,
+   "pts": 12.8,
+   "reb": 3,
+   "ast": 6,
+   "stl": 1.1,
+   "blk": 0.2,
+   "tpm": 1.3,
+   "tov": 2,
+   "fga": 10.61,
+   "fgm": 4.84,
+   "fta": 2.86,
+   "ftm": 2.32,
+   "fgPct": 45.6,
+   "ftPct": 81.1
+  },
+  "b": {
+   "min": 31,
+   "pts": 13.4,
+   "reb": 3.5,
+   "ast": 5.1,
+   "stl": 0.99,
+   "blk": 0.13,
+   "tpm": 1.5,
+   "tov": 1.91,
+   "fga": 10.61,
+   "fgm": 4.77,
+   "fta": 2.86,
+   "ftm": 2.33,
+   "fgPct": 45,
+   "ftPct": 81.3
+  }
  },
  "Obi Toppin": {
   "team": "IND",
@@ -7173,7 +17076,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.14,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 22,
+   "pts": 11.6,
+   "reb": 4.7,
+   "ast": 1.8,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 1.5,
+   "tov": 1,
+   "fga": 7.74,
+   "fgm": 3.96,
+   "fta": 1.39,
+   "ftm": 1.13,
+   "fgPct": 51.2,
+   "ftPct": 81.5
+  },
+  "b": {
+   "min": 20,
+   "pts": 10.7,
+   "reb": 4.1,
+   "ast": 1.6,
+   "stl": 0.56,
+   "blk": 0.26,
+   "tpm": 1.35,
+   "tov": 0.98,
+   "fga": 7.74,
+   "fgm": 4.11,
+   "fta": 1.39,
+   "ftm": 1.15,
+   "fgPct": 53.2,
+   "ftPct": 82.3
+  }
  },
  "Jay Huff": {
   "team": "IND",
@@ -7195,7 +17130,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.87,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 18,
+   "pts": 7.9,
+   "reb": 3.5,
+   "ast": 1.1,
+   "stl": 0.6,
+   "blk": 1.2,
+   "tpm": 1.2,
+   "tov": 0.8,
+   "fga": 6.65,
+   "fgm": 3.26,
+   "fta": 1.02,
+   "ftm": 0.9,
+   "fgPct": 49,
+   "ftPct": 88
+  },
+  "b": {
+   "min": 18,
+   "pts": 8.7,
+   "reb": 3.3,
+   "ast": 0.9,
+   "stl": 0.45,
+   "blk": 1.26,
+   "tpm": 1.34,
+   "tov": 0.57,
+   "fga": 6.65,
+   "fgm": 3.24,
+   "fta": 1.02,
+   "ftm": 0.85,
+   "fgPct": 48.7,
+   "ftPct": 82.6
+  }
  },
  "T.J. McConnell": {
   "team": "IND",
@@ -7217,7 +17184,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.61,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 18,
+   "pts": 8,
+   "reb": 2.5,
+   "ast": 4.6,
+   "stl": 1,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 1.3,
+   "fga": 6.94,
+   "fgm": 3.68,
+   "fta": 0.76,
+   "ftm": 0.61,
+   "fgPct": 53,
+   "ftPct": 79.5
+  },
+  "b": {
+   "min": 16,
+   "pts": 8.2,
+   "reb": 2.1,
+   "ast": 4.8,
+   "stl": 0.85,
+   "blk": 0.2,
+   "tpm": 0.21,
+   "tov": 1.09,
+   "fga": 6.94,
+   "fgm": 3.69,
+   "fta": 0.76,
+   "ftm": 0.62,
+   "fgPct": 53.2,
+   "ftPct": 80.8
+  }
  },
  "Jarace Walker": {
   "team": "IND",
@@ -7239,7 +17238,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.09,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 20,
+   "pts": 8.1,
+   "reb": 3.9,
+   "ast": 2,
+   "stl": 0.8,
+   "blk": 0.4,
+   "tpm": 1.3,
+   "tov": 1.3,
+   "fga": 6.27,
+   "fgm": 2.74,
+   "fta": 1.51,
+   "ftm": 1.11,
+   "fgPct": 43.6,
+   "ftPct": 73.6
+  },
+  "b": {
+   "min": 18,
+   "pts": 8,
+   "reb": 3.7,
+   "ast": 1.9,
+   "stl": 0.58,
+   "blk": 0.24,
+   "tpm": 1.19,
+   "tov": 1.34,
+   "fga": 6.27,
+   "fgm": 2.86,
+   "fta": 1.51,
+   "ftm": 1.08,
+   "fgPct": 45.6,
+   "ftPct": 71.8
+  }
  },
  "Ben Sheppard": {
   "team": "IND",
@@ -7261,7 +17292,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.49,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 17,
+   "pts": 5.1,
+   "reb": 2.3,
+   "ast": 1.2,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 0.4,
+   "fga": 4.83,
+   "fgm": 2.02,
+   "fta": 0.6,
+   "ftm": 0.5,
+   "fgPct": 41.9,
+   "ftPct": 83.2
+  },
+  "b": {
+   "min": 16,
+   "pts": 6.3,
+   "reb": 2.2,
+   "ast": 1.2,
+   "stl": 0.46,
+   "blk": 0.07,
+   "tpm": 1.02,
+   "tov": 0.45,
+   "fga": 4.83,
+   "fgm": 2.38,
+   "fta": 0.6,
+   "ftm": 0.47,
+   "fgPct": 49.4,
+   "ftPct": 79.5
+  }
  },
  "Quenton Jackson": {
   "team": "IND",
@@ -7283,7 +17346,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.18,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 14,
+   "pts": 5.7,
+   "reb": 2.2,
+   "ast": 2.1,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.6,
+   "fga": 4.18,
+   "fgm": 1.84,
+   "fta": 1.42,
+   "ftm": 1.21,
+   "fgPct": 44.1,
+   "ftPct": 84.9
+  },
+  "b": {
+   "min": 12,
+   "pts": 5.7,
+   "reb": 1.5,
+   "ast": 1.9,
+   "stl": 0.47,
+   "blk": 0.08,
+   "tpm": 0.43,
+   "tov": 0.64,
+   "fga": 4.18,
+   "fgm": 2.04,
+   "fta": 1.42,
+   "ftm": 1.16,
+   "fgPct": 48.7,
+   "ftPct": 81.4
+  }
  },
  "Larry Nance Jr.": {
   "team": "IND",
@@ -7305,7 +17400,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.32,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 12,
+   "pts": 4.1,
+   "reb": 2.9,
+   "ast": 1,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.5,
+   "fga": 3.87,
+   "fgm": 1.96,
+   "fta": 0.46,
+   "ftm": 0.31,
+   "fgPct": 50.8,
+   "ftPct": 67.6
+  },
+  "b": {
+   "min": 13,
+   "pts": 4.5,
+   "reb": 2.8,
+   "ast": 0.8,
+   "stl": 0.59,
+   "blk": 0.25,
+   "tpm": 0.71,
+   "tov": 0.58,
+   "fga": 3.87,
+   "fgm": 1.73,
+   "fta": 0.46,
+   "ftm": 0.32,
+   "fgPct": 44.8,
+   "ftPct": 69.1
+  }
  },
  "Jalen Slawson": {
   "team": "IND",
@@ -7327,7 +17454,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.44,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 7,
+   "pts": 1.8,
+   "reb": 1.3,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0.2,
+   "tov": 0.4,
+   "fga": 2.62,
+   "fgm": 1.39,
+   "fta": 0.61,
+   "ftm": 0.43,
+   "fgPct": 53.1,
+   "ftPct": 70.6
+  },
+  "b": {
+   "min": 11,
+   "pts": 3.4,
+   "reb": 1.9,
+   "ast": 1,
+   "stl": 0.63,
+   "blk": 0.41,
+   "tpm": 0.45,
+   "tov": 0.54,
+   "fga": 2.62,
+   "fgm": 1.25,
+   "fta": 0.61,
+   "ftm": 0.45,
+   "fgPct": 47.7,
+   "ftPct": 72.8
+  }
  },
  "Braden Smith": {
   "team": "IND",
@@ -7349,7 +17508,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.49,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 11,
+   "pts": 4,
+   "reb": 1.4,
+   "ast": 2.3,
+   "stl": 0.42,
+   "blk": 0.07,
+   "tpm": 0.53,
+   "tov": 0.65,
+   "fga": 3.6,
+   "fgm": 1.48,
+   "fta": 0.61,
+   "ftm": 0.49,
+   "fgPct": 41.2,
+   "ftPct": 79.6
+  }
  },
  "Kobe Brown": {
   "team": "IND",
@@ -7371,7 +17547,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.37,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 5.8
+  "spreadMin": 5.8,
+  "a": {
+   "min": 15.8,
+   "pts": 4.8,
+   "reb": 3.2,
+   "ast": 1.3,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.7,
+   "fga": 3.02,
+   "fgm": 1.37,
+   "fta": 0.48,
+   "ftm": 0.37,
+   "fgPct": 45.4,
+   "ftPct": 76.2
+  },
+  "b": {
+   "min": 10,
+   "pts": 3.9,
+   "reb": 1.9,
+   "ast": 0.8,
+   "stl": 0.24,
+   "blk": 0.13,
+   "tpm": 0.46,
+   "tov": 0.52,
+   "fga": 3.02,
+   "fgm": 1.55,
+   "fta": 0.48,
+   "ftm": 0.38,
+   "fgPct": 51.4,
+   "ftPct": 78.3
+  }
  },
  "Johnny Furphy": {
   "team": "IND",
@@ -7393,7 +17601,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.33,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 9,
+   "pts": 2.5,
+   "reb": 1.9,
+   "ast": 0.5,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 2.62,
+   "fgm": 1.11,
+   "fta": 0.52,
+   "ftm": 0.34,
+   "fgPct": 42.4,
+   "ftPct": 65.7
+  },
+  "b": {
+   "min": 11,
+   "pts": 3.1,
+   "reb": 2.4,
+   "ast": 0.6,
+   "stl": 0.39,
+   "blk": 0.14,
+   "tpm": 0.4,
+   "tov": 0.45,
+   "fga": 2.62,
+   "fgm": 1.17,
+   "fta": 0.52,
+   "ftm": 0.32,
+   "fgPct": 44.7,
+   "ftPct": 61.4
+  }
  },
  "Kevin Durant": {
   "team": "HOU",
@@ -7415,7 +17655,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5.01,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 35,
+   "pts": 26.5,
+   "reb": 6.2,
+   "ast": 5,
+   "stl": 0.8,
+   "blk": 1.1,
+   "tpm": 2.2,
+   "tov": 3.1,
+   "fga": 17.35,
+   "fgm": 9.18,
+   "fta": 5.72,
+   "ftm": 5.03,
+   "fgPct": 52.9,
+   "ftPct": 88
+  },
+  "b": {
+   "min": 36,
+   "pts": 25.4,
+   "reb": 6,
+   "ast": 4,
+   "stl": 0.73,
+   "blk": 1.03,
+   "tpm": 2.34,
+   "tov": 2.94,
+   "fga": 17.35,
+   "fgm": 9.05,
+   "fta": 5.72,
+   "ftm": 4.99,
+   "fgPct": 52.2,
+   "ftPct": 87.2
+  }
  },
  "Amen Thompson": {
   "team": "HOU",
@@ -7437,7 +17709,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.66,
   "sources": "both",
   "spreadPts": 3,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 34,
+   "pts": 15.5,
+   "reb": 8.3,
+   "ast": 4.4,
+   "stl": 1.6,
+   "blk": 1,
+   "tpm": 0.3,
+   "tov": 2.2,
+   "fga": 12.84,
+   "fgm": 6.97,
+   "fta": 4.88,
+   "ftm": 3.53,
+   "fgPct": 54.3,
+   "ftPct": 72.3
+  },
+  "b": {
+   "min": 37,
+   "pts": 18.5,
+   "reb": 8.3,
+   "ast": 4.4,
+   "stl": 1.58,
+   "blk": 0.91,
+   "tpm": 0.28,
+   "tov": 1.81,
+   "fga": 12.84,
+   "fgm": 7.23,
+   "fta": 4.88,
+   "ftm": 3.79,
+   "fgPct": 56.3,
+   "ftPct": 77.7
+  }
  },
  "Alperen Sengun": {
   "team": "HOU",
@@ -7459,7 +17763,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.94,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 32,
+   "pts": 18.5,
+   "reb": 9.4,
+   "ast": 5,
+   "stl": 1.1,
+   "blk": 1,
+   "tpm": 0.4,
+   "tov": 2.8,
+   "fga": 15.09,
+   "fgm": 7.76,
+   "fta": 4.23,
+   "ftm": 2.95,
+   "fgPct": 51.4,
+   "ftPct": 69.8
+  },
+  "b": {
+   "min": 33,
+   "pts": 19.6,
+   "reb": 8.5,
+   "ast": 5.4,
+   "stl": 1.02,
+   "blk": 1.01,
+   "tpm": 0.62,
+   "tov": 2.43,
+   "fga": 15.09,
+   "fgm": 8.03,
+   "fta": 4.23,
+   "ftm": 2.93,
+   "fgPct": 53.2,
+   "ftPct": 69.4
+  }
  },
  "Jabari Smith Jr.": {
   "team": "HOU",
@@ -7481,7 +17817,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.07,
   "sources": "both",
   "spreadPts": 2.6,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 32,
+   "pts": 13.6,
+   "reb": 7.2,
+   "ast": 1.4,
+   "stl": 0.6,
+   "blk": 0.8,
+   "tpm": 1.9,
+   "tov": 1.2,
+   "fga": 12.43,
+   "fgm": 5.46,
+   "fta": 2.61,
+   "ftm": 2.09,
+   "fgPct": 43.9,
+   "ftPct": 79.9
+  },
+  "b": {
+   "min": 35,
+   "pts": 16.2,
+   "reb": 6.8,
+   "ast": 1.8,
+   "stl": 0.64,
+   "blk": 0.93,
+   "tpm": 2.42,
+   "tov": 1.43,
+   "fga": 12.43,
+   "fgm": 5.86,
+   "fta": 2.61,
+   "ftm": 2.06,
+   "fgPct": 47.1,
+   "ftPct": 78.8
+  }
  },
  "Reed Sheppard": {
   "team": "HOU",
@@ -7503,7 +17871,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.86,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 27,
+   "pts": 11.7,
+   "reb": 3.1,
+   "ast": 3.3,
+   "stl": 1.5,
+   "blk": 0.7,
+   "tpm": 2.4,
+   "tov": 1.5,
+   "fga": 10.49,
+   "fgm": 4.14,
+   "fta": 1.05,
+   "ftm": 0.85,
+   "fgPct": 39.5,
+   "ftPct": 80.6
+  },
+  "b": {
+   "min": 24,
+   "pts": 12.9,
+   "reb": 2.8,
+   "ast": 2.7,
+   "stl": 1.33,
+   "blk": 0.65,
+   "tpm": 2.84,
+   "tov": 1.18,
+   "fga": 10.49,
+   "fgm": 4.6,
+   "fta": 1.05,
+   "ftm": 0.87,
+   "fgPct": 43.9,
+   "ftPct": 82.8
+  }
  },
  "Fred VanVleet": {
   "team": "HOU",
@@ -7525,7 +17925,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.63,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 30,
+   "pts": 14.2,
+   "reb": 3.2,
+   "ast": 5.5,
+   "stl": 1.3,
+   "blk": 0.5,
+   "tpm": 2.4,
+   "tov": 1.5,
+   "fga": 11.37,
+   "fgm": 4.54,
+   "fta": 1.93,
+   "ftm": 1.66,
+   "fgPct": 39.9,
+   "ftPct": 86.1
+  },
+  "b": {
+   "min": 32,
+   "pts": 12.8,
+   "reb": 2.9,
+   "ast": 5.4,
+   "stl": 1.11,
+   "blk": 0.33,
+   "tpm": 2.58,
+   "tov": 1.5,
+   "fga": 11.37,
+   "fgm": 4.31,
+   "fta": 1.93,
+   "ftm": 1.6,
+   "fgPct": 38,
+   "ftPct": 83
+  }
  },
  "Tari Eason": {
   "team": "HOU",
@@ -7547,7 +17979,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.85,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 26,
+   "pts": 11.5,
+   "reb": 6.9,
+   "ast": 1.5,
+   "stl": 1.5,
+   "blk": 0.7,
+   "tpm": 1.2,
+   "tov": 1.3,
+   "fga": 9.39,
+   "fgm": 4.26,
+   "fta": 1.1,
+   "ftm": 0.81,
+   "fgPct": 45.4,
+   "ftPct": 73.4
+  },
+  "b": {
+   "min": 25,
+   "pts": 10.4,
+   "reb": 6,
+   "ast": 1.4,
+   "stl": 1.16,
+   "blk": 0.46,
+   "tpm": 1.43,
+   "tov": 1.23,
+   "fga": 9.39,
+   "fgm": 4.03,
+   "fta": 1.1,
+   "ftm": 0.9,
+   "fgPct": 42.9,
+   "ftPct": 81.2
+  }
  },
  "Marcus Smart": {
   "team": "HOU",
@@ -7569,7 +18033,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.37,
   "sources": "both",
   "spreadPts": 2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 27,
+   "pts": 10.5,
+   "reb": 2.8,
+   "ast": 4.1,
+   "stl": 1.5,
+   "blk": 0.3,
+   "tpm": 1.7,
+   "tov": 1.8,
+   "fga": 7.01,
+   "fgm": 2.83,
+   "fta": 1.75,
+   "ftm": 1.38,
+   "fgPct": 40.4,
+   "ftPct": 78.9
+  },
+  "b": {
+   "min": 26,
+   "pts": 8.5,
+   "reb": 2.9,
+   "ast": 2.6,
+   "stl": 1.24,
+   "blk": 0.32,
+   "tpm": 1.52,
+   "tov": 1.29,
+   "fga": 7.01,
+   "fgm": 2.79,
+   "fta": 1.75,
+   "ftm": 1.36,
+   "fgPct": 39.9,
+   "ftPct": 77.8
+  }
  },
  "Steven Adams": {
   "team": "HOU",
@@ -7591,7 +18087,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 18,
+   "pts": 5.5,
+   "reb": 6.7,
+   "ast": 1.4,
+   "stl": 0.6,
+   "blk": 0.6,
+   "tpm": 0,
+   "tov": 1,
+   "fga": 3.68,
+   "fgm": 2.09,
+   "fta": 1.99,
+   "ftm": 1,
+   "fgPct": 56.6,
+   "ftPct": 50.1
+  },
+  "b": {
+   "min": 22,
+   "pts": 5,
+   "reb": 8.1,
+   "ast": 1.3,
+   "stl": 0.68,
+   "blk": 0.67,
+   "tpm": 0,
+   "tov": 0.99,
+   "fga": 3.68,
+   "fgm": 1.97,
+   "fta": 1.99,
+   "ftm": 1.01,
+   "fgPct": 53.6,
+   "ftPct": 50.7
+  }
  },
  "Bogdan Bogdanovic": {
   "team": "HOU",
@@ -7613,7 +18141,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.85,
   "sources": "both",
   "spreadPts": 2.1,
-  "spreadMin": 5
+  "spreadMin": 5,
+  "a": {
+   "min": 12,
+   "pts": 5.8,
+   "reb": 1.5,
+   "ast": 1.3,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 0.6,
+   "fga": 6.73,
+   "fgm": 2.89,
+   "fta": 1.01,
+   "ftm": 0.85,
+   "fgPct": 42.9,
+   "ftPct": 83.9
+  },
+  "b": {
+   "min": 17,
+   "pts": 7.9,
+   "reb": 2.2,
+   "ast": 1.8,
+   "stl": 0.44,
+   "blk": 0.14,
+   "tpm": 1.5,
+   "tov": 0.92,
+   "fga": 6.73,
+   "fgm": 2.76,
+   "fta": 1.01,
+   "ftm": 0.85,
+   "fgPct": 41.1,
+   "ftPct": 84.5
+  }
  },
  "Clint Capela": {
   "team": "HOU",
@@ -7635,7 +18195,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.55,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 12,
+   "pts": 5,
+   "reb": 4.9,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.7,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 2.74,
+   "fgm": 1.62,
+   "fta": 0.96,
+   "ftm": 0.55,
+   "fgPct": 59.1,
+   "ftPct": 57.3
+  },
+  "b": {
+   "min": 11,
+   "pts": 3.4,
+   "reb": 4.1,
+   "ast": 0.6,
+   "stl": 0.34,
+   "blk": 0.72,
+   "tpm": 0.01,
+   "tov": 0.45,
+   "fga": 2.74,
+   "fgm": 1.44,
+   "fta": 0.96,
+   "ftm": 0.55,
+   "fgPct": 52.7,
+   "ftPct": 57.4
+  }
  },
  "Bruce Thornton": {
   "team": "HOU",
@@ -7657,7 +18249,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.69,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 10,
+   "pts": 4.6,
+   "reb": 1,
+   "ast": 1.1,
+   "stl": 0.27,
+   "blk": 0.06,
+   "tpm": 0.71,
+   "tov": 0.35,
+   "fga": 3.76,
+   "fgm": 1.63,
+   "fta": 0.86,
+   "ftm": 0.69,
+   "fgPct": 43.3,
+   "ftPct": 79.4
+  }
  },
  "Tristen Newton": {
   "team": "HOU",
@@ -7679,7 +18288,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.67,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 7,
+   "pts": 4.2,
+   "reb": 1.7,
+   "ast": 0.4,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0.6,
+   "tov": 0.4,
+   "fga": 3.38,
+   "fgm": 1.07,
+   "fta": 0.88,
+   "ftm": 0.64,
+   "fgPct": 31.7,
+   "ftPct": 73.3
+  },
+  "b": {
+   "min": 9,
+   "pts": 3.9,
+   "reb": 1.7,
+   "ast": 1.3,
+   "stl": 0.44,
+   "blk": 0.07,
+   "tpm": 0.61,
+   "tov": 0.54,
+   "fga": 3.38,
+   "fgm": 1.31,
+   "fta": 0.88,
+   "ftm": 0.7,
+   "fgPct": 38.8,
+   "ftPct": 79.3
+  }
  },
  "Jae'Sean Tate": {
   "team": "HOU",
@@ -7701,7 +18342,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.24,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 9,
+   "pts": 3.1,
+   "reb": 1.7,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.4,
+   "fga": 2.49,
+   "fgm": 1.23,
+   "fta": 0.35,
+   "ftm": 0.24,
+   "fgPct": 49.2,
+   "ftPct": 69.3
+  },
+  "b": {
+   "min": 10,
+   "pts": 3,
+   "reb": 1.9,
+   "ast": 0.7,
+   "stl": 0.29,
+   "blk": 0.12,
+   "tpm": 0.22,
+   "tov": 0.39,
+   "fga": 2.49,
+   "fgm": 1.27,
+   "fta": 0.35,
+   "ftm": 0.24,
+   "fgPct": 50.8,
+   "ftPct": 68
+  }
  },
  "Isaiah Crawford": {
   "team": "HOU",
@@ -7723,7 +18396,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.47,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 9,
+   "pts": 2.6,
+   "reb": 1.6,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.3,
+   "tpm": 0.2,
+   "tov": 0.3,
+   "fga": 2.32,
+   "fgm": 1.01,
+   "fta": 0.7,
+   "ftm": 0.45,
+   "fgPct": 43.5,
+   "ftPct": 64.2
+  },
+  "b": {
+   "min": 8,
+   "pts": 2.7,
+   "reb": 1.3,
+   "ast": 0.4,
+   "stl": 0.21,
+   "blk": 0.18,
+   "tpm": 0.31,
+   "tov": 0.33,
+   "fga": 2.32,
+   "fgm": 0.94,
+   "fta": 0.7,
+   "ftm": 0.49,
+   "fgPct": 40.4,
+   "ftPct": 70.8
+  }
  },
  "Quadir Copeland": {
   "team": "HOU",
@@ -7745,7 +18450,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.38,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 7,
+   "pts": 2.4,
+   "reb": 0.8,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.06,
+   "tpm": 0.16,
+   "tov": 0.5,
+   "fga": 2.2,
+   "fgm": 0.94,
+   "fta": 0.53,
+   "ftm": 0.38,
+   "fgPct": 42.8,
+   "ftPct": 72.8
+  }
  },
  "Julian Phillips": {
   "team": "HOU",
@@ -7767,7 +18489,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 2.8,
-  "spreadMin": 8.9
+  "spreadMin": 8.9,
+  "a": {
+   "min": 8.9,
+   "pts": 2.8,
+   "reb": 1.1,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43,
+   "ftPct": 76
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Oscar Tshiebwe": {
   "team": "HOU",
@@ -7789,7 +18543,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 4.3,
-  "spreadMin": 9
+  "spreadMin": 9,
+  "a": {
+   "min": 9,
+   "pts": 4.3,
+   "reb": 3.8,
+   "ast": 0.5,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 58.2,
+   "ftPct": 68.8
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Stephen Curry": {
   "team": "GSW",
@@ -7811,7 +18597,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.59,
   "sources": "both",
   "spreadPts": 1.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 31,
+   "pts": 25.2,
+   "reb": 4.6,
+   "ast": 5.5,
+   "stl": 1.1,
+   "blk": 0.3,
+   "tpm": 4.3,
+   "tov": 2.9,
+   "fga": 19,
+   "fgm": 8.68,
+   "fta": 4.94,
+   "ftm": 4.61,
+   "fgPct": 45.7,
+   "ftPct": 93.3
+  },
+  "b": {
+   "min": 32,
+   "pts": 26.7,
+   "reb": 3.5,
+   "ast": 5.2,
+   "stl": 1.14,
+   "blk": 0.33,
+   "tpm": 4.78,
+   "tov": 2.85,
+   "fga": 19,
+   "fgm": 8.67,
+   "fta": 4.94,
+   "ftm": 4.56,
+   "fgPct": 45.7,
+   "ftPct": 92.4
+  }
  },
  "Kristaps Porzingis": {
   "team": "GSW",
@@ -7833,7 +18651,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.46,
   "sources": "both",
   "spreadPts": 1.8,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 25,
+   "pts": 17,
+   "reb": 6.3,
+   "ast": 1.9,
+   "stl": 0.6,
+   "blk": 1.3,
+   "tpm": 1.8,
+   "tov": 1.3,
+   "fga": 13.3,
+   "fgm": 6.24,
+   "fta": 5.32,
+   "ftm": 4.46,
+   "fgPct": 46.9,
+   "ftPct": 83.9
+  },
+  "b": {
+   "min": 28,
+   "pts": 18.8,
+   "reb": 6.4,
+   "ast": 2.7,
+   "stl": 0.65,
+   "blk": 1.28,
+   "tpm": 2.06,
+   "tov": 1.63,
+   "fga": 13.3,
+   "fgm": 6.15,
+   "fta": 5.32,
+   "ftm": 4.45,
+   "fgPct": 46.2,
+   "ftPct": 83.7
+  }
  },
  "Jimmy Butler": {
   "team": "GSW",
@@ -7855,7 +18705,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5.37,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 28,
+   "pts": 17.1,
+   "reb": 4.9,
+   "ast": 4.6,
+   "stl": 1.4,
+   "blk": 0.3,
+   "tpm": 0.6,
+   "tov": 1.5,
+   "fga": 11.43,
+   "fgm": 5.68,
+   "fta": 6.29,
+   "ftm": 5.37,
+   "fgPct": 49.7,
+   "ftPct": 85.4
+  },
+  "b": {
+   "min": 28,
+   "pts": 16.8,
+   "reb": 4.9,
+   "ast": 4.8,
+   "stl": 1.17,
+   "blk": 0.24,
+   "tpm": 0.68,
+   "tov": 1.36,
+   "fga": 11.43,
+   "fgm": 5.35,
+   "fta": 6.29,
+   "ftm": 5.38,
+   "fgPct": 46.8,
+   "ftPct": 85.5
+  }
  },
  "Brandin Podziemski": {
   "team": "GSW",
@@ -7877,7 +18759,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.23,
   "sources": "both",
   "spreadPts": 4.9,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 28,
+   "pts": 12.2,
+   "reb": 5.3,
+   "ast": 3.7,
+   "stl": 1,
+   "blk": 0.2,
+   "tpm": 1.7,
+   "tov": 1.4,
+   "fga": 12.01,
+   "fgm": 5.42,
+   "fta": 4.08,
+   "ftm": 3.1,
+   "fgPct": 45.1,
+   "ftPct": 76
+  },
+  "b": {
+   "min": 31,
+   "pts": 17.1,
+   "reb": 4.9,
+   "ast": 3.9,
+   "stl": 1.05,
+   "blk": 0.19,
+   "tpm": 2.2,
+   "tov": 1.61,
+   "fga": 12.01,
+   "fgm": 5.79,
+   "fta": 4.08,
+   "ftm": 3.35,
+   "fgPct": 48.2,
+   "ftPct": 82.1
+  }
  },
  "Gui Santos": {
   "team": "GSW",
@@ -7899,7 +18813,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.98,
   "sources": "both",
   "spreadPts": 2.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 29,
+   "pts": 11.1,
+   "reb": 6.3,
+   "ast": 3,
+   "stl": 1,
+   "blk": 0.4,
+   "tpm": 1.5,
+   "tov": 1.7,
+   "fga": 10.03,
+   "fgm": 4.89,
+   "fta": 2.6,
+   "ftm": 2.04,
+   "fgPct": 48.8,
+   "ftPct": 78.2
+  },
+  "b": {
+   "min": 29,
+   "pts": 13.6,
+   "reb": 5.1,
+   "ast": 3.2,
+   "stl": 1.09,
+   "blk": 0.42,
+   "tpm": 1.54,
+   "tov": 1.97,
+   "fga": 10.03,
+   "fgm": 5.09,
+   "fta": 2.6,
+   "ftm": 1.93,
+   "fgPct": 50.7,
+   "ftPct": 73.9
+  }
  },
  "De'Anthony Melton": {
   "team": "GSW",
@@ -7921,7 +18867,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.87,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 26,
+   "pts": 11.5,
+   "reb": 4.1,
+   "ast": 3.3,
+   "stl": 1.6,
+   "blk": 0.5,
+   "tpm": 1.9,
+   "tov": 1.8,
+   "fga": 10.07,
+   "fgm": 4.11,
+   "fta": 2.34,
+   "ftm": 1.8,
+   "fgPct": 40.8,
+   "ftPct": 77
+  },
+  "b": {
+   "min": 26,
+   "pts": 12.2,
+   "reb": 3.7,
+   "ast": 3.3,
+   "stl": 1.52,
+   "blk": 0.42,
+   "tpm": 1.74,
+   "tov": 2.38,
+   "fga": 10.07,
+   "fgm": 4.25,
+   "fta": 2.34,
+   "ftm": 1.94,
+   "fgPct": 42.2,
+   "ftPct": 82.8
+  }
  },
  "Yaxel Lendeborg": {
   "team": "GSW",
@@ -7943,7 +18921,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.56,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 28,
+   "pts": 11.8,
+   "reb": 4.8,
+   "ast": 1.8,
+   "stl": 0.5,
+   "blk": 0.5,
+   "tpm": 1.2,
+   "tov": 1,
+   "fga": 8.45,
+   "fgm": 3.84,
+   "fta": 1.94,
+   "ftm": 1.62,
+   "fgPct": 45.5,
+   "ftPct": 83.6
+  },
+  "b": {
+   "min": 26,
+   "pts": 10.7,
+   "reb": 6,
+   "ast": 2.3,
+   "stl": 0.81,
+   "blk": 0.87,
+   "tpm": 1.21,
+   "tov": 2.06,
+   "fga": 8.45,
+   "fgm": 4,
+   "fta": 1.94,
+   "ftm": 1.5,
+   "fgPct": 47.4,
+   "ftPct": 77
+  }
  },
  "Gary Payton II": {
   "team": "GSW",
@@ -7965,7 +18975,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.56,
   "sources": "both",
   "spreadPts": 2.3,
-  "spreadMin": 5
+  "spreadMin": 5,
+  "a": {
+   "min": 16,
+   "pts": 7.1,
+   "reb": 3.2,
+   "ast": 1.6,
+   "stl": 1.4,
+   "blk": 0.4,
+   "tpm": 0.6,
+   "tov": 0.7,
+   "fga": 7.26,
+   "fgm": 4.32,
+   "fta": 0.83,
+   "ftm": 0.57,
+   "fgPct": 59.5,
+   "ftPct": 68.4
+  },
+  "b": {
+   "min": 21,
+   "pts": 9.4,
+   "reb": 3.9,
+   "ast": 2.3,
+   "stl": 1.26,
+   "blk": 0.39,
+   "tpm": 0.61,
+   "tov": 0.87,
+   "fga": 7.26,
+   "fgm": 4.12,
+   "fta": 0.83,
+   "ftm": 0.55,
+   "fgPct": 56.7,
+   "ftPct": 66.3
+  }
  },
  "Al Horford": {
   "team": "GSW",
@@ -7987,7 +19029,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.52,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 22,
+   "pts": 8.3,
+   "reb": 5.1,
+   "ast": 2.4,
+   "stl": 0.6,
+   "blk": 0.8,
+   "tpm": 1.4,
+   "tov": 0.8,
+   "fga": 7.8,
+   "fgm": 3.58,
+   "fta": 0.63,
+   "ftm": 0.52,
+   "fgPct": 45.9,
+   "ftPct": 82.8
+  },
+  "b": {
+   "min": 24,
+   "pts": 8.9,
+   "reb": 5,
+   "ast": 2.9,
+   "stl": 0.65,
+   "blk": 1.05,
+   "tpm": 1.77,
+   "tov": 0.9,
+   "fga": 7.8,
+   "fgm": 3.29,
+   "fta": 0.63,
+   "ftm": 0.52,
+   "fgPct": 42.2,
+   "ftPct": 82.4
+  }
  },
  "Moses Moody": {
   "team": "GSW",
@@ -8009,7 +19083,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.13,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 20,
+   "pts": 8.6,
+   "reb": 2.6,
+   "ast": 1.1,
+   "stl": 0.6,
+   "blk": 0.4,
+   "tpm": 1.5,
+   "tov": 0.7,
+   "fga": 8.25,
+   "fgm": 3.68,
+   "fta": 1.49,
+   "ftm": 1.14,
+   "fgPct": 44.6,
+   "ftPct": 77
+  },
+  "b": {
+   "min": 22,
+   "pts": 10.2,
+   "reb": 2.8,
+   "ast": 1.6,
+   "stl": 0.78,
+   "blk": 0.32,
+   "tpm": 2.17,
+   "tov": 0.73,
+   "fga": 8.25,
+   "fgm": 3.44,
+   "fta": 1.49,
+   "ftm": 1.12,
+   "fgPct": 41.7,
+   "ftPct": 75.5
+  }
  },
  "Draymond Green": {
   "team": "GSW",
@@ -8031,7 +19137,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.93,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 28,
+   "pts": 7.9,
+   "reb": 6.3,
+   "ast": 6.1,
+   "stl": 1.2,
+   "blk": 0.8,
+   "tpm": 0.9,
+   "tov": 2.5,
+   "fga": 6.46,
+   "fgm": 2.9,
+   "fta": 1.29,
+   "ftm": 0.92,
+   "fgPct": 44.9,
+   "ftPct": 71.2
+  },
+  "b": {
+   "min": 29,
+   "pts": 7.9,
+   "reb": 5.3,
+   "ast": 6.4,
+   "stl": 0.97,
+   "blk": 0.6,
+   "tpm": 1.33,
+   "tov": 2.65,
+   "fga": 6.46,
+   "fgm": 2.8,
+   "fta": 1.29,
+   "ftm": 0.94,
+   "fgPct": 43.2,
+   "ftPct": 72.5
+  }
  },
  "Will Richard": {
   "team": "GSW",
@@ -8053,7 +19191,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.86,
   "sources": "both",
   "spreadPts": 2.3,
-  "spreadMin": 6
+  "spreadMin": 6,
+  "a": {
+   "min": 18,
+   "pts": 5.8,
+   "reb": 2.2,
+   "ast": 1.2,
+   "stl": 1,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 0.7,
+   "fga": 6.25,
+   "fgm": 2.93,
+   "fta": 1,
+   "ftm": 0.85,
+   "fgPct": 46.8,
+   "ftPct": 85.2
+  },
+  "b": {
+   "min": 24,
+   "pts": 8.1,
+   "reb": 2.9,
+   "ast": 1.3,
+   "stl": 1.15,
+   "blk": 0.15,
+   "tpm": 1.37,
+   "tov": 0.7,
+   "fga": 6.25,
+   "fgm": 2.93,
+   "fta": 1,
+   "ftm": 0.87,
+   "fgPct": 46.8,
+   "ftPct": 87.1
+  }
  },
  "Charles Bassey": {
   "team": "GSW",
@@ -8075,7 +19245,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.01,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 12,
+   "pts": 5,
+   "reb": 4.6,
+   "ast": 0.7,
+   "stl": 0.4,
+   "blk": 0.9,
+   "tpm": 0,
+   "tov": 0.7,
+   "fga": 3.98,
+   "fgm": 2.54,
+   "fta": 1.51,
+   "ftm": 1.03,
+   "fgPct": 63.7,
+   "ftPct": 68.3
+  },
+  "b": {
+   "min": 13,
+   "pts": 6.3,
+   "reb": 4.9,
+   "ast": 0.7,
+   "stl": 0.44,
+   "blk": 0.94,
+   "tpm": 0,
+   "tov": 0.54,
+   "fga": 3.98,
+   "fgm": 2.65,
+   "fta": 1.51,
+   "ftm": 1,
+   "fgPct": 66.6,
+   "ftPct": 65.8
+  }
  },
  "Malevy Leons": {
   "team": "GSW",
@@ -8097,7 +19299,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.86,
   "sources": "both",
   "spreadPts": 4.2,
-  "spreadMin": 9
+  "spreadMin": 9,
+  "a": {
+   "min": 7,
+   "pts": 1.4,
+   "reb": 1.2,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 4.53,
+   "fgm": 1.47,
+   "fta": 1.3,
+   "ftm": 0.75,
+   "fgPct": 32.5,
+   "ftPct": 57.7
+  },
+  "b": {
+   "min": 16,
+   "pts": 5.6,
+   "reb": 2.9,
+   "ast": 1.1,
+   "stl": 0.61,
+   "blk": 0.46,
+   "tpm": 0.28,
+   "tov": 0.8,
+   "fga": 4.53,
+   "fgm": 2.18,
+   "fta": 1.3,
+   "ftm": 0.98,
+   "fgPct": 48.1,
+   "ftPct": 75.7
+  }
  },
  "Lajae Jones": {
   "team": "GSW",
@@ -8119,7 +19353,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.51,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 13,
+   "pts": 3.7,
+   "reb": 2.1,
+   "ast": 0.4,
+   "stl": 0.46,
+   "blk": 0.27,
+   "tpm": 0.51,
+   "tov": 0.41,
+   "fga": 3.2,
+   "fgm": 1.34,
+   "fta": 0.67,
+   "ftm": 0.51,
+   "fgPct": 41.9,
+   "ftPct": 75.7
+  }
  },
  "L.J. Cryer": {
   "team": "GSW",
@@ -8141,7 +19392,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.45,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 9,
+   "pts": 4.6,
+   "reb": 0.9,
+   "ast": 0.6,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 1.1,
+   "tov": 0.4,
+   "fga": 3.81,
+   "fgm": 1.53,
+   "fta": 0.52,
+   "ftm": 0.46,
+   "fgPct": 40.2,
+   "ftPct": 89.5
+  },
+  "b": {
+   "min": 10,
+   "pts": 4.6,
+   "reb": 0.8,
+   "ast": 0.8,
+   "stl": 0.19,
+   "blk": 0.03,
+   "tpm": 1.08,
+   "tov": 0.5,
+   "fga": 3.81,
+   "fgm": 1.56,
+   "fta": 0.52,
+   "ftm": 0.44,
+   "fgPct": 41,
+   "ftPct": 84.6
+  }
  },
  "Cade Cunningham": {
   "team": "DET",
@@ -8163,7 +19446,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.39,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 35,
+   "pts": 23.5,
+   "reb": 5.8,
+   "ast": 8.4,
+   "stl": 1.1,
+   "blk": 0.7,
+   "tpm": 2,
+   "tov": 3.9,
+   "fga": 18.42,
+   "fgm": 8.27,
+   "fta": 5.34,
+   "ftm": 4.47,
+   "fgPct": 44.9,
+   "ftPct": 83.7
+  },
+  "b": {
+   "min": 34,
+   "pts": 23.5,
+   "reb": 5.2,
+   "ast": 10.6,
+   "stl": 1.43,
+   "blk": 0.78,
+   "tpm": 2.07,
+   "tov": 3.59,
+   "fga": 18.42,
+   "fgm": 8.57,
+   "fta": 5.34,
+   "ftm": 4.3,
+   "fgPct": 46.5,
+   "ftPct": 80.6
+  }
  },
  "Jalen Duren": {
   "team": "DET",
@@ -8185,7 +19500,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5,
   "sources": "both",
   "spreadPts": 5.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 29,
+   "pts": 15,
+   "reb": 11.1,
+   "ast": 2.3,
+   "stl": 0.7,
+   "blk": 1,
+   "tpm": 0,
+   "tov": 1.9,
+   "fga": 11.66,
+   "fgm": 7.65,
+   "fta": 6.76,
+   "ftm": 4.84,
+   "fgPct": 65.6,
+   "ftPct": 71.5
+  },
+  "b": {
+   "min": 29,
+   "pts": 20.5,
+   "reb": 10.6,
+   "ast": 2.5,
+   "stl": 0.66,
+   "blk": 0.84,
+   "tpm": 0,
+   "tov": 1.93,
+   "fga": 11.66,
+   "fgm": 7.68,
+   "fta": 6.76,
+   "ftm": 5.16,
+   "fgPct": 65.9,
+   "ftPct": 76.3
+  }
  },
  "Ausar Thompson": {
   "team": "DET",
@@ -8207,7 +19554,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.63,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 28,
+   "pts": 11.2,
+   "reb": 6.4,
+   "ast": 2.9,
+   "stl": 1.9,
+   "blk": 1,
+   "tpm": 0.2,
+   "tov": 1.6,
+   "fga": 8.94,
+   "fgm": 4.65,
+   "fta": 2.71,
+   "ftm": 1.64,
+   "fgPct": 52,
+   "ftPct": 60.5
+  },
+  "b": {
+   "min": 29,
+   "pts": 11.4,
+   "reb": 6,
+   "ast": 4.7,
+   "stl": 2.11,
+   "blk": 0.97,
+   "tpm": 0.13,
+   "tov": 1.81,
+   "fga": 8.94,
+   "fgm": 4.84,
+   "fta": 2.71,
+   "ftm": 1.62,
+   "fgPct": 54.1,
+   "ftPct": 59.7
+  }
  },
  "John Collins": {
   "team": "DET",
@@ -8229,7 +19608,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.23,
   "sources": "both",
   "spreadPts": 2.2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 30,
+   "pts": 16.9,
+   "reb": 7.8,
+   "ast": 1.5,
+   "stl": 0.7,
+   "blk": 1,
+   "tpm": 1.3,
+   "tov": 1.7,
+   "fga": 10.44,
+   "fgm": 5.68,
+   "fta": 2.82,
+   "ftm": 2.26,
+   "fgPct": 54.4,
+   "ftPct": 80.3
+  },
+  "b": {
+   "min": 28,
+   "pts": 14.7,
+   "reb": 5.9,
+   "ast": 1.4,
+   "stl": 0.88,
+   "blk": 0.64,
+   "tpm": 1.38,
+   "tov": 1.45,
+   "fga": 10.44,
+   "fgm": 5.58,
+   "fta": 2.82,
+   "ftm": 2.19,
+   "fgPct": 53.5,
+   "ftPct": 77.6
+  }
  },
  "Paul Reed": {
   "team": "DET",
@@ -8251,7 +19662,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.61,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 17,
+   "pts": 7.6,
+   "reb": 5.3,
+   "ast": 1.3,
+   "stl": 1.2,
+   "blk": 1,
+   "tpm": 0.2,
+   "tov": 1,
+   "fga": 7,
+   "fgm": 3.93,
+   "fta": 2.38,
+   "ftm": 1.6,
+   "fgPct": 56.1,
+   "ftPct": 67.1
+  },
+  "b": {
+   "min": 20,
+   "pts": 10.3,
+   "reb": 6.3,
+   "ast": 1.8,
+   "stl": 1.27,
+   "blk": 1.21,
+   "tpm": 0.2,
+   "tov": 1.14,
+   "fga": 7,
+   "fgm": 4.23,
+   "fta": 2.38,
+   "ftm": 1.62,
+   "fgPct": 60.5,
+   "ftPct": 67.9
+  }
  },
  "Daniss Jenkins": {
   "team": "DET",
@@ -8273,7 +19716,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.74,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 24,
+   "pts": 9.2,
+   "reb": 2.4,
+   "ast": 3.9,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 1.1,
+   "tov": 1.5,
+   "fga": 7.79,
+   "fgm": 2.73,
+   "fta": 2.65,
+   "ftm": 1.23,
+   "fgPct": 35.1,
+   "ftPct": 46.4
+  },
+  "b": {
+   "min": 20,
+   "pts": 10,
+   "reb": 2.4,
+   "ast": 4,
+   "stl": 0.71,
+   "blk": 0.25,
+   "tpm": 0.9,
+   "tov": 1.55,
+   "fga": 7.79,
+   "fgm": 3.43,
+   "fta": 2.65,
+   "ftm": 2.25,
+   "fgPct": 44.1,
+   "ftPct": 85
+  }
  },
  "Ron Holland II": {
   "team": "DET",
@@ -8295,7 +19770,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.52,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 20,
+   "pts": 8.2,
+   "reb": 3.8,
+   "ast": 1.3,
+   "stl": 1,
+   "blk": 0.3,
+   "tpm": 0.6,
+   "tov": 1.2,
+   "fga": 7.17,
+   "fgm": 3.24,
+   "fta": 1.93,
+   "ftm": 1.51,
+   "fgPct": 45.2,
+   "ftPct": 78
+  },
+  "b": {
+   "min": 20,
+   "pts": 9.1,
+   "reb": 4.1,
+   "ast": 1.2,
+   "stl": 1.05,
+   "blk": 0.37,
+   "tpm": 0.82,
+   "tov": 1.16,
+   "fga": 7.17,
+   "fgm": 3.37,
+   "fta": 1.93,
+   "ftm": 1.54,
+   "fgPct": 47,
+   "ftPct": 79.6
+  }
  },
  "Isaiah Joe": {
   "team": "DET",
@@ -8317,7 +19824,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.11,
   "sources": "both",
   "spreadPts": 1.5,
-  "spreadMin": 5
+  "spreadMin": 5,
+  "a": {
+   "min": 26,
+   "pts": 11.8,
+   "reb": 3,
+   "ast": 1.7,
+   "stl": 0.8,
+   "blk": 0.2,
+   "tpm": 2.8,
+   "tov": 0.7,
+   "fga": 7.53,
+   "fgm": 3.21,
+   "fta": 1.28,
+   "ftm": 1.09,
+   "fgPct": 42.6,
+   "ftPct": 85.1
+  },
+  "b": {
+   "min": 21,
+   "pts": 10.3,
+   "reb": 2.6,
+   "ast": 1.4,
+   "stl": 0.7,
+   "blk": 0.13,
+   "tpm": 2.5,
+   "tov": 0.7,
+   "fga": 7.53,
+   "fgm": 3.32,
+   "fta": 1.28,
+   "ftm": 1.13,
+   "fgPct": 44.2,
+   "ftPct": 88.2
+  }
  },
  "Duncan Robinson": {
   "team": "DET",
@@ -8339,7 +19878,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 27,
+   "pts": 11.5,
+   "reb": 2.7,
+   "ast": 1.9,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 2.8,
+   "tov": 1,
+   "fga": 8.23,
+   "fgm": 3.54,
+   "fta": 1.22,
+   "ftm": 1.01,
+   "fgPct": 43,
+   "ftPct": 83.1
+  },
+  "b": {
+   "min": 26,
+   "pts": 10.8,
+   "reb": 2.5,
+   "ast": 2.2,
+   "stl": 0.48,
+   "blk": 0.27,
+   "tpm": 2.51,
+   "tov": 0.71,
+   "fga": 8.23,
+   "fgm": 3.65,
+   "fta": 1.22,
+   "ftm": 0.98,
+   "fgPct": 44.3,
+   "ftPct": 80.5
+  }
  },
  "Javonte Green": {
   "team": "DET",
@@ -8361,7 +19932,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.06,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 20,
+   "pts": 7,
+   "reb": 3.7,
+   "ast": 0.8,
+   "stl": 1.1,
+   "blk": 0.5,
+   "tpm": 0.7,
+   "tov": 0.7,
+   "fga": 4.83,
+   "fgm": 2.42,
+   "fta": 1.34,
+   "ftm": 1.01,
+   "fgPct": 50.1,
+   "ftPct": 75
+  },
+  "b": {
+   "min": 16,
+   "pts": 6.5,
+   "reb": 2.8,
+   "ast": 0.6,
+   "stl": 0.9,
+   "blk": 0.27,
+   "tpm": 1.18,
+   "tov": 0.47,
+   "fga": 4.83,
+   "fgm": 2.09,
+   "fta": 1.34,
+   "ftm": 1.12,
+   "fgPct": 43.1,
+   "ftPct": 83
+  }
  },
  "Kevin Huerter": {
   "team": "DET",
@@ -8383,7 +19986,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.45,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 17,
+   "pts": 7.1,
+   "reb": 2.2,
+   "ast": 1.8,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 1.3,
+   "tov": 0.7,
+   "fga": 6.38,
+   "fgm": 2.81,
+   "fta": 0.6,
+   "ftm": 0.46,
+   "fgPct": 44.1,
+   "ftPct": 76.2
+  },
+  "b": {
+   "min": 17,
+   "pts": 7.5,
+   "reb": 2.3,
+   "ast": 2.1,
+   "stl": 0.65,
+   "blk": 0.29,
+   "tpm": 1.2,
+   "tov": 0.92,
+   "fga": 6.38,
+   "fgm": 2.92,
+   "fta": 0.6,
+   "ftm": 0.45,
+   "fgPct": 45.8,
+   "ftPct": 74.2
+  }
  },
  "Ebuka Okorie": {
   "team": "DET",
@@ -8405,7 +20040,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.36,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 14,
+   "pts": 6.5,
+   "reb": 1.4,
+   "ast": 1.6,
+   "stl": 0.5,
+   "blk": 0.12,
+   "tpm": 0.45,
+   "tov": 0.87,
+   "fga": 5.89,
+   "fgm": 2.36,
+   "fta": 1.71,
+   "ftm": 1.36,
+   "fgPct": 40.1,
+   "ftPct": 79.6
+  }
  },
  "Taurean Prince": {
   "team": "DET",
@@ -8427,7 +20079,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.19,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 15,
+   "pts": 5.8,
+   "reb": 2.1,
+   "ast": 1.1,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.8,
+   "fga": 4.53,
+   "fgm": 1.98,
+   "fta": 0.23,
+   "ftm": 0.19,
+   "fgPct": 43.6,
+   "ftPct": 81.7
+  },
+  "b": {
+   "min": 16,
+   "pts": 5.4,
+   "reb": 2.3,
+   "ast": 1.1,
+   "stl": 0.43,
+   "blk": 0.17,
+   "tpm": 1.35,
+   "tov": 0.8,
+   "fga": 4.53,
+   "fgm": 1.93,
+   "fta": 0.23,
+   "ftm": 0.19,
+   "fgPct": 42.5,
+   "ftPct": 83.5
+  }
  },
  "Gary Harris": {
   "team": "DET",
@@ -8449,7 +20133,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.2,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 10,
+   "pts": 3,
+   "reb": 0.8,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.3,
+   "fga": 2.87,
+   "fgm": 1.21,
+   "fta": 0.25,
+   "ftm": 0.2,
+   "fgPct": 42.3,
+   "ftPct": 80.9
+  },
+  "b": {
+   "min": 13,
+   "pts": 3.4,
+   "reb": 1.2,
+   "ast": 0.7,
+   "stl": 0.51,
+   "blk": 0.19,
+   "tpm": 0.77,
+   "tov": 0.35,
+   "fga": 2.87,
+   "fgm": 1.19,
+   "fta": 0.25,
+   "ftm": 0.2,
+   "fgPct": 41.5,
+   "ftPct": 78
+  }
  },
  "EJ Harkless": {
   "team": "DET",
@@ -8471,7 +20187,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.65,
   "sources": "both",
   "spreadPts": 2.6,
-  "spreadMin": 10.9
+  "spreadMin": 10.9,
+  "a": {
+   "min": 20.9,
+   "pts": 5.9,
+   "reb": 2.6,
+   "ast": 2,
+   "stl": 1.4,
+   "blk": 0.2,
+   "tpm": 0.9,
+   "tov": 0.7,
+   "fga": 2.84,
+   "fgm": 0.92,
+   "fta": 0.91,
+   "ftm": 0.63,
+   "fgPct": 32.6,
+   "ftPct": 69.4
+  },
+  "b": {
+   "min": 10,
+   "pts": 3.3,
+   "reb": 0.9,
+   "ast": 1,
+   "stl": 0.54,
+   "blk": 0.11,
+   "tpm": 0.41,
+   "tov": 0.45,
+   "fga": 2.84,
+   "fgm": 1.1,
+   "fta": 0.91,
+   "ftm": 0.67,
+   "fgPct": 38.9,
+   "ftPct": 74
+  }
  },
  "Chaz Lanier": {
   "team": "DET",
@@ -8493,7 +20241,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.19,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 10,
+   "pts": 3.1,
+   "reb": 0.9,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.7,
+   "tov": 0.1,
+   "fga": 3.37,
+   "fgm": 1.06,
+   "fta": 0.24,
+   "ftm": 0.2,
+   "fgPct": 31.5,
+   "ftPct": 83.3
+  },
+  "b": {
+   "min": 10,
+   "pts": 3.6,
+   "reb": 0.8,
+   "ast": 0.4,
+   "stl": 0.26,
+   "blk": 0.05,
+   "tpm": 0.91,
+   "tov": 0.25,
+   "fga": 3.37,
+   "fgm": 1.24,
+   "fta": 0.24,
+   "ftm": 0.19,
+   "fgPct": 36.8,
+   "ftPct": 80.4
+  }
  },
  "Ugonna Onyenso": {
   "team": "DET",
@@ -8515,7 +20295,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.21,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 8,
+   "pts": 1.6,
+   "reb": 2.2,
+   "ast": 0.2,
+   "stl": 0.2,
+   "blk": 0.67,
+   "tpm": 0.09,
+   "tov": 0.33,
+   "fga": 1.43,
+   "fgm": 0.68,
+   "fta": 0.3,
+   "ftm": 0.21,
+   "fgPct": 47.1,
+   "ftPct": 69.5
+  }
  },
  "Isaac Jones": {
   "team": "DET",
@@ -8537,7 +20334,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.36,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 7,
+   "pts": 2.4,
+   "reb": 1.1,
+   "ast": 0.2,
+   "stl": 0.1,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 1.77,
+   "fgm": 0.99,
+   "fta": 0.53,
+   "ftm": 0.37,
+   "fgPct": 55.8,
+   "ftPct": 69.3
+  },
+  "b": {
+   "min": 8,
+   "pts": 2.2,
+   "reb": 1.6,
+   "ast": 0.4,
+   "stl": 0.14,
+   "blk": 0.22,
+   "tpm": 0.12,
+   "tov": 0.25,
+   "fga": 1.77,
+   "fgm": 0.86,
+   "fta": 0.53,
+   "ftm": 0.36,
+   "fgPct": 48.6,
+   "ftPct": 68.2
+  }
  },
  "Nikola Jokic": {
   "team": "DEN",
@@ -8559,7 +20388,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5.38,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 36,
+   "pts": 27,
+   "reb": 12.7,
+   "ast": 9.5,
+   "stl": 1.5,
+   "blk": 0.8,
+   "tpm": 1.5,
+   "tov": 3.5,
+   "fga": 17.67,
+   "fgm": 10.06,
+   "fta": 6.54,
+   "ftm": 5.38,
+   "fgPct": 56.9,
+   "ftPct": 82.2
+  },
+  "b": {
+   "min": 35,
+   "pts": 26.5,
+   "reb": 13.6,
+   "ast": 10.3,
+   "stl": 1.4,
+   "blk": 0.88,
+   "tpm": 1.4,
+   "tov": 3.54,
+   "fga": 17.67,
+   "fgm": 9.85,
+   "fta": 6.54,
+   "ftm": 5.38,
+   "fgPct": 55.7,
+   "ftPct": 82.2
+  }
  },
  "Jamal Murray": {
   "team": "DEN",
@@ -8581,7 +20442,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.44,
   "sources": "both",
   "spreadPts": 2.6,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 35,
+   "pts": 21.9,
+   "reb": 4.2,
+   "ast": 6.1,
+   "stl": 1.1,
+   "blk": 0.4,
+   "tpm": 2.6,
+   "tov": 2.2,
+   "fga": 18.04,
+   "fgm": 8.46,
+   "fta": 5.05,
+   "ftm": 4.4,
+   "fgPct": 46.9,
+   "ftPct": 87
+  },
+  "b": {
+   "min": 35,
+   "pts": 24.5,
+   "reb": 4.3,
+   "ast": 6.8,
+   "stl": 0.73,
+   "blk": 0.44,
+   "tpm": 3.48,
+   "tov": 2.21,
+   "fga": 18.04,
+   "fgm": 8.29,
+   "fta": 5.05,
+   "ftm": 4.49,
+   "fgPct": 45.9,
+   "ftPct": 88.9
+  }
  },
  "Peyton Watson": {
   "team": "DEN",
@@ -8603,7 +20496,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.71,
   "sources": "both",
   "spreadPts": 4.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 30,
+   "pts": 12.1,
+   "reb": 4.9,
+   "ast": 1.8,
+   "stl": 0.8,
+   "blk": 1.5,
+   "tpm": 1.1,
+   "tov": 1.3,
+   "fga": 12.69,
+   "fgm": 6.13,
+   "fta": 3.93,
+   "ftm": 2.64,
+   "fgPct": 48.3,
+   "ftPct": 67
+  },
+  "b": {
+   "min": 30,
+   "pts": 16.6,
+   "reb": 4.8,
+   "ast": 2.5,
+   "stl": 0.88,
+   "blk": 1.07,
+   "tpm": 1.56,
+   "tov": 1.89,
+   "fga": 12.69,
+   "fgm": 6.14,
+   "fta": 3.93,
+   "ftm": 2.79,
+   "fgPct": 48.4,
+   "ftPct": 70.9
+  }
  },
  "Aaron Gordon": {
   "team": "DEN",
@@ -8625,7 +20550,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.17,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 31,
+   "pts": 15.5,
+   "reb": 6.3,
+   "ast": 3.2,
+   "stl": 0.7,
+   "blk": 0.5,
+   "tpm": 1.3,
+   "tov": 1.6,
+   "fga": 10.96,
+   "fgm": 5.5,
+   "fta": 4.25,
+   "ftm": 3.04,
+   "fgPct": 50.2,
+   "ftPct": 71.5
+  },
+  "b": {
+   "min": 28,
+   "pts": 15.6,
+   "reb": 5.8,
+   "ast": 2.8,
+   "stl": 0.53,
+   "blk": 0.3,
+   "tpm": 1.76,
+   "tov": 1.18,
+   "fga": 10.96,
+   "fgm": 5.28,
+   "fta": 4.25,
+   "ftm": 3.31,
+   "fgPct": 48.1,
+   "ftPct": 77.9
+  }
  },
  "Cameron Johnson": {
   "team": "DEN",
@@ -8647,7 +20604,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.62,
   "sources": "both",
   "spreadPts": 2,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 30,
+   "pts": 14.3,
+   "reb": 4.3,
+   "ast": 2.3,
+   "stl": 0.9,
+   "blk": 0.4,
+   "tpm": 2.5,
+   "tov": 1,
+   "fga": 9.03,
+   "fgm": 4.15,
+   "fta": 1.9,
+   "ftm": 1.61,
+   "fgPct": 46,
+   "ftPct": 85.1
+  },
+  "b": {
+   "min": 30,
+   "pts": 12.3,
+   "reb": 4,
+   "ast": 2.6,
+   "stl": 0.82,
+   "blk": 0.44,
+   "tpm": 2.18,
+   "tov": 0.89,
+   "fga": 9.03,
+   "fgm": 4.25,
+   "fta": 1.9,
+   "ftm": 1.62,
+   "fgPct": 47.1,
+   "ftPct": 85.4
+  }
  },
  "Christian Braun": {
   "team": "DEN",
@@ -8669,7 +20658,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.35,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 32,
+   "pts": 12.4,
+   "reb": 5,
+   "ast": 2.4,
+   "stl": 0.9,
+   "blk": 0.4,
+   "tpm": 1,
+   "tov": 1,
+   "fga": 8.78,
+   "fgm": 4.62,
+   "fta": 1.75,
+   "ftm": 1.32,
+   "fgPct": 52.6,
+   "ftPct": 75.3
+  },
+  "b": {
+   "min": 30,
+   "pts": 11.9,
+   "reb": 4.5,
+   "ast": 2.2,
+   "stl": 0.62,
+   "blk": 0.25,
+   "tpm": 1.09,
+   "tov": 0.82,
+   "fga": 8.78,
+   "fgm": 4.72,
+   "fta": 1.75,
+   "ftm": 1.39,
+   "fgPct": 53.8,
+   "ftPct": 79
+  }
  },
  "Marvin Bagley III": {
   "team": "DEN",
@@ -8691,7 +20712,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.51,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 17,
+   "pts": 9,
+   "reb": 5.1,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 0.5,
+   "tpm": 0.3,
+   "tov": 0.8,
+   "fga": 6.67,
+   "fgm": 3.54,
+   "fta": 2.23,
+   "ftm": 1.54,
+   "fgPct": 53.1,
+   "ftPct": 68.8
+  },
+  "b": {
+   "min": 18,
+   "pts": 9.3,
+   "reb": 5.4,
+   "ast": 1.1,
+   "stl": 0.41,
+   "blk": 0.61,
+   "tpm": 0.42,
+   "tov": 0.88,
+   "fga": 6.67,
+   "fgm": 3.72,
+   "fta": 2.23,
+   "ftm": 1.48,
+   "fgPct": 55.7,
+   "ftPct": 66.3
+  }
  },
  "Julian Strawther": {
   "team": "DEN",
@@ -8713,7 +20766,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.01,
   "sources": "both",
   "spreadPts": 1.7,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 18,
+   "pts": 8,
+   "reb": 2.1,
+   "ast": 1.3,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 1.2,
+   "tov": 0.7,
+   "fga": 7.84,
+   "fgm": 3.38,
+   "fta": 1.25,
+   "ftm": 1,
+   "fgPct": 43.1,
+   "ftPct": 79.5
+  },
+  "b": {
+   "min": 19,
+   "pts": 9.7,
+   "reb": 2.3,
+   "ast": 1.3,
+   "stl": 0.52,
+   "blk": 0.16,
+   "tpm": 1.5,
+   "tov": 0.84,
+   "fga": 7.84,
+   "fgm": 3.58,
+   "fta": 1.25,
+   "ftm": 1.02,
+   "fgPct": 45.7,
+   "ftPct": 81.1
+  }
  },
  "Spencer Jones": {
   "team": "DEN",
@@ -8735,7 +20820,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.4,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 20,
+   "pts": 4.6,
+   "reb": 2.8,
+   "ast": 0.8,
+   "stl": 0.8,
+   "blk": 0.6,
+   "tpm": 0.5,
+   "tov": 0.6,
+   "fga": 4.12,
+   "fgm": 1.63,
+   "fta": 0.58,
+   "ftm": 0.44,
+   "fgPct": 39.6,
+   "ftPct": 76.5
+  },
+  "b": {
+   "min": 20,
+   "pts": 5.4,
+   "reb": 3.1,
+   "ast": 0.8,
+   "stl": 0.75,
+   "blk": 0.47,
+   "tpm": 0.76,
+   "tov": 0.42,
+   "fga": 4.12,
+   "fgm": 2.14,
+   "fta": 0.58,
+   "ftm": 0.36,
+   "fgPct": 51.8,
+   "ftPct": 61.5
+  }
  },
  "Alpha Diallo": {
   "team": "DEN",
@@ -8757,7 +20874,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.68,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 15,
+   "pts": 5.4,
+   "reb": 2.4,
+   "ast": 1,
+   "stl": 0.54,
+   "blk": 0.19,
+   "tpm": 0.5,
+   "tov": 0.57,
+   "fga": 4.51,
+   "fgm": 2.1,
+   "fta": 0.9,
+   "ftm": 0.68,
+   "fgPct": 46.5,
+   "ftPct": 75.2
+  }
  },
  "Trevon Brazile": {
   "team": "DEN",
@@ -8779,7 +20913,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.48,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 15,
+   "pts": 4.6,
+   "reb": 3.8,
+   "ast": 0.6,
+   "stl": 0.44,
+   "blk": 0.63,
+   "tpm": 0.55,
+   "tov": 0.85,
+   "fga": 3.88,
+   "fgm": 1.79,
+   "fta": 0.7,
+   "ftm": 0.48,
+   "fgPct": 46.2,
+   "ftPct": 68.7
+  }
  },
  "DaRon Holmes II": {
   "team": "DEN",
@@ -8801,7 +20952,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.88,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 12,
+   "pts": 5.3,
+   "reb": 2,
+   "ast": 0.9,
+   "stl": 0.1,
+   "blk": 0.3,
+   "tpm": 1.1,
+   "tov": 0.7,
+   "fga": 4.07,
+   "fgm": 2.07,
+   "fta": 1.14,
+   "ftm": 0.9,
+   "fgPct": 50.8,
+   "ftPct": 78.6
+  },
+  "b": {
+   "min": 11,
+   "pts": 5.6,
+   "reb": 2.1,
+   "ast": 0.7,
+   "stl": 0.2,
+   "blk": 0.41,
+   "tpm": 0.97,
+   "tov": 0.56,
+   "fga": 4.07,
+   "fgm": 1.86,
+   "fta": 1.14,
+   "ftm": 0.87,
+   "fgPct": 45.6,
+   "ftPct": 76
+  }
  },
  "Zeke Nnaji": {
   "team": "DEN",
@@ -8823,7 +21006,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.62,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 12,
+   "pts": 4,
+   "reb": 2.3,
+   "ast": 0.4,
+   "stl": 0.3,
+   "blk": 0.5,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 3.36,
+   "fgm": 1.67,
+   "fta": 0.91,
+   "ftm": 0.62,
+   "fgPct": 49.6,
+   "ftPct": 67.9
+  },
+  "b": {
+   "min": 13,
+   "pts": 4.1,
+   "reb": 2.6,
+   "ast": 0.7,
+   "stl": 0.38,
+   "blk": 0.55,
+   "tpm": 0.31,
+   "tov": 0.49,
+   "fga": 3.36,
+   "fgm": 1.6,
+   "fta": 0.91,
+   "ftm": 0.63,
+   "fgPct": 47.5,
+   "ftPct": 69
+  }
  },
  "Tyus Jones": {
   "team": "DEN",
@@ -8845,7 +21060,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.2,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 17,
+   "pts": 5.9,
+   "reb": 1.6,
+   "ast": 3.5,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 0.6,
+   "fga": 4.66,
+   "fgm": 2.03,
+   "fta": 0.24,
+   "ftm": 0.2,
+   "fgPct": 43.5,
+   "ftPct": 82.5
+  },
+  "b": {
+   "min": 18,
+   "pts": 4.5,
+   "reb": 1.5,
+   "ast": 3.1,
+   "stl": 0.53,
+   "blk": 0.08,
+   "tpm": 0.95,
+   "tov": 0.72,
+   "fga": 4.66,
+   "fgm": 1.68,
+   "fta": 0.24,
+   "ftm": 0.2,
+   "fgPct": 36,
+   "ftPct": 83.2
+  }
  },
  "KJ Simpson": {
   "team": "DEN",
@@ -8867,7 +21114,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.54,
   "sources": "both",
   "spreadPts": 2.3,
-  "spreadMin": 5
+  "spreadMin": 5,
+  "a": {
+   "min": 7,
+   "pts": 2.4,
+   "reb": 1,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.6,
+   "fga": 4.7,
+   "fgm": 1.62,
+   "fta": 0.73,
+   "ftm": 0.52,
+   "fgPct": 34.4,
+   "ftPct": 70.7
+  },
+  "b": {
+   "min": 12,
+   "pts": 4.7,
+   "reb": 1.8,
+   "ast": 1.9,
+   "stl": 0.53,
+   "blk": 0.05,
+   "tpm": 0.57,
+   "tov": 0.91,
+   "fga": 4.7,
+   "fgm": 1.77,
+   "fta": 0.73,
+   "ftm": 0.56,
+   "fgPct": 37.7,
+   "ftPct": 76.1
+  }
  },
  "Bryce Hopkins": {
   "team": "DEN",
@@ -8889,7 +21168,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.45,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 9,
+   "pts": 3.5,
+   "reb": 1.9,
+   "ast": 0.6,
+   "stl": 0.25,
+   "blk": 0.09,
+   "tpm": 0.33,
+   "tov": 0.76,
+   "fga": 3.15,
+   "fgm": 1.34,
+   "fta": 0.63,
+   "ftm": 0.45,
+   "fgPct": 42.7,
+   "ftPct": 72.2
+  }
  },
  "Lonnie Walker": {
   "team": "DEN",
@@ -8911,7 +21207,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 11.6,
-  "spreadMin": 23.8
+  "spreadMin": 23.8,
+  "a": {
+   "min": 23.8,
+   "pts": 11.6,
+   "reb": 2.9,
+   "ast": 1.9,
+   "stl": 0.7,
+   "blk": 0.3,
+   "tpm": 1.8,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.5,
+   "ftPct": 79.2
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Cooper Flagg": {
   "team": "DAL",
@@ -8933,7 +21261,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5.37,
   "sources": "both",
   "spreadPts": 2.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 34,
+   "pts": 21.4,
+   "reb": 6.8,
+   "ast": 4.6,
+   "stl": 1.2,
+   "blk": 0.9,
+   "tpm": 1,
+   "tov": 2.3,
+   "fga": 17.88,
+   "fgm": 8.37,
+   "fta": 6.43,
+   "ftm": 5.32,
+   "fgPct": 46.8,
+   "ftPct": 82.7
+  },
+  "b": {
+   "min": 34,
+   "pts": 23.9,
+   "reb": 6.9,
+   "ast": 5.6,
+   "stl": 1.18,
+   "blk": 1.02,
+   "tpm": 1.06,
+   "tov": 2.26,
+   "fga": 17.88,
+   "fgm": 8.72,
+   "fta": 6.43,
+   "ftm": 5.41,
+   "fgPct": 48.8,
+   "ftPct": 84.1
+  }
  },
  "Kyrie Irving": {
   "team": "DAL",
@@ -8955,7 +21315,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.88,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 34,
+   "pts": 25,
+   "reb": 4.7,
+   "ast": 5.4,
+   "stl": 1.3,
+   "blk": 0.5,
+   "tpm": 2.8,
+   "tov": 2.2,
+   "fga": 19.41,
+   "fgm": 9.43,
+   "fta": 4.27,
+   "ftm": 3.88,
+   "fgPct": 48.6,
+   "ftPct": 90.9
+  },
+  "b": {
+   "min": 34,
+   "pts": 24.6,
+   "reb": 5,
+   "ast": 5.8,
+   "stl": 1.09,
+   "blk": 0.52,
+   "tpm": 2.98,
+   "tov": 2.13,
+   "fga": 19.41,
+   "fgm": 8.87,
+   "fta": 4.27,
+   "ftm": 3.89,
+   "fgPct": 45.7,
+   "ftPct": 91
+  }
  },
  "P.J. Washington": {
   "team": "DAL",
@@ -8977,7 +21369,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.16,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 30,
+   "pts": 13.1,
+   "reb": 6.2,
+   "ast": 2.1,
+   "stl": 1,
+   "blk": 1,
+   "tpm": 1.6,
+   "tov": 1.6,
+   "fga": 11.01,
+   "fgm": 4.95,
+   "fta": 3.08,
+   "ftm": 2.17,
+   "fgPct": 44.9,
+   "ftPct": 70.4
+  },
+  "b": {
+   "min": 29,
+   "pts": 13.6,
+   "reb": 5.7,
+   "ast": 1.9,
+   "stl": 0.86,
+   "blk": 0.81,
+   "tpm": 1.57,
+   "tov": 1.24,
+   "fga": 11.01,
+   "fgm": 4.96,
+   "fta": 3.08,
+   "ftm": 2.15,
+   "fgPct": 45,
+   "ftPct": 69.6
+  }
  },
  "Morez Johnson Jr.": {
   "team": "DAL",
@@ -8999,7 +21423,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.85,
   "sources": "both",
   "spreadPts": 3.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 24,
+   "pts": 13.5,
+   "reb": 4.8,
+   "ast": 0.9,
+   "stl": 0.5,
+   "blk": 0.7,
+   "tpm": 0.5,
+   "tov": 1,
+   "fga": 7.62,
+   "fgm": 3.8,
+   "fta": 2.51,
+   "ftm": 1.88,
+   "fgPct": 49.9,
+   "ftPct": 74.9
+  },
+  "b": {
+   "min": 25,
+   "pts": 10.1,
+   "reb": 8,
+   "ast": 1,
+   "stl": 0.64,
+   "blk": 0.97,
+   "tpm": 0.24,
+   "tov": 1.34,
+   "fga": 7.62,
+   "fgm": 4.01,
+   "fta": 2.51,
+   "ftm": 1.82,
+   "fgPct": 52.7,
+   "ftPct": 72.5
+  }
  },
  "Naji Marshall": {
   "team": "DAL",
@@ -9021,7 +21477,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.26,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 27,
+   "pts": 11.8,
+   "reb": 4.8,
+   "ast": 2.9,
+   "stl": 1,
+   "blk": 0.2,
+   "tpm": 0.9,
+   "tov": 1.5,
+   "fga": 8.96,
+   "fgm": 4.19,
+   "fta": 2.95,
+   "ftm": 2.28,
+   "fgPct": 46.7,
+   "ftPct": 77.4
+  },
+  "b": {
+   "min": 24,
+   "pts": 11.7,
+   "reb": 3.2,
+   "ast": 3.1,
+   "stl": 0.89,
+   "blk": 0.15,
+   "tpm": 0.59,
+   "tov": 1.55,
+   "fga": 8.96,
+   "fgm": 4.43,
+   "fta": 2.95,
+   "ftm": 2.23,
+   "fgPct": 49.4,
+   "ftPct": 75.5
+  }
  },
  "Daniel Gafford": {
   "team": "DAL",
@@ -9043,7 +21531,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.75,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 20,
+   "pts": 9.4,
+   "reb": 5.8,
+   "ast": 1,
+   "stl": 0.5,
+   "blk": 1.5,
+   "tpm": 0,
+   "tov": 1,
+   "fga": 5.24,
+   "fgm": 3.64,
+   "fta": 2.62,
+   "ftm": 1.75,
+   "fgPct": 69.6,
+   "ftPct": 66.8
+  },
+  "b": {
+   "min": 20,
+   "pts": 8.7,
+   "reb": 6.4,
+   "ast": 1,
+   "stl": 0.59,
+   "blk": 1.07,
+   "tpm": 0,
+   "tov": 0.9,
+   "fga": 5.24,
+   "fgm": 3.46,
+   "fta": 2.62,
+   "ftm": 1.76,
+   "fgPct": 66.1,
+   "ftPct": 67.1
+  }
  },
  "Max Christie": {
   "team": "DAL",
@@ -9065,7 +21585,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.37,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 30,
+   "pts": 10.4,
+   "reb": 3.8,
+   "ast": 1.9,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 1.8,
+   "tov": 1.1,
+   "fga": 8.77,
+   "fgm": 3.78,
+   "fta": 1.57,
+   "ftm": 1.35,
+   "fgPct": 43.1,
+   "ftPct": 85.9
+  },
+  "b": {
+   "min": 28,
+   "pts": 11.2,
+   "reb": 2.6,
+   "ast": 1.9,
+   "stl": 0.66,
+   "blk": 0.36,
+   "tpm": 2.39,
+   "tov": 1.26,
+   "fga": 8.77,
+   "fgm": 3.72,
+   "fta": 1.57,
+   "ftm": 1.39,
+   "fgPct": 42.5,
+   "ftPct": 88.3
+  }
  },
  "Santi Aldama": {
   "team": "DAL",
@@ -9087,7 +21639,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.44,
   "sources": "both",
   "spreadPts": 2.4,
-  "spreadMin": 7
+  "spreadMin": 7,
+  "a": {
+   "min": 28,
+   "pts": 12.6,
+   "reb": 6.6,
+   "ast": 2.5,
+   "stl": 0.8,
+   "blk": 0.7,
+   "tpm": 1.6,
+   "tov": 1.2,
+   "fga": 7.84,
+   "fgm": 3.61,
+   "fta": 2.12,
+   "ftm": 1.42,
+   "fgPct": 46.1,
+   "ftPct": 67.3
+  },
+  "b": {
+   "min": 21,
+   "pts": 10.2,
+   "reb": 4.6,
+   "ast": 2.2,
+   "stl": 0.56,
+   "blk": 0.51,
+   "tpm": 1.46,
+   "tov": 0.92,
+   "fga": 7.84,
+   "fgm": 3.62,
+   "fta": 2.12,
+   "ftm": 1.46,
+   "fgPct": 46.2,
+   "ftPct": 68.8
+  }
  },
  "Dereck Lively II": {
   "team": "DAL",
@@ -9109,7 +21693,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.19,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 22,
+   "pts": 7.3,
+   "reb": 7,
+   "ast": 2.1,
+   "stl": 0.6,
+   "blk": 1.7,
+   "tpm": 0,
+   "tov": 1.4,
+   "fga": 3.75,
+   "fgm": 2.57,
+   "fta": 1.76,
+   "ftm": 1.19,
+   "fgPct": 68.5,
+   "ftPct": 67.3
+  },
+  "b": {
+   "min": 19,
+   "pts": 6.2,
+   "reb": 6.3,
+   "ast": 1.6,
+   "stl": 0.48,
+   "blk": 1.39,
+   "tpm": 0,
+   "tov": 0.91,
+   "fga": 3.75,
+   "fgm": 2.51,
+   "fta": 1.76,
+   "ftm": 1.19,
+   "fgPct": 66.8,
+   "ftPct": 67.5
+  }
  },
  "Zaccharie Risacher": {
   "team": "DAL",
@@ -9131,7 +21747,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.87,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 20,
+   "pts": 9.4,
+   "reb": 3.2,
+   "ast": 1,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 1.3,
+   "tov": 0.9,
+   "fga": 6.22,
+   "fgm": 2.84,
+   "fta": 1.24,
+   "ftm": 0.85,
+   "fgPct": 45.7,
+   "ftPct": 68.3
+  },
+  "b": {
+   "min": 18,
+   "pts": 7.8,
+   "reb": 3.5,
+   "ast": 1,
+   "stl": 0.73,
+   "blk": 0.46,
+   "tpm": 1.16,
+   "tov": 0.58,
+   "fga": 6.22,
+   "fgm": 2.9,
+   "fta": 1.24,
+   "ftm": 0.89,
+   "fgPct": 46.6,
+   "ftPct": 71.2
+  }
  },
  "Klay Thompson": {
   "team": "DAL",
@@ -9153,7 +21801,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.51,
   "sources": "both",
   "spreadPts": 1.7,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 20,
+   "pts": 11.8,
+   "reb": 2.3,
+   "ast": 1.5,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 2.4,
+   "tov": 0.9,
+   "fga": 8.72,
+   "fgm": 3.7,
+   "fta": 0.59,
+   "ftm": 0.52,
+   "fgPct": 42.4,
+   "ftPct": 86.9
+  },
+  "b": {
+   "min": 19,
+   "pts": 10.1,
+   "reb": 1.4,
+   "ast": 1.2,
+   "stl": 0.44,
+   "blk": 0.29,
+   "tpm": 2.55,
+   "tov": 0.78,
+   "fga": 8.72,
+   "fgm": 3.52,
+   "fta": 0.59,
+   "ftm": 0.5,
+   "fgPct": 40.4,
+   "ftPct": 84.3
+  }
  },
  "Sergio de Larrea": {
   "team": "DAL",
@@ -9175,7 +21855,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.95,
   "sources": "both",
   "spreadPts": 8.7,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 17,
+   "pts": 15,
+   "reb": 2.1,
+   "ast": 1.9,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.8,
+   "tov": 1.4,
+   "fga": 5.62,
+   "fgm": 2.09,
+   "fta": 1.18,
+   "ftm": 0.95,
+   "fgPct": 37.2,
+   "ftPct": 80.6
+  },
+  "b": {
+   "min": 17,
+   "pts": 6.3,
+   "reb": 2.4,
+   "ast": 3.9,
+   "stl": 0.58,
+   "blk": 0.22,
+   "tpm": 1.08,
+   "tov": 2.23,
+   "fga": 5.62,
+   "fgm": 2.13,
+   "fta": 1.18,
+   "ftm": 0.96,
+   "fgPct": 37.9,
+   "ftPct": 81
+  }
  },
  "Marcus Sasser": {
   "team": "DAL",
@@ -9197,7 +21909,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.35,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 15,
+   "pts": 6.7,
+   "reb": 1.3,
+   "ast": 2.5,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 1.2,
+   "tov": 1,
+   "fga": 5.13,
+   "fgm": 2.19,
+   "fta": 0.41,
+   "ftm": 0.35,
+   "fgPct": 42.6,
+   "ftPct": 84.9
+  },
+  "b": {
+   "min": 13,
+   "pts": 5.8,
+   "reb": 1.1,
+   "ast": 2.1,
+   "stl": 0.53,
+   "blk": 0.08,
+   "tpm": 1.17,
+   "tov": 0.92,
+   "fga": 5.13,
+   "fgm": 2.13,
+   "fta": 0.41,
+   "ftm": 0.35,
+   "fgPct": 41.4,
+   "ftPct": 84.2
+  }
  },
  "Moussa Cisse": {
   "team": "DAL",
@@ -9219,7 +21963,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.65,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 12,
+   "pts": 3.9,
+   "reb": 4.9,
+   "ast": 0.2,
+   "stl": 0.4,
+   "blk": 1,
+   "tpm": 0,
+   "tov": 0.7,
+   "fga": 2.4,
+   "fgm": 1.38,
+   "fta": 1.35,
+   "ftm": 0.63,
+   "fgPct": 57.4,
+   "ftPct": 46.9
+  },
+  "b": {
+   "min": 10,
+   "pts": 3.7,
+   "reb": 4.4,
+   "ast": 0.2,
+   "stl": 0.33,
+   "blk": 0.76,
+   "tpm": 0,
+   "tov": 0.55,
+   "fga": 2.4,
+   "fgm": 1.52,
+   "fta": 1.35,
+   "ftm": 0.66,
+   "fgPct": 63.2,
+   "ftPct": 49
+  }
  },
  "Tarik Biberovic": {
   "team": "DAL",
@@ -9241,7 +22017,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.32,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 13,
+   "pts": 5.6,
+   "reb": 1.7,
+   "ast": 0.9,
+   "stl": 0.25,
+   "blk": 0.08,
+   "tpm": 1.39,
+   "tov": 0.61,
+   "fga": 4.69,
+   "fgm": 1.97,
+   "fta": 0.38,
+   "ftm": 0.32,
+   "fgPct": 41.9,
+   "ftPct": 84.4
+  }
  },
  "Jett Howard": {
   "team": "DAL",
@@ -9263,7 +22056,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.28,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 7,
+   "pts": 2.9,
+   "reb": 0.8,
+   "ast": 0.5,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 0.3,
+   "fga": 3.12,
+   "fgm": 1.19,
+   "fta": 0.36,
+   "ftm": 0.26,
+   "fgPct": 38,
+   "ftPct": 74.1
+  },
+  "b": {
+   "min": 8,
+   "pts": 3.7,
+   "reb": 0.9,
+   "ast": 0.5,
+   "stl": 0.13,
+   "blk": 0.14,
+   "tpm": 0.67,
+   "tov": 0.21,
+   "fga": 3.12,
+   "fgm": 1.35,
+   "fta": 0.36,
+   "ftm": 0.3,
+   "fgPct": 43.2,
+   "ftPct": 84.5
+  }
  },
  "John Poulakidas": {
   "team": "DAL",
@@ -9285,7 +22110,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.2,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 7,
+   "pts": 3.2,
+   "reb": 0.8,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 0.1,
+   "fga": 2.11,
+   "fgm": 0.91,
+   "fta": 0.24,
+   "ftm": 0.2,
+   "fgPct": 42.9,
+   "ftPct": 85.7
+  },
+  "b": {
+   "min": 6,
+   "pts": 2.4,
+   "reb": 0.6,
+   "ast": 0.3,
+   "stl": 0.14,
+   "blk": 0.07,
+   "tpm": 0.48,
+   "tov": 0.15,
+   "fga": 2.11,
+   "fgm": 0.86,
+   "fta": 0.24,
+   "ftm": 0.2,
+   "fgPct": 40.6,
+   "ftPct": 81.7
+  }
  },
  "Tobi Lawal": {
   "team": "DAL",
@@ -9307,7 +22164,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.33,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 6,
+   "pts": 1.8,
+   "reb": 1.2,
+   "ast": 0.2,
+   "stl": 0.14,
+   "blk": 0.22,
+   "tpm": 0.21,
+   "tov": 0.35,
+   "fga": 1.57,
+   "fgm": 0.61,
+   "fta": 0.47,
+   "ftm": 0.33,
+   "fgPct": 38.8,
+   "ftPct": 69.2
+  }
  },
  "Caleb Martin": {
   "team": "DAL",
@@ -9329,7 +22203,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 3.9,
-  "spreadMin": 12
+  "spreadMin": 12,
+  "a": {
+   "min": 12,
+   "pts": 3.9,
+   "reb": 1.9,
+   "ast": 0.9,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44,
+   "ftPct": 69.6
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Vsevolod Ishchenko": {
   "team": "DAL",
@@ -9351,7 +22257,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Donovan Mitchell": {
   "team": "CLE",
@@ -9373,7 +22296,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5.02,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 34,
+   "pts": 26.1,
+   "reb": 4.5,
+   "ast": 5.2,
+   "stl": 1.4,
+   "blk": 0.3,
+   "tpm": 3.2,
+   "tov": 2.7,
+   "fga": 18.26,
+   "fgm": 8.33,
+   "fta": 5.83,
+   "ftm": 4.94,
+   "fgPct": 45.6,
+   "ftPct": 84.8
+  },
+  "b": {
+   "min": 33,
+   "pts": 24.7,
+   "reb": 4.4,
+   "ast": 4.6,
+   "stl": 1.46,
+   "blk": 0.28,
+   "tpm": 2.57,
+   "tov": 2.15,
+   "fga": 18.26,
+   "fgm": 8.52,
+   "fta": 5.83,
+   "ftm": 5.1,
+   "fgPct": 46.6,
+   "ftPct": 87.6
+  }
  },
  "James Harden": {
   "team": "CLE",
@@ -9395,7 +22350,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.82,
   "sources": "both",
   "spreadPts": 3.9,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 34,
+   "pts": 23.4,
+   "reb": 5.8,
+   "ast": 8.4,
+   "stl": 1.3,
+   "blk": 0.6,
+   "tpm": 3,
+   "tov": 3.7,
+   "fga": 13.81,
+   "fgm": 5.98,
+   "fta": 5.52,
+   "ftm": 4.82,
+   "fgPct": 43.3,
+   "ftPct": 87.3
+  },
+  "b": {
+   "min": 34,
+   "pts": 19.5,
+   "reb": 4.6,
+   "ast": 7.7,
+   "stl": 1,
+   "blk": 0.43,
+   "tpm": 2.73,
+   "tov": 3.15,
+   "fga": 13.81,
+   "fgm": 5.96,
+   "fta": 5.52,
+   "ftm": 4.82,
+   "fgPct": 43.1,
+   "ftPct": 87.2
+  }
  },
  "Evan Mobley": {
   "team": "CLE",
@@ -9417,7 +22404,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.96,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 32,
+   "pts": 17.2,
+   "reb": 9.1,
+   "ast": 3.2,
+   "stl": 0.8,
+   "blk": 1.6,
+   "tpm": 0.8,
+   "tov": 1.9,
+   "fga": 12.86,
+   "fgm": 7.07,
+   "fta": 4.5,
+   "ftm": 3.03,
+   "fgPct": 55,
+   "ftPct": 67.4
+  },
+  "b": {
+   "min": 32,
+   "pts": 18.4,
+   "reb": 9.8,
+   "ast": 3.4,
+   "stl": 0.68,
+   "blk": 1.62,
+   "tpm": 0.73,
+   "tov": 1.62,
+   "fga": 12.86,
+   "fgm": 7.41,
+   "fta": 4.5,
+   "ftm": 2.88,
+   "fgPct": 57.6,
+   "ftPct": 64
+  }
  },
  "Jarrett Allen": {
   "team": "CLE",
@@ -9439,7 +22458,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.58,
   "sources": "both",
   "spreadPts": 2.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 28,
+   "pts": 13.5,
+   "reb": 9.3,
+   "ast": 1.8,
+   "stl": 0.7,
+   "blk": 1.1,
+   "tpm": 0,
+   "tov": 1.3,
+   "fga": 9.49,
+   "fgm": 6.16,
+   "fta": 5.12,
+   "ftm": 3.62,
+   "fgPct": 64.9,
+   "ftPct": 70.6
+  },
+  "b": {
+   "min": 27,
+   "pts": 16,
+   "reb": 8.6,
+   "ast": 1.2,
+   "stl": 0.96,
+   "blk": 0.8,
+   "tpm": 0.01,
+   "tov": 1.14,
+   "fga": 9.49,
+   "fgm": 6.23,
+   "fta": 5.12,
+   "ftm": 3.55,
+   "fgPct": 65.7,
+   "ftPct": 69.2
+  }
  },
  "Max Strus": {
   "team": "CLE",
@@ -9461,7 +22512,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.56,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 28,
+   "pts": 13.1,
+   "reb": 4.5,
+   "ast": 2.2,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 2.4,
+   "tov": 0.9,
+   "fga": 9.54,
+   "fgm": 4.52,
+   "fta": 0.67,
+   "ftm": 0.58,
+   "fgPct": 47.4,
+   "ftPct": 87.1
+  },
+  "b": {
+   "min": 28,
+   "pts": 12.1,
+   "reb": 5.3,
+   "ast": 2.4,
+   "stl": 0.54,
+   "blk": 0.18,
+   "tpm": 2.83,
+   "tov": 0.82,
+   "fga": 9.54,
+   "fgm": 4.39,
+   "fta": 0.67,
+   "ftm": 0.54,
+   "fgPct": 46,
+   "ftPct": 81.4
+  }
  },
  "Sam Merrill": {
   "team": "CLE",
@@ -9483,7 +22566,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.93,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 27,
+   "pts": 11.4,
+   "reb": 3.1,
+   "ast": 2.3,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 2.9,
+   "tov": 0.7,
+   "fga": 8.64,
+   "fgm": 3.56,
+   "fta": 1.12,
+   "ftm": 0.9,
+   "fgPct": 41.2,
+   "ftPct": 80.8
+  },
+  "b": {
+   "min": 26,
+   "pts": 11.3,
+   "reb": 2.7,
+   "ast": 2.2,
+   "stl": 0.71,
+   "blk": 0.16,
+   "tpm": 2.66,
+   "tov": 0.77,
+   "fga": 8.64,
+   "fgm": 3.84,
+   "fta": 1.12,
+   "ftm": 0.95,
+   "fgPct": 44.4,
+   "ftPct": 85.3
+  }
  },
  "Jaylon Tyson": {
   "team": "CLE",
@@ -9505,7 +22620,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.92,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 25,
+   "pts": 10.7,
+   "reb": 5,
+   "ast": 2.2,
+   "stl": 0.7,
+   "blk": 0.3,
+   "tpm": 1.5,
+   "tov": 1.4,
+   "fga": 9.44,
+   "fgm": 4.37,
+   "fta": 1.23,
+   "ftm": 0.94,
+   "fgPct": 46.3,
+   "ftPct": 76.3
+  },
+  "b": {
+   "min": 24,
+   "pts": 11.4,
+   "reb": 4,
+   "ast": 2,
+   "stl": 0.65,
+   "blk": 0.31,
+   "tpm": 1.84,
+   "tov": 1.48,
+   "fga": 9.44,
+   "fgm": 4.34,
+   "fta": 1.23,
+   "ftm": 0.9,
+   "fgPct": 46,
+   "ftPct": 73.1
+  }
  },
  "Dennis Schroder": {
   "team": "CLE",
@@ -9527,7 +22674,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.96,
   "sources": "both",
   "spreadPts": 2.2,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 22,
+   "pts": 10.5,
+   "reb": 2.3,
+   "ast": 3.8,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 1.1,
+   "tov": 1.6,
+   "fga": 6.85,
+   "fgm": 2.9,
+   "fta": 2.33,
+   "ftm": 1.96,
+   "fgPct": 42.4,
+   "ftPct": 84.1
+  },
+  "b": {
+   "min": 22,
+   "pts": 8.3,
+   "reb": 2.3,
+   "ast": 4.6,
+   "stl": 0.74,
+   "blk": 0.14,
+   "tpm": 0.63,
+   "tov": 1.48,
+   "fga": 6.85,
+   "fgm": 2.86,
+   "fta": 2.33,
+   "ftm": 1.95,
+   "fgPct": 41.8,
+   "ftPct": 83.9
+  }
  },
  "Nae'Qwan Tomlin": {
   "team": "CLE",
@@ -9549,7 +22728,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.6,
   "sources": "both",
   "spreadPts": 2.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 17,
+   "pts": 8,
+   "reb": 4.4,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.4,
+   "tpm": 0.5,
+   "tov": 0.5,
+   "fga": 4.68,
+   "fgm": 2.03,
+   "fta": 0.8,
+   "ftm": 0.59,
+   "fgPct": 43.4,
+   "ftPct": 73.8
+  },
+  "b": {
+   "min": 16,
+   "pts": 5.7,
+   "reb": 3,
+   "ast": 0.8,
+   "stl": 0.61,
+   "blk": 0.54,
+   "tpm": 0.51,
+   "tov": 0.47,
+   "fga": 4.68,
+   "fgm": 2.28,
+   "fta": 0.8,
+   "ftm": 0.61,
+   "fgPct": 48.8,
+   "ftPct": 76.6
+  }
  },
  "Thomas Bryant": {
   "team": "CLE",
@@ -9571,7 +22782,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.73,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 12,
+   "pts": 5.9,
+   "reb": 3.3,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.5,
+   "tpm": 0.4,
+   "tov": 0.5,
+   "fga": 4.24,
+   "fgm": 2.38,
+   "fta": 0.89,
+   "ftm": 0.71,
+   "fgPct": 56.1,
+   "ftPct": 79.3
+  },
+  "b": {
+   "min": 12,
+   "pts": 5.8,
+   "reb": 3.3,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.48,
+   "tpm": 0.7,
+   "tov": 0.43,
+   "fga": 4.24,
+   "fgm": 2.19,
+   "fta": 0.89,
+   "ftm": 0.74,
+   "fgPct": 51.6,
+   "ftPct": 83.5
+  }
  },
  "Mario Hezonja": {
   "team": "CLE",
@@ -9593,7 +22836,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.01,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1.3
+  "spreadMin": 1.3,
+  "a": {
+   "min": 16.3,
+   "pts": 5.9,
+   "reb": 3.3,
+   "ast": 1.1,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 1,
+   "fga": 4.67,
+   "fgm": 1.94,
+   "fta": 1.25,
+   "ftm": 0.98,
+   "fgPct": 41.5,
+   "ftPct": 78.7
+  },
+  "b": {
+   "min": 15,
+   "pts": 5.8,
+   "reb": 2.8,
+   "ast": 0.9,
+   "stl": 0.51,
+   "blk": 0.16,
+   "tpm": 0.82,
+   "tov": 0.73,
+   "fga": 4.67,
+   "fgm": 1.99,
+   "fta": 1.25,
+   "ftm": 1.03,
+   "fgPct": 42.6,
+   "ftPct": 82
+  }
  },
  "Tyrese Proctor": {
   "team": "CLE",
@@ -9615,7 +22890,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.86,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 12,
+   "pts": 6,
+   "reb": 1.4,
+   "ast": 1.6,
+   "stl": 0.6,
+   "blk": 0,
+   "tpm": 1,
+   "tov": 0.9,
+   "fga": 4.5,
+   "fgm": 1.87,
+   "fta": 0.99,
+   "ftm": 0.88,
+   "fgPct": 41.5,
+   "ftPct": 88.9
+  },
+  "b": {
+   "min": 12,
+   "pts": 5.7,
+   "reb": 1.3,
+   "ast": 1.5,
+   "stl": 0.63,
+   "blk": 0.02,
+   "tpm": 0.79,
+   "tov": 0.75,
+   "fga": 4.5,
+   "fgm": 2.02,
+   "fta": 0.99,
+   "ftm": 0.84,
+   "fgPct": 45,
+   "ftPct": 85.3
+  }
  },
  "Craig Porter Jr.": {
   "team": "CLE",
@@ -9637,7 +22944,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.26,
   "sources": "both",
   "spreadPts": 2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 15,
+   "pts": 5.1,
+   "reb": 2.4,
+   "ast": 2.4,
+   "stl": 0.6,
+   "blk": 0.4,
+   "tpm": 0.5,
+   "tov": 1,
+   "fga": 2.71,
+   "fgm": 1.33,
+   "fta": 0.38,
+   "ftm": 0.26,
+   "fgPct": 49.1,
+   "ftPct": 69.8
+  },
+  "b": {
+   "min": 13,
+   "pts": 3.1,
+   "reb": 2.4,
+   "ast": 1.9,
+   "stl": 0.56,
+   "blk": 0.42,
+   "tpm": 0.4,
+   "tov": 0.66,
+   "fga": 2.71,
+   "fgm": 1.24,
+   "fta": 0.38,
+   "ftm": 0.25,
+   "fgPct": 45.6,
+   "ftPct": 65.4
+  }
  },
  "Meleek Thomas": {
   "team": "CLE",
@@ -9659,7 +22998,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.56,
   "sources": "both",
   "spreadPts": 8.8,
-  "spreadMin": 10
+  "spreadMin": 10,
+  "a": {
+   "min": 22,
+   "pts": 14,
+   "reb": 1.9,
+   "ast": 1.3,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 0.6,
+   "fga": 4.75,
+   "fgm": 1.73,
+   "fta": 0.71,
+   "ftm": 0.54,
+   "fgPct": 36.5,
+   "ftPct": 76.1
+  },
+  "b": {
+   "min": 12,
+   "pts": 5.2,
+   "reb": 1.4,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.08,
+   "tpm": 0.74,
+   "tov": 0.71,
+   "fga": 4.75,
+   "fgm": 1.94,
+   "fta": 0.71,
+   "ftm": 0.57,
+   "fgPct": 40.8,
+   "ftPct": 80.2
+  }
  },
  "Tristan Enaruna": {
   "team": "CLE",
@@ -9681,7 +23052,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.42,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 7,
+   "pts": 3,
+   "reb": 1.2,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.2,
+   "fga": 2.33,
+   "fgm": 1.17,
+   "fta": 0.57,
+   "ftm": 0.43,
+   "fgPct": 50,
+   "ftPct": 75
+  },
+  "b": {
+   "min": 7,
+   "pts": 3.2,
+   "reb": 1.2,
+   "ast": 0.4,
+   "stl": 0.23,
+   "blk": 0.13,
+   "tpm": 0.25,
+   "tov": 0.33,
+   "fga": 2.33,
+   "fgm": 1.25,
+   "fta": 0.57,
+   "ftm": 0.41,
+   "fgPct": 53.7,
+   "ftPct": 71.4
+  }
  },
  "Riley Minix": {
   "team": "CLE",
@@ -9703,7 +23106,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.27,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 7,
+   "pts": 2.1,
+   "reb": 1.4,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.2,
+   "fga": 2.12,
+   "fgm": 0.94,
+   "fta": 0.3,
+   "ftm": 0.3,
+   "fgPct": 44.3,
+   "ftPct": 100
+  },
+  "b": {
+   "min": 6,
+   "pts": 2.7,
+   "reb": 1,
+   "ast": 0.4,
+   "stl": 0.19,
+   "blk": 0.12,
+   "tpm": 0.4,
+   "tov": 0.31,
+   "fga": 2.12,
+   "fgm": 1.02,
+   "fta": 0.3,
+   "ftm": 0.24,
+   "fgPct": 48,
+   "ftPct": 81.7
+  }
  },
  "Ernest Udeh Jr.": {
   "team": "CLE",
@@ -9725,7 +23160,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.11,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 6,
+   "pts": 0.8,
+   "reb": 1.5,
+   "ast": 0.2,
+   "stl": 0.23,
+   "blk": 0.38,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0.74,
+   "fgm": 0.36,
+   "fta": 0.22,
+   "ftm": 0.11,
+   "fgPct": 48,
+   "ftPct": 50.8
+  }
  },
  "Norman Powell": {
   "team": "CHI",
@@ -9747,7 +23199,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 4.93,
   "sources": "both",
   "spreadPts": 5.9,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 30,
+   "pts": 18.4,
+   "reb": 3.3,
+   "ast": 2,
+   "stl": 1,
+   "blk": 0.3,
+   "tpm": 2.4,
+   "tov": 1.6,
+   "fga": 17.36,
+   "fgm": 8.32,
+   "fta": 6.03,
+   "ftm": 4.97,
+   "fgPct": 47.9,
+   "ftPct": 82.5
+  },
+  "b": {
+   "min": 32,
+   "pts": 24.3,
+   "reb": 3,
+   "ast": 2.2,
+   "stl": 1.12,
+   "blk": 0.21,
+   "tpm": 3.21,
+   "tov": 1.75,
+   "fga": 17.36,
+   "fgm": 8.13,
+   "fta": 6.03,
+   "ftm": 4.88,
+   "fgPct": 46.8,
+   "ftPct": 81
+  }
  },
  "Matas Buzelis": {
   "team": "CHI",
@@ -9769,7 +23253,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.39,
   "sources": "both",
   "spreadPts": 4.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 32,
+   "pts": 16.2,
+   "reb": 6.1,
+   "ast": 2,
+   "stl": 0.7,
+   "blk": 1.6,
+   "tpm": 2.2,
+   "tov": 1.9,
+   "fga": 15.19,
+   "fgm": 6.97,
+   "fta": 4.25,
+   "ftm": 3.39,
+   "fgPct": 45.9,
+   "ftPct": 79.7
+  },
+  "b": {
+   "min": 32,
+   "pts": 20.7,
+   "reb": 6.6,
+   "ast": 2.6,
+   "stl": 0.78,
+   "blk": 1.4,
+   "tpm": 2.82,
+   "tov": 2.1,
+   "fga": 15.19,
+   "fgm": 7.25,
+   "fta": 4.25,
+   "ftm": 3.38,
+   "fgPct": 47.7,
+   "ftPct": 79.5
+  }
  },
  "Josh Giddey": {
   "team": "CHI",
@@ -9791,7 +23307,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.81,
   "sources": "both",
   "spreadPts": 1.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 31,
+   "pts": 15.2,
+   "reb": 8,
+   "ast": 7.3,
+   "stl": 1,
+   "blk": 0.5,
+   "tpm": 1.4,
+   "tov": 3.1,
+   "fga": 13.43,
+   "fgm": 6.15,
+   "fta": 3.63,
+   "ftm": 2.77,
+   "fgPct": 45.8,
+   "ftPct": 76.5
+  },
+  "b": {
+   "min": 33,
+   "pts": 16.8,
+   "reb": 7.9,
+   "ast": 10,
+   "stl": 1.09,
+   "blk": 0.58,
+   "tpm": 2.2,
+   "tov": 3.74,
+   "fga": 13.43,
+   "fgm": 5.88,
+   "fta": 3.63,
+   "ftm": 2.85,
+   "fgPct": 43.8,
+   "ftPct": 78.6
+  }
  },
  "Caleb Wilson": {
   "team": "CHI",
@@ -9813,7 +23361,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.2,
   "sources": "both",
   "spreadPts": 3.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 29,
+   "pts": 17.2,
+   "reb": 6,
+   "ast": 1.9,
+   "stl": 0.8,
+   "blk": 0.8,
+   "tpm": 0.5,
+   "tov": 1.7,
+   "fga": 11.29,
+   "fgm": 5.9,
+   "fta": 3.16,
+   "ftm": 2.13,
+   "fgPct": 52.3,
+   "ftPct": 67.3
+  },
+  "b": {
+   "min": 30,
+   "pts": 14,
+   "reb": 8,
+   "ast": 2,
+   "stl": 1.18,
+   "blk": 1.12,
+   "tpm": 1.1,
+   "tov": 1.97,
+   "fga": 11.29,
+   "fgm": 5.33,
+   "fta": 3.16,
+   "ftm": 2.27,
+   "fgPct": 47.2,
+   "ftPct": 71.9
+  }
  },
  "Nicolas Claxton": {
   "team": "CHI",
@@ -9835,7 +23415,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.61,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 28,
+   "pts": 11.1,
+   "reb": 7.7,
+   "ast": 2.3,
+   "stl": 0.7,
+   "blk": 1.6,
+   "tpm": 0,
+   "tov": 1.2,
+   "fga": 8.82,
+   "fgm": 5.34,
+   "fta": 2.91,
+   "ftm": 1.6,
+   "fgPct": 60.6,
+   "ftPct": 54.9
+  },
+  "b": {
+   "min": 28,
+   "pts": 12.2,
+   "reb": 7.9,
+   "ast": 3,
+   "stl": 0.74,
+   "blk": 1.41,
+   "tpm": 0.04,
+   "tov": 1.29,
+   "fga": 8.82,
+   "fgm": 5.25,
+   "fta": 2.91,
+   "ftm": 1.62,
+   "fgPct": 59.5,
+   "ftPct": 55.7
+  }
  },
  "Tre Jones": {
   "team": "CHI",
@@ -9857,7 +23469,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.93,
   "sources": "both",
   "spreadPts": 1.1,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 27,
+   "pts": 11.1,
+   "reb": 3.2,
+   "ast": 5.5,
+   "stl": 1.1,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 1.3,
+   "fga": 8.86,
+   "fgm": 4.54,
+   "fta": 2.3,
+   "ftm": 1.93,
+   "fgPct": 51.2,
+   "ftPct": 84
+  },
+  "b": {
+   "min": 25,
+   "pts": 12.2,
+   "reb": 2.8,
+   "ast": 4.6,
+   "stl": 0.88,
+   "blk": 0.17,
+   "tpm": 0.6,
+   "tov": 1.27,
+   "fga": 8.86,
+   "fgm": 4.86,
+   "fta": 2.3,
+   "ftm": 1.93,
+   "fgPct": 54.8,
+   "ftPct": 83.8
+  }
  },
  "Jalen Smith": {
   "team": "CHI",
@@ -9879,7 +23523,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.38,
   "sources": "both",
   "spreadPts": 1.7,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 18,
+   "pts": 9,
+   "reb": 5.8,
+   "ast": 0.9,
+   "stl": 0.3,
+   "blk": 0.7,
+   "tpm": 1,
+   "tov": 0.8,
+   "fga": 7.8,
+   "fgm": 3.81,
+   "fta": 1.82,
+   "ftm": 1.37,
+   "fgPct": 48.9,
+   "ftPct": 75.4
+  },
+  "b": {
+   "min": 22,
+   "pts": 10.7,
+   "reb": 6.6,
+   "ast": 1.2,
+   "stl": 0.49,
+   "blk": 0.87,
+   "tpm": 1.62,
+   "tov": 1.01,
+   "fga": 7.8,
+   "fgm": 3.82,
+   "fta": 1.82,
+   "ftm": 1.39,
+   "fgPct": 49,
+   "ftPct": 76.6
+  }
  },
  "Isaac Okoro": {
   "team": "CHI",
@@ -9901,7 +23577,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.19,
   "sources": "both",
   "spreadPts": 1.7,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 24,
+   "pts": 7.7,
+   "reb": 2.6,
+   "ast": 1.5,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 1,
+   "tov": 0.7,
+   "fga": 7.41,
+   "fgm": 3.45,
+   "fta": 1.56,
+   "ftm": 1.16,
+   "fgPct": 46.6,
+   "ftPct": 74.4
+  },
+  "b": {
+   "min": 28,
+   "pts": 9.4,
+   "reb": 2.4,
+   "ast": 1.6,
+   "stl": 0.8,
+   "blk": 0.43,
+   "tpm": 1.26,
+   "tov": 0.74,
+   "fga": 7.41,
+   "fgm": 3.45,
+   "fta": 1.56,
+   "ftm": 1.22,
+   "fgPct": 46.6,
+   "ftPct": 78.7
+  }
  },
  "Zach Collins": {
   "team": "CHI",
@@ -9923,7 +23631,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.22,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 18,
+   "pts": 8,
+   "reb": 5,
+   "ast": 1.7,
+   "stl": 0.4,
+   "blk": 0.6,
+   "tpm": 0.6,
+   "tov": 1.2,
+   "fga": 6.02,
+   "fgm": 3.09,
+   "fta": 1.56,
+   "ftm": 1.21,
+   "fgPct": 51.3,
+   "ftPct": 77.1
+  },
+  "b": {
+   "min": 17,
+   "pts": 8.3,
+   "reb": 4.8,
+   "ast": 1.6,
+   "stl": 0.37,
+   "blk": 0.52,
+   "tpm": 0.67,
+   "tov": 0.89,
+   "fga": 6.02,
+   "fgm": 3.22,
+   "fta": 1.56,
+   "ftm": 1.23,
+   "fgPct": 53.4,
+   "ftPct": 78.5
+  }
  },
  "Leonard Miller": {
   "team": "CHI",
@@ -9945,7 +23685,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.98,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 14,
+   "pts": 7.9,
+   "reb": 4.4,
+   "ast": 0.7,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 0.4,
+   "tov": 0.7,
+   "fga": 5.64,
+   "fgm": 2.84,
+   "fta": 1.17,
+   "ftm": 1.06,
+   "fgPct": 50.4,
+   "ftPct": 90.7
+  },
+  "b": {
+   "min": 15,
+   "pts": 7.8,
+   "reb": 3.9,
+   "ast": 1,
+   "stl": 0.39,
+   "blk": 0.33,
+   "tpm": 0.71,
+   "tov": 0.72,
+   "fga": 5.64,
+   "fgm": 3.12,
+   "fta": 1.17,
+   "ftm": 0.89,
+   "fgPct": 55.2,
+   "ftPct": 76.2
+  }
  },
  "Rob Dillingham": {
   "team": "CHI",
@@ -9967,7 +23739,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.83,
   "sources": "both",
   "spreadPts": 2.3,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 15,
+   "pts": 6.3,
+   "reb": 1.7,
+   "ast": 2.5,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 1.5,
+   "fga": 7.95,
+   "fgm": 3.32,
+   "fta": 1.19,
+   "ftm": 0.8,
+   "fgPct": 41.8,
+   "ftPct": 67.4
+  },
+  "b": {
+   "min": 18,
+   "pts": 8.6,
+   "reb": 2.1,
+   "ast": 2.5,
+   "stl": 0.71,
+   "blk": 0.12,
+   "tpm": 1.1,
+   "tov": 1.69,
+   "fga": 7.95,
+   "fgm": 3.33,
+   "fta": 1.19,
+   "ftm": 0.86,
+   "fgPct": 41.9,
+   "ftPct": 71.7
+  }
  },
  "Noa Essengue": {
   "team": "CHI",
@@ -9989,7 +23793,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.69,
   "sources": "both",
   "spreadPts": 6.6,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 14,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 2.3,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 5.27,
+   "fgm": 0,
+   "fta": 1.95,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  },
+  "b": {
+   "min": 14,
+   "pts": 6.6,
+   "reb": 3.1,
+   "ast": 0.6,
+   "stl": 0.47,
+   "blk": 0.52,
+   "tpm": 0.74,
+   "tov": 0.61,
+   "fga": 5.27,
+   "fgm": 2.24,
+   "fta": 1.95,
+   "ftm": 1.38,
+   "fgPct": 42.5,
+   "ftPct": 70.9
+  }
  },
  "Patrick Williams": {
   "team": "CHI",
@@ -10011,7 +23847,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.69,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 20,
+   "pts": 7.1,
+   "reb": 3,
+   "ast": 1.2,
+   "stl": 0.6,
+   "blk": 0.4,
+   "tpm": 1,
+   "tov": 1,
+   "fga": 6.17,
+   "fgm": 2.65,
+   "fta": 0.91,
+   "ftm": 0.68,
+   "fgPct": 42.9,
+   "ftPct": 74.9
+  },
+  "b": {
+   "min": 20,
+   "pts": 6.3,
+   "reb": 2.6,
+   "ast": 1.6,
+   "stl": 0.7,
+   "blk": 0.35,
+   "tpm": 1.09,
+   "tov": 1.06,
+   "fga": 6.17,
+   "fgm": 2.24,
+   "fta": 0.91,
+   "ftm": 0.7,
+   "fgPct": 36.2,
+   "ftPct": 77.4
+  }
  },
  "Jaylin Sellers": {
   "team": "CHI",
@@ -10033,7 +23901,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.63,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 9,
+   "pts": 4.2,
+   "reb": 1.1,
+   "ast": 0.4,
+   "stl": 0.37,
+   "blk": 0.14,
+   "tpm": 0.71,
+   "tov": 0.55,
+   "fga": 3.59,
+   "fgm": 1.43,
+   "fta": 0.79,
+   "ftm": 0.63,
+   "fgPct": 40,
+   "ftPct": 79.8
+  }
  },
  "Dailyn Swain": {
   "team": "CHI",
@@ -10055,7 +23940,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.62,
   "sources": "both",
   "spreadPts": 9.9,
-  "spreadMin": 6
+  "spreadMin": 6,
+  "a": {
+   "min": 19,
+   "pts": 13.8,
+   "reb": 3,
+   "ast": 1.4,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 0.6,
+   "tov": 1,
+   "fga": 4.01,
+   "fgm": 1.82,
+   "fta": 0.8,
+   "ftm": 0.61,
+   "fgPct": 45.4,
+   "ftPct": 76.4
+  },
+  "b": {
+   "min": 13,
+   "pts": 3.9,
+   "reb": 2.4,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.28,
+   "tov": 1.14,
+   "fga": 4.01,
+   "fgm": 1.5,
+   "fta": 0.8,
+   "ftm": 0.63,
+   "fgPct": 37.4,
+   "ftPct": 78.5
+  }
  },
  "Tobe Awaka": {
   "team": "CHI",
@@ -10077,7 +23994,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.39,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 5,
+   "pts": 2,
+   "reb": 1.7,
+   "ast": 0.1,
+   "stl": 0.11,
+   "blk": 0.16,
+   "tpm": 0.04,
+   "tov": 0.33,
+   "fga": 1.54,
+   "fgm": 0.8,
+   "fta": 0.57,
+   "ftm": 0.39,
+   "fgPct": 52.1,
+   "ftPct": 67.6
+  }
  },
  "Brandon Miller": {
   "team": "CHA",
@@ -10099,7 +24033,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.6,
   "sources": "both",
   "spreadPts": 2.9,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 32,
+   "pts": 19.8,
+   "reb": 4.7,
+   "ast": 3.2,
+   "stl": 1,
+   "blk": 0.7,
+   "tpm": 3.3,
+   "tov": 2.5,
+   "fga": 17.01,
+   "fgm": 7.19,
+   "fta": 4.08,
+   "ftm": 3.54,
+   "fgPct": 42.3,
+   "ftPct": 86.8
+  },
+  "b": {
+   "min": 32,
+   "pts": 22.7,
+   "reb": 5.3,
+   "ast": 3.8,
+   "stl": 0.84,
+   "blk": 0.45,
+   "tpm": 3.59,
+   "tov": 2.2,
+   "fga": 17.01,
+   "fgm": 7.73,
+   "fta": 4.08,
+   "ftm": 3.67,
+   "fgPct": 45.4,
+   "ftPct": 89.8
+  }
  },
  "Coby White": {
   "team": "CHA",
@@ -10121,7 +24087,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5,
   "sources": "both",
   "spreadPts": 3.8,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 32,
+   "pts": 17.7,
+   "reb": 4,
+   "ast": 4.3,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 2.6,
+   "tov": 2.2,
+   "fga": 14.87,
+   "fgm": 6.48,
+   "fta": 5.92,
+   "ftm": 5.02,
+   "fgPct": 43.6,
+   "ftPct": 84.9
+  },
+  "b": {
+   "min": 32,
+   "pts": 21.5,
+   "reb": 4.9,
+   "ast": 5.4,
+   "stl": 0.68,
+   "blk": 0.13,
+   "tpm": 2.86,
+   "tov": 3.23,
+   "fga": 14.87,
+   "fgm": 6.81,
+   "fta": 5.92,
+   "ftm": 4.99,
+   "fgPct": 45.8,
+   "ftPct": 84.3
+  }
  },
  "Kon Knueppel": {
   "team": "CHA",
@@ -10143,7 +24141,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.04,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 32,
+   "pts": 18.8,
+   "reb": 5.4,
+   "ast": 3.4,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 3.4,
+   "tov": 2,
+   "fga": 14.87,
+   "fgm": 7.06,
+   "fta": 3.57,
+   "ftm": 3.08,
+   "fgPct": 47.5,
+   "ftPct": 86.3
+  },
+  "b": {
+   "min": 32,
+   "pts": 20.1,
+   "reb": 5.6,
+   "ast": 4,
+   "stl": 0.72,
+   "blk": 0.26,
+   "tpm": 3.42,
+   "tov": 2.26,
+   "fga": 14.87,
+   "fgm": 6.85,
+   "fta": 3.57,
+   "ftm": 3.01,
+   "fgPct": 46.1,
+   "ftPct": 84.3
+  }
  },
  "Naz Reid": {
   "team": "CHA",
@@ -10165,7 +24195,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.72,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 29,
+   "pts": 15.8,
+   "reb": 6.9,
+   "ast": 2,
+   "stl": 0.9,
+   "blk": 1.2,
+   "tpm": 2,
+   "tov": 1.7,
+   "fga": 13.78,
+   "fgm": 6.55,
+   "fta": 2.34,
+   "ftm": 1.7,
+   "fgPct": 47.5,
+   "ftPct": 72.5
+  },
+  "b": {
+   "min": 31,
+   "pts": 16.8,
+   "reb": 7,
+   "ast": 2.6,
+   "stl": 1.06,
+   "blk": 1,
+   "tpm": 2.34,
+   "tov": 1.85,
+   "fga": 13.78,
+   "fgm": 6.35,
+   "fta": 2.34,
+   "ftm": 1.73,
+   "fgPct": 46,
+   "ftPct": 74
+  }
  },
  "Grayson Allen": {
   "team": "CHA",
@@ -10187,7 +24249,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.28,
   "sources": "both",
   "spreadPts": 3.1,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 24,
+   "pts": 11,
+   "reb": 2.7,
+   "ast": 2.1,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 2.1,
+   "tov": 1.1,
+   "fga": 10.3,
+   "fgm": 4.43,
+   "fta": 2.69,
+   "ftm": 2.25,
+   "fgPct": 43,
+   "ftPct": 83.6
+  },
+  "b": {
+   "min": 28,
+   "pts": 14.1,
+   "reb": 3.1,
+   "ast": 3.9,
+   "stl": 1.02,
+   "blk": 0.28,
+   "tpm": 2.74,
+   "tov": 1.75,
+   "fga": 10.3,
+   "fgm": 4.54,
+   "fta": 2.69,
+   "ftm": 2.31,
+   "fgPct": 44.1,
+   "ftPct": 85.7
+  }
  },
  "Moussa Diabate": {
   "team": "CHA",
@@ -10209,7 +24303,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.34,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 26,
+   "pts": 8.7,
+   "reb": 8.7,
+   "ast": 1.4,
+   "stl": 1.1,
+   "blk": 0.9,
+   "tpm": 0,
+   "tov": 1.1,
+   "fga": 4.68,
+   "fgm": 2.68,
+   "fta": 2.1,
+   "ftm": 1.33,
+   "fgPct": 57.3,
+   "ftPct": 63.3
+  },
+  "b": {
+   "min": 26,
+   "pts": 7.3,
+   "reb": 8.8,
+   "ast": 2.3,
+   "stl": 0.73,
+   "blk": 0.79,
+   "tpm": 0,
+   "tov": 1.06,
+   "fga": 4.68,
+   "fgm": 2.96,
+   "fta": 2.1,
+   "ftm": 1.34,
+   "fgPct": 63.4,
+   "ftPct": 63.8
+  }
  },
  "Hannes Steinbach": {
   "team": "CHA",
@@ -10231,7 +24357,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.1,
   "sources": "both",
   "spreadPts": 6.4,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 16,
+   "pts": 13.3,
+   "reb": 3.6,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.4,
+   "tpm": 0.4,
+   "tov": 0.6,
+   "fga": 5.41,
+   "fgm": 2.78,
+   "fta": 1.52,
+   "ftm": 1.06,
+   "fgPct": 51.4,
+   "ftPct": 69.6
+  },
+  "b": {
+   "min": 19,
+   "pts": 6.9,
+   "reb": 6.5,
+   "ast": 0.9,
+   "stl": 0.5,
+   "blk": 0.58,
+   "tpm": 0.47,
+   "tov": 1.15,
+   "fga": 5.41,
+   "fgm": 2.64,
+   "fta": 1.52,
+   "ftm": 1.14,
+   "fgPct": 48.7,
+   "ftPct": 74.9
+  }
  },
  "Grant Williams": {
   "team": "CHA",
@@ -10253,7 +24411,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.05,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 20,
+   "pts": 6.4,
+   "reb": 3.4,
+   "ast": 1.4,
+   "stl": 0.5,
+   "blk": 0.5,
+   "tpm": 1.1,
+   "tov": 0.9,
+   "fga": 4.69,
+   "fgm": 2.07,
+   "fta": 1.32,
+   "ftm": 1.04,
+   "fgPct": 44.1,
+   "ftPct": 78.7
+  },
+  "b": {
+   "min": 20,
+   "pts": 6.4,
+   "reb": 3.6,
+   "ast": 1.6,
+   "stl": 0.52,
+   "blk": 0.57,
+   "tpm": 1.31,
+   "tov": 0.97,
+   "fga": 4.69,
+   "fgm": 2.03,
+   "fta": 1.32,
+   "ftm": 1.07,
+   "fgPct": 43.2,
+   "ftPct": 81.2
+  }
  },
  "Royce O'Neale": {
   "team": "CHA",
@@ -10275,7 +24465,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.27,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 5
+  "spreadMin": 5,
+  "a": {
+   "min": 26,
+   "pts": 7.6,
+   "reb": 4.7,
+   "ast": 2.4,
+   "stl": 0.8,
+   "blk": 0.4,
+   "tpm": 1.9,
+   "tov": 1,
+   "fga": 5.56,
+   "fgm": 2.36,
+   "fta": 0.36,
+   "ftm": 0.27,
+   "fgPct": 42.5,
+   "ftPct": 75.3
+  },
+  "b": {
+   "min": 21,
+   "pts": 6.7,
+   "reb": 3.1,
+   "ast": 1.7,
+   "stl": 0.69,
+   "blk": 0.35,
+   "tpm": 1.87,
+   "tov": 0.72,
+   "fga": 5.56,
+   "fgm": 2.28,
+   "fta": 0.36,
+   "ftm": 0.27,
+   "fgPct": 41,
+   "ftPct": 75.4
+  }
  },
  "Ryan Kalkbrenner": {
   "team": "CHA",
@@ -10297,7 +24519,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.69,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 15,
+   "pts": 5.3,
+   "reb": 3.8,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 1,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 2.29,
+   "fgm": 1.73,
+   "fta": 0.96,
+   "ftm": 0.69,
+   "fgPct": 75.3,
+   "ftPct": 71.6
+  },
+  "b": {
+   "min": 14,
+   "pts": 4,
+   "reb": 3.5,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 1.02,
+   "tpm": 0.01,
+   "tov": 0.55,
+   "fga": 2.29,
+   "fgm": 1.68,
+   "fta": 0.96,
+   "ftm": 0.68,
+   "fgPct": 73.2,
+   "ftPct": 70.9
+  }
  },
  "Sion James": {
   "team": "CHA",
@@ -10319,7 +24573,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.6,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 15,
+   "pts": 3.6,
+   "reb": 2.3,
+   "ast": 1.3,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 0.5,
+   "fga": 3.59,
+   "fgm": 1.33,
+   "fta": 0.72,
+   "ftm": 0.6,
+   "fgPct": 37.1,
+   "ftPct": 83.7
+  },
+  "b": {
+   "min": 16,
+   "pts": 4.4,
+   "reb": 2.6,
+   "ast": 1.8,
+   "stl": 0.58,
+   "blk": 0.13,
+   "tpm": 0.88,
+   "tov": 0.59,
+   "fga": 3.59,
+   "fgm": 1.46,
+   "fta": 0.72,
+   "ftm": 0.59,
+   "fgPct": 40.5,
+   "ftPct": 82.1
+  }
  },
  "Tre Mann": {
   "team": "CHA",
@@ -10341,7 +24627,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.7,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 10,
+   "pts": 4.7,
+   "reb": 1.3,
+   "ast": 1.2,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.7,
+   "fga": 5.63,
+   "fgm": 2.27,
+   "fta": 0.84,
+   "ftm": 0.7,
+   "fgPct": 40.4,
+   "ftPct": 82.7
+  },
+  "b": {
+   "min": 12,
+   "pts": 6,
+   "reb": 1.5,
+   "ast": 1.6,
+   "stl": 0.45,
+   "blk": 0.1,
+   "tpm": 1.04,
+   "tov": 0.87,
+   "fga": 5.63,
+   "fgm": 2.12,
+   "fta": 0.84,
+   "ftm": 0.7,
+   "fgPct": 37.7,
+   "ftPct": 83.4
+  }
  },
  "Christian Anderson": {
   "team": "CHA",
@@ -10363,7 +24681,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.59,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 16,
+   "pts": 5.7,
+   "reb": 1.5,
+   "ast": 2.5,
+   "stl": 0.55,
+   "blk": 0.1,
+   "tpm": 1.24,
+   "tov": 1.45,
+   "fga": 4.91,
+   "fgm": 1.92,
+   "fta": 0.74,
+   "ftm": 0.59,
+   "fgPct": 39.1,
+   "ftPct": 80
+  }
  },
  "Liam McNeeley": {
   "team": "CHA",
@@ -10385,7 +24720,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.2,
   "sources": "both",
   "spreadPts": 1.5,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 10,
+   "pts": 3.6,
+   "reb": 2,
+   "ast": 0.7,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.4,
+   "fga": 3.64,
+   "fgm": 1.45,
+   "fta": 1.45,
+   "ftm": 1.19,
+   "fgPct": 40,
+   "ftPct": 82.1
+  },
+  "b": {
+   "min": 12,
+   "pts": 5.1,
+   "reb": 2.3,
+   "ast": 0.8,
+   "stl": 0.21,
+   "blk": 0.1,
+   "tpm": 0.87,
+   "tov": 0.39,
+   "fga": 3.64,
+   "fgm": 1.51,
+   "fta": 1.45,
+   "ftm": 1.21,
+   "fgPct": 41.5,
+   "ftPct": 83
+  }
  },
  "Tidjane Salaun": {
   "team": "CHA",
@@ -10407,7 +24774,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.53,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 10,
+   "pts": 3.3,
+   "reb": 2.4,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.5,
+   "fga": 3.03,
+   "fgm": 1.26,
+   "fta": 0.78,
+   "ftm": 0.53,
+   "fgPct": 41.7,
+   "ftPct": 68.3
+  },
+  "b": {
+   "min": 11,
+   "pts": 4,
+   "reb": 2.9,
+   "ast": 0.4,
+   "stl": 0.23,
+   "blk": 0.14,
+   "tpm": 0.57,
+   "tov": 0.52,
+   "fga": 3.03,
+   "fgm": 1.47,
+   "fta": 0.78,
+   "ftm": 0.54,
+   "fgPct": 48.6,
+   "ftPct": 68.6
+  }
  },
  "PJ Hall": {
   "team": "CHA",
@@ -10429,7 +24828,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.67,
   "sources": "both",
   "spreadPts": 0.8,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 7,
+   "pts": 3.2,
+   "reb": 2.4,
+   "ast": 0.4,
+   "stl": 0,
+   "blk": 0.4,
+   "tpm": 0.2,
+   "tov": 0.4,
+   "fga": 3.13,
+   "fgm": 1.72,
+   "fta": 0.86,
+   "ftm": 0.67,
+   "fgPct": 55.1,
+   "ftPct": 78
+  },
+  "b": {
+   "min": 9,
+   "pts": 4,
+   "reb": 2.2,
+   "ast": 0.4,
+   "stl": 0.17,
+   "blk": 0.32,
+   "tpm": 0.3,
+   "tov": 0.48,
+   "fga": 3.13,
+   "fgm": 1.51,
+   "fta": 0.86,
+   "ftm": 0.66,
+   "fgPct": 48.2,
+   "ftPct": 77.1
+  }
  },
  "Michael Ajayi": {
   "team": "CHA",
@@ -10451,7 +24882,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.51,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 8,
+   "pts": 3,
+   "reb": 2,
+   "ast": 0.5,
+   "stl": 0.21,
+   "blk": 0.11,
+   "tpm": 0.25,
+   "tov": 0.39,
+   "fga": 2.62,
+   "fgm": 1.13,
+   "fta": 0.73,
+   "ftm": 0.51,
+   "fgPct": 43.2,
+   "ftPct": 69.9
+  }
  },
  "Kylan Boswell": {
   "team": "CHA",
@@ -10473,7 +24921,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.36,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 8,
+   "pts": 2.8,
+   "reb": 0.9,
+   "ast": 0.9,
+   "stl": 0.24,
+   "blk": 0.05,
+   "tpm": 0.39,
+   "tov": 0.36,
+   "fga": 2.46,
+   "fgm": 1.01,
+   "fta": 0.47,
+   "ftm": 0.36,
+   "fgPct": 41,
+   "ftPct": 76.7
+  }
  },
  "Pat Connaughton": {
   "team": "CHA",
@@ -10495,7 +24960,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 2.4,
-  "spreadMin": 7.1
+  "spreadMin": 7.1,
+  "a": {
+   "min": 7.1,
+   "pts": 2.4,
+   "reb": 1.4,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.7,
+   "ftPct": 73
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Dorian Finney-Smith": {
   "team": "CHA",
@@ -10517,7 +25014,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 3.4,
-  "spreadMin": 12
+  "spreadMin": 12,
+  "a": {
+   "min": 12,
+   "pts": 3.4,
+   "reb": 1.9,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.5,
+   "ftPct": 72.7
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Jayson Tatum": {
   "team": "BOS",
@@ -10539,7 +25068,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5.75,
   "sources": "both",
   "spreadPts": 4.6,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 33,
+   "pts": 23.3,
+   "reb": 7.9,
+   "ast": 4.3,
+   "stl": 1.1,
+   "blk": 0.5,
+   "tpm": 2.8,
+   "tov": 2.4,
+   "fga": 20.23,
+   "fgm": 9.06,
+   "fta": 6.88,
+   "ftm": 5.76,
+   "fgPct": 44.8,
+   "ftPct": 83.7
+  },
+  "b": {
+   "min": 35,
+   "pts": 27.9,
+   "reb": 8.6,
+   "ast": 5.4,
+   "stl": 1.13,
+   "blk": 0.42,
+   "tpm": 3.1,
+   "tov": 2.82,
+   "fga": 20.23,
+   "fgm": 9.52,
+   "fta": 6.88,
+   "ftm": 5.74,
+   "fgPct": 47.1,
+   "ftPct": 83.4
+  }
  },
  "Paul George": {
   "team": "BOS",
@@ -10561,7 +25122,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.77,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 31,
+   "pts": 19.8,
+   "reb": 5.6,
+   "ast": 4.1,
+   "stl": 1.6,
+   "blk": 0.4,
+   "tpm": 2.8,
+   "tov": 2.5,
+   "fga": 14.87,
+   "fgm": 6.59,
+   "fta": 3.27,
+   "ftm": 2.8,
+   "fgPct": 44.3,
+   "ftPct": 85.6
+  },
+  "b": {
+   "min": 32,
+   "pts": 18.8,
+   "reb": 5.6,
+   "ast": 3.9,
+   "stl": 1.69,
+   "blk": 0.45,
+   "tpm": 2.92,
+   "tov": 2.33,
+   "fga": 14.87,
+   "fgm": 6.58,
+   "fta": 3.27,
+   "ftm": 2.73,
+   "fgPct": 44.2,
+   "ftPct": 83.5
+  }
  },
  "Derrick White": {
   "team": "BOS",
@@ -10583,7 +25176,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.25,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 34,
+   "pts": 15.8,
+   "reb": 4.3,
+   "ast": 5,
+   "stl": 1,
+   "blk": 1.1,
+   "tpm": 2.4,
+   "tov": 1.7,
+   "fga": 13.6,
+   "fgm": 5.9,
+   "fta": 2.59,
+   "ftm": 2.22,
+   "fgPct": 43.4,
+   "ftPct": 85.9
+  },
+  "b": {
+   "min": 34,
+   "pts": 17.1,
+   "reb": 4.4,
+   "ast": 4.9,
+   "stl": 0.96,
+   "blk": 1.17,
+   "tpm": 3.44,
+   "tov": 1.72,
+   "fga": 13.6,
+   "fgm": 5.68,
+   "fta": 2.59,
+   "ftm": 2.28,
+   "fgPct": 41.7,
+   "ftPct": 88.2
+  }
  },
  "Neemias Queta": {
   "team": "BOS",
@@ -10605,7 +25230,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.73,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 26,
+   "pts": 10.3,
+   "reb": 8.2,
+   "ast": 1.4,
+   "stl": 0.5,
+   "blk": 1.5,
+   "tpm": 0,
+   "tov": 1.1,
+   "fga": 7.17,
+   "fgm": 4.43,
+   "fta": 2.56,
+   "ftm": 1.56,
+   "fgPct": 61.8,
+   "ftPct": 60.8
+  },
+  "b": {
+   "min": 25,
+   "pts": 11.5,
+   "reb": 8.3,
+   "ast": 1.7,
+   "stl": 0.75,
+   "blk": 1.32,
+   "tpm": 0.03,
+   "tov": 0.86,
+   "fga": 7.17,
+   "fgm": 4.8,
+   "fta": 2.56,
+   "ftm": 1.9,
+   "fgPct": 66.9,
+   "ftPct": 74.1
+  }
  },
  "Payton Pritchard": {
   "team": "BOS",
@@ -10627,7 +25284,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.13,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 32,
+   "pts": 15,
+   "reb": 4.2,
+   "ast": 4.2,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 3,
+   "tov": 1.4,
+   "fga": 13.09,
+   "fgm": 5.92,
+   "fta": 1.31,
+   "ftm": 1.13,
+   "fgPct": 45.2,
+   "ftPct": 86.6
+  },
+  "b": {
+   "min": 30,
+   "pts": 16.3,
+   "reb": 3.5,
+   "ast": 4.4,
+   "stl": 0.66,
+   "blk": 0.12,
+   "tpm": 2.69,
+   "tov": 1.53,
+   "fga": 13.09,
+   "fgm": 6.24,
+   "fta": 1.31,
+   "ftm": 1.13,
+   "fgPct": 47.7,
+   "ftPct": 86.4
+  }
  },
  "Mitchell Robinson": {
   "team": "BOS",
@@ -10649,7 +25338,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.21,
   "sources": "both",
   "spreadPts": 1.7,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 23,
+   "pts": 7.1,
+   "reb": 8.1,
+   "ast": 0.8,
+   "stl": 1,
+   "blk": 1.6,
+   "tpm": 0,
+   "tov": 0.7,
+   "fga": 5.21,
+   "fgm": 3.58,
+   "fta": 2.39,
+   "ftm": 1.24,
+   "fgPct": 68.8,
+   "ftPct": 51.6
+  },
+  "b": {
+   "min": 23,
+   "pts": 8.8,
+   "reb": 8.7,
+   "ast": 1,
+   "stl": 1.14,
+   "blk": 1.33,
+   "tpm": 0,
+   "tov": 0.78,
+   "fga": 5.21,
+   "fgm": 3.79,
+   "fta": 2.39,
+   "ftm": 1.18,
+   "fgPct": 72.8,
+   "ftPct": 49.4
+  }
  },
  "Sam Hauser": {
   "team": "BOS",
@@ -10671,7 +25392,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.33,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 26,
+   "pts": 10.2,
+   "reb": 4.1,
+   "ast": 1.4,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 2.8,
+   "tov": 0.4,
+   "fga": 7.74,
+   "fgm": 3.43,
+   "fta": 0.39,
+   "ftm": 0.33,
+   "fgPct": 44.4,
+   "ftPct": 85.3
+  },
+  "b": {
+   "min": 22,
+   "pts": 9.7,
+   "reb": 3.4,
+   "ast": 1.1,
+   "stl": 0.39,
+   "blk": 0.23,
+   "tpm": 2.64,
+   "tov": 0.49,
+   "fga": 7.74,
+   "fgm": 3.38,
+   "fta": 0.39,
+   "ftm": 0.32,
+   "fgPct": 43.6,
+   "ftPct": 84
+  }
  },
  "Luka Garza": {
   "team": "BOS",
@@ -10693,7 +25446,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.08,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 15,
+   "pts": 9.2,
+   "reb": 3.8,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.8,
+   "tov": 0.7,
+   "fga": 6.15,
+   "fgm": 3.14,
+   "fta": 1.48,
+   "ftm": 1.06,
+   "fgPct": 51,
+   "ftPct": 71.9
+  },
+  "b": {
+   "min": 13,
+   "pts": 8.7,
+   "reb": 3.2,
+   "ast": 0.6,
+   "stl": 0.31,
+   "blk": 0.29,
+   "tpm": 0.91,
+   "tov": 0.55,
+   "fga": 6.15,
+   "fgm": 3.37,
+   "fta": 1.48,
+   "ftm": 1.1,
+   "fgPct": 54.8,
+   "ftPct": 74.8
+  }
  },
  "Jordan Walsh": {
   "team": "BOS",
@@ -10715,7 +25500,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.66,
   "sources": "both",
   "spreadPts": 2.4,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 16,
+   "pts": 3.8,
+   "reb": 3.3,
+   "ast": 0.8,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 0.6,
+   "tov": 0.6,
+   "fga": 5.07,
+   "fgm": 2.18,
+   "fta": 0.91,
+   "ftm": 0.6,
+   "fgPct": 43.1,
+   "ftPct": 66.3
+  },
+  "b": {
+   "min": 19,
+   "pts": 6.2,
+   "reb": 3.8,
+   "ast": 0.9,
+   "stl": 0.74,
+   "blk": 0.46,
+   "tpm": 0.84,
+   "tov": 0.5,
+   "fga": 5.07,
+   "fgm": 2.32,
+   "fta": 0.91,
+   "ftm": 0.71,
+   "fgPct": 45.9,
+   "ftPct": 78.3
+  }
  },
  "Baylor Scheierman": {
   "team": "BOS",
@@ -10737,7 +25554,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.64,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 24,
+   "pts": 7.1,
+   "reb": 4.3,
+   "ast": 2,
+   "stl": 0.9,
+   "blk": 0.1,
+   "tpm": 1.6,
+   "tov": 0.8,
+   "fga": 6.22,
+   "fgm": 2.48,
+   "fta": 0.75,
+   "ftm": 0.61,
+   "fgPct": 39.9,
+   "ftPct": 81.3
+  },
+  "b": {
+   "min": 20,
+   "pts": 7.7,
+   "reb": 3,
+   "ast": 1.7,
+   "stl": 0.49,
+   "blk": 0.08,
+   "tpm": 1.81,
+   "tov": 0.81,
+   "fga": 6.22,
+   "fgm": 2.63,
+   "fta": 0.75,
+   "ftm": 0.67,
+   "fgPct": 42.3,
+   "ftPct": 89.5
+  }
  },
  "Hugo Gonzalez": {
   "team": "BOS",
@@ -10759,7 +25608,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.25,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 20,
+   "pts": 5.3,
+   "reb": 4.5,
+   "ast": 0.7,
+   "stl": 0.8,
+   "blk": 0.4,
+   "tpm": 0.8,
+   "tov": 0.7,
+   "fga": 4.53,
+   "fgm": 2.16,
+   "fta": 0.41,
+   "ftm": 0.2,
+   "fgPct": 47.6,
+   "ftPct": 50
+  },
+  "b": {
+   "min": 17,
+   "pts": 5.6,
+   "reb": 3.8,
+   "ast": 0.8,
+   "stl": 0.66,
+   "blk": 0.24,
+   "tpm": 0.81,
+   "tov": 0.61,
+   "fga": 4.53,
+   "fgm": 2.25,
+   "fta": 0.41,
+   "ftm": 0.29,
+   "fgPct": 49.6,
+   "ftPct": 71.2
+  }
  },
  "Ron Harper Jr.": {
   "team": "BOS",
@@ -10781,7 +25662,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.31,
   "sources": "both",
   "spreadPts": 4.1,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 10,
+   "pts": 2.8,
+   "reb": 2.1,
+   "ast": 1.2,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.1,
+   "fga": 5.77,
+   "fgm": 1.71,
+   "fta": 0.35,
+   "ftm": 0.34,
+   "fgPct": 29.6,
+   "ftPct": 97.8
+  },
+  "b": {
+   "min": 14,
+   "pts": 6.9,
+   "reb": 2.2,
+   "ast": 0.9,
+   "stl": 0.35,
+   "blk": 0.3,
+   "tpm": 1.41,
+   "tov": 0.39,
+   "fga": 5.77,
+   "fgm": 2.6,
+   "fta": 0.35,
+   "ftm": 0.28,
+   "fgPct": 45.1,
+   "ftPct": 79.8
+  }
  },
  "Mike Conley": {
   "team": "BOS",
@@ -10803,7 +25716,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.5,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 15,
+   "pts": 6.2,
+   "reb": 1.5,
+   "ast": 2.8,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 1.1,
+   "tov": 0.8,
+   "fga": 4.07,
+   "fgm": 1.7,
+   "fta": 0.57,
+   "ftm": 0.49,
+   "fgPct": 41.7,
+   "ftPct": 85.3
+  },
+  "b": {
+   "min": 18,
+   "pts": 5,
+   "reb": 1.5,
+   "ast": 3.1,
+   "stl": 0.61,
+   "blk": 0.22,
+   "tpm": 1.34,
+   "tov": 0.62,
+   "fga": 4.07,
+   "fgm": 1.56,
+   "fta": 0.57,
+   "ftm": 0.52,
+   "fgPct": 38.2,
+   "ftPct": 90.3
+  }
  },
  "Chris Cenac Jr.": {
   "team": "BOS",
@@ -10825,7 +25770,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.29,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 10,
+   "pts": 4.3,
+   "reb": 2.8,
+   "ast": 0.3,
+   "stl": 0.26,
+   "blk": 0.36,
+   "tpm": 0.45,
+   "tov": 0.4,
+   "fga": 3.72,
+   "fgm": 1.78,
+   "fta": 0.45,
+   "ftm": 0.29,
+   "fgPct": 47.9,
+   "ftPct": 66
+  }
  },
  "Amari Williams": {
   "team": "BOS",
@@ -10847,7 +25809,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.49,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 9,
+   "pts": 1.9,
+   "reb": 2.5,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.6,
+   "tpm": 0,
+   "tov": 0.7,
+   "fga": 1.3,
+   "fgm": 0.65,
+   "fta": 0.7,
+   "ftm": 0.5,
+   "fgPct": 50,
+   "ftPct": 71.4
+  },
+  "b": {
+   "min": 7,
+   "pts": 1.9,
+   "reb": 1.9,
+   "ast": 0.6,
+   "stl": 0.19,
+   "blk": 0.35,
+   "tpm": 0,
+   "tov": 0.49,
+   "fga": 1.3,
+   "fgm": 0.71,
+   "fta": 0.7,
+   "ftm": 0.47,
+   "fgPct": 54.2,
+   "ftPct": 67.4
+  }
  },
  "Dillon Mitchell": {
   "team": "BOS",
@@ -10869,7 +25863,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.14,
   "sources": "both",
   "spreadPts": 2,
-  "spreadMin": 6
+  "spreadMin": 6,
+  "a": {
+   "min": 12,
+   "pts": 3.5,
+   "reb": 3.2,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0.4,
+   "tpm": 0.1,
+   "tov": 0.6,
+   "fga": 1.48,
+   "fgm": 0.8,
+   "fta": 0.27,
+   "ftm": 0.13,
+   "fgPct": 54,
+   "ftPct": 50
+  },
+  "b": {
+   "min": 6,
+   "pts": 1.5,
+   "reb": 1.2,
+   "ast": 0.2,
+   "stl": 0.19,
+   "blk": 0.11,
+   "tpm": 0.16,
+   "tov": 0.28,
+   "fga": 1.48,
+   "fgm": 0.6,
+   "fta": 0.27,
+   "ftm": 0.15,
+   "fgPct": 40.4,
+   "ftPct": 57.5
+  }
  },
  "Tucker DeVries": {
   "team": "BOS",
@@ -10891,7 +25917,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Milos Uzan": {
   "team": "BOS",
@@ -10913,7 +25956,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "bbm",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Julius Randle": {
   "team": "BKN",
@@ -10935,7 +25995,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 5.29,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 33,
+   "pts": 20.9,
+   "reb": 8.3,
+   "ast": 4.5,
+   "stl": 0.8,
+   "blk": 0.3,
+   "tpm": 1.6,
+   "tov": 2.9,
+   "fga": 15.71,
+   "fgm": 7.38,
+   "fta": 6.75,
+   "ftm": 5.23,
+   "fgPct": 47,
+   "ftPct": 77.4
+  },
+  "b": {
+   "min": 32,
+   "pts": 21.8,
+   "reb": 6.5,
+   "ast": 4.2,
+   "stl": 0.86,
+   "blk": 0.2,
+   "tpm": 1.52,
+   "tov": 2.77,
+   "fga": 15.71,
+   "fgm": 7.45,
+   "fta": 6.75,
+   "ftm": 5.36,
+   "fgPct": 47.4,
+   "ftPct": 79.3
+  }
  },
  "Michael Porter Jr.": {
   "team": "BKN",
@@ -10957,7 +26049,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.71,
   "sources": "both",
   "spreadPts": 1.8,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 33,
+   "pts": 19,
+   "reb": 7.3,
+   "ast": 2,
+   "stl": 0.8,
+   "blk": 0.5,
+   "tpm": 2.7,
+   "tov": 1.6,
+   "fga": 15.71,
+   "fgm": 7.52,
+   "fta": 3.3,
+   "ftm": 2.66,
+   "fgPct": 47.9,
+   "ftPct": 80.6
+  },
+  "b": {
+   "min": 32,
+   "pts": 20.8,
+   "reb": 6.1,
+   "ast": 2.4,
+   "stl": 1.06,
+   "blk": 0.26,
+   "tpm": 2.95,
+   "tov": 1.72,
+   "fga": 15.71,
+   "fgm": 7.53,
+   "fta": 3.3,
+   "ftm": 2.77,
+   "fgPct": 47.9,
+   "ftPct": 84
+  }
  },
  "Egor Demin": {
   "team": "BKN",
@@ -10979,7 +26103,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.91,
   "sources": "both",
   "spreadPts": 2.1,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 30,
+   "pts": 12.3,
+   "reb": 3.8,
+   "ast": 4,
+   "stl": 1,
+   "blk": 0.4,
+   "tpm": 2.8,
+   "tov": 2,
+   "fga": 11.51,
+   "fgm": 4.59,
+   "fta": 2.3,
+   "ftm": 1.91,
+   "fgPct": 39.9,
+   "ftPct": 83.1
+  },
+  "b": {
+   "min": 31,
+   "pts": 14.4,
+   "reb": 3.6,
+   "ast": 3.4,
+   "stl": 0.99,
+   "blk": 0.44,
+   "tpm": 2.92,
+   "tov": 1.47,
+   "fga": 11.51,
+   "fgm": 4.81,
+   "fta": 2.3,
+   "ftm": 1.9,
+   "fgPct": 41.8,
+   "ftPct": 82.6
+  }
  },
  "Day'Ron Sharpe": {
   "team": "BKN",
@@ -11001,7 +26157,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.47,
   "sources": "both",
   "spreadPts": 2.3,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 28,
+   "pts": 12.7,
+   "reb": 10.5,
+   "ast": 2.6,
+   "stl": 1.1,
+   "blk": 1.1,
+   "tpm": 0.2,
+   "tov": 2.2,
+   "fga": 7.13,
+   "fgm": 4,
+   "fta": 2.21,
+   "ftm": 1.45,
+   "fgPct": 56.1,
+   "ftPct": 65.7
+  },
+  "b": {
+   "min": 24,
+   "pts": 10.4,
+   "reb": 8.8,
+   "ast": 2.3,
+   "stl": 1.04,
+   "blk": 0.84,
+   "tpm": 0.15,
+   "tov": 1.63,
+   "fga": 7.13,
+   "fgm": 4.36,
+   "fta": 2.21,
+   "ftm": 1.49,
+   "fgPct": 61.2,
+   "ftPct": 67.5
+  }
  },
  "Mikel Brown Jr.": {
   "team": "BKN",
@@ -11023,7 +26211,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.5,
   "sources": "both",
   "spreadPts": 3.9,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 26,
+   "pts": 16.9,
+   "reb": 2.6,
+   "ast": 2.5,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 1.4,
+   "tov": 1.5,
+   "fga": 10.45,
+   "fgm": 4.43,
+   "fta": 3.03,
+   "ftm": 2.49,
+   "fgPct": 42.4,
+   "ftPct": 82
+  },
+  "b": {
+   "min": 28,
+   "pts": 13,
+   "reb": 2.9,
+   "ast": 4.7,
+   "stl": 0.92,
+   "blk": 0.17,
+   "tpm": 2.12,
+   "tov": 2.71,
+   "fga": 10.45,
+   "fgm": 4.19,
+   "fta": 3.03,
+   "ftm": 2.52,
+   "fgPct": 40.1,
+   "ftPct": 83.1
+  }
  },
  "Moritz Wagner": {
   "team": "BKN",
@@ -11045,7 +26265,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 2.35,
   "sources": "both",
   "spreadPts": 0.7,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 18,
+   "pts": 10.1,
+   "reb": 4.4,
+   "ast": 1.3,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 1.2,
+   "fga": 7.05,
+   "fgm": 3.51,
+   "fta": 2.96,
+   "ftm": 2.36,
+   "fgPct": 49.8,
+   "ftPct": 79.7
+  },
+  "b": {
+   "min": 19,
+   "pts": 10.8,
+   "reb": 4.9,
+   "ast": 1.2,
+   "stl": 0.63,
+   "blk": 0.27,
+   "tpm": 0.82,
+   "tov": 1.06,
+   "fga": 7.05,
+   "fgm": 3.84,
+   "fta": 2.96,
+   "ftm": 2.34,
+   "fgPct": 54.5,
+   "ftPct": 78.9
+  }
  },
  "Noah Clowney": {
   "team": "BKN",
@@ -11067,7 +26319,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.5,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 22,
+   "pts": 9.1,
+   "reb": 3.8,
+   "ast": 1.1,
+   "stl": 0.5,
+   "blk": 0.6,
+   "tpm": 1.5,
+   "tov": 1.1,
+   "fga": 7.82,
+   "fgm": 3.16,
+   "fta": 1.88,
+   "ftm": 1.48,
+   "fgPct": 40.4,
+   "ftPct": 79.1
+  },
+  "b": {
+   "min": 24,
+   "pts": 9.5,
+   "reb": 4.3,
+   "ast": 1.1,
+   "stl": 0.73,
+   "blk": 0.69,
+   "tpm": 1.59,
+   "tov": 1.04,
+   "fga": 7.82,
+   "fgm": 3.19,
+   "fta": 1.88,
+   "ftm": 1.52,
+   "fgPct": 40.8,
+   "ftPct": 81
+  }
  },
  "Keon Ellis": {
   "team": "BKN",
@@ -11089,7 +26373,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.8,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 20,
+   "pts": 6.6,
+   "reb": 2.1,
+   "ast": 1.3,
+   "stl": 1.2,
+   "blk": 0.6,
+   "tpm": 1.4,
+   "tov": 0.6,
+   "fga": 5.93,
+   "fgm": 2.72,
+   "fta": 1.07,
+   "ftm": 0.75,
+   "fgPct": 45.9,
+   "ftPct": 70.1
+  },
+  "b": {
+   "min": 23,
+   "pts": 7.6,
+   "reb": 2.2,
+   "ast": 1.2,
+   "stl": 1.23,
+   "blk": 0.71,
+   "tpm": 1.41,
+   "tov": 0.66,
+   "fga": 5.93,
+   "fgm": 2.68,
+   "fta": 1.07,
+   "ftm": 0.85,
+   "fgPct": 45.2,
+   "ftPct": 79.9
+  }
  },
  "Josh Minott": {
   "team": "BKN",
@@ -11111,7 +26427,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.18,
   "sources": "both",
   "spreadPts": 0.9,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 14,
+   "pts": 6.5,
+   "reb": 2.7,
+   "ast": 0.9,
+   "stl": 0.7,
+   "blk": 0.6,
+   "tpm": 0.7,
+   "tov": 0.5,
+   "fga": 5.35,
+   "fgm": 2.62,
+   "fta": 1.38,
+   "ftm": 1.21,
+   "fgPct": 49.1,
+   "ftPct": 87.6
+  },
+  "b": {
+   "min": 18,
+   "pts": 7.4,
+   "reb": 2.7,
+   "ast": 0.9,
+   "stl": 1.01,
+   "blk": 0.62,
+   "tpm": 1.19,
+   "tov": 0.78,
+   "fga": 5.35,
+   "fgm": 2.52,
+   "fta": 1.38,
+   "ftm": 1.14,
+   "fgPct": 47.2,
+   "ftPct": 82.7
+  }
  },
  "Danny Wolf": {
   "team": "BKN",
@@ -11133,7 +26481,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.23,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 14,
+   "pts": 6,
+   "reb": 3.3,
+   "ast": 1.5,
+   "stl": 0.4,
+   "blk": 0.4,
+   "tpm": 0.8,
+   "tov": 0.9,
+   "fga": 5.94,
+   "fgm": 2.41,
+   "fta": 1.6,
+   "ftm": 1.24,
+   "fgPct": 40.5,
+   "ftPct": 77.1
+  },
+  "b": {
+   "min": 18,
+   "pts": 7.3,
+   "reb": 4.3,
+   "ast": 1.8,
+   "stl": 0.47,
+   "blk": 0.53,
+   "tpm": 0.92,
+   "tov": 1.09,
+   "fga": 5.94,
+   "fgm": 2.59,
+   "fta": 1.6,
+   "ftm": 1.22,
+   "fgPct": 43.5,
+   "ftPct": 75.9
+  }
  },
  "Nolan Traore": {
   "team": "BKN",
@@ -11155,7 +26535,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.07,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 20,
+   "pts": 8,
+   "reb": 1.6,
+   "ast": 3.4,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 1,
+   "tov": 2.1,
+   "fga": 6.68,
+   "fgm": 2.54,
+   "fta": 1.34,
+   "ftm": 1.05,
+   "fgPct": 38,
+   "ftPct": 78.7
+  },
+  "b": {
+   "min": 18,
+   "pts": 7.6,
+   "reb": 1.4,
+   "ast": 2.9,
+   "stl": 0.74,
+   "blk": 0.34,
+   "tpm": 0.9,
+   "tov": 1.71,
+   "fga": 6.68,
+   "fgm": 2.79,
+   "fta": 1.34,
+   "ftm": 1.09,
+   "fgPct": 41.8,
+   "ftPct": 81.2
+  }
  },
  "Ben Saraf": {
   "team": "BKN",
@@ -11177,7 +26589,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.1,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 14,
+   "pts": 5.1,
+   "reb": 1.4,
+   "ast": 2.2,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 1.5,
+   "fga": 5.28,
+   "fgm": 2.09,
+   "fta": 1.32,
+   "ftm": 1.1,
+   "fgPct": 39.6,
+   "ftPct": 83
+  },
+  "b": {
+   "min": 16,
+   "pts": 6.3,
+   "reb": 1.6,
+   "ast": 2.3,
+   "stl": 0.64,
+   "blk": 0.13,
+   "tpm": 0.42,
+   "tov": 1.55,
+   "fga": 5.28,
+   "fgm": 2.4,
+   "fta": 1.32,
+   "ftm": 1.1,
+   "fgPct": 45.5,
+   "ftPct": 83
+  }
  },
  "Terance Mann": {
   "team": "BKN",
@@ -11199,7 +26643,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.53,
   "sources": "both",
   "spreadPts": 3.1,
-  "spreadMin": 4
+  "spreadMin": 4,
+  "a": {
+   "min": 24,
+   "pts": 8.2,
+   "reb": 3.6,
+   "ast": 2.4,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 0.9,
+   "tov": 0.9,
+   "fga": 4.33,
+   "fgm": 2.13,
+   "fta": 0.69,
+   "ftm": 0.53,
+   "fgPct": 49.1,
+   "ftPct": 76.4
+  },
+  "b": {
+   "min": 20,
+   "pts": 5.1,
+   "reb": 2.5,
+   "ast": 1.9,
+   "stl": 0.53,
+   "blk": 0.21,
+   "tpm": 0.72,
+   "tov": 0.83,
+   "fga": 4.33,
+   "fgm": 1.92,
+   "fta": 0.69,
+   "ftm": 0.53,
+   "fgPct": 44.3,
+   "ftPct": 76.4
+  }
  },
  "Drake Powell": {
   "team": "BKN",
@@ -11221,7 +26697,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.76,
   "sources": "both",
   "spreadPts": 1.2,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 14,
+   "pts": 4.3,
+   "reb": 1.2,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.6,
+   "fga": 4.45,
+   "fgm": 1.79,
+   "fta": 0.85,
+   "ftm": 0.76,
+   "fgPct": 40.2,
+   "ftPct": 89.6
+  },
+  "b": {
+   "min": 16,
+   "pts": 5.5,
+   "reb": 1.3,
+   "ast": 0.9,
+   "stl": 0.41,
+   "blk": 0.17,
+   "tpm": 0.76,
+   "tov": 0.56,
+   "fga": 4.45,
+   "fgm": 2,
+   "fta": 0.85,
+   "ftm": 0.75,
+   "fgPct": 44.8,
+   "ftPct": 88.9
+  }
  },
  "Joshua Jefferson": {
   "team": "BKN",
@@ -11243,7 +26751,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.56,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 12,
+   "pts": 3.5,
+   "reb": 2.5,
+   "ast": 1.2,
+   "stl": 0.54,
+   "blk": 0.2,
+   "tpm": 0.32,
+   "tov": 0.99,
+   "fga": 3.19,
+   "fgm": 1.3,
+   "fta": 0.77,
+   "ftm": 0.56,
+   "fgPct": 40.9,
+   "ftPct": 72.5
+  }
  },
  "Chaney Johnson": {
   "team": "BKN",
@@ -11265,7 +26790,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.57,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 7,
+   "pts": 2.8,
+   "reb": 1.6,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.4,
+   "fga": 2.38,
+   "fgm": 1.29,
+   "fta": 0.71,
+   "ftm": 0.57,
+   "fgPct": 54.3,
+   "ftPct": 80
+  },
+  "b": {
+   "min": 8,
+   "pts": 3.3,
+   "reb": 1.8,
+   "ast": 0.6,
+   "stl": 0.28,
+   "blk": 0.19,
+   "tpm": 0.23,
+   "tov": 0.39,
+   "fga": 2.38,
+   "fgm": 1.27,
+   "fta": 0.71,
+   "ftm": 0.57,
+   "fgPct": 53.4,
+   "ftPct": 79.4
+  }
  },
  "Tyler Bilodeau": {
   "team": "BKN",
@@ -11287,7 +26844,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.2,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 9,
+   "pts": 2.7,
+   "reb": 1.5,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.13,
+   "tpm": 0.6,
+   "tov": 0.37,
+   "fga": 2.32,
+   "fgm": 0.93,
+   "fta": 0.26,
+   "ftm": 0.2,
+   "fgPct": 40,
+   "ftPct": 77.9
+  }
  },
  "Jalen Johnson": {
   "team": "ATL",
@@ -11309,7 +26883,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.56,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 35,
+   "pts": 18,
+   "reb": 9.4,
+   "ast": 4.7,
+   "stl": 1.3,
+   "blk": 0.8,
+   "tpm": 1.3,
+   "tov": 2.6,
+   "fga": 16.06,
+   "fgm": 8.05,
+   "fta": 4.66,
+   "ftm": 3.45,
+   "fgPct": 50.1,
+   "ftPct": 74.1
+  },
+  "b": {
+   "min": 35,
+   "pts": 20.7,
+   "reb": 9.7,
+   "ast": 6.7,
+   "stl": 1.04,
+   "blk": 0.37,
+   "tpm": 1.51,
+   "tov": 3.35,
+   "fga": 16.06,
+   "fgm": 7.73,
+   "fta": 4.66,
+   "ftm": 3.68,
+   "fgPct": 48.1,
+   "ftPct": 78.9
+  }
  },
  "Nickeil Alexander-Walker": {
   "team": "ATL",
@@ -11331,7 +26937,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 3.16,
   "sources": "both",
   "spreadPts": 4.5,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 34,
+   "pts": 15.7,
+   "reb": 4.1,
+   "ast": 3.9,
+   "stl": 1.2,
+   "blk": 0.6,
+   "tpm": 2.6,
+   "tov": 2.1,
+   "fga": 14.73,
+   "fgm": 6.23,
+   "fta": 3.79,
+   "ftm": 2.97,
+   "fgPct": 42.3,
+   "ftPct": 78.3
+  },
+  "b": {
+   "min": 33,
+   "pts": 20.2,
+   "reb": 3.2,
+   "ast": 3.5,
+   "stl": 1.19,
+   "blk": 0.56,
+   "tpm": 3.2,
+   "tov": 1.75,
+   "fga": 14.73,
+   "fgm": 6.85,
+   "fta": 3.79,
+   "ftm": 3.34,
+   "fgPct": 46.5,
+   "ftPct": 88.2
+  }
  },
  "Dyson Daniels": {
   "team": "ATL",
@@ -11353,7 +26991,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.97,
   "sources": "both",
   "spreadPts": 2.7,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 32,
+   "pts": 10.7,
+   "reb": 6,
+   "ast": 4.6,
+   "stl": 2.1,
+   "blk": 0.5,
+   "tpm": 0.7,
+   "tov": 1.7,
+   "fga": 10.87,
+   "fgm": 5.28,
+   "fta": 1.53,
+   "ftm": 0.95,
+   "fgPct": 48.6,
+   "ftPct": 61.8
+  },
+  "b": {
+   "min": 33,
+   "pts": 13.4,
+   "reb": 7.7,
+   "ast": 5.5,
+   "stl": 2.17,
+   "blk": 0.35,
+   "tpm": 0.63,
+   "tov": 1.54,
+   "fga": 10.87,
+   "fgm": 5.87,
+   "fta": 1.53,
+   "ftm": 1,
+   "fgPct": 54,
+   "ftPct": 65.4
+  }
  },
  "CJ McCollum": {
   "team": "ATL",
@@ -11375,7 +27045,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.88,
   "sources": "both",
   "spreadPts": 0.4,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 30,
+   "pts": 18.9,
+   "reb": 3.6,
+   "ast": 3.9,
+   "stl": 0.8,
+   "blk": 0.4,
+   "tpm": 2.6,
+   "tov": 1.6,
+   "fga": 16.38,
+   "fgm": 7.41,
+   "fta": 2.46,
+   "ftm": 1.88,
+   "fgPct": 45.2,
+   "ftPct": 76.6
+  },
+  "b": {
+   "min": 30,
+   "pts": 19.3,
+   "reb": 3,
+   "ast": 4.9,
+   "stl": 0.89,
+   "blk": 0.45,
+   "tpm": 2.68,
+   "tov": 1.84,
+   "fga": 16.38,
+   "fgm": 7.37,
+   "fta": 2.46,
+   "ftm": 1.88,
+   "fgPct": 45,
+   "ftPct": 76.7
+  }
  },
  "Onyeka Okongwu": {
   "team": "ATL",
@@ -11397,7 +27099,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.94,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 31,
+   "pts": 13.7,
+   "reb": 8.8,
+   "ast": 2.1,
+   "stl": 1,
+   "blk": 1.4,
+   "tpm": 0.7,
+   "tov": 1.4,
+   "fga": 10.34,
+   "fgm": 5.95,
+   "fta": 2.59,
+   "ftm": 1.92,
+   "fgPct": 57.5,
+   "ftPct": 74.3
+  },
+  "b": {
+   "min": 31,
+   "pts": 13.7,
+   "reb": 7.2,
+   "ast": 2.8,
+   "stl": 1.12,
+   "blk": 1.05,
+   "tpm": 1.84,
+   "tov": 1.52,
+   "fga": 10.34,
+   "fgm": 4.93,
+   "fta": 2.59,
+   "ftm": 1.97,
+   "fgPct": 47.6,
+   "ftPct": 76.1
+  }
  },
  "Luguentz Dort": {
   "team": "ATL",
@@ -11419,7 +27153,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.27,
   "sources": "both",
   "spreadPts": 0.1,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 26,
+   "pts": 10,
+   "reb": 3.4,
+   "ast": 1.3,
+   "stl": 0.9,
+   "blk": 0.4,
+   "tpm": 1.8,
+   "tov": 0.9,
+   "fga": 8.29,
+   "fgm": 3.35,
+   "fta": 1.66,
+   "ftm": 1.3,
+   "fgPct": 40.4,
+   "ftPct": 78.6
+  },
+  "b": {
+   "min": 26,
+   "pts": 9.9,
+   "reb": 3.5,
+   "ast": 1.3,
+   "stl": 0.94,
+   "blk": 0.39,
+   "tpm": 2.04,
+   "tov": 0.83,
+   "fga": 8.29,
+   "fgm": 3.32,
+   "fta": 1.66,
+   "ftm": 1.24,
+   "fgPct": 40,
+   "ftPct": 75
+  }
  },
  "Jock Landale": {
   "team": "ATL",
@@ -11441,7 +27207,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 1.11,
   "sources": "both",
   "spreadPts": 1.3,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 18,
+   "pts": 7.8,
+   "reb": 4.6,
+   "ast": 1.4,
+   "stl": 0.4,
+   "blk": 0.5,
+   "tpm": 0.6,
+   "tov": 0.8,
+   "fga": 6.8,
+   "fgm": 3.52,
+   "fta": 1.61,
+   "ftm": 1.17,
+   "fgPct": 51.8,
+   "ftPct": 72.4
+  },
+  "b": {
+   "min": 20,
+   "pts": 9.1,
+   "reb": 4.5,
+   "ast": 1.8,
+   "stl": 0.46,
+   "blk": 0.51,
+   "tpm": 0.87,
+   "tov": 0.77,
+   "fga": 6.8,
+   "fgm": 3.6,
+   "fta": 1.61,
+   "ftm": 1.05,
+   "fgPct": 53,
+   "ftPct": 65
+  }
  },
  "Aaron Wiggins": {
   "team": "ATL",
@@ -11463,7 +27261,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.8,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 20,
+   "pts": 8.7,
+   "reb": 3.1,
+   "ast": 1.4,
+   "stl": 0.7,
+   "blk": 0.3,
+   "tpm": 1.2,
+   "tov": 0.9,
+   "fga": 7.95,
+   "fgm": 3.82,
+   "fta": 1.03,
+   "ftm": 0.81,
+   "fgPct": 48.1,
+   "ftPct": 78.1
+  },
+  "b": {
+   "min": 20,
+   "pts": 9.3,
+   "reb": 2.6,
+   "ast": 1.5,
+   "stl": 0.89,
+   "blk": 0.34,
+   "tpm": 1.32,
+   "tov": 1.11,
+   "fga": 7.95,
+   "fgm": 3.58,
+   "fta": 1.03,
+   "ftm": 0.8,
+   "fgPct": 45.1,
+   "ftPct": 77.5
+  }
  },
  "Corey Kispert": {
   "team": "ATL",
@@ -11485,7 +27315,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.92,
   "sources": "both",
   "spreadPts": 0.3,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 17,
+   "pts": 7.6,
+   "reb": 1.9,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 1.3,
+   "tov": 0.6,
+   "fga": 5.5,
+   "fgm": 2.58,
+   "fta": 1.14,
+   "ftm": 0.92,
+   "fgPct": 46.8,
+   "ftPct": 80.7
+  },
+  "b": {
+   "min": 14,
+   "pts": 7.3,
+   "reb": 1.7,
+   "ast": 1.2,
+   "stl": 0.2,
+   "blk": 0.12,
+   "tpm": 1.24,
+   "tov": 0.58,
+   "fga": 5.5,
+   "fgm": 2.58,
+   "fta": 1.14,
+   "ftm": 0.91,
+   "fgPct": 46.9,
+   "ftPct": 80.2
+  }
  },
  "Kingston Flemings": {
   "team": "ATL",
@@ -11507,7 +27369,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.79,
   "sources": "both",
   "spreadPts": 11.5,
-  "spreadMin": 6
+  "spreadMin": 6,
+  "a": {
+   "min": 20,
+   "pts": 17.1,
+   "reb": 2.2,
+   "ast": 2.5,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 1.2,
+   "fga": 5.06,
+   "fgm": 2.11,
+   "fta": 0.91,
+   "ftm": 0.83,
+   "fgPct": 41.8,
+   "ftPct": 91.6
+  },
+  "b": {
+   "min": 14,
+   "pts": 5.6,
+   "reb": 1.7,
+   "ast": 2.4,
+   "stl": 0.54,
+   "blk": 0.15,
+   "tpm": 0.56,
+   "tov": 0.74,
+   "fga": 5.06,
+   "fgm": 2.12,
+   "fta": 0.91,
+   "ftm": 0.75,
+   "fgPct": 42,
+   "ftPct": 82
+  }
  },
  "Mouhamed Gueye": {
   "team": "ATL",
@@ -11529,7 +27423,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.48,
   "sources": "both",
   "spreadPts": 0.6,
-  "spreadMin": 3
+  "spreadMin": 3,
+  "a": {
+   "min": 10,
+   "pts": 3.3,
+   "reb": 2.6,
+   "ast": 0.5,
+   "stl": 0.6,
+   "blk": 0.5,
+   "tpm": 0.4,
+   "tov": 0.2,
+   "fga": 3.07,
+   "fgm": 1.27,
+   "fta": 0.66,
+   "ftm": 0.49,
+   "fgPct": 41.4,
+   "ftPct": 75.1
+  },
+  "b": {
+   "min": 13,
+   "pts": 3.9,
+   "reb": 3.1,
+   "ast": 0.8,
+   "stl": 0.68,
+   "blk": 0.47,
+   "tpm": 0.54,
+   "tov": 0.33,
+   "fga": 3.07,
+   "fgm": 1.43,
+   "fta": 0.66,
+   "ftm": 0.46,
+   "fgPct": 46.7,
+   "ftPct": 69.9
+  }
  },
  "Asa Newell": {
   "team": "ATL",
@@ -11551,7 +27477,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.48,
   "sources": "both",
   "spreadPts": 0.2,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 12,
+   "pts": 5.4,
+   "reb": 2.3,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0.4,
+   "tpm": 0.7,
+   "tov": 0.6,
+   "fga": 4.21,
+   "fgm": 2.26,
+   "fta": 0.82,
+   "ftm": 0.45,
+   "fgPct": 53.8,
+   "ftPct": 55.2
+  },
+  "b": {
+   "min": 12,
+   "pts": 5.6,
+   "reb": 2.3,
+   "ast": 0.6,
+   "stl": 0.38,
+   "blk": 0.36,
+   "tpm": 0.61,
+   "tov": 0.5,
+   "fga": 4.21,
+   "fgm": 2.27,
+   "fta": 0.82,
+   "ftm": 0.5,
+   "fgPct": 53.9,
+   "ftPct": 61.5
+  }
  },
  "Devin Carter": {
   "team": "ATL",
@@ -11573,7 +27531,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.79,
   "sources": "both",
   "spreadPts": 0.5,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 10,
+   "pts": 4.2,
+   "reb": 1.9,
+   "ast": 1.2,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.6,
+   "fga": 3.93,
+   "fgm": 1.55,
+   "fta": 1.19,
+   "ftm": 0.78,
+   "fgPct": 39.5,
+   "ftPct": 65.8
+  },
+  "b": {
+   "min": 10,
+   "pts": 4.7,
+   "reb": 1.8,
+   "ast": 1.4,
+   "stl": 0.49,
+   "blk": 0.11,
+   "tpm": 0.48,
+   "tov": 0.7,
+   "fga": 3.93,
+   "fgm": 1.71,
+   "fta": 1.19,
+   "ftm": 0.8,
+   "fgPct": 43.5,
+   "ftPct": 67.4
+  }
  },
  "Zuby Ejiofor": {
   "team": "ATL",
@@ -11595,7 +27585,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.79,
   "sources": "both",
   "spreadPts": 8.3,
-  "spreadMin": 1
+  "spreadMin": 1,
+  "a": {
+   "min": 12,
+   "pts": 12.1,
+   "reb": 2.2,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0.5,
+   "tpm": 0.2,
+   "tov": 0.6,
+   "fga": 2.85,
+   "fgm": 1.46,
+   "fta": 1.14,
+   "ftm": 0.76,
+   "fgPct": 51.1,
+   "ftPct": 66.2
+  },
+  "b": {
+   "min": 11,
+   "pts": 3.8,
+   "reb": 2.3,
+   "ast": 0.8,
+   "stl": 0.33,
+   "blk": 0.42,
+   "tpm": 0.29,
+   "tov": 0.56,
+   "fga": 2.85,
+   "fgm": 1.34,
+   "fta": 1.14,
+   "ftm": 0.82,
+   "fgPct": 47.1,
+   "ftPct": 71.7
+  }
  },
  "Keshon Gilbert": {
   "team": "ATL",
@@ -11617,7 +27639,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.65,
   "sources": "both",
   "spreadPts": 1.4,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 7,
+   "pts": 1.6,
+   "reb": 0.5,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.8,
+   "fga": 2.32,
+   "fgm": 0.97,
+   "fta": 0.74,
+   "ftm": 0.74,
+   "fgPct": 41.7,
+   "ftPct": 100
+  },
+  "b": {
+   "min": 9,
+   "pts": 3,
+   "reb": 0.9,
+   "ast": 1.3,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.22,
+   "tov": 0.66,
+   "fga": 2.32,
+   "fgm": 1.1,
+   "fta": 0.74,
+   "ftm": 0.56,
+   "fgPct": 47.4,
+   "ftPct": 76.1
+  }
  },
  "Jalen Wilson": {
   "team": "ATL",
@@ -11639,7 +27693,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.64,
   "sources": "both",
   "spreadPts": 1,
-  "spreadMin": 2
+  "spreadMin": 2,
+  "a": {
+   "min": 7,
+   "pts": 2.6,
+   "reb": 1,
+   "ast": 0.5,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.3,
+   "fga": 3.02,
+   "fgm": 1.22,
+   "fta": 0.85,
+   "ftm": 0.65,
+   "fgPct": 40.2,
+   "ftPct": 77.4
+  },
+  "b": {
+   "min": 9,
+   "pts": 3.6,
+   "reb": 1.3,
+   "ast": 0.6,
+   "stl": 0.23,
+   "blk": 0.02,
+   "tpm": 0.5,
+   "tov": 0.38,
+   "fga": 3.02,
+   "fgm": 1.25,
+   "fta": 0.85,
+   "ftm": 0.63,
+   "fgPct": 41.4,
+   "ftPct": 74.9
+  }
  },
  "Henri Veesaar": {
   "team": "ATL",
@@ -11661,7 +27747,24 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.56,
   "sources": "bbm-baseline-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": null,
+  "b": {
+   "min": 10,
+   "pts": 2.6,
+   "reb": 2.6,
+   "ast": 0.5,
+   "stl": 0.23,
+   "blk": 0.34,
+   "tpm": 0,
+   "tov": 0.49,
+   "fga": 3.17,
+   "fgm": 1,
+   "fta": 0.82,
+   "ftm": 0.56,
+   "fgPct": 31.4,
+   "ftPct": 68.1
+  }
  },
  "RayJ Dennis": {
   "team": "ATL",
@@ -11683,7 +27786,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0.34,
   "sources": "both",
   "spreadPts": 0,
-  "spreadMin": 0
+  "spreadMin": 0,
+  "a": {
+   "min": 7,
+   "pts": 2.7,
+   "reb": 1,
+   "ast": 1.3,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.5,
+   "fga": 2.85,
+   "fgm": 0.92,
+   "fta": 0.38,
+   "ftm": 0.36,
+   "fgPct": 32.4,
+   "ftPct": 93.3
+  },
+  "b": {
+   "min": 7,
+   "pts": 2.7,
+   "reb": 0.9,
+   "ast": 1.1,
+   "stl": 0.16,
+   "blk": 0.08,
+   "tpm": 0.45,
+   "tov": 0.52,
+   "fga": 2.85,
+   "fgm": 0.95,
+   "fta": 0.38,
+   "ftm": 0.32,
+   "fgPct": 33.4,
+   "ftPct": 84.3
+  }
  },
  "Buddy Hield": {
   "team": "ATL",
@@ -11705,7 +27840,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 7.3,
-  "spreadMin": 14
+  "spreadMin": 14,
+  "a": {
+   "min": 14,
+   "pts": 7.3,
+   "reb": 2,
+   "ast": 1.2,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 1.5,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.1,
+   "ftPct": 84.8
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "Ryan Nembhard": {
   "team": "ATL",
@@ -11727,7 +27894,39 @@ const PROJECTIONS_CONSENSUS = {
   "ftm": 0,
   "sources": "both",
   "spreadPts": 4.7,
-  "spreadMin": 14
+  "spreadMin": 14,
+  "a": {
+   "min": 14,
+   "pts": 4.7,
+   "reb": 1.6,
+   "ast": 3.8,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.6,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.5,
+   "ftPct": 80.6
+  },
+  "b": {
+   "min": 0,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  }
  },
  "DeMar DeRozan": {
   "team": "",
@@ -11750,7 +27949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 30,
+   "pts": 19.2,
+   "reb": 3.7,
+   "ast": 4.4,
+   "stl": 0.9,
+   "blk": 0.3,
+   "tpm": 0.5,
+   "tov": 1.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.4,
+   "ftPct": 86.1
+  },
+  "b": null
  },
  "Nikola Mirotic": {
   "team": "",
@@ -11773,7 +27989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 27.1,
+   "pts": 15.2,
+   "reb": 7.4,
+   "ast": 1.2,
+   "stl": 0.7,
+   "blk": 0.7,
+   "tpm": 2.5,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.9,
+   "ftPct": 84.7
+  },
+  "b": null
  },
  "LaMarcus Aldridge": {
   "team": "",
@@ -11796,7 +28029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 22.3,
+   "pts": 12.7,
+   "reb": 5,
+   "ast": 1.4,
+   "stl": 0.4,
+   "blk": 1,
+   "tpm": 0.6,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50.9,
+   "ftPct": 85.5
+  },
+  "b": null
  },
  "Malcolm Brogdon": {
   "team": "",
@@ -11819,7 +28069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 23.5,
+   "pts": 13.1,
+   "reb": 3.6,
+   "ast": 4.1,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 1.3,
+   "tov": 1.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.3,
+   "ftPct": 86.9
+  },
+  "b": null
  },
  "Carlton Wilson": {
   "team": "",
@@ -11842,7 +28109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 29,
+   "pts": 17.2,
+   "reb": 6,
+   "ast": 1.9,
+   "stl": 0.8,
+   "blk": 0.8,
+   "tpm": 0.5,
+   "tov": 1.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 52.3,
+   "ftPct": 67.3
+  },
+  "b": null
  },
  "Bojan Bogdanovic": {
   "team": "",
@@ -11865,7 +28149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 25.9,
+   "pts": 15.7,
+   "reb": 3.1,
+   "ast": 1.7,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 2.1,
+   "tov": 1.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.5,
+   "ftPct": 85.5
+  },
+  "b": null
  },
  "Terry Rozier": {
   "team": "",
@@ -11888,7 +28189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 25.9,
+   "pts": 13.5,
+   "reb": 3.5,
+   "ast": 3.4,
+   "stl": 0.8,
+   "blk": 0.2,
+   "tpm": 1.9,
+   "tov": 1.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.3,
+   "ftPct": 84.2
+  },
+  "b": null
  },
  "Spencer Dinwiddie": {
   "team": "",
@@ -11911,7 +28229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 27,
+   "pts": 12.3,
+   "reb": 3.1,
+   "ast": 4.6,
+   "stl": 0.7,
+   "blk": 0.3,
+   "tpm": 1.5,
+   "tov": 1.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.5,
+   "ftPct": 81.3
+  },
+  "b": null
  },
  "Shabazz Napier": {
   "team": "",
@@ -11934,7 +28269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 24,
+   "pts": 11.6,
+   "reb": 2.6,
+   "ast": 4.1,
+   "stl": 1.1,
+   "blk": 0.3,
+   "tpm": 1.6,
+   "tov": 1.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.9,
+   "ftPct": 82.9
+  },
+  "b": null
  },
  "Russell Westbrook": {
   "team": "",
@@ -11957,7 +28309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 24,
+   "pts": 13.4,
+   "reb": 5.3,
+   "ast": 5.7,
+   "stl": 1,
+   "blk": 0.3,
+   "tpm": 1,
+   "tov": 2.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.3,
+   "ftPct": 68.1
+  },
+  "b": null
  },
  "Gordon Hayward": {
   "team": "",
@@ -11980,7 +28349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 24.4,
+   "pts": 11.5,
+   "reb": 3.8,
+   "ast": 3.1,
+   "stl": 0.7,
+   "blk": 0.3,
+   "tpm": 1,
+   "tov": 1.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.3,
+   "ftPct": 81.6
+  },
+  "b": null
  },
  "Victor Oladipo": {
   "team": "",
@@ -12003,7 +28389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 26.3,
+   "pts": 13.8,
+   "reb": 3.6,
+   "ast": 3.7,
+   "stl": 1.1,
+   "blk": 0.2,
+   "tpm": 1.9,
+   "tov": 2.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.5,
+   "ftPct": 75.4
+  },
+  "b": null
  },
  "Eric Bledsoe": {
   "team": "",
@@ -12026,7 +28429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 25.2,
+   "pts": 11.4,
+   "reb": 3.5,
+   "ast": 4.1,
+   "stl": 1,
+   "blk": 0.3,
+   "tpm": 1.2,
+   "tov": 1.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.5,
+   "ftPct": 74.5
+  },
+  "b": null
  },
  "Ben Simmons": {
   "team": "",
@@ -12049,7 +28469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 21.9,
+   "pts": 7.3,
+   "reb": 5.6,
+   "ast": 5.2,
+   "stl": 0.9,
+   "blk": 0.5,
+   "tpm": 0,
+   "tov": 2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 56.1,
+   "ftPct": 58.4
+  },
+  "b": null
  },
  "Carmelo Anthony": {
   "team": "",
@@ -12072,7 +28509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 26,
+   "pts": 13.2,
+   "reb": 4.1,
+   "ast": 1.1,
+   "stl": 0.6,
+   "blk": 0.6,
+   "tpm": 1.9,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.6,
+   "ftPct": 82.8
+  },
+  "b": null
  },
  "Malik Beasley": {
   "team": "",
@@ -12095,7 +28549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 27.8,
+   "pts": 13.9,
+   "reb": 3.2,
+   "ast": 1.6,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 3,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.9,
+   "ftPct": 77.7
+  },
+  "b": null
  },
  "Bez Mbeng": {
   "team": "",
@@ -12118,7 +28589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 26.1,
+   "pts": 6.5,
+   "reb": 3,
+   "ast": 3.3,
+   "stl": 1.8,
+   "blk": 0.3,
+   "tpm": 0.3,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 64
+  },
+  "b": null
  },
  "Jonas Valanciunas": {
   "team": "",
@@ -12141,7 +28629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15,
+   "pts": 8.9,
+   "reb": 6,
+   "ast": 1.3,
+   "stl": 0.3,
+   "blk": 0.5,
+   "tpm": 0.2,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 56.5,
+   "ftPct": 80
+  },
+  "b": null
  },
  "Dwyane Wade": {
   "team": "",
@@ -12164,7 +28669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 26.2,
+   "pts": 15,
+   "reb": 4,
+   "ast": 4.2,
+   "stl": 0.8,
+   "blk": 0.5,
+   "tpm": 1.2,
+   "tov": 2.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.4,
+   "ftPct": 70.8
+  },
+  "b": null
  },
  "Hassan Whiteside": {
   "team": "",
@@ -12187,7 +28709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.9,
+   "pts": 9.1,
+   "reb": 7.7,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 1.6,
+   "tpm": 0,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 59.7,
+   "ftPct": 56.5
+  },
+  "b": null
  },
  "Richaun Holmes": {
   "team": "",
@@ -12210,7 +28749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.2,
+   "pts": 7.3,
+   "reb": 5.2,
+   "ast": 0.9,
+   "stl": 0.4,
+   "blk": 0.7,
+   "tpm": 0,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 62.1,
+   "ftPct": 77.6
+  },
+  "b": null
  },
  "Bruce Brown": {
   "team": "",
@@ -12233,7 +28789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 24.4,
+   "pts": 8.5,
+   "reb": 4.1,
+   "ast": 2.3,
+   "stl": 0.9,
+   "blk": 0.4,
+   "tpm": 0.6,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.7,
+   "ftPct": 77.1
+  },
+  "b": null
  },
  "Kenneth Faried": {
   "team": "",
@@ -12256,7 +28829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19.7,
+   "pts": 10.4,
+   "reb": 6.8,
+   "ast": 0.5,
+   "stl": 0.5,
+   "blk": 0.6,
+   "tpm": 0.2,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 58.9,
+   "ftPct": 64.6
+  },
+  "b": null
  },
  "Keon Johnson": {
   "team": "",
@@ -12279,7 +28869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 24.4,
+   "pts": 11,
+   "reb": 3.1,
+   "ast": 2.1,
+   "stl": 1.1,
+   "blk": 0.4,
+   "tpm": 1.5,
+   "tov": 1.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.8,
+   "ftPct": 82.9
+  },
+  "b": null
  },
  "Marc Gasol": {
   "team": "",
@@ -12302,7 +28909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19.1,
+   "pts": 5.9,
+   "reb": 4.4,
+   "ast": 2.4,
+   "stl": 0.6,
+   "blk": 0.8,
+   "tpm": 0.9,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.2,
+   "ftPct": 74.1
+  },
+  "b": null
  },
  "Malachi Smith": {
   "team": "",
@@ -12325,7 +28949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19.4,
+   "pts": 6.7,
+   "reb": 2.8,
+   "ast": 2.7,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.5,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Brandon Williams": {
   "team": "",
@@ -12348,7 +28989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 22.2,
+   "pts": 12,
+   "reb": 2.7,
+   "ast": 3.5,
+   "stl": 0.8,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 1.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.7,
+   "ftPct": 75.8
+  },
+  "b": null
  },
  "Christian Wood": {
   "team": "",
@@ -12371,7 +29029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.4,
+   "pts": 10.1,
+   "reb": 5.2,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.7,
+   "tpm": 0.9,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 51.2,
+   "ftPct": 70.9
+  },
+  "b": null
  },
  "DeMarcus Cousins": {
   "team": "",
@@ -12394,7 +29069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.9,
+   "pts": 8.6,
+   "reb": 5.4,
+   "ast": 1.6,
+   "stl": 0.7,
+   "blk": 0.5,
+   "tpm": 0.8,
+   "tov": 1.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.2,
+   "ftPct": 74.4
+  },
+  "b": null
  },
  "Jeremy Lin": {
   "team": "",
@@ -12417,7 +29109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19.4,
+   "pts": 9.6,
+   "reb": 2.4,
+   "ast": 3.1,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 1.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44,
+   "ftPct": 83.8
+  },
+  "b": null
  },
  "Jared Butler": {
   "team": "",
@@ -12440,7 +29149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.4,
+   "pts": 8.3,
+   "reb": 1.7,
+   "ast": 3.3,
+   "stl": 0.9,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 1.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.5,
+   "ftPct": 81.4
+  },
+  "b": null
  },
  "Derrick Favors": {
   "team": "",
@@ -12463,7 +29189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.7,
+   "pts": 6.2,
+   "reb": 5.6,
+   "ast": 0.8,
+   "stl": 0.5,
+   "blk": 0.7,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 58.3,
+   "ftPct": 67.1
+  },
+  "b": null
  },
  "Kevin Love": {
   "team": "",
@@ -12486,7 +29229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.6,
+   "pts": 8.3,
+   "reb": 5.7,
+   "ast": 1.6,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 1.5,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.1,
+   "ftPct": 82.9
+  },
+  "b": null
  },
  "Jordan McRae": {
   "team": "",
@@ -12509,7 +29269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 21.2,
+   "pts": 10.9,
+   "reb": 3,
+   "ast": 2.2,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 0.9,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.5,
+   "ftPct": 77.8
+  },
+  "b": null
  },
  "Robert Covington": {
   "team": "",
@@ -12532,7 +29309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.8,
+   "pts": 5.5,
+   "reb": 3.4,
+   "ast": 0.9,
+   "stl": 1,
+   "blk": 0.7,
+   "tpm": 1,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43,
+   "ftPct": 79.6
+  },
+  "b": null
  },
  "Leaky Black": {
   "team": "",
@@ -12555,7 +29349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 23.2,
+   "pts": 5.6,
+   "reb": 4,
+   "ast": 1.6,
+   "stl": 0.8,
+   "blk": 0.7,
+   "tpm": 0.9,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.9,
+   "ftPct": 72.1
+  },
+  "b": null
  },
  "Jeremy Lamb": {
   "team": "",
@@ -12578,7 +29389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.7,
+   "pts": 7.8,
+   "reb": 2.8,
+   "ast": 1.3,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 1,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.3,
+   "ftPct": 88
+  },
+  "b": null
  },
  "Georges Niang": {
   "team": "",
@@ -12601,7 +29429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 21.5,
+   "pts": 9.3,
+   "reb": 3.2,
+   "ast": 1.2,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 2,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45,
+   "ftPct": 84.8
+  },
+  "b": null
  },
  "Chimezie Metu": {
   "team": "",
@@ -12624,7 +29469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.8,
+   "pts": 7.4,
+   "reb": 4.4,
+   "ast": 1.1,
+   "stl": 0.6,
+   "blk": 0.5,
+   "tpm": 0.3,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 77.9
+  },
+  "b": null
  },
  "Patrick Beverley": {
   "team": "",
@@ -12647,7 +29509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 20,
+   "pts": 5.9,
+   "reb": 3.2,
+   "ast": 2.6,
+   "stl": 0.7,
+   "blk": 0.5,
+   "tpm": 1,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.4,
+   "ftPct": 76
+  },
+  "b": null
  },
  "Justise Winslow": {
   "team": "",
@@ -12670,7 +29549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 26.8,
+   "pts": 9,
+   "reb": 5.8,
+   "ast": 3.2,
+   "stl": 0.9,
+   "blk": 0.5,
+   "tpm": 0.6,
+   "tov": 1.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.4,
+   "ftPct": 62.5
+  },
+  "b": null
  },
  "John Henson": {
   "team": "",
@@ -12693,7 +29589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15,
+   "pts": 5.9,
+   "reb": 4.9,
+   "ast": 1.2,
+   "stl": 0.6,
+   "blk": 1,
+   "tpm": 0.5,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50.4,
+   "ftPct": 54.1
+  },
+  "b": null
  },
  "Ky Bowman": {
   "team": "",
@@ -12716,7 +29629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 22.6,
+   "pts": 7.4,
+   "reb": 2.7,
+   "ast": 2.9,
+   "stl": 1,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 1.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.7,
+   "ftPct": 82.9
+  },
+  "b": null
  },
  "Ian Mahinmi": {
   "team": "",
@@ -12739,7 +29669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 21.3,
+   "pts": 6.7,
+   "reb": 5.6,
+   "ast": 1.2,
+   "stl": 0.9,
+   "blk": 0.9,
+   "tpm": 0.1,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.4,
+   "ftPct": 65.2
+  },
+  "b": null
  },
  "Terrence Ross": {
   "team": "",
@@ -12762,7 +29709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 21.1,
+   "pts": 10,
+   "reb": 2.5,
+   "ast": 1.5,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 1.5,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.4,
+   "ftPct": 85.8
+  },
+  "b": null
  },
  "Ricky Rubio": {
   "team": "",
@@ -12785,7 +29749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.1,
+   "pts": 6.7,
+   "reb": 2.3,
+   "ast": 4,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 1.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.5,
+   "ftPct": 84.9
+  },
+  "b": null
  },
  "Marvin Williams": {
   "team": "",
@@ -12808,7 +29789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19.5,
+   "pts": 6.4,
+   "reb": 3.4,
+   "ast": 0.9,
+   "stl": 0.6,
+   "blk": 0.5,
+   "tpm": 1.1,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.2,
+   "ftPct": 81.9
+  },
+  "b": null
  },
  "Brandon Boston Jr": {
   "team": "",
@@ -12831,7 +29829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 23.6,
+   "pts": 11.4,
+   "reb": 3.3,
+   "ast": 1.6,
+   "stl": 0.9,
+   "blk": 0.3,
+   "tpm": 1.1,
+   "tov": 1.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.2,
+   "ftPct": 76.2
+  },
+  "b": null
  },
  "Jonathan Kuminga": {
   "team": "",
@@ -12854,7 +29869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 20,
+   "pts": 11.3,
+   "reb": 4,
+   "ast": 1.7,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 1.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.5,
+   "ftPct": 69.5
+  },
+  "b": null
  },
  "Jeff Teague": {
   "team": "",
@@ -12877,7 +29909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.3,
+   "pts": 7.1,
+   "reb": 1.6,
+   "ast": 3.4,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 1.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.2,
+   "ftPct": 84.7
+  },
+  "b": null
  },
  "Derrick Rose": {
   "team": "",
@@ -12900,7 +29949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.6,
+   "pts": 8.9,
+   "reb": 1.8,
+   "ast": 2.8,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45,
+   "ftPct": 88.4
+  },
+  "b": null
  },
  "Aron Baynes": {
   "team": "",
@@ -12923,7 +29989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 18.5,
+   "pts": 7.5,
+   "reb": 5,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0.5,
+   "tpm": 0.8,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.5,
+   "ftPct": 77
+  },
+  "b": null
  },
  "Rajon Rondo": {
   "team": "",
@@ -12946,7 +30029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.9,
+   "pts": 5.4,
+   "reb": 2.7,
+   "ast": 4.5,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 1.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.4,
+   "ftPct": 73.9
+  },
+  "b": null
  },
  "Guerschon Yabusele": {
   "team": "",
@@ -12969,7 +30069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 20,
+   "pts": 7.7,
+   "reb": 4.4,
+   "ast": 1.4,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 1.1,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.1,
+   "ftPct": 72.1
+  },
+  "b": null
  },
  "KJ Martin": {
   "team": "",
@@ -12992,7 +30109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 21.2,
+   "pts": 7.5,
+   "reb": 3.7,
+   "ast": 1.2,
+   "stl": 0.5,
+   "blk": 0.5,
+   "tpm": 0.5,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 54.1,
+   "ftPct": 67
+  },
+  "b": null
  },
  "Alec Burks": {
   "team": "",
@@ -13015,7 +30149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.6,
+   "pts": 8.7,
+   "reb": 2.7,
+   "ast": 1.5,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 1.5,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.5,
+   "ftPct": 84.1
+  },
+  "b": null
  },
  "Javon Freeman-Liberty": {
   "team": "",
@@ -13038,7 +30189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 18.3,
+   "pts": 7,
+   "reb": 3.2,
+   "ast": 1.8,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.4,
+   "ftPct": 91.7
+  },
+  "b": null
  },
  "Terrace Reed Jr": {
   "team": "",
@@ -13061,7 +30229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19.5,
+   "pts": 11.2,
+   "reb": 4.9,
+   "ast": 0.9,
+   "stl": 0.3,
+   "blk": 0.8,
+   "tpm": 0.2,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.4,
+   "ftPct": 67.4
+  },
+  "b": null
  },
  "Omari Spellman": {
   "team": "",
@@ -13084,7 +30269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 18.1,
+   "pts": 6.8,
+   "reb": 4.4,
+   "ast": 1,
+   "stl": 0.6,
+   "blk": 0.5,
+   "tpm": 0.9,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.6,
+   "ftPct": 76.5
+  },
+  "b": null
  },
  "Keion Brooks Jr.": {
   "team": "",
@@ -13107,7 +30309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 18.4,
+   "pts": 7.9,
+   "reb": 3.2,
+   "ast": 0.7,
+   "stl": 0.6,
+   "blk": 0.6,
+   "tpm": 0.8,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.6,
+   "ftPct": 73.3
+  },
+  "b": null
  },
  "Nemanja Bjelica": {
   "team": "",
@@ -13130,7 +30349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.1,
+   "pts": 6.4,
+   "reb": 3.8,
+   "ast": 1.9,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.8,
+   "ftPct": 74.5
+  },
+  "b": null
  },
  "Trendon Watford": {
   "team": "",
@@ -13153,7 +30389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.3,
+   "pts": 7.2,
+   "reb": 3.3,
+   "ast": 2,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0.3,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 51,
+   "ftPct": 76.5
+  },
+  "b": null
  },
  "Jonas Jerebko": {
   "team": "",
@@ -13176,7 +30429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.7,
+   "pts": 6.3,
+   "reb": 3.9,
+   "ast": 1.3,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.9,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.9,
+   "ftPct": 80
+  },
+  "b": null
  },
  "Lance Stephenson": {
   "team": "",
@@ -13199,7 +30469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.7,
+   "pts": 8,
+   "reb": 3.1,
+   "ast": 2.9,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 1.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.1,
+   "ftPct": 74.7
+  },
+  "b": null
  },
  "Luol Deng": {
   "team": "",
@@ -13222,7 +30509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.8,
+   "pts": 7.1,
+   "reb": 3.3,
+   "ast": 0.8,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 0.6,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 71.4
+  },
+  "b": null
  },
  "Dennis Smith Jr.": {
   "team": "",
@@ -13245,7 +30549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 18.9,
+   "pts": 6.9,
+   "reb": 2.5,
+   "ast": 3.5,
+   "stl": 1.1,
+   "blk": 0.3,
+   "tpm": 0.5,
+   "tov": 1.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.8,
+   "ftPct": 66.3
+  },
+  "b": null
  },
  "Jontay Porter": {
   "team": "",
@@ -13268,7 +30589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.4,
+   "pts": 5.2,
+   "reb": 3.5,
+   "ast": 1.3,
+   "stl": 0.8,
+   "blk": 0.5,
+   "tpm": 0.8,
+   "tov": 1.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.7,
+   "ftPct": 68.2
+  },
+  "b": null
  },
  "Delon Wright": {
   "team": "",
@@ -13291,7 +30629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.9,
+   "pts": 4.6,
+   "reb": 2.2,
+   "ast": 2.3,
+   "stl": 1,
+   "blk": 0.3,
+   "tpm": 0.5,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.3,
+   "ftPct": 78.6
+  },
+  "b": null
  },
  "Elfrid Payton": {
   "team": "",
@@ -13314,7 +30669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 21.3,
+   "pts": 6.2,
+   "reb": 3.4,
+   "ast": 5.1,
+   "stl": 0.9,
+   "blk": 0.3,
+   "tpm": 0.2,
+   "tov": 1.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.9,
+   "ftPct": 57.6
+  },
+  "b": null
  },
  "Gerald Green": {
   "team": "",
@@ -13337,7 +30709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 20.2,
+   "pts": 9.2,
+   "reb": 2.5,
+   "ast": 0.5,
+   "stl": 0.5,
+   "blk": 0.4,
+   "tpm": 2.1,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40,
+   "ftPct": 83.8
+  },
+  "b": null
  },
  "Jacob Gilyard": {
   "team": "",
@@ -13360,7 +30749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17,
+   "pts": 4.2,
+   "reb": 1.1,
+   "ast": 3.3,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 1.2,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40,
+   "ftPct": 100
+  },
+  "b": null
  },
  "George Hill": {
   "team": "",
@@ -13383,7 +30789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 18.1,
+   "pts": 5.9,
+   "reb": 2.1,
+   "ast": 2.1,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.7,
+   "ftPct": 82.6
+  },
+  "b": null
  },
  "J.J. Redick": {
   "team": "",
@@ -13406,7 +30829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.4,
+   "pts": 8.7,
+   "reb": 1.5,
+   "ast": 1.2,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 1.7,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.9,
+   "ftPct": 90.6
+  },
+  "b": null
  },
  "Dante Exum": {
   "team": "",
@@ -13429,7 +30869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 18.6,
+   "pts": 7.1,
+   "reb": 2.2,
+   "ast": 2.5,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.8,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47,
+   "ftPct": 75.5
+  },
+  "b": null
  },
  "Tomas Satoransky": {
   "team": "",
@@ -13452,7 +30909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.5,
+   "pts": 4.9,
+   "reb": 2.1,
+   "ast": 3.3,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.3,
+   "ftPct": 83.3
+  },
+  "b": null
  },
  "JaMychal Green": {
   "team": "",
@@ -13475,7 +30949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14,
+   "pts": 5.8,
+   "reb": 3.7,
+   "ast": 0.7,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0.7,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.9,
+   "ftPct": 81
+  },
+  "b": null
  },
  "Nicolas Batum": {
   "team": "",
@@ -13498,7 +30989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.5,
+   "pts": 4.4,
+   "reb": 2.9,
+   "ast": 1.3,
+   "stl": 0.6,
+   "blk": 0.4,
+   "tpm": 1.1,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.1,
+   "ftPct": 79.1
+  },
+  "b": null
  },
  "Dwight Howard": {
   "team": "",
@@ -13521,7 +31029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.2,
+   "pts": 6.7,
+   "reb": 6.6,
+   "ast": 0.6,
+   "stl": 0.5,
+   "blk": 0.7,
+   "tpm": 0.1,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 62.4,
+   "ftPct": 59.2
+  },
+  "b": null
  },
  "Bol Bol": {
   "team": "",
@@ -13544,7 +31069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.5,
+   "pts": 5.8,
+   "reb": 3,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.7,
+   "tpm": 0.6,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 53.5,
+   "ftPct": 74.9
+  },
+  "b": null
  },
  "Tre Scott": {
   "team": "",
@@ -13567,7 +31109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.3,
+   "pts": 5.3,
+   "reb": 2.3,
+   "ast": 0.4,
+   "stl": 0.9,
+   "blk": 0.8,
+   "tpm": 0.2,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.9,
+   "ftPct": 66.7
+  },
+  "b": null
  },
  "Killian Hayes": {
   "team": "",
@@ -13590,7 +31149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.6,
+   "pts": 5.5,
+   "reb": 2.1,
+   "ast": 3.5,
+   "stl": 0.7,
+   "blk": 0.3,
+   "tpm": 0.7,
+   "tov": 1.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.9,
+   "ftPct": 82.7
+  },
+  "b": null
  },
  "Wilson Chandler": {
   "team": "",
@@ -13613,7 +31189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 21,
+   "pts": 5.6,
+   "reb": 4,
+   "ast": 1.3,
+   "stl": 0.5,
+   "blk": 0.4,
+   "tpm": 1.1,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.1,
+   "ftPct": 80.9
+  },
+  "b": null
  },
  "Drew Eubanks": {
   "team": "",
@@ -13636,7 +31229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.2,
+   "pts": 5,
+   "reb": 3.7,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0.7,
+   "tpm": 0,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 59.9,
+   "ftPct": 71.1
+  },
+  "b": null
  },
  "Ochai Agbaji": {
   "team": "",
@@ -13659,7 +31269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 20,
+   "pts": 6.9,
+   "reb": 2.7,
+   "ast": 1.1,
+   "stl": 0.5,
+   "blk": 0.4,
+   "tpm": 1,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.1,
+   "ftPct": 77.2
+  },
+  "b": null
  },
  "Will Barton": {
   "team": "",
@@ -13682,7 +31309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.7,
+   "pts": 7.5,
+   "reb": 2.7,
+   "ast": 2,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 1.1,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.7,
+   "ftPct": 78.4
+  },
+  "b": null
  },
  "Kyle O'Quinn": {
   "team": "",
@@ -13705,7 +31349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.8,
+   "pts": 4,
+   "reb": 3.7,
+   "ast": 1.7,
+   "stl": 0.3,
+   "blk": 0.8,
+   "tpm": 0.1,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50.2,
+   "ftPct": 67.2
+  },
+  "b": null
  },
  "Danilo Gallinari": {
   "team": "",
@@ -13728,7 +31389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.8,
+   "pts": 6.7,
+   "reb": 2.3,
+   "ast": 0.9,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44,
+   "ftPct": 89.3
+  },
+  "b": null
  },
  "Gorgui Dieng": {
   "team": "",
@@ -13751,7 +31429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.6,
+   "pts": 4.7,
+   "reb": 3.5,
+   "ast": 1.2,
+   "stl": 0.4,
+   "blk": 0.4,
+   "tpm": 0.6,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.8,
+   "ftPct": 80
+  },
+  "b": null
  },
  "Anthony Gill": {
   "team": "",
@@ -13774,7 +31469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.3,
+   "pts": 6.1,
+   "reb": 3.1,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0.4,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 53.3,
+   "ftPct": 74.3
+  },
+  "b": null
  },
  "Dwight Powell": {
   "team": "",
@@ -13797,7 +31509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.4,
+   "pts": 4.4,
+   "reb": 3.4,
+   "ast": 1.1,
+   "stl": 0.5,
+   "blk": 0.4,
+   "tpm": 0.1,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 65.4,
+   "ftPct": 71.8
+  },
+  "b": null
  },
  "Jeff Dowtin Jr.": {
   "team": "",
@@ -13820,7 +31549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.1,
+   "pts": 5.2,
+   "reb": 1.8,
+   "ast": 2.1,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.3,
+   "ftPct": 75
+  },
+  "b": null
  },
  "Willy Hernangomez": {
   "team": "",
@@ -13843,7 +31589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.4,
+   "pts": 6.5,
+   "reb": 4.8,
+   "ast": 0.9,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0.1,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 52.9,
+   "ftPct": 72.7
+  },
+  "b": null
  },
  "Davis Bertans": {
   "team": "",
@@ -13866,7 +31629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.7,
+   "pts": 6.7,
+   "reb": 1.9,
+   "ast": 0.7,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 1.7,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.1,
+   "ftPct": 87.9
+  },
+  "b": null
  },
  "Tony Bradley": {
   "team": "",
@@ -13889,7 +31669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.3,
+   "pts": 5,
+   "reb": 3.9,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.5,
+   "tpm": 0.2,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 58.6,
+   "ftPct": 69.3
+  },
+  "b": null
  },
  "Ben McLemore": {
   "team": "",
@@ -13912,7 +31709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 20.1,
+   "pts": 9.5,
+   "reb": 2,
+   "ast": 0.8,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 2.2,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.5,
+   "ftPct": 74.7
+  },
+  "b": null
  },
  "J.J. Barea": {
   "team": "",
@@ -13935,7 +31749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.5,
+   "pts": 8.1,
+   "reb": 1.9,
+   "ast": 4.1,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.9,
+   "tov": 1.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.5,
+   "ftPct": 77
+  },
+  "b": null
  },
  "Trayvon Brasil": {
   "team": "",
@@ -13958,7 +31789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.7,
+   "pts": 16.1,
+   "reb": 1.7,
+   "ast": 1,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.6,
+   "ftPct": 74.7
+  },
+  "b": null
  },
  "Evan Fournier": {
   "team": "",
@@ -13981,7 +31829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 18.1,
+   "pts": 8.2,
+   "reb": 1.8,
+   "ast": 1.6,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 1.4,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.2,
+   "ftPct": 80.2
+  },
+  "b": null
  },
  "EJ Liddell": {
   "team": "",
@@ -14004,7 +31869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.4,
+   "pts": 4.8,
+   "reb": 2.6,
+   "ast": 0.8,
+   "stl": 0.5,
+   "blk": 0.5,
+   "tpm": 0.6,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44,
+   "ftPct": 91.7
+  },
+  "b": null
  },
  "Marcus Bagley": {
   "team": "",
@@ -14027,7 +31909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.7,
+   "pts": 4.1,
+   "reb": 4.3,
+   "ast": 0.6,
+   "stl": 0.6,
+   "blk": 0.7,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.1,
+   "ftPct": 80
+  },
+  "b": null
  },
  "Marcus Morris Sr.": {
   "team": "",
@@ -14050,7 +31949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.7,
+   "pts": 7.6,
+   "reb": 2.7,
+   "ast": 0.9,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.1,
+   "ftPct": 82.9
+  },
+  "b": null
  },
  "Lou Williams": {
   "team": "",
@@ -14073,7 +31989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.3,
+   "pts": 8,
+   "reb": 1.5,
+   "ast": 2.3,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.9,
+   "ftPct": 86.7
+  },
+  "b": null
  },
  "Alex Reese": {
   "team": "",
@@ -14096,7 +32029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.3,
+   "pts": 4.3,
+   "reb": 2.7,
+   "ast": 0.2,
+   "stl": 0.6,
+   "blk": 0.6,
+   "tpm": 0.9,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.1,
+   "ftPct": 75
+  },
+  "b": null
  },
  "Kyle Korver": {
   "team": "",
@@ -14119,7 +32069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.6,
+   "pts": 7,
+   "reb": 2.1,
+   "ast": 1.1,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 1.7,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.2,
+   "ftPct": 83.6
+  },
+  "b": null
  },
  "Wayne Ellington": {
   "team": "",
@@ -14142,7 +32109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 18.8,
+   "pts": 7.3,
+   "reb": 1.7,
+   "ast": 1.1,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 2,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41,
+   "ftPct": 81
+  },
+  "b": null
  },
  "D.J. Augustin": {
   "team": "",
@@ -14165,7 +32149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.1,
+   "pts": 6.1,
+   "reb": 1.3,
+   "ast": 2.5,
+   "stl": 0.4,
+   "blk": 0,
+   "tpm": 1.1,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.7,
+   "ftPct": 88.8
+  },
+  "b": null
  },
  "Ivan Rabb": {
   "team": "",
@@ -14188,7 +32189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.7,
+   "pts": 5.8,
+   "reb": 4.2,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0.1,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 54.7,
+   "ftPct": 71
+  },
+  "b": null
  },
  "Tyreke Evans": {
   "team": "",
@@ -14211,7 +32229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 20.3,
+   "pts": 10.2,
+   "reb": 2.9,
+   "ast": 2.4,
+   "stl": 0.8,
+   "blk": 0.3,
+   "tpm": 1.1,
+   "tov": 1.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.9,
+   "ftPct": 71.9
+  },
+  "b": null
  },
  "Rudy Gay": {
   "team": "",
@@ -14234,7 +32269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.6,
+   "pts": 6.5,
+   "reb": 3.3,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.6,
+   "ftPct": 82.8
+  },
+  "b": null
  },
  "Avery Bradley": {
   "team": "",
@@ -14257,7 +32309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 22.7,
+   "pts": 6.9,
+   "reb": 2.2,
+   "ast": 1.3,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 1.2,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.9,
+   "ftPct": 83.9
+  },
+  "b": null
  },
  "Thaddeus Young": {
   "team": "",
@@ -14280,7 +32349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.3,
+   "pts": 4.9,
+   "reb": 3,
+   "ast": 1.5,
+   "stl": 0.8,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 53.6,
+   "ftPct": 57
+  },
+  "b": null
  },
  "Tony Parker": {
   "team": "",
@@ -14303,7 +32389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.9,
+   "pts": 9.5,
+   "reb": 1.5,
+   "ast": 3.7,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 1.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46,
+   "ftPct": 73.4
+  },
+  "b": null
  },
  "Moe Harkless": {
   "team": "",
@@ -14326,7 +32429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 18.4,
+   "pts": 4.9,
+   "reb": 2.6,
+   "ast": 0.8,
+   "stl": 0.7,
+   "blk": 0.5,
+   "tpm": 0.5,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.9,
+   "ftPct": 69.8
+  },
+  "b": null
  },
  "Dewayne Dedmon": {
   "team": "",
@@ -14349,7 +32469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.2,
+   "pts": 4.8,
+   "reb": 3.8,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.5,
+   "tpm": 0.3,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 53.2,
+   "ftPct": 74
+  },
+  "b": null
  },
  "Nick Richards": {
   "team": "",
@@ -14372,7 +32509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.9,
+   "pts": 5.7,
+   "reb": 4.6,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.6,
+   "tpm": 0,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 58.5,
+   "ftPct": 69.6
+  },
+  "b": null
  },
  "Ethan Thompson": {
   "team": "",
@@ -14395,7 +32549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 20.4,
+   "pts": 7,
+   "reb": 2.2,
+   "ast": 1.8,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 1.2,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.8,
+   "ftPct": 78.7
+  },
+  "b": null
  },
  "Al-Farouq Aminu": {
   "team": "",
@@ -14418,7 +32589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 18.9,
+   "pts": 4.6,
+   "reb": 4.6,
+   "ast": 1.1,
+   "stl": 0.8,
+   "blk": 0.4,
+   "tpm": 0.5,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.1,
+   "ftPct": 76.3
+  },
+  "b": null
  },
  "Montrezl Harrell": {
   "team": "",
@@ -14441,7 +32629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.9,
+   "pts": 6.8,
+   "reb": 3,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 61.3,
+   "ftPct": 68.6
+  },
+  "b": null
  },
  "Jordan Nwora": {
   "team": "",
@@ -14464,7 +32669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.7,
+   "pts": 6.8,
+   "reb": 2.8,
+   "ast": 0.9,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 1,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.4,
+   "ftPct": 80
+  },
+  "b": null
  },
  "Shelvin Mack": {
   "team": "",
@@ -14487,7 +32709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 21.9,
+   "pts": 7.5,
+   "reb": 1.8,
+   "ast": 3.2,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.4,
+   "ftPct": 69
+  },
+  "b": null
  },
  "Ricky Council IV": {
   "team": "",
@@ -14510,7 +32749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.1,
+   "pts": 8.8,
+   "reb": 2.8,
+   "ast": 1.1,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.3,
+   "ftPct": 76.6
+  },
+  "b": null
  },
  "Cedi Osman": {
   "team": "",
@@ -14533,7 +32789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.6,
+   "pts": 7.3,
+   "reb": 2.2,
+   "ast": 1.6,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 1.2,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.8,
+   "ftPct": 71.2
+  },
+  "b": null
  },
  "Shaun Livingston": {
   "team": "",
@@ -14556,7 +32829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.1,
+   "pts": 4,
+   "reb": 1.8,
+   "ast": 1.8,
+   "stl": 0.5,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 51.9,
+   "ftPct": 78.4
+  },
+  "b": null
  },
  "Vasilije Micic": {
   "team": "",
@@ -14579,7 +32869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19.1,
+   "pts": 6.7,
+   "reb": 1.8,
+   "ast": 3.7,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 1.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.7,
+   "ftPct": 82
+  },
+  "b": null
  },
  "Trevelin Queen": {
   "team": "",
@@ -14602,7 +32909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.9,
+   "pts": 4.8,
+   "reb": 2.2,
+   "ast": 1.2,
+   "stl": 0.7,
+   "blk": 0.4,
+   "tpm": 0.7,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.5,
+   "ftPct": 87.9
+  },
+  "b": null
  },
  "Aleksej Pokusevski": {
   "team": "",
@@ -14625,7 +32949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.5,
+   "pts": 5.4,
+   "reb": 3.2,
+   "ast": 1.3,
+   "stl": 0.4,
+   "blk": 0.6,
+   "tpm": 0.7,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.3,
+   "ftPct": 70.3
+  },
+  "b": null
  },
  "Adama Bal": {
   "team": "",
@@ -14648,7 +32989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.7,
+   "pts": 5.4,
+   "reb": 1.6,
+   "ast": 1.2,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 1.2,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.2,
+   "ftPct": 90
+  },
+  "b": null
  },
  "Pau Gasol": {
   "team": "",
@@ -14671,7 +33029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12,
+   "pts": 3.9,
+   "reb": 4.6,
+   "ast": 1.7,
+   "stl": 0.2,
+   "blk": 0.5,
+   "tpm": 0.2,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.7,
+   "ftPct": 70
+  },
+  "b": null
  },
  "Dwayne Bacon": {
   "team": "",
@@ -14694,7 +33069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 25.7,
+   "pts": 9.9,
+   "reb": 3.4,
+   "ast": 1.6,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.6,
+   "ftPct": 74.8
+  },
+  "b": null
  },
  "Kendrick Nunn": {
   "team": "",
@@ -14717,7 +33109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.8,
+   "pts": 7,
+   "reb": 1.5,
+   "ast": 1.3,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.9,
+   "ftPct": 87.8
+  },
+  "b": null
  },
  "Salah Mejri": {
   "team": "",
@@ -14740,7 +33149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.1,
+   "pts": 3.9,
+   "reb": 3.6,
+   "ast": 1,
+   "stl": 0.3,
+   "blk": 0.7,
+   "tpm": 0.3,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.1,
+   "ftPct": 62.5
+  },
+  "b": null
  },
  "Walt Lemon": {
   "team": "",
@@ -14763,7 +33189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.5,
+   "pts": 6.5,
+   "reb": 2,
+   "ast": 2.3,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.7,
+   "ftPct": 72.7
+  },
+  "b": null
  },
  "Jared Rhoden": {
   "team": "",
@@ -14786,7 +33229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.1,
+   "pts": 5.1,
+   "reb": 2.2,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0.6,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.3,
+   "ftPct": 84.5
+  },
+  "b": null
  },
  "Josh Jackson": {
   "team": "",
@@ -14809,7 +33269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.3,
+   "pts": 7.7,
+   "reb": 2.7,
+   "ast": 1.3,
+   "stl": 0.6,
+   "blk": 0.4,
+   "tpm": 0.7,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.6,
+   "ftPct": 70.8
+  },
+  "b": null
  },
  "Andrew Bogut": {
   "team": "",
@@ -14832,7 +33309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.4,
+   "pts": 2.7,
+   "reb": 3.9,
+   "ast": 0.8,
+   "stl": 0.2,
+   "blk": 0.6,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Skylar Mays": {
   "team": "",
@@ -14855,7 +33349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.4,
+   "pts": 4.8,
+   "reb": 1.2,
+   "ast": 2.1,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.6,
+   "ftPct": 87.3
+  },
+  "b": null
  },
  "Kessler Edwards": {
   "team": "",
@@ -14878,7 +33389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.2,
+   "pts": 4.5,
+   "reb": 2.6,
+   "ast": 0.9,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.2,
+   "ftPct": 73
+  },
+  "b": null
  },
  "C.J. Elleby": {
   "team": "",
@@ -14901,7 +33429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 20.3,
+   "pts": 6.5,
+   "reb": 3.6,
+   "ast": 1.3,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 0.7,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.5,
+   "ftPct": 72.4
+  },
+  "b": null
  },
  "Shake Milton": {
   "team": "",
@@ -14924,7 +33469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.7,
+   "pts": 5.9,
+   "reb": 1.8,
+   "ast": 1.7,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.9,
+   "ftPct": 81.3
+  },
+  "b": null
  },
  "Goran Dragic": {
   "team": "",
@@ -14947,7 +33509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15,
+   "pts": 6.6,
+   "reb": 1.7,
+   "ast": 2.6,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.6,
+   "ftPct": 78.2
+  },
+  "b": null
  },
  "Zaza Pachulia": {
   "team": "",
@@ -14970,7 +33549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.9,
+   "pts": 3.9,
+   "reb": 3.9,
+   "ast": 1.3,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.3,
+   "ftPct": 78.2
+  },
+  "b": null
  },
  "David Nwaba": {
   "team": "",
@@ -14993,7 +33589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.2,
+   "pts": 5.1,
+   "reb": 2.6,
+   "ast": 0.6,
+   "stl": 0.6,
+   "blk": 0.4,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.1,
+   "ftPct": 69.3
+  },
+  "b": null
  },
  "Jaylen Hoard": {
   "team": "",
@@ -15016,7 +33629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.9,
+   "pts": 6.2,
+   "reb": 4.5,
+   "ast": 1.1,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.8,
+   "ftPct": 60.7
+  },
+  "b": null
  },
  "Dragan Bender": {
   "team": "",
@@ -15039,7 +33669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.5,
+   "pts": 5.1,
+   "reb": 3.7,
+   "ast": 1.3,
+   "stl": 0.3,
+   "blk": 0.5,
+   "tpm": 0.6,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.6,
+   "ftPct": 64.5
+  },
+  "b": null
  },
  "Blake Griffin": {
   "team": "",
@@ -15062,7 +33709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.9,
+   "pts": 6,
+   "reb": 3.2,
+   "ast": 1.6,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.8,
+   "ftPct": 74.1
+  },
+  "b": null
  },
  "Jalen Harris": {
   "team": "",
@@ -15085,7 +33749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.7,
+   "pts": 6,
+   "reb": 1.1,
+   "ast": 1.1,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 1.1,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 77.8
+  },
+  "b": null
  },
  "Rodney McGruder": {
   "team": "",
@@ -15108,7 +33789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.4,
+   "pts": 5.7,
+   "reb": 2.4,
+   "ast": 1,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.6,
+   "ftPct": 72.7
+  },
+  "b": null
  },
  "Reggie Perry": {
   "team": "",
@@ -15131,7 +33829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.4,
+   "pts": 5.3,
+   "reb": 3.7,
+   "ast": 0.8,
+   "stl": 0.5,
+   "blk": 0.4,
+   "tpm": 0.2,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.4,
+   "ftPct": 67.4
+  },
+  "b": null
  },
  "Edmond Sumner": {
   "team": "",
@@ -15154,7 +33869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.9,
+   "pts": 6,
+   "reb": 1.5,
+   "ast": 1.1,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.6,
+   "ftPct": 78.4
+  },
+  "b": null
  },
  "Sasha Vezenkov": {
   "team": "",
@@ -15177,7 +33909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.2,
+   "pts": 5.4,
+   "reb": 2.3,
+   "ast": 0.5,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44,
+   "ftPct": 80
+  },
+  "b": null
  },
  "Amida Brimah": {
   "team": "",
@@ -15200,7 +33949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.9,
+   "pts": 2.6,
+   "reb": 1.6,
+   "ast": 0.2,
+   "stl": 0,
+   "blk": 1,
+   "tpm": 0,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 62.5,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Kai Jones": {
   "team": "",
@@ -15223,7 +33989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.7,
+   "pts": 4.1,
+   "reb": 2.7,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.6,
+   "tpm": 0.1,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 67.4,
+   "ftPct": 57.1
+  },
+  "b": null
  },
  "Lucas Williamson": {
   "team": "",
@@ -15246,7 +34029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.1,
+   "pts": 4.9,
+   "reb": 2.6,
+   "ast": 1.2,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.3,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Aaron Holiday": {
   "team": "",
@@ -15269,7 +34069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.7,
+   "pts": 5.5,
+   "reb": 1.3,
+   "ast": 1.5,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.9,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.1,
+   "ftPct": 84.7
+  },
+  "b": null
  },
  "Talen Horton-Tucker": {
   "team": "",
@@ -15292,7 +34109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.5,
+   "pts": 6,
+   "reb": 1.6,
+   "ast": 1.7,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.2,
+   "ftPct": 75.1
+  },
+  "b": null
  },
  "Marques Bolden": {
   "team": "",
@@ -15315,7 +34149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.8,
+   "pts": 1.9,
+   "reb": 3,
+   "ast": 0.1,
+   "stl": 1.1,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 56.3,
+   "ftPct": 63.8
+  },
+  "b": null
  },
  "Paul Millsap": {
   "team": "",
@@ -15338,7 +34189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.4,
+   "pts": 4.6,
+   "reb": 3,
+   "ast": 0.9,
+   "stl": 0.4,
+   "blk": 0.4,
+   "tpm": 0.4,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.4,
+   "ftPct": 74.4
+  },
+  "b": null
  },
  "Tyrese Martin": {
   "team": "",
@@ -15361,7 +34229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.9,
+   "pts": 6.3,
+   "reb": 2.8,
+   "ast": 1.4,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.9,
+   "ftPct": 79.6
+  },
+  "b": null
  },
  "Justin Holiday": {
   "team": "",
@@ -15384,7 +34269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.1,
+   "pts": 4.7,
+   "reb": 1.5,
+   "ast": 0.9,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 1.1,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.7,
+   "ftPct": 80
+  },
+  "b": null
  },
  "Damion Baugh": {
   "team": "",
@@ -15407,7 +34309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 20,
+   "pts": 5.9,
+   "reb": 2.7,
+   "ast": 3,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 1.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 32.3,
+   "ftPct": 86.7
+  },
+  "b": null
  },
  "Courtney Lee": {
   "team": "",
@@ -15430,7 +34349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.4,
+   "pts": 4.5,
+   "reb": 1.6,
+   "ast": 0.9,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.7,
+   "ftPct": 72.2
+  },
+  "b": null
  },
  "RaiQuan Gray": {
   "team": "",
@@ -15453,7 +34389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.1,
+   "pts": 4.2,
+   "reb": 1.3,
+   "ast": 1.1,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 58.8,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Doug McDermott": {
   "team": "",
@@ -15476,7 +34429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.2,
+   "pts": 6.8,
+   "reb": 1.4,
+   "ast": 0.8,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 1.5,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.4,
+   "ftPct": 78.5
+  },
+  "b": null
  },
  "Devin Harris": {
   "team": "",
@@ -15499,7 +34469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.8,
+   "pts": 6.3,
+   "reb": 1.6,
+   "ast": 1.8,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.9,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38,
+   "ftPct": 76.1
+  },
+  "b": null
  },
  "Austin Rivers": {
   "team": "",
@@ -15522,7 +34509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19.5,
+   "pts": 5.8,
+   "reb": 1.7,
+   "ast": 1.4,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.2,
+   "ftPct": 69
+  },
+  "b": null
  },
  "Marco Belinelli": {
   "team": "",
@@ -15545,7 +34549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.5,
+   "pts": 6.7,
+   "reb": 1.7,
+   "ast": 1.2,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 1.2,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.3,
+   "ftPct": 86.6
+  },
+  "b": null
  },
  "Amir Johnson": {
   "team": "",
@@ -15568,7 +34589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.4,
+   "pts": 3.9,
+   "reb": 2.9,
+   "ast": 1.2,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0.2,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50.3,
+   "ftPct": 75.6
+  },
+  "b": null
  },
  "Vince Carter": {
   "team": "",
@@ -15591,7 +34629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.6,
+   "pts": 5.6,
+   "reb": 2.1,
+   "ast": 0.9,
+   "stl": 0.4,
+   "blk": 0.4,
+   "tpm": 1.2,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.6,
+   "ftPct": 74.5
+  },
+  "b": null
  },
  "Chasson Randle": {
   "team": "",
@@ -15614,7 +34669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 20.4,
+   "pts": 5.1,
+   "reb": 1.5,
+   "ast": 2.3,
+   "stl": 0.8,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 32.7,
+   "ftPct": 79.4
+  },
+  "b": null
  },
  "E'Twaun Moore": {
   "team": "",
@@ -15637,7 +34709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.4,
+   "pts": 5.9,
+   "reb": 1.7,
+   "ast": 1.2,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.7,
+   "ftPct": 76.4
+  },
+  "b": null
  },
  "Devonte' Graham": {
   "team": "",
@@ -15660,7 +34749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.6,
+   "pts": 5.6,
+   "reb": 1.3,
+   "ast": 2.2,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 1.2,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.5,
+   "ftPct": 79.9
+  },
+  "b": null
  },
  "Dante Cunningham": {
   "team": "",
@@ -15683,7 +34789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.5,
+   "pts": 3,
+   "reb": 2.9,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.5,
+   "ftPct": 77.8
+  },
+  "b": null
  },
  "Troy Williams": {
   "team": "",
@@ -15706,7 +34829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.9,
+   "pts": 5.3,
+   "reb": 2.8,
+   "ast": 0.5,
+   "stl": 0.5,
+   "blk": 0.4,
+   "tpm": 0.7,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.9,
+   "ftPct": 60
+  },
+  "b": null
  },
  "Kent Bazemore": {
   "team": "",
@@ -15729,7 +34869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14,
+   "pts": 4.8,
+   "reb": 2.2,
+   "ast": 1,
+   "stl": 0.7,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.1,
+   "ftPct": 73.3
+  },
+  "b": null
  },
  "Mike Scott": {
   "team": "",
@@ -15752,7 +34909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.7,
+   "pts": 5,
+   "reb": 3,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.7,
+   "ftPct": 73.9
+  },
+  "b": null
  },
  "Jaden Springer": {
   "team": "",
@@ -15775,7 +34949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.5,
+   "pts": 2.9,
+   "reb": 1.6,
+   "ast": 0.6,
+   "stl": 0.5,
+   "blk": 0.7,
+   "tpm": 0.2,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.8,
+   "ftPct": 76.1
+  },
+  "b": null
  },
  "Ian Clark": {
   "team": "",
@@ -15798,7 +34989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.2,
+   "pts": 6.7,
+   "reb": 1.5,
+   "ast": 1.6,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 1.1,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.4,
+   "ftPct": 89.2
+  },
+  "b": null
  },
  "Jeenathan Williams Jr": {
   "team": "",
@@ -15821,7 +35029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.8,
+   "pts": 6.3,
+   "reb": 1.7,
+   "ast": 0.9,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.7,
+   "ftPct": 67.3
+  },
+  "b": null
  },
  "Mike James": {
   "team": "",
@@ -15844,7 +35069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.9,
+   "pts": 5.9,
+   "reb": 1.9,
+   "ast": 3.2,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37,
+   "ftPct": 77.8
+  },
+  "b": null
  },
  "Alex Poythress": {
   "team": "",
@@ -15867,7 +35109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.5,
+   "pts": 5.1,
+   "reb": 3.6,
+   "ast": 0.8,
+   "stl": 0.2,
+   "blk": 0.5,
+   "tpm": 0.4,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 62.1
+  },
+  "b": null
  },
  "Tony Snell": {
   "team": "",
@@ -15890,7 +35149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.5,
+   "pts": 4.1,
+   "reb": 1.7,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.9,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.2,
+   "ftPct": 94.9
+  },
+  "b": null
  },
  "Torrey Craig": {
   "team": "",
@@ -15913,7 +35189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.1,
+   "pts": 3.8,
+   "reb": 2.5,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.4,
+   "tpm": 0.7,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.5,
+   "ftPct": 70.6
+  },
+  "b": null
  },
  "Kareem Lopez": {
   "team": "",
@@ -15936,7 +35229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.3,
+   "pts": 13.3,
+   "reb": 1.2,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.4,
+   "ftPct": 77.3
+  },
+  "b": null
  },
  "Tyson Etienne": {
   "team": "",
@@ -15959,7 +35269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.8,
+   "pts": 6.8,
+   "reb": 1,
+   "ast": 1.5,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 1.6,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.5,
+   "ftPct": 82
+  },
+  "b": null
  },
  "Jaron Blossomgame": {
   "team": "",
@@ -15982,7 +35309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.3,
+   "pts": 4.2,
+   "reb": 3.6,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.9,
+   "ftPct": 76.9
+  },
+  "b": null
  },
  "Jonathon Simmons": {
   "team": "",
@@ -16005,7 +35349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19,
+   "pts": 6.5,
+   "reb": 2.3,
+   "ast": 2.3,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 0.5,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38,
+   "ftPct": 74.2
+  },
+  "b": null
  },
  "Patrick Patterson": {
   "team": "",
@@ -16028,7 +35389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.3,
+   "pts": 5.2,
+   "reb": 2.5,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.2,
+   "ftPct": 76
+  },
+  "b": null
  },
  "Mike Muscala": {
   "team": "",
@@ -16051,7 +35429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.3,
+   "pts": 4.5,
+   "reb": 2.3,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.3,
+   "tpm": 0.9,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.1,
+   "ftPct": 80.7
+  },
+  "b": null
  },
  "Jack Kayil": {
   "team": "",
@@ -16074,7 +35469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.1,
+   "pts": 15.6,
+   "reb": 0.8,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.5,
+   "ftPct": 74.7
+  },
+  "b": null
  },
  "Devin Robinson": {
   "team": "",
@@ -16097,7 +35509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.6,
+   "pts": 4.3,
+   "reb": 1.8,
+   "ast": 0.5,
+   "stl": 0.4,
+   "blk": 0.5,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 59.4,
+   "ftPct": 64.3
+  },
+  "b": null
  },
  "Keita Bates-Diop": {
   "team": "",
@@ -16120,7 +35549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.5,
+   "pts": 4.5,
+   "reb": 2.3,
+   "ast": 0.7,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.3,
+   "ftPct": 73.5
+  },
+  "b": null
  },
  "Andrew Okereke": {
   "team": "",
@@ -16143,7 +35589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz-implausible",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.5,
+   "pts": 15,
+   "reb": 0.8,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.6,
+   "ftPct": 74.5
+  },
+  "b": null
  },
  "Troy Brown Jr.": {
   "team": "",
@@ -16166,7 +35629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14,
+   "pts": 4.4,
+   "reb": 2.6,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.4,
+   "ftPct": 77.8
+  },
+  "b": null
  },
  "Kelly Olynyk": {
   "team": "",
@@ -16189,7 +35669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.8,
+   "pts": 3.8,
+   "reb": 2,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.7,
+   "ftPct": 79.6
+  },
+  "b": null
  },
  "JaKarr Sampson": {
   "team": "",
@@ -16212,7 +35709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.9,
+   "pts": 4.7,
+   "reb": 2.4,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0.4,
+   "tpm": 0.1,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 53.5,
+   "ftPct": 72.5
+  },
+  "b": null
  },
  "Kalin Lucas": {
   "team": "",
@@ -16235,7 +35749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6,
+   "pts": 2,
+   "reb": 3,
+   "ast": 1,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Donta Hall": {
   "team": "",
@@ -16258,7 +35789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.1,
+   "pts": 3.9,
+   "reb": 3.5,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.6,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 69.9,
+   "ftPct": 60.3
+  },
+  "b": null
  },
  "Dion Waiters": {
   "team": "",
@@ -16281,7 +35829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.3,
+   "pts": 6.7,
+   "reb": 1.5,
+   "ast": 1.4,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.4,
+   "ftPct": 72
+  },
+  "b": null
  },
  "Greg Monroe": {
   "team": "",
@@ -16304,7 +35869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.5,
+   "pts": 5,
+   "reb": 4,
+   "ast": 0.9,
+   "stl": 0.4,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 51.9,
+   "ftPct": 58
+  },
+  "b": null
  },
  "Raul Neto": {
   "team": "",
@@ -16327,7 +35909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.5,
+   "pts": 3.9,
+   "reb": 1.1,
+   "ast": 1.6,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.3,
+   "ftPct": 84.3
+  },
+  "b": null
  },
  "Eric Paschall": {
   "team": "",
@@ -16350,7 +35949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.7,
+   "pts": 6.4,
+   "reb": 2.1,
+   "ast": 0.8,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.3,
+   "ftPct": 74.7
+  },
+  "b": null
  },
  "Allonzo Trier": {
   "team": "",
@@ -16373,7 +35989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.1,
+   "pts": 6.1,
+   "reb": 1.4,
+   "ast": 1.1,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.5,
+   "ftPct": 79.7
+  },
+  "b": null
  },
  "Nico Mannion": {
   "team": "",
@@ -16396,7 +36029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.1,
+   "pts": 4.1,
+   "reb": 1.5,
+   "ast": 2.3,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0.7,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 34.5,
+   "ftPct": 82.1
+  },
+  "b": null
  },
  "Dirk Nowitzki": {
   "team": "",
@@ -16419,7 +36069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.6,
+   "pts": 7.3,
+   "reb": 3.1,
+   "ast": 0.7,
+   "stl": 0.2,
+   "blk": 0.4,
+   "tpm": 1.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.9,
+   "ftPct": 78
+  },
+  "b": null
  },
  "JaVale McGee": {
   "team": "",
@@ -16442,7 +36109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.4,
+   "pts": 3.8,
+   "reb": 2.6,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.5,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 60.6,
+   "ftPct": 62.3
+  },
+  "b": null
  },
  "Keshad Johnson": {
   "team": "",
@@ -16465,7 +36149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.7,
+   "pts": 4,
+   "reb": 2.2,
+   "ast": 0.3,
+   "stl": 0.5,
+   "blk": 0.3,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 57.4,
+   "ftPct": 59.3
+  },
+  "b": null
  },
  "Nene Hilario": {
   "team": "",
@@ -16488,7 +36189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13,
+   "pts": 3.6,
+   "reb": 2.9,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 51.7,
+   "ftPct": 66
+  },
+  "b": null
  },
  "Evan Turner": {
   "team": "",
@@ -16511,7 +36229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.8,
+   "pts": 3.6,
+   "reb": 2.3,
+   "ast": 2.1,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.7,
+   "ftPct": 77.6
+  },
+  "b": null
  },
  "Romeo Langford": {
   "team": "",
@@ -16534,7 +36269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19.6,
+   "pts": 5.5,
+   "reb": 2.6,
+   "ast": 0.8,
+   "stl": 0.5,
+   "blk": 0.4,
+   "tpm": 0.5,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.3,
+   "ftPct": 66.9
+  },
+  "b": null
  },
  "Kosta Koufos": {
   "team": "",
@@ -16557,7 +36309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.9,
+   "pts": 3.7,
+   "reb": 4.2,
+   "ast": 0.9,
+   "stl": 0.4,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.7,
+   "ftPct": 41.7
+  },
+  "b": null
  },
  "Jaylen Martin": {
   "team": "",
@@ -16580,7 +36349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.1,
+   "pts": 4.3,
+   "reb": 2.4,
+   "ast": 0.9,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.9,
+   "ftPct": 90
+  },
+  "b": null
  },
  "Dalen Terry": {
   "team": "",
@@ -16603,7 +36389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12,
+   "pts": 3.9,
+   "reb": 1.8,
+   "ast": 1.3,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 0.4,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.3,
+   "ftPct": 63.3
+  },
+  "b": null
  },
  "Ante Zizic": {
   "team": "",
@@ -16626,7 +36429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.1,
+   "pts": 4.3,
+   "reb": 3,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 56.2,
+   "ftPct": 71.8
+  },
+  "b": null
  },
  "Tyler Smith": {
   "team": "",
@@ -16649,7 +36469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.7,
+   "pts": 4.7,
+   "reb": 2.2,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.9,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.5,
+   "ftPct": 72
+  },
+  "b": null
  },
  "McKinley Wright": {
   "team": "",
@@ -16672,7 +36509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.4,
+   "pts": 3.8,
+   "reb": 0.9,
+   "ast": 2.1,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 53.9,
+   "ftPct": 68.4
+  },
+  "b": null
  },
  "Cory Joseph": {
   "team": "",
@@ -16695,7 +36549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.2,
+   "pts": 3.5,
+   "reb": 1.3,
+   "ast": 1.8,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.5,
+   "ftPct": 79.3
+  },
+  "b": null
  },
  "Thabo Sefolosha": {
   "team": "",
@@ -16718,7 +36589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.6,
+   "pts": 2.8,
+   "reb": 2.2,
+   "ast": 0.5,
+   "stl": 0.7,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.4,
+   "ftPct": 54.8
+  },
+  "b": null
  },
  "Raymond Felton": {
   "team": "",
@@ -16741,7 +36629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.5,
+   "pts": 4.3,
+   "reb": 1,
+   "ast": 1.6,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.7,
+   "ftPct": 92.3
+  },
+  "b": null
  },
  "Keaton Wallace": {
   "team": "",
@@ -16764,7 +36669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.1,
+   "pts": 3.4,
+   "reb": 1,
+   "ast": 1.7,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.9,
+   "ftPct": 79.8
+  },
+  "b": null
  },
  "Ekpe Udoh": {
   "team": "",
@@ -16787,7 +36709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.3,
+   "pts": 2.3,
+   "reb": 1.8,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.6,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 69.4,
+   "ftPct": 63.3
+  },
+  "b": null
  },
  "Jerryd Bayless": {
   "team": "",
@@ -16810,7 +36749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19.3,
+   "pts": 6.1,
+   "reb": 1.9,
+   "ast": 3.5,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.7,
+   "ftPct": 57.1
+  },
+  "b": null
  },
  "Khyri Thomas": {
   "team": "",
@@ -16833,7 +36789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.1,
+   "pts": 4.7,
+   "reb": 0.9,
+   "ast": 1.1,
+   "stl": 0.6,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39,
+   "ftPct": 71.2
+  },
+  "b": null
  },
  "MarJon Beauchamp": {
   "team": "",
@@ -16856,7 +36829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.6,
+   "pts": 5.2,
+   "reb": 2.4,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.8,
+   "ftPct": 71.8
+  },
+  "b": null
  },
  "Deyonta Davis": {
   "team": "",
@@ -16879,7 +36869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.2,
+   "pts": 2.8,
+   "reb": 2.7,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 68.2,
+   "ftPct": 60
+  },
+  "b": null
  },
  "Devontae Cacok": {
   "team": "",
@@ -16902,7 +36909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.6,
+   "pts": 3.4,
+   "reb": 2.8,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 57.6,
+   "ftPct": 49.4
+  },
+  "b": null
  },
  "Gabe Vincent": {
   "team": "",
@@ -16925,7 +36949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.6,
+   "pts": 4.9,
+   "reb": 1.1,
+   "ast": 1.5,
+   "stl": 0.6,
+   "blk": 0.1,
+   "tpm": 1.1,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.2,
+   "ftPct": 82.4
+  },
+  "b": null
  },
  "Isaiah Hicks": {
   "team": "",
@@ -16948,7 +36989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.7,
+   "pts": 2.5,
+   "reb": 1.5,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.6,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 80
+  },
+  "b": null
  },
  "Nicolo Melli": {
   "team": "",
@@ -16971,7 +37029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.6,
+   "pts": 3.9,
+   "reb": 2.4,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.9,
+   "ftPct": 74.8
+  },
+  "b": null
  },
  "Jodie Meeks": {
   "team": "",
@@ -16994,7 +37069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.8,
+   "pts": 4.3,
+   "reb": 1,
+   "ast": 0.7,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 53.8,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Darius Bazley": {
   "team": "",
@@ -17017,7 +37109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.9,
+   "pts": 3.9,
+   "reb": 2.3,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.5,
+   "tpm": 0.4,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.5,
+   "ftPct": 67.8
+  },
+  "b": null
  },
  "Killian Tillie": {
   "team": "",
@@ -17040,7 +37149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.8,
+   "pts": 3.6,
+   "reb": 1.7,
+   "ast": 0.6,
+   "stl": 0.5,
+   "blk": 0.5,
+   "tpm": 0.7,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.6,
+   "ftPct": 77.5
+  },
+  "b": null
  },
  "Devin Cannady": {
   "team": "",
@@ -17063,7 +37189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.7,
+   "pts": 4.7,
+   "reb": 0.6,
+   "ast": 0.5,
+   "stl": 0.6,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37,
+   "ftPct": 80.9
+  },
+  "b": null
  },
  "Seth Curry": {
   "team": "",
@@ -17086,7 +37229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.7,
+   "pts": 4.4,
+   "reb": 0.9,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47,
+   "ftPct": 88.5
+  },
+  "b": null
  },
  "Ersan Ilyasova": {
   "team": "",
@@ -17109,7 +37269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.3,
+   "pts": 3.5,
+   "reb": 2.1,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.8,
+   "ftPct": 86.2
+  },
+  "b": null
  },
  "Brandon Goodwin": {
   "team": "",
@@ -17132,7 +37309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.9,
+   "pts": 5.4,
+   "reb": 1.6,
+   "ast": 2.4,
+   "stl": 0.4,
+   "blk": 0,
+   "tpm": 0.6,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.9,
+   "ftPct": 75.6
+  },
+  "b": null
  },
  "Chris Clemons": {
   "team": "",
@@ -17155,7 +37349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.8,
+   "pts": 4.9,
+   "reb": 0.9,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.1,
+   "ftPct": 90.9
+  },
+  "b": null
  },
  "Kenneth Lofton Jr.": {
   "team": "",
@@ -17178,7 +37389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.4,
+   "pts": 5.5,
+   "reb": 2.3,
+   "ast": 1.3,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.9,
+   "ftPct": 62.1
+  },
+  "b": null
  },
  "Jon Leuer": {
   "team": "",
@@ -17201,7 +37429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.8,
+   "pts": 3.8,
+   "reb": 2.4,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 57.9,
+   "ftPct": 74.2
+  },
+  "b": null
  },
  "Yogi Ferrell": {
   "team": "",
@@ -17224,7 +37469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.8,
+   "pts": 4,
+   "reb": 1.1,
+   "ast": 1.4,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.3,
+   "ftPct": 83.8
+  },
+  "b": null
  },
  "Timothe Luwawu-Cabarrot": {
   "team": "",
@@ -17247,7 +37509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.9,
+   "pts": 4.6,
+   "reb": 1.7,
+   "ast": 0.7,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.9,
+   "ftPct": 82.5
+  },
+  "b": null
  },
  "Ibou Badji": {
   "team": "",
@@ -17270,7 +37549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.3,
+   "pts": 1.5,
+   "reb": 2.3,
+   "ast": 0.6,
+   "stl": 0.1,
+   "blk": 0.9,
+   "tpm": 0,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 63.6,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Marko Guduric": {
   "team": "",
@@ -17293,7 +37589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11,
+   "pts": 3.9,
+   "reb": 1.7,
+   "ast": 1,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.5,
+   "ftPct": 92.3
+  },
+  "b": null
  },
  "Alex Len": {
   "team": "",
@@ -17316,7 +37629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.4,
+   "pts": 2.8,
+   "reb": 2.4,
+   "ast": 0.7,
+   "stl": 0.2,
+   "blk": 0.5,
+   "tpm": 0.1,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 54.9,
+   "ftPct": 62.6
+  },
+  "b": null
  },
  "Marquese Chriss": {
   "team": "",
@@ -17339,7 +37669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.2,
+   "pts": 4.5,
+   "reb": 3.7,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.5,
+   "tpm": 0.3,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.7,
+   "ftPct": 63.4
+  },
+  "b": null
  },
  "Elie Okobo": {
   "team": "",
@@ -17362,7 +37709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.1,
+   "pts": 4.1,
+   "reb": 1.5,
+   "ast": 1.9,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.5,
+   "ftPct": 73.2
+  },
+  "b": null
  },
  "Trey Burke": {
   "team": "",
@@ -17385,7 +37749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.5,
+   "pts": 5.1,
+   "reb": 0.8,
+   "ast": 1.3,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.6,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.9,
+   "ftPct": 85.1
+  },
+  "b": null
  },
  "Norchad Omier": {
   "team": "",
@@ -17408,7 +37789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.9,
+   "pts": 2.8,
+   "reb": 1.2,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 70,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Patty Mills": {
   "team": "",
@@ -17431,7 +37829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.1,
+   "pts": 4.3,
+   "reb": 0.8,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.7,
+   "ftPct": 88.6
+  },
+  "b": null
  },
  "Mason Plumlee": {
   "team": "",
@@ -17454,7 +37869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.6,
+   "pts": 2.7,
+   "reb": 2.8,
+   "ast": 1,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 63.1,
+   "ftPct": 60.7
+  },
+  "b": null
  },
  "Anthony Lamb": {
   "team": "",
@@ -17477,7 +37909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 19.3,
+   "pts": 3.9,
+   "reb": 3,
+   "ast": 2.8,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 27.3,
+   "ftPct": 80.4
+  },
+  "b": null
  },
  "Reece Beekman": {
   "team": "",
@@ -17500,7 +37949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13,
+   "pts": 2.6,
+   "reb": 1.1,
+   "ast": 1.8,
+   "stl": 0.9,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 32.7,
+   "ftPct": 76.2
+  },
+  "b": null
  },
  "Brandon Sampson": {
   "team": "",
@@ -17523,7 +37989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.5,
+   "pts": 4.1,
+   "reb": 0.9,
+   "ast": 0.6,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.7,
+   "ftPct": 66.7
+  },
+  "b": null
  },
  "Jamal Crawford": {
   "team": "",
@@ -17546,7 +38029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6,
+   "pts": 3.8,
+   "reb": 0.2,
+   "ast": 2.1,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.7,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.4,
+   "ftPct": 84.6
+  },
+  "b": null
  },
  "Nick Smith Jr.": {
   "team": "",
@@ -17569,7 +38069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.5,
+   "pts": 5.7,
+   "reb": 1,
+   "ast": 1.1,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.9,
+   "ftPct": 83.2
+  },
+  "b": null
  },
  "Rodney Hood": {
   "team": "",
@@ -17592,7 +38109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.6,
+   "pts": 4.1,
+   "reb": 1.4,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.7,
+   "ftPct": 85.8
+  },
+  "b": null
  },
  "Patrick Baldwin Jr.": {
   "team": "",
@@ -17615,7 +38149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.4,
+   "pts": 3.5,
+   "reb": 1.9,
+   "ast": 0.4,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0.8,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.2,
+   "ftPct": 65.1
+  },
+  "b": null
  },
  "Tolu Smith": {
   "team": "",
@@ -17638,7 +38189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9,
+   "pts": 4.7,
+   "reb": 3.2,
+   "ast": 0.4,
+   "stl": 0.1,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 60.1,
+   "ftPct": 66.7
+  },
+  "b": null
  },
  "Chris Chiozza": {
   "team": "",
@@ -17661,7 +38229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.9,
+   "pts": 3,
+   "reb": 1.2,
+   "ast": 2.3,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.2,
+   "ftPct": 77.8
+  },
+  "b": null
  },
  "Maxi Kleber": {
   "team": "",
@@ -17684,7 +38269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11,
+   "pts": 2.6,
+   "reb": 2,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.4,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.2,
+   "ftPct": 72
+  },
+  "b": null
  },
  "David Roddy": {
   "team": "",
@@ -17707,7 +38309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.2,
+   "pts": 3.5,
+   "reb": 1.8,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.9,
+   "ftPct": 82.9
+  },
+  "b": null
  },
  "T.J. Warren": {
   "team": "",
@@ -17730,7 +38349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.9,
+   "pts": 4.2,
+   "reb": 1.4,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.2,
+   "ftPct": 80.2
+  },
+  "b": null
  },
  "Darius Days": {
   "team": "",
@@ -17753,7 +38389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.1,
+   "pts": 3.6,
+   "reb": 1.5,
+   "ast": 0.2,
+   "stl": 0,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.7,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Andre Iguodala": {
   "team": "",
@@ -17776,7 +38429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.2,
+   "pts": 1.8,
+   "reb": 1.5,
+   "ast": 1.4,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0.2,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.6,
+   "ftPct": 61.8
+  },
+  "b": null
  },
  "Alan Williams": {
   "team": "",
@@ -17799,7 +38469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.2,
+   "pts": 3.6,
+   "reb": 3.8,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 61.5,
+   "ftPct": 50
+  },
+  "b": null
  },
  "JT Thor": {
   "team": "",
@@ -17822,7 +38509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.5,
+   "pts": 3.3,
+   "reb": 2.2,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.4,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.5,
+   "ftPct": 64.7
+  },
+  "b": null
  },
  "Damian Jones": {
   "team": "",
@@ -17845,7 +38549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.9,
+   "pts": 2.5,
+   "reb": 1.6,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.3,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 64.8,
+   "ftPct": 74.3
+  },
+  "b": null
  },
  "Tyler Cook": {
   "team": "",
@@ -17868,7 +38589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10,
+   "pts": 3.6,
+   "reb": 2.5,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 64.7,
+   "ftPct": 68.3
+  },
+  "b": null
  },
  "Jose Calderon": {
   "team": "",
@@ -17891,7 +38629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.2,
+   "pts": 2.4,
+   "reb": 1.3,
+   "ast": 2.4,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.5,
+   "ftPct": 81.8
+  },
+  "b": null
  },
  "Yuta Watanabe": {
   "team": "",
@@ -17914,7 +38669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.7,
+   "pts": 4.2,
+   "reb": 2.3,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.7,
+   "ftPct": 61.6
+  },
+  "b": null
  },
  "Zavier Simpson": {
   "team": "",
@@ -17937,7 +38709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12,
+   "pts": 3.1,
+   "reb": 1.5,
+   "ast": 2,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.9,
+   "ftPct": 88.4
+  },
+  "b": null
  },
  "Elijah Bryant": {
   "team": "",
@@ -17960,7 +38749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.3,
+   "pts": 3.7,
+   "reb": 1.4,
+   "ast": 0.7,
+   "stl": 0,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.2,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Trent Forrest": {
   "team": "",
@@ -17983,7 +38789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.9,
+   "pts": 2.4,
+   "reb": 1.4,
+   "ast": 1.8,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.3,
+   "ftPct": 83.9
+  },
+  "b": null
  },
  "Matt Thomas": {
   "team": "",
@@ -18006,7 +38829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.5,
+   "pts": 4.6,
+   "reb": 1.4,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 1,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42,
+   "ftPct": 81.4
+  },
+  "b": null
  },
  "Sharife Cooper": {
   "team": "",
@@ -18029,7 +38869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.1,
+   "pts": 5.6,
+   "reb": 2.2,
+   "ast": 2.6,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 1.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.2,
+   "ftPct": 83.3
+  },
+  "b": null
  },
  "Kira Lewis Jr": {
   "team": "",
@@ -18052,7 +38909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.4,
+   "pts": 3.8,
+   "reb": 1.1,
+   "ast": 1.2,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.7,
+   "ftPct": 85.3
+  },
+  "b": null
  },
  "Bonzie Colson": {
   "team": "",
@@ -18075,7 +38949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.5,
+   "pts": 3.4,
+   "reb": 2.6,
+   "ast": 0.3,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.3,
+   "ftPct": 88.9
+  },
+  "b": null
  },
  "Nassir Little": {
   "team": "",
@@ -18098,7 +38989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.2,
+   "pts": 3.5,
+   "reb": 1.8,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.1,
+   "ftPct": 74.3
+  },
+  "b": null
  },
  "Duane Washington Jr.": {
   "team": "",
@@ -18121,7 +39029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.7,
+   "pts": 7,
+   "reb": 1.1,
+   "ast": 1.6,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 1.2,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.3,
+   "ftPct": 71.1
+  },
+  "b": null
  },
  "Frank Kaminsky": {
   "team": "",
@@ -18144,7 +39069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.7,
+   "pts": 3.1,
+   "reb": 1.5,
+   "ast": 0.7,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.1,
+   "ftPct": 77.6
+  },
+  "b": null
  },
  "Udonis Haslem": {
   "team": "",
@@ -18167,7 +39109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.4,
+   "pts": 3.9,
+   "reb": 2.1,
+   "ast": 0.2,
+   "stl": 0,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 54.2,
+   "ftPct": 81.1
+  },
+  "b": null
  },
  "Isaiah Roby": {
   "team": "",
@@ -18190,7 +39149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.3,
+   "pts": 3.8,
+   "reb": 2.5,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.9,
+   "ftPct": 62.7
+  },
+  "b": null
  },
  "Michael Kidd-Gilchrist": {
   "team": "",
@@ -18213,7 +39189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.2,
+   "pts": 3.2,
+   "reb": 2.5,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.3,
+   "tpm": 0.2,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.1,
+   "ftPct": 77.7
+  },
+  "b": null
  },
  "Julian Washburn": {
   "team": "",
@@ -18236,7 +39229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.3,
+   "pts": 2.1,
+   "reb": 2.1,
+   "ast": 0.7,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.3,
+   "ftPct": 75
+  },
+  "b": null
  },
  "Johnathan Williams": {
   "team": "",
@@ -18259,7 +39269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.5,
+   "pts": 3.5,
+   "reb": 3.3,
+   "ast": 0.4,
+   "stl": 0.1,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 57.8,
+   "ftPct": 55.4
+  },
+  "b": null
  },
  "Bryce McGowens": {
   "team": "",
@@ -18282,7 +39309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15,
+   "pts": 5.6,
+   "reb": 1.6,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.7,
+   "ftPct": 79.7
+  },
+  "b": null
  },
  "Lamar Stevens": {
   "team": "",
@@ -18305,7 +39349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.7,
+   "pts": 3.6,
+   "reb": 1.8,
+   "ast": 0.4,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.9,
+   "ftPct": 73.6
+  },
+  "b": null
  },
  "Meyers Leonard": {
   "team": "",
@@ -18328,7 +39389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9,
+   "pts": 3.2,
+   "reb": 2.4,
+   "ast": 0.4,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.7,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.3,
+   "ftPct": 72.9
+  },
+  "b": null
  },
  "Olivier Sarr": {
   "team": "",
@@ -18351,7 +39429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.8,
+   "pts": 2.3,
+   "reb": 2,
+   "ast": 0.4,
+   "stl": 0.1,
+   "blk": 0.4,
+   "tpm": 0.2,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 59.7,
+   "ftPct": 60.1
+  },
+  "b": null
  },
  "Joakim Noah": {
   "team": "",
@@ -18374,7 +39469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7,
+   "pts": 2.5,
+   "reb": 2.3,
+   "ast": 0.9,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 51.1,
+   "ftPct": 73.3
+  },
+  "b": null
  },
  "Treveon Graham": {
   "team": "",
@@ -18397,7 +39509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.9,
+   "pts": 4.4,
+   "reb": 2.6,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 34.7,
+   "ftPct": 70.2
+  },
+  "b": null
  },
  "Xavier Cooks": {
   "team": "",
@@ -18420,7 +39549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.3,
+   "pts": 2.8,
+   "reb": 2.8,
+   "ast": 0.4,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 60.7,
+   "ftPct": 40
+  },
+  "b": null
  },
  "Troy Caupain": {
   "team": "",
@@ -18443,7 +39589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4,
+   "pts": 2.5,
+   "reb": 0.8,
+   "ast": 1,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.5,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Cody Zeller": {
   "team": "",
@@ -18466,7 +39629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.6,
+   "pts": 3,
+   "reb": 2.4,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 54.5,
+   "ftPct": 69.9
+  },
+  "b": null
  },
  "Nathan Knight": {
   "team": "",
@@ -18489,7 +39669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.7,
+   "pts": 3.7,
+   "reb": 2,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.7,
+   "ftPct": 73.3
+  },
+  "b": null
  },
  "Tremont Waters": {
   "team": "",
@@ -18512,7 +39709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.6,
+   "pts": 2.4,
+   "reb": 0.7,
+   "ast": 1.4,
+   "stl": 0.6,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.4,
+   "ftPct": 96.5
+  },
+  "b": null
  },
  "Wesley Matthews": {
   "team": "",
@@ -18535,7 +39749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.5,
+   "pts": 3.1,
+   "reb": 1.3,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.7,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.4,
+   "ftPct": 79.8
+  },
+  "b": null
  },
  "Amir Coffey": {
   "team": "",
@@ -18558,7 +39789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.7,
+   "pts": 3.7,
+   "reb": 1.1,
+   "ast": 0.7,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.3,
+   "ftPct": 77.9
+  },
+  "b": null
  },
  "R.J. Hunter": {
   "team": "",
@@ -18581,7 +39829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7,
+   "pts": 4.6,
+   "reb": 0.8,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 1.1,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.2,
+   "ftPct": 50
+  },
+  "b": null
  },
  "DeMarre Carroll": {
   "team": "",
@@ -18604,7 +39869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.1,
+   "pts": 4.5,
+   "reb": 2.4,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.8,
+   "ftPct": 72.5
+  },
+  "b": null
  },
  "Vlatko Cancar": {
   "team": "",
@@ -18627,7 +39909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.9,
+   "pts": 2.6,
+   "reb": 1.7,
+   "ast": 0.7,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.9,
+   "ftPct": 84.4
+  },
+  "b": null
  },
  "Lester Quinones": {
   "team": "",
@@ -18650,7 +39949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.3,
+   "pts": 5.2,
+   "reb": 1.7,
+   "ast": 1.3,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.8,
+   "ftPct": 70.5
+  },
+  "b": null
  },
  "Hayden Gray": {
   "team": "",
@@ -18673,7 +39989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.9,
+   "pts": 1.7,
+   "reb": 0,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 66.7,
+   "ftPct": 100
+  },
+  "b": null
  },
  "John Jenkins": {
   "team": "",
@@ -18696,7 +40029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.8,
+   "pts": 4.7,
+   "reb": 1.4,
+   "ast": 0.8,
+   "stl": 0,
+   "blk": 0.1,
+   "tpm": 0.8,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40,
+   "ftPct": 83.3
+  },
+  "b": null
  },
  "Gary Clark": {
   "team": "",
@@ -18719,7 +40069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.9,
+   "pts": 2.3,
+   "reb": 2,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.2,
+   "ftPct": 80.1
+  },
+  "b": null
  },
  "Kyle Lowry": {
   "team": "",
@@ -18742,7 +40109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.7,
+   "pts": 2.5,
+   "reb": 0.9,
+   "ast": 1.3,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.5,
+   "ftPct": 84.8
+  },
+  "b": null
  },
  "Marcus Derrickson": {
   "team": "",
@@ -18765,7 +40149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6,
+   "pts": 4.2,
+   "reb": 1.2,
+   "ast": 0.1,
+   "stl": 0,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.5,
+   "ftPct": 80
+  },
+  "b": null
  },
  "A.J. Lawson": {
   "team": "",
@@ -18788,7 +40189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.4,
+   "pts": 4.4,
+   "reb": 1.7,
+   "ast": 0.4,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.5,
+   "ftPct": 63.1
+  },
+  "b": null
  },
  "Jacob Evans": {
   "team": "",
@@ -18811,7 +40229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.4,
+   "pts": 3.6,
+   "reb": 1.6,
+   "ast": 1.4,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0.4,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.8,
+   "ftPct": 80.5
+  },
+  "b": null
  },
  "Dariq Whitehead": {
   "team": "",
@@ -18834,7 +40269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 13.3,
+   "pts": 5.6,
+   "reb": 1.8,
+   "ast": 0.9,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 1.3,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.8,
+   "ftPct": 58.7
+  },
+  "b": null
  },
  "Khem Birch": {
   "team": "",
@@ -18857,7 +40309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.1,
+   "pts": 2.3,
+   "reb": 1.8,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 53.9,
+   "ftPct": 71
+  },
+  "b": null
  },
  "Troy Daniels": {
   "team": "",
@@ -18880,7 +40349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.3,
+   "pts": 4.5,
+   "reb": 1.1,
+   "ast": 0.4,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.9,
+   "ftPct": 70.4
+  },
+  "b": null
  },
  "Markieff Morris": {
   "team": "",
@@ -18903,7 +40389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.7,
+   "pts": 3.6,
+   "reb": 1.7,
+   "ast": 0.8,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.2,
+   "ftPct": 81.3
+  },
+  "b": null
  },
  "Mychal Mulder": {
   "team": "",
@@ -18926,7 +40429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.9,
+   "pts": 4.7,
+   "reb": 1.2,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 1.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.4,
+   "ftPct": 76.1
+  },
+  "b": null
  },
  "Dylan Windler": {
   "team": "",
@@ -18949,7 +40469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.3,
+   "pts": 2.4,
+   "reb": 0.7,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.6,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 52.9,
+   "ftPct": 80.1
+  },
+  "b": null
  },
  "Miles Plumlee": {
   "team": "",
@@ -18972,7 +40509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.2,
+   "pts": 4.3,
+   "reb": 2.1,
+   "ast": 0.9,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 66.7,
+   "ftPct": 53.3
+  },
+  "b": null
  },
  "Rayjon Tucker": {
   "team": "",
@@ -18995,7 +40549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8,
+   "pts": 3.2,
+   "reb": 1.1,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 52.9,
+   "ftPct": 75.1
+  },
+  "b": null
  },
  "Elijah Hughes": {
   "team": "",
@@ -19018,7 +40589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.1,
+   "pts": 4.7,
+   "reb": 1.7,
+   "ast": 0.9,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 1.1,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.7,
+   "ftPct": 75.7
+  },
+  "b": null
  },
  "Isaiah Stevens": {
   "team": "",
@@ -19041,7 +40629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.2,
+   "pts": 0.8,
+   "reb": 1.6,
+   "ast": 0.8,
+   "stl": 1.1,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 13.4,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Blake Wesley": {
   "team": "",
@@ -19064,7 +40669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.6,
+   "pts": 3.9,
+   "reb": 1.2,
+   "ast": 2,
+   "stl": 0.5,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.5,
+   "ftPct": 59.9
+  },
+  "b": null
  },
  "Dalano Banton": {
   "team": "",
@@ -19087,7 +40709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.3,
+   "pts": 2.8,
+   "reb": 1,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0.3,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.4,
+   "ftPct": 77
+  },
+  "b": null
  },
  "Emanuel Miller": {
   "team": "",
@@ -19110,7 +40749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.2,
+   "pts": 2.6,
+   "reb": 1.3,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.9,
+   "ftPct": 78.6
+  },
+  "b": null
  },
  "Jae Crowder": {
   "team": "",
@@ -19133,7 +40789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.4,
+   "pts": 2.7,
+   "reb": 1.5,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40,
+   "ftPct": 77.5
+  },
+  "b": null
  },
  "Mitchell Creek": {
   "team": "",
@@ -19156,7 +40829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.8,
+   "pts": 3.1,
+   "reb": 1.7,
+   "ast": 0.9,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 71.4
+  },
+  "b": null
  },
  "Caleb Swanigan": {
   "team": "",
@@ -19179,7 +40869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.7,
+   "pts": 2.5,
+   "reb": 3.8,
+   "ast": 0.9,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43,
+   "ftPct": 59.3
+  },
+  "b": null
  },
  "Eric Moreland": {
   "team": "",
@@ -19202,7 +40909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.7,
+   "pts": 1.1,
+   "reb": 3.1,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.9,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Jamorko Pickett": {
   "team": "",
@@ -19225,7 +40949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.9,
+   "pts": 3.1,
+   "reb": 2,
+   "ast": 0.4,
+   "stl": 0,
+   "blk": 0.4,
+   "tpm": 0.8,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Brandon Clarke": {
   "team": "",
@@ -19248,7 +40989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.4,
+   "pts": 3,
+   "reb": 1.7,
+   "ast": 0.4,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 53.6,
+   "ftPct": 60
+  },
+  "b": null
  },
  "Reggie Bullock": {
   "team": "",
@@ -19271,7 +41029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.5,
+   "pts": 2.8,
+   "reb": 1.2,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.3,
+   "ftPct": 83.4
+  },
+  "b": null
  },
  "Boban Marjanovic": {
   "team": "",
@@ -19294,7 +41069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.1,
+   "pts": 3.2,
+   "reb": 2,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 58.3,
+   "ftPct": 70.6
+  },
+  "b": null
  },
  "Drew Timme": {
   "team": "",
@@ -19317,7 +41109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.7,
+   "pts": 3.6,
+   "reb": 1.7,
+   "ast": 0.8,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.7,
+   "ftPct": 59.9
+  },
+  "b": null
  },
  "Channing Frye": {
   "team": "",
@@ -19340,7 +41149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.5,
+   "pts": 3.6,
+   "reb": 1.4,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.9,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.8,
+   "ftPct": 78.6
+  },
+  "b": null
  },
  "Luka Samanic": {
   "team": "",
@@ -19363,7 +41189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.4,
+   "pts": 3.8,
+   "reb": 2,
+   "ast": 0.7,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.4,
+   "ftPct": 71.3
+  },
+  "b": null
  },
  "JD Davison": {
   "team": "",
@@ -19386,7 +41229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8,
+   "pts": 2.7,
+   "reb": 1.3,
+   "ast": 1.4,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.2,
+   "ftPct": 69.6
+  },
+  "b": null
  },
  "Jarell Martin": {
   "team": "",
@@ -19409,7 +41269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.8,
+   "pts": 2.8,
+   "reb": 1.8,
+   "ast": 0.4,
+   "stl": 0.1,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.3,
+   "ftPct": 84.6
+  },
+  "b": null
  },
  "Antonio Blakeney": {
   "team": "",
@@ -19432,7 +41309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 14.5,
+   "pts": 7.3,
+   "reb": 1.9,
+   "ast": 0.7,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.9,
+   "ftPct": 65.8
+  },
+  "b": null
  },
  "Saben Lee": {
   "team": "",
@@ -19455,7 +41349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.7,
+   "pts": 2.9,
+   "reb": 1.1,
+   "ast": 1.4,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40,
+   "ftPct": 74
+  },
+  "b": null
  },
  "Wendell Moore Jr.": {
   "team": "",
@@ -19478,7 +41389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.2,
+   "pts": 1.7,
+   "reb": 1,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.1,
+   "ftPct": 87.5
+  },
+  "b": null
  },
  "John Butler Jr": {
   "team": "",
@@ -19501,7 +41429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.4,
+   "pts": 2.3,
+   "reb": 0.9,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0.5,
+   "tpm": 0.4,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 32.1,
+   "ftPct": 75
+  },
+  "b": null
  },
  "Mouhamadou Gueye": {
   "team": "",
@@ -19524,7 +41469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.7,
+   "pts": 2.2,
+   "reb": 1.2,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.7,
+   "tpm": 0.1,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40,
+   "ftPct": 60.9
+  },
+  "b": null
  },
  "Louis King": {
   "team": "",
@@ -19547,7 +41509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.1,
+   "pts": 3.7,
+   "reb": 1,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46,
+   "ftPct": 54.5
+  },
+  "b": null
  },
  "Isaiah Livers": {
   "team": "",
@@ -19570,7 +41549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.7,
+   "pts": 2.4,
+   "reb": 1.3,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.5,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.9,
+   "ftPct": 75.9
+  },
+  "b": null
  },
  "Kevin McCullar Jr.": {
   "team": "",
@@ -19593,7 +41589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.4,
+   "pts": 1.9,
+   "reb": 1.7,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.4,
+   "ftPct": 80.8
+  },
+  "b": null
  },
  "Sindarius Thornwell": {
   "team": "",
@@ -19616,7 +41629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.3,
+   "pts": 3.1,
+   "reb": 1.1,
+   "ast": 1,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.1,
+   "ftPct": 57.9
+  },
+  "b": null
  },
  "Mfiondu Kabengele": {
   "team": "",
@@ -19639,7 +41669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.6,
+   "pts": 2.2,
+   "reb": 1.5,
+   "ast": 0.2,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.4,
+   "ftPct": 92.1
+  },
+  "b": null
  },
  "Mac McClung": {
   "team": "",
@@ -19662,7 +41709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.5,
+   "pts": 3.1,
+   "reb": 1.1,
+   "ast": 1.6,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 34.7,
+   "ftPct": 74.3
+  },
+  "b": null
  },
  "Tyson Chandler": {
   "team": "",
@@ -19685,7 +41749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.4,
+   "pts": 1.5,
+   "reb": 2.8,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 68.4,
+   "ftPct": 54
+  },
+  "b": null
  },
  "Ignas Brazdeikis": {
   "team": "",
@@ -19708,7 +41789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.5,
+   "pts": 4.6,
+   "reb": 1.8,
+   "ast": 0.9,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.7,
+   "ftPct": 72.6
+  },
+  "b": null
  },
  "Gabe York": {
   "team": "",
@@ -19731,7 +41829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.9,
+   "pts": 3.2,
+   "reb": 0.8,
+   "ast": 1.1,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.7,
+   "ftPct": 65.3
+  },
+  "b": null
  },
  "Grant Riller": {
   "team": "",
@@ -19754,7 +41869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.9,
+   "pts": 2.6,
+   "reb": 0.1,
+   "ast": 0.4,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 66.7,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Lindy Waters III": {
   "team": "",
@@ -19777,7 +41909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.1,
+   "pts": 2.7,
+   "reb": 0.9,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.8,
+   "ftPct": 77.7
+  },
+  "b": null
  },
  "Haywood Highsmith": {
   "team": "",
@@ -19800,7 +41949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.4,
+   "pts": 2.5,
+   "reb": 1.3,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.7,
+   "ftPct": 58.1
+  },
+  "b": null
  },
  "Jules Bernard": {
   "team": "",
@@ -19823,7 +41989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.8,
+   "pts": 3.9,
+   "reb": 1.4,
+   "ast": 0.8,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.3,
+   "ftPct": 55.6
+  },
+  "b": null
  },
  "Udoka Azubuike": {
   "team": "",
@@ -19846,7 +42029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.8,
+   "pts": 2.3,
+   "reb": 2.1,
+   "ast": 0.1,
+   "stl": 0.1,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 71.3,
+   "ftPct": 49.6
+  },
+  "b": null
  },
  "Ed Davis": {
   "team": "",
@@ -19869,7 +42069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.5,
+   "pts": 1.2,
+   "reb": 2.4,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 53.9,
+   "ftPct": 58
+  },
+  "b": null
  },
  "Eugene Omoruyi": {
   "team": "",
@@ -19892,7 +42109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.2,
+   "pts": 4.2,
+   "reb": 2.1,
+   "ast": 0.7,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.5,
+   "ftPct": 60
+  },
+  "b": null
  },
  "Terquavion Smith": {
   "team": "",
@@ -19915,7 +42149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.3,
+   "pts": 3.2,
+   "reb": 0.3,
+   "ast": 0.7,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0.8,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.1,
+   "ftPct": 60
+  },
+  "b": null
  },
  "Jay Scrubb": {
   "team": "",
@@ -19938,7 +42189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.9,
+   "pts": 2.9,
+   "reb": 1.1,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.9,
+   "ftPct": 69.6
+  },
+  "b": null
  },
  "Rondae Hollis-Jefferson": {
   "team": "",
@@ -19961,7 +42229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.1,
+   "pts": 2.7,
+   "reb": 2,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.9,
+   "ftPct": 64.3
+  },
+  "b": null
  },
  "Payton Sandfort": {
   "team": "",
@@ -19984,7 +42269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8,
+   "pts": 4.4,
+   "reb": 1.3,
+   "ast": 0,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.9,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Curtis Jones": {
   "team": "",
@@ -20007,7 +42309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.4,
+   "pts": 2.4,
+   "reb": 0.9,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.5,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.7,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Henri Drell": {
   "team": "",
@@ -20030,7 +42349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.3,
+   "pts": 2.3,
+   "reb": 0.8,
+   "ast": 0.8,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Quinndary Weatherspoon": {
   "team": "",
@@ -20053,7 +42389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.4,
+   "pts": 2.2,
+   "reb": 0.8,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.5,
+   "ftPct": 84.5
+  },
+  "b": null
  },
  "Antonio Reeves": {
   "team": "",
@@ -20076,7 +42429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.4,
+   "pts": 2.7,
+   "reb": 0.7,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.6,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.5,
+   "ftPct": 80
+  },
+  "b": null
  },
  "C.J. Williams": {
   "team": "",
@@ -20099,7 +42469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.9,
+   "pts": 2.4,
+   "reb": 0.5,
+   "ast": 0.7,
+   "stl": 0.4,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 48.6,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Sean McDermott": {
   "team": "",
@@ -20122,7 +42509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.5,
+   "pts": 2.1,
+   "reb": 1,
+   "ast": 0.2,
+   "stl": 0.1,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.4,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Isaiah Mobley": {
   "team": "",
@@ -20145,7 +42549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.6,
+   "pts": 2.2,
+   "reb": 1.3,
+   "ast": 1,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.2,
+   "ftPct": 56
+  },
+  "b": null
  },
  "Damion Lee": {
   "team": "",
@@ -20168,7 +42589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.8,
+   "pts": 2.5,
+   "reb": 0.9,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.5,
+   "ftPct": 91.1
+  },
+  "b": null
  },
  "Billy Garrett": {
   "team": "",
@@ -20191,7 +42629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8,
+   "pts": 3.3,
+   "reb": 0.4,
+   "ast": 0.9,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.7,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Jason Preston": {
   "team": "",
@@ -20214,7 +42669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.5,
+   "pts": 1.9,
+   "reb": 1.6,
+   "ast": 1.7,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.4,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Jake Layman": {
   "team": "",
@@ -20237,7 +42709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.8,
+   "pts": 2.6,
+   "reb": 0.9,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.2,
+   "ftPct": 71.9
+  },
+  "b": null
  },
  "Jackson Rowe": {
   "team": "",
@@ -20260,7 +42749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.8,
+   "pts": 2.9,
+   "reb": 1.4,
+   "ast": 0.5,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.1,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Xavier Moon": {
   "team": "",
@@ -20283,7 +42789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.8,
+   "pts": 2.6,
+   "reb": 1.1,
+   "ast": 1.6,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.2,
+   "ftPct": 56.1
+  },
+  "b": null
  },
  "Gabriel Lundberg": {
   "team": "",
@@ -20306,7 +42829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7,
+   "pts": 2.1,
+   "reb": 1.1,
+   "ast": 1.7,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0.5,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 26.3,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Jermaine Samuels Jr.": {
   "team": "",
@@ -20329,7 +42869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.3,
+   "pts": 1.4,
+   "reb": 0.9,
+   "ast": 0.2,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 64.3,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Joe Ingles": {
   "team": "",
@@ -20352,7 +42909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.7,
+   "pts": 1.6,
+   "reb": 0.7,
+   "ast": 1,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.6,
+   "ftPct": 81
+  },
+  "b": null
  },
  "David Duke Jr.": {
   "team": "",
@@ -20375,7 +42949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.6,
+   "pts": 2.5,
+   "reb": 0.9,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.3,
+   "ftPct": 75
+  },
+  "b": null
  },
  "Theo Pinson": {
   "team": "",
@@ -20398,7 +42989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.1,
+   "pts": 2.3,
+   "reb": 1.3,
+   "ast": 0.9,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 30.8,
+   "ftPct": 91.5
+  },
+  "b": null
  },
  "P.J. Tucker": {
   "team": "",
@@ -20421,7 +43029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8,
+   "pts": 1.3,
+   "reb": 1.3,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.5,
+   "ftPct": 77.6
+  },
+  "b": null
  },
  "Alex Ducas": {
   "team": "",
@@ -20444,7 +43069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6,
+   "pts": 1.7,
+   "reb": 1.2,
+   "ast": 0.2,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.5,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Moses Wright": {
   "team": "",
@@ -20467,7 +43109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.7,
+   "pts": 1.2,
+   "reb": 0.7,
+   "ast": 0.5,
+   "stl": 0,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 25,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Josh Oduro": {
   "team": "",
@@ -20490,7 +43149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.2,
+   "pts": 2.8,
+   "reb": 2.6,
+   "ast": 0.4,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 64.7,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Quincy Pondexter": {
   "team": "",
@@ -20513,7 +43189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.5,
+   "pts": 1.8,
+   "reb": 0.9,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 81
+  },
+  "b": null
  },
  "Ashton Hagans": {
   "team": "",
@@ -20536,7 +43229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16.1,
+   "pts": 2,
+   "reb": 1.1,
+   "ast": 1.4,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 2.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.8,
+   "ftPct": 82.3
+  },
+  "b": null
  },
  "Jeff Green": {
   "team": "",
@@ -20559,7 +43269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.8,
+   "pts": 2.4,
+   "reb": 0.8,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46,
+   "ftPct": 82.1
+  },
+  "b": null
  },
  "Alex Fudge": {
   "team": "",
@@ -20582,7 +43309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.2,
+   "pts": 2.3,
+   "reb": 0.8,
+   "ast": 0,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Tristan Thompson": {
   "team": "",
@@ -20605,7 +43349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.2,
+   "pts": 2.6,
+   "reb": 2.9,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 52.2,
+   "ftPct": 45.5
+  },
+  "b": null
  },
  "Jack White": {
   "team": "",
@@ -20628,7 +43389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8,
+   "pts": 1.6,
+   "reb": 1.8,
+   "ast": 0.3,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 28.3,
+   "ftPct": 66.7
+  },
+  "b": null
  },
  "Onuralp Bitim": {
   "team": "",
@@ -20651,7 +43429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.7,
+   "pts": 3.5,
+   "reb": 1.4,
+   "ast": 0.6,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.1,
+   "ftPct": 80
+  },
+  "b": null
  },
  "Xavier Tillman Sr.": {
   "team": "",
@@ -20674,7 +43469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.1,
+   "pts": 1.7,
+   "reb": 1.4,
+   "ast": 0.4,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 43.9,
+   "ftPct": 56.3
+  },
+  "b": null
  },
  "Jerian Grant": {
   "team": "",
@@ -20697,7 +43509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.2,
+   "pts": 2.5,
+   "reb": 0.7,
+   "ast": 1.1,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39,
+   "ftPct": 69.3
+  },
+  "b": null
  },
  "Trevon Duval": {
   "team": "",
@@ -20720,7 +43549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 2,
+   "pts": 1.7,
+   "reb": 0.3,
+   "ast": 0.7,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 66.7,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Jordan Ford": {
   "team": "",
@@ -20743,7 +43589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.6,
+   "pts": 2,
+   "reb": 0.3,
+   "ast": 0.3,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 57.1,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Ish Wainright": {
   "team": "",
@@ -20766,7 +43629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.7,
+   "pts": 1.8,
+   "reb": 1,
+   "ast": 0.2,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.7,
+   "ftPct": 82.9
+  },
+  "b": null
  },
  "Markus Howard": {
   "team": "",
@@ -20789,7 +43669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.7,
+   "pts": 3.5,
+   "reb": 0.5,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.7,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.2,
+   "ftPct": 84.6
+  },
+  "b": null
  },
  "Carsen Edwards": {
   "team": "",
@@ -20812,7 +43709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.8,
+   "pts": 3.2,
+   "reb": 0.8,
+   "ast": 0.9,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.5,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.6,
+   "ftPct": 80.3
+  },
+  "b": null
  },
  "Kevin Knox II": {
   "team": "",
@@ -20835,7 +43749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6,
+   "pts": 2.6,
+   "reb": 1,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.9,
+   "ftPct": 74.7
+  },
+  "b": null
  },
  "A.J. Griffin": {
   "team": "",
@@ -20858,7 +43789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.5,
+   "pts": 3.1,
+   "reb": 0.9,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38,
+   "ftPct": 92.1
+  },
+  "b": null
  },
  "Alen Smailagic": {
   "team": "",
@@ -20881,7 +43829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.6,
+   "pts": 2.1,
+   "reb": 1.1,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.1,
+   "ftPct": 66.7
+  },
+  "b": null
  },
  "Michael Carter-Williams": {
   "team": "",
@@ -20904,7 +43869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7,
+   "pts": 2.6,
+   "reb": 1.1,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.5,
+   "ftPct": 63.5
+  },
+  "b": null
  },
  "Cassius Winston": {
   "team": "",
@@ -20927,7 +43909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.6,
+   "pts": 2.2,
+   "reb": 0.3,
+   "ast": 0.8,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.7,
+   "ftPct": 93.8
+  },
+  "b": null
  },
  "Dillon Jones": {
   "team": "",
@@ -20950,7 +43949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.6,
+   "pts": 1.3,
+   "reb": 1.1,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 30.5,
+   "ftPct": 86.9
+  },
+  "b": null
  },
  "Jared Harper": {
   "team": "",
@@ -20973,7 +43989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.6,
+   "pts": 3.1,
+   "reb": 0.5,
+   "ast": 1,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35,
+   "ftPct": 81.9
+  },
+  "b": null
  },
  "Corey Brewer": {
   "team": "",
@@ -20996,7 +44029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.2,
+   "pts": 1.4,
+   "reb": 1.2,
+   "ast": 0.4,
+   "stl": 0.6,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 45.3,
+   "ftPct": 52.3
+  },
+  "b": null
  },
  "Axel Toupane": {
   "team": "",
@@ -21019,7 +44069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.7,
+   "pts": 1.5,
+   "reb": 0.7,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.3,
+   "tpm": 0.1,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.4,
+   "ftPct": 71.4
+  },
+  "b": null
  },
  "Jordan Loyd": {
   "team": "",
@@ -21042,7 +44109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.6,
+   "pts": 2.4,
+   "reb": 0.7,
+   "ast": 0.5,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.4,
+   "ftPct": 81.8
+  },
+  "b": null
  },
  "Bismack Biyombo": {
   "team": "",
@@ -21065,7 +44149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.7,
+   "pts": 1.6,
+   "reb": 1.5,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 57.8,
+   "ftPct": 53.6
+  },
+  "b": null
  },
  "T.J. Leaf": {
   "team": "",
@@ -21088,7 +44189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.1,
+   "pts": 1.9,
+   "reb": 1.2,
+   "ast": 0.2,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.3,
+   "ftPct": 66.7
+  },
+  "b": null
  },
  "Jeremiah Martin": {
   "team": "",
@@ -21111,7 +44229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.1,
+   "pts": 3.3,
+   "reb": 0.7,
+   "ast": 0.8,
+   "stl": 0.5,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.2,
+   "ftPct": 59.8
+  },
+  "b": null
  },
  "Jahmir Young": {
   "team": "",
@@ -21134,7 +44269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.2,
+   "pts": 1.7,
+   "reb": 0.4,
+   "ast": 0.7,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 51.3,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Terence Davis": {
   "team": "",
@@ -21157,7 +44309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.1,
+   "pts": 2.2,
+   "reb": 1,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.2,
+   "ftPct": 81.9
+  },
+  "b": null
  },
  "Chaundee Brown": {
   "team": "",
@@ -21180,7 +44349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.7,
+   "pts": 2.9,
+   "reb": 1.5,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.6,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 31.3,
+   "ftPct": 83.3
+  },
+  "b": null
  },
  "Justin Wright-Foreman": {
   "team": "",
@@ -21203,7 +44389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.1,
+   "pts": 3,
+   "reb": 0.8,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35,
+   "ftPct": 75
+  },
+  "b": null
  },
  "Nigel Williams-Goss": {
   "team": "",
@@ -21226,7 +44429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5,
+   "pts": 1.4,
+   "reb": 0.6,
+   "ast": 0.6,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 31.3,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Anthony Tolliver": {
   "team": "",
@@ -21249,7 +44469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.6,
+   "pts": 1.7,
+   "reb": 1.1,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.4,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 32.4,
+   "ftPct": 79.5
+  },
+  "b": null
  },
  "Josh Christopher": {
   "team": "",
@@ -21272,7 +44509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5,
+   "pts": 2.2,
+   "reb": 0.6,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.6,
+   "ftPct": 71.3
+  },
+  "b": null
  },
  "Matthew Dellavedova": {
   "team": "",
@@ -21295,7 +44549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.7,
+   "pts": 1.5,
+   "reb": 0.6,
+   "ast": 1.5,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 32.7,
+   "ftPct": 78.7
+  },
+  "b": null
  },
  "Jared Dudley": {
   "team": "",
@@ -21318,7 +44589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.4,
+   "pts": 1,
+   "reb": 1.2,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.5,
+   "ftPct": 74.8
+  },
+  "b": null
  },
  "Mamadi Diakite": {
   "team": "",
@@ -21341,7 +44629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.1,
+   "pts": 1.5,
+   "reb": 0.8,
+   "ast": 0.2,
+   "stl": 0.1,
+   "blk": 0.2,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 52.9,
+   "ftPct": 68.6
+  },
+  "b": null
  },
  "Justin James": {
   "team": "",
@@ -21364,7 +44669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.6,
+   "pts": 3.6,
+   "reb": 1,
+   "ast": 0.6,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.2,
+   "ftPct": 53.6
+  },
+  "b": null
  },
  "Johnathan Motley": {
   "team": "",
@@ -21387,7 +44709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.1,
+   "pts": 2.1,
+   "reb": 0.9,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 62.2,
+   "ftPct": 64.6
+  },
+  "b": null
  },
  "Harry Giles": {
   "team": "",
@@ -21410,7 +44749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.3,
+   "pts": 2,
+   "reb": 1.4,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 47.8,
+   "ftPct": 60.9
+  },
+  "b": null
  },
  "Juwan Morgan": {
   "team": "",
@@ -21433,7 +44789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.9,
+   "pts": 1.5,
+   "reb": 1.2,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 54.3,
+   "ftPct": 52.7
+  },
+  "b": null
  },
  "Lance Thomas": {
   "team": "",
@@ -21456,7 +44829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.8,
+   "pts": 2.2,
+   "reb": 1.2,
+   "ast": 0.4,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.3,
+   "ftPct": 86.8
+  },
+  "b": null
  },
  "Lachlan Olbrich": {
   "team": "",
@@ -21479,7 +44869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.3,
+   "pts": 2.4,
+   "reb": 3,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.1,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.8,
+   "ftPct": 37.5
+  },
+  "b": null
  },
  "Amari Bailey": {
   "team": "",
@@ -21502,7 +44909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.2,
+   "pts": 2.2,
+   "reb": 0.9,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.3,
+   "ftPct": 85.7
+  },
+  "b": null
  },
  "Tim Frazier": {
   "team": "",
@@ -21525,7 +44949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.8,
+   "pts": 2.5,
+   "reb": 1.5,
+   "ast": 2.8,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 27.8,
+   "ftPct": 53.9
+  },
+  "b": null
  },
  "Naz Long": {
   "team": "",
@@ -21548,7 +44989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.8,
+   "pts": 1.7,
+   "reb": 0.8,
+   "ast": 1.2,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.2,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Maxwell Lewis": {
   "team": "",
@@ -21571,7 +45029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.7,
+   "pts": 2.7,
+   "reb": 1.2,
+   "ast": 0.7,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.8,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33,
+   "ftPct": 68.4
+  },
+  "b": null
  },
  "Mason Jones": {
   "team": "",
@@ -21594,7 +45069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.5,
+   "pts": 1.9,
+   "reb": 0.8,
+   "ast": 0.8,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.1,
+   "ftPct": 71.4
+  },
+  "b": null
  },
  "Jarrod Uthoff": {
   "team": "",
@@ -21617,7 +45109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.5,
+   "pts": 2.3,
+   "reb": 0.7,
+   "ast": 0,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 38.9,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Xavier Sneed": {
   "team": "",
@@ -21640,7 +45149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.2,
+   "pts": 1.7,
+   "reb": 0.9,
+   "ast": 0.5,
+   "stl": 0,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.4,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Malcolm Miller": {
   "team": "",
@@ -21663,7 +45189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.8,
+   "pts": 2.1,
+   "reb": 0.5,
+   "ast": 0.2,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42,
+   "ftPct": 58
+  },
+  "b": null
  },
  "Jimmer Fredette": {
   "team": "",
@@ -21686,7 +45229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.4,
+   "pts": 2.5,
+   "reb": 0.8,
+   "ast": 0.9,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 27.6,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Quincy Acy": {
   "team": "",
@@ -21709,7 +45269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.2,
+   "pts": 1.3,
+   "reb": 1.9,
+   "ast": 0.6,
+   "stl": 0.1,
+   "blk": 0.3,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 22.2,
+   "ftPct": 70
+  },
+  "b": null
  },
  "Didi Louzada": {
   "team": "",
@@ -21732,7 +45309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.8,
+   "pts": 2,
+   "reb": 0.9,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.5,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 30.1,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Cam Reynolds": {
   "team": "",
@@ -21755,7 +45349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.5,
+   "pts": 2.4,
+   "reb": 0.8,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.5,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37,
+   "ftPct": 88.9
+  },
+  "b": null
  },
  "Kevon Harris": {
   "team": "",
@@ -21778,7 +45389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3,
+   "pts": 1.5,
+   "reb": 0.7,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 59.4,
+   "ftPct": 75.6
+  },
+  "b": null
  },
  "TyTy Washington Jr.": {
   "team": "",
@@ -21801,7 +45429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.5,
+   "pts": 1.5,
+   "reb": 0.5,
+   "ast": 0.8,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.4,
+   "ftPct": 52
+  },
+  "b": null
  },
  "Deng Adel": {
   "team": "",
@@ -21824,7 +45469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10,
+   "pts": 1.6,
+   "reb": 1,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 30.6,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Dzanan Musa": {
   "team": "",
@@ -21847,7 +45509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.2,
+   "pts": 5.4,
+   "reb": 1.9,
+   "ast": 0.9,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 1.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.5,
+   "ftPct": 53
+  },
+  "b": null
  },
  "Tariq Owens": {
   "team": "",
@@ -21870,7 +45549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5,
+   "pts": 1.3,
+   "reb": 1,
+   "ast": 0,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 20,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Sean Pedulla": {
   "team": "",
@@ -21893,7 +45589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7,
+   "pts": 2.9,
+   "reb": 0.7,
+   "ast": 1.1,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.7,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.3,
+   "ftPct": 0
+  },
+  "b": null
  },
  "J.R. Smith": {
   "team": "",
@@ -21916,7 +45629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 8.2,
+   "pts": 2.2,
+   "reb": 0.6,
+   "ast": 0.5,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.1,
+   "ftPct": 87.2
+  },
+  "b": null
  },
  "Miles Norris": {
   "team": "",
@@ -21939,7 +45669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.8,
+   "pts": 1.4,
+   "reb": 1.8,
+   "ast": 0,
+   "stl": 0.4,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 22.2,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Cristiano Felicio": {
   "team": "",
@@ -21962,7 +45709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.6,
+   "pts": 1.2,
+   "reb": 1.3,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 56.6,
+   "ftPct": 63
+  },
+  "b": null
  },
  "Brodric Thomas": {
   "team": "",
@@ -21985,7 +45749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5,
+   "pts": 1.7,
+   "reb": 0.7,
+   "ast": 0.6,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40.5,
+   "ftPct": 64.3
+  },
+  "b": null
  },
  "Alex Antetokounmpo": {
   "team": "",
@@ -22008,7 +45789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.4,
+   "pts": 3.2,
+   "reb": 1,
+   "ast": 0.2,
+   "stl": 0,
+   "blk": 0.2,
+   "tpm": 0.3,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.5,
+   "ftPct": 73.3
+  },
+  "b": null
  },
  "Malik Williams": {
   "team": "",
@@ -22031,7 +45829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.2,
+   "pts": 1.6,
+   "reb": 3.3,
+   "ast": 0.2,
+   "stl": 0.3,
+   "blk": 0.3,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 26.5,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Thomas Welsh": {
   "team": "",
@@ -22054,7 +45869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.6,
+   "pts": 1.8,
+   "reb": 0.4,
+   "ast": 0.5,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 53.8,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Nate Darling": {
   "team": "",
@@ -22077,7 +45909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.7,
+   "pts": 1.3,
+   "reb": 0.1,
+   "ast": 0.1,
+   "stl": 0,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 28.6,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Usman Garuba": {
   "team": "",
@@ -22100,7 +45949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3,
+   "pts": 0.6,
+   "reb": 1,
+   "ast": 0.2,
+   "stl": 0.1,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 30.4,
+   "ftPct": 55.5
+  },
+  "b": null
  },
  "Josh Reaves": {
   "team": "",
@@ -22123,7 +45989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.2,
+   "pts": 1.8,
+   "reb": 0.7,
+   "ast": 0.7,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.3,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Dereon Seabron": {
   "team": "",
@@ -22146,7 +46029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7,
+   "pts": 2.1,
+   "reb": 0.7,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.7,
+   "ftPct": 83.3
+  },
+  "b": null
  },
  "Malik Fitts": {
   "team": "",
@@ -22169,7 +46069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.2,
+   "pts": 1.3,
+   "reb": 1.1,
+   "ast": 0.2,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.9,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Emoni Bates": {
   "team": "",
@@ -22192,7 +46109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.7,
+   "pts": 2.7,
+   "reb": 0.7,
+   "ast": 0.6,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.7,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 32.7,
+   "ftPct": 25
+  },
+  "b": null
  },
  "Isaac Bonga": {
   "team": "",
@@ -22215,7 +46149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.6,
+   "pts": 0.9,
+   "reb": 0.7,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 29.8,
+   "ftPct": 65
+  },
+  "b": null
  },
  "Jawun Evans": {
   "team": "",
@@ -22238,7 +46189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.8,
+   "pts": 0.6,
+   "reb": 1.3,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 21.4,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Keljin Blevins": {
   "team": "",
@@ -22261,7 +46229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.3,
+   "pts": 2.4,
+   "reb": 1.5,
+   "ast": 0.6,
+   "stl": 0.4,
+   "blk": 0,
+   "tpm": 0.5,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 28.1,
+   "ftPct": 54.6
+  },
+  "b": null
  },
  "Georgios Kalaitzakis": {
   "team": "",
@@ -22284,7 +46269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 12.8,
+   "pts": 5.1,
+   "reb": 1.3,
+   "ast": 0.7,
+   "stl": 0.7,
+   "blk": 0.1,
+   "tpm": 0.6,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 46.3,
+   "ftPct": 46.7
+  },
+  "b": null
  },
  "James Nunnally": {
   "team": "",
@@ -22307,7 +46309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.3,
+   "pts": 1.8,
+   "reb": 0.6,
+   "ast": 0.3,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 36.7,
+   "ftPct": 74.2
+  },
+  "b": null
  },
  "Thanasis Antetokounmpo": {
   "team": "",
@@ -22330,7 +46349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.3,
+   "pts": 1.3,
+   "reb": 0.8,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 49.7,
+   "ftPct": 51.7
+  },
+  "b": null
  },
  "Charlie Brown": {
   "team": "",
@@ -22353,7 +46389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.7,
+   "pts": 1.1,
+   "reb": 0.5,
+   "ast": 0.1,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0.2,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 26.5,
+   "ftPct": 94.6
+  },
+  "b": null
  },
  "Nik Stauskas": {
   "team": "",
@@ -22376,7 +46429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.8,
+   "pts": 2.1,
+   "reb": 0.5,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 37.9,
+   "ftPct": 73.2
+  },
+  "b": null
  },
  "Garrett Temple": {
   "team": "",
@@ -22399,7 +46469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.3,
+   "pts": 0.9,
+   "reb": 0.4,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.6,
+   "ftPct": 75.9
+  },
+  "b": null
  },
  "Kendall Brown": {
   "team": "",
@@ -22422,7 +46509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.2,
+   "pts": 1.2,
+   "reb": 0.5,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 54.9,
+   "ftPct": 59
+  },
+  "b": null
  },
  "Dewan Hernandez": {
   "team": "",
@@ -22445,7 +46549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.7,
+   "pts": 2.3,
+   "reb": 2.3,
+   "ast": 0.5,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.7,
+   "ftPct": 60
+  },
+  "b": null
  },
  "James Johnson": {
   "team": "",
@@ -22468,7 +46589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3,
+   "pts": 0.9,
+   "reb": 0.5,
+   "ast": 0.4,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41.1,
+   "ftPct": 60.6
+  },
+  "b": null
  },
  "Rawle Alkins": {
   "team": "",
@@ -22491,7 +46629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9,
+   "pts": 2.8,
+   "reb": 2,
+   "ast": 1,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.3,
+   "ftPct": 66.7
+  },
+  "b": null
  },
  "Yante Maten": {
   "team": "",
@@ -22514,7 +46669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.1,
+   "pts": 0.9,
+   "reb": 1.4,
+   "ast": 0,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 25,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Justin Minaya": {
   "team": "",
@@ -22537,7 +46709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.3,
+   "pts": 0.9,
+   "reb": 0.7,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.1,
+   "ftPct": 25.5
+  },
+  "b": null
  },
  "Jalen Hood-Schifino": {
   "team": "",
@@ -22560,7 +46749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 17.2,
+   "pts": 5.6,
+   "reb": 1.8,
+   "ast": 1.6,
+   "stl": 0.4,
+   "blk": 0.3,
+   "tpm": 0.5,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 28.9,
+   "ftPct": 66.9
+  },
+  "b": null
  },
  "Admiral Schofield": {
   "team": "",
@@ -22583,7 +46789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.7,
+   "pts": 1.2,
+   "reb": 0.6,
+   "ast": 0.2,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 41,
+   "ftPct": 66.4
+  },
+  "b": null
  },
  "Trevor Hudgins": {
   "team": "",
@@ -22606,7 +46829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.7,
+   "pts": 1.8,
+   "reb": 0,
+   "ast": 0.6,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 22.2,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Greg Brown": {
   "team": "",
@@ -22629,7 +46869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.2,
+   "pts": 2.1,
+   "reb": 1.3,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.4,
+   "tpm": 0.1,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.4,
+   "ftPct": 47.5
+  },
+  "b": null
  },
  "Tyler Lydon": {
   "team": "",
@@ -22652,7 +46909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.7,
+   "pts": 0.9,
+   "reb": 0.7,
+   "ast": 0.2,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 33.3
+  },
+  "b": null
  },
  "Kyle Alexander": {
   "team": "",
@@ -22675,7 +46949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.1,
+   "pts": 0.9,
+   "reb": 1.4,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Jack McVeigh": {
   "team": "",
@@ -22698,7 +46989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.8,
+   "pts": 1.6,
+   "reb": 0.6,
+   "ast": 0.1,
+   "stl": 0,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 29.4,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Carlik Jones": {
   "team": "",
@@ -22721,7 +47029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.7,
+   "pts": 1.8,
+   "reb": 0.7,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0.6,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 22.9,
+   "ftPct": 76.6
+  },
+  "b": null
  },
  "Yves Pons": {
   "team": "",
@@ -22744,7 +47069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.9,
+   "pts": 1.1,
+   "reb": 1,
+   "ast": 0.1,
+   "stl": 0.1,
+   "blk": 0.3,
+   "tpm": 0.2,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 31.3,
+   "ftPct": 0
+  },
+  "b": null
  },
  "R.J. Nembhard Jr.": {
   "team": "",
@@ -22767,7 +47109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.5,
+   "pts": 1.1,
+   "reb": 0.5,
+   "ast": 0.9,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.3,
+   "ftPct": 75
+  },
+  "b": null
  },
  "Vernon Carey Jr.": {
   "team": "",
@@ -22790,7 +47149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 2.6,
+   "pts": 0.9,
+   "reb": 0.8,
+   "ast": 0.1,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.2,
+   "ftPct": 60.5
+  },
+  "b": null
  },
  "Timmy Allen": {
   "team": "",
@@ -22813,7 +47189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.8,
+   "pts": 1.1,
+   "reb": 1.5,
+   "ast": 0.4,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 26.1,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Kevin Hervey": {
   "team": "",
@@ -22836,7 +47229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.2,
+   "pts": 1.7,
+   "reb": 1.2,
+   "ast": 0.5,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 25.9,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Adam Mokoka": {
   "team": "",
@@ -22859,7 +47269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4,
+   "pts": 1.1,
+   "reb": 0.4,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 39.4,
+   "ftPct": 33.4
+  },
+  "b": null
  },
  "Isaiah Thomas": {
   "team": "",
@@ -22882,7 +47309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.2,
+   "pts": 1.6,
+   "reb": 0.2,
+   "ast": 0.4,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.4,
+   "ftPct": 77.3
+  },
+  "b": null
  },
  "Jerome Robinson": {
   "team": "",
@@ -22905,7 +47349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.7,
+   "pts": 1.2,
+   "reb": 0.4,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 34,
+   "ftPct": 69
+  },
+  "b": null
  },
  "Anton Watson": {
   "team": "",
@@ -22928,7 +47389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 2.5,
+   "pts": 0.9,
+   "reb": 0.3,
+   "ast": 0.2,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 44.4,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Isaac Humphries": {
   "team": "",
@@ -22951,7 +47429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.3,
+   "pts": 2,
+   "reb": 1.4,
+   "ast": 0,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 28.6,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Ulrich Chomche": {
   "team": "",
@@ -22974,7 +47469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.6,
+   "pts": 0.7,
+   "reb": 1.1,
+   "ast": 0.3,
+   "stl": 0,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Marial Shayok": {
   "team": "",
@@ -22997,7 +47509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.2,
+   "pts": 2.4,
+   "reb": 1.6,
+   "ast": 0.2,
+   "stl": 0,
+   "blk": 0.2,
+   "tpm": 0.4,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 25,
+   "ftPct": 75
+  },
+  "b": null
  },
  "Max Shulga": {
   "team": "",
@@ -23020,7 +47549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.3,
+   "pts": 0.6,
+   "reb": 0.5,
+   "ast": 0.2,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 25,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Keyontae Johnson": {
   "team": "",
@@ -23043,7 +47589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.6,
+   "pts": 1.1,
+   "reb": 1,
+   "ast": 0.4,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 31.3,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Tyrell Terry": {
   "team": "",
@@ -23066,7 +47629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 1.5,
+   "pts": 0.7,
+   "reb": 0.1,
+   "ast": 0.1,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 68.1,
+   "ftPct": 33.3
+  },
+  "b": null
  },
  "Tyler Cavanaugh": {
   "team": "",
@@ -23089,7 +47669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.5,
+   "pts": 0.8,
+   "reb": 0.7,
+   "ast": 0.1,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 30,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Donovan Williams": {
   "team": "",
@@ -23112,7 +47709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 2.1,
+   "pts": 2,
+   "reb": 1,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 40,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Zhaire Smith": {
   "team": "",
@@ -23135,7 +47749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.6,
+   "pts": 1.4,
+   "reb": 0.4,
+   "ast": 0.3,
+   "stl": 0.3,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.8,
+   "ftPct": 59.1
+  },
+  "b": null
  },
  "Tyler Zeller": {
   "team": "",
@@ -23158,7 +47789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 2,
+   "pts": 1,
+   "reb": 1.3,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 31.9,
+   "ftPct": 77.8
+  },
+  "b": null
  },
  "Luc Mbah a Moute": {
   "team": "",
@@ -23181,7 +47829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.3,
+   "pts": 1.7,
+   "reb": 0.6,
+   "ast": 0.1,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.6,
+   "ftPct": 44.9
+  },
+  "b": null
  },
  "Myles Powell": {
   "team": "",
@@ -23204,7 +47869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.7,
+   "pts": 1.2,
+   "reb": 0.5,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 29.4,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Joe Chealey": {
   "team": "",
@@ -23227,7 +47909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.5,
+   "pts": 1,
+   "reb": 0,
+   "ast": 0.5,
+   "stl": 0.4,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 21.3,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Jesse Edwards": {
   "team": "",
@@ -23250,7 +47949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 2.3,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0.5,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Dairis Bertans": {
   "team": "",
@@ -23273,7 +47989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 10.8,
+   "pts": 2.2,
+   "reb": 0.6,
+   "ast": 0.6,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.6,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 25.5,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Braxton Key": {
   "team": "",
@@ -23296,7 +48029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.6,
+   "pts": 1.3,
+   "reb": 0.8,
+   "ast": 0.2,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 29.6,
+   "ftPct": 62.5
+  },
+  "b": null
  },
  "Jared Terrell": {
   "team": "",
@@ -23319,7 +48069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.4,
+   "pts": 2.1,
+   "reb": 0.3,
+   "ast": 0.8,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.7,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 31.6,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Joe Wieskamp": {
   "team": "",
@@ -23342,7 +48109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.5,
+   "pts": 1.3,
+   "reb": 0.4,
+   "ast": 0.3,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 28.5,
+   "ftPct": 53.8
+  },
+  "b": null
  },
  "Ty-Shon Alexander": {
   "team": "",
@@ -23365,7 +48149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.2,
+   "pts": 0.6,
+   "reb": 0.7,
+   "ast": 0.4,
+   "stl": 0,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 25,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Antonius Cleveland": {
   "team": "",
@@ -23388,7 +48189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.2,
+   "pts": 1,
+   "reb": 0.6,
+   "ast": 0.1,
+   "stl": 0.1,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 28.6,
+   "ftPct": 60
+  },
+  "b": null
  },
  "Feron Hunt": {
   "team": "",
@@ -23411,7 +48229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.2,
+   "pts": 0,
+   "reb": 0.5,
+   "ast": 0.5,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Tosan Evbuomwan": {
   "team": "",
@@ -23434,7 +48269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 1.5,
+   "pts": 0.3,
+   "reb": 0.3,
+   "ast": 0.1,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 34.5,
+   "ftPct": 73.1
+  },
+  "b": null
  },
  "Melvin Frazier": {
   "team": "",
@@ -23457,7 +48309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 11.1,
+   "pts": 3.4,
+   "reb": 1.1,
+   "ast": 0.2,
+   "stl": 0.4,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.8,
+   "ftPct": 47.8
+  },
+  "b": null
  },
  "Tyler Bey": {
   "team": "",
@@ -23480,7 +48349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.9,
+   "pts": 1,
+   "reb": 1,
+   "ast": 0.2,
+   "stl": 0,
+   "blk": 0.1,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 31.8,
+   "ftPct": 60
+  },
+  "b": null
  },
  "Josh Gray": {
   "team": "",
@@ -23503,7 +48389,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.6,
+   "pts": 0.6,
+   "reb": 0.6,
+   "ast": 0.6,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 1.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Vincent Edwards": {
   "team": "",
@@ -23526,7 +48429,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.2,
+   "pts": 1.2,
+   "reb": 0.8,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.4,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 25,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Brian Bowen II": {
   "team": "",
@@ -23549,7 +48469,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 2.5,
+   "pts": 0.5,
+   "reb": 0.5,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 27.7,
+   "ftPct": 100
+  },
+  "b": null
  },
  "Toby Okani": {
   "team": "",
@@ -23572,7 +48509,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 15.1,
+   "pts": 4.2,
+   "reb": 1.5,
+   "ast": 0.4,
+   "stl": 0.3,
+   "blk": 0.2,
+   "tpm": 0.6,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 35.7,
+   "ftPct": 12.5
+  },
+  "b": null
  },
  "Robert Woodard": {
   "team": "",
@@ -23595,7 +48549,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.5,
+   "pts": 1.1,
+   "reb": 1.1,
+   "ast": 0.2,
+   "stl": 0,
+   "blk": 0.2,
+   "tpm": 0.1,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 27.3,
+   "ftPct": 50.7
+  },
+  "b": null
  },
  "Isaiah Todd": {
   "team": "",
@@ -23618,7 +48589,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 7.3,
+   "pts": 1.5,
+   "reb": 1.3,
+   "ast": 0.4,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 21.7,
+   "ftPct": 52.5
+  },
+  "b": null
  },
  "Trevor Keels": {
   "team": "",
@@ -23641,7 +48629,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 1.9,
+   "pts": 0.9,
+   "reb": 0.4,
+   "ast": 0,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 25,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Scottie Lewis": {
   "team": "",
@@ -23664,7 +48669,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.3,
+   "pts": 0.5,
+   "reb": 0,
+   "ast": 0.5,
+   "stl": 0.5,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Jalen Bridges": {
   "team": "",
@@ -23687,7 +48709,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.8,
+   "pts": 1.1,
+   "reb": 0.5,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 28.6,
+   "ftPct": 75
+  },
+  "b": null
  },
  "Nate Hinton": {
   "team": "",
@@ -23710,7 +48749,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5,
+   "pts": 1.3,
+   "reb": 0.7,
+   "ast": 0.4,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0.2,
+   "tov": 0.9,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 23.4,
+   "ftPct": 74.7
+  },
+  "b": null
  },
  "Andrew Funk": {
   "team": "",
@@ -23733,7 +48789,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 2.7,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0.2,
+   "blk": 0.2,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Marko Simonovic": {
   "team": "",
@@ -23756,7 +48829,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 2.8,
+   "pts": 1.1,
+   "reb": 0.5,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 27.5,
+   "ftPct": 67.1
+  },
+  "b": null
  },
  "Kostas Antetokounmpo": {
   "team": "",
@@ -23779,7 +48869,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 3.7,
+   "pts": 1,
+   "reb": 0.8,
+   "ast": 0.2,
+   "stl": 0.2,
+   "blk": 0.1,
+   "tpm": 0,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 42.2,
+   "ftPct": 48.5
+  },
+  "b": null
  },
  "Anderson Varejao": {
   "team": "",
@@ -23802,7 +48909,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.3,
+   "pts": 2.3,
+   "reb": 3.5,
+   "ast": 0.5,
+   "stl": 0,
+   "blk": 0.4,
+   "tpm": 0,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 25,
+   "ftPct": 55.6
+  },
+  "b": null
  },
  "Seth Lundy": {
   "team": "",
@@ -23825,7 +48949,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 5.8,
+   "pts": 1.6,
+   "reb": 0.8,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 23.5,
+   "ftPct": 75
+  },
+  "b": null
  },
  "Devon Hall": {
   "team": "",
@@ -23848,7 +48989,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.7,
+   "pts": 1.7,
+   "reb": 0.6,
+   "ast": 1.1,
+   "stl": 0.3,
+   "blk": 0.1,
+   "tpm": 0.3,
+   "tov": 0.4,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 20,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Michael Frazier": {
   "team": "",
@@ -23871,7 +49029,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 9.3,
+   "pts": 1.7,
+   "reb": 0.6,
+   "ast": 0.1,
+   "stl": 0.1,
+   "blk": 0,
+   "tpm": 0.3,
+   "tov": 0.3,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 24.1,
+   "ftPct": 64.3
+  },
+  "b": null
  },
  "Vic Law": {
   "team": "",
@@ -23894,7 +49069,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.7,
+   "pts": 1.6,
+   "reb": 1.2,
+   "ast": 0.3,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.1,
+   "tov": 0.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 33.3,
+   "ftPct": 33.3
+  },
+  "b": null
  },
  "David Johnson": {
   "team": "",
@@ -23917,7 +49109,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 1,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Arnoldas Kulboka": {
   "team": "",
@@ -23940,7 +49149,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 2.6,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Angel Delgado": {
   "team": "",
@@ -23963,7 +49189,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.2,
+   "pts": 1.2,
+   "reb": 1.6,
+   "ast": 0,
+   "stl": 0.4,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 20,
+   "ftPct": 50
+  },
+  "b": null
  },
  "Donte Grantham": {
   "team": "",
@@ -23986,7 +49229,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 0.7,
+   "pts": 0,
+   "reb": 0,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Donatas Motiejunas": {
   "team": "",
@@ -24009,7 +49269,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 4.3,
+   "pts": 2,
+   "reb": 1,
+   "ast": 0.3,
+   "stl": 0,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 1,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 50,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Chance Comanche": {
   "team": "",
@@ -24032,7 +49309,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.7,
+   "pts": 2.3,
+   "reb": 1,
+   "ast": 0,
+   "stl": 0,
+   "blk": 0.3,
+   "tpm": 0,
+   "tov": 0,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 60,
+   "ftPct": 25
+  },
+  "b": null
  },
  "William Howard": {
   "team": "",
@@ -24055,7 +49349,24 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 6.1,
+   "pts": 0,
+   "reb": 0.9,
+   "ast": 0.5,
+   "stl": 0,
+   "blk": 0,
+   "tpm": 0,
+   "tov": 0.5,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 0,
+   "ftPct": 0
+  },
+  "b": null
  },
  "Josh Hall": {
   "team": "",
@@ -24078,6 +49389,23 @@ const PROJECTIONS_CONSENSUS = {
   "pctOnly": true,
   "sources": "beyaz",
   "spreadPts": null,
-  "spreadMin": null
+  "spreadMin": null,
+  "a": {
+   "min": 16,
+   "pts": 4.1,
+   "reb": 2.8,
+   "ast": 1.3,
+   "stl": 0.2,
+   "blk": 0,
+   "tpm": 0.2,
+   "tov": 1.2,
+   "fga": 0,
+   "fgm": 0,
+   "fta": 0,
+   "ftm": 0,
+   "fgPct": 30.3,
+   "ftPct": 50
+  },
+  "b": null
  }
 };

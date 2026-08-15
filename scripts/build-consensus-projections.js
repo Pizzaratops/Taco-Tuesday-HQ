@@ -65,6 +65,35 @@ const EXTRA_ALIASES = {
 };
 
 const round = (v, d = 2) => Math.round(v * Math.pow(10, d)) / Math.pow(10, d);
+
+// Kompakter Wertesatz einer einzelnen Quelle -- reicht aus, um daraus
+// spaeter einen vollstaendigen 9-Cat-Z-Score zu rechnen.
+// Beyaz' Baseline hat keine eigenen Wurfversuche (nur Prozente), deshalb
+// werden dort die BBM-Versuche als Volumen-Naeherung mitgegeben. Ohne
+// Volumen liesse sich der FG%/FT%-Impact gar nicht bestimmen -- der
+// Prozentwert allein sagt nichts darueber, wie stark er ins Gewicht faellt.
+function srcVals(o, fgaFallback, ftaFallback) {
+  if (!o) return null;
+  const fga = (o.fga > 0 ? o.fga : (fgaFallback || 0));
+  const fta = (o.fta > 0 ? o.fta : (ftaFallback || 0));
+  const fgPct = o.fgPct || 0, ftPct = o.ftPct || 0;
+  return {
+    min: round(o.min || 0, 1),
+    pts: round(o.pts || 0, 1),
+    reb: round(o.reb || 0, 1),
+    ast: round(o.ast || 0, 1),
+    stl: round(o.stl || 0, 2),
+    blk: round(o.blk || 0, 2),
+    tpm: round(o.tpm || 0, 2),
+    tov: round((o.tov !== undefined ? o.tov : o.to) || 0, 2),
+    fga: round(fga, 2),
+    fgm: round(o.fgm > 0 ? o.fgm : fgPct / 100 * fga, 2),
+    fta: round(fta, 2),
+    ftm: round(o.ftm > 0 ? o.ftm : ftPct / 100 * fta, 2),
+    fgPct: round(fgPct, 1),
+    ftPct: round(ftPct, 1),
+  };
+}
 const avg = (a, b) => (a + b) / 2;
 
 // PLAUSIBILITAETSPRUEFUNG
@@ -132,6 +161,7 @@ function main() {
         fga: round(b.fga, 2), fgm: round(b.fgm, 2),
         fta: round(b.fta, 2), ftm: round(b.ftm, 2),
         sources: 'bbm-baseline-implausible', spreadPts: null, spreadMin: null,
+        a: null, b: srcVals(b, b.fga, b.fta),
       };
     } else if (m) {
       usedBaselineNames.add(mineName);
@@ -167,6 +197,14 @@ function main() {
         // genau dafuer ist ein Konsens da.
         spreadPts: round(Math.abs((m.pts || 0) - (b.pts || 0)), 1),
         spreadMin: round(Math.abs((m.min || 0) - (b.min || 0)), 1),
+        // ROHWERTE BEIDER QUELLEN, getrennt aufbewahrt.
+        // Nur so kann die Seite fuer jede Quelle einen EIGENEN Rang
+        // berechnen und die Rangdifferenz zeigen ("Josh hat ihn auf 10,
+        // ich auf 5"). Wuerde man nur den Mittelwert speichern, waere
+        // diese Frage nachtraeglich nicht mehr beantwortbar.
+        // a = Beyaz, b = Basketball Monster.
+        a: srcVals(m, fga, fta),
+        b: srcVals(b, b.fga, b.fta),
       };
     } else {
       stats.bbmOnly++;
@@ -181,6 +219,7 @@ function main() {
         fga: round(b.fga, 2), fgm: round(b.fgm, 2),
         fta: round(b.fta, 2), ftm: round(b.ftm, 2),
         sources: 'bbm', spreadPts: null, spreadMin: null,
+        a: null, b: srcVals(b, b.fga, b.fta),
       };
     }
     result[mineName || bbmName] = entry;
@@ -209,6 +248,7 @@ function main() {
       // Prozente gibt (siehe Kommentar in projections-baseline.js).
       fga: 0, fgm: 0, fta: 0, ftm: 0, pctOnly: true,
       sources: isImplausible(m) ? 'beyaz-implausible' : 'beyaz', spreadPts: null, spreadMin: null,
+      a: srcVals(m, 0, 0), b: null,
     };
   });
 
