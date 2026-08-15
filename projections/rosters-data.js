@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-14T09:52:47.866Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-15T09:18:24.746Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-08-14T09:52:47.866Z",
+ "fetchedAt": "2026-08-15T09:18:24.746Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -623,15 +623,6 @@ const ROSTERS_DATA = {
      "espnId": "5061575"
     },
     {
-     "name": "Tre Mann",
-     "jersey": "23",
-     "position": "G",
-     "height": "6' 4\"",
-     "weight": "178 lbs",
-     "age": 25,
-     "espnId": "4432819"
-    },
-    {
      "name": "Liam McNeeley",
      "jersey": "33",
      "position": "G",
@@ -675,6 +666,15 @@ const ROSTERS_DATA = {
      "weight": "207 lbs",
      "age": 21,
      "espnId": "5211176"
+    },
+    {
+     "name": "Dennis Schroder",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 1\"",
+     "weight": "175 lbs",
+     "age": 32,
+     "espnId": "3032979"
     },
     {
      "name": "Hannes Steinbach",
@@ -914,6 +914,15 @@ const ROSTERS_DATA = {
      "espnId": "2995706"
     },
     {
+     "name": "Tre Mann",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "178 lbs",
+     "age": 25,
+     "espnId": "4432819"
+    },
+    {
      "name": "Sam Merrill",
      "jersey": "5",
      "position": "G",
@@ -975,15 +984,6 @@ const ROSTERS_DATA = {
      "weight": "240 lbs",
      "age": 27,
      "espnId": "4278046"
-    },
-    {
-     "name": "Dennis Schroder",
-     "jersey": "8",
-     "position": "G",
-     "height": "6' 1\"",
-     "weight": "175 lbs",
-     "age": 32,
-     "espnId": "3032979"
     },
     {
      "name": "Max Strus",
