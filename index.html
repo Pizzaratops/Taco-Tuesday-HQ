@@ -1454,9 +1454,7 @@
           <input type="text" id="tradeSearchA" placeholder="Search player…" oninput="filterTradePlayers('A')"/>
         </div>
 
-<button class="pick-pool-btn" id="pickBtnA" onclick="togglePickMode('A')">📋 Picks anzeigen</button>
-
-        <div class="trade-player-list" id="tradeListA"></div>
+<div class="trade-player-list" id="tradeListA"></div>
 
         <div class="trade-selected-wrap">
           <div class="trade-selected-label">Selected</div>
@@ -1492,9 +1490,7 @@
           <input type="text" id="tradeSearchB" placeholder="Search player…" oninput="filterTradePlayers('B')"/>
         </div>
 
-<button class="pick-pool-btn" id="pickBtnB" onclick="togglePickMode('B')">📋 Picks anzeigen</button>
-
-        <div class="trade-player-list" id="tradeListB"></div>
+<div class="trade-player-list" id="tradeListB"></div>
 
         <div class="trade-selected-wrap">
           <div class="trade-selected-label">Selected</div>
@@ -1690,6 +1686,13 @@
   .pick-pool-btn.active { background: rgba(197,143,50,0.15); border-color: #c58f32; color: #c58f32; }
   body.light .pick-pool-btn { }
   body.light .pick-pool-btn.active { background: rgba(154,110,16,0.12); border-color: #9a6e10; color: #9a6e10; }
+  /* Trennt Picks- und Spieler-Abschnitt in der vereinheitlichten Liste
+     (16.08.2026: ersetzt den frueheren "Picks anzeigen"-Umschalter). */
+  .trade-section-head {
+    padding: 8px 12px 5px;
+    font-size: 10px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--muted); background: var(--surface2); border-bottom: 1px solid var(--border);
+  }
   .pick-item {
     display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px;
     cursor: pointer; transition: background 0.1s; border-bottom: 1px solid var(--border); font-size: 13px;
@@ -2211,21 +2214,21 @@
 <script src="data/season-2022-23.js?v=ca4beb77"></script>
 <script src="data/season-2021-22.js?v=bb837487"></script>
 <script src="data/season-rankings.js?v=51f908be"></script>
-<script src="data/rosters-live.js?v=a0c4ef8b"></script>
+<script src="data/rosters-live.js?v=6b49a692"></script>
 <script src="data/picks.js?v=43f5868b"></script>
-<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=9666c4b6"></script>
+<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=156a608c"></script>
 <!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=c819801f"></script>
 <script src="data/rankings.js?v=3b97f222"></script>
 <script src="data/projections-baseline.js?v=c194f5ad"></script>
-<script src="data/live-projections.js?v=676d6852"></script>
+<script src="data/live-projections.js?v=b7e97e82"></script>
 <script src="data/dynasty-rolling.js?v=5a3bad82"></script>
-<script src="data/dynasty-live.js?v=a33fc0f7"></script>
+<script src="data/dynasty-live.js?v=c0f465c7"></script>
 <script src="data/hashtag.js?v=79b756a3"></script>
 <script src="data/aliases.js?v=35de8e6d"></script>
 <script src="data/draft2026.js?v=7795b40e"></script>
 <script src="data/draft2027.js?v=67c40565"></script>
-<script src="data/postdraft-board.js?v=d670e7dd"></script>
-<script src="data/best-available-board.js?v=b3cece2f"></script>
+<script src="data/postdraft-board.js?v=0df43948"></script>
+<script src="data/best-available-board.js?v=663e24cf"></script>
 <script src="data/stats.js?v=7b760995"></script>
 
 <!-- App logic -->
@@ -2255,7 +2258,7 @@
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<script src="data/team-analytics.js?v=89199691"></script>
+<script src="data/team-analytics.js?v=ee67646a"></script>
 <script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>

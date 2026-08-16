@@ -97,23 +97,27 @@ function slotAwarePickValue(pick) {
   return (typeof PICK_VALUES !== 'undefined' && PICK_VALUES[key]) || 0;
 }
 
-// Player value: direct lookup from the Hashtag-based TRADE_VALUE_TABLE.
-// No replacement floor, no cliff, no age multiplier — values from source
-// already encode all of that. Stacking diminishing-returns (0.8^i) is
-// applied in tradeSideValue().
-// `dob` is kept in the signature for backwards compatibility with callers.
-function dynastyValue(rank, dob) {
+// BUGFIX (16.08.2026): dynastyValue() rief ageMultiplier() nie auf.
+// Die drei Valuation-Modi (Dynasty/Raw/Win-Now) unterscheiden sich
+// AUSSCHLIESSLICH ueber ageMultiplier() -- p.rank und TRADE_VALUE_TABLE
+// sind in allen drei Modi identisch. Ohne den Multiplikator lieferten
+// alle drei Modi also zwangslaeufig dieselben Werte; nur das Badge
+// ("age 24 · +8%") zeigte einen Unterschied an, der nirgends
+// eingerechnet wurde. Der alte Kommentar ("values from source already
+// encode all of that") war schlicht falsch -- die Tabelle enthaelt
+// keinerlei Altersinformation, nur eine Rang-zu-Wert-Zuordnung.
+function dynastyValue(rank, dob, mode) {
   const v = TRADE_VALUE_TABLE[rank];
-  if (v !== undefined) return Math.round(v);
-  // Out-of-range ranks (very deep tail) → 0
-  return 0;
+  if (v === undefined) return 0; // Out-of-range Raenge (tiefer Tail) -> 0
+  const mult = ageMultiplier(dob, mode || TRADE_MODE);
+  return Math.round(v * mult);
 }
 
 // Aggregate trade value with diminishing returns per additional player.
 function tradeSideValue(players) {
   if (!players.length) return 0;
   const withValues = players
-    .map(p => p.isPick ? pickTradeValue(p, TRADE_MODE) : dynastyValue(p.rank, p.dob))
+    .map(p => p.isPick ? pickTradeValue(p, TRADE_MODE) : dynastyValue(p.rank, p.dob, TRADE_MODE))
     .sort((a, b) => b - a);
   let total = 0;
   withValues.forEach((val, i) => { total += val * Math.pow(0.80, i); });
@@ -121,8 +125,8 @@ function tradeSideValue(players) {
 }
 
 const TRADE_STATE = {
-  A: { nbaFilter: '', ttFilter: '', search: '', selected: [], showPicks: false },
-  B: { nbaFilter: '', ttFilter: '', search: '', selected: [], showPicks: false },
+  A: { nbaFilter: '', ttFilter: '', search: '', selected: [] },
+  B: { nbaFilter: '', ttFilter: '', search: '', selected: [] },
 };
 
 // Pre-built lookup maps for Hashtag and Matt rankings
@@ -221,82 +225,51 @@ function filterTradePlayers(side) {
 function renderTradeList(side) {
   const st   = TRADE_STATE[side];
   const list = document.getElementById('tradeList' + side);
+  const isLight = document.body.classList.contains('light');
+  const q = (st.search || '').toLowerCase().trim();
 
-  // ── PICK MODE ──────────────────────────────────────────────
-  if (st.showPicks) {
-    const ttFilterId = st.ttFilter ? parseInt(st.ttFilter) : null;
-    const isLight    = document.body.classList.contains('light');
+  // ── PICKS: nur wenn ein konkretes TT-Team gewaehlt ist ──────
+  // (VEREINFACHUNG vom 16.08.2026: der separate "Picks anzeigen"-Knopf
+  // ist weg, ebenso die zwei getrennten Listenmodi. Sobald ein TT-Team
+  // ausgewaehlt ist, erscheinen seine gehaltenen Picks automatisch als
+  // eigener Abschnitt oberhalb der Spielerliste -- ein Team besteht ja
+  // ohnehin aus beidem. "Unowned" hat naturgemaess keine Picks.)
+  let pickHtml = '';
+  const ttFilterId = (st.ttFilter && st.ttFilter !== 'unowned') ? parseInt(st.ttFilter) : null;
 
-    // Kein TT-Team gewählt → Hinweis
-    if (!ttFilterId) {
-      list.innerHTML = `<div style="text-align:center;padding:28px 16px;color:var(--muted);font-size:13px;line-height:1.8;">
-        <div style="font-size:28px;margin-bottom:8px;">🌮</div>
-        <strong style="color:var(--text);display:block;margin-bottom:4px;">Team wählen</strong>
-        Wähle zuerst ein TT-Team im Filter oben,<br>um die gehaltenen Picks zu sehen.
-      </div>`;
-      return;
-    }
-
-    // Alle Picks die dieses Team HÄLT (currentOwner)
+  if (ttFilterId) {
     const heldPicks = PICKS.filter(p => p.currentOwner === ttFilterId);
+    const selectedPickKeys = st.selected.filter(s => s.isPick).map(s => s.pickKey);
 
-    if (!heldPicks.length) {
-      list.innerHTML = '<div class="trade-no-players">Dieses Team besitzt keine Picks.</div>';
-      return;
-    }
+    const matching = heldPicks.filter(p => {
+      if (!q) return true;
+      const orig = teamMap[p.originalOwner];
+      return String(p.year).includes(q) || String(p.round).includes(q) ||
+             (orig && orig.name.toLowerCase().includes(q));
+    }).sort((a, b) => a.year - b.year || a.round - b.round || a.originalOwner - b.originalOwner);
 
-    const q            = (st.search || '').toLowerCase().trim();
-    const selectedKeys = st.selected.filter(s => s.isPick).map(s => s.pickKey);
-
-    // Nach Jahr gruppieren
-    const byYear = {};
-    heldPicks.forEach(p => {
-      if (!byYear[p.year]) byYear[p.year] = [];
-      byYear[p.year].push(p);
-    });
-
-    let html = '';
-    Object.keys(byYear).sort().forEach(year => {
-      const picks = byYear[year]
-        .filter(p => {
-          if (!q) return true;
-          const orig = teamMap[p.originalOwner];
-          return String(p.year).includes(q) ||
-                 String(p.round).includes(q) ||
-                 orig.name.toLowerCase().includes(q);
-        })
-        .sort((a, b) => a.round - b.round || a.originalOwner - b.originalOwner);
-
-      if (!picks.length) return;
-
-      html += `<div style="padding:6px 12px 4px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);background:var(--surface2);border-bottom:1px solid var(--border);">${year}</div>`;
-
-      picks.forEach(p => {
+    if (matching.length) {
+      pickHtml += `<div class="trade-section-head">📋 Draft Picks · ${matching.length}</div>`;
+      matching.forEach(p => {
         const orig   = teamMap[p.originalOwner];
         const traded = p.originalOwner !== p.currentOwner;
         const key    = `${p.year}_R${p.round}_T${p.originalOwner}`;
-        const isSel  = selectedKeys.includes(key);
+        const isSel  = selectedPickKeys.includes(key);
         const val    = slotAwarePickValue(p);
 
-        const ownLabel    = 'Eigener Pick';
-        const tradedLabel = `→ von ${orig.name}`;
-        const statusTxt   = traded ? tradedLabel : ownLabel;
+        const statusTxt   = traded ? `→ von ${orig.name}` : 'Eigener Pick';
+        const statusColor = traded ? (isLight ? '#b43c64' : '#ff8fa3') : (isLight ? '#c0622f' : '#6c63ff');
+        const statusBg    = traded ? (isLight ? 'rgba(180,60,100,0.1)' : 'rgba(255,101,132,0.1)')
+                                    : (isLight ? 'rgba(192,98,47,0.1)' : 'rgba(108,99,255,0.12)');
 
-        const statusColor = traded
-          ? (isLight ? '#b43c64'   : '#ff8fa3')
-          : (isLight ? '#c0622f'   : '#6c63ff');
-        const statusBg    = traded
-          ? (isLight ? 'rgba(180,60,100,0.1)'  : 'rgba(255,101,132,0.1)')
-          : (isLight ? 'rgba(192,98,47,0.1)'   : 'rgba(108,99,255,0.12)');
-
-        html += `<div class="pick-item ${isSel ? 'selected' : ''}"
+        pickHtml += `<div class="pick-item ${isSel ? 'selected' : ''}"
           onclick="toggleTradePickDirect('${side}','${key}',${p.year},${p.round},${p.originalOwner},${p.currentOwner},${val},'${traded}',${p.slot || 'null'})">
           <div class="tp-check" style="margin-top:2px;flex-shrink:0;">
             ${isSel ? '<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}
           </div>
           <div style="flex:1;min-width:0;">
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-              <span style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:#c58f32;">${year}</span>
+              <span style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:#c58f32;">${p.year}</span>
               <span class="pick-round-pos">Round ${p.round}</span>
               ${p.slot ? `<span style="font-size:9px;font-weight:800;background:rgba(108,99,255,0.18);color:#6c63ff;padding:1px 6px;border-radius:3px;letter-spacing:0.5px;">Pick #${p.slot}</span>` : ''}
               ${p.note ? `<span style="font-size:9px;background:rgba(245,200,66,0.15);color:#f5c842;padding:1px 5px;border-radius:3px;">${p.note}</span>` : ''}
@@ -305,21 +278,14 @@ function renderTradeList(side) {
               <span style="font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;background:${statusBg};color:${statusColor};">${statusTxt}</span>
             </div>
           </div>
-          <div style="flex-shrink:0;">
-            <span class="pick-value-badge">~${val.toLocaleString()}</span>
-          </div>
+          <div style="flex-shrink:0;"><span class="pick-value-badge">~${val.toLocaleString()}</span></div>
         </div>`;
       });
-    });
-
-    list.innerHTML = html || '<div class="trade-no-players">Keine Picks gefunden.</div>';
-    return;
+    }
   }
 
-  // ── PLAYER MODE ────────────────────────────────────────────
+  // ── SPIELER ──────────────────────────────────────────────────
   const pool = buildTradePlayerPool().filter(p => !p.isPick);
-  const q    = st.search.toLowerCase().trim();
-
   const filtered = pool.filter(p => {
     if (st.nbaFilter && p.nba !== st.nbaFilter) return false;
     if (st.ttFilter === 'unowned' && p.ownerId !== null) return false;
@@ -328,14 +294,19 @@ function renderTradeList(side) {
                (p.owner && p.owner.name.toLowerCase().includes(q)))) return false;
     return true;
   });
-
   const selectedNames = st.selected.filter(s => !s.isPick).map(s => s.name);
-  if (!filtered.length) { list.innerHTML = '<div class="trade-no-players">No players found.</div>'; return; }
 
-  list.innerHTML = filtered.map(p => {
-    const isSel       = selectedNames.includes(p.name);
-    const ownerLabel  = p.owner ? p.owner.name : 'Unowned';
-    const val         = dynastyValue(p.rank, p.dob);
+  let playerHtml = '';
+  // Zwischenueberschrift nur, wenn beide Abschnitte gleichzeitig da sind
+  // -- bei reiner Spielersuche (kein TT-Team) waere sie ueberfluessiges
+  // Rauschen.
+  if (pickHtml && filtered.length) {
+    playerHtml += `<div class="trade-section-head">👤 Spieler · ${filtered.length}</div>`;
+  }
+  playerHtml += filtered.map(p => {
+    const isSel      = selectedNames.includes(p.name);
+    const ownerLabel = p.owner ? p.owner.name : 'Unowned';
+    const val        = dynastyValue(p.rank, p.dob, TRADE_MODE);
     const mRank       = mattRank(p.name);
     const hRank       = hashtagRank(p.name);
     return `<div class="trade-player-item ${isSel ? 'selected' : ''}" onclick="toggleTradePlayer('${side}', ${p.rank})">
@@ -353,6 +324,11 @@ function renderTradeList(side) {
       </div>
     </div>`;
   }).join('');
+
+  const combined = pickHtml + playerHtml;
+  list.innerHTML = combined || (ttFilterId
+    ? '<div class="trade-no-players">Dieses Team hat weder passende Spieler noch Picks.</div>'
+    : '<div class="trade-no-players">No players found.</div>');
 }
 
 function toggleTradePlayer(side, rank) {
@@ -431,11 +407,11 @@ function renderTradeResult() {
   function breakdownSide(players, label, sideVal) {
     // Sort by value for display
 const sorted = [...players].sort((a, b) => {
-  const va = a.isPick ? pickTradeValue(a, TRADE_MODE) : dynastyValue(a.rank, a.dob);
+  const va = a.isPick ? pickTradeValue(a, TRADE_MODE) : dynastyValue(a.rank, a.dob, TRADE_MODE);
   const vb = b.isPick ? pickTradeValue(b, TRADE_MODE) : dynastyValue(b.rank, b.dob);
   return vb - va;
 });   const rows = sorted.map((p, i) => {
-      const rawVal       = p.isPick ? pickTradeValue(p, TRADE_MODE) : dynastyValue(p.rank, p.dob);
+      const rawVal       = p.isPick ? pickTradeValue(p, TRADE_MODE) : dynastyValue(p.rank, p.dob, TRADE_MODE);
       const effectiveVal = Math.round(rawVal * Math.pow(0.80, sorted.indexOf(p)));
       const isDiscounted = i > 0;
       const isLight      = document.body.classList.contains('light');
@@ -548,8 +524,6 @@ const sorted = [...players].sort((a, b) => {
 
 function showTrade() {
   TRADE_STATE.A.selected = []; TRADE_STATE.B.selected = [];
-  TRADE_STATE.A.showPicks = false;
-  TRADE_STATE.B.showPicks = false;
   TRADE_STATE.A.nbaFilter = ''; TRADE_STATE.B.nbaFilter = '';
   TRADE_STATE.A.search    = ''; TRADE_STATE.B.search    = '';
 
@@ -639,7 +613,7 @@ function openTradeShareModal() {
   function pillRow(items, label, val) {
     const rows = [...items]
       .sort((a, b) => {
-        const va = a.isPick ? (a.baseValue || 0) : (typeof dynastyValue === 'function' ? dynastyValue(a.rank, a.dob) : 0);
+        const va = a.isPick ? (a.baseValue || 0) : (typeof dynastyValue === 'function' ? dynastyValue(a.rank, a.dob, TRADE_MODE) : 0);
         const vb = b.isPick ? (b.baseValue || 0) : (typeof dynastyValue === 'function' ? dynastyValue(b.rank, b.dob) : 0);
         return vb - va;
       })
@@ -653,7 +627,7 @@ function openTradeShareModal() {
         } else {
           line   = p.name;
           detail = `${p.nba || ''}${p.owner ? ' · ' + p.owner.name : ''}`;
-          value  = (typeof dynastyValue === 'function') ? dynastyValue(p.rank, p.dob) : 0;
+          value  = (typeof dynastyValue === 'function') ? dynastyValue(p.rank, p.dob, TRADE_MODE) : 0;
         }
         const effective = Math.round(value * Math.pow(0.80, i));
         return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid ${th.divider};">
