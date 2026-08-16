@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-08-15T09:18:24.746Z",
+ "fetchedAt": "2026-08-16T09:19:00.845Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -1271,7 +1271,7 @@
      "position": "F",
      "height": "6' 9\"",
      "weight": "225 lbs",
-     "age": 23,
+     "age": 24,
      "espnId": "4433607"
     },
     {
