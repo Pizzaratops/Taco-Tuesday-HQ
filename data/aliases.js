@@ -184,6 +184,7 @@ const NAME_FIRST_ALIASES = {
   'nicolas claxton':  'nic claxton',
   'alexandre sarr':   'alex sarr',
   'cameron johnson':  'cam johnson',  // Roster uses Cameron, DYNASTY_PLAYERS uses Cam
+  'herbert jones':    'herb jones',   // Hashtag/ESPN nutzen "Herbert", Beyaz' Baseline "Herb"
 };
 
 /**
@@ -194,6 +195,16 @@ const NAME_FIRST_ALIASES = {
 function normalizeName(raw) {
   if (!raw) return '';
   let s = raw.toLowerCase().trim();
+  // BUGFIX (16.08.2026): Akzente/Umlaute wurden bisher NICHT entfernt.
+  // "Sengün" matchte dadurch nie gegen "Sengun", "Dončić" nie gegen
+  // "Doncic" -- obwohl exakt derselbe Spieler gemeint ist, je nachdem
+  // welche Quelle ihn mit oder ohne Diakritika schreibt. Betraf JEDEN
+  // Namensabgleich im Projekt (Fantasy-Besitz, Trade Analyzer,
+  // Roster-Sync, Consensus-Projections), da alle normalizeName() nutzen.
+  // js/navigation.js und js/trade-analyzer.js hatten dasselbe Problem
+  // bereits lokal mit genau dieser NFD-Technik umgangen -- jetzt zentral
+  // hier, damit es ueberall gilt statt an einzelnen Symptomen.
+  s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   s = s.replace(/\./g, '');                          // c.j. → cj
   s = s.replace(/['\u2019\u2018`]/g, '');         // day'ron → dayron
   s = s.replace(/\b(jr|sr|iii|ii)\b/g, '');        // strip suffixes

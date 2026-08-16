@@ -1,50 +1,37 @@
 // ============================================================
 //  CONSENSUS PROJECTIONS 2026/27 — Seite "Player → Projections"
 // ============================================================
-//  Zeigt data/projections-consensus.js: den Mittelwert aus Beyaz'
-//  eigenen Projections und denen von Josh Lloyd (Basketball Monster),
+//  Zeigt data/projections-consensus.js: den Mittelwert aus DREI
+//  unabhaengigen Quellen (Beyaz, Josh Lloyd/BBM, Hashtag Basketball),
 //  erzeugt von scripts/build-consensus-projections.js.
 //
-//  Die Datei ist ~700 KB und wird erst beim ERSTEN Aufruf dieser Seite
-//  nachgeladen, nicht statisch in index.html eingebunden -- sonst zahlt
-//  jeder TTHQ-Besuch die Ladezeit, auch wer die Seite nie oeffnet.
+//  Die Datei wird erst beim ERSTEN Aufruf dieser Seite nachgeladen,
+//  nicht statisch in index.html eingebunden -- sonst zahlt jeder
+//  TTHQ-Besuch die Ladezeit, auch wer die Seite nie oeffnet.
 //
 //  ── Z-SCORE ──────────────────────────────────────────────────
-//  Wird komplett im Browser berechnet, nicht aus der Datei gelesen.
-//  Grund: er haengt von Dingen ab, die hier eingestellt werden
-//  (Pool-Groesse, Kategorie-Gewichte) -- ein vorberechneter Wert waere
-//  sofort falsch, sobald etwas davon geaendert wird.
+//  Wird komplett im Browser berechnet (Pool-Groesse, Gewichte sind
+//  hier einstellbar). FG%/FT% gehen als IMPACT ein, nicht als roher
+//  Prozentsatz -- siehe cpComputeZ weiter unten fuer die Begruendung.
 //
-//  FG% und FT% gehen als IMPACT ein, nicht als roher Prozentsatz:
-//      Impact = (Spieler-Prozent − Pool-Prozent) × Versuche
-//  60 % aus 20 Wuerfen bewegt die Team-Quote massiv, 60 % aus 2 Wuerfen
-//  fast gar nicht. Ein Z-Score ueber die nackten Prozente wuerde beide
-//  gleich bewerten und dadurch Rollenspieler mit winzigem Volumen
-//  systematisch ueberschaetzen. Der Pool-Prozentsatz ist dabei
-//  volumengewichtet (Summe Makes / Summe Attempts), nicht der
-//  Mittelwert der Einzelprozente.
-//
-//  POOL-GROESSE: Ein Z-Score ist immer relativ zu einer
-//  Vergleichsgruppe. "Top 150" heisst: Mittelwert und Streuung werden
-//  nur aus den besten 150 Spielern gebildet. Das ist naeher an einer
-//  12-Team-Liga als der Durchschnitt ueber 1000 Spieler, von denen die
-//  meisten nie gedraftet werden.
-//  Weil die Auswahl der Top N selbst schon einen Z-Score braucht, laeuft
-//  es zweistufig: erst Z ueber alle, danach die besten N nehmen und Z
-//  darueber neu berechnen. So macht es auch Basketball Monster.
-//
-//  ── RANGDIFFERENZ ────────────────────────────────────────────
-//  Fuer die Spalte "Δ Rang" werden die Rohwerte beider Quellen (Felder
-//  a und b in der Datei) einzeln durch dieselbe Z-Score-Rechnung
-//  geschickt und die beiden Raenge verglichen:
-//      Δ = Rang bei Josh Lloyd − Rang bei Beyaz
-//  Positiv heisst: Beyaz sieht den Spieler weiter vorn. Die Differenz
-//  reagiert auf Gewichte und Pool-Groesse mit, weil sie aus denselben
-//  Einstellungen entsteht -- ein statischer Wert waere nach der ersten
-//  Aenderung nicht mehr stimmig.
+//  ── Δ RANG (16.08.2026 auf drei Quellen erweitert) ────────────
+//  Zeigt die Streuung zwischen den drei Einzelmeinungen, nicht mehr
+//  nur einen Zweier-Vergleich. Entscheidend dabei: alle drei Raenge
+//  werden ueber EXAKT DIESELBE Spielergruppe berechnet -- naemlich die
+//  Spieler, die ALLE DREI Quellen kennen (sources === "abc"). Das ist
+//  keine Nebensaechlichkeit: als es nur zwei Quellen gab, kam genau
+//  daraus mal ein Fehler (Raenge aus unterschiedlich langen Listen sind
+//  nicht vergleichbar, Rang 230 von 532 ist etwas anderes als Rang
+//  1011 von 1044). Mit drei Quellen waere ein Mix aus "ab", "ac", "bc"
+//  Teilmengen als Vergleichsbasis genau dasselbe Problem nochmal,
+//  nur unauffaelliger. Deshalb bewusst: NUR der 413-Spieler-Kern mit
+//  allen drei Quellen bekommt eine Δ-Rang-Zahl, alle anderen zeigen "—".
 // ============================================================
 
+const CP_SOURCE_NAMES = { a: 'Beyaz', b: 'Josh Lloyd (BBM)', c: 'Hashtag Basketball' };
+
 let _cpLoaded = false;
+
 let _cpSort = { key: 'z', dir: -1 };
 let _cpQuery = '';
 let _cpPosFilter = '';
@@ -177,24 +164,13 @@ function cpRecompute() {
   const rows = names.map(n => ({ name: n, v: _cpVals(PROJECTIONS_CONSENSUS[n]) }));
   const z = cpZWithPool(rows, poolSize, _cpWeights);
 
-  // Raenge je Einzelquelle -- BEIDE ueber EXAKT dieselbe Spielergruppe,
-  // naemlich die, die beide Quellen kennen.
-  //
-  // Das ist der entscheidende Punkt: Beyaz' Projections umfassen ~1014
-  // Spieler, die von Josh Lloyd nur 532. Wuerde man je Quelle ueber die
-  // eigene Gesamtliste ranken, waere Rang 230 bei Lloyd (von 532) das
-  // Mittelfeld, Rang 1011 bei Beyaz (von 1014) das Schlusslicht -- die
-  // Differenz "-781" saehe nach heftiger Uneinigkeit aus, obwohl sie
-  // groesstenteils nur die unterschiedliche Listenlaenge abbildet.
-  // Ueber die gemeinsame Schnittmenge sind die Raenge direkt
-  // vergleichbar und "+5" heisst wirklich: fuenf Plaetze hoeher.
-  const commonNames = names.filter(n => {
-    const c = PROJECTIONS_CONSENSUS[n];
-    return c.a && c.b;
-  });
+  // ── Δ Rang: NUR ueber den 3-Quellen-Kern (sources === "abc") ────
+  // Siehe Kommentar am Dateikopf, warum alle drei Raenge dieselbe
+  // Spielergruppe brauchen, um vergleichbar zu sein.
+  const coreNames = names.filter(n => PROJECTIONS_CONSENSUS[n].sourceCount === 3);
 
   const rankOf = (field) => {
-    const sub = commonNames.map(n => ({ name: n, v: _cpVals(PROJECTIONS_CONSENSUS[n][field]) }));
+    const sub = coreNames.map(n => ({ name: n, v: _cpVals(PROJECTIONS_CONSENSUS[n][field]) }));
     if (!sub.length) return new Map();
     const zz = cpZWithPool(sub, poolSize, _cpWeights);
     const order = zz.map((r, i) => ({ name: sub[i].name, z: r.z })).sort((a, b) => b.z - a.z);
@@ -202,18 +178,23 @@ function cpRecompute() {
     order.forEach((o, i) => m.set(o.name, i + 1));
     return m;
   };
-  const rankA = rankOf('a');   // Beyaz
-  const rankB = rankOf('b');   // Josh Lloyd / BBM
+  const rankA = rankOf('a'), rankB = rankOf('b'), rankC = rankOf('c');
 
   const out = names.map((n, i) => {
     const c = PROJECTIONS_CONSENSUS[n];
     const ra = rankA.has(n) ? rankA.get(n) : null;
     const rb = rankB.has(n) ? rankB.get(n) : null;
+    const rc = rankC.has(n) ? rankC.get(n) : null;
+    const present = [ra, rb, rc].filter(x => x !== null);
+    // Spread nur sinnvoll mit mind. 2 vorhandenen Raengen -- bei
+    // sourceCount===3 sind es immer alle drei oder keiner.
+    const spread = present.length >= 2 ? Math.max(...present) - Math.min(...present) : null;
+
     return {
       name: n, ...c,
       z: z[i].z, cats: z[i].cats,
-      rankBeyaz: ra, rankLloyd: rb,
-      rankDiff: (ra !== null && rb !== null) ? (rb - ra) : null,
+      rankA: ra, rankB: rb, rankC: rc,
+      rankDiff: spread,
     };
   });
 
@@ -307,13 +288,20 @@ function cpTogglePanel(id) {
 
 // ── Tabelle ──────────────────────────────────────────────────
 
-function cpSourceBadge(src) {
-  if (src === 'both') return '<span class="cp-src cp-src-both" title="Konsens aus beiden Quellen">✓✓</span>';
-  if (src === 'bbm') return '<span class="cp-src cp-src-one" title="Nur Basketball Monster (Josh Lloyd)">BBM</span>';
-  if (src === 'beyaz') return '<span class="cp-src cp-src-one" title="Nur Beyaz\' eigene Projections">B</span>';
-  if (src === 'bbm-baseline-implausible') return '<span class="cp-src cp-src-warn" title="Eigener Baseline-Wert war unplausibel (>1.05 Punkte pro Minute) — nur BBM genutzt">⚠ BBM</span>';
-  if (src === 'beyaz-implausible') return '<span class="cp-src cp-src-warn" title="Unplausibler Wert und keine zweite Quelle zum Gegenprüfen">⚠ B</span>';
-  return '';
+function cpSourceLabel(entry) {
+  const letters = (entry.sources || '').split('');
+  return letters.map(l => CP_SOURCE_NAMES[l] || l).join(' + ');
+}
+
+function cpSourceBadge(entry) {
+  const n = entry.sourceCount || 0;
+  const warn = entry.aImplausible
+    ? ' title="Beyaz\' Baseline-Wert war unplausibel (>1.05 Punkte pro Minute) und wurde aus der Mittelung ausgeschlossen"'
+    : '';
+  const cls = entry.aImplausible ? 'cp-src-warn' : (n === 3 ? 'cp-src-full' : (n === 2 ? 'cp-src-two' : 'cp-src-one'));
+  const mark = entry.aImplausible ? '⚠ ' : '';
+  const dots = '✓'.repeat(n) || '—';
+  return `<span class="cp-src ${cls}"${warn} title="${warn ? '' : cpSourceLabel(entry).replace(/"/g, '&quot;')}">${mark}${dots}</span>`;
 }
 
 function cpPassesFilters(r) {
@@ -357,9 +345,10 @@ function cpRender() {
       (r.pos || '').toLowerCase().includes(_cpQuery));
   }
   if (_cpPosFilter) rows = rows.filter(r => (r.pos || '').split('/').includes(_cpPosFilter));
-  if (_cpSourceFilter === 'both') rows = rows.filter(r => r.sources === 'both');
-  else if (_cpSourceFilter === 'single') rows = rows.filter(r => r.sources === 'bbm' || r.sources === 'beyaz');
-  else if (_cpSourceFilter === 'warn') rows = rows.filter(r => String(r.sources).includes('implausible'));
+  if (_cpSourceFilter === 'three') rows = rows.filter(r => r.sourceCount === 3);
+  else if (_cpSourceFilter === 'two') rows = rows.filter(r => r.sourceCount === 2);
+  else if (_cpSourceFilter === 'one') rows = rows.filter(r => r.sourceCount === 1);
+  else if (_cpSourceFilter === 'warn') rows = rows.filter(r => r.aImplausible);
   rows = rows.filter(cpPassesFilters);
 
   const dir = _cpSort.dir;
@@ -383,7 +372,8 @@ function cpRender() {
     const poolTxt = _cpPool === 'all' ? 'allen Spielern' : `den Top ${_cpPool}`;
     const wChanged = CP_CATS.filter(c => _cpWeights[c.key] !== 1).length;
     const fCount = Object.keys(_cpFilters).length;
-    info.textContent = `${rows.length} von ${all.length} Spielern · Z-Score relativ zu ${poolTxt}`
+    const coreN = all.filter(r => r.sourceCount === 3).length;
+    info.textContent = `${rows.length} von ${all.length} Spielern · Z-Score relativ zu ${poolTxt} · ${coreN} mit vollem 3-Quellen-Konsens`
       + (wChanged ? ` · ${wChanged} Gewicht(e) angepasst` : '')
       + (fCount ? ` · ${fCount} Filter aktiv` : '');
   }
@@ -401,16 +391,19 @@ function cpRender() {
     CP_CATS.map(c => th(c.pct ? c.pct : c.key, c.label)).join('') +
     '<th title="Feldwürfe: getroffen / versucht">FGM-FGA</th>' +
     '<th title="Freiwürfe: getroffen / versucht">FTM-FTA</th>' +
-    th('rankDiff', 'Δ Rang', ' cp-diff', 'Rang bei Josh Lloyd minus Rang bei Beyaz. Positiv = Beyaz sieht ihn weiter vorn.') +
+    th('rankDiff', 'Δ Rang', ' cp-diff', 'Streuung der drei Einzelraenge (max minus min), nur berechenbar wenn alle drei Quellen den Spieler kennen. Klein = die drei sind sich einig.') +
     '<th>Quelle</th>' +
     '</tr></thead><tbody>';
 
   rows.forEach(r => {
     const dz = r.rankDiff;
-    const diffCls = dz === null ? '' : (dz > 0 ? ' cp-up' : (dz < 0 ? ' cp-down' : ''));
-    const diffTxt = dz === null ? '—' : (dz > 0 ? '+' + dz : String(dz));
-    const diffTitle = (r.rankBeyaz !== null && r.rankLloyd !== null)
-      ? `Beyaz: #${r.rankBeyaz} · Josh Lloyd: #${r.rankLloyd}` : 'Nur eine Quelle';
+    // dz ist jetzt eine Streuung (max-min), also nie negativ -- kein
+    // "hoeher/niedriger" mehr, nur "wie einig sind sich die drei".
+    const diffCls = dz === null ? '' : (dz <= 15 ? ' cp-agree' : (dz >= 60 ? ' cp-disagree' : ''));
+    const diffTxt = dz === null ? '—' : String(dz);
+    const diffTitle = (r.rankA !== null && r.rankB !== null && r.rankC !== null)
+      ? `Beyaz #${r.rankA} · Josh Lloyd #${r.rankB} · Hashtag #${r.rankC}`
+      : 'Nur mit vollem 3-Quellen-Konsens berechenbar';
 
     html += `<tr>
       <td class="cp-rank">${r.overallRank}</td>
@@ -428,7 +421,7 @@ function cpRender() {
       <td class="cp-num cp-att">${(r.fgm || 0).toFixed(1)}-${(r.fga || 0).toFixed(1)}</td>
       <td class="cp-num cp-att">${(r.ftm || 0).toFixed(1)}-${(r.fta || 0).toFixed(1)}</td>
       <td class="cp-num cp-diff${diffCls}" title="${diffTitle}">${diffTxt}</td>
-      <td class="cp-srccell">${cpSourceBadge(r.sources)}</td>
+      <td class="cp-srccell">${cpSourceBadge(r)}</td>
     </tr>`;
   });
 

@@ -685,7 +685,8 @@ body.light {
   padding: 2px 6px; border-radius: 5px; border: 1px solid var(--border);
   white-space: nowrap;
 }
-#playerProjectionsPage .cp-src-both { color: var(--good); border-color: var(--good); }
+#playerProjectionsPage .cp-src-full { color: var(--good); border-color: var(--good); font-weight: 700; }
+#playerProjectionsPage .cp-src-two  { color: var(--accent); border-color: var(--accent); }
 #playerProjectionsPage .cp-src-one  { color: var(--muted); }
 #playerProjectionsPage .cp-src-warn { color: var(--bad); border-color: var(--bad); }
 
@@ -718,8 +719,8 @@ body.light {
 #playerProjectionsPage .cp-zcol { font-weight: 700; color: var(--accent); }
 #playerProjectionsPage .cp-att { color: var(--muted); font-size: 11px; }
 #playerProjectionsPage .cp-diff { font-weight: 600; }
-#playerProjectionsPage .cp-up { color: var(--good); }
-#playerProjectionsPage .cp-down { color: var(--bad); }
+#playerProjectionsPage .cp-agree { color: var(--good); }
+#playerProjectionsPage .cp-disagree { color: var(--bad); font-weight: 700; }
 #playerProjectionsPage .cp-srccell { white-space: nowrap; }
 #playerProjectionsPage .cp-empty {
   padding: 40px 20px; text-align: center; color: var(--muted); font-size: 13px;

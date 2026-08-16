@@ -460,8 +460,9 @@
     </select>
     <select class="cp-select" id="cpSource" onchange="cpSetSource(this.value)" title="Nach Datengrundlage filtern">
       <option value="">Alle Spieler</option>
-      <option value="both">Nur echter Konsens (beide Quellen)</option>
-      <option value="single">Nur eine Quelle</option>
+      <option value="three">Nur voller Konsens (alle 3 Quellen)</option>
+      <option value="two">Nur 2 von 3 Quellen</option>
+      <option value="one">Nur 1 Quelle</option>
       <option value="warn">Nur auffällige Werte</option>
     </select>
     <button class="cp-btn" onclick="cpTogglePanel('cpWeightPanel')">⚖️ Gewichtung</button>
@@ -499,13 +500,12 @@
   </div>
 
   <div class="cp-legend">
-    <span><span class="cp-src cp-src-both">✓✓</span> beide Quellen</span>
-    <span><span class="cp-src cp-src-one">BBM</span> nur Basketball Monster</span>
-    <span><span class="cp-src cp-src-one">B</span> nur Beyaz</span>
-    <span><span class="cp-src cp-src-warn">⚠</span> eigener Wert unplausibel</span>
-    <span><b>Δ Rang</b> = Josh Lloyds Rang minus Deiner · <span class="cp-up">+</span> heißt Du siehst ihn höher</span>
+    <span><span class="cp-src cp-src-full">✓✓✓</span> alle 3 Quellen</span>
+    <span><span class="cp-src cp-src-two">✓✓</span> 2 von 3</span>
+    <span><span class="cp-src cp-src-one">✓</span> nur 1 Quelle</span>
+    <span><span class="cp-src cp-src-warn">⚠</span> Beyaz-Wert unplausibel, ausgeschlossen</span>
+    <span><b>Δ Rang</b> = Streuung zwischen den drei Quellen · niedrig heißt einig, hoch heißt uneinig</span>
   </div>
-
   <div id="cpTableWrap"></div>
 </div>
 
@@ -2214,9 +2214,9 @@
 <script src="data/season-2022-23.js?v=ca4beb77"></script>
 <script src="data/season-2021-22.js?v=bb837487"></script>
 <script src="data/season-rankings.js?v=51f908be"></script>
-<script src="data/rosters-live.js?v=30768ce1"></script>
+<script src="data/rosters-live.js?v=32b2750a"></script>
 <script src="data/picks.js?v=43f5868b"></script>
-<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=7b8867f2"></script>
+<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=be638487"></script>
 <!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=c819801f"></script>
 <script src="data/rankings.js?v=3b97f222"></script>
 <script src="data/projections-baseline.js?v=c194f5ad"></script>
@@ -2258,7 +2258,7 @@
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<script src="data/team-analytics.js?v=cb067655"></script>
+<script src="data/team-analytics.js?v=0b1e22ea"></script>
 <script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>
