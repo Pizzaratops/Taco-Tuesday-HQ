@@ -35,8 +35,8 @@ let _cpLoaded = false;
 let _cpSort = { key: 'z', dir: -1 };
 let _cpQuery = '';
 let _cpPosFilter = '';
-let _cpSourceFilter = '';
-let _cpPool = 'all';
+let _cpSourceFilter = 'twoplus';
+let _cpPool = '200';
 let _cpComputed = null;   // Ergebnis der letzten Berechnung
 let _cpLastRows = [];     // Aktuell gefilterte + sortierte Zeilen (für CSV-Export)
 
@@ -61,11 +61,19 @@ const CP_FILTER_FIELDS = {
 const CP_WEIGHT_KEY = 'tthq_cp_weights_v1';
 const CP_FILTER_KEY = 'tthq_cp_filters_v1';
 const CP_POOL_KEY   = 'tthq_cp_pool_v1';
+const CP_SOURCE_KEY = 'tthq_cp_source_v1';
 
+// Default-Gewichtung nach Josh Lloyds Konsistenz-Faustregel: Kategorien,
+// die Jahr fuer Jahr sehr vorhersagbar sind (REB/AST/FG%), bleiben bei
+// voller Gewichtung; PTS/FT% schwanken leicht (~0.9); STL/BLK/3PM haben
+// die hoechste Varianz und werden am staerksten gedaempft; TO wird ganz
+// bewusst stark gedaempft (0.25), weil Turnover-Rate stark an Rolle/
+// Usage haengt und dadurch besonders volatil ist.
 function cpDefaultWeights() {
-  const w = {};
-  CP_CATS.forEach(c => { w[c.key] = 1; });
-  return w;
+  return {
+    pts: 0.9, reb: 1, ast: 1, stl: 0.75, blk: 0.75, tpm: 0.8,
+    tov: 0.25, fgImpact: 1, ftImpact: 0.9,
+  };
 }
 
 let _cpWeights = cpDefaultWeights();
@@ -81,6 +89,8 @@ function cpLoadPrefs() {
     if (f && typeof f === 'object') _cpFilters = f;
     const p = localStorage.getItem(CP_POOL_KEY);
     if (p) _cpPool = p;
+    const s = localStorage.getItem(CP_SOURCE_KEY);
+    if (s !== null) _cpSourceFilter = s;
   } catch (e) { /* Privatmodus */ }
 }
 function cpSavePrefs() {
@@ -88,6 +98,7 @@ function cpSavePrefs() {
     localStorage.setItem(CP_WEIGHT_KEY, JSON.stringify(_cpWeights));
     localStorage.setItem(CP_FILTER_KEY, JSON.stringify(_cpFilters));
     localStorage.setItem(CP_POOL_KEY, _cpPool);
+    localStorage.setItem(CP_SOURCE_KEY, _cpSourceFilter);
   } catch (e) { /* Privatmodus */ }
 }
 
@@ -249,7 +260,7 @@ function cpSortBy(key) {
 
 function cpSetQuery(v) { _cpQuery = String(v || '').toLowerCase().trim(); cpRender(); }
 function cpSetPos(v) { _cpPosFilter = v || ''; cpRender(); }
-function cpSetSource(v) { _cpSourceFilter = v || ''; cpRender(); }
+function cpSetSource(v) { _cpSourceFilter = v || ''; cpSavePrefs(); cpRender(); }
 
 // ── Eingabefelder ────────────────────────────────────────────
 
@@ -339,6 +350,16 @@ function cpRender() {
   if (!all) return;
 
   let rows = all.slice();
+
+  // Anzeige-Deckel: standardmaessig werden nur die Spieler innerhalb der
+  // gewaehlten Z-Score-Pool-Groesse angezeigt (Default Top 200) -- dieselbe
+  // Population, die auch in den Z-Score einfliesst. "Alle" im Pool-Dropdown
+  // hebt den Deckel auf.
+  if (_cpPool !== 'all') {
+    const cap = parseInt(_cpPool, 10);
+    if (Number.isFinite(cap)) rows = rows.filter(r => r.overallRank <= cap);
+  }
+
   if (_cpQuery) {
     rows = rows.filter(r =>
       r.name.toLowerCase().includes(_cpQuery) ||
@@ -347,6 +368,7 @@ function cpRender() {
   }
   if (_cpPosFilter) rows = rows.filter(r => (r.pos || '').split('/').includes(_cpPosFilter));
   if (_cpSourceFilter === 'three') rows = rows.filter(r => r.sourceCount === 3);
+  else if (_cpSourceFilter === 'twoplus') rows = rows.filter(r => r.sourceCount >= 2);
   else if (_cpSourceFilter === 'two') rows = rows.filter(r => r.sourceCount === 2);
   else if (_cpSourceFilter === 'one') rows = rows.filter(r => r.sourceCount === 1);
   else if (_cpSourceFilter === 'warn') rows = rows.filter(r => r.aImplausible);
@@ -502,6 +524,8 @@ function showPlayerProjections() {
     if (typeof ttOwnerInvalidate === 'function') ttOwnerInvalidate();
     const poolSel = document.getElementById('cpPool');
     if (poolSel) poolSel.value = _cpPool;
+    const sourceSel = document.getElementById('cpSource');
+    if (sourceSel) sourceSel.value = _cpSourceFilter;
     cpRenderWeightInputs();
     cpRenderFilterInputs();
     _cpComputed = null;

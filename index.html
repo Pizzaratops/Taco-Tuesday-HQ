@@ -459,9 +459,10 @@
       <option value="all">Z relativ zu allen Spielern</option>
     </select>
     <select class="cp-select" id="cpSource" onchange="cpSetSource(this.value)" title="Nach Datengrundlage filtern">
+      <option value="twoplus">Mind. 2 von 3 Quellen (Standard)</option>
       <option value="">Alle Spieler</option>
       <option value="three">Nur voller Konsens (alle 3 Quellen)</option>
-      <option value="two">Nur 2 von 3 Quellen</option>
+      <option value="two">Nur exakt 2 von 3 Quellen</option>
       <option value="one">Nur 1 Quelle</option>
       <option value="warn">Nur auffällige Werte</option>
     </select>
@@ -474,7 +475,7 @@
        auf den Z-Score, siehe cpComputeZ in js/consensus-projections.js. -->
   <div class="cp-panel" id="cpWeightPanel">
     <div class="cp-panel-head">
-      <span>Kategorie-Gewichtung · Standard ist überall 1</span>
+      <span>Kategorie-Gewichtung · Standard nach Konsistenz gewichtet (Josh Lloyd)</span>
       <button class="cp-btn cp-btn-sm" onclick="cpResetWeights()">↺ Zurücksetzen</button>
     </div>
     <div class="cp-wgrid" id="cpWeights"></div>
