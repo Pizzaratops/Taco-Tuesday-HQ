@@ -38,6 +38,7 @@ let _cpPosFilter = '';
 let _cpSourceFilter = '';
 let _cpPool = 'all';
 let _cpComputed = null;   // Ergebnis der letzten Berechnung
+let _cpLastRows = [];     // Aktuell gefilterte + sortierte Zeilen (für CSV-Export)
 
 const CP_CATS = [
   { key: 'pts',      label: 'PTS', dec: 1 },
@@ -427,6 +428,68 @@ function cpRender() {
 
   html += '</tbody></table>';
   host.innerHTML = html;
+
+  _cpLastRows = rows;
+}
+
+// ── CSV-Export ──────────────────────────────────────────────
+// Exportiert exakt die Zeilen, die gerade (nach Suche/Filter/Sortierung)
+// in der Tabelle stehen -- keine neue Berechnung, einfach _cpLastRows.
+
+function _cpCsvEscape(v) {
+  const s = String(v === undefined || v === null ? '' : v);
+  return /[",;\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+}
+
+function cpExportCsv() {
+  const rows = _cpLastRows;
+  if (!rows || !rows.length) return;
+
+  const header = [
+    '#', 'Spieler', 'Team', 'Pos', 'Fant.', 'Z', 'MIN',
+    ...CP_CATS.map(c => c.label),
+    'FGM', 'FGA', 'FTM', 'FTA', 'Δ Rang', 'Quellen',
+  ];
+
+  const lines = [header.map(_cpCsvEscape).join(',')];
+
+  rows.forEach(r => {
+    const fant = typeof ttOwnerTag === 'function'
+      ? String(ttOwnerTag(r.name) || '').replace(/<[^>]*>/g, '').trim()
+      : '';
+    const row = [
+      r.overallRank,
+      r.name,
+      r.team || '',
+      r.pos || '',
+      fant,
+      r.z.toFixed(2),
+      (r.min || 0).toFixed(1),
+      ...CP_CATS.map(c => {
+        const shown = c.pct ? (r[c.pct] || 0) : (r[c.key] || 0);
+        return shown.toFixed(c.dec);
+      }),
+      (r.fgm || 0).toFixed(1),
+      (r.fga || 0).toFixed(1),
+      (r.ftm || 0).toFixed(1),
+      (r.fta || 0).toFixed(1),
+      r.rankDiff === null || r.rankDiff === undefined ? '' : r.rankDiff,
+      cpSourceLabel(r),
+    ];
+    lines.push(row.map(_cpCsvEscape).join(','));
+  });
+
+  const csv = '\uFEFF' + lines.join('\r\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const stamp = new Date().toISOString().slice(0, 10);
+  a.href = url;
+  a.download = `tthq-projections-${stamp}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 // ── Init ─────────────────────────────────────────────────────
