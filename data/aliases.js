@@ -185,6 +185,15 @@ const NAME_FIRST_ALIASES = {
   'alexandre sarr':   'alex sarr',
   'cameron johnson':  'cam johnson',  // Roster uses Cameron, DYNASTY_PLAYERS uses Cam
   'herbert jones':    'herb jones',   // Hashtag/ESPN nutzen "Herbert", Beyaz' Baseline "Herb"
+
+  // 17.08.2026, aus dem manuellen Namensvarianten-Abgleich (Beyaz):
+  // fuehrte ohne Alias zu doppelten Consensus-Eintraegen fuer denselben
+  // Spieler. Zielschreibweise jeweils gegen den echten ESPN-Rosterfeed
+  // geprueft (projections/rosters-data.js), nicht geraten.
+  'lu dort':          'luguentz dort', // BBM nutzt Kurzform, ESPN nutzt "Luguentz"
+  'd angelo russell': 'dangelo russell', // Apostroph durch Leerzeichen ersetzt statt entfernt
+  'dlo':              'dangelo russell', // Spitzname
+  'nic batum':        'nicolas batum',
 };
 
 /**

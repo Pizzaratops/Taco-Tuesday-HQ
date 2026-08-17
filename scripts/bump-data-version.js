@@ -43,6 +43,39 @@ function shortHash(filePath) {
   return crypto.createHash('sha1').update(buf).digest('hex').slice(0, 8);
 }
 
+// ============================================================
+//  SCHUTZ GEGEN UNAUFGELOESTE MERGE-KONFLIKTE (16./17.08.2026)
+// ============================================================
+//  Vorfall: ein Commit ("hashtag") landete mit unaufgeloesten
+//  Konfliktmarkern (<<<<<<< HEAD / ======= / >>>>>>>) in index.html im
+//  Repo. Da dieses Script nur gezielt ?v=-Parameter per Regex ersetzt
+//  und den Rest der Datei nicht anfasst, war ihm das komplett egal --
+//  es hat den kaputten Zustand klaglos jeden Tag weiter mit frischen
+//  Hashes versehen und committet. Sichtbar wurde es erst, als die
+//  Marker als Text auf der echten Seite auftauchten.
+//
+//  Diese Pruefung laeuft VOR allem anderen und ist bewusst FATAL
+//  (anders als der Rest dieses Scripts, siehe unten) -- ein
+//  Datenintegritaetsfehler dieser Art soll den taeglichen Workflow
+//  sichtbar rot einfaerben, nicht still durchlaufen.
+function assertNoConflictMarkers(filePath, content) {
+  const markers = [
+    { pat: /^<{7} /m, label: '<<<<<<<' },
+    { pat: /^>{7} /m, label: '>>>>>>>' },
+  ];
+  for (const { pat, label } of markers) {
+    const m = content.match(pat);
+    if (m) {
+      const line = content.slice(0, m.index).split('\n').length;
+      throw new Error(
+        `UNAUFGELOESTER MERGE-KONFLIKT in ${path.relative(ROOT, filePath)}, Zeile ${line} ` +
+        `(Marker "${label}"). Das ist wahrscheinlich beim letzten manuellen Merge liegen ` +
+        `geblieben -- bitte von Hand pruefen und auflösen, bevor der Workflow weiterlaeuft.`
+      );
+    }
+  }
+}
+
 function main() {
   if (!fs.existsSync(HTML)) {
     console.error('index.html nicht gefunden, uebersprungen.');
@@ -50,6 +83,7 @@ function main() {
   }
 
   let html = fs.readFileSync(HTML, 'utf8');
+  assertNoConflictMarkers(HTML, html); // wirft und stoppt den Workflow, siehe oben
   let changed = 0, unchanged = 0, missing = 0;
 
   // Nur data/-Skripte, mit oder ohne bestehenden ?v=-Parameter.
@@ -81,7 +115,13 @@ function main() {
 try {
   main();
 } catch (err) {
-  // Nicht fatal: lieber ein veralteter Cache als ein abgebrochener
-  // Workflow, der die frischen Daten gar nicht erst committet.
+  if (String(err.message).includes('MERGE-KONFLIKT')) {
+    // Bewusst FATAL, siehe assertNoConflictMarkers oben.
+    console.error('❌ ' + err.message);
+    process.exit(1);
+  }
+  // Alles andere bleibt nicht fatal: lieber ein veralteter Cache als
+  // ein abgebrochener Workflow, der die frischen Daten gar nicht erst
+  // committet.
   console.error('Cache-Buster fehlgeschlagen (Workflow laeuft weiter):', err.message);
 }

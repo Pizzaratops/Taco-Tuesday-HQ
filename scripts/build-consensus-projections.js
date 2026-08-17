@@ -48,7 +48,23 @@
 //     Rang berechnen und die Streuung zwischen den drei Meinungen
 //     zeigen ("Δ Rang").
 //
-//  Usage: node scripts/build-consensus-projections.js <bbm.json> <hashtag.json>
+//  6. NUR-BEYAZ-BEREINIGUNG (17.08.2026)
+//     Spieler mit sources==='a' (nur Beyaz' eigene Baseline, weder BBM
+//     noch Hashtag projizieren sie) werden verworfen, AUSSER:
+//       - sie stehen auf einem aktuellen NBA-Roster
+//         (projections/rosters-data.js, taeglicher ESPN-Sync), oder
+//       - sie stehen auf der manuellen Ausnahmeliste
+//         (scripts/data/consensus-keep-list.txt)
+//     Hintergrund: Beyaz' Baseline enthielt hunderte Karteileichen
+//     (Mirotic, Wade, Melo, Westbrook, Gasol, ...), aus denen der
+//     fruehere Merge munter "Konsens"-Zeilen fuer laengst aus der Liga
+//     verschwundene Spieler baute. Zwei unabhaengige externe Quellen,
+//     die BEIDE einen Spieler auslassen, ist ein verlaesslicheres
+//     Signal als jeder einzelne Rosterstand -- ergaenzt um die
+//     Ausnahmeliste fuer Faelle wie einen aktuell vertragslosen, aber
+//     erkennbar noch relevanten Spieler.
+//
+//  Usage: node scripts/build-consensus-projections.js <bbm.json> <hashtag.json> [rosters-data.js] [keep-list.txt]
 // ============================================================
 
 const fs = require('fs');
@@ -133,15 +149,44 @@ function averageVals(list) {
   return out;
 }
 
+function loadCurrentRosterNames(rostersPath) {
+  if (!rostersPath || !fs.existsSync(rostersPath)) return new Set();
+  const sandbox = {};
+  vm.createContext(sandbox);
+  vm.runInContext(fs.readFileSync(rostersPath, 'utf8') + '\nthis.__R__ = ROSTERS_DATA;', sandbox);
+  const names = new Set();
+  const data = sandbox.__R__;
+  if (data && data.rosters) {
+    Object.values(data.rosters).forEach(t => (t.players || []).forEach(p => names.add(p.name)));
+  }
+  return names;
+}
+
+function loadKeepList(keepListPath) {
+  if (!keepListPath || !fs.existsSync(keepListPath)) return new Set();
+  const raw = fs.readFileSync(keepListPath, 'utf8');
+  const names = new Set();
+  raw.split('\n').forEach(line => {
+    const clean = line.split('#')[0].trim();
+    if (clean) names.add(clean);
+  });
+  return names;
+}
+
 function main() {
   const bbmPath = process.argv[2];
   const hashtagPath = process.argv[3];
+  const rostersPath = process.argv[4] || path.join(ROOT, 'projections', 'rosters-data.js');
+  const keepListPath = process.argv[5] || path.join(__dirname, 'data', 'consensus-keep-list.txt');
   if (!bbmPath || !hashtagPath) {
     throw new Error('Aufruf: node build-consensus-projections.js <bbm.json> <hashtag.json>');
   }
   const bbm = JSON.parse(fs.readFileSync(bbmPath, 'utf8'));
   const hashtag = JSON.parse(fs.readFileSync(hashtagPath, 'utf8'));
   const { baseline, normalizeName } = loadBaseline();
+  const rosterNames = loadCurrentRosterNames(rostersPath);
+  const keepNames = loadKeepList(keepListPath);
+  const keepThisPlayer = (name) => rosterNames.has(name) || keepNames.has(name);
 
   const mineByNorm = new Map();
   Object.keys(baseline).forEach(n => {
@@ -166,7 +211,7 @@ function main() {
   const allKeys = new Set([...mineByNorm.keys(), ...bbmByNorm.keys(), ...hashtagByNorm.keys()]);
 
   const result = {};
-  const stats = { count3: 0, count2: 0, count1: 0, implausibleA: 0 };
+  const stats = { count3: 0, count2: 0, count1: 0, implausibleA: 0, droppedPhantom: 0, keptViaException: 0 };
 
   allKeys.forEach(key => {
     const displayName = mineByNorm.get(key) || bbmByNorm.get(key) || hashtagByNorm.get(key);
@@ -195,11 +240,15 @@ function main() {
     if (vC) contributing.push('c');
 
     if (!contributing.length) {
-      // Nur eine unplausible Beyaz-Zeile und sonst nichts: den
-      // Originalwert trotzdem zeigen, aber klar markiert -- besser
-      // sichtbar falsch als kommentarlos fehlend.
+      // Nur eine unplausible Beyaz-Zeile und sonst nichts. Ohne
+      // Roster-/Keep-Bestaetigung wird das verworfen -- ein Wert, der
+      // schon als Zahl unplausibel ist UND von keiner zweiten Quelle
+      // gegengeprueft wird UND nicht mal auf einem aktuellen Roster
+      // steht, ist keine Zeile, die die App zeigen sollte.
       if (rawA) {
+        if (!keepThisPlayer(displayName)) { stats.droppedPhantom++; return; }
         stats.count1++;
+        stats.keptViaException++;
         const v = srcVals(rawA, 0, 0);
         result[displayName] = {
           team: '', pos: rawA.pos || '', g: null,
@@ -210,6 +259,15 @@ function main() {
       }
       return;
     }
+
+    // NUR Beyaz als Quelle (contributing = ['a']), weder BBM noch
+    // Hashtag kennen den Spieler: ohne Roster-/Keep-Bestaetigung
+    // verwerfen. Siehe Kopfkommentar Punkt 6 fuer die Begruendung.
+    if (contributing.length === 1 && contributing[0] === 'a' && !keepThisPlayer(displayName)) {
+      stats.droppedPhantom++;
+      return;
+    }
+    if (contributing.length === 1 && contributing[0] === 'a') stats.keptViaException++;
 
     const merged = averageVals([vA, vB, vC]);
     const team = (rawB && rawB.team) || (rawC && rawC.team) || '';
@@ -265,6 +323,9 @@ const PROJECTIONS_CONSENSUS = ${JSON.stringify(result, null, 1)};
   console.log(`${path.relative(ROOT, OUT)} geschrieben.`);
   console.log(`  3 Quellen: ${stats.count3}  |  2 Quellen: ${stats.count2}  |  1 Quelle: ${stats.count1}`);
   console.log(`  Beyaz-Werte verworfen (unplausibel): ${stats.implausibleA}`);
+  console.log(`  Nur-Beyaz-Karteileichen entfernt (kein Roster, keine Ausnahme): ${stats.droppedPhantom}`);
+  console.log(`  Nur-Beyaz behalten (Roster oder Ausnahmeliste): ${stats.keptViaException}`);
+  console.log(`  Rosterquelle: ${rosterNames.size} Spieler | Ausnahmeliste: ${keepNames.size} Spieler`);
   console.log(`  Gesamt: ${Object.keys(result).length}`);
 }
 
