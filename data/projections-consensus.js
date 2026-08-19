@@ -2,7 +2,7 @@
 //  CONSENSUS PROJECTIONS 2026/27 — Beyaz × Josh Lloyd (BBM) × Hashtag Basketball
 // ============================================================
 //  AUTO-GENERIERT von scripts/build-consensus-projections.js.
-//  Erzeugt am: 2026-08-19T08:11:02.291Z
+//  Erzeugt am: 2026-08-19T09:55:50.207Z
 //
 //  Mittelwert aus DREI unabhängigen Projections-Quellen:
 //    a) data/projections-baseline.js (Beyaz)
@@ -27,7 +27,7 @@
 // ============================================================
 
 const PROJECTIONS_CONSENSUS = {
- "Luka Doncic": {
+ "Luka Dončić": {
   "team": "LAL",
   "pos": "G",
   "g": 68,
@@ -303,7 +303,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 81.8
   }
  },
- "Nikola Jokic": {
+ "Nikola Jokić": {
   "team": "DEN",
   "pos": "C",
   "g": 72,
@@ -3270,7 +3270,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 79.8
   }
  },
- "Alperen Sengun": {
+ "Alperen Şengün": {
   "team": "HOU",
   "pos": "C",
   "g": 72,
@@ -4236,7 +4236,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 71.9
   }
  },
- "Kristaps Porzingis": {
+ "Kristaps Porziņģis": {
   "team": "GSW",
   "pos": "F/C",
   "g": 51,
@@ -8583,7 +8583,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 74.6
   }
  },
- "Egor Demin": {
+ "Egor Dëmin": {
   "team": "BKN",
   "pos": "G",
   "g": 69,
@@ -10101,7 +10101,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 60.3
   }
  },
- "Nikola Vucevic": {
+ "Nikola Vučević": {
   "team": "ORL",
   "pos": "C",
   "g": 65,
@@ -12723,7 +12723,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 76
   }
  },
- "Jusuf Nurkic": {
+ "Jusuf Nurkić": {
   "team": "UTA",
   "pos": "C",
   "g": 58,
@@ -14241,7 +14241,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 82.8
   }
  },
- "Dennis Schroder": {
+ "Dennis Schröder": {
   "team": "CLE",
   "pos": "G",
   "g": 70,
@@ -15483,7 +15483,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 72.8
   }
  },
- "Nikola Jovic": {
+ "Nikola Jović": {
   "team": "MIA",
   "pos": "F",
   "g": 61,
@@ -16173,7 +16173,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 74.7
   }
  },
- "Yanic Konan Niederhauser": {
+ "Yanic Konan Niederhäuser": {
   "team": "LAC",
   "pos": "C",
   "g": 50,
@@ -17484,7 +17484,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 85.2
   }
  },
- "Nolan Traore": {
+ "Nolan Traoré": {
   "team": "BKN",
   "pos": "G",
   "g": 64,
@@ -17553,7 +17553,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 78.6
   }
  },
- "Moussa Diabate": {
+ "Moussa Diabaté": {
   "team": "CHA",
   "pos": "F/C",
   "g": 72,
@@ -18588,7 +18588,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 63.1
   }
  },
- "Bogdan Bogdanovic": {
+ "Bogdan Bogdanović": {
   "team": "HOU",
   "pos": "G/F",
   "g": 40,
@@ -19815,7 +19815,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 81.4
   }
  },
- "Karlo Matkovic": {
+ "Karlo Matković": {
   "team": "NOR",
   "pos": "F",
   "g": 60,
@@ -21333,7 +21333,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 74
   }
  },
- "Tristan Vukcevic": {
+ "Tristan Vukčević": {
   "team": "WAS",
   "pos": "F/C",
   "g": 40,
@@ -21471,7 +21471,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 80.8
   }
  },
- "Vit Krejci": {
+ "Vít Krejčí": {
   "team": "POR",
   "pos": "G",
   "g": 60,
@@ -22008,7 +22008,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 76.5
   }
  },
- "Tarik Biberovic": {
+ "Tarik Biberović": {
   "team": "DAL",
   "pos": "F",
   "g": 46,
@@ -22806,7 +22806,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 71.7
   }
  },
- "Hugo Gonzalez": {
+ "Hugo González": {
   "team": "BOS",
   "pos": "G/F",
   "g": 72,
@@ -24900,7 +24900,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 70.8
   }
  },
- "Nikola Topic": {
+ "Nikola Topić": {
   "team": "OKC",
   "pos": "G",
   "g": 20,
@@ -25713,7 +25713,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 67.6
   }
  },
- "Bogoljub Markovic": {
+ "Bogoljub Marković": {
   "team": "MIL",
   "pos": "F",
   "g": 46,
@@ -26580,7 +26580,7 @@ const PROJECTIONS_CONSENSUS = {
    "ftPct": 55.8
   }
  },
- "Tidjane Salaun": {
+ "Tidjane Salaün": {
   "team": "CHA",
   "pos": "F",
   "g": 40,
