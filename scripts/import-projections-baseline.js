@@ -122,8 +122,14 @@ const header = rows[headerRowIdx].map(h => (h || '').toString().trim());
 const col = name => header.findIndex(h => h.toLowerCase() === name.toLowerCase());
 const idx = {
   player: col('Player') !== -1 ? col('Player') : col('Name'),
-  min: col('MIN'), pts: col('PTS'), reb: col('REB'), ast: col('AST'),
-  stl: col('STL'), blk: col('BLK'), tpm: col('3PM'), tov: col('TOV'),
+  // MPG/TREB/TO sind Alternativ-Header aus Beyaz' neuerem Export-Template
+  // (2026/27-Datei) -- gleiche Bedeutung wie MIN/REB/TOV, nur anders benannt.
+  min: col('MIN') !== -1 ? col('MIN') : col('MPG'),
+  pts: col('PTS'),
+  reb: col('REB') !== -1 ? col('REB') : col('TREB'),
+  ast: col('AST'),
+  stl: col('STL'), blk: col('BLK'), tpm: col('3PM'),
+  tov: col('TOV') !== -1 ? col('TOV') : col('TO'),
   fgmfga: header.findIndex(h => /^FGM.?FGA$/i.test(h)),
   ftmfta: header.findIndex(h => /^FTM.?FTA$/i.test(h)),
   fgm: col('FGM'), fga: col('FGA'), ftm: col('FTM'), fta: col('FTA'),

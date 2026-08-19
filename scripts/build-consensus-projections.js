@@ -102,7 +102,15 @@ function srcVals(o, fgaFallback, ftaFallback) {
   if (!o) return null;
   const fga = (o.fga > 0 ? o.fga : (fgaFallback || 0));
   const fta = (o.fta > 0 ? o.fta : (ftaFallback || 0));
-  const fgPct = o.fgPct || 0, ftPct = o.ftPct || 0;
+  // Quelle liefert entweder fgPct/ftPct direkt (klassischer Beyaz-Fall,
+  // keine echten Makes/Attempts) ODER echte fgm/fga/ftm/fta (z.B. Beyaz'
+  // neueres Export-Template ab 2026/27). Fehlt fgPct/ftPct, aus den Makes/
+  // Attempts zurueckrechnen -- sonst wuerde diese Quelle mit 0% in die
+  // Mittelung eingehen und den Konsens-FG%/FT% kaputt nach unten ziehen.
+  let fgPct = o.fgPct, ftPct = o.ftPct;
+  if ((fgPct === undefined || fgPct === null) && o.fgm > 0 && fga > 0) fgPct = o.fgm / fga * 100;
+  if ((ftPct === undefined || ftPct === null) && o.ftm > 0 && fta > 0) ftPct = o.ftm / fta * 100;
+  fgPct = fgPct || 0; ftPct = ftPct || 0;
   return {
     min: round(o.min || 0, 1),
     pts: round(o.pts || 0, 1),
