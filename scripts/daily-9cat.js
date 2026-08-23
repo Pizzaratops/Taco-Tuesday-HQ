@@ -96,7 +96,20 @@ async function fetchGames(dateStr) {
       const line = (home && away)
         ? `${teamLabel(away)} ${away.score ?? '?'} @ ${teamLabel(home)} ${home.score ?? '?'} (${statusText})`
         : (e.shortName || e.name);
-      return { id: e.id, name: e.shortName || e.name, line };
+      // Strukturierte Home/Away-Infos für die Box-Scores-Ansicht (Team-Zuordnung
+      // der Spieler-Boxscore-Zeilen zu den beiden Teams dieses Spiels). Die
+      // Abkürzung hier kommt aus der Scoreboard-API — dieselbe Quelle, die
+      // fetchGamePlayers() für die Boxscore-API benutzt, daher konsistent.
+      const teamInfo = c => c ? {
+        abbr: c.team?.abbreviation || '???',
+        name: teamLabel(c),
+        score: Number(c.score) || 0,
+      } : null;
+      return {
+        id: e.id, name: e.shortName || e.name, line,
+        home: teamInfo(home), away: teamInfo(away),
+        statusText,
+      };
     });
 }
 
@@ -113,6 +126,19 @@ function parseMadeAttempt(str) {
 function parseMinutes(str) {
   const n = parseInt(str, 10);
   return Number.isFinite(n) ? n : 0;
+}
+
+// ESPN benutzt in Scoreboard- und Boxscore/Summary-API teils unterschiedliche
+// Team-Kurzcodes für dasselbe Team (siehe identische Beobachtung/Map in
+// js/livescores.js: GS/GSW, NO/NOR, NY/NYK, PHX/PHO, SA/SAS, UTAH/UTA,
+// WSH/WAS). fetchGames() liest den Scoreboard-Code, fetchGamePlayers() den
+// Boxscore-Code — beide müssen auf denselben kanonischen Code normalisiert
+// werden, damit die Box-Scores-Zuordnung Spieler->Team nicht leer ausgeht.
+const TEAM_ABBR_CANON = {
+  GSW: 'GS', NOR: 'NO', NYK: 'NY', PHO: 'PHX', SAS: 'SA', UTA: 'UTAH', WAS: 'WSH',
+};
+function canonAbbr(a) {
+  return TEAM_ABBR_CANON[a] || a;
 }
 
 async function fetchGamePlayers(gameId) {
@@ -249,8 +275,15 @@ async function main() {
 
   console.log('Lade Boxscores...');
   let allPlayers = [];
+  // Pro Spiel wird die Spielerliste zusätzlich separat gehalten (gleiche
+  // Objekt-Referenzen wie in allPlayers) — so tragen sie nach
+  // attachImpactStats()/computeZScores() unten automatisch fgImpact/
+  // ftImpact/zScores/composite mit, ohne die Tages-Pool-Berechnung (über
+  // ALLE Spiele des Tages) für die Box-Scores-Ansicht zu duplizieren.
+  const gamesWithPlayers = [];
   for (const game of games) {
     const players = await fetchGamePlayers(game.id);
+    gamesWithPlayers.push({ game, players });
     allPlayers = allPlayers.concat(players);
   }
   console.log(`${allPlayers.length} Spieler mit Einsatzzeit gefunden.\n`);
@@ -353,6 +386,35 @@ async function main() {
   };
   fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2), 'utf8');
   console.log(`Meta gespeichert: ${metaPath}\n`);
+
+  // ------------------------------------------------------------
+  // Games-JSON — pro Spiel gruppierte Spieler (inkl. FGM/FGA/FTM/FTA und
+  // den bereits berechneten Z-Scores) für die Box-Scores-Ansicht.
+  // convert-to-boxscores.js liest diese Datei und merged sie in
+  // data/livescores-boxscores.js.
+  // ------------------------------------------------------------
+  const boxscoreGames = gamesWithPlayers.map(({ game, players }) => {
+    const byTeam = (abbr) => players
+      .filter(p => canonAbbr(p.team) === canonAbbr(abbr))
+      .map(p => ({
+        name: p.name, min: p.min,
+        pts: p.pts, reb: p.reb, ast: p.ast, stl: p.stl, blk: p.blk, to: p.to, tpm: p.tpm,
+        fgm: p.fgm, fga: p.fga, ftm: p.ftm, fta: p.fta,
+        composite: Number(p.composite.toFixed(2)),
+        zScores: Object.fromEntries(CATEGORIES.map(c => [c.key, Number((p.zScores[c.key] ?? 0).toFixed(3))])),
+      }));
+    return {
+      id: game.id,
+      line: game.line,
+      away: game.away ? { ...game.away, players: byTeam(game.away.abbr) } : null,
+      home: game.home ? { ...game.home, players: byTeam(game.home.abbr) } : null,
+    };
+  }).filter(g => (g.away?.players?.length || 0) + (g.home?.players?.length || 0) > 0);
+
+  const gamesJsonFileName = `daily-9cat_${LEAGUE}_${dateStr}.games.json`;
+  const gamesJsonPath = path.join(OUT_DIR, gamesJsonFileName);
+  fs.writeFileSync(gamesJsonPath, JSON.stringify({ league: LEAGUE, date: dateStr, games: boxscoreGames }, null, 2), 'utf8');
+  console.log(`Games-JSON (Box Scores) gespeichert: ${gamesJsonPath}\n`);
 }
 
 main().catch(err => {

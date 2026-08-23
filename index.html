@@ -978,6 +978,7 @@
     <div class="ls-subtab active" id="lsSubtabDaily" onclick="lsSwitchPeriod('daily')">📅 Daily</div>
     <div class="ls-subtab" id="lsSubtabWeekly" onclick="lsSwitchPeriod('week')">📈 Weekly</div>
     <div class="ls-subtab" id="lsSubtabMonthly" onclick="lsSwitchPeriod('month')">🗓️ Monthly</div>
+    <div class="ls-subtab" id="lsSubtabBoxscores" onclick="lsSwitchPeriod('boxscores')">🏀 Box Scores</div>
   </div>
 
   <div class="ls-toolbar">
@@ -2212,21 +2213,21 @@
 <script src="data/season-2022-23.js?v=ca4beb77"></script>
 <script src="data/season-2021-22.js?v=bb837487"></script>
 <script src="data/season-rankings.js?v=51f908be"></script>
-<script src="data/rosters-live.js?v=33b9f9e4"></script>
+<script src="data/rosters-live.js?v=6e6d7545"></script>
 <script src="data/picks.js?v=43f5868b"></script>
-<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=a6295e8d"></script>
+<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=43780944"></script>
 <!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=c819801f"></script>
 <script src="data/rankings.js?v=3b97f222"></script>
-<script src="data/projections-baseline.js?v=969673f4"></script>
-<script src="data/live-projections.js?v=81df6b45"></script>
+<script src="data/projections-baseline.js?v=c194f5ad"></script>
+<script src="data/live-projections.js?v=4297f002"></script>
 <script src="data/dynasty-rolling.js?v=5a3bad82"></script>
-<script src="data/dynasty-live.js?v=7f4318ff"></script>
+<script src="data/dynasty-live.js?v=374db52c"></script>
 <script src="data/hashtag.js?v=79b756a3"></script>
 <script src="data/aliases.js?v=be878c58"></script>
 <script src="data/draft2026.js?v=7795b40e"></script>
 <script src="data/draft2027.js?v=67c40565"></script>
-<script src="data/postdraft-board.js?v=f8209027"></script>
-<script src="data/best-available-board.js?v=6f9b1058"></script>
+<script src="data/postdraft-board.js?v=fd7047cd"></script>
+<script src="data/best-available-board.js?v=3310f4ed"></script>
 <script src="data/stats.js?v=7b760995"></script>
 
 <!-- App logic -->
@@ -2256,7 +2257,7 @@
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<script src="data/team-analytics.js?v=2e0d7ea7"></script>
+<script src="data/team-analytics.js?v=6efa207c"></script>
 <script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>
@@ -2273,7 +2274,8 @@
   <script src="js/rolling-rankings.js?v=5"></script>
 <script src="data/livescores-daily.js?v=ac7826b0"></script>
 <script src="data/livescores-aggregate.js?v=69091e1d"></script>
-<script src="js/livescores.js?v=6"></script>
+<script src="data/livescores-boxscores.js?v=1"></script>
+<script src="js/livescores.js?v=7"></script>
 <script src="data/offseason-rankings.js?v=c53883eb"></script>
 <script src="js/player-rankings.js?v=1"></script>
   <script src="js/init.js?v=5"></script>

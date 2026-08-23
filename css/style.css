@@ -514,6 +514,22 @@
     .ls-meta { margin-left: 0; width: 100%; }
     .ls-table td, .ls-table th { padding: 8px 9px; font-size: 12px; }
   }
+  .ls-box-game { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
+  .ls-box-game-header { padding: 10px 16px; background: var(--surface2); border-bottom: 1px solid var(--border); font-weight: 700; font-size: 13px; }
+  .ls-box-teams { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  @media (max-width: 900px) { .ls-box-teams { grid-template-columns: 1fr; } }
+  .ls-box-team { overflow-x: auto; }
+  .ls-box-team + .ls-box-team { border-left: 1px solid var(--border); }
+  @media (max-width: 900px) { .ls-box-team + .ls-box-team { border-left: none; border-top: 1px solid var(--border); } }
+  .ls-box-team-header { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 14px; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .ls-box-team-header .ls-box-score { color: var(--text); font-size: 15px; font-family: 'Playfair Display', serif; }
+  .ls-box-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  .ls-box-table thead th { padding: 6px 8px; text-align: right; color: var(--muted); font-weight: 700; white-space: nowrap; border-bottom: 1px solid var(--border); }
+  .ls-box-table thead th:first-child { text-align: left; }
+  .ls-box-table td { padding: 6px 8px; text-align: right; white-space: nowrap; }
+  .ls-box-table td:first-child { text-align: left; font-weight: 700; }
+  .ls-box-table tbody tr:hover { background: var(--surface2); }
+  .ls-box-table tbody tr:not(:last-child) { border-bottom: 1px solid var(--border); }
   .r-team-link { cursor: pointer; transition: all 0.15s; }
   .r-team-link:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
   .nba-team-hero { display:flex; align-items:center; gap:20px; margin-bottom:28px; }

@@ -204,6 +204,10 @@ function _lsAvailableDates(period, league) {
     const data = (typeof LIVESCORES_DAILY !== 'undefined' ? LIVESCORES_DAILY[league] : null) || {};
     return Object.keys(data).sort();
   }
+  if (period === 'boxscores') {
+    const data = (typeof LIVESCORES_BOXSCORES !== 'undefined' ? LIVESCORES_BOXSCORES[league] : null) || {};
+    return Object.keys(data).sort();
+  }
   const data = (typeof LIVESCORES_AGGREGATE !== 'undefined' ? (LIVESCORES_AGGREGATE[period] || {})[league] : null) || {};
   return Object.keys(data).sort();
 }
@@ -211,6 +215,10 @@ function _lsAvailableDates(period, league) {
 function _lsEntry(period, league, dateStr) {
   if (period === 'daily') {
     const data = (typeof LIVESCORES_DAILY !== 'undefined' ? LIVESCORES_DAILY[league] : null) || {};
+    return data[dateStr];
+  }
+  if (period === 'boxscores') {
+    const data = (typeof LIVESCORES_BOXSCORES !== 'undefined' ? LIVESCORES_BOXSCORES[league] : null) || {};
     return data[dateStr];
   }
   const data = (typeof LIVESCORES_AGGREGATE !== 'undefined' ? (LIVESCORES_AGGREGATE[period] || {})[league] : null) || {};
@@ -239,7 +247,7 @@ function lsSwitchPeriod(period) {
   lsCurrentPeriod = period;
 
   document.querySelectorAll('.ls-subtab').forEach(el => el.classList.remove('active'));
-  const idByPeriod = { daily: 'lsSubtabDaily', week: 'lsSubtabWeekly', month: 'lsSubtabMonthly' };
+  const idByPeriod = { daily: 'lsSubtabDaily', week: 'lsSubtabWeekly', month: 'lsSubtabMonthly', boxscores: 'lsSubtabBoxscores' };
   document.getElementById(idByPeriod[period])?.classList.add('active');
 
   // Beim Wechsel auf den zuletzt verfügbaren Stichtag für die neue Periode springen —
@@ -277,23 +285,35 @@ function _lsRender() {
   if (!content) return;
 
   const entry = _lsEntry(lsCurrentPeriod, lsCurrentLeague, lsCurrentDate);
+  const isBoxscores = lsCurrentPeriod === 'boxscores';
 
-  if (lsCurrentPeriod === 'daily') {
+  if (lsCurrentPeriod === 'daily' || isBoxscores) {
     if (meta) meta.textContent = _lsFormatDateLabel(lsCurrentDate);
   } else {
     const label = LS_PERIOD_LABEL[lsCurrentPeriod];
     if (meta) meta.textContent = `${label} bis ${_lsFormatDateShort(lsCurrentDate)}`;
   }
 
-  if (!entry || !entry.players || !entry.players.length) {
+  const puntPanel = document.getElementById('lsPuntPanel');
+  if (puntPanel) puntPanel.style.display = isBoxscores ? 'none' : '';
+  const minGamesPanelToggle = document.getElementById('lsMinGamesPanel');
+
+  const empty = isBoxscores ? (!entry || !entry.games || !entry.games.length) : (!entry || !entry.players || !entry.players.length);
+  if (empty) {
     if (gamesLine) {
-      gamesLine.textContent = lsCurrentPeriod === 'daily'
+      gamesLine.textContent = (lsCurrentPeriod === 'daily' || isBoxscores)
         ? ''
         : `Kein ${LS_PERIOD_LABEL[lsCurrentPeriod]}-Ranking für diesen Stichtag verfügbar.`;
     }
-    const minGamesPanelEmpty = document.getElementById('lsMinGamesPanel');
-    if (minGamesPanelEmpty) minGamesPanelEmpty.style.display = 'none';
+    if (minGamesPanelToggle) minGamesPanelToggle.style.display = 'none';
     content.innerHTML = `<div class="ls-status">Keine Daten für diesen Zeitraum. Entweder wurden keine Spiele ausgetragen, oder die Automatisierung hat das noch nicht erfasst.</div>`;
+    return;
+  }
+
+  if (isBoxscores) {
+    if (gamesLine) gamesLine.innerHTML = '';
+    if (minGamesPanelToggle) minGamesPanelToggle.style.display = 'none';
+    _lsRenderBoxscores(entry);
     return;
   }
 
@@ -323,6 +343,81 @@ function _lsRender() {
   lsRows = source.map(p => ({ ...p, composite: _lsWeightedComposite(p) }));
   _lsSort(lsSortCol, true);
   _lsRenderTable();
+}
+
+// ------------------------------------------------------------
+// Box Scores — pro Spiel zwei Team-Tabellen, farblich kodiert nach den
+// bereits mitgelieferten Z-Scores (Tages-Pool desselben Spiels).
+// ------------------------------------------------------------
+function _lsHeat(z) {
+  if (!Number.isFinite(z)) return '';
+  const a = Math.min(Math.abs(z) / 2.5, 1) * 0.5;
+  if (a < 0.06) return '';
+  return z > 0
+    ? `background:rgba(76,175,129,${a.toFixed(2)});`
+    : `background:rgba(255,101,132,${a.toFixed(2)});`;
+}
+
+const LS_BOX_COLUMNS = [
+  { key: 'min', label: 'MIN' },
+  { key: 'pts', label: 'PTS', z: 'pts' },
+  { key: 'reb', label: 'REB', z: 'reb' },
+  { key: 'ast', label: 'AST', z: 'ast' },
+  { key: 'stl', label: 'STL', z: 'stl' },
+  { key: 'blk', label: 'BLK', z: 'blk' },
+  { key: 'to',  label: 'TO',  z: 'to' },
+  { key: 'tpm', label: '3PM', z: 'tpm' },
+];
+
+function _lsBoxTeamTable(team) {
+  if (!team) return '';
+  const players = team.players || [];
+  const rows = players.map(p => {
+    const z = p.zScores || {};
+    const cells = LS_BOX_COLUMNS.map(c => {
+      const heat = c.z ? _lsHeat(z[c.z]) : '';
+      return `<td style="${heat}">${p[c.key]}</td>`;
+    }).join('');
+    const fgPct = p.fga > 0 ? ((p.fgm / p.fga) * 100).toFixed(1) + '%' : '-';
+    const ftPct = p.fta > 0 ? ((p.ftm / p.fta) * 100).toFixed(1) + '%' : '-';
+    return `<tr>
+      <td>${p.name}</td>
+      ${cells}
+      <td style="${_lsHeat(z.fgImpact)}">${p.fgm}-${p.fga}</td>
+      <td>${fgPct}</td>
+      <td style="${_lsHeat(z.ftImpact)}">${p.ftm}-${p.fta}</td>
+      <td>${ftPct}</td>
+    </tr>`;
+  }).join('');
+
+  const thead = `<th>Spieler</th>${LS_BOX_COLUMNS.map(c => `<th>${c.label}</th>`).join('')}<th>FGM-A</th><th>FG%</th><th>FTM-A</th><th>FT%</th>`;
+
+  return `<div class="ls-box-team">
+    <div class="ls-box-team-header">
+      <span>${_lsTeamFullName(team.abbr)}</span>
+      <span class="ls-box-score">${team.score}</span>
+    </div>
+    <table class="ls-box-table">
+      <thead><tr>${thead}</tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>`;
+}
+
+function _lsRenderBoxscores(entry) {
+  const content = document.getElementById('lsContent');
+  if (!content) return;
+
+  const games = entry.games || [];
+  content.innerHTML = games.map(g => `
+    <div class="ls-box-game">
+      <div class="ls-box-game-header">${g.line}</div>
+      <div class="ls-box-teams">
+        ${_lsBoxTeamTable(g.away)}
+        ${_lsBoxTeamTable(g.home)}
+      </div>
+    </div>
+  `).join('');
 }
 
 function lsSetMinGames(val) {

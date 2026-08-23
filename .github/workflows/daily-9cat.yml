@@ -166,6 +166,18 @@ jobs:
             node scripts/convert-to-livescores.js --league="$LEAGUE_ARG" --keep-days=120
           fi
 
+      - name: In livescores-boxscores.js konvertieren (Box-Scores-Tab)
+        if: steps.check_time.outputs.skip != 'true'
+        env:
+          DATE_ARG: ${{ steps.correction_date.outputs.date || github.event.inputs.date }}
+          LEAGUE_ARG: ${{ github.event.inputs.league || 'nba-summer-las-vegas' }}
+        run: |
+          if [ -n "$DATE_ARG" ]; then
+            node scripts/convert-to-boxscores.js --league="$LEAGUE_ARG" --date="$DATE_ARG" --keep-days=120
+          else
+            node scripts/convert-to-boxscores.js --league="$LEAGUE_ARG" --keep-days=120
+          fi
+
       - name: Weekly/Monthly aktualisieren (alle Standorte kombiniert)
         if: steps.check_time.outputs.skip != 'true'
         env:
@@ -233,7 +245,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html data/livescores-daily.js data/livescores-aggregate.js data/rolling-rankings-2026-27.js data/offseason-rankings.js data/postdraft-board.js data/best-available-board.js data/dynasty-live.js data/rosters-live.js data/picks-live.js data/trade-history.js scripts/data/
+          git add index.html data/livescores-daily.js data/livescores-boxscores.js data/livescores-aggregate.js data/rolling-rankings-2026-27.js data/offseason-rankings.js data/postdraft-board.js data/best-available-board.js data/dynasty-live.js data/rosters-live.js data/picks-live.js data/trade-history.js scripts/data/
           if git diff --cached --quiet; then
             echo "Keine Änderungen (vermutlich keine Spiele an diesem Tag)."
           else
