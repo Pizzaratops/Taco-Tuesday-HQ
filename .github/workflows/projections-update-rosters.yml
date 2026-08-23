@@ -25,6 +25,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
 jobs:
   update-rosters:
     runs-on: ubuntu-latest

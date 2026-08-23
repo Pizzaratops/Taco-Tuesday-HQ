@@ -75,7 +75,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: daily-9cat
+  group: repo-write
   cancel-in-progress: false
 
 jobs:
@@ -177,6 +177,10 @@ jobs:
           else
             node scripts/convert-to-boxscores.js --league="$LEAGUE_ARG" --keep-days=120
           fi
+
+      - name: Alte Roh-Tagesdateien in scripts/data/ aufräumen
+        if: steps.check_time.outputs.skip != 'true'
+        run: node scripts/prune-raw-data.js --keep-days=120
 
       - name: Weekly/Monthly aktualisieren (alle Standorte kombiniert)
         if: steps.check_time.outputs.skip != 'true'

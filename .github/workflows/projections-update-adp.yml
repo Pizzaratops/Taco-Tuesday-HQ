@@ -20,6 +20,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
 jobs:
   update-adp:
     runs-on: ubuntu-latest
