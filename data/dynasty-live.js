@@ -3,7 +3,7 @@
 // ============================================================
 //  AUTO-GENERIERT von scripts/build-dynasty-live.js über die
 //  "Daily 9cat Live Scores" GitHub Action. Nicht von Hand editieren.
-//  Zuletzt aktualisiert: 2026-08-19
+//  Zuletzt aktualisiert: 2026-08-23
 //
 //  Rein informativ — zeigt auf der Dynasty-Rankings-Seite ein kleines
 //  "Live"-Badge neben dem manuellen Rang aus data/rankings.js. Verändert
@@ -28,7 +28,6 @@ const DYNASTY_LIVE = [
   { name: "Morez Johnson Jr.", baseRank: 102, liveRank: 85, delta: 17, source: "current" },
   { name: "Ace Bailey", baseRank: 105, liveRank: 110, delta: -5, source: "current" },
   { name: "Yaxel Lendeborg", baseRank: 110, liveRank: 101, delta: 9, source: "current" },
-  { name: "Egor Demin", baseRank: 117, liveRank: 104, delta: 13, source: "current" },
   { name: "Hannes Steinbach", baseRank: 119, liveRank: 114, delta: 5, source: "current" },
   { name: "Khaman Maluach", baseRank: 122, liveRank: 108, delta: 14, source: "current" },
   { name: "Tre Johnson", baseRank: 134, liveRank: 128, delta: 6, source: "current" },
@@ -47,7 +46,6 @@ const DYNASTY_LIVE = [
   { name: "Yang Hansen", baseRank: 218, liveRank: 213, delta: 5, source: "current" },
   { name: "Dylan Cardwell", baseRank: 219, liveRank: 213, delta: 6, source: "current" },
   { name: "Zuby Ejiofor", baseRank: 223, liveRank: 215, delta: 8, source: "current" },
-  { name: "Hugo Gonzalez", baseRank: 225, liveRank: 217, delta: 8, source: "current" },
   { name: "Sergio de Larrea", baseRank: 233, liveRank: 227, delta: 6, source: "current" },
   { name: "Karim Lopez", baseRank: 239, liveRank: 241, delta: -2, source: "current" },
   { name: "Bennett Stirtz", baseRank: 247, liveRank: 241, delta: 6, source: "current" },
@@ -67,7 +65,6 @@ const DYNASTY_LIVE = [
   { name: "Kobe Sanders", baseRank: 307, liveRank: 299, delta: 8, source: "current" },
   { name: "Emanuel Sharp", baseRank: 310, liveRank: 300, delta: 10, source: "current" },
   { name: "Ryan Nembhard", baseRank: 318, liveRank: 315, delta: 3, source: "current" },
-  { name: "Bogoljub Markovic", baseRank: 320, liveRank: 318, delta: 2, source: "current" },
   { name: "Sion James", baseRank: 323, liveRank: 325, delta: -2, source: "current" },
   { name: "Will Richard", baseRank: 331, liveRank: 328, delta: 3, source: "current" },
   { name: "Asa Newell", baseRank: 335, liveRank: 337, delta: -2, source: "current" },
@@ -92,7 +89,6 @@ const DYNASTY_LIVE = [
   { name: "Malique Lewis", baseRank: 394, liveRank: 400, delta: -6, source: "current" },
   { name: "Felix Okpara", baseRank: 404, liveRank: 403, delta: 1, source: "current" },
   { name: "Zyon Pullin", baseRank: 409, liveRank: 398, delta: 11, source: "current" },
-  { name: "Tidjane Salaun", baseRank: 413, liveRank: 409, delta: 4, source: "current" },
   { name: "Rafael Castro", baseRank: 416, liveRank: 423, delta: -7, source: "current" },
   { name: "Jack Kayil", baseRank: 424, liveRank: 422, delta: 2, source: "current" },
   { name: "Jonathan Mogbo", baseRank: 427, liveRank: 421, delta: 6, source: "current" },

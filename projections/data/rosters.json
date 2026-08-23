@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-08-19T09:24:42.812Z",
+ "fetchedAt": "2026-08-23T09:20:04.507Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -37,7 +37,7 @@
     },
     {
      "name": "RayJ Dennis",
-     "jersey": "00",
+     "jersey": "10",
      "position": "G",
      "height": "6' 2\"",
      "weight": "180 lbs",
@@ -46,7 +46,7 @@
     },
     {
      "name": "Luguentz Dort",
-     "jersey": "5",
+     "jersey": "0",
      "position": "G",
      "height": "6' 4\"",
      "weight": "220 lbs",
@@ -55,7 +55,7 @@
     },
     {
      "name": "Zuby Ejiofor",
-     "jersey": null,
+     "jersey": "20",
      "position": "F",
      "height": "6' 8\"",
      "weight": "245 lbs",
@@ -64,7 +64,7 @@
     },
     {
      "name": "Kingston Flemings",
-     "jersey": null,
+     "jersey": "4",
      "position": "G",
      "height": "6' 3\"",
      "weight": "183 lbs",
@@ -73,7 +73,7 @@
     },
     {
      "name": "Keshon Gilbert",
-     "jersey": null,
+     "jersey": "51",
      "position": "G",
      "height": "6' 4\"",
      "weight": "200 lbs",
@@ -117,15 +117,6 @@
      "espnId": "4280151"
     },
     {
-     "name": "Christian Koloko",
-     "jersey": "35",
-     "position": "C",
-     "height": "6' 11\"",
-     "weight": "225 lbs",
-     "age": 26,
-     "espnId": "4431778"
-    },
-    {
      "name": "Jock Landale",
      "jersey": "31",
      "position": "C",
@@ -145,7 +136,7 @@
     },
     {
      "name": "Ryan Nembhard",
-     "jersey": "9",
+     "jersey": "19",
      "position": "G",
      "height": "5' 11\"",
      "weight": "180 lbs",
@@ -172,7 +163,7 @@
     },
     {
      "name": "Henri Veesaar",
-     "jersey": null,
+     "jersey": "13",
      "position": "C",
      "height": "7' 0\"",
      "weight": "227 lbs",
@@ -180,17 +171,8 @@
      "espnId": "5105571"
     },
     {
-     "name": "Keaton Wallace",
-     "jersey": "2",
-     "position": "G",
-     "height": "6' 3\"",
-     "weight": "185 lbs",
-     "age": 27,
-     "espnId": "4279118"
-    },
-    {
      "name": "Aaron Wiggins",
-     "jersey": "21",
+     "jersey": "2",
      "position": "G",
      "height": "6' 5\"",
      "weight": "190 lbs",
@@ -199,7 +181,7 @@
     },
     {
      "name": "Jalen Wilson",
-     "jersey": "22",
+     "jersey": "12",
      "position": "F",
      "height": "6' 6\"",
      "weight": "220 lbs",
@@ -223,7 +205,7 @@
     },
     {
      "name": "Mike Conley",
-     "jersey": null,
+     "jersey": "45",
      "position": "G",
      "height": "6' 1\"",
      "weight": "175 lbs",
@@ -304,7 +286,7 @@
     },
     {
      "name": "Mitchell Robinson",
-     "jersey": null,
+     "jersey": "4",
      "position": "C",
      "height": "7' 0\"",
      "weight": "240 lbs",
@@ -912,15 +894,6 @@
      "espnId": "2995706"
     },
     {
-     "name": "Tre Mann",
-     "jersey": null,
-     "position": "G",
-     "height": "6' 4\"",
-     "weight": "178 lbs",
-     "age": 25,
-     "espnId": "4432819"
-    },
-    {
      "name": "Sam Merrill",
      "jersey": "5",
      "position": "G",
@@ -984,15 +957,6 @@
      "espnId": "4278046"
     },
     {
-     "name": "Max Strus",
-     "jersey": "2",
-     "position": "G",
-     "height": "6' 5\"",
-     "weight": "215 lbs",
-     "age": 30,
-     "espnId": "4065778"
-    },
-    {
      "name": "Meleek Thomas",
      "jersey": null,
      "position": "G",
@@ -1027,6 +991,24 @@
      "weight": "266 lbs",
      "age": 22,
      "espnId": "5106261"
+    },
+    {
+     "name": "Peyton Watson",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 8\"",
+     "weight": "200 lbs",
+     "age": 23,
+     "espnId": "4576087"
+    },
+    {
+     "name": "Cam Whitmore",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 6\"",
+     "weight": "230 lbs",
+     "age": 22,
+     "espnId": "5105592"
     }
    ]
   },
@@ -1197,15 +1179,6 @@
      "espnId": "4432107"
     },
     {
-     "name": "Klay Thompson",
-     "jersey": "31",
-     "position": "G",
-     "height": "6' 5\"",
-     "weight": "220 lbs",
-     "age": 36,
-     "espnId": "6475"
-    },
-    {
      "name": "P.J. Washington",
      "jersey": "25",
      "position": "F",
@@ -1246,6 +1219,15 @@
      "weight": "220 lbs",
      "age": 23,
      "espnId": "4698719"
+    },
+    {
+     "name": "DeMar DeRozan",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 6\"",
+     "weight": "220 lbs",
+     "age": 37,
+     "espnId": "3978"
     },
     {
      "name": "Alpha Diallo",
@@ -1338,6 +1320,15 @@
      "espnId": "4431690"
     },
     {
+     "name": "Julian Reese",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 9\"",
+     "weight": "252 lbs",
+     "age": 23,
+     "espnId": "4683742"
+    },
+    {
      "name": "David Roddy",
      "jersey": "45",
      "position": "F",
@@ -1372,15 +1363,6 @@
      "weight": "205 lbs",
      "age": 27,
      "espnId": "4277890"
-    },
-    {
-     "name": "Peyton Watson",
-     "jersey": "8",
-     "position": "G",
-     "height": "6' 8\"",
-     "weight": "200 lbs",
-     "age": 23,
-     "espnId": "4576087"
     }
    ]
   },
@@ -1748,7 +1730,7 @@
      "position": "G",
      "height": "6' 5\"",
      "weight": "225 lbs",
-     "age": 33,
+     "age": 34,
      "espnId": "3037789"
     },
     {
@@ -2223,6 +2205,15 @@
      "espnId": "4897696"
     },
     {
+     "name": "Max Strus",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 5\"",
+     "weight": "215 lbs",
+     "age": 30,
+     "espnId": "4065778"
+    },
+    {
      "name": "Keaton Wagler",
      "jersey": null,
      "position": "G",
@@ -2528,7 +2519,7 @@
      "position": "F",
      "height": "6' 8\"",
      "weight": "218 lbs",
-     "age": 25,
+     "age": 26,
      "espnId": "4594326"
     },
     {
@@ -3059,7 +3050,7 @@
      "position": "F",
      "height": "6' 9\"",
      "weight": "240 lbs",
-     "age": 23,
+     "age": 24,
      "espnId": "4897438"
     },
     {
@@ -3132,13 +3123,13 @@
      "espnId": "4397136"
     },
     {
-     "name": "Hunter Dickinson",
-     "jersey": "4",
-     "position": "C",
-     "height": "7' 1\"",
-     "weight": "255 lbs",
-     "age": 25,
-     "espnId": "4432180"
+     "name": "Malik Dia",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 9\"",
+     "weight": "250 lbs",
+     "age": 22,
+     "espnId": "4712862"
     },
     {
      "name": "Jeremiah Fears",
@@ -4358,7 +4349,7 @@
      "position": "F",
      "height": "6' 8\"",
      "weight": "225 lbs",
-     "age": 25,
+     "age": 26,
      "espnId": "4594327"
     },
     {
@@ -5034,6 +5025,15 @@
      "espnId": "5238230"
     },
     {
+     "name": "Tre Mann",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "178 lbs",
+     "age": 25,
+     "espnId": "4432819"
+    },
+    {
      "name": "Khris Middleton",
      "jersey": "22",
      "position": "F",
@@ -5050,15 +5050,6 @@
      "weight": "237 lbs",
      "age": 22,
      "espnId": "5105841"
-    },
-    {
-     "name": "Julian Reese",
-     "jersey": "15",
-     "position": "F",
-     "height": "6' 9\"",
-     "weight": "252 lbs",
-     "age": 23,
-     "espnId": "4683742"
     },
     {
      "name": "Will Riley",
@@ -5095,15 +5086,6 @@
      "weight": "210 lbs",
      "age": 25,
      "espnId": "4606840"
-    },
-    {
-     "name": "Cam Whitmore",
-     "jersey": "1",
-     "position": "F",
-     "height": "6' 6\"",
-     "weight": "230 lbs",
-     "age": 22,
-     "espnId": "5105592"
     },
     {
      "name": "Trae Young",
