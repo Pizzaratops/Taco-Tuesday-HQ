@@ -25,9 +25,20 @@ const dateArg = args.find(a => /^\d{4}-\d{2}-\d{2}$/.test(a));
 //   nba-summer-california   -> California Classic (San Francisco/Sacramento, 3.–6. Juli)
 //   nba-summer-utah         -> Salt Lake City Summer League (4.–7. Juli)
 //   nba-summer-las-vegas    -> NBA Summer League Las Vegas (Hauptevent, 9.–19. Juli)
-// Per Flag wählbar: --league=nba-summer-las-vegas (Default) oder --league=nba (reguläre Saison)
+//   nba-preseason           -> NBA Pre-Season (Termine variieren jährlich, manuell per --league setzen)
+//
+// WICHTIG (23.08.2026): Der Default war bis hierhin 'nba-summer-las-vegas'
+// fest einprogrammiert. Die Summer League endete am 19. Juli — seitdem lief
+// jeder automatische (nicht manuell mit --league gestartete) Lauf gegen einen
+// leeren Spielplan ("keine Spiele"-Abbruch), zeigte aber trotzdem grün. Ohne
+// Default-Wechsel hätte das unbemerkt bis in die echte Saison hinein so
+// weitergelaufen. Default ist deshalb jetzt 'nba' (reguläre Saison) — läuft
+// bis Saisonstart weiterhin harmlos leer, greift aber automatisch, sobald
+// echte Spiele kommen. Für die Pre-Season-Phase davor (Termine variieren
+// jährlich, hier nicht hart codiert) --league=nba-preseason manuell per
+// workflow_dispatch-Eingabe setzen, bis die reguläre Saison beginnt.
 const leagueArg = args.find(a => a.startsWith('--league='));
-const LEAGUE = leagueArg ? leagueArg.split('=')[1] : 'nba-summer-las-vegas';
+const LEAGUE = leagueArg ? leagueArg.split('=')[1] : 'nba';
 
 // Wo CSV + Meta-JSON landen. Default: scripts/data/ (das ist der Ordner, den
 // aggregate-9cat.js und convert-to-livescores.js ebenfalls per Default lesen,

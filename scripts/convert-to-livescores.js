@@ -23,6 +23,7 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 const { CATEGORIES, mean, stdDev } = require('./aggregate-core');
+const { assertNoConflictMarkers } = require('./conflict-guard');
 
 const args = process.argv.slice(2);
 const arg = (name, fallback) => {
@@ -172,6 +173,10 @@ const dayEntry = {
 let existing = {};
 if (fs.existsSync(OUT)) {
   const code = fs.readFileSync(OUT, 'utf8');
+  // FATAL bei liegen gebliebenen Merge-Konfliktmarkern (siehe conflict-guard.js) --
+  // ohne diesen Check wuerde der catch-Block unten das als generischen Parse-
+  // Fehler auffangen und die komplette Historie dieser Datei klaglos loeschen.
+  assertNoConflictMarkers(OUT, code);
   const sandbox = {};
   vm.createContext(sandbox);
   try {

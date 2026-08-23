@@ -34,6 +34,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const { assertNoConflictMarkers: assertNoConflictMarkersRaw } = require('./conflict-guard');
 
 const ROOT = path.join(__dirname, '..');
 const HTML = path.join(ROOT, 'index.html');
@@ -43,37 +44,14 @@ function shortHash(filePath) {
   return crypto.createHash('sha1').update(buf).digest('hex').slice(0, 8);
 }
 
-// ============================================================
-//  SCHUTZ GEGEN UNAUFGELOESTE MERGE-KONFLIKTE (16./17.08.2026)
-// ============================================================
-//  Vorfall: ein Commit ("hashtag") landete mit unaufgeloesten
-//  Konfliktmarkern (<<<<<<< HEAD / ======= / >>>>>>>) in index.html im
-//  Repo. Da dieses Script nur gezielt ?v=-Parameter per Regex ersetzt
-//  und den Rest der Datei nicht anfasst, war ihm das komplett egal --
-//  es hat den kaputten Zustand klaglos jeden Tag weiter mit frischen
-//  Hashes versehen und committet. Sichtbar wurde es erst, als die
-//  Marker als Text auf der echten Seite auftauchten.
-//
-//  Diese Pruefung laeuft VOR allem anderen und ist bewusst FATAL
-//  (anders als der Rest dieses Scripts, siehe unten) -- ein
-//  Datenintegritaetsfehler dieser Art soll den taeglichen Workflow
-//  sichtbar rot einfaerben, nicht still durchlaufen.
+// SCHUTZ GEGEN UNAUFGELOESTE MERGE-KONFLIKTE (16./17.08.2026) — die eigentliche
+// Prüfung/Herkunft steht jetzt in scripts/conflict-guard.js (23.08.2026 als
+// gemeinsames Modul extrahiert, damit convert-to-livescores.js,
+// convert-to-boxscores.js und convert-aggregate-to-livescores.js denselben
+// Schutz nutzen, nicht nur index.html hier). Dünner Wrapper hier nur, damit
+// die Fehlermeldung weiterhin den repo-relativen Pfad zeigt.
 function assertNoConflictMarkers(filePath, content) {
-  const markers = [
-    { pat: /^<{7} /m, label: '<<<<<<<' },
-    { pat: /^>{7} /m, label: '>>>>>>>' },
-  ];
-  for (const { pat, label } of markers) {
-    const m = content.match(pat);
-    if (m) {
-      const line = content.slice(0, m.index).split('\n').length;
-      throw new Error(
-        `UNAUFGELOESTER MERGE-KONFLIKT in ${path.relative(ROOT, filePath)}, Zeile ${line} ` +
-        `(Marker "${label}"). Das ist wahrscheinlich beim letzten manuellen Merge liegen ` +
-        `geblieben -- bitte von Hand pruefen und auflösen, bevor der Workflow weiterlaeuft.`
-      );
-    }
-  }
+  assertNoConflictMarkersRaw(path.relative(ROOT, filePath), content);
 }
 
 function main() {

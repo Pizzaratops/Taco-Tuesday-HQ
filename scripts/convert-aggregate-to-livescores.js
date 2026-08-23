@@ -27,6 +27,7 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 const { computeAggregate, toDateStr } = require('./aggregate-core');
+const { assertNoConflictMarkers } = require('./conflict-guard');
 
 const DEFAULT_OUT = path.join(__dirname, '..', 'data', 'livescores-aggregate.js');
 const DEFAULT_DIR = path.join(__dirname, 'data');
@@ -86,6 +87,10 @@ function buildEntry({ period, league, endDate, dir, minGames }) {
 function loadExisting(outPath) {
   if (!fs.existsSync(outPath)) return {};
   const code = fs.readFileSync(outPath, 'utf8');
+  // FATAL bei liegen gebliebenen Merge-Konfliktmarkern (siehe conflict-guard.js) --
+  // ohne diesen Check wuerde der catch-Block unten das als generischen Parse-
+  // Fehler auffangen und die komplette Historie dieser Datei klaglos loeschen.
+  assertNoConflictMarkers(outPath, code);
   const sandbox = {};
   vm.createContext(sandbox);
   try {
