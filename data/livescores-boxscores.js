@@ -9,8 +9,11 @@
 //  LIVESCORES_BOXSCORES[league][date] = {
 //    games: [
 //      {
-//        id, line,  // z.B. "Memphis Grizzlies 84 @ Portland Trail Blazers 91 (Final)"
-//        away: { abbr, name, score, players: [ {...} ] },
+//        id, line,  // abgeschlossen: "Memphis Grizzlies 84 @ Portland Trail Blazers 91 (Final)"
+//                    // noch ausstehend: "Miami Heat @ Toronto Raptors (7:00 PM ET)" (kein Punktestand)
+//        completed,  // false = Spiel noch nicht gestartet -- players ist dann [] auf beiden Seiten
+//        statusText, // Tip-off-Zeit ("7:00 PM ET") wenn !completed, sonst "Final"/Live-Status
+//        away: { abbr, name, score, players: [ {...} ] },  // score ist null wenn !completed
 //        home: { abbr, name, score, players: [ {...} ] },
 //      },
 //      ...

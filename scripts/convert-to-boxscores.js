@@ -24,6 +24,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const { assertNoConflictMarkers } = require('./conflict-guard');
 
 const args = process.argv.slice(2);
 const arg = (name, fallback) => {
@@ -53,6 +54,10 @@ const dayEntry = { games: raw.games || [] };
 let existing = {};
 if (fs.existsSync(OUT)) {
   const code = fs.readFileSync(OUT, 'utf8');
+  // FATAL bei liegen gebliebenen Merge-Konfliktmarkern (siehe conflict-guard.js) --
+  // ohne diesen Check wuerde der catch-Block unten das als generischen Parse-
+  // Fehler auffangen und die komplette Historie dieser Datei klaglos loeschen.
+  assertNoConflictMarkers(OUT, code);
   const sandbox = {};
   vm.createContext(sandbox);
   try {
@@ -104,9 +109,13 @@ ${players}
 }
 
 function fmtGame(g) {
+  // completed=false -> noch nicht gestartetes Spiel, players ist dann leer
+  // und statusText traegt die Tip-off-Zeit statt "Final" (siehe daily-9cat.js).
   return `{
       id: ${JSON.stringify(g.id)},
       line: ${JSON.stringify(g.line)},
+      completed: ${g.completed ? 'true' : 'false'},
+      statusText: ${JSON.stringify(g.statusText || '')},
       away: ${fmtTeam(g.away)},
       home: ${fmtTeam(g.home)}
     }`;
@@ -138,8 +147,11 @@ const header = `// ============================================================
 //  LIVESCORES_BOXSCORES[league][date] = {
 //    games: [
 //      {
-//        id, line,  // z.B. "Memphis Grizzlies 84 @ Portland Trail Blazers 91 (Final)"
-//        away: { abbr, name, score, players: [ {...} ] },
+//        id, line,  // abgeschlossen: "Memphis Grizzlies 84 @ Portland Trail Blazers 91 (Final)"
+//                    // noch ausstehend: "Miami Heat @ Toronto Raptors (7:00 PM ET)" (kein Punktestand)
+//        completed,  // false = Spiel noch nicht gestartet -- players ist dann [] auf beiden Seiten
+//        statusText, // Tip-off-Zeit ("7:00 PM ET") wenn !completed, sonst "Final"/Live-Status
+//        away: { abbr, name, score, players: [ {...} ] },  // score ist null wenn !completed
 //        home: { abbr, name, score, players: [ {...} ] },
 //      },
 //      ...

@@ -404,20 +404,37 @@ function _lsBoxTeamTable(team) {
   </div>`;
 }
 
+// Noch nicht gestartete Spiele (g.completed === false) haben noch keine
+// Boxscore -- statt "keine Daten" zeigen wir hier nur Matchup + Tip-off-Zeit,
+// ohne Stat-Tabellen (23.08.2026, auf Wunsch: ESPN zeigt den Spielplan ja
+// auch schon vor Tip-off).
+function _lsBoxUpcomingCard(g) {
+  const awayName = g.away ? g.away.name : '?';
+  const homeName = g.home ? g.home.name : '?';
+  return `<div class="ls-box-game ls-box-game-upcoming">
+    <div class="ls-box-game-header">
+      <span>${awayName} @ ${homeName}</span>
+      <span class="ls-box-upcoming-badge">🕒 ${g.statusText || 'Noch nicht gespielt'}</span>
+    </div>
+  </div>`;
+}
+
 function _lsRenderBoxscores(entry) {
   const content = document.getElementById('lsContent');
   if (!content) return;
 
   const games = entry.games || [];
-  content.innerHTML = games.map(g => `
+  content.innerHTML = games.map(g => {
+    if (!g.completed) return _lsBoxUpcomingCard(g);
+    return `
     <div class="ls-box-game">
       <div class="ls-box-game-header">${g.line}</div>
       <div class="ls-box-teams">
         ${_lsBoxTeamTable(g.away)}
         ${_lsBoxTeamTable(g.home)}
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 function lsSetMinGames(val) {
