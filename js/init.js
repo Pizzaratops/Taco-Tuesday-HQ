@@ -21,7 +21,6 @@
     _rerenderPage(initPageId);
   }
 })();
-initEspnSyncBtn();
 espnSync(true);
 
 // ============================================================

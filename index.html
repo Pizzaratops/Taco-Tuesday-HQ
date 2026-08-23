@@ -41,8 +41,6 @@
          Button mit den 3 manuellen Schritten (Teilen > Zum Home-Bildschirm).
          Sichtbarkeit wird rein per JS gesteuert (pwaShowIosHint in init.js). -->
     <button id="pwaIosHintBtn" onclick="pwaShowIosSteps()" style="display:none;background:rgba(108,99,255,0.12);border:1.5px solid rgba(108,99,255,0.35);color:var(--accent);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:6px;">📲 Zum Home-Bildschirm</button>
-    <!-- ESPN Sync Button -->
-    <button id="espnSyncBtn" onclick="if(isAdmin)espnSync();else toast('⛔ Nur für Admins')" title="Nur Admins können manuell syncen" style="background:rgba(128,128,128,0.08);border:1.5px solid rgba(128,128,128,0.2);color:var(--muted);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:default;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:6px;">🔄 ESPN Sync</button>
     <!-- Admin Settings link (visible only when logged in) -->
     <button id="adminSettingsBtn" onclick="showAdminSettings()" style="display:none;background:rgba(245,200,66,0.12);border:1.5px solid rgba(245,200,66,0.35);color:#f5c842;border-radius:20px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:DM Sans,sans-serif;transition:all 0.2s;white-space:nowrap;margin-right:2px;">⚙️ Admin</button>
     <!-- Global Admin Button -->
@@ -1998,7 +1996,6 @@
     <div class="admin-section">
       <div class="admin-section-title">🔄 ESPN &amp; Daten</div>
       <div class="admin-row" style="flex-wrap:wrap;gap:10px;">
-        <button class="admin-btn green" onclick="espnSync()">🔄 ESPN Sync jetzt</button>
         <button id="liveScoresTriggerBtn" class="admin-btn green" onclick="triggerLiveScoresWorkflow()">🚀 Live Scores jetzt aktualisieren</button>
         <button class="admin-btn" onclick="asResetOverrides()">🧹 Roster-Overrides zurücksetzen</button>
         <button class="admin-btn red"  onclick="asClearTradeHistory()">🗑 Trade History leeren</button>

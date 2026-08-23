@@ -20,11 +20,15 @@
 //  sichtbar. Kein Geraet, kein manueller Schritt noetig.
 //
 //  Diese Datei bleibt bestehen fuer zwei weiterhin echte Aufgaben:
-//   1) espnSync() aktualisiert ROSTERS im Browser sofort, ohne auf
-//      den naechsten Server-Sync warten zu muessen (z.B. fuer Admins,
-//      die eine gerade auf ESPN vorgenommene Aenderung direkt sehen
-//      wollen). Rein kosmetisch/lokal fuer die laufende Sitzung --
-//      persistiert nichts dauerhaft Geteiltes mehr.
+//   1) espnSync(true) laeuft automatisch beim Seitenaufruf (js/init.js,
+//      hoechstens alle SYNC_INTERVAL_MS) und aktualisiert ROSTERS im
+//      Browser JEDES Besuchers sofort, ohne auf den naechsten
+//      Server-Sync warten zu muessen. Rein kosmetisch/lokal fuer die
+//      laufende Sitzung -- persistiert nichts dauerhaft Geteiltes.
+//      Der manuelle Admin-Knopf "ESPN Sync jetzt" wurde am 23.08.2026
+//      entfernt (siehe Automation-Review Punkt #6/#9-Diskussion): er
+//      tat exakt dasselbe wie der automatische Sync, gaukelte aber
+//      faelschlich vor, eine fuer alle sichtbare Aktion auszuloesen.
 //   2) _fetchEspnViaProxy() wird von js/matchup-planner.js fuer den
 //      NBA-Spielplan-Abruf mitbenutzt (siehe dortiger Kommentar).
 
@@ -73,12 +77,10 @@ async function _fetchEspnViaProxy(espnUrl) {
 }
 
 async function espnSync(auto = false) {
-  const btn = document.getElementById('espnSyncBtn');
   if (auto) {
     const last = parseInt(localStorage.getItem('espnLastSyncTs') || '0');
     if (Date.now() - last < SYNC_INTERVAL_MS) return;
   }
-  if (btn) { btn.textContent = '⏳ Syncing…'; btn.disabled = true; }
   try {
     const espnUrl = `https://lm-api-reads.fantasy.espn.com/apis/v3/games/fba/seasons/${ESPN_SEASON}/segments/0/leagues/${ESPN_LEAGUE_ID}?view=mRoster&view=mTeam`;
     const data = await _fetchEspnViaProxy(espnUrl);
@@ -122,8 +124,7 @@ async function espnSync(auto = false) {
     // Manual overrides are layered on top of the ESPN snapshot by
     // _applyRosterOverrides().
 
-    const total = Object.values(newRosters).reduce((s,r) => s + r.length, 0);
-    const now   = new Date().toLocaleString('de-DE', {dateStyle:'short', timeStyle:'short'});
+    const now = new Date().toLocaleString('de-DE', {dateStyle:'short', timeStyle:'short'});
 
     _applyRosterOverrides();
     if (typeof renderHome === 'function') renderHome();
@@ -132,13 +133,9 @@ async function espnSync(auto = false) {
     localStorage.setItem('espnLastSync', now);
     localStorage.setItem('espnLastSyncTs', String(Date.now()));
 
-    if (btn) { btn.textContent = '✅ ' + now; btn.disabled = false; }
-    if (!auto && typeof toast === 'function') toast('✅ Sync: ' + total + ' Spieler (' + now + ')');
     fetchNbaTrades().catch(e => console.warn('NBA trades:', e));
   } catch(err) {
     console.error('ESPN Sync:', err);
-    if (btn) { btn.textContent = '🔄 ESPN Sync'; btn.disabled = false; }
-    if (!auto && typeof toast === 'function') toast('❌ Sync: ' + err.message);
   }
 }
 
@@ -149,11 +146,6 @@ async function fetchNbaTrades() {
   return;
 }
 
-function initEspnSyncBtn() {
-  const last = localStorage.getItem('espnLastSync');
-  const btn  = document.getElementById('espnSyncBtn');
-  if (btn && last) btn.textContent = '🔄 ESPN (' + last + ')';
-}
 
 // Apply on page load so home screen team strength badges are correct
 _applyRosterOverrides();

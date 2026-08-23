@@ -69,20 +69,6 @@ function _updateAdminUI(active) {
       }
     }
   }
-  const syncBtn = document.getElementById('espnSyncBtn');
-  if (syncBtn) {
-    if (active) {
-      syncBtn.style.background = 'rgba(0,104,183,0.12)';
-      syncBtn.style.border     = '1.5px solid rgba(0,104,183,0.35)';
-      syncBtn.style.color      = '#0068b7';
-      syncBtn.style.cursor     = 'pointer';
-    } else {
-      syncBtn.style.background = 'rgba(128,128,128,0.08)';
-      syncBtn.style.border     = '1.5px solid rgba(128,128,128,0.2)';
-      syncBtn.style.color      = 'var(--muted)';
-      syncBtn.style.cursor     = 'default';
-    }
-  }
   const btn   = document.getElementById('globalAdminBtn');
   const icon  = document.getElementById('globalAdminIcon');
   const label = document.getElementById('globalAdminLabel');
@@ -235,8 +221,9 @@ function saveEspnRosterSnapshot(rosters) {
 // Merge the auto-synced ESPN snapshot (data/rosters-live.js, updated daily
 // by the "Daily 9cat Live Scores" GitHub Action) into ROSTERS as the new
 // baseline, replacing the static teams-rosters.js data. Runs BEFORE the
-// localStorage snapshot below, so a manual "ESPN Sync jetzt" click always
-// wins if it happened more recently than the last daily auto-sync.
+// localStorage snapshot below, so the automatic client-side sync
+// (espnSync(true) in js/espn-trade-detect.js, on every page load) always
+// wins if it happened more recently than the last daily server auto-sync.
 (function _hydrateRostersFromLiveFile() {
   if (typeof ROSTERS_LIVE === 'undefined') return;
   Object.keys(ROSTERS_LIVE).forEach(tidStr => {

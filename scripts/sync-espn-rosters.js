@@ -143,8 +143,9 @@ async function main() {
 //
 //  Wird von js/admin.js beim Seitenstart als Basis für ROSTERS geladen
 //  (ersetzt die statischen Rosters aus data/teams-rosters.js), bevor
-//  manuelle Overrides (localStorage bzw. der "ESPN Sync jetzt"-Knopf
-//  für einen sofortigen Zwischenstand) angewendet werden.
+//  manuelle Overrides (localStorage bzw. der automatische client-seitige
+//  Sync in js/espn-trade-detect.js für einen sofortigen Zwischenstand)
+//  angewendet werden.
 // ============================================================
 
 const ROSTERS_LIVE = {
