@@ -151,6 +151,16 @@ const ROSTERS_LIVE = {
 ${rosterLines.join(',\n')}
 };
 
+// Maschinell lesbarer Zeitstempel des letzten ERFOLGREICHEN Syncs (siehe
+// Punkt #9 im Automation-Review vom 23.08.2026: schlägt dieser Sync fehl,
+// bleibt die letzte gute Datei inkl. diesem Zeitstempel unverändert stehen
+// -- js/admin.js kann daran erkennen, wie alt der Roster-Stand tatsächlich
+// ist, statt dass ein seit Tagen hängender Sync unbemerkt bleibt, weil
+// alles "grün" aussieht.
+const ROSTERS_LIVE_META = {
+  aktualisiert: "${now}",
+};
+
 // W-L-T Bilanzen je Team aus derselben ESPN-Antwort (mTeam).
 // "season" ist die ESPN-Saisonkennung (2027 = Saison 2026/27). Das UI
 // (js/navigation.js, _displayRecord) zeigt diese Bilanzen nur, wenn

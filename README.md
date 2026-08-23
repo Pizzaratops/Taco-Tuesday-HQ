@@ -344,3 +344,4 @@ Alle Build-Scripts sind idempotent und schreiben nur nach `data/` — kein Risik
 - Keine Emojis in Datentabellen
 - Keine Inline-Kommentare in generiertem Code, aber ausführliche Header-Kommentare in jeder Datei
 - `normalizeName()` (siehe `data/aliases.js`) für alle Namens-Abgleiche zwischen Datenquellen — ESPN/BBM/Tankathon schreiben Namen unterschiedlich
+- **Nie Dateien über die GitHub-Web-Oberfläche ("Add file" → "Upload files") hochladen**, weder unter `data/` noch unter `scripts/data/`. Das hat schon einmal Dateien mit gestrippten Bindestrichen im Namen erzeugt (verwaiste Duplikate, die von keinem Script mehr gefunden wurden). Änderungen an diesen Ordnern kommen ausschließlich über `git push` (lokal oder über die Actions) rein.

@@ -51,17 +51,26 @@ const LS_PERIOD_LABEL = { week: 'Woche', month: 'Monat' };
 // "Standard"-3-Buchstaben-Codes abweichen, die anderswo auf der Seite
 // verwendet werden (z.B. NBA_TEAM_NAMES in js/nba-teams.js) — GS statt GSW,
 // NO statt NOR, NY statt NYK, PHX statt PHO, SA statt SAS, UTAH statt UTA,
-// WSH statt WAS. Diese Map ist deshalb bewusst getrennt und deckt exakt die
-// Codes ab, die in data/livescores-*.js tatsächlich vorkommen.
+// WSH statt WAS. scripts/daily-9cat.js normalisiert diese rohen ESPN-Codes
+// bereits VOR dem Schreiben von data/livescores-*.js (siehe TEAM_ABBR_CANON
+// dort) — die kanonischen Codes unten sind deshalb der Normalfall.
+//
+// Die rohen Alt-Codes (GSW, NOR, NYK, PHO, SAS, UTA, WAS) sind hier trotzdem
+// zusätzlich als Fallback-Keys eingetragen: sollte TEAM_ABBR_CANON in
+// daily-9cat.js künftig mal einen neuen ESPN-Quirk übersehen (z.B. ein
+// weiteres Team, ein API-Update), zeigt diese Seite trotzdem den vollen
+// Teamnamen an statt eines rohen 3-Buchstaben-Codes -- keine zwei Maps, die
+// synchron bleiben müssen, nur ein defensiver Zusatzeintrag pro Team.
 const LS_TEAM_NAMES = {
   ATL: 'Atlanta', BOS: 'Boston', BKN: 'Brooklyn', CHA: 'Charlotte',
   CHI: 'Chicago', CLE: 'Cleveland', DAL: 'Dallas', DEN: 'Denver',
-  DET: 'Detroit', GS: 'Golden State', HOU: 'Houston', IND: 'Indiana',
+  DET: 'Detroit', GS: 'Golden State', GSW: 'Golden State', HOU: 'Houston', IND: 'Indiana',
   LAC: 'LA Clippers', LAL: 'LA Lakers', MEM: 'Memphis', MIA: 'Miami',
-  MIL: 'Milwaukee', MIN: 'Minnesota', NO: 'New Orleans', NY: 'New York',
-  OKC: 'Oklahoma City', ORL: 'Orlando', PHI: 'Philadelphia', PHX: 'Phoenix',
-  POR: 'Portland', SA: 'San Antonio', SAC: 'Sacramento', TOR: 'Toronto',
-  UTAH: 'Utah', WSH: 'Washington', FA: 'Free Agent',
+  MIL: 'Milwaukee', MIN: 'Minnesota', NO: 'New Orleans', NOR: 'New Orleans',
+  NY: 'New York', NYK: 'New York',
+  OKC: 'Oklahoma City', ORL: 'Orlando', PHI: 'Philadelphia', PHX: 'Phoenix', PHO: 'Phoenix',
+  POR: 'Portland', SA: 'San Antonio', SAS: 'San Antonio', SAC: 'Sacramento', TOR: 'Toronto',
+  UTAH: 'Utah', UTA: 'Utah', WSH: 'Washington', WAS: 'Washington', FA: 'Free Agent',
 };
 function _lsTeamFullName(abbr) {
   return LS_TEAM_NAMES[abbr] || abbr;

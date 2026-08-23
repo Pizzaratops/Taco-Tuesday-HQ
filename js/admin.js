@@ -103,6 +103,53 @@ function _updateAdminUI(active) {
     if (status) status.style.display = 'none';
   }
   _updateLocalOverrideWarning(active);
+  _updateStaleSyncWarning(active);
+}
+
+// ── HINWEIS: VERALTETER ESPN-SYNC ────────────────────────────────────────────
+// Punkt #9 im Automation-Review (23.08.2026): sync-espn-picks.js und
+// sync-espn-rosters.js beenden sich bei einem ESPN-Fehler bewusst mit Erfolg
+// (exit 0), damit der Rest der täglichen Pipeline weiterläuft -- die letzte
+// gute picks-live.js/rosters-live.js bleibt dann einfach stehen. Sinnvoller
+// Trade-off, aber dadurch gibt es sonst kein Signal, wenn genau dieser
+// Teilschritt seit Tagen auf einem alten Stand hängt, während der Workflow
+// trotzdem grün durchläuft. Diese Funktion vergleicht die maschinenlesbaren
+// "aktualisiert"-Zeitstempel (PICKS_LIVE.aktualisiert, ROSTERS_LIVE_META.aktualisiert)
+// gegen die aktuelle Zeit und warnt im Admin-Dropdown, wenn einer davon
+// länger als STALE_SYNC_DAYS zurückliegt.
+const STALE_SYNC_DAYS = 3;
+
+function _daysSince(isoString) {
+  const then = new Date(isoString).getTime();
+  if (!Number.isFinite(then)) return null;
+  return (Date.now() - then) / (1000 * 60 * 60 * 24);
+}
+
+function _updateStaleSyncWarning(active) {
+  const row = document.getElementById('staleSyncWarningRow');
+  if (!row) return;
+  if (!active) { row.style.display = 'none'; return; }
+
+  const stale = [];
+  try {
+    if (typeof PICKS_LIVE !== 'undefined' && PICKS_LIVE.aktualisiert) {
+      const days = _daysSince(PICKS_LIVE.aktualisiert);
+      if (days !== null && days > STALE_SYNC_DAYS) stale.push('Picks (' + Math.floor(days) + ' Tage)');
+    }
+  } catch (e) {}
+  try {
+    if (typeof ROSTERS_LIVE_META !== 'undefined' && ROSTERS_LIVE_META.aktualisiert) {
+      const days = _daysSince(ROSTERS_LIVE_META.aktualisiert);
+      if (days !== null && days > STALE_SYNC_DAYS) stale.push('Rosters (' + Math.floor(days) + ' Tage)');
+    }
+  } catch (e) {}
+
+  if (stale.length) {
+    row.style.display = '';
+    row.textContent = '🔴 ESPN-Sync hängt: ' + stale.join(', ') + ' seit letztem erfolgreichen Sync -- Daily-9cat-Workflow prüfen.';
+  } else {
+    row.style.display = 'none';
+  }
 }
 
 // ── HINWEIS: NUR-LOKALE ROSTER-/PICK-OVERRIDES ──────────────────────────────

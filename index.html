@@ -64,6 +64,7 @@
           <button class="admin-logout-btn" onclick="globalLogout()">Logout</button>
         </div>
         <div id="overrideWarningRow" style="display:none;font-size:10px;color:#f5c842;background:rgba(245,200,66,0.12);border:1px solid rgba(245,200,66,0.3);border-radius:8px;padding:6px 8px;margin-top:8px;line-height:1.4;"></div>
+        <div id="staleSyncWarningRow" style="display:none;font-size:10px;color:#ff6584;background:rgba(255,101,132,0.1);border:1px solid rgba(255,101,132,0.3);border-radius:8px;padding:6px 8px;margin-top:8px;line-height:1.4;"></div>
         <div style="font-size:10px;color:var(--muted);margin-top:8px;line-height:1.5;">
           Draft Duel: 3&#215; Vote-Gewicht<br>
           Trade: Speichern &amp; Roster-Update
@@ -2214,15 +2215,9 @@
 <script src="data/season-2022-23.js?v=ca4beb77"></script>
 <script src="data/season-2021-22.js?v=bb837487"></script>
 <script src="data/season-rankings.js?v=51f908be"></script>
-<<<<<<< HEAD
 <script src="data/rosters-live.js?v=0ae996a1"></script>
 <script src="data/picks.js?v=43f5868b"></script>
 <!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=a62968a3"></script>
-=======
-<script src="data/rosters-live.js?v=8e1ccc0b"></script>
-<script src="data/picks.js?v=43f5868b"></script>
-<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=9ee14688"></script>
->>>>>>> a3de165004ea525b8dd078b8916a43c6ce9deb9b
 <!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=c819801f"></script>
 <script src="data/rankings.js?v=ec950f55"></script>
 <script src="data/projections-baseline.js?v=f70cd7ad"></script>
@@ -2264,11 +2259,7 @@
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<<<<<<< HEAD
 <script src="data/team-analytics.js?v=753e9175"></script>
-=======
-<script src="data/team-analytics.js?v=075c7e22"></script>
->>>>>>> a3de165004ea525b8dd078b8916a43c6ce9deb9b
 <script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>
