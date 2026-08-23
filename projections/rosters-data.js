@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-22T09:18:45.069Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-23T09:20:04.507Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-08-22T09:18:45.069Z",
+ "fetchedAt": "2026-08-23T09:20:04.507Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -1320,6 +1320,15 @@ const ROSTERS_DATA = {
      "weight": "240 lbs",
      "age": 25,
      "espnId": "4431690"
+    },
+    {
+     "name": "Julian Reese",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 9\"",
+     "weight": "252 lbs",
+     "age": 23,
+     "espnId": "4683742"
     },
     {
      "name": "David Roddy",
@@ -5043,15 +5052,6 @@ const ROSTERS_DATA = {
      "weight": "237 lbs",
      "age": 22,
      "espnId": "5105841"
-    },
-    {
-     "name": "Julian Reese",
-     "jersey": "15",
-     "position": "F",
-     "height": "6' 9\"",
-     "weight": "252 lbs",
-     "age": 23,
-     "espnId": "4683742"
     },
     {
      "name": "Will Riley",
