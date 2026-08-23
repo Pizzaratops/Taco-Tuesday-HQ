@@ -102,6 +102,49 @@ function _updateAdminUI(active) {
     if (form)   form.style.display = '';
     if (status) status.style.display = 'none';
   }
+  _updateLocalOverrideWarning(active);
+}
+
+// ── HINWEIS: NUR-LOKALE ROSTER-/PICK-OVERRIDES ──────────────────────────────
+// Roster- und Pick-Overrides (siehe _applyRosterOverrides/_applyPickOverrides
+// oben) leben AUSSCHLIESSLICH im localStorage dieses Browsers -- anders als
+// z.B. die Trade History (js/trade-history.js, "Für Repo exportieren") gibt
+// es dafür keinen Export-nach-Repo-Schritt. Das heisst: Korrekturen, die ein
+// Admin hier macht, sieht NUR er selbst, nur in diesem Browser, und sie sind
+// weg, sobald localStorage geleert wird oder der nächste ESPN-Sync/Daily-Lauf
+// die Basis-Daten überschreibt (Overrides werden zwar erneut draufgelegt,
+// aber nirgends dauerhaft gesichert). Diese Zeile macht das im Admin-Dropdown
+// sichtbar, statt dass es niemand merkt, bis eine Korrektur "verschwindet".
+function _countLocalOverrides() {
+  let count = 0;
+  try {
+    const ro = typeof loadRosterOverrides === 'function' ? loadRosterOverrides() : {};
+    Object.keys(ro || {}).forEach(tid => {
+      count += (ro[tid]?.remove || []).length + (ro[tid]?.add || []).length;
+    });
+  } catch (e) {}
+  try {
+    const po = loadPickOverrides();
+    count += Object.keys(po || {}).length;
+  } catch (e) {}
+  try {
+    const ep = loadExtraPicks();
+    count += (ep || []).length;
+  } catch (e) {}
+  return count;
+}
+
+function _updateLocalOverrideWarning(active) {
+  const row = document.getElementById('overrideWarningRow');
+  if (!row) return;
+  if (!active) { row.style.display = 'none'; return; }
+  const count = _countLocalOverrides();
+  if (count > 0) {
+    row.style.display = '';
+    row.textContent = '⚠️ ' + count + ' Roster-/Pick-Korrektur(en) nur lokal in diesem Browser gespeichert -- nicht im Repo, gehen bei Cache-Löschung verloren.';
+  } else {
+    row.style.display = 'none';
+  }
 }
 
 function toggleAdminDropdown(e) {
