@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-23T09:20:04.507Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-29T14:05:40.298Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-08-23T09:20:04.507Z",
+ "fetchedAt": "2026-08-29T14:05:40.298Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -637,7 +637,7 @@ const ROSTERS_DATA = {
      "position": "C",
      "height": "6' 9\"",
      "weight": "264 lbs",
-     "age": 26,
+     "age": 27,
      "espnId": "4396971"
     },
     {
@@ -823,7 +823,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 6\"",
      "weight": "215 lbs",
-     "age": 24,
+     "age": 25,
      "espnId": "4431687"
     },
     {
@@ -883,7 +883,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 5\"",
      "weight": "220 lbs",
-     "age": 36,
+     "age": 37,
      "espnId": "3992"
     },
     {
@@ -1002,15 +1002,6 @@ const ROSTERS_DATA = {
      "weight": "200 lbs",
      "age": 23,
      "espnId": "4576087"
-    },
-    {
-     "name": "Cam Whitmore",
-     "jersey": null,
-     "position": "F",
-     "height": "6' 6\"",
-     "weight": "230 lbs",
-     "age": 22,
-     "espnId": "5105592"
     }
    ]
   },
@@ -1186,7 +1177,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 7\"",
      "weight": "230 lbs",
-     "age": 27,
+     "age": 28,
      "espnId": "4278078"
     }
    ]
@@ -1322,15 +1313,6 @@ const ROSTERS_DATA = {
      "espnId": "4431690"
     },
     {
-     "name": "Julian Reese",
-     "jersey": null,
-     "position": "F",
-     "height": "6' 9\"",
-     "weight": "252 lbs",
-     "age": 23,
-     "espnId": "4683742"
-    },
-    {
      "name": "David Roddy",
      "jersey": "45",
      "position": "F",
@@ -1441,7 +1423,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 6\"",
      "weight": "198 lbs",
-     "age": 27,
+     "age": 28,
      "espnId": "4066372"
     },
     {
@@ -1658,6 +1640,15 @@ const ROSTERS_DATA = {
      "espnId": "4432171"
     },
     {
+     "name": "Georges Niang",
+     "jersey": "31",
+     "position": "F",
+     "height": "6' 6\"",
+     "weight": "230 lbs",
+     "age": 33,
+     "espnId": "2990969"
+    },
+    {
      "name": "Gary Payton II",
      "jersey": "0",
      "position": "G",
@@ -1703,6 +1694,15 @@ const ROSTERS_DATA = {
      "espnId": "4997536"
     },
     {
+     "name": "Brandon Williams",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 6\"",
+     "weight": null,
+     "age": null,
+     "espnId": "52131"
+    },
+    {
      "name": "Nate Williams",
      "jersey": "19",
      "position": "G",
@@ -1745,6 +1745,15 @@ const ROSTERS_DATA = {
      "espnId": "3102529"
     },
     {
+     "name": "Rafael Castro",
+     "jersey": null,
+     "position": "C",
+     "height": "6' 9\"",
+     "weight": "224 lbs",
+     "age": 23,
+     "espnId": "4684443"
+    },
+    {
      "name": "Quadir Copeland",
      "jersey": null,
      "position": "G",
@@ -1779,15 +1788,6 @@ const ROSTERS_DATA = {
      "weight": "215 lbs",
      "age": 25,
      "espnId": "4433192"
-    },
-    {
-     "name": "Tristen Newton",
-     "jersey": "13",
-     "position": "G",
-     "height": "6' 5\"",
-     "weight": "202 lbs",
-     "age": 25,
-     "espnId": "4592965"
     },
     {
      "name": "Sean Pedulla",
@@ -1909,7 +1909,7 @@ const ROSTERS_DATA = {
      "position": "C",
      "height": "7' 1\"",
      "weight": "240 lbs",
-     "age": 28,
+     "age": 29,
      "espnId": "4065731"
     },
     {
@@ -2203,7 +2203,7 @@ const ROSTERS_DATA = {
      "position": "C",
      "height": "7' 5\"",
      "weight": "235 lbs",
-     "age": 24,
+     "age": 25,
      "espnId": "4897696"
     },
     {
@@ -2602,7 +2602,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 7\"",
      "weight": "206 lbs",
-     "age": 22,
+     "age": 23,
      "espnId": "5112087"
     }
    ]
@@ -2675,6 +2675,15 @@ const ROSTERS_DATA = {
      "espnId": "4700818"
     },
     {
+     "name": "J'Vonne Hadley",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 5\"",
+     "weight": "210 lbs",
+     "age": 24,
+     "espnId": "4702784"
+    },
+    {
      "name": "Tim Hardaway Jr.",
      "jersey": "10",
      "position": "G",
@@ -2682,6 +2691,15 @@ const ROSTERS_DATA = {
      "weight": "205 lbs",
      "age": 34,
      "espnId": "2528210"
+    },
+    {
+     "name": "Keshad Johnson",
+     "jersey": "16",
+     "position": "F",
+     "height": "6' 6\"",
+     "weight": "230 lbs",
+     "age": 25,
+     "espnId": "4431786"
     },
     {
      "name": "Nikola Jovic",
@@ -2698,7 +2716,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 5\"",
      "weight": "215 lbs",
-     "age": 22,
+     "age": 23,
      "espnId": "4432645"
     },
     {
@@ -2729,6 +2747,15 @@ const ROSTERS_DATA = {
      "espnId": "3064482"
     },
     {
+     "name": "Nick Richards",
+     "jersey": "8",
+     "position": "C",
+     "height": "6' 11\"",
+     "weight": "245 lbs",
+     "age": 28,
+     "espnId": "4278076"
+    },
+    {
      "name": "Dru Smith",
      "jersey": "12",
      "position": "G",
@@ -2736,6 +2763,15 @@ const ROSTERS_DATA = {
      "weight": "200 lbs",
      "age": 28,
      "espnId": "4066993"
+    },
+    {
+     "name": "Klay Thompson",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 5\"",
+     "weight": "220 lbs",
+     "age": 36,
+     "espnId": "6475"
     },
     {
      "name": "Andrew Wiggins",
@@ -2848,7 +2884,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 7\"",
      "weight": "205 lbs",
-     "age": 31,
+     "age": 32,
      "espnId": "2991043"
     },
     {
@@ -2953,7 +2989,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 7\"",
      "weight": "180 lbs",
-     "age": 24,
+     "age": 25,
      "espnId": "4432816"
     },
     {
@@ -3029,15 +3065,6 @@ const ROSTERS_DATA = {
      "espnId": "3032976"
     },
     {
-     "name": "Josh Green",
-     "jersey": null,
-     "position": "G",
-     "height": "6' 6\"",
-     "weight": "200 lbs",
-     "age": 25,
-     "espnId": "4432811"
-    },
-    {
      "name": "Bones Hyland",
      "jersey": "8",
      "position": "G",
@@ -3054,6 +3081,15 @@ const ROSTERS_DATA = {
      "weight": "240 lbs",
      "age": 24,
      "espnId": "4897438"
+    },
+    {
+     "name": "John Konchar",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 5\"",
+     "weight": "210 lbs",
+     "age": 30,
+     "espnId": "3134932"
     },
     {
      "name": "Trey Lyles",
@@ -3099,6 +3135,15 @@ const ROSTERS_DATA = {
      "weight": "215 lbs",
      "age": 26,
      "espnId": "4432847"
+    },
+    {
+     "name": "Cody Williams",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 8\"",
+     "weight": "190 lbs",
+     "age": 21,
+     "espnId": "4895758"
     },
     {
      "name": "Rocco Zikarsky",
@@ -3742,7 +3787,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 10\"",
      "weight": "220 lbs",
-     "age": 24,
+     "age": 25,
      "espnId": "4566434"
     }
    ]
@@ -4360,7 +4405,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 6\"",
      "weight": "216 lbs",
-     "age": 27,
+     "age": 28,
      "espnId": "4279318"
     },
     {
@@ -4555,7 +4600,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 5\"",
      "weight": "200 lbs",
-     "age": 25,
+     "age": 26,
      "espnId": "4395630"
     },
     {
@@ -4823,6 +4868,15 @@ const ROSTERS_DATA = {
      "espnId": "4433627"
     },
     {
+     "name": "Josh Green",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 6\"",
+     "weight": "200 lbs",
+     "age": 25,
+     "espnId": "4432811"
+    },
+    {
      "name": "Jaxson Hayes",
      "jersey": null,
      "position": "C",
@@ -4848,15 +4902,6 @@ const ROSTERS_DATA = {
      "weight": "242 lbs",
      "age": 26,
      "espnId": "4277961"
-    },
-    {
-     "name": "John Konchar",
-     "jersey": "55",
-     "position": "G",
-     "height": "6' 5\"",
-     "weight": "210 lbs",
-     "age": 30,
-     "espnId": "3134932"
     },
     {
      "name": "Lauri Markkanen",
@@ -4891,7 +4936,7 @@ const ROSTERS_DATA = {
      "position": "C",
      "height": "6' 11\"",
      "weight": "290 lbs",
-     "age": 31,
+     "age": 32,
      "espnId": "3102530"
     },
     {
@@ -4929,15 +4974,6 @@ const ROSTERS_DATA = {
      "weight": "255 lbs",
      "age": 26,
      "espnId": "4432827"
-    },
-    {
-     "name": "Cody Williams",
-     "jersey": "5",
-     "position": "F",
-     "height": "6' 8\"",
-     "weight": "190 lbs",
-     "age": 21,
-     "espnId": "4895758"
     }
    ]
   },
