@@ -130,6 +130,7 @@
           <button class="snav-dropdown-item" data-page="bestavail" onclick="showBestAvail()">🆓 Best Available</button>
           <button class="snav-dropdown-item" data-page="analytics" onclick="showAnalytics()">📊 Team Analytics</button>
           <button class="snav-dropdown-item" data-page="rollingrankings" onclick="showRollingRankings()">📈 Rolling Rankings</button>
+          <button class="snav-dropdown-item" data-page="nbapowerrankings" onclick="showNbaPowerRankings()">🏀 NBA Power Rankings</button>
         </div>
       </div>
 
@@ -211,6 +212,7 @@
         <button class="subnav-mobile-btn" data-page="bestavail" onclick="showBestAvail();closeMobileNav()">🆓 Best Available</button>
         <button class="subnav-mobile-btn" data-page="analytics" onclick="showAnalytics();closeMobileNav()">📊 Team Analytics</button>
         <button class="subnav-mobile-btn" data-page="rollingrankings" onclick="showRollingRankings();closeMobileNav()">📈 Rolling Rankings</button>
+        <button class="subnav-mobile-btn" data-page="nbapowerrankings" onclick="showNbaPowerRankings();closeMobileNav()">🏀 NBA Power Rankings</button>
       </div>
       <!-- Draft Duel deaktiviert bis 2027er Prospects da sind — Block einfach wieder auskommentieren
       <div class="subnav-mobile-group">
@@ -1608,6 +1610,34 @@
     justify-content: center; transition: all 0.15s; font-family: 'DM Sans', sans-serif;
   }
   .share-close-btn:hover { border-color: var(--accent); color: var(--text); }
+  /* ── NBA Power Rankings ─────────────────────── */
+  .npr-toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+  .npr-tb-group { display: flex; gap: 4px; background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; padding: 3px; }
+  .npr-tb-btn { background: transparent; border: none; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: all .15s; white-space: nowrap; }
+  .npr-tb-btn:hover { color: var(--text); }
+  .npr-tb-btn.npr-tb-active { background: var(--accent); color: var(--bg, #0f0f13); }
+  .npr-week-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .npr-week-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; padding: 6px 11px; border-radius: 8px; cursor: pointer; transition: all .15s; }
+  .npr-week-btn:hover { color: var(--text); border-color: var(--accent); }
+  .npr-week-btn.npr-week-active { background: var(--accent); color: var(--bg, #0f0f13); border-color: var(--accent); }
+  .npr-team-select { background: var(--surface2); border: 1.5px solid var(--border); border-radius: 9px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; padding: 7px 10px; outline: none; }
+  .npr-group-title { font-size: 13px; font-weight: 800; color: var(--text); margin: 18px 0 8px; }
+  .npr-group-title:first-of-type { margin-top: 0; }
+  .npr-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+  .npr-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .npr-table th { text-align: left; font-size: 10px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); background: var(--surface); padding: 10px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  .npr-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text); white-space: nowrap; }
+  .npr-table tr:last-child td { border-bottom: none; }
+  .npr-table tr:hover td { background: var(--surface2); }
+  .npr-table th.npr-num, .npr-table td.npr-num { text-align: right; }
+  .npr-rank-cell { font-weight: 800; color: var(--muted); width: 28px; }
+  .npr-team-cell { font-weight: 700; cursor: pointer; }
+  .npr-team-cell:hover { color: var(--accent); }
+  .npr-net-pos { color: var(--green, #4caf81); font-weight: 700; }
+  .npr-net-neg { color: #ff8fa3; font-weight: 700; }
+  .npr-empty { color: var(--muted); font-size: 13px; padding: 40px 20px; text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+  .npr-history-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .npr-history-abbr { width: 44px; height: 44px; border-radius: 10px; background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; color: var(--accent); flex-shrink: 0; }
   /* ── Rolling Rankings ───────────────────────── */
   #rollingRankingsPage { padding: 0; overflow: hidden; }
   #rollingRankingsPage.active { display: flex; flex-direction: column; height: calc(100vh - 120px); }
@@ -2151,6 +2181,15 @@
   </div>
 </div>
 
+<!-- NBA POWER RANKINGS -->
+<div class="page page-wide" id="nbaPowerRankingsPage">
+  <div style="margin-bottom:16px;">
+    <h2 style="margin-bottom:4px;">🏀 NBA Power Rankings</h2>
+    <p style="color:var(--muted);font-size:13px;">Wöchentliches Rolling Ranking aller 30 NBA-Teams · Win-Loss & Offense-/Defense-Rating · Wochen = Matchup-Perioden dieser Liga</p>
+  </div>
+  <div id="nprContent"></div>
+</div>
+
 <!-- 2026 DRAFT BOARD -->
 <div class="page page-wide" id="draft26Page">
   <h2 style="margin-bottom:6px;">🔎 Prospect Database · 2026 Draft</h2>
@@ -2271,6 +2310,8 @@
 <script src="data/rolling-rankings.js?v=58090396"></script>
 <script src="data/rolling-rankings-2026-27.js?v=ac2c885a"></script>
   <script src="js/rolling-rankings.js?v=5"></script>
+<script src="data/nba-power-rankings.js?v=1"></script>
+  <script src="js/nba-power-rankings.js?v=1"></script>
 <script src="data/livescores-daily.js?v=ac7826b0"></script>
 <script src="data/livescores-aggregate.js?v=69091e1d"></script>
 <script src="data/livescores-boxscores.js?v=de657ac8"></script>

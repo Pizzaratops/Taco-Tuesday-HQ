@@ -684,7 +684,7 @@ const SUBNAV_PAGES = {
   homePage:'home', draftboardPage:'draftboard', draftResultsPage:'draftresults', draft26Page:'draft26', draft27Page:'draft27', bigBoardPage:'bigBoard',
   duelPage:'duel', duelBoardPage:'duelboard', duelSettingsPage:'duelsettings',
   lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings', dynastyRollingPage:'dynastyrolling',
-  bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', tradePage:'trade',
+  bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', nbaPowerRankingsPage:'nbapowerrankings', tradePage:'trade',
   tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', nbaTradesPage:'nbatrades', adminSettingsPage:'adminsettings', standingsPage:'standings', rulesPage:'rules',
   liveScoresPage:'livescores', playerRankingsPage:'playerrankings', playerProjectionsPage:'playerprojections',
   matchupPage:'matchup',
@@ -697,7 +697,7 @@ const SNAV_GROUP = {
   draft26: 'snavDraft', draft27: 'snavDraft', lottery: 'snavDraft', bigBoard: 'snavDraft',
   draftboard: 'snavTTHQBoards', draftresults: 'snavTTHQBoards',
   duel: 'snavDuel', duelboard: 'snavDuel', duelsettings: 'snavDuel',
-  bestavail: 'snavAnalytics', analytics: 'snavAnalytics', rollingrankings: 'snavAnalytics',
+  bestavail: 'snavAnalytics', analytics: 'snavAnalytics', rollingrankings: 'snavAnalytics', nbapowerrankings: 'snavAnalytics',
   trade:      'snavTrade', tradefinder: 'snavTrade', tradehistory: 'snavTrade',
 };
 

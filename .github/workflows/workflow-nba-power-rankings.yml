@@ -1,0 +1,73 @@
+name: NBA Power Rankings
+
+# Baut data/nba-power-rankings.js neu (scripts/build-nba-power-rankings.js):
+# kumulative Win-Loss- + Offense-/Defense-Rating-Standings aller 30 echten
+# NBA-Teams pro ESPN-Liga-Matchup-Woche. Läuft 2x täglich (9 & 21 Uhr
+# Berlin) -- reicht, weil sich abgeschlossene Spieltage nicht mehr ändern
+# und pro Kalendertag ohnehin nur eine neue "Woche" scharf werden kann,
+# sobald deren letzter Spieltag vorbei ist.
+#
+# Jede Berlin-Zeit erscheint zweimal (Sommer-/Winter-UTC-Offset), ein
+# Zeit-Check-Step filtert zur Laufzeit die tatsächliche Berlin-Stunde --
+# gleiches Muster wie daily-9cat.yml. Kein manuelles Umstellen bei der
+# Zeitumstellung nötig.
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # 09:00 Berlin (Sommer)
+    - cron: '0 8 * * *'   # 09:00 Berlin (Winter) / 10:00 Berlin (Sommer)
+    - cron: '0 19 * * *'  # 21:00 Berlin (Sommer)
+    - cron: '0 20 * * *'  # 21:00 Berlin (Winter) / 22:00 Berlin (Sommer)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo auschecken
+        uses: actions/checkout@v4
+
+      - name: Berlin-Zeit prüfen (Sommer-/Winter-Dopplung auflösen)
+        id: check_time
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manueller Lauf -- Zeitcheck übersprungen."
+            exit 0
+          fi
+          HOUR=$(TZ=Europe/Berlin date +%H)
+          if [ "$HOUR" = "09" ] || [ "$HOUR" = "21" ]; then
+            echo "Berlin-Stunde $HOUR -- läuft."
+          else
+            echo "Berlin-Stunde $HOUR -- Duplikat des jeweils anderen UTC-Offsets, überspringe."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Node einrichten
+        if: steps.check_time.outputs.skip != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: NBA Power Rankings bauen
+        if: steps.check_time.outputs.skip != 'true'
+        run: node scripts/build-nba-power-rankings.js
+
+      - name: Änderungen committen, falls vorhanden
+        if: steps.check_time.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/nba-power-rankings.js
+          if git diff --staged --quiet; then
+            echo "Keine Änderung, nichts zu committen."
+          else
+            git commit -m "NBA Power Rankings: Automatisches Update ($(date -u +%Y-%m-%d))"
+            git push
+          fi
