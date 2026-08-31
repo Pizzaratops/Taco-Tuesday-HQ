@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-08-30T14:09:25.984Z",
+ "fetchedAt": "2026-08-31T16:34:04.200Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -3350,7 +3350,7 @@
      "position": "G",
      "height": "6' 6\"",
      "weight": "209 lbs",
-     "age": 29,
+     "age": 30,
      "espnId": "3147657"
     },
     {
