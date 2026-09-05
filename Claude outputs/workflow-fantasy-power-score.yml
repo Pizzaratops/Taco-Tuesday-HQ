@@ -1,0 +1,78 @@
+name: Fantasy Bootleg Power Score
+
+# Baut data/fantasy-power-score.js neu (scripts/build-fantasy-power-score.js):
+# 9-Cat-Spinnennetz für die 12 TTHQ-Fantasy-Teams, aus aktuellem Kader
+# (data/rosters-live.js) + echten Saison-2025/26-Boxscores
+# (data/last-season-stats-2025-26.js) -- beides bereits im Repo, KEIN
+# Netzwerkzugriff nötig (anders als die NBA-Power-Score-Workflows).
+#
+# Läuft deshalb einfacher als die anderen Power-Score-Workflows: bei jedem
+# Push, der die Kader-Datei ändert (Trade/Waiver-Sync), plus 2x täglich als
+# Sicherheitsnetz und workflow_dispatch für manuelle Läufe.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/rosters-live.js'
+      - 'data/last-season-stats-2025-26.js'
+      - 'data/teams-rosters.js'
+      - 'scripts/build-fantasy-power-score.js'
+  schedule:
+    - cron: '0 7 * * *'   # 09:00 Berlin (Sommer)
+    - cron: '0 8 * * *'   # 09:00 Berlin (Winter) / 10:00 Berlin (Sommer)
+    - cron: '0 19 * * *'  # 21:00 Berlin (Sommer)
+    - cron: '0 20 * * *'  # 21:00 Berlin (Winter) / 22:00 Berlin (Sommer)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo auschecken
+        uses: actions/checkout@v4
+
+      - name: Berlin-Zeit prüfen (Sommer-/Winter-Dopplung auflösen, nur bei schedule)
+        id: check_time
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "Push/manueller Lauf -- Zeitcheck übersprungen."
+            exit 0
+          fi
+          HOUR=$(TZ=Europe/Berlin date +%H)
+          if [ "$HOUR" = "09" ] || [ "$HOUR" = "21" ]; then
+            echo "Berlin-Stunde $HOUR -- läuft."
+          else
+            echo "Berlin-Stunde $HOUR -- Duplikat des jeweils anderen UTC-Offsets, überspringe."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Node einrichten
+        if: steps.check_time.outputs.skip != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Fantasy Bootleg Power Score bauen
+        if: steps.check_time.outputs.skip != 'true'
+        run: node scripts/build-fantasy-power-score.js
+
+      - name: Änderungen committen, falls vorhanden
+        if: steps.check_time.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/fantasy-power-score.js
+          if git diff --staged --quiet; then
+            echo "Keine Änderung, nichts zu committen."
+          else
+            git commit -m "Fantasy Bootleg Power Score: Automatisches Update ($(date -u +%Y-%m-%d))"
+            git push
+          fi
