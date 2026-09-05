@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-08-29T14:05:40.298Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-05T12:14:45.871Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-08-29T14:05:40.298Z",
+ "fetchedAt": "2026-09-05T12:14:45.871Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -16,7 +16,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 5\"",
      "weight": "205 lbs",
-     "age": 27,
+     "age": 28,
      "espnId": "4278039"
     },
     {
@@ -869,6 +869,15 @@ const ROSTERS_DATA = {
      "espnId": "3934723"
     },
     {
+     "name": "Khalifa Diop",
+     "jersey": "18",
+     "position": "C",
+     "height": "6' 11\"",
+     "weight": "231 lbs",
+     "age": 24,
+     "espnId": "4997530"
+    },
+    {
      "name": "Tristan Enaruna",
      "jersey": "21",
      "position": "F",
@@ -888,7 +897,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Mario Hezonja",
-     "jersey": null,
+     "jersey": "33",
      "position": "F",
      "height": "6' 8\"",
      "weight": "220 lbs",
@@ -1759,7 +1768,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 6\"",
      "weight": "220 lbs",
-     "age": 22,
+     "age": 23,
      "espnId": "4683860"
     },
     {
@@ -2017,7 +2026,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 7\"",
      "weight": "235 lbs",
-     "age": 22,
+     "age": 23,
      "espnId": "5106060"
     },
     {
@@ -2734,7 +2743,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 0\"",
      "weight": "210 lbs",
-     "age": 27,
+     "age": 28,
      "espnId": "4278053"
     },
     {
@@ -3092,6 +3101,15 @@ const ROSTERS_DATA = {
      "espnId": "3134932"
     },
     {
+     "name": "Jonathan Kuminga",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 7\"",
+     "weight": "225 lbs",
+     "age": 23,
+     "espnId": "4433247"
+    },
+    {
      "name": "Trey Lyles",
      "jersey": null,
      "position": "F",
@@ -3352,7 +3370,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 6\"",
      "weight": "209 lbs",
-     "age": 29,
+     "age": 30,
      "espnId": "3147657"
     },
     {
@@ -3361,7 +3379,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 2\"",
      "weight": "190 lbs",
-     "age": 29,
+     "age": 30,
      "espnId": "3934672"
     },
     {
@@ -3451,7 +3469,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 8\"",
      "weight": "217 lbs",
-     "age": 22,
+     "age": 23,
      "espnId": "4838721"
     },
     {
@@ -3674,6 +3692,15 @@ const ROSTERS_DATA = {
      "espnId": "4712849"
     },
     {
+     "name": "Malaki Branham",
+     "jersey": "12",
+     "position": "F",
+     "height": "6' 4\"",
+     "weight": "180 lbs",
+     "age": 23,
+     "espnId": "4565201"
+    },
+    {
      "name": "Jamal Cain",
      "jersey": "8",
      "position": "F",
@@ -3717,6 +3744,15 @@ const ROSTERS_DATA = {
      "weight": "217 lbs",
      "age": 25,
      "espnId": "4702382"
+    },
+    {
+     "name": "JD Davison",
+     "jersey": "20",
+     "position": "G",
+     "height": "6' 1\"",
+     "weight": "195 lbs",
+     "age": 23,
+     "espnId": "4576085"
     },
     {
      "name": "Jonathan Isaac",
@@ -3860,6 +3896,15 @@ const ROSTERS_DATA = {
      "espnId": "3059318"
     },
     {
+     "name": "Tacko Fall",
+     "jersey": null,
+     "position": "C",
+     "height": "7' 6\"",
+     "weight": "250 lbs",
+     "age": 30,
+     "espnId": "3904625"
+    },
+    {
      "name": "Ariel Hukporti",
      "jersey": null,
      "position": "C",
@@ -3903,6 +3948,15 @@ const ROSTERS_DATA = {
      "weight": "180 lbs",
      "age": 24,
      "espnId": "4702049"
+    },
+    {
+     "name": "Jameer Nelson Jr.",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 1\"",
+     "weight": "190 lbs",
+     "age": 25,
+     "espnId": "4592444"
     },
     {
      "name": "Labaron Philon Jr.",
@@ -4705,7 +4759,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 8\"",
      "weight": "190 lbs",
-     "age": 28,
+     "age": 29,
      "espnId": "3913176"
     },
     {
@@ -4795,7 +4849,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 4\"",
      "weight": "180 lbs",
-     "age": 21,
+     "age": 22,
      "espnId": "4684272"
     }
    ]
@@ -4945,7 +4999,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 4\"",
      "weight": "213 lbs",
-     "age": 27,
+     "age": 28,
      "espnId": "4065663"
     },
     {
