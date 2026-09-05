@@ -131,6 +131,7 @@
           <button class="snav-dropdown-item" data-page="analytics" onclick="showAnalytics()">📊 Team Analytics</button>
           <button class="snav-dropdown-item" data-page="rollingrankings" onclick="showRollingRankings()">📈 Rolling Rankings</button>
           <button class="snav-dropdown-item" data-page="nbapowerrankings" onclick="showNbaPowerRankings()">🏀 NBA Power Rankings</button>
+          <button class="snav-dropdown-item" data-page="nbapowerscore" onclick="showNbaPowerScore()">🕸️ NBA Bootleg Power Score</button>
         </div>
       </div>
 
@@ -213,6 +214,7 @@
         <button class="subnav-mobile-btn" data-page="analytics" onclick="showAnalytics();closeMobileNav()">📊 Team Analytics</button>
         <button class="subnav-mobile-btn" data-page="rollingrankings" onclick="showRollingRankings();closeMobileNav()">📈 Rolling Rankings</button>
         <button class="subnav-mobile-btn" data-page="nbapowerrankings" onclick="showNbaPowerRankings();closeMobileNav()">🏀 NBA Power Rankings</button>
+        <button class="subnav-mobile-btn" data-page="nbapowerscore" onclick="showNbaPowerScore();closeMobileNav()">🕸️ NBA Bootleg Power Score</button>
       </div>
       <!-- Draft Duel deaktiviert bis 2027er Prospects da sind — Block einfach wieder auskommentieren
       <div class="subnav-mobile-group">
@@ -1638,6 +1640,22 @@
   .npr-empty { color: var(--muted); font-size: 13px; padding: 40px 20px; text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
   .npr-history-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
   .npr-history-abbr { width: 44px; height: 44px; border-radius: 10px; background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; color: var(--accent); flex-shrink: 0; }
+  /* ── NBA Bootleg Power Score (Radar) ───────────────────────── */
+  .nps-mode-note { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+  .nps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+  .nps-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px; cursor: pointer; transition: border-color .15s; }
+  .nps-card:hover { border-color: var(--accent); }
+  .nps-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .nps-card-team { font-size: 13px; font-weight: 800; color: var(--text); }
+  .nps-card-abbr { font-size: 10px; color: var(--muted); font-weight: 700; }
+  .nps-card-rank { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 800; color: var(--accent); }
+  .nps-detail-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .nps-detail-abbr { width: 44px; height: 44px; border-radius: 10px; background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; color: var(--accent); flex-shrink: 0; }
+  .nps-detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 16px; }
+  .nps-stat-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+  .nps-stat-label { font-size: 10px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+  .nps-stat-value { font-size: 15px; font-weight: 800; color: var(--text); }
+  .nps-stat-rank { font-size: 11px; color: var(--muted); margin-left: 4px; }
   /* ── Rolling Rankings ───────────────────────── */
   #rollingRankingsPage { padding: 0; overflow: hidden; }
   #rollingRankingsPage.active { display: flex; flex-direction: column; height: calc(100vh - 120px); }
@@ -2190,6 +2208,15 @@
   <div id="nprContent"></div>
 </div>
 
+<!-- NBA BOOTLEG POWER SCORE -->
+<div class="page page-wide" id="nbaPowerScorePage">
+  <div style="margin-bottom:16px;">
+    <h2 style="margin-bottom:4px;">🕸️ NBA Bootleg Power Score</h2>
+    <p style="color:var(--muted);font-size:13px;">Spinnennetz-Diagramm aller 30 NBA-Teams über 6 empirisch korrelationsgeprüfte Kategorien · Offensive & Defensive Rating, Points Scored/Allowed, Turnovers, Def. Rebounds</p>
+  </div>
+  <div id="npsContent"></div>
+</div>
+
 <!-- 2026 DRAFT BOARD -->
 <div class="page page-wide" id="draft26Page">
   <h2 style="margin-bottom:6px;">🔎 Prospect Database · 2026 Draft</h2>
@@ -2251,9 +2278,9 @@
 <script src="data/season-2022-23.js?v=ca4beb77"></script>
 <script src="data/season-2021-22.js?v=bb837487"></script>
 <script src="data/season-rankings.js?v=51f908be"></script>
-<script src="data/rosters-live.js?v=01b0324e"></script>
+<script src="data/rosters-live.js?v=abd14993"></script>
 <script src="data/picks.js?v=43f5868b"></script>
-<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=09512f5f"></script>
+<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=f87ebc14"></script>
 <!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=c819801f"></script>
 <script src="data/rankings.js?v=ec950f55"></script>
 <script src="data/projections-baseline.js?v=f70cd7ad"></script>
@@ -2295,7 +2322,7 @@
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<script src="data/team-analytics.js?v=45e56230"></script>
+<script src="data/team-analytics.js?v=3cd1d0ee"></script>
 <script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>
@@ -2312,6 +2339,8 @@
   <script src="js/rolling-rankings.js?v=5"></script>
 <script src="data/nba-power-rankings.js?v=ca80a44b"></script>
   <script src="js/nba-power-rankings.js?v=1"></script>
+<script src="data/nba-power-score.js?v=1"></script>
+  <script src="js/nba-power-score.js?v=1"></script>
 <script src="data/livescores-daily.js?v=ac7826b0"></script>
 <script src="data/livescores-aggregate.js?v=69091e1d"></script>
 <script src="data/livescores-boxscores.js?v=de657ac8"></script>
