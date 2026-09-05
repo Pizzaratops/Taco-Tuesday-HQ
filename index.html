@@ -1343,8 +1343,8 @@
   <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center;">
     <!-- View toggle -->
     <div style="display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px;">
-      <button id="anViewHeatmap" onclick="setAnView('heatmap')" style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:var(--accent);color:white;transition:all 0.15s;">🗺️ Heatmap</button>
-      <button id="anViewRadar"   onclick="setAnView('radar')"   style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">🕸️ Radar</button>
+      <button id="anViewHeatmap" onclick="setAnView('heatmap')" style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all 0.15s;">🗺️ Heatmap</button>
+      <button id="anViewRadar"   onclick="setAnView('radar')"   style="padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:var(--accent);color:white;transition:all 0.15s;">🕸️ Radar</button>
     </div>
     <!-- Method toggle -->
     <div style="display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px;">
@@ -1363,7 +1363,7 @@
   </div>
 
   <!-- HEATMAP VIEW -->
-  <div id="anHeatmapView">
+  <div id="anHeatmapView" style="display:none;">
     <div style="overflow-x:auto;border-radius:14px;border:1px solid var(--border);">
       <table style="width:100%;border-collapse:collapse;min-width:680px;">
         <thead>
@@ -1388,7 +1388,16 @@
   </div>
 
   <!-- RADAR VIEW -->
-  <div id="anRadarView" style="display:none;">
+  <div id="anRadarView">
+    <!-- Team-Vergleich -->
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:14px;">
+      <span style="font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap;">🆚 Vergleichen:</span>
+      <select id="anCompareA" onchange="anUpdateCompare()" style="background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:5px 8px;font-size:12px;font-weight:600;color:var(--text);font-family:'DM Sans',sans-serif;"></select>
+      <span style="font-size:11px;color:var(--muted);">vs.</span>
+      <select id="anCompareB" onchange="anUpdateCompare()" style="background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:5px 8px;font-size:12px;font-weight:600;color:var(--text);font-family:'DM Sans',sans-serif;"></select>
+      <button id="anCompareClear" onclick="anClearCompare()" style="padding:5px 12px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);display:none;">✕ Übersicht</button>
+    </div>
+    <div id="anCompareBox" style="display:none;"></div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;" id="anRadarGrid"></div>
   </div>
 </div>
@@ -2278,15 +2287,9 @@
 <script src="data/season-2022-23.js?v=ca4beb77"></script>
 <script src="data/season-2021-22.js?v=bb837487"></script>
 <script src="data/season-rankings.js?v=51f908be"></script>
-<<<<<<< HEAD
 <script src="data/rosters-live.js?v=abebca07"></script>
 <script src="data/picks.js?v=43f5868b"></script>
 <!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=c597e915"></script>
-=======
-<script src="data/rosters-live.js?v=20da7734"></script>
-<script src="data/picks.js?v=43f5868b"></script>
-<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=d98a25b4"></script>
->>>>>>> a82614c4f3f2fee05bec935a2259cc1c6bd74b6e
 <!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=c819801f"></script>
 <script src="data/rankings.js?v=ec950f55"></script>
 <script src="data/projections-baseline.js?v=f70cd7ad"></script>
@@ -2328,11 +2331,7 @@
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<<<<<<< HEAD
 <script src="data/team-analytics.js?v=f8cad29f"></script>
-=======
-<script src="data/team-analytics.js?v=b18a193c"></script>
->>>>>>> a82614c4f3f2fee05bec935a2259cc1c6bd74b6e
 <script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>

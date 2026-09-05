@@ -139,10 +139,100 @@ function _anAxisLabels(cx, cy, maxR, labels, fontSize = 10) {
   }).join('');
 }
 
-function renderAnRadar() {
+// Team-Vergleich: zwei Teams als überlagerte Polygone im selben Spinnennetz.
+// Startet vorbelegt mit zwei Beispiel-Teams, damit man den Unterschied
+// sofort sieht, statt erst beide Dropdowns manuell setzen zu müssen.
+let AN_COMPARE = { a: 2, b: 12 };
+let anCompareMode = true;
+let _anCompareSelectsBuilt = false;
+
+function _anPopulateCompareSelects() {
+  if (_anCompareSelectsBuilt) return;
+  const selA = document.getElementById('anCompareA');
+  const selB = document.getElementById('anCompareB');
+  if (!selA || !selB) return;
+  const sorted = [...TEAMS].sort((a,b) => a.name.localeCompare(b.name));
+  const opts = sorted.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+  selA.innerHTML = opts; selB.innerHTML = opts;
+  selA.value = String(AN_COMPARE.a); selB.value = String(AN_COMPARE.b);
+  _anCompareSelectsBuilt = true;
+}
+
+function anUpdateCompare() {
+  const selA = document.getElementById('anCompareA');
+  const selB = document.getElementById('anCompareB');
+  if (!selA || !selB) return;
+  AN_COMPARE = { a: parseInt(selA.value), b: parseInt(selB.value) };
+  anCompareMode = true;
+  renderAnRadar();
+}
+
+function anClearCompare() {
+  anCompareMode = false;
+  renderAnRadar();
+}
+
+function _anCompareHtml() {
   const { norm } = anComputeScores(AN_STATE.cutoff, AN_STATE.method);
+  const teamA = TEAMS.find(t => t.id === AN_COMPARE.a);
+  const teamB = TEAMS.find(t => t.id === AN_COMPARE.b);
+  const sA = teamA && norm[String(teamA.id)];
+  const sB = teamB && norm[String(teamB.id)];
+  if (!teamA || !teamB || !sA || !sB) return '<div class="npr-empty">Bitte zwei Teams auswählen.</div>';
+
+  const size = 340, cx = size / 2, cy = size / 2, maxR = 112;
+  const valuesA = _anRadarValues(sA), valuesB = _anRadarValues(sB);
+  const ptsA = _anPolygonPoints(cx, cy, maxR, valuesA);
+  const ptsB = _anPolygonPoints(cx, cy, maxR, valuesB);
+
+  const rows = AN_CATS.map((c,i) => {
+    const vA = sA[c], vB = sB[c];
+    const dispA = vA>=0?'+'+vA.toFixed(2):vA.toFixed(2);
+    const dispB = vB>=0?'+'+vB.toFixed(2):vB.toFixed(2);
+    const aWins = vA > vB, bWins = vB > vA;
+    return `<div style="display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid var(--border);">
+      <span style="width:64px;text-align:right;font-size:12px;font-weight:800;color:${aWins?teamA.color:'var(--muted)'};">${dispA}</span>
+      <div style="flex:1;text-align:center;font-size:10px;font-weight:700;color:var(--muted);">${AN_EMOJIS[i]} ${AN_LABELS[i]}</div>
+      <span style="width:64px;text-align:left;font-size:12px;font-weight:800;color:${bWins?teamB.color:'var(--muted)'};">${dispB}</span>
+    </div>`;
+  }).join('');
+
+  return `
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:8px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:6px;"><div style="width:12px;height:12px;border-radius:50%;background:${teamA.color};"></div><span style="font-size:13px;font-weight:800;color:var(--text);">${teamA.name}</span><span style="font-size:11px;color:var(--muted);">(${teamA.owner})</span></div>
+        <span style="font-size:11px;color:var(--muted);font-weight:700;">VS</span>
+        <div style="display:flex;align-items:center;gap:6px;"><div style="width:12px;height:12px;border-radius:50%;background:${teamB.color};"></div><span style="font-size:13px;font-weight:800;color:var(--text);">${teamB.name}</span><span style="font-size:11px;color:var(--muted);">(${teamB.owner})</span></div>
+      </div>
+      <svg viewBox="0 0 ${size} ${size}" style="width:100%;max-width:400px;display:block;margin:0 auto;overflow:visible;">
+        ${_anGridRings(cx, cy, maxR, AN_CATS.length, 4)}
+        ${_anAxisLines(cx, cy, maxR, AN_CATS.length)}
+        <polygon points="${ptsA}" fill="${teamA.color}" fill-opacity="0.22" stroke="${teamA.color}" stroke-width="2"/>
+        <polygon points="${ptsB}" fill="${teamB.color}" fill-opacity="0.22" stroke="${teamB.color}" stroke-width="2"/>
+        ${_anAxisLabels(cx, cy, maxR, AN_LABELS, 10)}
+      </svg>
+      <div style="max-width:420px;margin:10px auto 0;">${rows}</div>
+    </div>`;
+}
+
+function renderAnRadar() {
+  _anPopulateCompareSelects();
+  const compareBox = document.getElementById('anCompareBox');
   const grid = document.getElementById('anRadarGrid');
+  const clearBtn = document.getElementById('anCompareClear');
   if (!grid) return;
+
+  if (anCompareMode) {
+    if (compareBox) { compareBox.style.display = ''; compareBox.innerHTML = _anCompareHtml(); }
+    grid.style.display = 'none';
+    if (clearBtn) clearBtn.style.display = '';
+    return;
+  }
+  if (compareBox) compareBox.style.display = 'none';
+  grid.style.display = '';
+  if (clearBtn) clearBtn.style.display = 'none';
+
+  const { norm } = anComputeScores(AN_STATE.cutoff, AN_STATE.method);
   const size = 240, cx = size / 2, cy = size / 2 - 4, maxR = 78;
   grid.innerHTML = TEAMS.map(team => {
     const s = norm[String(team.id)]; if (!s) return '';
@@ -206,6 +296,7 @@ function setAnView(view) {
   document.getElementById('anViewHeatmap').style.color=view==='heatmap'?'white':'var(--muted)';
   document.getElementById('anViewRadar').style.background=view==='radar'?'var(--accent)':'transparent';
   document.getElementById('anViewRadar').style.color=view==='radar'?'white':'var(--muted)';
+  if (view==='heatmap') renderAnHeatmap();
   if (view==='radar') renderAnRadar();
 }
 function setAnMethod(method) {
@@ -214,16 +305,18 @@ function setAnMethod(method) {
   document.getElementById('anMethodValue').style.color=method==='value'?'white':'var(--muted)';
   document.getElementById('anMethodBz').style.background=method==='bz'?'var(--accent)':'transparent';
   document.getElementById('anMethodBz').style.color=method==='bz'?'white':'var(--muted)';
-  renderAnHeatmap();
+  if (document.getElementById('anHeatmapView').style.display!=='none') renderAnHeatmap();
   if (document.getElementById('anRadarView').style.display!=='none') renderAnRadar();
 }
 function setAnCutoff(n) {
   AN_STATE.cutoff=parseInt(n);
   document.getElementById('anCutoffLabel').textContent='Top '+n;
-  renderAnHeatmap();
+  if (document.getElementById('anHeatmapView').style.display!=='none') renderAnHeatmap();
   if (document.getElementById('anRadarView').style.display!=='none') renderAnRadar();
 }
-function showAnalytics() { renderAnHeatmap(); navigate('analyticsPage'); }
+// Radar (mit Team-Vergleich) ist die Standardansicht -- die Heatmap wird
+// erst gerendert, wenn man tatsächlich dorthin wechselt (setAnView).
+function showAnalytics() { renderAnRadar(); navigate('analyticsPage'); }
 
 const LOTTERY_DATA = [
   { tt: 1,  nba: 'Washington Wizards',  ttTeam: 'Fighting Illini via Double Dribble Trouble', nonPlayoff: true,
