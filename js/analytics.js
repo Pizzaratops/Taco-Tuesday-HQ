@@ -140,10 +140,11 @@ function _anAxisLabels(cx, cy, maxR, labels, fontSize = 10) {
 }
 
 // Team-Vergleich: zwei Teams als überlagerte Polygone im selben Spinnennetz.
-// Startet vorbelegt mit zwei Beispiel-Teams, damit man den Unterschied
-// sofort sieht, statt erst beide Dropdowns manuell setzen zu müssen.
+// Standard ist die normale Team-Grid-Übersicht -- der Vergleich ist ein
+// Opt-in über den "🆚 Vergleichen"-Button, vorbelegt mit zwei Beispiel-
+// Teams, damit man beim ersten Öffnen sofort etwas Sinnvolles sieht.
 let AN_COMPARE = { a: 2, b: 12 };
-let anCompareMode = true;
+let anCompareMode = false;
 let _anCompareSelectsBuilt = false;
 
 function _anPopulateCompareSelects() {
@@ -158,17 +159,17 @@ function _anPopulateCompareSelects() {
   _anCompareSelectsBuilt = true;
 }
 
+function anToggleCompare() {
+  anCompareMode = !anCompareMode;
+  renderAnRadar();
+}
+
 function anUpdateCompare() {
   const selA = document.getElementById('anCompareA');
   const selB = document.getElementById('anCompareB');
   if (!selA || !selB) return;
   AN_COMPARE = { a: parseInt(selA.value), b: parseInt(selB.value) };
   anCompareMode = true;
-  renderAnRadar();
-}
-
-function anClearCompare() {
-  anCompareMode = false;
   renderAnRadar();
 }
 
@@ -219,18 +220,21 @@ function renderAnRadar() {
   _anPopulateCompareSelects();
   const compareBox = document.getElementById('anCompareBox');
   const grid = document.getElementById('anRadarGrid');
-  const clearBtn = document.getElementById('anCompareClear');
+  const toggleBtn = document.getElementById('anCompareToggle');
+  const controls = document.getElementById('anCompareControls');
   if (!grid) return;
 
   if (anCompareMode) {
     if (compareBox) { compareBox.style.display = ''; compareBox.innerHTML = _anCompareHtml(); }
+    if (controls) controls.style.display = 'flex';
+    if (toggleBtn) { toggleBtn.textContent = '✕ Übersicht'; toggleBtn.style.background = 'var(--accent)'; toggleBtn.style.color = 'white'; toggleBtn.style.borderColor = 'var(--accent)'; }
     grid.style.display = 'none';
-    if (clearBtn) clearBtn.style.display = '';
     return;
   }
   if (compareBox) compareBox.style.display = 'none';
+  if (controls) controls.style.display = 'none';
+  if (toggleBtn) { toggleBtn.textContent = '🆚 Vergleichen'; toggleBtn.style.background = 'var(--surface)'; toggleBtn.style.color = 'var(--text)'; toggleBtn.style.borderColor = 'var(--border)'; }
   grid.style.display = '';
-  if (clearBtn) clearBtn.style.display = 'none';
 
   const { norm } = anComputeScores(AN_STATE.cutoff, AN_STATE.method);
   const size = 240, cx = size / 2, cy = size / 2 - 4, maxR = 78;

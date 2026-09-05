@@ -1390,12 +1390,13 @@
   <!-- RADAR VIEW -->
   <div id="anRadarView">
     <!-- Team-Vergleich -->
-    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:14px;">
-      <span style="font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap;">🆚 Vergleichen:</span>
-      <select id="anCompareA" onchange="anUpdateCompare()" style="background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:5px 8px;font-size:12px;font-weight:600;color:var(--text);font-family:'DM Sans',sans-serif;"></select>
-      <span style="font-size:11px;color:var(--muted);">vs.</span>
-      <select id="anCompareB" onchange="anUpdateCompare()" style="background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:5px 8px;font-size:12px;font-weight:600;color:var(--text);font-family:'DM Sans',sans-serif;"></select>
-      <button id="anCompareClear" onclick="anClearCompare()" style="padding:5px 12px;border-radius:7px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);display:none;">✕ Übersicht</button>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
+      <button id="anCompareToggle" onclick="anToggleCompare()" style="padding:6px 14px;border-radius:8px;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text);">🆚 Vergleichen</button>
+      <div id="anCompareControls" style="display:none;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:6px 14px;">
+        <select id="anCompareA" onchange="anUpdateCompare()" style="background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:5px 8px;font-size:12px;font-weight:600;color:var(--text);font-family:'DM Sans',sans-serif;"></select>
+        <span style="font-size:11px;color:var(--muted);">vs.</span>
+        <select id="anCompareB" onchange="anUpdateCompare()" style="background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:5px 8px;font-size:12px;font-weight:600;color:var(--text);font-family:'DM Sans',sans-serif;"></select>
+      </div>
     </div>
     <div id="anCompareBox" style="display:none;"></div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;" id="anRadarGrid"></div>
