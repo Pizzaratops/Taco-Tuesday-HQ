@@ -161,17 +161,30 @@ const REPO_TRICODES = [
 const SCHEDULE_ALIAS = {
   GS: 'GSW', NO: 'NOP', NY: 'NYK', SA: 'SAS', UTAH: 'UTA', WSH: 'WAS', PHX: 'PHO',
 };
-// sportsdataverse-Boxscore-Datei (nba_stats_team_boxscores) nutzt
-// saubere Standard-Tricodes -- bis auf PHX (repo nutzt PHO).
-const BOXSCORE_ALIAS = { PHX: 'PHO' };
+// sportsdataverse-Boxscore-Datei (jetzt: espn_nba_team_boxscores, siehe
+// fetchTeamBoxscores) nutzt dieselben ESPN-Kürzel wie die Schedule-Datei --
+// gleiche Alias-Tabelle wiederverwenden statt einer zweiten, separat
+// gepflegten Liste.
+const BOXSCORE_ALIAS = SCHEDULE_ALIAS;
 
+// KORREKTUR (2026-09-05, live gegen echte Daten gefunden): Die ursprüngliche
+// Bedingung "&& !unmappedWarned.has(c)" hat nicht nur die WIEDERHOLTE Warnung
+// unterdrückt, sondern beim zweiten Auftreten desselben unbekannten Codes
+// (z.B. All-Star-Teams "WORLD"/"STARS"/"STRIPES", die mehrfach im Boxscore-
+// Datensatz vorkommen) auch das "return null" übersprungen -- der Code wurde
+// dann fälschlich als gültiges Team durchgereicht und hat später beim
+// agg[team]-Lookup (nur für REPO_TRICODES initialisiert) einen Crash
+// ausgelöst. Warnung und Verwerfen jetzt entkoppelt: verwerfen IMMER, nur
+// die Konsolen-Meldung selbst höchstens einmal pro Code.
 const unmappedWarned = new Set();
 function normalizeTeam(code, alias) {
   const c = (code || '').trim().toUpperCase();
   const mapped = alias[c] || c;
-  if (!REPO_TRICODES.includes(mapped) && !unmappedWarned.has(c)) {
-    unmappedWarned.add(c);
-    console.warn(`⚠️  Unbekannter Team-Code "${code}" (aufgelöst zu "${mapped}") -- Zeilen mit diesem Code werden übersprungen. Bitte SCHEDULE_ALIAS/BOXSCORE_ALIAS in scripts/build-nba-power-rankings.js prüfen.`);
+  if (!REPO_TRICODES.includes(mapped)) {
+    if (!unmappedWarned.has(c)) {
+      unmappedWarned.add(c);
+      console.warn(`⚠️  Unbekannter Team-Code "${code}" (aufgelöst zu "${mapped}") -- Zeilen mit diesem Code werden übersprungen. Bitte SCHEDULE_ALIAS/BOXSCORE_ALIAS in scripts/build-nba-power-rankings.js prüfen.`);
+    }
     return null;
   }
   return mapped;
@@ -263,52 +276,49 @@ async function fetchScheduleGames() {
   return games;
 }
 
-// Sucht die Datumsspalte in der Boxscore-Datei -- Spaltenname laut
-// Bericht nicht 100% verifiziert ("Auszug", keine vollständige Liste).
-// Bricht bewusst mit einer klaren Fehlermeldung ab (statt stillschweigend
-// falsch zu rechnen), falls keine der bekannten Varianten existiert.
-const DATE_COL_CANDIDATES = ['game_date', 'date', 'gameDate', 'GAME_DATE', 'gamedate'];
-function findDateColumn(headerKeys) {
-  return DATE_COL_CANDIDATES.find(c => headerKeys.includes(c)) || null;
-}
-
+// KORREKTUR (2026-09-05, live gegen echte Daten verifiziert): Die
+// ursprünglich vorgesehene Quelle "nba_stats_team_boxscores" (stats.nba.com-
+// Format, game_id z.B. "0022500001") hat GAR KEINE Datumsspalte -- und ihre
+// game_id passt nicht zum game_id-Format von "espn_nba_schedules" (ESPN-
+// Event-IDs wie "401910945"), ein Join über game_id wäre also so oder so
+// nicht möglich gewesen. Stattdessen: "espn_nba_team_boxscores" (Release-Tag)
+// / Datei "team_box_{season}.csv" -- selbe ESPN-Event-IDs wie die Schedule-
+// Datei, hat `game_date` direkt eingebaut, UND liefert pro Zeile bereits
+// `opponent_team_abbreviation` + `opponent_team_score` mit (spart den
+// früheren Zwei-Zeilen-Merge für die reine Punktzahl -- für die vollen
+// Gegner-Boxscore-Stats, die für dessen EIGENE Possessions nötig sind,
+// wird trotzdem pro Spiel die Zeile des Gegner-Teams dazugezogen).
 async function fetchTeamBoxscores() {
-  const url = `https://github.com/sportsdataverse/sportsdataverse-data/releases/download/nba_stats_team_boxscores/team_boxscores_${SEASON}.csv`;
-  const rows = await fetchCsv(url);
-  if (!rows.length) throw new Error(`team_boxscores_${SEASON}.csv ist leer -- Saison-Parameter/Datei prüfen.`);
-
-  const headerKeys = Object.keys(rows[0]);
-  const dateCol = findDateColumn(headerKeys);
-  if (!dateCol) {
-    throw new Error(
-      `Konnte keine Datumsspalte in team_boxscores_${SEASON}.csv finden (geprüft: ${DATE_COL_CANDIDATES.join(', ')}). ` +
-      `Tatsächliche Spalten: ${headerKeys.join(', ')}. Bitte DATE_COL_CANDIDATES in scripts/build-nba-power-rankings.js ergänzen.`
-    );
+  const url = `https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_team_boxscores/team_box_${SEASON}.csv`;
+  let rows;
+  try {
+    rows = await fetchCsv(url);
+  } catch (e) {
+    throw new Error(`team_box_${SEASON}.csv nicht ladbar (${e.message}) -- vermutlich hat die Saison noch keine gespielten Spiele.`);
   }
+  if (!rows.length) throw new Error(`team_box_${SEASON}.csv ist leer -- Saison-Parameter/Datei prüfen.`);
 
-  // game_id als String mit führenden Nullen, 10-stellig -- Regular
-  // Season beginnt mit "002" (Playoffs "004", Preseason "001").
+  // Pro Spiel (game_id) beide Team-Zeilen sammeln, um für JEDES Team die
+  // vollen Boxscore-Werte des Gegners (für dessen eigene Possessions in
+  // genau diesem Spiel) zur Hand zu haben.
   const byGame = new Map();
   for (const r of rows) {
-    const gid = String(r.game_id || '').padStart(10, '0');
-    if (!gid.startsWith('002')) continue;
-    const team = normalizeTeam(r.team_tricode, BOXSCORE_ALIAS);
+    if (r.season_type !== '2') continue; // nur echte Regular-Season (kein Preseason/Playoffs/All-Star)
+    const team = normalizeTeam(r.team_abbreviation, BOXSCORE_ALIAS);
     if (!team) continue;
     const fga = Number(r.field_goals_attempted);
-    const oreb = Number(r.rebounds_offensive);
+    const oreb = Number(r.offensive_rebounds);
     const tov = Number(r.turnovers);
     const fta = Number(r.free_throws_attempted);
-    const pts = Number(r.points);
+    const pts = Number(r.team_score);
     if (![fga, oreb, tov, fta, pts].every(Number.isFinite)) continue;
-    const poss = fga - oreb + tov + 0.44 * fta;
-    const date = String(r[dateCol]).slice(0, 10);
-    if (!byGame.has(gid)) byGame.set(gid, { date, teams: [] });
-    byGame.get(gid).teams.push({ team, pts, poss });
+    const gid = r.game_id;
+    if (!byGame.has(gid)) byGame.set(gid, { date: String(r.game_date).slice(0, 10), teams: [] });
+    byGame.get(gid).teams.push({ team, pts, poss: fga - oreb + tov + 0.44 * fta });
   }
 
-  // Nur Spiele mit genau 2 Teams (vollständige Boxscore) behalten,
-  // und daraus direkt die Gegner-Zuordnung (eigene Defense-Last =
-  // Possessions/Punkte des Gegners im selben Spiel) auflösen.
+  // Nur Spiele mit genau 2 vollständigen Team-Zeilen behalten (beide Seiten
+  // gültig geparst), Gegner-Zuordnung direkt daraus auflösen.
   const games = [];
   for (const { date, teams } of byGame.values()) {
     if (teams.length !== 2) continue;
@@ -316,7 +326,7 @@ async function fetchTeamBoxscores() {
     games.push({ date, team: a.team, pts: a.pts, poss: a.poss, oppPts: b.pts, oppPoss: b.poss });
     games.push({ date, team: b.team, pts: b.pts, poss: b.poss, oppPts: a.pts, oppPoss: a.poss });
   }
-  if (!games.length) throw new Error(`Keine vollständigen Regular-Season-Boxscores in team_boxscores_${SEASON}.csv gefunden.`);
+  if (!games.length) throw new Error(`Keine vollständigen Regular-Season-Boxscores in team_box_${SEASON}.csv gefunden.`);
   return games;
 }
 
@@ -428,8 +438,15 @@ async function main() {
   }
   console.log(`${weekMetas.length} abgeschlossene Matchup-Woche(n) gefunden (bis ${weekMetas[weekMetas.length - 1].throughDate}).`);
 
-  const [scheduleGames, boxGames] = await Promise.all([fetchScheduleGames(), fetchTeamBoxscores()]);
-  console.log(`${scheduleGames.length} Regular-Season-Spiele (Schedule), ${boxGames.length / 2} Boxscore-Spiele geladen.`);
+  // Schedule zuerst laden (existiert schon vor Saisonstart) und prüfen, ob
+  // überhaupt schon gespielte Spiele vorliegen -- ERST DANACH die
+  // Boxscore-Datei anfragen. Die (team_box_{season}.csv) wird von der
+  // sportsdataverse-Pipeline nämlich erst nach dem ersten echten Spieltag
+  // der Saison überhaupt angelegt (404 davor) -- ein blinder Parallel-Fetch
+  // würde die ganze Saison-noch-nicht-gestartet-Erkennung crashen lassen,
+  // statt sauber den Empty State zu schreiben.
+  const scheduleGames = await fetchScheduleGames();
+  console.log(`${scheduleGames.length} Regular-Season-Spiele (Schedule) geladen.`);
 
   // Nur Wochen behalten, für die tatsächlich schon (mindestens ein
   // paar) Spiele vorliegen -- vor Saisonstart bewusst nichts schreiben.
@@ -439,6 +456,9 @@ async function main() {
     console.log('Saison hat laut Schedule-Datei noch nicht begonnen -- bewusst nichts geschrieben.');
     return;
   }
+
+  const boxGames = await fetchTeamBoxscores();
+  console.log(`${boxGames.length / 2} Boxscore-Spiele geladen.`);
 
   const weeks = weeksWithData.map(w => buildWeekPayload(w, scheduleGames, boxGames));
 
