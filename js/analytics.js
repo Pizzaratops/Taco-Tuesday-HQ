@@ -85,20 +85,79 @@ return '<td style="padding:7px 4px;text-align:center;background:'+bg+';border:no
   }).join('');
 }
 
+// Echtes Spinnennetz (SVG-Polygon) statt Balken. Nutzt dieselben Z-Score-
+// Daten wie die Heatmap (anComputeScores) -- norm-Werte liegen in [-1, 1],
+// TO ist bereits invertiert (hoeher = besser, wie bei allen anderen Cats).
+// Skalierung fuers Polygon: (v+1)/2 mappt [-1,1] -> [0,1] als Radius-Anteil.
+function _anRadarValues(s) {
+  return AN_CATS.map(c => {
+    const v = s[c];
+    return v == null ? 0.5 : Math.max(0, Math.min(1, (v + 1) / 2));
+  });
+}
+
+function _anPolygonPoints(cx, cy, maxR, values) {
+  const n = values.length;
+  return values.map((v, i) => {
+    const angle = -Math.PI / 2 + (i * 2 * Math.PI / n);
+    const r = maxR * v;
+    return `${(cx + r * Math.cos(angle)).toFixed(1)},${(cy + r * Math.sin(angle)).toFixed(1)}`;
+  }).join(' ');
+}
+
+function _anAxisLines(cx, cy, maxR, n) {
+  let lines = '';
+  for (let i = 0; i < n; i++) {
+    const angle = -Math.PI / 2 + (i * 2 * Math.PI / n);
+    const x = cx + maxR * Math.cos(angle), y = cy + maxR * Math.sin(angle);
+    lines += `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--border)" stroke-width="1"/>`;
+  }
+  return lines;
+}
+
+function _anGridRings(cx, cy, maxR, n, steps = 4) {
+  let rings = '';
+  for (let s = 1; s <= steps; s++) {
+    const r = maxR * (s / steps);
+    const pts = Array.from({ length: n }, (_, i) => {
+      const angle = -Math.PI / 2 + (i * 2 * Math.PI / n);
+      return `${(cx + r * Math.cos(angle)).toFixed(1)},${(cy + r * Math.sin(angle)).toFixed(1)}`;
+    }).join(' ');
+    rings += `<polygon points="${pts}" fill="none" stroke="var(--border)" stroke-width="1" opacity="${s === steps ? 0.8 : 0.35}"/>`;
+  }
+  return rings;
+}
+
+function _anAxisLabels(cx, cy, maxR, labels, fontSize = 10) {
+  const n = labels.length;
+  return labels.map((label, i) => {
+    const angle = -Math.PI / 2 + (i * 2 * Math.PI / n);
+    const lx = cx + (maxR + 18) * Math.cos(angle);
+    const ly = cy + (maxR + 18) * Math.sin(angle);
+    const anchor = Math.abs(Math.cos(angle)) < 0.15 ? 'middle' : (Math.cos(angle) > 0 ? 'start' : 'end');
+    return `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}" dominant-baseline="middle" font-size="${fontSize}" fill="var(--muted)" font-family="DM Sans,sans-serif" font-weight="700">${label}</text>`;
+  }).join('');
+}
+
 function renderAnRadar() {
   const { norm } = anComputeScores(AN_STATE.cutoff, AN_STATE.method);
   const grid = document.getElementById('anRadarGrid');
   if (!grid) return;
+  const size = 240, cx = size / 2, cy = size / 2 - 4, maxR = 78;
   grid.innerHTML = TEAMS.map(team => {
     const s = norm[String(team.id)]; if (!s) return '';
     const avg = AN_CATS.reduce((a,c) => a+s[c],0) / AN_CATS.length;
-    const bars = AN_CATS.map((c,i) => {
-      const v=s[c], barH=Math.round(Math.abs(v)*28), y=v>=0?(32-barH):32, x=8+i*24;
-      const col=v>=0.4?'rgba(76,175,129,0.85)':v>=0?'rgba(76,175,129,0.45)':v>=-0.4?'rgba(255,101,132,0.35)':'rgba(255,101,132,0.8)';
-      return '<rect x="'+x+'" y="'+y+'" width="16" height="'+barH+'" rx="3" fill="'+col+'"/><text x="'+(x+8)+'" y="72" text-anchor="middle" font-size="8" fill="var(--muted)" font-family="DM Sans,sans-serif">'+AN_LABELS[i]+'</text>';
-    }).join('');
     const avgColor=avg>0.3?'#4caf81':avg>-0.1?'var(--text)':avg>-0.4?'#f5c842':'#ff6584';
-    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;cursor:pointer;transition:border-color 0.15s;" onclick="openAnModal('+team.id+')" onmouseenter="this.style.borderColor=\''+team.color+'\'" onmouseleave="this.style.borderColor=\'var(--border)\'"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;"><div><div style="font-size:13px;font-weight:700;color:var(--text);">'+team.name+'</div><div style="font-size:10px;color:var(--muted);">'+team.owner+'</div></div><span style="font-family:\'Playfair Display\',serif;font-size:16px;font-weight:800;color:'+avgColor+';">'+(avg>=0?'+':'')+avg.toFixed(2)+'</span></div><svg viewBox="0 0 240 80" style="width:100%;overflow:visible;"><line x1="0" y1="32" x2="240" y2="32" stroke="var(--border)" stroke-width="1"/>'+bars+'</svg></div>';
+    const values = _anRadarValues(s);
+    const pts = _anPolygonPoints(cx, cy, maxR, values);
+    const svg = `
+      <svg viewBox="0 0 ${size} ${size}" style="width:100%;overflow:visible;">
+        ${_anGridRings(cx, cy, maxR, AN_CATS.length, 4)}
+        ${_anAxisLines(cx, cy, maxR, AN_CATS.length)}
+        <polygon points="${pts}" fill="rgba(108,99,255,0.28)" stroke="var(--accent)" stroke-width="1.5"/>
+        ${_anAxisLabels(cx, cy, maxR, AN_LABELS, 9)}
+      </svg>`;
+    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;cursor:pointer;transition:border-color 0.15s;" onclick="openAnModal('+team.id+')" onmouseenter="this.style.borderColor=\''+team.color+'\'" onmouseleave="this.style.borderColor=\'var(--border)\'"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;"><div><div style="font-size:13px;font-weight:700;color:var(--text);">'+team.name+'</div><div style="font-size:10px;color:var(--muted);">'+team.owner+'</div></div><span style="font-family:\'Playfair Display\',serif;font-size:16px;font-weight:800;color:'+avgColor+';">'+(avg>=0?'+':'')+avg.toFixed(2)+'</span></div>'+svg+'</div>';
   }).join('');
 }
 
