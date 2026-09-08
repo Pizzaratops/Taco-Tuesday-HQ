@@ -3,7 +3,7 @@
 // ============================================================
 //  AUTO-GENERIERT von scripts/sync-espn-rosters.js über die
 //  "Daily 9cat Live Scores" GitHub Action. Nicht von Hand editieren.
-//  Zuletzt synchronisiert: 2026-09-08T17:52:25.259Z
+//  Zuletzt synchronisiert: 2026-09-08T18:03:30.412Z
 //
 //  Wird von js/admin.js beim Seitenstart als Basis für ROSTERS geladen
 //  (ersetzt die statischen Rosters aus data/teams-rosters.js), bevor
@@ -34,7 +34,7 @@ const ROSTERS_LIVE = {
 // ist, statt dass ein seit Tagen hängender Sync unbemerkt bleibt, weil
 // alles "grün" aussieht.
 const ROSTERS_LIVE_META = {
-  aktualisiert: "2026-09-08T17:52:25.259Z",
+  aktualisiert: "2026-09-08T18:03:30.412Z",
 };
 
 // W-L-T Bilanzen je Team aus derselben ESPN-Antwort (mTeam).
