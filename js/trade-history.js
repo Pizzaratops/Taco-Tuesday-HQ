@@ -188,48 +188,6 @@ function adminAddPickToTrade(tradeId) {
   if (typeof toast === 'function') toast('✅ Pick hinzugefügt: ' + year + ' R' + round + ' → Side ' + side);
 }
 
-function showNbaTrades() {
-  navigate('nbaTradesPage');
-  renderNbaTrades();
-  const lastTs = parseInt(localStorage.getItem('nbaTradesTs') || '0');
-  if (Date.now() - lastTs > 60 * 60 * 1000) fetchNbaTrades().then(renderNbaTrades);
-}
-
-function renderNbaTrades() {
-  const container = document.getElementById('nbaTradesList');
-  if (!container) return;
-  const fantasyNames = new Set();
-  Object.values(ROSTERS).forEach(roster => roster.forEach(p => fantasyNames.add(p.name)));
-  const raw = localStorage.getItem('nbaTrades');
-  if (!raw) {
-    container.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--muted);"><div style="font-size:36px;margin-bottom:12px;">⚠️</div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Feature aktuell pausiert</div><div style="font-size:13px;max-width:420px;margin:0 auto;">Die bisherige Datenquelle (Balldontlie-API) bietet den Trades-Endpoint nicht mehr an. Sobald es eine kostenlose Alternative gibt, kommt das Feature zurück.</div></div>';
-    return;
-  }
-  let trades = [];
-  try { trades = JSON.parse(raw); } catch(e) { return; }
-  if (!trades.length) {
-    container.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted);font-size:14px;">Keine Trades gefunden</div>';
-    return;
-  }
-  const isLight = document.body.classList.contains('light');
-  container.innerHTML = trades.map(t => {
-    const rows = t.players.map(p => {
-      const inLeague = fantasyNames.has(p.name);
-      const bg = inLeague ? (isLight ? 'rgba(76,175,129,0.12)' : 'rgba(76,175,129,0.18)') : 'transparent';
-      const badge = inLeague ? '<span style="font-size:10px;font-weight:800;padding:2px 7px;border-radius:10px;background:rgba(76,175,129,0.2);color:#4caf81;margin-left:8px;">In Liga ✓</span>' : '';
-      return '<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:' + bg + ';margin-bottom:3px;">'
-        + '<span style="font-size:11px;font-weight:800;padding:2px 7px;border-radius:5px;background:var(--surface2);color:var(--muted);min-width:34px;text-align:center;">' + p.fromTeam + '</span>'
-        + '<span style="color:var(--muted);font-size:13px;">' + String.fromCharCode(8594) + '</span>'
-        + '<span style="font-size:11px;font-weight:800;padding:2px 7px;border-radius:5px;background:var(--surface2);color:var(--accent);min-width:34px;text-align:center;">' + p.toTeam + '</span>'
-        + '<span style="flex:1;font-size:13px;font-weight:' + (inLeague ? '700' : '500') + ';color:var(--text);">' + p.name + badge + '</span>'
-        + '</div>';
-    }).join('');
-    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:10px;animation:fadeSlideIn 0.2s ease;">'
-      + '<div style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:0.5px;margin-bottom:10px;">📅 ' + t.date + '</div>'
-      + rows + '</div>';
-  }).join('');
-}
-
 function deleteTradeEntry(id) {
   const hardcodedIds = new Set(HARDCODED_TRADES.map(t => t.id));
   if (hardcodedIds.has(id)) { alert('Basis-Trades können nicht gelöscht werden.'); return; }

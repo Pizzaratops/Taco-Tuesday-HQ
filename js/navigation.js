@@ -685,7 +685,7 @@ const SUBNAV_PAGES = {
   duelPage:'duel', duelBoardPage:'duelboard', duelSettingsPage:'duelsettings',
   lotteryPage:'lottery', rankingsPage:'rankings', hashtagRankingsPage:'rankings', dynastyRollingPage:'dynastyrolling',
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', nbaPowerRankingsPage:'nbapowerrankings', nbaPowerScorePage:'nbapowerscore', tradePage:'trade',
-  tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', nbaTradesPage:'nbatrades', adminSettingsPage:'adminsettings', standingsPage:'standings', rulesPage:'rules',
+  tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', adminSettingsPage:'adminsettings', standingsPage:'standings', rulesPage:'rules',
   liveScoresPage:'livescores', playerRankingsPage:'playerrankings', playerProjectionsPage:'playerprojections',
   matchupPage:'matchup',
   liveProjectionsPage:'liveprojections', liveProjTeamsPage:'liveprojectionsteams', liveProjDraftPage:'liveprojectionsdraft',
@@ -709,7 +709,6 @@ const HASH_TO_PAGE = Object.fromEntries(
 const EXTRA_HASH_TO_PAGE = {
   'home': 'homePage',
   'adminsettings': 'adminSettingsPage',
-  'nbatrades': 'nbaTradesPage',
 };
 
 function _applyPage(pageId) {
@@ -831,7 +830,6 @@ function showLiveScores(){navigate('liveScoresPage');typeof lsInit==='function'&
 function _rerenderPage(pageId) {
   if (pageId === 'playerRankingsPage')   typeof prInit === 'function' && prInit();
   if (pageId === 'standingsPage')        setTimeout(renderStandingsChart, 50);
-  if (pageId === 'nbaTradesPage')        renderNbaTrades();
   if (pageId === 'adminSettingsPage')    _asInit();
   if (pageId === 'tradeHistoryPage')     renderTradeHistory();
   if (pageId === 'draftboardPage')       showDraftboard();

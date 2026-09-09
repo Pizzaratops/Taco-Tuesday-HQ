@@ -132,18 +132,9 @@ async function espnSync(auto = false) {
 
     localStorage.setItem('espnLastSync', now);
     localStorage.setItem('espnLastSyncTs', String(Date.now()));
-
-    fetchNbaTrades().catch(e => console.warn('NBA trades:', e));
   } catch(err) {
     console.error('ESPN Sync:', err);
   }
-}
-
-async function fetchNbaTrades() {
-  // Der /trades-Endpoint existiert in der balldontlie v1-API nicht mehr
-  // (neue URL-Struktur: /nba/v1/... — aber kein Trades-Endpoint verfügbar).
-  // Funktion deaktiviert bis ein Ersatz gefunden wird.
-  return;
 }
 
 

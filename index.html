@@ -141,7 +141,6 @@
           <button class="snav-dropdown-item" data-page="trade"       onclick="showTrade()">⚖️ Trade Analyzer</button>
           <button class="snav-dropdown-item" data-page="tradefinder" onclick="showTradeFinder()">🔍 Trade Finder</button>
           <button class="snav-dropdown-item" data-page="tradehistory" onclick="showTradeHistory()">📜 Trade History</button>
-          <button class="snav-dropdown-item" data-page="nbatrades" onclick="showNbaTrades()">🏀 NBA Trades</button>
         </div>
       </div>
 
@@ -229,7 +228,6 @@
         <button class="subnav-mobile-btn" data-page="trade"       onclick="showTrade();closeMobileNav()">⚖️ Trade Analyzer</button>
         <button class="subnav-mobile-btn" data-page="tradefinder" onclick="showTradeFinder();closeMobileNav()">🔍 Trade Finder</button>
         <button class="subnav-mobile-btn" data-page="tradehistory" onclick="showTradeHistory();closeMobileNav()">📜 Trade History</button>
-        <button class="subnav-mobile-btn" data-page="nbatrades" onclick="showNbaTrades();closeMobileNav()">🏀 NBA Trades</button>
       </div>
     </div>
   </div>
@@ -1938,24 +1936,6 @@
 
 
 
-<div class="page" id="nbaTradesPage">
-  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
-    <div>
-      <h2 style="margin-bottom:4px;">🏀 NBA Trades</h2>
-      <p style="color:var(--muted);font-size:13px;">⚠️ Pausiert: die bisherige Datenquelle (Balldontlie) bietet den Trades-Endpoint nicht mehr an, kostenlosen Ersatz gibt es aktuell nicht.</p>
-    </div>
-    <button disabled title="Keine kostenlose Trades-API verfügbar — siehe Hinweis" style="background:var(--surface2);border:1.5px solid var(--border);color:var(--muted);border-radius:20px;padding:7px 16px;font-size:12px;font-weight:700;cursor:not-allowed;font-family:'DM Sans',sans-serif;">🔄 Aktualisieren</button>
-  </div>
-  <div id="nbaTradesList">
-    <div style="text-align:center;padding:60px 20px;color:var(--muted);">
-      <div style="font-size:36px;margin-bottom:12px;">🏀</div>
-      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Lade NBA Trades…</div>
-      <div style="font-size:13px;">Klicke Aktualisieren oder ESPN Sync</div>
-    </div>
-  </div>
-</div>
-
-
 <div class="page" id="adminSettingsPage">
   <div style="max-width:680px;margin:0 auto;">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
@@ -2288,21 +2268,21 @@
 <script src="data/season-2022-23.js?v=ca4beb77"></script>
 <script src="data/season-2021-22.js?v=bb837487"></script>
 <script src="data/season-rankings.js?v=51f908be"></script>
-<script src="data/rosters-live.js?v=070419e7"></script>
+<script src="data/rosters-live.js?v=abebca07"></script>
 <script src="data/picks.js?v=43f5868b"></script>
-<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=16230a52"></script>
+<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=c597e915"></script>
 <!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=c819801f"></script>
 <script src="data/rankings.js?v=ec950f55"></script>
 <script src="data/projections-baseline.js?v=f70cd7ad"></script>
-<script src="data/live-projections.js?v=abbe20d3"></script>
+<script src="data/live-projections.js?v=a9e2ba9a"></script>
 <script src="data/dynasty-rolling.js?v=5a3bad82"></script>
-<script src="data/dynasty-live.js?v=e5160747"></script>
+<script src="data/dynasty-live.js?v=f2508852"></script>
 <script src="data/hashtag.js?v=79b756a3"></script>
 <script src="data/aliases.js?v=be878c58"></script>
 <script src="data/draft2026.js?v=7795b40e"></script>
 <script src="data/draft2027.js?v=67c40565"></script>
-<script src="data/postdraft-board.js?v=09d4f43a"></script>
-<script src="data/best-available-board.js?v=03ea3a74"></script>
+<script src="data/postdraft-board.js?v=9814ab7f"></script>
+<script src="data/best-available-board.js?v=29b650ee"></script>
 <script src="data/stats.js?v=7b760995"></script>
 
 <!-- App logic -->
@@ -2332,7 +2312,7 @@
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<script src="data/team-analytics.js?v=1c8c98d8"></script>
+<script src="data/team-analytics.js?v=f8cad29f"></script>
 <script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>
@@ -2349,7 +2329,7 @@
   <script src="js/rolling-rankings.js?v=5"></script>
 <script src="data/nba-power-rankings.js?v=ca80a44b"></script>
   <script src="js/nba-power-rankings.js?v=1"></script>
-<script src="data/nba-power-score.js?v=ceb26bbf"></script>
+<script src="data/nba-power-score.js?v=1"></script>
   <script src="js/nba-power-score.js?v=1"></script>
 <script src="data/livescores-daily.js?v=ac7826b0"></script>
 <script src="data/livescores-aggregate.js?v=69091e1d"></script>
