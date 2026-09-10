@@ -1,4 +1,9 @@
 // ============================================================
+//  Ligaweit fixe Kadergroesse (Picks + Keeper zusammen). Daraus errechnet
+//  sich pro Team "maximal moegliche Keeper" = MAX_ROSTER_SIZE - Picks im
+//  bevorstehenden Draft (siehe getMaxKeepers() in js/navigation.js).
+const MAX_ROSTER_SIZE = 26;
+
 const PICKS = [
   {year:2026,round:1,originalOwner:1,currentOwner:1,slot:12,note:"Champ-Regel"},{year:2026,round:1,originalOwner:2,currentOwner:2,slot:11},
   {year:2026,round:1,originalOwner:3,currentOwner:1,slot:10},{year:2026,round:1,originalOwner:4,currentOwner:1,slot:4},

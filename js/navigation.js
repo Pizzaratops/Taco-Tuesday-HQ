@@ -233,7 +233,7 @@ function showTeam(id){
 function switchTab(tab) {
   currentTab = tab;
   document.querySelectorAll('.tab').forEach((el, i) =>
-    el.classList.toggle('active', (i===0&&tab==='roster')||(i===1&&tab==='picks')));
+    el.classList.toggle('active', (i===0&&tab==='roster')||(i===1&&tab==='picks')||(i===2&&tab==='draftboard')));
   // Sort-Button nur bei Roster anzeigen
   const sortBtn = document.getElementById('rosterSortBtn');
   if (sortBtn) sortBtn.style.display = tab === 'roster' ? 'block' : 'none';
@@ -253,11 +253,14 @@ function toggleRosterSort() {
 }
 function renderTab(){
   if (_viewSeason !== 'current') {
-    document.getElementById('tabContent').innerHTML = currentTab === 'roster'
-      ? renderArchivedRoster(currentTeamId) : renderArchivedPicks();
+    document.getElementById('tabContent').innerHTML = currentTab === 'roster' ? renderArchivedRoster(currentTeamId)
+      : currentTab === 'picks' ? renderArchivedPicks()
+      : renderArchivedDraftBoardTab();
     return;
   }
-  document.getElementById('tabContent').innerHTML=currentTab==='roster'?renderRoster(currentTeamId):renderPicks(currentTeamId);
+  document.getElementById('tabContent').innerHTML = currentTab === 'roster' ? renderRoster(currentTeamId)
+    : currentTab === 'picks' ? renderPicks(currentTeamId)
+    : renderTeamDraftBoard(currentTeamId);
 }
 
 // ── Archivierte Rosteransicht ────────────────────────────────
@@ -446,11 +449,12 @@ function renderRoster(id) {
   return html;
 }
 
-function renderPicks(id){
-  const myPicks=PICKS.filter(p=>p.currentOwner===id);
-  if(!myPicks.length) return '<p style="color:var(--muted);padding:20px 0;">No picks held.</p>';
+// Farbschema pro Draft-Jahr, gemeinsam genutzt von renderPicks() (alle
+// eigenen Picks ueber alle Jahre) und renderTeamDraftBoard() (Team-Tab,
+// nur das bevorstehende Draft-Jahr) -- ein Ort statt zweier Kopien.
+function _pickYearStyles() {
   const isLight=document.body.classList.contains('light');
-  const yearStyles=isLight?{
+  return isLight?{
     2026:{header:'rgba(192,98,47,0.1)',dot:'#c0622f',label:'#8a3a10',own:'rgba(192,98,47,0.08)',ownBorder:'rgba(192,98,47,0.3)',traded:'rgba(192,98,47,0.04)',tradedBorder:'rgba(192,98,47,0.15)'},
     2027:{header:'rgba(45,122,80,0.1)',dot:'#2d7a50',label:'#1a5c35',own:'rgba(45,122,80,0.08)',ownBorder:'rgba(45,122,80,0.3)',traded:'rgba(45,122,80,0.04)',tradedBorder:'rgba(45,122,80,0.15)'},
     2028:{header:'rgba(154,110,16,0.1)',dot:'#9a6e10',label:'#6e4c08',own:'rgba(154,110,16,0.08)',ownBorder:'rgba(154,110,16,0.3)',traded:'rgba(154,110,16,0.04)',tradedBorder:'rgba(154,110,16,0.15)'},
@@ -461,43 +465,95 @@ function renderPicks(id){
     2028:{header:'rgba(245,200,66,0.25)',dot:'#f5c842',label:'#f5d97a',own:'rgba(245,200,66,0.12)',ownBorder:'rgba(245,200,66,0.35)',traded:'rgba(245,200,66,0.06)',tradedBorder:'rgba(245,200,66,0.2)'},
     2029:{header:'rgba(41,182,246,0.25)',dot:'#29b6f6',label:'#7dd8f8',own:'rgba(41,182,246,0.12)',ownBorder:'rgba(41,182,246,0.35)',traded:'rgba(41,182,246,0.06)',tradedBorder:'rgba(41,182,246,0.2)'},
   };
+}
+
+// Ein Jahresblock (Farbleiste + Tabelle Round/Origin/Status) fuer die Picks
+// EINES Teams in EINEM Jahr. allRounds = alle Runden, die in diesem Jahr
+// ligaweit existieren (damit auch Runden ohne eigenen Pick des Teams nicht
+// stillschweigend fehlen, falls das je vorkommt).
+function renderPickYearBlock(year, yearPicks, allRounds) {
+  const s=_pickYearStyles()[year]||_pickYearStyles()[2026];
+  let html=`<div style="margin-bottom:28px;border:1px solid ${s.ownBorder};border-radius:14px;overflow:hidden;">
+    <div style="background:${s.header};padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid ${s.ownBorder};">
+      <div style="width:10px;height:10px;border-radius:50%;background:${s.dot};"></div>
+      <div style="font-size:14px;font-weight:800;color:${s.label};font-family:'Playfair Display',serif;">${year}</div>
+      <div style="font-size:11px;color:var(--muted);background:var(--surface2);padding:2px 8px;border-radius:20px;margin-left:4px;font-weight:600;">${yearPicks.length} pick${yearPicks.length!==1?'s':''}</div>
+    </div>
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr>
+        <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">ROUND</th>
+        <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">ORIGIN</th>
+        <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">STATUS</th>
+      </tr></thead><tbody>`;
+  allRounds.forEach(round=>{
+    const roundPicks=yearPicks.filter(p=>p.round===round).sort((a,b)=>a.originalOwner-b.originalOwner);
+    roundPicks.forEach((pick,i)=>{
+      const traded=pick.originalOwner!==pick.currentOwner;
+      const orig=teamMap[pick.originalOwner];
+      html+=`<tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:10px 12px;font-size:12px;font-weight:700;color:${s.label};white-space:nowrap;background:var(--surface);">${i===0?`R${round}`:''}</td>
+        <td style="padding:10px 12px;font-size:13px;color:var(--text);background:var(--surface);">${orig.name}</td>
+        <td style="padding:10px 12px;background:var(--surface);">
+          <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:${traded?s.traded:s.own};border:1px solid ${traded?s.tradedBorder:s.ownBorder};color:${s.label};">
+            ${traded?'Traded'+(pick.note?' ('+pick.note+')':''):'Own'}
+          </span>
+        </td>
+      </tr>`;
+    });
+  });
+  html+='</tbody></table></div>';
+  return html;
+}
+
+function renderPicks(id){
+  const myPicks=PICKS.filter(p=>p.currentOwner===id);
+  if(!myPicks.length) return '<p style="color:var(--muted);padding:20px 0;">No picks held.</p>';
   const allRounds=[...new Set(PICKS.map(p=>p.round))].sort();
   const years=[...new Set(myPicks.map(p=>p.year))].sort();
-  let html='';
-  years.forEach(year=>{
-    const s=yearStyles[year]||yearStyles[2026];
-    const yearPicks=myPicks.filter(p=>p.year===year);
-    html+=`<div style="margin-bottom:28px;border:1px solid ${s.ownBorder};border-radius:14px;overflow:hidden;">
-      <div style="background:${s.header};padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid ${s.ownBorder};">
-        <div style="width:10px;height:10px;border-radius:50%;background:${s.dot};"></div>
-        <div style="font-size:14px;font-weight:800;color:${s.label};font-family:'Playfair Display',serif;">${year}</div>
-        <div style="font-size:11px;color:var(--muted);background:var(--surface2);padding:2px 8px;border-radius:20px;margin-left:4px;font-weight:600;">${yearPicks.length} pick${yearPicks.length!==1?'s':''}</div>
-      </div>
-      <table style="width:100%;border-collapse:collapse;">
-        <thead><tr>
-          <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">ROUND</th>
-          <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">ORIGIN</th>
-          <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface2);">STATUS</th>
-        </tr></thead><tbody>`;
-    allRounds.forEach(round=>{
-      const roundPicks=yearPicks.filter(p=>p.round===round).sort((a,b)=>a.originalOwner-b.originalOwner);
-      roundPicks.forEach((pick,i)=>{
-        const traded=pick.originalOwner!==pick.currentOwner;
-        const orig=teamMap[pick.originalOwner];
-        html+=`<tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:10px 12px;font-size:12px;font-weight:700;color:${s.label};white-space:nowrap;background:var(--surface);">${i===0?`R${round}`:''}</td>
-          <td style="padding:10px 12px;font-size:13px;color:var(--text);background:var(--surface);">${orig.name}</td>
-          <td style="padding:10px 12px;background:var(--surface);">
-            <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:${traded?s.traded:s.own};border:1px solid ${traded?s.tradedBorder:s.ownBorder};color:${s.label};">
-              ${traded?'Traded'+(pick.note?' ('+pick.note+')':''):'Own'}
-            </span>
-          </td>
-        </tr>`;
-      });
-    });
-    html+='</tbody></table></div>';
-  });
+  return years.map(year=>renderPickYearBlock(year, myPicks.filter(p=>p.year===year), allRounds)).join('');
+}
+
+// ── Team-Tab "Draft Board" ───────────────────────────────────
+//  Dritter Reiter auf der Team-Seite, neben Roster/My Owned Picks (siehe
+//  index.html teamPage). Zeigt fuer DIESES Team die eigene Picks/Keeper-
+//  Kennzahl (gleiche Formel wie renderKeeperSummaryGrid()) plus das volle
+//  2026 Draft Board dieses Teams (alle Runden, inkl. Herkunft bei
+//  getradeten Picks) -- Pendant zum "Draft Board"-Tab bei Bear Witch
+//  Project HQ.
+function renderTeamDraftBoard(id) {
+  const year = 2026;
+  const t = teamMap[id];
+  const c = getTeamColor(t);
+  const picks = getPicksCountForTeam(id, year);
+  const keepers = getMaxKeepers(id, year);
+  const myPicks = PICKS.filter(p => p.year === year && p.currentOwner === id);
+  const allRounds = [...new Set(PICKS.filter(p => p.year === year).map(p => p.round))].sort();
+
+  let html = `<div class="keeper-card" style="border-color:${c}44;margin-bottom:24px;max-width:280px;">
+    <div class="keeper-card-team" style="color:${c};">${t.name} — ${year}</div>
+    <div class="keeper-card-row">
+      <span class="keeper-card-label">Picks ${year}</span>
+      <span class="keeper-card-value">${picks}</span>
+    </div>
+    <div class="keeper-card-row">
+      <span class="keeper-card-label">Max. Keeper</span>
+      <span class="keeper-card-value keeper-card-value-accent" style="color:${c};">${keepers}</span>
+    </div>
+  </div>
+  <p style="margin:-14px 0 20px;font-size:11.5px;color:var(--muted);">Kadergröße ${MAX_ROSTER_SIZE} (Picks + Keeper). Vollständiges Full Draft Board für alle Teams: <a href="#" onclick="showDraftboard();return false;" style="color:var(--accent);">hier</a>.</p>`;
+
+  html += myPicks.length
+    ? renderPickYearBlock(year, myPicks, allRounds)
+    : `<p style="color:var(--muted);padding:20px 0;">Keine Picks im ${year} Draft.</p>`;
+
   return html;
+}
+
+function renderArchivedDraftBoardTab() {
+  const season = _getSeasonData(_viewSeason);
+  return `<div style="padding:40px 20px;text-align:center;color:var(--muted);font-size:13px;">
+    "Draft Board" ist für archivierte Saisons (${season ? season.label : ''}) nicht verfügbar.
+  </div>`;
 }
 
 // ============================================================
@@ -674,9 +730,91 @@ html += `<td>
       });
       html+='</tbody></table>';
     }
+
+    // Picks & Keeper Uebersicht direkt unter dem 2026er Board -- zeigt pro
+    // Team, wie viele Picks es in diesem Draft hat und wie viele Spieler es
+    // daraus folgend maximal keepen darf (MAX_ROSTER_SIZE - Picks). Nur fuer
+    // das aktuell bevorstehende Draft-Jahr relevant, deshalb nicht bei
+    // 2027/2028/2029 wiederholt.
+    if (year === 2026) html += renderKeeperSummaryGrid(year);
   });
   document.getElementById('draftboardContent').innerHTML=html;
   navigate('draftboardPage');
+}
+
+// ============================================================
+//  PICKS & KEEPER UEBERSICHT
+// ============================================================
+//  MAX_ROSTER_SIZE (data/picks.js) ist die ligaweit fixe Kadergroesse
+//  (Picks + Keeper zusammen). Je mehr Picks ein Team im bevorstehenden
+//  Draft hat, desto weniger Spieler aus dem aktuellen Kader kann es
+//  keepen -- diese Uebersicht macht das fuer alle 12 Teams auf einen
+//  Blick sichtbar, inkl. Screenshot-Option zum Teilen in der Liga.
+function getPicksCountForTeam(teamId, year) {
+  return PICKS.filter(p => p.year === year && p.currentOwner === teamId).length;
+}
+function getMaxKeepers(teamId, year) {
+  return MAX_ROSTER_SIZE - getPicksCountForTeam(teamId, year);
+}
+
+function renderKeeperSummaryGrid(year) {
+  const cards = TEAMS.map(t => {
+    const c = getTeamColor(t);
+    const picks = getPicksCountForTeam(t.id, year);
+    const keepers = getMaxKeepers(t.id, year);
+    return `<div class="keeper-card" style="border-color:${c}44;">
+      <div class="keeper-card-team" style="color:${c};">${t.name}</div>
+      <div class="keeper-card-row">
+        <span class="keeper-card-label">Picks ${year}</span>
+        <span class="keeper-card-value">${picks}</span>
+      </div>
+      <div class="keeper-card-row">
+        <span class="keeper-card-label">Max. Keeper</span>
+        <span class="keeper-card-value keeper-card-value-accent" style="color:${c};">${keepers}</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div class="keeper-summary" id="keeperSummary_${year}">
+    <div class="keeper-summary-head">
+      <div>
+        <h3 style="margin:0 0 4px;font-size:16px;font-family:'Playfair Display',serif;color:var(--text);">🔑 Picks &amp; Keeper Übersicht ${year}</h3>
+        <p style="margin:0;font-size:12px;color:var(--muted);">Kadergröße ${MAX_ROSTER_SIZE} (Picks + Keeper). Weniger Picks = mehr mögliche Keeper.</p>
+      </div>
+      <button class="draftboard-btn" style="width:auto;flex:0 0 auto;padding:9px 14px;" onclick="downloadKeeperSummary(${year})">📸 Screenshot</button>
+    </div>
+    <div class="keeper-grid" id="keeperGrid_${year}">${cards}</div>
+  </div>`;
+}
+
+async function downloadKeeperSummary(year) {
+  const card = document.getElementById('keeperSummary_' + year);
+  if (!card) return;
+  if (typeof html2canvas !== 'function') { alert('html2canvas Library nicht geladen.'); return; }
+  const btn = card.querySelector('.draftboard-btn');
+  const orig = btn ? btn.textContent : '';
+  if (btn) { btn.textContent = '⏳ Erstelle...'; btn.disabled = true; }
+  try {
+    const isLight = document.body.classList.contains('light');
+    const canvas = await html2canvas(card, {
+      backgroundColor: isLight ? '#fff5ee' : '#0f1117',
+      scale: 2,
+      logging: false,
+      useCORS: true,
+      ignoreElements: (el) => el.tagName === 'BUTTON',
+    });
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    const stamp = new Date().toISOString().split('T')[0];
+    link.download = `taco-keeper-uebersicht-${year}-${stamp}.png`;
+    link.click();
+    if (btn) { btn.textContent = '✓ Gespeichert!'; }
+    setTimeout(() => { if (btn) { btn.textContent = orig; btn.disabled = false; } }, 1500);
+  } catch (err) {
+    console.error('Screenshot failed:', err);
+    alert('Fehler beim Erstellen: ' + err.message);
+    if (btn) { btn.textContent = orig; btn.disabled = false; }
+  }
 }
 
 // Which group each page belongs to (for group-button highlighting)

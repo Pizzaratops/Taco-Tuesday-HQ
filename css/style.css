@@ -385,6 +385,17 @@
   .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
   .edit-hint { background: var(--surface2); border: 1px dashed var(--border); border-radius: 10px; padding: 12px 16px; font-size: 12px; color: var(--muted); margin-top: 20px; text-align: center; }
   .edit-hint code { background: var(--surface); border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: var(--accent); }
+
+  /* ===== KEEPER SUMMARY (Full Draft Board + Team-Tab "Draft Board") ===== */
+  .keeper-summary { margin: 24px 0 32px; padding: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
+  .keeper-summary-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
+  .keeper-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .keeper-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+  .keeper-card-team { font-weight: 800; font-size: 13px; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
+  .keeper-card-row { display: flex; align-items: center; justify-content: space-between; padding: 3px 0; }
+  .keeper-card-label { font-size: 11px; color: var(--muted); font-weight: 600; }
+  .keeper-card-value { font-size: 15px; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
+  .keeper-card-value-accent { font-size: 17px; }
   h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--text); }
 
   /* ===== RULES ===== */
