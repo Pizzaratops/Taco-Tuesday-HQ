@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-16T13:55:32.193Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-17T13:59:06.849Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-09-16T13:55:32.193Z",
+ "fetchedAt": "2026-09-17T13:59:06.849Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -397,7 +397,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 0\"",
      "weight": "200 lbs",
-     "age": 26,
+     "age": 27,
      "espnId": "4432887"
     },
     {
@@ -4170,6 +4170,15 @@ const ROSTERS_DATA = {
      "weight": "245 lbs",
      "age": 19,
      "espnId": "5041953"
+    },
+    {
+     "name": "Duop Reath",
+     "jersey": null,
+     "position": "C",
+     "height": "6' 9\"",
+     "weight": "245 lbs",
+     "age": 30,
+     "espnId": "4066268"
     },
     {
      "name": "Pat Spencer",
