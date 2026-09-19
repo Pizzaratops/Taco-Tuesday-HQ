@@ -4,52 +4,522 @@
 // Felder: ownAdp/ownCount/ownMin/ownMax/ownPicks (aus data/draft-results/), fantraxAdp (aus data/fantrax-adp.csv)
 // NICHT MANUELL BEARBEITEN — Skript erneut laufen lassen, nachdem neue CSVs abgelegt wurden.
 const ADP_DATA = {
- "keon ellis": {
-  "name": "Keon Ellis",
-  "ownAdp": 146.3,
-  "ownCount": 6,
-  "ownMin": 132,
-  "ownMax": 157,
+ "anthony davis": {
+  "name": "Anthony Davis",
+  "ownAdp": 27.8,
+  "ownCount": 26,
+  "ownMin": 15,
+  "ownMax": 40,
   "ownPicks": [
    {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
    },
    {
-    "pick": 135,
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 27,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
    },
    {
-    "pick": 148,
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 33,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
    },
    {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
    },
    {
-    "pick": 156,
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 40,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
    },
    {
-    "pick": 157,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    }
   ],
-  "fantraxAdp": 230,
-  "team": "BKN",
-  "pos": "SG"
+  "fantraxAdp": 28,
+  "team": "WAS",
+  "pos": "PF"
  },
- "ben simmons": {
-  "name": "Ben Simmons",
+ "justin champagnie": {
+  "name": "Justin Champagnie",
   "ownAdp": null,
   "ownCount": 0,
   "ownMin": null,
   "ownMax": null,
   "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "SAC",
+  "fantraxAdp": 244,
+  "team": "WAS",
+  "pos": "SF"
+ },
+ "craig porter": {
+  "name": "Craig Porter",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "CLE",
   "pos": "PG"
+ },
+ "dejounte murray": {
+  "name": "Dejounte Murray",
+  "ownAdp": 63.1,
+  "ownCount": 25,
+  "ownMin": 42,
+  "ownMax": 79,
+  "ownPicks": [
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   }
+  ],
+  "fantraxAdp": 55,
+  "team": "NO",
+  "pos": "PG"
+ },
+ "john collins": {
+  "name": "John Collins",
+  "ownAdp": 108.4,
+  "ownCount": 19,
+  "ownMin": 96,
+  "ownMax": 124,
+  "ownPicks": [
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   }
+  ],
+  "fantraxAdp": 110,
+  "team": "DET",
+  "pos": "PF"
+ },
+ "ron holland": {
+  "name": "Ron Holland",
+  "ownAdp": 156.0,
+  "ownCount": 2,
+  "ownMin": 152,
+  "ownMax": 160,
+  "ownPicks": [
+   {
+    "pick": 152,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 160,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 239,
+  "team": "DET",
+  "pos": "SF"
+ },
+ "darryn peterson": {
+  "name": "Darryn Peterson",
+  "ownAdp": 116.4,
+  "ownCount": 17,
+  "ownMin": 87,
+  "ownMax": 144,
+  "ownPicks": [
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 141,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 144,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   }
+  ],
+  "fantraxAdp": 113,
+  "team": "UTA",
+  "pos": "SG"
+ },
+ "rui hachimura": {
+  "name": "Rui Hachimura",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 238,
+  "team": "LAC",
+  "pos": "PF"
+ },
+ "marcus smart": {
+  "name": "Marcus Smart",
+  "ownAdp": 148.0,
+  "ownCount": 1,
+  "ownMin": 148,
+  "ownMax": 148,
+  "ownPicks": [
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   }
+  ],
+  "fantraxAdp": 243,
+  "team": "HOU",
+  "pos": "PG"
+ },
+ "jordan poole": {
+  "name": "Jordan Poole",
+  "ownAdp": 155.0,
+  "ownCount": 2,
+  "ownMin": 153,
+  "ownMax": 157,
+  "ownPicks": [
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-AUTO-kjuxwfi4mrh17ll1"
+   },
+   {
+    "pick": 157,
+    "source": "Fantrax-Draft-Results-AUTO-emeu5xuymrh1a5id"
+   }
+  ],
+  "fantraxAdp": 239,
+  "team": "NO",
+  "pos": "SG"
+ },
+ "daniel gafford": {
+  "name": "Daniel Gafford",
+  "ownAdp": 143.8,
+  "ownCount": 5,
+  "ownMin": 126,
+  "ownMax": 159,
+  "ownPicks": [
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 159,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 231,
+  "team": "DAL",
+  "pos": "C"
  },
  "miles bridges": {
   "name": "Miles Bridges",
@@ -151,850 +621,744 @@ const ADP_DATA = {
   "team": "PHO",
   "pos": "SF"
  },
- "egor demin": {
-  "name": "Egor Demin",
-  "ownAdp": 132.4,
-  "ownCount": 15,
-  "ownMin": 107,
-  "ownMax": 164,
+ "kyle kuzma": {
+  "name": "Kyle Kuzma",
+  "ownAdp": 141.0,
+  "ownCount": 1,
+  "ownMin": 141,
+  "ownMax": 141,
   "ownPicks": [
    {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 144,
+    "pick": 141,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 164,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
    }
   ],
-  "fantraxAdp": 130,
-  "team": "BKN",
-  "pos": "PG"
+  "fantraxAdp": 236,
+  "team": "MIL",
+  "pos": "PF"
  },
- "pj washington": {
-  "name": "P.J. Washington",
-  "ownAdp": 116.0,
-  "ownCount": 17,
-  "ownMin": 97,
-  "ownMax": 154,
+ "dillon brooks": {
+  "name": "Dillon Brooks",
+  "ownAdp": 138.5,
+  "ownCount": 11,
+  "ownMin": 111,
+  "ownMax": 153,
   "ownPicks": [
    {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
     "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 122,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
    },
    {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 154,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 136,
-  "team": "DAL",
-  "pos": "PF"
- },
- "demar derozan": {
-  "name": "DeMar DeRozan",
-  "ownAdp": 143.2,
-  "ownCount": 10,
-  "ownMin": 122,
-  "ownMax": 167,
-  "ownPicks": [
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 128,
+    "pick": 121,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
    },
    {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
    },
    {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
    },
    {
     "pick": 144,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 145,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
    },
    {
-    "pick": 147,
+    "pick": 148,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    },
    {
-    "pick": 153,
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 152,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    },
    {
-    "pick": 161,
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 178,
+  "team": "PHO",
+  "pos": "SF"
+ },
+ "dailyn swain": {
+  "name": "Dailyn Swain",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "CHI",
+  "pos": "SG"
+ },
+ "kelly oubre": {
+  "name": "Kelly Oubre Jr.",
+  "ownAdp": 157.5,
+  "ownCount": 2,
+  "ownMin": 148,
+  "ownMax": 167,
+  "ownPicks": [
+   {
+    "pick": 148,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
    },
    {
     "pick": 167,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
    }
   ],
-  "fantraxAdp": 138,
-  "team": "(N/A)",
+  "fantraxAdp": 234,
+  "team": "IND",
   "pos": "SF"
  },
- "allen graves": {
-  "name": "Allen Graves",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "TOR",
-  "pos": "PF"
- },
- "damian lillard": {
-  "name": "Damian Lillard",
-  "ownAdp": 88.6,
-  "ownCount": 22,
-  "ownMin": 63,
-  "ownMax": 112,
-  "ownPicks": [
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 81,
-  "team": "POR",
-  "pos": "PG"
- },
- "nickeil alexanderwalker": {
-  "name": "Nickeil Alexander-Walker",
-  "ownAdp": 47.8,
+ "desmond bane": {
+  "name": "Desmond Bane",
+  "ownAdp": 46.3,
   "ownCount": 25,
   "ownMin": 29,
-  "ownMax": 65,
+  "ownMax": 58,
   "ownPicks": [
    {
     "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 38,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
    },
    {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 41,
+    "pick": 39,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    },
    {
-    "pick": 44,
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 43,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
    },
    {
     "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    },
    {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
    },
    {
     "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
    },
    {
     "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
    },
    {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
    },
    {
     "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
    },
    {
     "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
    },
    {
     "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 52,
-  "team": "ATL",
-  "pos": "SG"
- },
- "bobby portis": {
-  "name": "Bobby Portis",
-  "ownAdp": 143.5,
-  "ownCount": 4,
-  "ownMin": 134,
-  "ownMax": 161,
-  "ownPicks": [
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 161,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 220,
-  "team": "MIA",
-  "pos": "PF"
- },
- "zion williamson": {
-  "name": "Zion Williamson",
-  "ownAdp": 82.1,
-  "ownCount": 24,
-  "ownMin": 54,
-  "ownMax": 96,
-  "ownPicks": [
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 72,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
    },
    {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 88,
+    "pick": 56,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
    },
    {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
    },
    {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    },
    {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
    }
   ],
-  "fantraxAdp": 83,
-  "team": "NO",
-  "pos": "PF"
- },
- "jared mccain": {
-  "name": "Jared McCain",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 241,
-  "team": "OKC",
+  "fantraxAdp": 48,
+  "team": "ORL",
   "pos": "SG"
  },
- "isaiah collier": {
-  "name": "Isaiah Collier",
-  "ownAdp": 168.0,
-  "ownCount": 1,
-  "ownMin": 168,
-  "ownMax": 168,
-  "ownPicks": [
-   {
-    "pick": 168,
-    "source": "Fantrax-Draft-Results-AUTO-f4s6y7hlmrkduxh8"
-   }
-  ],
-  "fantraxAdp": 237,
-  "team": "UTA",
-  "pos": "PG"
- },
- "leonard miller": {
-  "name": "Leonard Miller",
-  "ownAdp": 165.0,
-  "ownCount": 1,
-  "ownMin": 165,
-  "ownMax": 165,
-  "ownPicks": [
-   {
-    "pick": 165,
-    "source": "Fantrax-Draft-Results-AUTO-jkfwddasmrc2ubfh"
-   }
-  ],
-  "fantraxAdp": 243,
-  "team": "CHI",
-  "pos": "SF"
- },
- "precious achiuwa": {
-  "name": "Precious Achiuwa",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 240,
-  "team": "SAC",
-  "pos": "C"
- },
- "stephen curry": {
-  "name": "Stephen Curry",
-  "ownAdp": 18.9,
+ "jamal murray": {
+  "name": "Jamal Murray",
+  "ownAdp": 20.2,
   "ownCount": 28,
-  "ownMin": 12,
-  "ownMax": 28,
+  "ownMin": 11,
+  "ownMax": 31,
   "ownPicks": [
    {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
    },
    {
     "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 17,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
    },
    {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
     "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 18,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    },
    {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 22,
+    "pick": 18,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
    },
    {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   }
-  ],
-  "fantraxAdp": 19,
-  "team": "GS",
-  "pos": "PG"
- },
- "jabari smith": {
-  "name": "Jabari Smith",
-  "ownAdp": 85.3,
-  "ownCount": 23,
-  "ownMin": 71,
-  "ownMax": 107,
-  "ownPicks": [
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 79,
+    "pick": 18,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    },
    {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 83,
+    "pick": 19,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
    },
    {
-    "pick": 83,
+    "pick": 19,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
    },
    {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 87,
+    "pick": 19,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    },
    {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
    },
    {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 92,
+    "pick": 20,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
    },
    {
-    "pick": 96,
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 22,
     "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
    },
    {
-    "pick": 96,
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 21,
+  "team": "DEN",
+  "pos": "PG"
+ },
+ "jalen williams": {
+  "name": "Jalen Williams",
+  "ownAdp": 42.0,
+  "ownCount": 26,
+  "ownMin": 17,
+  "ownMax": 59,
+  "ownPicks": [
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 29,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
    },
    {
-    "pick": 107,
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   }
+  ],
+  "fantraxAdp": 38,
+  "team": "OKC",
+  "pos": "SG"
+ },
+ "moussa diabate": {
+  "name": "Moussa Diabate",
+  "ownAdp": 144.0,
+  "ownCount": 3,
+  "ownMin": 133,
+  "ownMax": 162,
+  "ownPicks": [
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 162,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 164,
+  "team": "CHA",
+  "pos": "C"
+ },
+ "mark williams": {
+  "name": "Mark Williams",
+  "ownAdp": 113.4,
+  "ownCount": 20,
+  "ownMin": 91,
+  "ownMax": 141,
+  "ownPicks": [
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 141,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   }
+  ],
+  "fantraxAdp": 112,
+  "team": "PHO",
+  "pos": "C"
+ },
+ "quentin grimes": {
+  "name": "Quentin Grimes",
+  "ownAdp": 135.8,
+  "ownCount": 11,
+  "ownMin": 120,
+  "ownMax": 154,
+  "ownPicks": [
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 141,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 145,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 154,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
    }
   ],
-  "fantraxAdp": 91,
-  "team": "HOU",
-  "pos": "PF"
+  "fantraxAdp": 161,
+  "team": "LAL",
+  "pos": "SG"
+ },
+ "yaxel lendeborg": {
+  "name": "Yaxel Lendeborg",
+  "ownAdp": 147.5,
+  "ownCount": 4,
+  "ownMin": 130,
+  "ownMax": 159,
+  "ownPicks": [
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 144,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 157,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 159,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   }
+  ],
+  "fantraxAdp": 174,
+  "team": "GS",
+  "pos": "SF"
+ },
+ "jalen green": {
+  "name": "Jalen Green",
+  "ownAdp": 116.4,
+  "ownCount": 18,
+  "ownMin": 75,
+  "ownMax": 156,
+  "ownPicks": [
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 156,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 119,
+  "team": "PHO",
+  "pos": "SG"
  },
  "trae young": {
   "name": "Trae Young",
@@ -1120,631 +1484,1087 @@ const ADP_DATA = {
   "team": "WAS",
   "pos": "PG"
  },
- "kelly olynyk": {
-  "name": "Kelly Olynyk",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "(N/A)",
+ "mikel brown": {
+  "name": "Mikel Brown",
+  "ownAdp": 147.2,
+  "ownCount": 8,
+  "ownMin": 124,
+  "ownMax": 168,
+  "ownPicks": [
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 152,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 154,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 168,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 183,
+  "team": "BKN",
+  "pos": "PG"
+ },
+ "dereck lively": {
+  "name": "Dereck Lively",
+  "ownAdp": 153.0,
+  "ownCount": 1,
+  "ownMin": 153,
+  "ownMax": 153,
+  "ownPicks": [
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 213,
+  "team": "DAL",
   "pos": "C"
  },
- "scottie barnes": {
-  "name": "Scottie Barnes",
-  "ownAdp": 9.9,
-  "ownCount": 29,
-  "ownMin": 4,
-  "ownMax": 15,
+ "scoot henderson": {
+  "name": "Scoot Henderson",
+  "ownAdp": 158.2,
+  "ownCount": 4,
+  "ownMin": 147,
+  "ownMax": 168,
   "ownPicks": [
    {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 12,
-  "team": "TOR",
-  "pos": "PF"
- },
- "koa peat": {
-  "name": "Koa Peat",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "PHO",
-  "pos": "PF"
- },
- "matas buzelis": {
-  "name": "Matas Buzelis",
-  "ownAdp": 57.7,
-  "ownCount": 25,
-  "ownMin": 44,
-  "ownMax": 77,
-  "ownPicks": [
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 59,
-  "team": "CHI",
-  "pos": "SF"
- },
- "tre johnson": {
-  "name": "Tre Johnson",
-  "ownAdp": 145.5,
-  "ownCount": 2,
-  "ownMin": 135,
-  "ownMax": 156,
-  "ownPicks": [
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-AUTO-bbw1narimrkdo0xy"
    },
    {
     "pick": 156,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+    "source": "Fantrax-Draft-Results-AUTO-4cjjvk4dmrcvjknk"
+   },
+   {
+    "pick": 162,
+    "source": "Fantrax-Draft-Results-AUTO-emeu5xuymrh1a5id"
+   },
+   {
+    "pick": 168,
+    "source": "Fantrax-Draft-Results-AUTO-1ycl5y6pmrhrjicv"
    }
   ],
-  "fantraxAdp": 240,
-  "team": "WAS",
-  "pos": "SG"
+  "fantraxAdp": 227,
+  "team": "POR",
+  "pos": "PG"
  },
- "toumani camara": {
-  "name": "Toumani Camara",
-  "ownAdp": 102.6,
-  "ownCount": 20,
-  "ownMin": 81,
-  "ownMax": 128,
+ "max christie": {
+  "name": "Max Christie",
+  "ownAdp": 160.0,
+  "ownCount": 1,
+  "ownMin": 160,
+  "ownMax": 160,
   "ownPicks": [
    {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 128,
+    "pick": 160,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
    }
   ],
-  "fantraxAdp": 112,
-  "team": "POR",
-  "pos": "PF"
+  "fantraxAdp": 236,
+  "team": "DAL",
+  "pos": "SG"
  },
- "walter clayton": {
-  "name": "Walter Clayton",
-  "ownAdp": 154.0,
-  "ownCount": 1,
-  "ownMin": 154,
-  "ownMax": 154,
-  "ownPicks": [
-   {
-    "pick": 154,
-    "source": "Fantrax-Draft-Results-AUTO-osd7cxhzmrhramh2"
-   }
-  ],
-  "fantraxAdp": 242,
-  "team": "MEM",
-  "pos": "PG"
- },
- "josh giddey": {
-  "name": "Josh Giddey",
-  "ownAdp": 27.9,
+ "kawhi leonard": {
+  "name": "Kawhi Leonard",
+  "ownAdp": 27.6,
   "ownCount": 28,
   "ownMin": 16,
   "ownMax": 40,
   "ownPicks": [
    {
     "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 33,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
    },
    {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
    },
    {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 27,
-  "team": "CHI",
-  "pos": "PG"
- },
- "deaaron fox": {
-  "name": "De'Aaron Fox",
-  "ownAdp": 67.8,
-  "ownCount": 25,
-  "ownMin": 41,
-  "ownMax": 92,
-  "ownPicks": [
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 50,
+    "pick": 19,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
    },
    {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 29,
+  "team": "LAC",
+  "pos": "SF"
+ },
+ "jaren jackson": {
+  "name": "Jaren Jackson",
+  "ownAdp": 44.4,
+  "ownCount": 25,
+  "ownMin": 28,
+  "ownMax": 63,
+  "ownPicks": [
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
     "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 53,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
    },
    {
     "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
    },
    {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 69,
+    "pick": 63,
     "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
    },
    {
-    "pick": 69,
+    "pick": 63,
     "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   }
+  ],
+  "fantraxAdp": 41,
+  "team": "UTA",
+  "pos": "C"
+ },
+ "jared mccain": {
+  "name": "Jared McCain",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 241,
+  "team": "OKC",
+  "pos": "SG"
+ },
+ "kyle filipowski": {
+  "name": "Kyle Filipowski",
+  "ownAdp": 152.4,
+  "ownCount": 9,
+  "ownMin": 135,
+  "ownMax": 165,
+  "ownPicks": [
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    },
    {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    },
    {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
    },
    {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+    "pick": 154,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
    },
    {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+    "pick": 162,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
    },
    {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+    "pick": 163,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
    },
    {
-    "pick": 75,
+    "pick": 164,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    },
    {
-    "pick": 80,
+    "pick": 165,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 205,
+  "team": "UTA",
+  "pos": "C"
+ },
+ "jonathan kuminga": {
+  "name": "Jonathan Kuminga",
+  "ownAdp": 149.0,
+  "ownCount": 1,
+  "ownMin": 149,
+  "ownMax": 149,
+  "ownPicks": [
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 226,
+  "team": "(N/A)",
+  "pos": "PF"
+ },
+ "ty jerome": {
+  "name": "Ty Jerome",
+  "ownAdp": 91.0,
+  "ownCount": 21,
+  "ownMin": 62,
+  "ownMax": 136,
+  "ownPicks": [
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 76,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
    },
    {
     "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
    },
    {
     "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
    },
    {
     "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
    },
    {
-    "pick": 85,
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   }
+  ],
+  "fantraxAdp": 90,
+  "team": "MEM",
+  "pos": "SG"
+ },
+ "brandon miller": {
+  "name": "Brandon Miller",
+  "ownAdp": 44.3,
+  "ownCount": 25,
+  "ownMin": 35,
+  "ownMax": 57,
+  "ownPicks": [
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 44,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
    },
    {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    }
   ],
-  "fantraxAdp": 74,
-  "team": "SA",
+  "fantraxAdp": 43,
+  "team": "CHA",
+  "pos": "SF"
+ },
+ "aaron gordon": {
+  "name": "Aaron Gordon",
+  "ownAdp": 140.8,
+  "ownCount": 10,
+  "ownMin": 100,
+  "ownMax": 165,
+  "ownPicks": [
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 144,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 144,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 165,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 144,
+  "team": "DEN",
+  "pos": "PF"
+ },
+ "duncan robinson": {
+  "name": "Duncan Robinson",
+  "ownAdp": 138.0,
+  "ownCount": 1,
+  "ownMin": 138,
+  "ownMax": 138,
+  "ownPicks": [
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 241,
+  "team": "DET",
+  "pos": "SF"
+ },
+ "khaman maluach": {
+  "name": "Khaman Maluach",
+  "ownAdp": 152.0,
+  "ownCount": 1,
+  "ownMin": 152,
+  "ownMax": 152,
+  "ownPicks": [
+   {
+    "pick": 152,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   }
+  ],
+  "fantraxAdp": 189,
+  "team": "PHO",
+  "pos": "C"
+ },
+ "devin booker": {
+  "name": "Devin Booker",
+  "ownAdp": 24.0,
+  "ownCount": 27,
+  "ownMin": 13,
+  "ownMax": 39,
+  "ownPicks": [
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   }
+  ],
+  "fantraxAdp": 27,
+  "team": "PHO",
+  "pos": "SG"
+ },
+ "og anunoby": {
+  "name": "OG Anunoby",
+  "ownAdp": 55.1,
+  "ownCount": 23,
+  "ownMin": 45,
+  "ownMax": 65,
+  "ownPicks": [
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   }
+  ],
+  "fantraxAdp": 58,
+  "team": "NY",
+  "pos": "PF"
+ },
+ "cason wallace": {
+  "name": "Cason Wallace",
+  "ownAdp": 122.5,
+  "ownCount": 19,
+  "ownMin": 92,
+  "ownMax": 159,
+  "ownPicks": [
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 141,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 144,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 159,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 115,
+  "team": "OKC",
+  "pos": "SG"
+ },
+ "collin gillespie": {
+  "name": "Collin Gillespie",
+  "ownAdp": 137.0,
+  "ownCount": 10,
+  "ownMin": 115,
+  "ownMax": 154,
+  "ownPicks": [
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 154,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 141,
+  "team": "PHO",
   "pos": "PG"
+ },
+ "nate ament": {
+  "name": "Nate Ament",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "MIL",
+  "pos": "SF"
  },
  "kentavious caldwellpope": {
   "name": "Kentavious Caldwell-Pope",
@@ -1757,992 +2577,248 @@ const ADP_DATA = {
   "team": "PHI",
   "pos": "SG"
  },
- "aj green": {
-  "name": "AJ Green",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "MIL",
-  "pos": "SG"
- },
- "jaden mcdaniels": {
-  "name": "Jaden McDaniels",
-  "ownAdp": 78.2,
-  "ownCount": 22,
-  "ownMin": 63,
-  "ownMax": 88,
+ "alperen sengun": {
+  "name": "Alperen Sengun",
+  "ownAdp": 21.4,
+  "ownCount": 28,
+  "ownMin": 13,
+  "ownMax": 37,
   "ownPicks": [
    {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 68,
+    "pick": 13,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
    },
    {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 79,
+    "pick": 13,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
    },
    {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   }
-  ],
-  "fantraxAdp": 78,
-  "team": "MIN",
-  "pos": "PF"
- },
- "zach edey": {
-  "name": "Zach Edey",
-  "ownAdp": 70.9,
-  "ownCount": 24,
-  "ownMin": 53,
-  "ownMax": 90,
-  "ownPicks": [
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 76,
+    "pick": 14,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
    },
    {
-    "pick": 76,
+    "pick": 14,
     "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
    },
    {
-    "pick": 77,
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 16,
     "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
    },
    {
-    "pick": 77,
+    "pick": 16,
     "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
    },
    {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
    },
    {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 69,
-  "team": "MEM",
-  "pos": "C"
- },
- "jalen suggs": {
-  "name": "Jalen Suggs",
-  "ownAdp": 89.7,
-  "ownCount": 22,
-  "ownMin": 67,
-  "ownMax": 116,
-  "ownPicks": [
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 89,
+    "pick": 17,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   }
-  ],
-  "fantraxAdp": 90,
-  "team": "ORL",
-  "pos": "PG"
- },
- "kasparas jakucionis": {
-  "name": "Kasparas Jakucionis",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "MIL",
-  "pos": "SG"
- },
- "ace bailey": {
-  "name": "Ace Bailey",
-  "ownAdp": 124.9,
-  "ownCount": 14,
-  "ownMin": 87,
-  "ownMax": 155,
-  "ownPicks": [
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   }
-  ],
-  "fantraxAdp": 138,
-  "team": "UTA",
-  "pos": "SF"
- },
- "jalen green": {
-  "name": "Jalen Green",
-  "ownAdp": 116.4,
-  "ownCount": 18,
-  "ownMin": 75,
-  "ownMax": 156,
-  "ownPicks": [
-   {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 156,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 119,
-  "team": "PHO",
-  "pos": "SG"
- },
- "sandro mamukelashvili": {
-  "name": "Sandro Mamukelashvili",
-  "ownAdp": 126.3,
-  "ownCount": 11,
-  "ownMin": 92,
-  "ownMax": 160,
-  "ownPicks": [
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 160,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 133,
-  "team": "LAL",
-  "pos": "PF"
- },
- "trey murphy": {
-  "name": "Trey Murphy",
-  "ownAdp": 28.9,
-  "ownCount": 27,
-  "ownMin": 18,
-  "ownMax": 44,
-  "ownPicks": [
-   {
-    "pick": 18,
+    "pick": 17,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
    },
    {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
     "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
    },
    {
     "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
    },
    {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
    },
    {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 24,
+    "pick": 21,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
    },
    {
-    "pick": 24,
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 21,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
    },
    {
     "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
    },
    {
     "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
    },
    {
-    "pick": 27,
+    "pick": 26,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    },
    {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
    },
    {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
    },
    {
     "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   }
-  ],
-  "fantraxAdp": 30,
-  "team": "NO",
-  "pos": "SF"
- },
- "cade cunningham": {
-  "name": "Cade Cunningham",
-  "ownAdp": 5.5,
-  "ownCount": 31,
-  "ownMin": 4,
-  "ownMax": 7,
-  "ownPicks": [
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 6,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
    },
    {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
    },
    {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 5,
-  "team": "DET",
-  "pos": "PG"
- },
- "jarace walker": {
-  "name": "Jarace Walker",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "IND",
-  "pos": "PF"
- },
- "malik monk": {
-  "name": "Malik Monk",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "SAC",
-  "pos": "SG"
- },
- "keaton wagler": {
-  "name": "Keaton Wagler",
-  "ownAdp": 152.0,
-  "ownCount": 2,
-  "ownMin": 138,
-  "ownMax": 166,
-  "ownPicks": [
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 166,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 222,
-  "team": "LAC",
-  "pos": "SG"
- },
- "jay huff": {
-  "name": "Jay Huff",
-  "ownAdp": 139.7,
-  "ownCount": 3,
-  "ownMin": 123,
-  "ownMax": 166,
-  "ownPicks": [
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 166,
+    "pick": 31,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    }
   ],
-  "fantraxAdp": 227,
-  "team": "IND",
+  "fantraxAdp": 21,
+  "team": "HOU",
   "pos": "C"
  },
- "donovan mitchell": {
-  "name": "Donovan Mitchell",
-  "ownAdp": 12.9,
-  "ownCount": 29,
-  "ownMin": 9,
-  "ownMax": 19,
+ "jabari smith": {
+  "name": "Jabari Smith",
+  "ownAdp": 85.3,
+  "ownCount": 23,
+  "ownMin": 71,
+  "ownMax": 107,
   "ownPicks": [
    {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 12,
+    "pick": 71,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    },
    {
-    "pick": 13,
+    "pick": 72,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
    },
    {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 13,
+    "pick": 76,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
    },
    {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
    },
    {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
    },
    {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    },
    {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 15,
+    "pick": 82,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
    },
    {
-    "pick": 15,
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 89,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    },
    {
-    "pick": 17,
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 96,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
    },
    {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
    }
   ],
-  "fantraxAdp": 14,
-  "team": "CLE",
+  "fantraxAdp": 91,
+  "team": "HOU",
+  "pos": "PF"
+ },
+ "tim hardaway": {
+  "name": "Tim Hardaway",
+  "ownAdp": 165.0,
+  "ownCount": 1,
+  "ownMin": 165,
+  "ownMax": 165,
+  "ownPicks": [
+   {
+    "pick": 165,
+    "source": "Fantrax-Draft-Results-AUTO-amyt53qkmrh14vqu"
+   }
+  ],
+  "fantraxAdp": 241,
+  "team": "MIA",
   "pos": "SG"
  },
  "gary payton": {
@@ -2756,345 +2832,16 @@ const ADP_DATA = {
   "team": "GS",
   "pos": "SG"
  },
- "dejounte murray": {
-  "name": "Dejounte Murray",
-  "ownAdp": 63.1,
-  "ownCount": 25,
-  "ownMin": 42,
-  "ownMax": 79,
-  "ownPicks": [
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   }
-  ],
-  "fantraxAdp": 55,
-  "team": "NO",
-  "pos": "PG"
- },
- "taylor hendricks": {
-  "name": "Taylor Hendricks",
-  "ownAdp": 149.5,
-  "ownCount": 2,
-  "ownMin": 148,
-  "ownMax": 151,
-  "ownPicks": [
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-AUTO-jkfwddasmrc2ubfh"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-AUTO-2xpavvsdmrkgdwvm"
-   }
-  ],
-  "fantraxAdp": 242,
-  "team": "MEM",
-  "pos": "PF"
- },
- "keldon johnson": {
-  "name": "Keldon Johnson",
-  "ownAdp": 122.0,
-  "ownCount": 3,
-  "ownMin": 78,
-  "ownMax": 161,
-  "ownPicks": [
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 161,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 239,
-  "team": "SA",
-  "pos": "SF"
- },
- "jimmy butler": {
-  "name": "Jimmy Butler",
-  "ownAdp": 137.6,
-  "ownCount": 8,
-  "ownMin": 95,
-  "ownMax": 163,
-  "ownPicks": [
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 159,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 160,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 163,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 205,
-  "team": "GS",
-  "pos": "SF"
- },
- "brandon ingram": {
-  "name": "Brandon Ingram",
-  "ownAdp": 68.8,
-  "ownCount": 25,
-  "ownMin": 49,
-  "ownMax": 89,
-  "ownPicks": [
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   }
-  ],
-  "fantraxAdp": 77,
-  "team": "TOR",
-  "pos": "SF"
- },
- "yaxel lendeborg": {
-  "name": "Yaxel Lendeborg",
-  "ownAdp": 147.5,
-  "ownCount": 4,
-  "ownMin": 130,
-  "ownMax": 159,
-  "ownPicks": [
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 144,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 157,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 159,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 174,
-  "team": "GS",
-  "pos": "SF"
+ "dru smith": {
+  "name": "Dru Smith",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "MIA",
+  "pos": "SG"
  },
  "chet holmgren": {
   "name": "Chet Holmgren",
@@ -3216,234 +2963,451 @@ const ADP_DATA = {
   "team": "OKC",
   "pos": "C"
  },
- "jerami grant": {
-  "name": "Jerami Grant",
-  "ownAdp": 149.3,
-  "ownCount": 3,
-  "ownMin": 147,
-  "ownMax": 153,
-  "ownPicks": [
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-AUTO-hdvwmdermrfwbgdo"
-   },
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-AUTO-emeu5xuymrh1a5id"
-   },
-   {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-AUTO-t6wu7qhgmrhrgajw"
-   }
-  ],
-  "fantraxAdp": 210,
-  "team": "MEM",
-  "pos": "PF"
- },
- "klay thompson": {
-  "name": "Klay Thompson",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "MIA",
-  "pos": "SF"
- },
- "jock landale": {
-  "name": "Jock Landale",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "ATL",
-  "pos": "C"
- },
- "payton pritchard": {
-  "name": "Payton Pritchard",
-  "ownAdp": 73.8,
+ "tyler herro": {
+  "name": "Tyler Herro",
+  "ownAdp": 61.2,
   "ownCount": 24,
-  "ownMin": 49,
-  "ownMax": 89,
+  "ownMin": 40,
+  "ownMax": 83,
   "ownPicks": [
    {
-    "pick": 49,
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 51,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    },
    {
     "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 83,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
    },
    {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   }
-  ],
-  "fantraxAdp": 80,
-  "team": "BOS",
-  "pos": "PG"
- },
- "kristaps porzingis": {
-  "name": "Kristaps Porzingis",
-  "ownAdp": 117.4,
-  "ownCount": 16,
-  "ownMin": 91,
-  "ownMax": 153,
-  "ownPicks": [
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 104,
+    "pick": 53,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
    },
    {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    },
    {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
    },
    {
-    "pick": 108,
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 60,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    },
    {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 114,
+    "pick": 62,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
    },
    {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
    },
    {
-    "pick": 121,
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 64,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
    },
    {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
    },
    {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 150,
+    "pick": 67,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
    },
    {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
    }
   ],
-  "fantraxAdp": 109,
-  "team": "GS",
+  "fantraxAdp": 63,
+  "team": "MIL",
+  "pos": "SG"
+ },
+ "deaaron fox": {
+  "name": "De'Aaron Fox",
+  "ownAdp": 67.8,
+  "ownCount": 25,
+  "ownMin": 41,
+  "ownMax": 92,
+  "ownPicks": [
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   }
+  ],
+  "fantraxAdp": 74,
+  "team": "SA",
+  "pos": "PG"
+ },
+ "paolo banchero": {
+  "name": "Paolo Banchero",
+  "ownAdp": 44.2,
+  "ownCount": 25,
+  "ownMin": 18,
+  "ownMax": 68,
+  "ownPicks": [
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   }
+  ],
+  "fantraxAdp": 49,
+  "team": "ORL",
+  "pos": "PF"
+ },
+ "kelel ware": {
+  "name": "Kel'el Ware",
+  "ownAdp": 60.7,
+  "ownCount": 23,
+  "ownMin": 38,
+  "ownMax": 97,
+  "ownPicks": [
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   }
+  ],
+  "fantraxAdp": 58,
+  "team": "MIL",
+  "pos": "C"
+ },
+ "kelly olynyk": {
+  "name": "Kelly Olynyk",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "(N/A)",
   "pos": "C"
  },
  "ryan rollins": {
@@ -3558,747 +3522,634 @@ const ADP_DATA = {
   "team": "MIL",
   "pos": "PG"
  },
- "joel embiid": {
-  "name": "Joel Embiid",
-  "ownAdp": 57.5,
-  "ownCount": 25,
-  "ownMin": 34,
-  "ownMax": 88,
-  "ownPicks": [
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 60,
-  "team": "PHI",
-  "pos": "C"
- },
- "anthony davis": {
-  "name": "Anthony Davis",
-  "ownAdp": 27.8,
-  "ownCount": 26,
-  "ownMin": 15,
-  "ownMax": 40,
-  "ownPicks": [
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 28,
-  "team": "WAS",
-  "pos": "PF"
- },
- "isaiah jackson": {
-  "name": "Isaiah Jackson",
+ "tj mcconnell": {
+  "name": "T.J. McConnell",
   "ownAdp": null,
   "ownCount": 0,
   "ownMin": null,
   "ownMax": null,
   "ownPicks": [],
   "fantraxAdp": 244,
-  "team": "LAC",
-  "pos": "C"
+  "team": "IND",
+  "pos": "PG"
  },
- "keyonte george": {
-  "name": "Keyonte George",
-  "ownAdp": 55.3,
-  "ownCount": 25,
-  "ownMin": 41,
-  "ownMax": 76,
+ "norman powell": {
+  "name": "Norman Powell",
+  "ownAdp": 92.8,
+  "ownCount": 22,
+  "ownMin": 68,
+  "ownMax": 112,
   "ownPicks": [
    {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 57,
+    "pick": 68,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
    },
    {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 76,
+    "pick": 74,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   }
-  ],
-  "fantraxAdp": 58,
-  "team": "UTA",
-  "pos": "PG"
- },
- "ayo dosunmu": {
-  "name": "Ayo Dosunmu",
-  "ownAdp": 101.4,
-  "ownCount": 21,
-  "ownMin": 68,
-  "ownMax": 125,
-  "ownPicks": [
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
    },
    {
-    "pick": 84,
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 81,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
    },
    {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 95,
+    "pick": 82,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    },
    {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
     "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 98,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
    },
    {
     "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 102,
+    "pick": 99,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    },
    {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
    },
    {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 119,
+    "pick": 100,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
    },
    {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
    }
   ],
-  "fantraxAdp": 106,
+  "fantraxAdp": 92,
+  "team": "CHI",
+  "pos": "SG"
+ },
+ "donte divincenzo": {
+  "name": "Donte DiVincenzo",
+  "ownAdp": 129.5,
+  "ownCount": 6,
+  "ownMin": 108,
+  "ownMax": 142,
+  "ownPicks": [
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 141,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 228,
   "team": "MIN",
   "pos": "SG"
  },
- "steven adams": {
-  "name": "Steven Adams",
+ "onyeka okongwu": {
+  "name": "Onyeka Okongwu",
+  "ownAdp": 49.2,
+  "ownCount": 25,
+  "ownMin": 32,
+  "ownMax": 76,
+  "ownPicks": [
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   }
+  ],
+  "fantraxAdp": 47,
+  "team": "ATL",
+  "pos": "C"
+ },
+ "cooper flagg": {
+  "name": "Cooper Flagg",
+  "ownAdp": 12.9,
+  "ownCount": 29,
+  "ownMin": 7,
+  "ownMax": 19,
+  "ownPicks": [
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   }
+  ],
+  "fantraxAdp": 11,
+  "team": "DAL",
+  "pos": "SF"
+ },
+ "precious achiuwa": {
+  "name": "Precious Achiuwa",
   "ownAdp": null,
   "ownCount": 0,
   "ownMin": null,
   "ownMax": null,
   "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "HOU",
+  "fantraxAdp": 240,
+  "team": "SAC",
   "pos": "C"
  },
- "caleb wilson": {
-  "name": "Caleb Wilson",
-  "ownAdp": 99.2,
-  "ownCount": 21,
-  "ownMin": 51,
-  "ownMax": 125,
+ "brice sensabaugh": {
+  "name": "Brice Sensabaugh",
+  "ownAdp": 146.5,
+  "ownCount": 2,
+  "ownMin": 141,
+  "ownMax": 152,
   "ownPicks": [
    {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 87,
+    "pick": 141,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
    },
    {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+    "pick": 152,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    }
   ],
-  "fantraxAdp": 95,
-  "team": "CHI",
-  "pos": "PF"
+  "fantraxAdp": 242,
+  "team": "UTA",
+  "pos": "SF"
  },
- "michael porter": {
-  "name": "Michael Porter",
-  "ownAdp": 61.8,
-  "ownCount": 25,
-  "ownMin": 41,
-  "ownMax": 86,
+ "pj washington": {
+  "name": "P.J. Washington",
+  "ownAdp": 116.0,
+  "ownCount": 17,
+  "ownMin": 97,
+  "ownMax": 154,
   "ownPicks": [
    {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 75,
+    "pick": 97,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
    },
    {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   }
-  ],
-  "fantraxAdp": 65,
-  "team": "BKN",
-  "pos": "SF"
- },
- "brandin podziemski": {
-  "name": "Brandin Podziemski",
-  "ownAdp": 130.6,
-  "ownCount": 16,
-  "ownMin": 113,
-  "ownMax": 166,
-  "ownPicks": [
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 126,
+    "pick": 97,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    },
    {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 135,
+    "pick": 103,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 138,
+    "pick": 103,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
    },
    {
-    "pick": 139,
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 122,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
    },
    {
-    "pick": 166,
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 154,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    }
   ],
-  "fantraxAdp": 120,
-  "team": "GS",
+  "fantraxAdp": 136,
+  "team": "DAL",
+  "pos": "PF"
+ },
+ "vj edgecombe": {
+  "name": "VJ Edgecombe",
+  "ownAdp": 75.7,
+  "ownCount": 23,
+  "ownMin": 45,
+  "ownMax": 101,
+  "ownPicks": [
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   }
+  ],
+  "fantraxAdp": 83,
+  "team": "PHI",
   "pos": "SG"
+ },
+ "ryan kalkbrenner": {
+  "name": "Ryan Kalkbrenner",
+  "ownAdp": 168.0,
+  "ownCount": 1,
+  "ownMin": 168,
+  "ownMax": 168,
+  "ownPicks": [
+   {
+    "pick": 168,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 235,
+  "team": "CHA",
+  "pos": "C"
+ },
+ "zach collins": {
+  "name": "Zach Collins",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "CHI",
+  "pos": "PF"
  },
  "jalen johnson": {
   "name": "Jalen Johnson",
@@ -4432,2574 +4283,36 @@ const ADP_DATA = {
   "team": "ATL",
   "pos": "SF"
  },
- "giannis antetokounmpo": {
-  "name": "Giannis Antetokounmpo",
-  "ownAdp": 10.9,
-  "ownCount": 31,
-  "ownMin": 5,
-  "ownMax": 24,
-  "ownPicks": [
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   }
-  ],
-  "fantraxAdp": 9,
-  "team": "MIA",
-  "pos": "PF"
- },
- "naz reid": {
-  "name": "Naz Reid",
-  "ownAdp": 73.9,
-  "ownCount": 23,
-  "ownMin": 53,
-  "ownMax": 90,
-  "ownPicks": [
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   }
-  ],
-  "fantraxAdp": 72,
-  "team": "CHA",
-  "pos": "C"
- },
- "myles turner": {
-  "name": "Myles Turner",
-  "ownAdp": 83.2,
-  "ownCount": 21,
-  "ownMin": 66,
-  "ownMax": 99,
-  "ownPicks": [
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   }
-  ],
-  "fantraxAdp": 87,
-  "team": "MIL",
-  "pos": "C"
- },
- "luke kornet": {
-  "name": "Luke Kornet",
+ "killian hayes": {
+  "name": "Killian Hayes",
   "ownAdp": null,
   "ownCount": 0,
   "ownMin": null,
   "ownMax": null,
   "ownPicks": [],
   "fantraxAdp": 244,
-  "team": "SA",
-  "pos": "C"
- },
- "bam adebayo": {
-  "name": "Bam Adebayo",
-  "ownAdp": 35.9,
-  "ownCount": 26,
-  "ownMin": 23,
-  "ownMax": 46,
-  "ownPicks": [
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 36,
-  "team": "MIA",
-  "pos": "C"
- },
- "luguentz dort": {
-  "name": "Luguentz Dort",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "ATL",
-  "pos": "SF"
- },
- "aaron wiggins": {
-  "name": "Aaron Wiggins",
-  "ownAdp": 145.0,
-  "ownCount": 2,
-  "ownMin": 142,
-  "ownMax": 148,
-  "ownPicks": [
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   }
-  ],
-  "fantraxAdp": 238,
-  "team": "ATL",
-  "pos": "SG"
- },
- "isaiah joe": {
-  "name": "Isaiah Joe",
-  "ownAdp": 155.0,
-  "ownCount": 1,
-  "ownMin": 155,
-  "ownMax": 155,
-  "ownPicks": [
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-AUTO-emeu5xuymrh1a5id"
-   }
-  ],
-  "fantraxAdp": 239,
-  "team": "DET",
-  "pos": "SG"
- },
- "mikel brown": {
-  "name": "Mikel Brown",
-  "ownAdp": 147.2,
-  "ownCount": 8,
-  "ownMin": 124,
-  "ownMax": 168,
-  "ownPicks": [
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 154,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 168,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 183,
-  "team": "BKN",
-  "pos": "PG"
- },
- "cameron boozer": {
-  "name": "Cameron Boozer",
-  "ownAdp": 60.1,
-  "ownCount": 25,
-  "ownMin": 32,
-  "ownMax": 83,
-  "ownPicks": [
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   }
-  ],
-  "fantraxAdp": 58,
-  "team": "MEM",
-  "pos": "PF"
- },
- "khris middleton": {
-  "name": "Khris Middleton",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "WAS",
-  "pos": "SF"
- },
- "derik queen": {
-  "name": "Derik Queen",
-  "ownAdp": 92.6,
-  "ownCount": 21,
-  "ownMin": 67,
-  "ownMax": 120,
-  "ownPicks": [
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   }
-  ],
-  "fantraxAdp": 92,
-  "team": "NO",
-  "pos": "C"
- },
- "duncan robinson": {
-  "name": "Duncan Robinson",
-  "ownAdp": 138.0,
-  "ownCount": 1,
-  "ownMin": 138,
-  "ownMax": 138,
-  "ownPicks": [
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 241,
-  "team": "DET",
-  "pos": "SF"
- },
- "kevin durant": {
-  "name": "Kevin Durant",
-  "ownAdp": 17.4,
-  "ownCount": 28,
-  "ownMin": 7,
-  "ownMax": 27,
-  "ownPicks": [
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 17,
-  "team": "HOU",
-  "pos": "PF"
- },
- "amen thompson": {
-  "name": "Amen Thompson",
-  "ownAdp": 23.6,
-  "ownCount": 27,
-  "ownMin": 10,
-  "ownMax": 42,
-  "ownPicks": [
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   }
-  ],
-  "fantraxAdp": 22,
-  "team": "HOU",
-  "pos": "SF"
- },
- "alex caruso": {
-  "name": "Alex Caruso",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "OKC",
-  "pos": "SG"
- },
- "karlanthony towns": {
-  "name": "Karl-Anthony Towns",
-  "ownAdp": 16.9,
-  "ownCount": 28,
-  "ownMin": 13,
-  "ownMax": 24,
-  "ownPicks": [
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 17,
-  "team": "NY",
-  "pos": "C"
- },
- "kelel ware": {
-  "name": "Kel'el Ware",
-  "ownAdp": 60.7,
-  "ownCount": 23,
-  "ownMin": 38,
-  "ownMax": 97,
-  "ownPicks": [
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   }
-  ],
-  "fantraxAdp": 58,
-  "team": "MIL",
-  "pos": "C"
- },
- "russell westbrook": {
-  "name": "Russell Westbrook",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
   "team": "(N/A)",
   "pos": "PG"
  },
- "rj barrett": {
-  "name": "RJ Barrett",
-  "ownAdp": 113.3,
-  "ownCount": 20,
-  "ownMin": 65,
-  "ownMax": 140,
+ "zaccharie risacher": {
+  "name": "Zaccharie Risacher",
+  "ownAdp": 153.0,
+  "ownCount": 2,
+  "ownMin": 138,
+  "ownMax": 168,
   "ownPicks": [
    {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 122,
+    "pick": 138,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    },
    {
-    "pick": 123,
+    "pick": 168,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 124,
-  "team": "TOR",
-  "pos": "SF"
- },
- "ron holland": {
-  "name": "Ron Holland",
-  "ownAdp": 156.0,
-  "ownCount": 2,
-  "ownMin": 152,
-  "ownMax": 160,
-  "ownPicks": [
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 160,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    }
   ],
   "fantraxAdp": 239,
-  "team": "DET",
+  "team": "DAL",
   "pos": "SF"
- },
- "john collins": {
-  "name": "John Collins",
-  "ownAdp": 108.4,
-  "ownCount": 19,
-  "ownMin": 96,
-  "ownMax": 124,
-  "ownPicks": [
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   }
-  ],
-  "fantraxAdp": 110,
-  "team": "DET",
-  "pos": "PF"
- },
- "josh hart": {
-  "name": "Josh Hart",
-  "ownAdp": 97.5,
-  "ownCount": 20,
-  "ownMin": 78,
-  "ownMax": 114,
-  "ownPicks": [
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   }
-  ],
-  "fantraxAdp": 97,
-  "team": "NY",
-  "pos": "SG"
- },
- "gui santos": {
-  "name": "Gui Santos",
-  "ownAdp": 161.5,
-  "ownCount": 2,
-  "ownMin": 160,
-  "ownMax": 163,
-  "ownPicks": [
-   {
-    "pick": 160,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 163,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 192,
-  "team": "GS",
-  "pos": "PF"
- },
- "bronny james": {
-  "name": "Bronny James",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "LAL",
-  "pos": "SG"
- },
- "desmond bane": {
-  "name": "Desmond Bane",
-  "ownAdp": 46.3,
-  "ownCount": 25,
-  "ownMin": 29,
-  "ownMax": 58,
-  "ownPicks": [
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   }
-  ],
-  "fantraxAdp": 48,
-  "team": "ORL",
-  "pos": "SG"
- },
- "jake laravia": {
-  "name": "Jake LaRavia",
-  "ownAdp": 162.0,
-  "ownCount": 1,
-  "ownMin": 162,
-  "ownMax": 162,
-  "ownPicks": [
-   {
-    "pick": 162,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 241,
-  "team": "LAL",
-  "pos": "PF"
- },
- "adem bona": {
-  "name": "Adem Bona",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "PHI",
-  "pos": "C"
- },
- "keegan murray": {
-  "name": "Keegan Murray",
-  "ownAdp": 108.5,
-  "ownCount": 19,
-  "ownMin": 94,
-  "ownMax": 124,
-  "ownPicks": [
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   }
-  ],
-  "fantraxAdp": 109,
-  "team": "SAC",
-  "pos": "PF"
- },
- "paolo banchero": {
-  "name": "Paolo Banchero",
-  "ownAdp": 44.2,
-  "ownCount": 25,
-  "ownMin": 18,
-  "ownMax": 68,
-  "ownPicks": [
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   }
-  ],
-  "fantraxAdp": 49,
-  "team": "ORL",
-  "pos": "PF"
- },
- "bradley beal": {
-  "name": "Bradley Beal",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 241,
-  "team": "LAC",
-  "pos": "SG"
- },
- "aday mara": {
-  "name": "Aday Mara",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "OKC",
-  "pos": "C"
- },
- "jeremiah fears": {
-  "name": "Jeremiah Fears",
-  "ownAdp": 130.1,
-  "ownCount": 15,
-  "ownMin": 96,
-  "ownMax": 159,
-  "ownPicks": [
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 156,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 159,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 135,
-  "team": "NO",
-  "pos": "PG"
- },
- "tyrese haliburton": {
-  "name": "Tyrese Haliburton",
-  "ownAdp": 11.7,
-  "ownCount": 29,
-  "ownMin": 7,
-  "ownMax": 21,
-  "ownPicks": [
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   }
-  ],
-  "fantraxAdp": 12,
-  "team": "IND",
-  "pos": "PG"
- },
- "devin booker": {
-  "name": "Devin Booker",
-  "ownAdp": 24.0,
-  "ownCount": 27,
-  "ownMin": 13,
-  "ownMax": 39,
-  "ownPicks": [
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   }
-  ],
-  "fantraxAdp": 27,
-  "team": "PHO",
-  "pos": "SG"
- },
- "mario hezonja": {
-  "name": "Mario Hezonja",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "CLE",
-  "pos": "PF"
- },
- "jaylin williams": {
-  "name": "Jaylin Williams",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "OKC",
-  "pos": "PF"
- },
- "anthony black": {
-  "name": "Anthony Black",
-  "ownAdp": 135.2,
-  "ownCount": 13,
-  "ownMin": 107,
-  "ownMax": 157,
-  "ownPicks": [
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 154,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 156,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 157,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   }
-  ],
-  "fantraxAdp": 134,
-  "team": "ORL",
-  "pos": "PG"
- },
- "lamelo ball": {
-  "name": "LaMelo Ball",
-  "ownAdp": 24.9,
-  "ownCount": 28,
-  "ownMin": 16,
-  "ownMax": 33,
-  "ownPicks": [
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   }
-  ],
-  "fantraxAdp": 25,
-  "team": "MIN",
-  "pos": "PG"
- },
- "tari eason": {
-  "name": "Tari Eason",
-  "ownAdp": 138.8,
-  "ownCount": 15,
-  "ownMin": 113,
-  "ownMax": 162,
-  "ownPicks": [
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 162,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 139,
-  "team": "HOU",
-  "pos": "PF"
  },
  "dylan cardwell": {
   "name": "Dylan Cardwell",
@@ -7017,16 +4330,21 @@ const ADP_DATA = {
   "team": "SAC",
   "pos": "C"
  },
- "terrence shannon": {
-  "name": "Terrence Shannon",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "MIN",
-  "pos": "SG"
+ "isaiah collier": {
+  "name": "Isaiah Collier",
+  "ownAdp": 168.0,
+  "ownCount": 1,
+  "ownMin": 168,
+  "ownMax": 168,
+  "ownPicks": [
+   {
+    "pick": 168,
+    "source": "Fantrax-Draft-Results-AUTO-f4s6y7hlmrkduxh8"
+   }
+  ],
+  "fantraxAdp": 237,
+  "team": "UTA",
+  "pos": "PG"
  },
  "mitchell robinson": {
   "name": "Mitchell Robinson",
@@ -7052,682 +4370,6 @@ const ADP_DATA = {
   "team": "BOS",
   "pos": "C"
  },
- "wendell carter": {
-  "name": "Wendell Carter",
-  "ownAdp": 136.6,
-  "ownCount": 14,
-  "ownMin": 102,
-  "ownMax": 158,
-  "ownPicks": [
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 157,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 158,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 176,
-  "team": "ORL",
-  "pos": "C"
- },
- "ty jerome": {
-  "name": "Ty Jerome",
-  "ownAdp": 91.0,
-  "ownCount": 21,
-  "ownMin": 62,
-  "ownMax": 136,
-  "ownPicks": [
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   }
-  ],
-  "fantraxAdp": 90,
-  "team": "MEM",
-  "pos": "SG"
- },
- "morez johnson": {
-  "name": "Morez Johnson",
-  "ownAdp": 156.5,
-  "ownCount": 2,
-  "ownMin": 146,
-  "ownMax": 167,
-  "ownPicks": [
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 167,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 209,
-  "team": "DAL",
-  "pos": "PF"
- },
- "yves missi": {
-  "name": "Yves Missi",
-  "ownAdp": 142.9,
-  "ownCount": 7,
-  "ownMin": 106,
-  "ownMax": 164,
-  "ownPicks": [
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 154,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 161,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 164,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 231,
-  "team": "NO",
-  "pos": "C"
- },
- "gg jackson": {
-  "name": "GG Jackson",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "MEM",
-  "pos": "PF"
- },
- "jakobe walter": {
-  "name": "Ja'Kobe Walter",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 241,
-  "team": "TOR",
-  "pos": "SG"
- },
- "killian hayes": {
-  "name": "Killian Hayes",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "(N/A)",
-  "pos": "PG"
- },
- "dennis schroder": {
-  "name": "Dennis Schroder",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "CHA",
-  "pos": "PG"
- },
- "lauri markkanen": {
-  "name": "Lauri Markkanen",
-  "ownAdp": 30.8,
-  "ownCount": 25,
-  "ownMin": 22,
-  "ownMax": 40,
-  "ownPicks": [
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   }
-  ],
-  "fantraxAdp": 35,
-  "team": "UTA",
-  "pos": "PF"
- },
- "mark williams": {
-  "name": "Mark Williams",
-  "ownAdp": 113.4,
-  "ownCount": 20,
-  "ownMin": 91,
-  "ownMax": 141,
-  "ownPicks": [
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   }
-  ],
-  "fantraxAdp": 112,
-  "team": "PHO",
-  "pos": "C"
- },
- "harrison barnes": {
-  "name": "Harrison Barnes",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "SA",
-  "pos": "PF"
- },
- "coby white": {
-  "name": "Coby White",
-  "ownAdp": 88.2,
-  "ownCount": 23,
-  "ownMin": 72,
-  "ownMax": 101,
-  "ownPicks": [
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 84,
-  "team": "CHA",
-  "pos": "SG"
- },
- "jalen smith": {
-  "name": "Jalen Smith",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "CHI",
-  "pos": "C"
- },
- "tim hardaway": {
-  "name": "Tim Hardaway",
-  "ownAdp": 165.0,
-  "ownCount": 1,
-  "ownMin": 165,
-  "ownMax": 165,
-  "ownPicks": [
-   {
-    "pick": 165,
-    "source": "Fantrax-Draft-Results-AUTO-amyt53qkmrh14vqu"
-   }
-  ],
-  "fantraxAdp": 241,
-  "team": "MIA",
-  "pos": "SG"
- },
- "daniss jenkins": {
-  "name": "Daniss Jenkins",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "DET",
-  "pos": "PG"
- },
- "derrick jones": {
-  "name": "Derrick Jones",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "LAC",
-  "pos": "SF"
- },
- "draymond green": {
-  "name": "Draymond Green",
-  "ownAdp": 149.4,
-  "ownCount": 7,
-  "ownMin": 128,
-  "ownMax": 165,
-  "ownPicks": [
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 156,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 165,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 165,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 180,
-  "team": "(N/A)",
-  "pos": "PF"
- },
  "oliviermaxence prosper": {
   "name": "Olivier-Maxence Prosper",
   "ownAdp": null,
@@ -7739,2957 +4381,184 @@ const ADP_DATA = {
   "team": "MEM",
   "pos": "PF"
  },
- "karlo matkovic": {
-  "name": "Karlo Matkovic",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "NO",
-  "pos": "PF"
- },
- "cameron johnson": {
-  "name": "Cameron Johnson",
-  "ownAdp": 143.5,
-  "ownCount": 6,
-  "ownMin": 120,
-  "ownMax": 168,
+ "brayden burries": {
+  "name": "Brayden Burries",
+  "ownAdp": 155.0,
+  "ownCount": 2,
+  "ownMin": 152,
+  "ownMax": 158,
   "ownPicks": [
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 144,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 164,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 168,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 172,
-  "team": "DEN",
-  "pos": "PF"
- },
- "aaron gordon": {
-  "name": "Aaron Gordon",
-  "ownAdp": 140.8,
-  "ownCount": 10,
-  "ownMin": 100,
-  "ownMax": 165,
-  "ownPicks": [
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 144,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 144,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 165,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   }
-  ],
-  "fantraxAdp": 144,
-  "team": "DEN",
-  "pos": "PF"
- },
- "christian braun": {
-  "name": "Christian Braun",
-  "ownAdp": 159.6,
-  "ownCount": 5,
-  "ownMin": 154,
-  "ownMax": 167,
-  "ownPicks": [
-   {
-    "pick": 154,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 156,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 166,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 167,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 186,
-  "team": "DEN",
-  "pos": "SG"
- },
- "royce oneale": {
-  "name": "Royce O'Neale",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "CHA",
-  "pos": "SF"
- },
- "reed sheppard": {
-  "name": "Reed Sheppard",
-  "ownAdp": 107.5,
-  "ownCount": 17,
-  "ownMin": 91,
-  "ownMax": 130,
-  "ownPicks": [
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 118,
-  "team": "HOU",
-  "pos": "PG"
- },
- "pelle larsson": {
-  "name": "Pelle Larsson",
-  "ownAdp": 153.0,
-  "ownCount": 9,
-  "ownMin": 143,
-  "ownMax": 166,
-  "ownPicks": [
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 160,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 161,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 162,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 166,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 173,
-  "team": "MIA",
-  "pos": "SG"
- },
- "tre jones": {
-  "name": "Tre Jones",
-  "ownAdp": 144.5,
-  "ownCount": 12,
-  "ownMin": 110,
-  "ownMax": 163,
-  "ownPicks": [
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
    {
     "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 157,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 162,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 163,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 156,
-  "team": "CHI",
-  "pos": "PG"
- },
- "nate ament": {
-  "name": "Nate Ament",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "MIL",
-  "pos": "SF"
- },
- "collin sexton": {
-  "name": "Collin Sexton",
-  "ownAdp": 132.3,
-  "ownCount": 3,
-  "ownMin": 93,
-  "ownMax": 155,
-  "ownPicks": [
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   }
-  ],
-  "fantraxAdp": 223,
-  "team": "LAL",
-  "pos": "SG"
- },
- "dexter dennis": {
-  "name": "Dexter Dennis",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "(N/A)",
-  "pos": "SG"
- },
- "bilal coulibaly": {
-  "name": "Bilal Coulibaly",
-  "ownAdp": 128.9,
-  "ownCount": 8,
-  "ownMin": 111,
-  "ownMax": 140,
-  "ownPicks": [
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 198,
-  "team": "WAS",
-  "pos": "SF"
- },
- "deandre hunter": {
-  "name": "De'Andre Hunter",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 241,
-  "team": "SAC",
-  "pos": "SF"
- },
- "alex sarr": {
-  "name": "Alex Sarr",
-  "ownAdp": 63.0,
-  "ownCount": 25,
-  "ownMin": 45,
-  "ownMax": 81,
-  "ownPicks": [
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 56,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
    },
    {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 72,
+    "pick": 158,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   }
-  ],
-  "fantraxAdp": 64,
-  "team": "WAS",
-  "pos": "C"
- },
- "walker kessler": {
-  "name": "Walker Kessler",
-  "ownAdp": 42.2,
-  "ownCount": 25,
-  "ownMin": 30,
-  "ownMax": 66,
-  "ownPicks": [
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 38,
-  "team": "LAL",
-  "pos": "C"
- },
- "cedric coward": {
-  "name": "Cedric Coward",
-  "ownAdp": 113.2,
-  "ownCount": 18,
-  "ownMin": 86,
-  "ownMax": 148,
-  "ownPicks": [
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 109,
-  "team": "MEM",
-  "pos": "SG"
- },
- "zach lavine": {
-  "name": "Zach LaVine",
-  "ownAdp": 121.7,
-  "ownCount": 18,
-  "ownMin": 94,
-  "ownMax": 140,
-  "ownPicks": [
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   }
-  ],
-  "fantraxAdp": 116,
-  "team": "SAC",
-  "pos": "SG"
- },
- "nikola vucevic": {
-  "name": "Nikola Vucevic",
-  "ownAdp": 121.6,
-  "ownCount": 5,
-  "ownMin": 97,
-  "ownMax": 155,
-  "ownPicks": [
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   }
-  ],
-  "fantraxAdp": 198,
-  "team": "ORL",
-  "pos": "C"
- },
- "collin gillespie": {
-  "name": "Collin Gillespie",
-  "ownAdp": 137.0,
-  "ownCount": 10,
-  "ownMin": 115,
-  "ownMax": 154,
-  "ownPicks": [
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 154,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 141,
-  "team": "PHO",
-  "pos": "PG"
- },
- "derrick white": {
-  "name": "Derrick White",
-  "ownAdp": 31.1,
-  "ownCount": 25,
-  "ownMin": 9,
-  "ownMax": 48,
-  "ownPicks": [
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   }
-  ],
-  "fantraxAdp": 34,
-  "team": "BOS",
-  "pos": "SG"
- },
- "james harden": {
-  "name": "James Harden",
-  "ownAdp": 26.0,
-  "ownCount": 28,
-  "ownMin": 13,
-  "ownMax": 33,
-  "ownPicks": [
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   }
-  ],
-  "fantraxAdp": 27,
-  "team": "CLE",
-  "pos": "PG"
- },
- "joan beringer": {
-  "name": "Joan Beringer",
-  "ownAdp": 153.0,
-  "ownCount": 2,
-  "ownMin": 149,
-  "ownMax": 157,
-  "ownPicks": [
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-AUTO-kjuxwfi4mrh17ll1"
-   },
-   {
-    "pick": 157,
-    "source": "Fantrax-Draft-Results-AUTO-t6wu7qhgmrhrgajw"
-   }
-  ],
-  "fantraxAdp": 185,
-  "team": "MIN",
-  "pos": "PF"
- },
- "alperen sengun": {
-  "name": "Alperen Sengun",
-  "ownAdp": 21.4,
-  "ownCount": 28,
-  "ownMin": 13,
-  "ownMax": 37,
-  "ownPicks": [
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 21,
-  "team": "HOU",
-  "pos": "C"
- },
- "cason wallace": {
-  "name": "Cason Wallace",
-  "ownAdp": 122.5,
-  "ownCount": 19,
-  "ownMin": 92,
-  "ownMax": 159,
-  "ownPicks": [
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 144,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 159,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 115,
-  "team": "OKC",
-  "pos": "SG"
- },
- "andrew wiggins": {
-  "name": "Andrew Wiggins",
-  "ownAdp": 104.2,
-  "ownCount": 20,
-  "ownMin": 90,
-  "ownMax": 142,
-  "ownPicks": [
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   }
-  ],
-  "fantraxAdp": 107,
-  "team": "MIA",
-  "pos": "SF"
- },
- "cam spencer": {
-  "name": "Cam Spencer",
-  "ownAdp": 164.0,
-  "ownCount": 1,
-  "ownMin": 164,
-  "ownMax": 164,
-  "ownPicks": [
-   {
-    "pick": 164,
-    "source": "Fantrax-Draft-Results-AUTO-amyt53qkmrh14vqu"
-   }
-  ],
-  "fantraxAdp": 220,
-  "team": "MEM",
-  "pos": "SG"
- },
- "dayron sharpe": {
-  "name": "Day'Ron Sharpe",
-  "ownAdp": 108.7,
-  "ownCount": 20,
-  "ownMin": 70,
-  "ownMax": 131,
-  "ownPicks": [
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 101,
-  "team": "BKN",
-  "pos": "C"
- },
- "zaccharie risacher": {
-  "name": "Zaccharie Risacher",
-  "ownAdp": 153.0,
-  "ownCount": 2,
-  "ownMin": 138,
-  "ownMax": 168,
-  "ownPicks": [
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 168,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 239,
-  "team": "DAL",
-  "pos": "SF"
- },
- "donte divincenzo": {
-  "name": "Donte DiVincenzo",
-  "ownAdp": 129.5,
-  "ownCount": 6,
-  "ownMin": 108,
-  "ownMax": 142,
-  "ownPicks": [
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 228,
-  "team": "MIN",
-  "pos": "SG"
- },
- "collin murrayboyles": {
-  "name": "Collin Murray-Boyles",
-  "ownAdp": 113.4,
-  "ownCount": 19,
-  "ownMin": 80,
-  "ownMax": 147,
-  "ownPicks": [
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   }
-  ],
-  "fantraxAdp": 108,
-  "team": "TOR",
-  "pos": "PF"
- },
- "rudy gobert": {
-  "name": "Rudy Gobert",
-  "ownAdp": 70.6,
-  "ownCount": 25,
-  "ownMin": 37,
-  "ownMax": 90,
-  "ownPicks": [
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   }
-  ],
-  "fantraxAdp": 71,
-  "team": "MIN",
-  "pos": "C"
- },
- "jalen duren": {
-  "name": "Jalen Duren",
-  "ownAdp": 43.0,
-  "ownCount": 25,
-  "ownMin": 32,
-  "ownMax": 60,
-  "ownPicks": [
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 42,
-  "team": "DET",
-  "pos": "C"
- },
- "devin vassell": {
-  "name": "Devin Vassell",
-  "ownAdp": 130.8,
-  "ownCount": 14,
-  "ownMin": 100,
-  "ownMax": 167,
-  "ownPicks": [
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 167,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 157,
-  "team": "SA",
-  "pos": "SG"
- },
- "sharife cooper": {
-  "name": "Sharife Cooper",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "(N/A)",
-  "pos": "PG"
- },
- "onyeka okongwu": {
-  "name": "Onyeka Okongwu",
-  "ownAdp": 49.2,
-  "ownCount": 25,
-  "ownMin": 32,
-  "ownMax": 76,
-  "ownPicks": [
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   }
-  ],
-  "fantraxAdp": 47,
-  "team": "ATL",
-  "pos": "C"
- },
- "jayson tatum": {
-  "name": "Jayson Tatum",
-  "ownAdp": 9.1,
-  "ownCount": 31,
-  "ownMin": 5,
-  "ownMax": 15,
-  "ownPicks": [
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 6,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
-   },
-   {
-    "pick": 9,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   }
-  ],
-  "fantraxAdp": 8,
-  "team": "BOS",
-  "pos": "PF"
- },
- "jordan goodwin": {
-  "name": "Jordan Goodwin",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "PHO",
-  "pos": "PG"
- },
- "santi aldama": {
-  "name": "Santi Aldama",
-  "ownAdp": 166.5,
-  "ownCount": 2,
-  "ownMin": 165,
-  "ownMax": 168,
-  "ownPicks": [
-   {
-    "pick": 165,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 168,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    }
   ],
   "fantraxAdp": 231,
-  "team": "DAL",
-  "pos": "PF"
- },
- "ivica zubac": {
-  "name": "Ivica Zubac",
-  "ownAdp": 70.3,
-  "ownCount": 24,
-  "ownMin": 56,
-  "ownMax": 90,
-  "ownPicks": [
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   }
-  ],
-  "fantraxAdp": 66,
-  "team": "IND",
-  "pos": "C"
- },
- "justin champagnie": {
-  "name": "Justin Champagnie",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "WAS",
-  "pos": "SF"
- },
- "ryan kalkbrenner": {
-  "name": "Ryan Kalkbrenner",
-  "ownAdp": 168.0,
-  "ownCount": 1,
-  "ownMin": 168,
-  "ownMax": 168,
-  "ownPicks": [
-   {
-    "pick": 168,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   }
-  ],
-  "fantraxAdp": 235,
-  "team": "CHA",
-  "pos": "C"
- },
- "og anunoby": {
-  "name": "OG Anunoby",
-  "ownAdp": 55.1,
-  "ownCount": 23,
-  "ownMin": 45,
-  "ownMax": 65,
-  "ownPicks": [
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   }
-  ],
-  "fantraxAdp": 58,
-  "team": "NY",
-  "pos": "PF"
- },
- "dru smith": {
-  "name": "Dru Smith",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "MIA",
+  "team": "MIL",
   "pos": "SG"
  },
- "al horford": {
-  "name": "Al Horford",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "GS",
-  "pos": "C"
- },
- "jamal murray": {
-  "name": "Jamal Murray",
-  "ownAdp": 20.2,
-  "ownCount": 28,
-  "ownMin": 11,
-  "ownMax": 31,
+ "keldon johnson": {
+  "name": "Keldon Johnson",
+  "ownAdp": 122.0,
+  "ownCount": 3,
+  "ownMin": 78,
+  "ownMax": 161,
   "ownPicks": [
    {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 15,
+    "pick": 78,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
    },
    {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    },
    {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 17,
+    "pick": 161,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 239,
+  "team": "SA",
+  "pos": "SF"
+ },
+ "shai gilgeousalexander": {
+  "name": "Shai Gilgeous-Alexander",
+  "ownAdp": 3.5,
+  "ownCount": 31,
+  "ownMin": 3,
+  "ownMax": 5,
+  "ownPicks": [
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
-    "pick": 18,
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 3,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
    },
    {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
    },
    {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
    },
    {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
    },
    {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
    },
    {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 19,
+    "pick": 3,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
    },
    {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
    },
    {
-    "pick": 20,
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 4,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
    },
    {
-    "pick": 20,
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 4,
     "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
    },
    {
-    "pick": 20,
+    "pick": 4,
     "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
    },
    {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 22,
+    "pick": 4,
     "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
    },
    {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    },
    {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   }
-  ],
-  "fantraxAdp": 21,
-  "team": "DEN",
-  "pos": "PG"
- },
- "quinten post": {
-  "name": "Quinten Post",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "MEM",
-  "pos": "C"
- },
- "kon knueppel": {
-  "name": "Kon Knueppel",
-  "ownAdp": 44.7,
-  "ownCount": 25,
-  "ownMin": 30,
-  "ownMax": 62,
-  "ownPicks": [
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 42,
+    "pick": 4,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
    },
    {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   }
-  ],
-  "fantraxAdp": 45,
-  "team": "CHA",
-  "pos": "SF"
- },
- "kyle filipowski": {
-  "name": "Kyle Filipowski",
-  "ownAdp": 152.4,
-  "ownCount": 9,
-  "ownMin": 135,
-  "ownMax": 165,
-  "ownPicks": [
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 154,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 162,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 163,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 164,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 165,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 205,
-  "team": "UTA",
-  "pos": "C"
- },
- "fred vanvleet": {
-  "name": "Fred VanVleet",
-  "ownAdp": 111.4,
-  "ownCount": 21,
-  "ownMin": 74,
-  "ownMax": 144,
-  "ownPicks": [
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 87,
+    "pick": 5,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
    },
    {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 113,
+    "pick": 5,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 144,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    }
   ],
-  "fantraxAdp": 108,
-  "team": "HOU",
+  "fantraxAdp": 3,
+  "team": "OKC",
   "pos": "PG"
  },
  "anthony edwards": {
@@ -10828,6 +4697,441 @@ const ADP_DATA = {
   "team": "MIN",
   "pos": "SG"
  },
+ "keegan murray": {
+  "name": "Keegan Murray",
+  "ownAdp": 108.5,
+  "ownCount": 19,
+  "ownMin": 94,
+  "ownMax": 124,
+  "ownPicks": [
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   }
+  ],
+  "fantraxAdp": 109,
+  "team": "SAC",
+  "pos": "PF"
+ },
+ "jayson tatum": {
+  "name": "Jayson Tatum",
+  "ownAdp": 9.1,
+  "ownCount": 31,
+  "ownMin": 5,
+  "ownMax": 15,
+  "ownPicks": [
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   }
+  ],
+  "fantraxAdp": 8,
+  "team": "BOS",
+  "pos": "PF"
+ },
+ "peyton watson": {
+  "name": "Peyton Watson",
+  "ownAdp": 115.8,
+  "ownCount": 19,
+  "ownMin": 87,
+  "ownMax": 138,
+  "ownPicks": [
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   }
+  ],
+  "fantraxAdp": 116,
+  "team": "DEN",
+  "pos": "SF"
+ },
+ "michael porter": {
+  "name": "Michael Porter",
+  "ownAdp": 61.8,
+  "ownCount": 25,
+  "ownMin": 41,
+  "ownMax": 86,
+  "ownPicks": [
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   }
+  ],
+  "fantraxAdp": 65,
+  "team": "BKN",
+  "pos": "SF"
+ },
+ "sergio de larrea": {
+  "name": "Sergio De Larrea",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "DAL",
+  "pos": "PG"
+ },
  "immanuel quickley": {
   "name": "Immanuel Quickley",
   "ownAdp": 81.0,
@@ -10928,32 +5232,806 @@ const ADP_DATA = {
   "team": "TOR",
   "pos": "PG"
  },
- "dailyn swain": {
-  "name": "Dailyn Swain",
+ "jakob poeltl": {
+  "name": "Jakob Poeltl",
+  "ownAdp": 122.4,
+  "ownCount": 17,
+  "ownMin": 95,
+  "ownMax": 160,
+  "ownPicks": [
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 160,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   }
+  ],
+  "fantraxAdp": 126,
+  "team": "TOR",
+  "pos": "C"
+ },
+ "jeremiah fears": {
+  "name": "Jeremiah Fears",
+  "ownAdp": 130.1,
+  "ownCount": 15,
+  "ownMin": 96,
+  "ownMax": 159,
+  "ownPicks": [
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 156,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 159,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 135,
+  "team": "NO",
+  "pos": "PG"
+ },
+ "pelle larsson": {
+  "name": "Pelle Larsson",
+  "ownAdp": 153.0,
+  "ownCount": 9,
+  "ownMin": 143,
+  "ownMax": 166,
+  "ownPicks": [
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 145,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 145,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 160,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 161,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 162,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 166,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 173,
+  "team": "MIA",
+  "pos": "SG"
+ },
+ "dayron sharpe": {
+  "name": "Day'Ron Sharpe",
+  "ownAdp": 108.7,
+  "ownCount": 20,
+  "ownMin": 70,
+  "ownMax": 131,
+  "ownPicks": [
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 101,
+  "team": "BKN",
+  "pos": "C"
+ },
+ "luguentz dort": {
+  "name": "Luguentz Dort",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "ATL",
+  "pos": "SF"
+ },
+ "zach edey": {
+  "name": "Zach Edey",
+  "ownAdp": 70.9,
+  "ownCount": 24,
+  "ownMin": 53,
+  "ownMax": 90,
+  "ownPicks": [
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 69,
+  "team": "MEM",
+  "pos": "C"
+ },
+ "danny wolf": {
+  "name": "Danny Wolf",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "BKN",
+  "pos": "PF"
+ },
+ "grayson allen": {
+  "name": "Grayson Allen",
+  "ownAdp": 143.2,
+  "ownCount": 6,
+  "ownMin": 124,
+  "ownMax": 164,
+  "ownPicks": [
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 164,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 160,
+  "team": "CHA",
+  "pos": "SG"
+ },
+ "donovan mitchell": {
+  "name": "Donovan Mitchell",
+  "ownAdp": 12.9,
+  "ownCount": 29,
+  "ownMin": 9,
+  "ownMax": 19,
+  "ownPicks": [
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   }
+  ],
+  "fantraxAdp": 14,
+  "team": "CLE",
+  "pos": "SG"
+ },
+ "nicolas claxton": {
+  "name": "Nicolas Claxton",
+  "ownAdp": 101.8,
+  "ownCount": 20,
+  "ownMin": 84,
+  "ownMax": 120,
+  "ownPicks": [
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   }
+  ],
+  "fantraxAdp": 99,
+  "team": "CHI",
+  "pos": "C"
+ },
+ "walker kessler": {
+  "name": "Walker Kessler",
+  "ownAdp": 42.2,
+  "ownCount": 25,
+  "ownMin": 30,
+  "ownMax": 66,
+  "ownPicks": [
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 38,
+  "team": "LAL",
+  "pos": "C"
+ },
+ "jamal shead": {
+  "name": "Jamal Shead",
   "ownAdp": null,
   "ownCount": 0,
   "ownMin": null,
   "ownMax": null,
   "ownPicks": [],
   "fantraxAdp": 244,
-  "team": "CHI",
-  "pos": "SG"
- },
- "ousmane dieng": {
-  "name": "Ousmane Dieng",
-  "ownAdp": 164.0,
-  "ownCount": 1,
-  "ownMin": 164,
-  "ownMax": 164,
-  "ownPicks": [
-   {
-    "pick": 164,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 243,
-  "team": "MIL",
-  "pos": "C"
+  "team": "TOR",
+  "pos": "PG"
  },
  "ausar thompson": {
   "name": "Ausar Thompson",
@@ -11067,5150 +6145,335 @@ const ADP_DATA = {
   "team": "DET",
   "pos": "SF"
  },
- "jakob poeltl": {
-  "name": "Jakob Poeltl",
-  "ownAdp": 122.4,
-  "ownCount": 17,
-  "ownMin": 95,
-  "ownMax": 160,
-  "ownPicks": [
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 160,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 126,
-  "team": "TOR",
-  "pos": "C"
- },
- "luka doncic": {
-  "name": "Luka Doncic",
-  "ownAdp": 3.6,
-  "ownCount": 31,
-  "ownMin": 1,
-  "ownMax": 5,
-  "ownPicks": [
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 4,
-  "team": "LAL",
-  "pos": "PG"
- },
- "bennedict mathurin": {
-  "name": "Bennedict Mathurin",
-  "ownAdp": 144.4,
-  "ownCount": 11,
-  "ownMin": 130,
-  "ownMax": 158,
-  "ownPicks": [
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 157,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 157,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 158,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   }
-  ],
-  "fantraxAdp": 173,
+ "isaiah jackson": {
+  "name": "Isaiah Jackson",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
   "team": "LAC",
-  "pos": "SF"
- },
- "davion mitchell": {
-  "name": "Davion Mitchell",
-  "ownAdp": 137.0,
-  "ownCount": 12,
-  "ownMin": 101,
-  "ownMax": 151,
-  "ownPicks": [
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 151,
-  "team": "MIA",
-  "pos": "PG"
- },
- "herbert jones": {
-  "name": "Herbert Jones",
-  "ownAdp": 148.0,
-  "ownCount": 2,
-  "ownMin": 133,
-  "ownMax": 163,
-  "ownPicks": [
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 163,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   }
-  ],
-  "fantraxAdp": 204,
-  "team": "NO",
-  "pos": "SF"
- },
- "danny wolf": {
-  "name": "Danny Wolf",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "BKN",
-  "pos": "PF"
- },
- "jose alvarado": {
-  "name": "Jose Alvarado",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "NY",
-  "pos": "PG"
- },
- "daniel gafford": {
-  "name": "Daniel Gafford",
-  "ownAdp": 143.8,
-  "ownCount": 5,
-  "ownMin": 126,
-  "ownMax": 159,
-  "ownPicks": [
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 159,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 231,
-  "team": "DAL",
   "pos": "C"
  },
- "nikola jovic": {
-  "name": "Nikola Jovic",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "MIA",
-  "pos": "PF"
- },
- "andrew nembhard": {
-  "name": "Andrew Nembhard",
-  "ownAdp": 117.4,
-  "ownCount": 16,
-  "ownMin": 86,
-  "ownMax": 158,
-  "ownPicks": [
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 158,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 135,
-  "team": "IND",
-  "pos": "SG"
- },
- "matisse thybulle": {
-  "name": "Matisse Thybulle",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "LAL",
-  "pos": "SG"
- },
- "donovan clingan": {
-  "name": "Donovan Clingan",
-  "ownAdp": 52.0,
-  "ownCount": 25,
-  "ownMin": 39,
-  "ownMax": 65,
-  "ownPicks": [
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 49,
-  "team": "POR",
-  "pos": "C"
- },
- "jrue holiday": {
-  "name": "Jrue Holiday",
-  "ownAdp": 134.2,
-  "ownCount": 9,
-  "ownMin": 124,
-  "ownMax": 166,
-  "ownPicks": [
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 166,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 171,
-  "team": "POR",
-  "pos": "PG"
- },
- "austin reaves": {
-  "name": "Austin Reaves",
-  "ownAdp": 25.8,
-  "ownCount": 28,
-  "ownMin": 16,
-  "ownMax": 37,
-  "ownPicks": [
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 18,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   }
-  ],
-  "fantraxAdp": 24,
-  "team": "LAL",
-  "pos": "SG"
- },
- "paul reed": {
-  "name": "Paul Reed",
-  "ownAdp": 143.1,
+ "egor demin": {
+  "name": "Egor Demin",
+  "ownAdp": 132.4,
   "ownCount": 15,
-  "ownMin": 117,
-  "ownMax": 162,
-  "ownPicks": [
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 158,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 162,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   }
-  ],
-  "fantraxAdp": 149,
-  "team": "DET",
-  "pos": "C"
- },
- "kris dunn": {
-  "name": "Kris Dunn",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "LAC",
-  "pos": "PG"
- },
- "tj mcconnell": {
-  "name": "T.J. McConnell",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "IND",
-  "pos": "PG"
- },
- "jamal shead": {
-  "name": "Jamal Shead",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "TOR",
-  "pos": "PG"
- },
- "isaiah hartenstein": {
-  "name": "Isaiah Hartenstein",
-  "ownAdp": 98.3,
-  "ownCount": 19,
-  "ownMin": 65,
-  "ownMax": 134,
-  "ownPicks": [
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 98,
-  "team": "OKC",
-  "pos": "C"
- },
- "jusuf nurkic": {
-  "name": "Jusuf Nurkic",
-  "ownAdp": 123.1,
-  "ownCount": 17,
-  "ownMin": 86,
-  "ownMax": 153,
-  "ownPicks": [
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 120,
-  "team": "UTA",
-  "pos": "C"
- },
- "kyle kuzma": {
-  "name": "Kyle Kuzma",
-  "ownAdp": 141.0,
-  "ownCount": 1,
-  "ownMin": 141,
-  "ownMax": 141,
-  "ownPicks": [
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 236,
-  "team": "MIL",
-  "pos": "PF"
- },
- "shai gilgeousalexander": {
-  "name": "Shai Gilgeous-Alexander",
-  "ownAdp": 3.5,
-  "ownCount": 31,
-  "ownMin": 3,
-  "ownMax": 5,
-  "ownPicks": [
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 4,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 5,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   }
-  ],
-  "fantraxAdp": 3,
-  "team": "OKC",
-  "pos": "PG"
- },
- "jalen williams": {
-  "name": "Jalen Williams",
-  "ownAdp": 42.0,
-  "ownCount": 26,
-  "ownMin": 17,
-  "ownMax": 59,
-  "ownPicks": [
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   }
-  ],
-  "fantraxAdp": 38,
-  "team": "OKC",
-  "pos": "SG"
- },
- "dylan harper": {
-  "name": "Dylan Harper",
-  "ownAdp": 91.1,
-  "ownCount": 21,
-  "ownMin": 61,
-  "ownMax": 121,
-  "ownPicks": [
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   }
-  ],
-  "fantraxAdp": 89,
-  "team": "SA",
-  "pos": "SG"
- },
- "neemias queta": {
-  "name": "Neemias Queta",
-  "ownAdp": 113.8,
-  "ownCount": 20,
-  "ownMin": 84,
-  "ownMax": 139,
-  "ownPicks": [
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   }
-  ],
-  "fantraxAdp": 105,
-  "team": "BOS",
-  "pos": "C"
- },
- "jalen brunson": {
-  "name": "Jalen Brunson",
-  "ownAdp": 32.2,
-  "ownCount": 25,
-  "ownMin": 17,
-  "ownMax": 48,
-  "ownPicks": [
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 32,
-  "team": "NY",
-  "pos": "PG"
- },
- "cooper flagg": {
-  "name": "Cooper Flagg",
-  "ownAdp": 12.9,
-  "ownCount": 29,
-  "ownMin": 7,
-  "ownMax": 19,
-  "ownPicks": [
-   {
-    "pick": 7,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 8,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 10,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 11,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 12,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 13,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 14,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 15,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   }
-  ],
-  "fantraxAdp": 11,
-  "team": "DAL",
-  "pos": "SF"
- },
- "ajay mitchell": {
-  "name": "Ajay Mitchell",
-  "ownAdp": 114.8,
-  "ownCount": 19,
-  "ownMin": 95,
-  "ownMax": 133,
-  "ownPicks": [
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 114,
-  "team": "OKC",
-  "pos": "SG"
- },
- "jaylen brown": {
-  "name": "Jaylen Brown",
-  "ownAdp": 39.6,
-  "ownCount": 25,
-  "ownMin": 17,
-  "ownMax": 60,
-  "ownPicks": [
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 17,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   }
-  ],
-  "fantraxAdp": 44,
-  "team": "PHI",
-  "pos": "SF"
- },
- "darryn peterson": {
-  "name": "Darryn Peterson",
-  "ownAdp": 116.4,
-  "ownCount": 17,
-  "ownMin": 87,
-  "ownMax": 144,
-  "ownPicks": [
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 144,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   }
-  ],
-  "fantraxAdp": 113,
-  "team": "UTA",
-  "pos": "SG"
- },
- "grayson allen": {
-  "name": "Grayson Allen",
-  "ownAdp": 143.2,
-  "ownCount": 6,
-  "ownMin": 124,
+  "ownMin": 107,
   "ownMax": 164,
   "ownPicks": [
    {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 164,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 160,
-  "team": "CHA",
-  "pos": "SG"
- },
- "maxime raynaud": {
-  "name": "Maxime Raynaud",
-  "ownAdp": 126.4,
-  "ownCount": 16,
-  "ownMin": 97,
-  "ownMax": 142,
-  "ownPicks": [
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 122,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   }
-  ],
-  "fantraxAdp": 131,
-  "team": "SAC",
-  "pos": "C"
- },
- "yanic konan niederhauser": {
-  "name": "Yanic Konan Niederhauser",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "LAC",
-  "pos": "C"
- },
- "dereck lively": {
-  "name": "Dereck Lively",
-  "ownAdp": 153.0,
-  "ownCount": 1,
-  "ownMin": 153,
-  "ownMax": 153,
-  "ownPicks": [
-   {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 213,
-  "team": "DAL",
-  "pos": "C"
- },
- "drew peterson": {
-  "name": "Drew Peterson",
-  "ownAdp": 86.0,
-  "ownCount": 1,
-  "ownMin": 86,
-  "ownMax": 86,
-  "ownPicks": [
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   }
-  ],
-  "fantraxAdp": 243,
-  "team": "(N/A)",
-  "pos": "PF"
- },
- "peyton watson": {
-  "name": "Peyton Watson",
-  "ownAdp": 115.8,
-  "ownCount": 19,
-  "ownMin": 87,
-  "ownMax": 138,
-  "ownPicks": [
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 116,
-  "team": "DEN",
-  "pos": "SF"
- },
- "ebuka okorie": {
-  "name": "Ebuka Okorie",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "DET",
-  "pos": "PG"
- },
- "tristan da silva": {
-  "name": "Tristan da Silva",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "ORL",
-  "pos": "SF"
- },
- "moussa diabate": {
-  "name": "Moussa Diabate",
-  "ownAdp": 144.0,
-  "ownCount": 3,
-  "ownMin": 133,
-  "ownMax": 162,
-  "ownPicks": [
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 162,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 164,
-  "team": "CHA",
-  "pos": "C"
- },
- "max christie": {
-  "name": "Max Christie",
-  "ownAdp": 160.0,
-  "ownCount": 1,
-  "ownMin": 160,
-  "ownMax": 160,
-  "ownPicks": [
-   {
-    "pick": 160,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 236,
-  "team": "DAL",
-  "pos": "SG"
- },
- "marcus smart": {
-  "name": "Marcus Smart",
-  "ownAdp": 148.0,
-  "ownCount": 1,
-  "ownMin": 148,
-  "ownMax": 148,
-  "ownPicks": [
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   }
-  ],
-  "fantraxAdp": 243,
-  "team": "HOU",
-  "pos": "PG"
- },
- "tobias harris": {
-  "name": "Tobias Harris",
-  "ownAdp": 137.9,
-  "ownCount": 8,
-  "ownMin": 124,
-  "ownMax": 164,
-  "ownPicks": [
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 164,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 177,
-  "team": "SA",
-  "pos": "PF"
- },
- "nicolas claxton": {
-  "name": "Nicolas Claxton",
-  "ownAdp": 101.8,
-  "ownCount": 20,
-  "ownMin": 84,
-  "ownMax": 120,
-  "ownPicks": [
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 99,
+    "pick": 107,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
    },
    {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
    },
    {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 111,
+    "pick": 121,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   }
-  ],
-  "fantraxAdp": 99,
-  "team": "CHI",
-  "pos": "C"
- },
- "nique clifford": {
-  "name": "Nique Clifford",
-  "ownAdp": 115.2,
-  "ownCount": 11,
-  "ownMin": 70,
-  "ownMax": 144,
-  "ownPicks": [
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 113,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    },
    {
     "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    },
    {
     "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 139,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
    },
    {
     "pick": 144,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   }
-  ],
-  "fantraxAdp": 219,
-  "team": "SAC",
-  "pos": "SG"
- },
- "stephon castle": {
-  "name": "Stephon Castle",
-  "ownAdp": 59.0,
-  "ownCount": 25,
-  "ownMin": 38,
-  "ownMax": 84,
-  "ownPicks": [
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 58,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    },
    {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 62,
+    "pick": 145,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
    },
    {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 62,
-  "team": "SA",
-  "pos": "PG"
- },
- "khaman maluach": {
-  "name": "Khaman Maluach",
-  "ownAdp": 152.0,
-  "ownCount": 1,
-  "ownMin": 152,
-  "ownMax": 152,
-  "ownPicks": [
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   }
-  ],
-  "fantraxAdp": 189,
-  "team": "PHO",
-  "pos": "C"
- },
- "sergio de larrea": {
-  "name": "Sergio De Larrea",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "DAL",
-  "pos": "PG"
- },
- "robert williams": {
-  "name": "Robert Williams",
-  "ownAdp": 157.0,
-  "ownCount": 1,
-  "ownMin": 157,
-  "ownMax": 157,
-  "ownPicks": [
-   {
-    "pick": 157,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 235,
-  "team": "POR",
-  "pos": "C"
- },
- "carlton carrington": {
-  "name": "Carlton Carrington",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "WAS",
-  "pos": "PG"
- },
- "evan mobley": {
-  "name": "Evan Mobley",
-  "ownAdp": 28.4,
-  "ownCount": 26,
-  "ownMin": 21,
-  "ownMax": 37,
-  "ownPicks": [
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 24,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 26,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 30,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   }
-  ],
-  "fantraxAdp": 30,
-  "team": "CLE",
-  "pos": "PF"
- },
- "craig porter": {
-  "name": "Craig Porter",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "CLE",
-  "pos": "PG"
- },
- "deandre ayton": {
-  "name": "Deandre Ayton",
-  "ownAdp": 144.4,
-  "ownCount": 5,
-  "ownMin": 132,
-  "ownMax": 161,
-  "ownPicks": [
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 161,
+    "pick": 164,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
    }
   ],
-  "fantraxAdp": 221,
-  "team": "WAS",
-  "pos": "C"
- },
- "brayden burries": {
-  "name": "Brayden Burries",
-  "ownAdp": 155.0,
-  "ownCount": 2,
-  "ownMin": 152,
-  "ownMax": 158,
-  "ownPicks": [
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 158,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   }
-  ],
-  "fantraxAdp": 231,
-  "team": "MIL",
-  "pos": "SG"
- },
- "deanthony melton": {
-  "name": "De'Anthony Melton",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 223,
-  "team": "GS",
-  "pos": "PG"
- },
- "jonathan kuminga": {
-  "name": "Jonathan Kuminga",
-  "ownAdp": 149.0,
-  "ownCount": 1,
-  "ownMin": 149,
-  "ownMax": 149,
-  "ownPicks": [
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 226,
-  "team": "(N/A)",
-  "pos": "PF"
- },
- "moritz wagner": {
-  "name": "Moritz Wagner",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
+  "fantraxAdp": 130,
   "team": "BKN",
-  "pos": "C"
+  "pos": "PG"
  },
- "obi toppin": {
-  "name": "Obi Toppin",
+ "russell westbrook": {
+  "name": "Russell Westbrook",
   "ownAdp": null,
   "ownCount": 0,
   "ownMin": null,
   "ownMax": null,
   "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "IND",
-  "pos": "PF"
+  "fantraxAdp": 243,
+  "team": "(N/A)",
+  "pos": "PG"
  },
- "saddiq bey": {
-  "name": "Saddiq Bey",
-  "ownAdp": 125.0,
-  "ownCount": 14,
-  "ownMin": 86,
-  "ownMax": 152,
-  "ownPicks": [
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 118,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 144,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 132,
-  "team": "NO",
-  "pos": "SF"
- },
- "quentin grimes": {
-  "name": "Quentin Grimes",
-  "ownAdp": 135.8,
-  "ownCount": 11,
-  "ownMin": 120,
-  "ownMax": 154,
-  "ownPicks": [
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 142,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 154,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   }
-  ],
-  "fantraxAdp": 161,
-  "team": "LAL",
-  "pos": "SG"
- },
- "dillon brooks": {
-  "name": "Dillon Brooks",
-  "ownAdp": 138.5,
-  "ownCount": 11,
-  "ownMin": 111,
-  "ownMax": 153,
-  "ownPicks": [
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 136,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 144,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 145,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 178,
-  "team": "PHO",
-  "pos": "SF"
- },
- "oso ighodaro": {
-  "name": "Oso Ighodaro",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 240,
-  "team": "PHO",
-  "pos": "PF"
- },
- "kyrie irving": {
-  "name": "Kyrie Irving",
-  "ownAdp": 61.6,
+ "alex sarr": {
+  "name": "Alex Sarr",
+  "ownAdp": 63.0,
   "ownCount": 25,
-  "ownMin": 35,
+  "ownMin": 45,
   "ownMax": 81,
   "ownPicks": [
    {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 78,
+    "pick": 45,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 52,
-  "team": "DAL",
-  "pos": "SG"
- },
- "will riley": {
-  "name": "Will Riley",
-  "ownAdp": 150.0,
-  "ownCount": 1,
-  "ownMin": 150,
-  "ownMax": 150,
-  "ownPicks": [
-   {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-AUTO-hdvwmdermrfwbgdo"
-   }
-  ],
-  "fantraxAdp": 243,
-  "team": "WAS",
-  "pos": "SF"
- },
- "scoot henderson": {
-  "name": "Scoot Henderson",
-  "ownAdp": 158.2,
-  "ownCount": 4,
-  "ownMin": 147,
-  "ownMax": 168,
-  "ownPicks": [
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-AUTO-bbw1narimrkdo0xy"
-   },
-   {
-    "pick": 156,
-    "source": "Fantrax-Draft-Results-AUTO-4cjjvk4dmrcvjknk"
-   },
-   {
-    "pick": 162,
-    "source": "Fantrax-Draft-Results-AUTO-emeu5xuymrh1a5id"
-   },
-   {
-    "pick": 168,
-    "source": "Fantrax-Draft-Results-AUTO-1ycl5y6pmrhrjicv"
-   }
-  ],
-  "fantraxAdp": 227,
-  "team": "POR",
-  "pos": "PG"
- },
- "isaiah stewart": {
-  "name": "Isaiah Stewart",
-  "ownAdp": 157.5,
-  "ownCount": 2,
-  "ownMin": 157,
-  "ownMax": 158,
-  "ownPicks": [
-   {
-    "pick": 157,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 158,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 219,
-  "team": "MEM",
-  "pos": "C"
- },
- "brandon miller": {
-  "name": "Brandon Miller",
-  "ownAdp": 44.3,
-  "ownCount": 25,
-  "ownMin": 35,
-  "ownMax": 57,
-  "ownPicks": [
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 43,
-  "team": "CHA",
-  "pos": "SF"
- },
- "labaron philon": {
-  "name": "Labaron Philon",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "PHI",
-  "pos": "PG"
- },
- "andre drummond": {
-  "name": "Andre Drummond",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "NY",
-  "pos": "C"
- },
- "pascal siakam": {
-  "name": "Pascal Siakam",
-  "ownAdp": 55.3,
-  "ownCount": 25,
-  "ownMin": 39,
-  "ownMax": 78,
-  "ownPicks": [
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    },
    {
     "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
    },
    {
     "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
    },
    {
     "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 65,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
    },
    {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
    },
    {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   }
-  ],
-  "fantraxAdp": 57,
-  "team": "IND",
-  "pos": "PF"
- },
- "lebron james": {
-  "name": "LeBron James",
-  "ownAdp": 56.4,
-  "ownCount": 25,
-  "ownMin": 36,
-  "ownMax": 77,
-  "ownPicks": [
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 48,
+    "pick": 57,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
    },
    {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 57,
+    "pick": 58,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    },
    {
     "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
    },
    {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 64,
+    "pick": 59,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    },
    {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
    },
    {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
    },
    {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   }
-  ],
-  "fantraxAdp": 55,
-  "team": "(N/A)",
-  "pos": "SF"
- },
- "zach collins": {
-  "name": "Zach Collins",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "CHI",
-  "pos": "PF"
- },
- "paul george": {
-  "name": "Paul George",
-  "ownAdp": 80.1,
-  "ownCount": 23,
-  "ownMin": 64,
-  "ownMax": 96,
-  "ownPicks": [
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 73,
+    "pick": 61,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
    },
    {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    },
    {
-    "pick": 74,
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 71,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
    },
    {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 75,
+    "pick": 72,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    },
    {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
    },
    {
     "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
     "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 76,
-  "team": "BOS",
-  "pos": "PF"
- },
- "deni avdija": {
-  "name": "Deni Avdija",
-  "ownAdp": 37.2,
-  "ownCount": 25,
-  "ownMin": 20,
-  "ownMax": 56,
-  "ownPicks": [
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 25,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 45,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
    }
   ],
-  "fantraxAdp": 38,
-  "team": "POR",
-  "pos": "SF"
- },
- "domantas sabonis": {
-  "name": "Domantas Sabonis",
-  "ownAdp": 44.7,
-  "ownCount": 25,
-  "ownMin": 23,
-  "ownMax": 61,
-  "ownPicks": [
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 23,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 34,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   }
-  ],
-  "fantraxAdp": 39,
-  "team": "SAC",
+  "fantraxAdp": 64,
+  "team": "WAS",
   "pos": "C"
  },
- "tyler herro": {
-  "name": "Tyler Herro",
-  "ownAdp": 61.2,
-  "ownCount": 24,
-  "ownMin": 40,
-  "ownMax": 83,
+ "nikola vucevic": {
+  "name": "Nikola Vucevic",
+  "ownAdp": 121.6,
+  "ownCount": 5,
+  "ownMin": 97,
+  "ownMax": 155,
   "ownPicks": [
    {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 83,
+    "pick": 97,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 63,
-  "team": "MIL",
-  "pos": "SG"
- },
- "victor wembanyama": {
-  "name": "Victor Wembanyama",
-  "ownAdp": 1.6,
-  "ownCount": 31,
-  "ownMin": 1,
-  "ownMax": 3,
-  "ownPicks": [
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   }
-  ],
-  "fantraxAdp": 2,
-  "team": "SA",
-  "pos": "C"
- },
- "jaylen wells": {
-  "name": "Jaylen Wells",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 243,
-  "team": "MEM",
-  "pos": "SG"
- },
- "jaime jaquez": {
-  "name": "Jaime Jaquez",
-  "ownAdp": 120.8,
-  "ownCount": 16,
-  "ownMin": 74,
-  "ownMax": 156,
-  "ownPicks": [
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 126,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 127,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 156,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   }
-  ],
-  "fantraxAdp": 126,
-  "team": "MIL",
-  "pos": "SF"
- },
- "aj dybantsa": {
-  "name": "AJ Dybantsa",
-  "ownAdp": 105.8,
-  "ownCount": 20,
-  "ownMin": 87,
-  "ownMax": 150,
-  "ownPicks": [
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    },
    {
     "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 117,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   }
-  ],
-  "fantraxAdp": 100,
-  "team": "WAS",
-  "pos": "SF"
- },
- "brook lopez": {
-  "name": "Brook Lopez",
-  "ownAdp": 156.5,
-  "ownCount": 2,
-  "ownMin": 155,
-  "ownMax": 158,
-  "ownPicks": [
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 158,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 216,
-  "team": "LAC",
-  "pos": "C"
- },
- "jarrett allen": {
-  "name": "Jarrett Allen",
-  "ownAdp": 85.0,
-  "ownCount": 21,
-  "ownMin": 71,
-  "ownMax": 99,
-  "ownPicks": [
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 74,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    },
    {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 80,
+    "pick": 114,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    },
    {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    },
    {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   }
+  ],
+  "fantraxAdp": 198,
+  "team": "ORL",
+  "pos": "C"
+ },
+ "josh hart": {
+  "name": "Josh Hart",
+  "ownAdp": 97.5,
+  "ownCount": 20,
+  "ownMin": 78,
+  "ownMax": 114,
+  "ownPicks": [
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    },
    {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 88,
+    "pick": 81,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
    },
    {
-    "pick": 89,
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 90,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
    },
    {
     "pick": 90,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
    },
    {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
    },
    {
     "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
    },
    {
     "pick": 94,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
    },
    {
     "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
    },
    {
     "pick": 95,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
    },
    {
-    "pick": 99,
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 103,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   }
-  ],
-  "fantraxAdp": 83,
-  "team": "CLE",
-  "pos": "C"
- },
- "jordan poole": {
-  "name": "Jordan Poole",
-  "ownAdp": 155.0,
-  "ownCount": 2,
-  "ownMin": 153,
-  "ownMax": 157,
-  "ownPicks": [
-   {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-AUTO-kjuxwfi4mrh17ll1"
    },
    {
-    "pick": 157,
-    "source": "Fantrax-Draft-Results-AUTO-emeu5xuymrh1a5id"
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
    }
   ],
-  "fantraxAdp": 239,
-  "team": "NO",
+  "fantraxAdp": 97,
+  "team": "NY",
   "pos": "SG"
- },
- "naji marshall": {
-  "name": "Naji Marshall",
-  "ownAdp": 156.7,
-  "ownCount": 3,
-  "ownMin": 152,
-  "ownMax": 159,
-  "ownPicks": [
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 159,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 159,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   }
-  ],
-  "fantraxAdp": 231,
-  "team": "DAL",
-  "pos": "SF"
- },
- "darius garland": {
-  "name": "Darius Garland",
-  "ownAdp": 54.9,
-  "ownCount": 25,
-  "ownMin": 33,
-  "ownMax": 68,
-  "ownPicks": [
-   {
-    "pick": 33,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   }
-  ],
-  "fantraxAdp": 54,
-  "team": "LAC",
-  "pos": "PG"
- },
- "jaren jackson": {
-  "name": "Jaren Jackson",
-  "ownAdp": 44.4,
-  "ownCount": 25,
-  "ownMin": 28,
-  "ownMax": 63,
-  "ownPicks": [
-   {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 31,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 35,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 39,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 40,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 43,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 44,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 46,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 53,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   }
-  ],
-  "fantraxAdp": 41,
-  "team": "UTA",
-  "pos": "C"
- },
- "shaedon sharpe": {
-  "name": "Shaedon Sharpe",
-  "ownAdp": 129.6,
-  "ownCount": 12,
-  "ownMin": 111,
-  "ownMax": 158,
-  "ownPicks": [
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 120,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 125,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 140,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 158,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 183,
-  "team": "POR",
-  "pos": "SG"
- },
- "isaac okoro": {
-  "name": "Isaac Okoro",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "CHI",
-  "pos": "SG"
- },
- "nikola jokic": {
-  "name": "Nikola Jokic",
-  "ownAdp": 1.6,
-  "ownCount": 31,
-  "ownMin": 1,
-  "ownMax": 3,
-  "ownPicks": [
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 1,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 2,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 3,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   }
-  ],
-  "fantraxAdp": 2,
-  "team": "DEN",
-  "pos": "C"
- },
- "marvin bagley": {
-  "name": "Marvin Bagley",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "DEN",
-  "pos": "PF"
- },
- "franz wagner": {
-  "name": "Franz Wagner",
-  "ownAdp": 57.8,
-  "ownCount": 25,
-  "ownMin": 41,
-  "ownMax": 77,
-  "ownPicks": [
-   {
-    "pick": 41,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 42,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 47,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 48,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 49,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 50,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 56,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 60,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 61,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 64,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 60,
-  "team": "ORL",
-  "pos": "SF"
  },
  "mikal bridges": {
   "name": "Mikal Bridges",
@@ -16323,861 +6586,6 @@ const ADP_DATA = {
   "fantraxAdp": 73,
   "team": "NY",
   "pos": "SF"
- },
- "cj mccollum": {
-  "name": "CJ McCollum",
-  "ownAdp": 108.5,
-  "ownCount": 17,
-  "ownMin": 96,
-  "ownMax": 128,
-  "ownPicks": [
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 102,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 110,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 116,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 117,
-  "team": "ATL",
-  "pos": "PG"
- },
- "norman powell": {
-  "name": "Norman Powell",
-  "ownAdp": 92.8,
-  "ownCount": 22,
-  "ownMin": 68,
-  "ownMax": 112,
-  "ownPicks": [
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 82,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 91,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 93,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 97,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 103,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 112,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   }
-  ],
-  "fantraxAdp": 92,
-  "team": "CHI",
-  "pos": "SG"
- },
- "baylor scheierman": {
-  "name": "Baylor Scheierman",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "BOS",
-  "pos": "SG"
- },
- "dyson daniels": {
-  "name": "Dyson Daniels",
-  "ownAdp": 63.0,
-  "ownCount": 25,
-  "ownMin": 32,
-  "ownMax": 89,
-  "ownPicks": [
-   {
-    "pick": 32,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 51,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 52,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 54,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 55,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 58,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 59,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 62,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 65,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 75,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 83,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 58,
-  "team": "ATL",
-  "pos": "SG"
- },
- "kelly oubre": {
-  "name": "Kelly Oubre Jr.",
-  "ownAdp": 157.5,
-  "ownCount": 2,
-  "ownMin": 148,
-  "ownMax": 167,
-  "ownPicks": [
-   {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 167,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 234,
-  "team": "IND",
-  "pos": "SF"
- },
- "cameron carr": {
-  "name": "Cameron Carr",
-  "ownAdp": 161.0,
-  "ownCount": 1,
-  "ownMin": 161,
-  "ownMax": 161,
-  "ownPicks": [
-   {
-    "pick": 161,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   }
-  ],
-  "fantraxAdp": 243,
-  "team": "LAL",
-  "pos": "SG"
- },
- "brice sensabaugh": {
-  "name": "Brice Sensabaugh",
-  "ownAdp": 146.5,
-  "ownCount": 2,
-  "ownMin": 141,
-  "ownMax": 152,
-  "ownPicks": [
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   }
-  ],
-  "fantraxAdp": 242,
-  "team": "UTA",
-  "pos": "SF"
- },
- "darius acuff": {
-  "name": "Darius Acuff",
-  "ownAdp": 143.1,
-  "ownCount": 15,
-  "ownMin": 129,
-  "ownMax": 167,
-  "ownPicks": [
-   {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 130,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 134,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 135,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 139,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 141,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 143,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 146,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 165,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 167,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 134,
-  "team": "SAC",
-  "pos": "PG"
- },
- "sam merrill": {
-  "name": "Sam Merrill",
-  "ownAdp": 121.0,
-  "ownCount": 1,
-  "ownMin": 121,
-  "ownMax": 121,
-  "ownPicks": [
-   {
-    "pick": 121,
-    "source": "Fantrax-Draft-Results-AUTO-y2el57a9mrkgi9hu"
-   }
-  ],
-  "fantraxAdp": 240,
-  "team": "CLE",
-  "pos": "SG"
- },
- "sam hauser": {
-  "name": "Sam Hauser",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 244,
-  "team": "BOS",
-  "pos": "PF"
- },
- "vj edgecombe": {
-  "name": "VJ Edgecombe",
-  "ownAdp": 75.7,
-  "ownCount": 23,
-  "ownMin": 45,
-  "ownMax": 101,
-  "ownPicks": [
-   {
-    "pick": 45,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 67,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 68,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 69,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 71,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 77,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   }
-  ],
-  "fantraxAdp": 83,
-  "team": "PHI",
-  "pos": "SG"
- },
- "kevin porter": {
-  "name": "Kevin Porter",
-  "ownAdp": 105.8,
-  "ownCount": 21,
-  "ownMin": 80,
-  "ownMax": 137,
-  "ownPicks": [
-   {
-    "pick": 80,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 85,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 87,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 99,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 100,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 104,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 105,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 108,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 109,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 111,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 114,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 124,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 128,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 133,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 137,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   }
-  ],
-  "fantraxAdp": 111,
-  "team": "MIL",
-  "pos": "SG"
- },
- "scotty pippen": {
-  "name": "Scotty Pippen",
-  "ownAdp": 154.2,
-  "ownCount": 8,
-  "ownMin": 147,
-  "ownMax": 168,
-  "ownPicks": [
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 149,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 156,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 163,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 168,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   }
-  ],
-  "fantraxAdp": 196,
-  "team": "MEM",
-  "pos": "PG"
- },
- "hannes steinbach": {
-  "name": "Hannes Steinbach",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 232,
-  "team": "CHA",
-  "pos": "PF"
- },
- "miles mcbride": {
-  "name": "Miles McBride",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 242,
-  "team": "NY",
-  "pos": "PG"
- },
- "noah clowney": {
-  "name": "Noah Clowney",
-  "ownAdp": 150.5,
-  "ownCount": 2,
-  "ownMin": 147,
-  "ownMax": 154,
-  "ownPicks": [
-   {
-    "pick": 147,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 154,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   }
-  ],
-  "fantraxAdp": 234,
-  "team": "BKN",
-  "pos": "PF"
- },
- "ja morant": {
-  "name": "Ja Morant",
-  "ownAdp": 78.7,
-  "ownCount": 22,
-  "ownMin": 57,
-  "ownMax": 119,
-  "ownPicks": [
-   {
-    "pick": 57,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 63,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 66,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
-   },
-   {
-    "pick": 70,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 72,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 73,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 74,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 76,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
-   },
-   {
-    "pick": 78,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
-   },
-   {
-    "pick": 79,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 81,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 84,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
-   },
-   {
-    "pick": 86,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 88,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 89,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 92,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 96,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   }
-  ],
-  "fantraxAdp": 82,
-  "team": "POR",
-  "pos": "PG"
- },
- "rui hachimura": {
-  "name": "Rui Hachimura",
-  "ownAdp": null,
-  "ownCount": 0,
-  "ownMin": null,
-  "ownMax": null,
-  "ownPicks": [],
-  "fantraxAdp": 238,
-  "team": "LAC",
-  "pos": "PF"
  },
  "tyrese maxey": {
   "name": "Tyrese Maxey",
@@ -17315,6 +6723,6213 @@ const ADP_DATA = {
   "team": "PHI",
   "pos": "PG"
  },
+ "steven adams": {
+  "name": "Steven Adams",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "HOU",
+  "pos": "C"
+ },
+ "kyrie irving": {
+  "name": "Kyrie Irving",
+  "ownAdp": 61.6,
+  "ownCount": 25,
+  "ownMin": 35,
+  "ownMax": 81,
+  "ownPicks": [
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 52,
+  "team": "DAL",
+  "pos": "SG"
+ },
+ "lauri markkanen": {
+  "name": "Lauri Markkanen",
+  "ownAdp": 30.8,
+  "ownCount": 25,
+  "ownMin": 22,
+  "ownMax": 40,
+  "ownPicks": [
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   }
+  ],
+  "fantraxAdp": 35,
+  "team": "UTA",
+  "pos": "PF"
+ },
+ "naji marshall": {
+  "name": "Naji Marshall",
+  "ownAdp": 156.7,
+  "ownCount": 3,
+  "ownMin": 152,
+  "ownMax": 159,
+  "ownPicks": [
+   {
+    "pick": 152,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 159,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 159,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 231,
+  "team": "DAL",
+  "pos": "SF"
+ },
+ "nique clifford": {
+  "name": "Nique Clifford",
+  "ownAdp": 115.2,
+  "ownCount": 11,
+  "ownMin": 70,
+  "ownMax": 144,
+  "ownPicks": [
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 144,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   }
+  ],
+  "fantraxAdp": 219,
+  "team": "SAC",
+  "pos": "SG"
+ },
+ "brook lopez": {
+  "name": "Brook Lopez",
+  "ownAdp": 156.5,
+  "ownCount": 2,
+  "ownMin": 155,
+  "ownMax": 158,
+  "ownPicks": [
+   {
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 158,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 216,
+  "team": "LAC",
+  "pos": "C"
+ },
+ "scottie barnes": {
+  "name": "Scottie Barnes",
+  "ownAdp": 9.9,
+  "ownCount": 29,
+  "ownMin": 4,
+  "ownMax": 15,
+  "ownPicks": [
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 12,
+  "team": "TOR",
+  "pos": "PF"
+ },
+ "paul george": {
+  "name": "Paul George",
+  "ownAdp": 80.1,
+  "ownCount": 23,
+  "ownMin": 64,
+  "ownMax": 96,
+  "ownPicks": [
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 76,
+  "team": "BOS",
+  "pos": "PF"
+ },
+ "scotty pippen": {
+  "name": "Scotty Pippen",
+  "ownAdp": 154.2,
+  "ownCount": 8,
+  "ownMin": 147,
+  "ownMax": 168,
+  "ownPicks": [
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 156,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 163,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 168,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 196,
+  "team": "MEM",
+  "pos": "PG"
+ },
+ "klay thompson": {
+  "name": "Klay Thompson",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "MIA",
+  "pos": "SF"
+ },
+ "kon knueppel": {
+  "name": "Kon Knueppel",
+  "ownAdp": 44.7,
+  "ownCount": 25,
+  "ownMin": 30,
+  "ownMax": 62,
+  "ownPicks": [
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   }
+  ],
+  "fantraxAdp": 45,
+  "team": "CHA",
+  "pos": "SF"
+ },
+ "carlton carrington": {
+  "name": "Carlton Carrington",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "WAS",
+  "pos": "PG"
+ },
+ "aday mara": {
+  "name": "Aday Mara",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "OKC",
+  "pos": "C"
+ },
+ "cam spencer": {
+  "name": "Cam Spencer",
+  "ownAdp": 164.0,
+  "ownCount": 1,
+  "ownMin": 164,
+  "ownMax": 164,
+  "ownPicks": [
+   {
+    "pick": 164,
+    "source": "Fantrax-Draft-Results-AUTO-amyt53qkmrh14vqu"
+   }
+  ],
+  "fantraxAdp": 220,
+  "team": "MEM",
+  "pos": "SG"
+ },
+ "rj barrett": {
+  "name": "RJ Barrett",
+  "ownAdp": 113.3,
+  "ownCount": 20,
+  "ownMin": 65,
+  "ownMax": 140,
+  "ownPicks": [
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 124,
+  "team": "TOR",
+  "pos": "SF"
+ },
+ "jaylen wells": {
+  "name": "Jaylen Wells",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "MEM",
+  "pos": "SG"
+ },
+ "kasparas jakucionis": {
+  "name": "Kasparas Jakucionis",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "MIL",
+  "pos": "SG"
+ },
+ "ivica zubac": {
+  "name": "Ivica Zubac",
+  "ownAdp": 70.3,
+  "ownCount": 24,
+  "ownMin": 56,
+  "ownMax": 90,
+  "ownPicks": [
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   }
+  ],
+  "fantraxAdp": 66,
+  "team": "IND",
+  "pos": "C"
+ },
+ "andrew nembhard": {
+  "name": "Andrew Nembhard",
+  "ownAdp": 117.4,
+  "ownCount": 16,
+  "ownMin": 86,
+  "ownMax": 158,
+  "ownPicks": [
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 158,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 135,
+  "team": "IND",
+  "pos": "SG"
+ },
+ "cameron carr": {
+  "name": "Cameron Carr",
+  "ownAdp": 161.0,
+  "ownCount": 1,
+  "ownMin": 161,
+  "ownMax": 161,
+  "ownPicks": [
+   {
+    "pick": 161,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   }
+  ],
+  "fantraxAdp": 243,
+  "team": "LAL",
+  "pos": "SG"
+ },
+ "giannis antetokounmpo": {
+  "name": "Giannis Antetokounmpo",
+  "ownAdp": 10.9,
+  "ownCount": 31,
+  "ownMin": 5,
+  "ownMax": 24,
+  "ownPicks": [
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   }
+  ],
+  "fantraxAdp": 9,
+  "team": "MIA",
+  "pos": "PF"
+ },
+ "draymond green": {
+  "name": "Draymond Green",
+  "ownAdp": 149.4,
+  "ownCount": 7,
+  "ownMin": 128,
+  "ownMax": 165,
+  "ownPicks": [
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 145,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 145,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 156,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 165,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 165,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 180,
+  "team": "(N/A)",
+  "pos": "PF"
+ },
+ "julian champagnie": {
+  "name": "Julian Champagnie",
+  "ownAdp": 151.7,
+  "ownCount": 3,
+  "ownMin": 150,
+  "ownMax": 154,
+  "ownPicks": [
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 154,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   }
+  ],
+  "fantraxAdp": 223,
+  "team": "SA",
+  "pos": "SF"
+ },
+ "luka doncic": {
+  "name": "Luka Doncic",
+  "ownAdp": 3.6,
+  "ownCount": 31,
+  "ownMin": 1,
+  "ownMax": 5,
+  "ownPicks": [
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   }
+  ],
+  "fantraxAdp": 4,
+  "team": "LAL",
+  "pos": "PG"
+ },
+ "jalen smith": {
+  "name": "Jalen Smith",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "CHI",
+  "pos": "C"
+ },
+ "shaedon sharpe": {
+  "name": "Shaedon Sharpe",
+  "ownAdp": 129.6,
+  "ownCount": 12,
+  "ownMin": 111,
+  "ownMax": 158,
+  "ownPicks": [
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 141,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 141,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 158,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 183,
+  "team": "POR",
+  "pos": "SG"
+ },
+ "reed sheppard": {
+  "name": "Reed Sheppard",
+  "ownAdp": 107.5,
+  "ownCount": 17,
+  "ownMin": 91,
+  "ownMax": 130,
+  "ownPicks": [
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 118,
+  "team": "HOU",
+  "pos": "PG"
+ },
+ "deni avdija": {
+  "name": "Deni Avdija",
+  "ownAdp": 37.2,
+  "ownCount": 25,
+  "ownMin": 20,
+  "ownMax": 56,
+  "ownPicks": [
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   }
+  ],
+  "fantraxAdp": 38,
+  "team": "POR",
+  "pos": "SF"
+ },
+ "jose alvarado": {
+  "name": "Jose Alvarado",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "NY",
+  "pos": "PG"
+ },
+ "andre drummond": {
+  "name": "Andre Drummond",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "NY",
+  "pos": "C"
+ },
+ "keon ellis": {
+  "name": "Keon Ellis",
+  "ownAdp": 146.3,
+  "ownCount": 6,
+  "ownMin": 132,
+  "ownMax": 157,
+  "ownPicks": [
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 156,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 157,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 230,
+  "team": "BKN",
+  "pos": "SG"
+ },
+ "bradley beal": {
+  "name": "Bradley Beal",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 241,
+  "team": "LAC",
+  "pos": "SG"
+ },
+ "tari eason": {
+  "name": "Tari Eason",
+  "ownAdp": 138.8,
+  "ownCount": 15,
+  "ownMin": 113,
+  "ownMax": 162,
+  "ownPicks": [
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 152,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 162,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 139,
+  "team": "HOU",
+  "pos": "PF"
+ },
+ "wendell carter": {
+  "name": "Wendell Carter",
+  "ownAdp": 136.6,
+  "ownCount": 14,
+  "ownMin": 102,
+  "ownMax": 158,
+  "ownPicks": [
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 145,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 145,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 145,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 157,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 158,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 176,
+  "team": "ORL",
+  "pos": "C"
+ },
+ "jaylen brown": {
+  "name": "Jaylen Brown",
+  "ownAdp": 39.6,
+  "ownCount": 25,
+  "ownMin": 17,
+  "ownMax": 60,
+  "ownPicks": [
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   }
+  ],
+  "fantraxAdp": 44,
+  "team": "PHI",
+  "pos": "SF"
+ },
+ "quinten post": {
+  "name": "Quinten Post",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "MEM",
+  "pos": "C"
+ },
+ "walter clayton": {
+  "name": "Walter Clayton",
+  "ownAdp": 154.0,
+  "ownCount": 1,
+  "ownMin": 154,
+  "ownMax": 154,
+  "ownPicks": [
+   {
+    "pick": 154,
+    "source": "Fantrax-Draft-Results-AUTO-osd7cxhzmrhramh2"
+   }
+  ],
+  "fantraxAdp": 242,
+  "team": "MEM",
+  "pos": "PG"
+ },
+ "ja morant": {
+  "name": "Ja Morant",
+  "ownAdp": 78.7,
+  "ownCount": 22,
+  "ownMin": 57,
+  "ownMax": 119,
+  "ownPicks": [
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 82,
+  "team": "POR",
+  "pos": "PG"
+ },
+ "nikola jovic": {
+  "name": "Nikola Jovic",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "MIA",
+  "pos": "PF"
+ },
+ "franz wagner": {
+  "name": "Franz Wagner",
+  "ownAdp": 57.8,
+  "ownCount": 25,
+  "ownMin": 41,
+  "ownMax": 77,
+  "ownPicks": [
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 60,
+  "team": "ORL",
+  "pos": "SF"
+ },
+ "amen thompson": {
+  "name": "Amen Thompson",
+  "ownAdp": 23.6,
+  "ownCount": 27,
+  "ownMin": 10,
+  "ownMax": 42,
+  "ownPicks": [
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   }
+  ],
+  "fantraxAdp": 22,
+  "team": "HOU",
+  "pos": "SF"
+ },
+ "jaylon tyson": {
+  "name": "Jaylon Tyson",
+  "ownAdp": 142.0,
+  "ownCount": 6,
+  "ownMin": 123,
+  "ownMax": 155,
+  "ownPicks": [
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-AUTO-2xpavvsdmrkgdwvm"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-AUTO-y2el57a9mrkgi9hu"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-AUTO-hdvwmdermrfwbgdo"
+   },
+   {
+    "pick": 152,
+    "source": "Fantrax-Draft-Results-AUTO-i4wkf62umrkds58d"
+   },
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-AUTO-jkfwddasmrc2ubfh"
+   },
+   {
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-AUTO-bbw1narimrkdo0xy"
+   }
+  ],
+  "fantraxAdp": 230,
+  "team": "CLE",
+  "pos": "SG"
+ },
+ "baylor scheierman": {
+  "name": "Baylor Scheierman",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "BOS",
+  "pos": "SG"
+ },
+ "jake laravia": {
+  "name": "Jake LaRavia",
+  "ownAdp": 162.0,
+  "ownCount": 1,
+  "ownMin": 162,
+  "ownMax": 162,
+  "ownPicks": [
+   {
+    "pick": 162,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 241,
+  "team": "LAL",
+  "pos": "PF"
+ },
+ "stephen curry": {
+  "name": "Stephen Curry",
+  "ownAdp": 18.9,
+  "ownCount": 28,
+  "ownMin": 12,
+  "ownMax": 28,
+  "ownPicks": [
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 19,
+  "team": "GS",
+  "pos": "PG"
+ },
+ "jalen suggs": {
+  "name": "Jalen Suggs",
+  "ownAdp": 89.7,
+  "ownCount": 22,
+  "ownMin": 67,
+  "ownMax": 116,
+  "ownPicks": [
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   }
+  ],
+  "fantraxAdp": 90,
+  "team": "ORL",
+  "pos": "PG"
+ },
+ "derrick white": {
+  "name": "Derrick White",
+  "ownAdp": 31.1,
+  "ownCount": 25,
+  "ownMin": 9,
+  "ownMax": 48,
+  "ownPicks": [
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   }
+  ],
+  "fantraxAdp": 34,
+  "team": "BOS",
+  "pos": "SG"
+ },
+ "dennis schroder": {
+  "name": "Dennis Schroder",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "CHA",
+  "pos": "PG"
+ },
+ "aj dybantsa": {
+  "name": "AJ Dybantsa",
+  "ownAdp": 105.8,
+  "ownCount": 20,
+  "ownMin": 87,
+  "ownMax": 150,
+  "ownPicks": [
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   }
+  ],
+  "fantraxAdp": 100,
+  "team": "WAS",
+  "pos": "SF"
+ },
+ "sam merrill": {
+  "name": "Sam Merrill",
+  "ownAdp": 121.0,
+  "ownCount": 1,
+  "ownMin": 121,
+  "ownMax": 121,
+  "ownPicks": [
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-AUTO-y2el57a9mrkgi9hu"
+   }
+  ],
+  "fantraxAdp": 240,
+  "team": "CLE",
+  "pos": "SG"
+ },
+ "anthony black": {
+  "name": "Anthony Black",
+  "ownAdp": 135.2,
+  "ownCount": 13,
+  "ownMin": 107,
+  "ownMax": 157,
+  "ownPicks": [
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 145,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 152,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 154,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 156,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 157,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   }
+  ],
+  "fantraxAdp": 134,
+  "team": "ORL",
+  "pos": "PG"
+ },
+ "devin vassell": {
+  "name": "Devin Vassell",
+  "ownAdp": 130.8,
+  "ownCount": 14,
+  "ownMin": 100,
+  "ownMax": 167,
+  "ownPicks": [
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 167,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 157,
+  "team": "SA",
+  "pos": "SG"
+ },
+ "hannes steinbach": {
+  "name": "Hannes Steinbach",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 232,
+  "team": "CHA",
+  "pos": "PF"
+ },
+ "bobby portis": {
+  "name": "Bobby Portis",
+  "ownAdp": 143.5,
+  "ownCount": 4,
+  "ownMin": 134,
+  "ownMax": 161,
+  "ownPicks": [
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 145,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 161,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 220,
+  "team": "MIA",
+  "pos": "PF"
+ },
+ "kyshawn george": {
+  "name": "Kyshawn George",
+  "ownAdp": 119.9,
+  "ownCount": 17,
+  "ownMin": 98,
+  "ownMax": 148,
+  "ownPicks": [
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 124,
+  "team": "WAS",
+  "pos": "SG"
+ },
+ "anfernee simons": {
+  "name": "Anfernee Simons",
+  "ownAdp": 138.0,
+  "ownCount": 1,
+  "ownMin": 138,
+  "ownMax": 138,
+  "ownPicks": [
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   }
+  ],
+  "fantraxAdp": 241,
+  "team": "PHI",
+  "pos": "SG"
+ },
+ "ayo dosunmu": {
+  "name": "Ayo Dosunmu",
+  "ownAdp": 101.4,
+  "ownCount": 21,
+  "ownMin": 68,
+  "ownMax": 125,
+  "ownPicks": [
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   }
+  ],
+  "fantraxAdp": 106,
+  "team": "MIN",
+  "pos": "SG"
+ },
+ "sam hauser": {
+  "name": "Sam Hauser",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "BOS",
+  "pos": "PF"
+ },
+ "bennedict mathurin": {
+  "name": "Bennedict Mathurin",
+  "ownAdp": 144.4,
+  "ownCount": 11,
+  "ownMin": 130,
+  "ownMax": 158,
+  "ownPicks": [
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 141,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 157,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 157,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 158,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   }
+  ],
+  "fantraxAdp": 173,
+  "team": "LAC",
+  "pos": "SF"
+ },
+ "joel embiid": {
+  "name": "Joel Embiid",
+  "ownAdp": 57.5,
+  "ownCount": 25,
+  "ownMin": 34,
+  "ownMax": 88,
+  "ownPicks": [
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 60,
+  "team": "PHI",
+  "pos": "C"
+ },
+ "naz reid": {
+  "name": "Naz Reid",
+  "ownAdp": 73.9,
+  "ownCount": 23,
+  "ownMin": 53,
+  "ownMax": 90,
+  "ownPicks": [
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   }
+  ],
+  "fantraxAdp": 72,
+  "team": "CHA",
+  "pos": "C"
+ },
+ "pascal siakam": {
+  "name": "Pascal Siakam",
+  "ownAdp": 55.3,
+  "ownCount": 25,
+  "ownMin": 39,
+  "ownMax": 78,
+  "ownPicks": [
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   }
+  ],
+  "fantraxAdp": 57,
+  "team": "IND",
+  "pos": "PF"
+ },
+ "luke kornet": {
+  "name": "Luke Kornet",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "SA",
+  "pos": "C"
+ },
+ "jalen brunson": {
+  "name": "Jalen Brunson",
+  "ownAdp": 32.2,
+  "ownCount": 25,
+  "ownMin": 17,
+  "ownMax": 48,
+  "ownPicks": [
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 32,
+  "team": "NY",
+  "pos": "PG"
+ },
+ "jakobe walter": {
+  "name": "Ja'Kobe Walter",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 241,
+  "team": "TOR",
+  "pos": "SG"
+ },
+ "kevin durant": {
+  "name": "Kevin Durant",
+  "ownAdp": 17.4,
+  "ownCount": 28,
+  "ownMin": 7,
+  "ownMax": 27,
+  "ownPicks": [
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 9,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 17,
+  "team": "HOU",
+  "pos": "PF"
+ },
+ "harrison barnes": {
+  "name": "Harrison Barnes",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "SA",
+  "pos": "PF"
+ },
+ "sharife cooper": {
+  "name": "Sharife Cooper",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "(N/A)",
+  "pos": "PG"
+ },
+ "aaron nesmith": {
+  "name": "Aaron Nesmith",
+  "ownAdp": 158.0,
+  "ownCount": 1,
+  "ownMin": 158,
+  "ownMax": 158,
+  "ownPicks": [
+   {
+    "pick": 158,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 211,
+  "team": "IND",
+  "pos": "SF"
+ },
+ "paul reed": {
+  "name": "Paul Reed",
+  "ownAdp": 143.1,
+  "ownCount": 15,
+  "ownMin": 117,
+  "ownMax": 162,
+  "ownPicks": [
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 152,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 158,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 162,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 149,
+  "team": "DET",
+  "pos": "C"
+ },
+ "donovan clingan": {
+  "name": "Donovan Clingan",
+  "ownAdp": 52.0,
+  "ownCount": 25,
+  "ownMin": 39,
+  "ownMax": 65,
+  "ownPicks": [
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 49,
+  "team": "POR",
+  "pos": "C"
+ },
+ "zion williamson": {
+  "name": "Zion Williamson",
+  "ownAdp": 82.1,
+  "ownCount": 24,
+  "ownMin": 54,
+  "ownMax": 96,
+  "ownPicks": [
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   }
+  ],
+  "fantraxAdp": 83,
+  "team": "NO",
+  "pos": "PF"
+ },
+ "ben simmons": {
+  "name": "Ben Simmons",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "SAC",
+  "pos": "PG"
+ },
+ "kevin porter": {
+  "name": "Kevin Porter",
+  "ownAdp": 105.8,
+  "ownCount": 21,
+  "ownMin": 80,
+  "ownMax": 137,
+  "ownPicks": [
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   }
+  ],
+  "fantraxAdp": 111,
+  "team": "MIL",
+  "pos": "SG"
+ },
+ "ousmane dieng": {
+  "name": "Ousmane Dieng",
+  "ownAdp": 164.0,
+  "ownCount": 1,
+  "ownMin": 164,
+  "ownMax": 164,
+  "ownPicks": [
+   {
+    "pick": 164,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 243,
+  "team": "MIL",
+  "pos": "C"
+ },
+ "bronny james": {
+  "name": "Bronny James",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "LAL",
+  "pos": "SG"
+ },
+ "tyrese haliburton": {
+  "name": "Tyrese Haliburton",
+  "ownAdp": 11.7,
+  "ownCount": 29,
+  "ownMin": 7,
+  "ownMax": 21,
+  "ownPicks": [
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 8,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 10,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 11,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 12,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   }
+  ],
+  "fantraxAdp": 12,
+  "team": "IND",
+  "pos": "PG"
+ },
+ "keaton wagler": {
+  "name": "Keaton Wagler",
+  "ownAdp": 152.0,
+  "ownCount": 2,
+  "ownMin": 138,
+  "ownMax": 166,
+  "ownPicks": [
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 166,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 222,
+  "team": "LAC",
+  "pos": "SG"
+ },
+ "jay huff": {
+  "name": "Jay Huff",
+  "ownAdp": 139.7,
+  "ownCount": 3,
+  "ownMin": 123,
+  "ownMax": 166,
+  "ownPicks": [
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 166,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   }
+  ],
+  "fantraxAdp": 227,
+  "team": "IND",
+  "pos": "C"
+ },
+ "jrue holiday": {
+  "name": "Jrue Holiday",
+  "ownAdp": 134.2,
+  "ownCount": 9,
+  "ownMin": 124,
+  "ownMax": 166,
+  "ownPicks": [
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 166,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 171,
+  "team": "POR",
+  "pos": "PG"
+ },
+ "karlo matkovic": {
+  "name": "Karlo Matkovic",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "NO",
+  "pos": "PF"
+ },
+ "adem bona": {
+  "name": "Adem Bona",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "PHI",
+  "pos": "C"
+ },
+ "gui santos": {
+  "name": "Gui Santos",
+  "ownAdp": 161.5,
+  "ownCount": 2,
+  "ownMin": 160,
+  "ownMax": 163,
+  "ownPicks": [
+   {
+    "pick": 160,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 163,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 192,
+  "team": "GS",
+  "pos": "PF"
+ },
+ "leonard miller": {
+  "name": "Leonard Miller",
+  "ownAdp": 165.0,
+  "ownCount": 1,
+  "ownMin": 165,
+  "ownMax": 165,
+  "ownPicks": [
+   {
+    "pick": 165,
+    "source": "Fantrax-Draft-Results-AUTO-jkfwddasmrc2ubfh"
+   }
+  ],
+  "fantraxAdp": 243,
+  "team": "CHI",
+  "pos": "SF"
+ },
+ "daniss jenkins": {
+  "name": "Daniss Jenkins",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "DET",
+  "pos": "PG"
+ },
+ "isaac okoro": {
+  "name": "Isaac Okoro",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "CHI",
+  "pos": "SG"
+ },
+ "miles mcbride": {
+  "name": "Miles McBride",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "NY",
+  "pos": "PG"
+ },
+ "karlanthony towns": {
+  "name": "Karl-Anthony Towns",
+  "ownAdp": 16.9,
+  "ownCount": 28,
+  "ownMin": 13,
+  "ownMax": 24,
+  "ownPicks": [
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 14,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 15,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 17,
+  "team": "NY",
+  "pos": "C"
+ },
+ "jarace walker": {
+  "name": "Jarace Walker",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "IND",
+  "pos": "PF"
+ },
+ "max strus": {
+  "name": "Max Strus",
+  "ownAdp": 159.0,
+  "ownCount": 2,
+  "ownMin": 159,
+  "ownMax": 159,
+  "ownPicks": [
+   {
+    "pick": 159,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 159,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 241,
+  "team": "CLE",
+  "pos": "SF"
+ },
+ "herbert jones": {
+  "name": "Herbert Jones",
+  "ownAdp": 148.0,
+  "ownCount": 2,
+  "ownMin": 133,
+  "ownMax": 163,
+  "ownPicks": [
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 163,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 204,
+  "team": "NO",
+  "pos": "SF"
+ },
+ "koa peat": {
+  "name": "Koa Peat",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "PHO",
+  "pos": "PF"
+ },
+ "robert williams": {
+  "name": "Robert Williams",
+  "ownAdp": 157.0,
+  "ownCount": 1,
+  "ownMin": 157,
+  "ownMax": 157,
+  "ownPicks": [
+   {
+    "pick": 157,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 235,
+  "team": "POR",
+  "pos": "C"
+ },
+ "darius acuff": {
+  "name": "Darius Acuff",
+  "ownAdp": 143.1,
+  "ownCount": 15,
+  "ownMin": 129,
+  "ownMax": 167,
+  "ownPicks": [
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 141,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 165,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 167,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 134,
+  "team": "SAC",
+  "pos": "PG"
+ },
+ "kingston flemings": {
+  "name": "Kingston Flemings",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 240,
+  "team": "ATL",
+  "pos": "PG"
+ },
+ "yanic konan niederhauser": {
+  "name": "Yanic Konan Niederhauser",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "LAC",
+  "pos": "C"
+ },
+ "isaiah joe": {
+  "name": "Isaiah Joe",
+  "ownAdp": 155.0,
+  "ownCount": 1,
+  "ownMin": 155,
+  "ownMax": 155,
+  "ownPicks": [
+   {
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-AUTO-emeu5xuymrh1a5id"
+   }
+  ],
+  "fantraxAdp": 239,
+  "team": "DET",
+  "pos": "SG"
+ },
+ "jarrett allen": {
+  "name": "Jarrett Allen",
+  "ownAdp": 85.0,
+  "ownCount": 21,
+  "ownMin": 71,
+  "ownMax": 99,
+  "ownPicks": [
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   }
+  ],
+  "fantraxAdp": 83,
+  "team": "CLE",
+  "pos": "C"
+ },
+ "allen graves": {
+  "name": "Allen Graves",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "TOR",
+  "pos": "PF"
+ },
+ "jock landale": {
+  "name": "Jock Landale",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "ATL",
+  "pos": "C"
+ },
+ "stephon castle": {
+  "name": "Stephon Castle",
+  "ownAdp": 59.0,
+  "ownCount": 25,
+  "ownMin": 38,
+  "ownMax": 84,
+  "ownPicks": [
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 62,
+  "team": "SA",
+  "pos": "PG"
+ },
+ "maxime raynaud": {
+  "name": "Maxime Raynaud",
+  "ownAdp": 126.4,
+  "ownCount": 16,
+  "ownMin": 97,
+  "ownMax": 142,
+  "ownPicks": [
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 131,
+  "team": "SAC",
+  "pos": "C"
+ },
+ "malik monk": {
+  "name": "Malik Monk",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "SAC",
+  "pos": "SG"
+ },
+ "aaron wiggins": {
+  "name": "Aaron Wiggins",
+  "ownAdp": 145.0,
+  "ownCount": 2,
+  "ownMin": 142,
+  "ownMax": 148,
+  "ownPicks": [
+   {
+    "pick": 142,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   }
+  ],
+  "fantraxAdp": 238,
+  "team": "ATL",
+  "pos": "SG"
+ },
+ "yves missi": {
+  "name": "Yves Missi",
+  "ownAdp": 142.9,
+  "ownCount": 7,
+  "ownMin": 106,
+  "ownMax": 164,
+  "ownPicks": [
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 154,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 161,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 164,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   }
+  ],
+  "fantraxAdp": 231,
+  "team": "NO",
+  "pos": "C"
+ },
+ "morez johnson": {
+  "name": "Morez Johnson",
+  "ownAdp": 156.5,
+  "ownCount": 2,
+  "ownMin": 146,
+  "ownMax": 167,
+  "ownPicks": [
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 167,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 209,
+  "team": "DAL",
+  "pos": "PF"
+ },
+ "dylan harper": {
+  "name": "Dylan Harper",
+  "ownAdp": 91.1,
+  "ownCount": 21,
+  "ownMin": 61,
+  "ownMax": 121,
+  "ownPicks": [
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   }
+  ],
+  "fantraxAdp": 89,
+  "team": "SA",
+  "pos": "SG"
+ },
+ "kristaps porzingis": {
+  "name": "Kristaps Porzingis",
+  "ownAdp": 117.4,
+  "ownCount": 16,
+  "ownMin": 91,
+  "ownMax": 153,
+  "ownPicks": [
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 109,
+  "team": "GS",
+  "pos": "C"
+ },
+ "brandon ingram": {
+  "name": "Brandon Ingram",
+  "ownAdp": 68.8,
+  "ownCount": 25,
+  "ownMin": 49,
+  "ownMax": 89,
+  "ownPicks": [
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   }
+  ],
+  "fantraxAdp": 77,
+  "team": "TOR",
+  "pos": "SF"
+ },
+ "collin murrayboyles": {
+  "name": "Collin Murray-Boyles",
+  "ownAdp": 113.4,
+  "ownCount": 19,
+  "ownMin": 80,
+  "ownMax": 147,
+  "ownPicks": [
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   }
+  ],
+  "fantraxAdp": 108,
+  "team": "TOR",
+  "pos": "PF"
+ },
+ "tobias harris": {
+  "name": "Tobias Harris",
+  "ownAdp": 137.9,
+  "ownCount": 8,
+  "ownMin": 124,
+  "ownMax": 164,
+  "ownPicks": [
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 164,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 177,
+  "team": "SA",
+  "pos": "PF"
+ },
+ "isaiah stewart": {
+  "name": "Isaiah Stewart",
+  "ownAdp": 157.5,
+  "ownCount": 2,
+  "ownMin": 157,
+  "ownMax": 158,
+  "ownPicks": [
+   {
+    "pick": 157,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 158,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   }
+  ],
+  "fantraxAdp": 219,
+  "team": "MEM",
+  "pos": "C"
+ },
+ "matas buzelis": {
+  "name": "Matas Buzelis",
+  "ownAdp": 57.7,
+  "ownCount": 25,
+  "ownMin": 44,
+  "ownMax": 77,
+  "ownPicks": [
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 59,
+  "team": "CHI",
+  "pos": "SF"
+ },
+ "deandre hunter": {
+  "name": "De'Andre Hunter",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 241,
+  "team": "SAC",
+  "pos": "SF"
+ },
+ "moritz wagner": {
+  "name": "Moritz Wagner",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "BKN",
+  "pos": "C"
+ },
+ "taylor hendricks": {
+  "name": "Taylor Hendricks",
+  "ownAdp": 149.5,
+  "ownCount": 2,
+  "ownMin": 148,
+  "ownMax": 151,
+  "ownPicks": [
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-AUTO-jkfwddasmrc2ubfh"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-AUTO-2xpavvsdmrkgdwvm"
+   }
+  ],
+  "fantraxAdp": 242,
+  "team": "MEM",
+  "pos": "PF"
+ },
+ "sandro mamukelashvili": {
+  "name": "Sandro Mamukelashvili",
+  "ownAdp": 126.3,
+  "ownCount": 11,
+  "ownMin": 92,
+  "ownMax": 160,
+  "ownPicks": [
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 160,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 133,
+  "team": "LAL",
+  "pos": "PF"
+ },
+ "rudy gobert": {
+  "name": "Rudy Gobert",
+  "ownAdp": 70.6,
+  "ownCount": 25,
+  "ownMin": 37,
+  "ownMax": 90,
+  "ownPicks": [
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   }
+  ],
+  "fantraxAdp": 71,
+  "team": "MIN",
+  "pos": "C"
+ },
+ "jimmy butler": {
+  "name": "Jimmy Butler",
+  "ownAdp": 137.6,
+  "ownCount": 8,
+  "ownMin": 95,
+  "ownMax": 163,
+  "ownPicks": [
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 159,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 160,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 163,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   }
+  ],
+  "fantraxAdp": 205,
+  "team": "GS",
+  "pos": "SF"
+ },
+ "matisse thybulle": {
+  "name": "Matisse Thybulle",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "LAL",
+  "pos": "SG"
+ },
  "julius randle": {
   "name": "Julius Randle",
   "ownAdp": 63.2,
@@ -17427,331 +13042,4716 @@ const ADP_DATA = {
   "team": "BKN",
   "pos": "PF"
  },
- "jaylon tyson": {
-  "name": "Jaylon Tyson",
-  "ownAdp": 142.0,
-  "ownCount": 6,
-  "ownMin": 123,
-  "ownMax": 155,
+ "davion mitchell": {
+  "name": "Davion Mitchell",
+  "ownAdp": 137.0,
+  "ownCount": 12,
+  "ownMin": 101,
+  "ownMax": 151,
   "ownPicks": [
    {
-    "pick": 123,
-    "source": "Fantrax-Draft-Results-AUTO-2xpavvsdmrkgdwvm"
-   },
-   {
-    "pick": 131,
-    "source": "Fantrax-Draft-Results-AUTO-y2el57a9mrkgi9hu"
-   },
-   {
-    "pick": 138,
-    "source": "Fantrax-Draft-Results-AUTO-hdvwmdermrfwbgdo"
-   },
-   {
-    "pick": 152,
-    "source": "Fantrax-Draft-Results-AUTO-i4wkf62umrkds58d"
-   },
-   {
-    "pick": 153,
-    "source": "Fantrax-Draft-Results-AUTO-jkfwddasmrc2ubfh"
-   },
-   {
-    "pick": 155,
-    "source": "Fantrax-Draft-Results-AUTO-bbw1narimrkdo0xy"
-   }
-  ],
-  "fantraxAdp": 230,
-  "team": "CLE",
-  "pos": "SG"
- },
- "julian champagnie": {
-  "name": "Julian Champagnie",
-  "ownAdp": 151.7,
-  "ownCount": 3,
-  "ownMin": 150,
-  "ownMax": 154,
-  "ownPicks": [
-   {
-    "pick": 150,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
-   },
-   {
-    "pick": 151,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
-   },
-   {
-    "pick": 154,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   }
-  ],
-  "fantraxAdp": 223,
-  "team": "SA",
-  "pos": "SF"
- },
- "kawhi leonard": {
-  "name": "Kawhi Leonard",
-  "ownAdp": 27.6,
-  "ownCount": 28,
-  "ownMin": 16,
-  "ownMax": 40,
-  "ownPicks": [
-   {
-    "pick": 16,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
-   },
-   {
-    "pick": 19,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
-   },
-   {
-    "pick": 20,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
-   },
-   {
-    "pick": 21,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
-   },
-   {
-    "pick": 22,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
-   },
-   {
-    "pick": 26,
+    "pick": 101,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
-    "pick": 27,
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 136,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
    },
    {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    },
    {
-    "pick": 27,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+    "pick": 141,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
    },
    {
-    "pick": 28,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
-   },
-   {
-    "pick": 29,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
-   },
-   {
-    "pick": 30,
+    "pick": 141,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
    },
    {
-    "pick": 33,
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 151,
+  "team": "MIA",
+  "pos": "PG"
+ },
+ "aj green": {
+  "name": "AJ Green",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "MIL",
+  "pos": "SG"
+ },
+ "zach lavine": {
+  "name": "Zach LaVine",
+  "ownAdp": 121.7,
+  "ownCount": 18,
+  "ownMin": 94,
+  "ownMax": 140,
+  "ownPicks": [
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 116,
+  "team": "SAC",
+  "pos": "SG"
+ },
+ "gg jackson": {
+  "name": "GG Jackson",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "MEM",
+  "pos": "PF"
+ },
+ "toumani camara": {
+  "name": "Toumani Camara",
+  "ownAdp": 102.6,
+  "ownCount": 20,
+  "ownMin": 81,
+  "ownMax": 128,
+  "ownPicks": [
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 112,
+  "team": "POR",
+  "pos": "PF"
+ },
+ "nickeil alexanderwalker": {
+  "name": "Nickeil Alexander-Walker",
+  "ownAdp": 47.8,
+  "ownCount": 25,
+  "ownMin": 29,
+  "ownMax": 65,
+  "ownPicks": [
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 34,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
    },
    {
     "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
-   },
-   {
-    "pick": 36,
-    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
-   },
-   {
-    "pick": 37,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
-   },
-   {
-    "pick": 38,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
    },
    {
     "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 41,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
    }
   ],
-  "fantraxAdp": 29,
-  "team": "LAC",
-  "pos": "SF"
+  "fantraxAdp": 52,
+  "team": "ATL",
+  "pos": "SG"
  },
- "aaron nesmith": {
-  "name": "Aaron Nesmith",
-  "ownAdp": 158.0,
-  "ownCount": 1,
-  "ownMin": 158,
-  "ownMax": 158,
+ "domantas sabonis": {
+  "name": "Domantas Sabonis",
+  "ownAdp": 44.7,
+  "ownCount": 25,
+  "ownMin": 23,
+  "ownMax": 61,
   "ownPicks": [
    {
-    "pick": 158,
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 50,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
    }
   ],
-  "fantraxAdp": 211,
-  "team": "IND",
+  "fantraxAdp": 39,
+  "team": "SAC",
+  "pos": "C"
+ },
+ "ace bailey": {
+  "name": "Ace Bailey",
+  "ownAdp": 124.9,
+  "ownCount": 14,
+  "ownMin": 87,
+  "ownMax": 155,
+  "ownPicks": [
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 151,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   }
+  ],
+  "fantraxAdp": 138,
+  "team": "UTA",
   "pos": "SF"
  },
- "kingston flemings": {
-  "name": "Kingston Flemings",
+ "drew peterson": {
+  "name": "Drew Peterson",
+  "ownAdp": 86.0,
+  "ownCount": 1,
+  "ownMin": 86,
+  "ownMax": 86,
+  "ownPicks": [
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   }
+  ],
+  "fantraxAdp": 243,
+  "team": "(N/A)",
+  "pos": "PF"
+ },
+ "coby white": {
+  "name": "Coby White",
+  "ownAdp": 88.2,
+  "ownCount": 23,
+  "ownMin": 72,
+  "ownMax": 101,
+  "ownPicks": [
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 84,
+  "team": "CHA",
+  "pos": "SG"
+ },
+ "keyonte george": {
+  "name": "Keyonte George",
+  "ownAdp": 55.3,
+  "ownCount": 25,
+  "ownMin": 41,
+  "ownMax": 76,
+  "ownPicks": [
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   }
+  ],
+  "fantraxAdp": 58,
+  "team": "UTA",
+  "pos": "PG"
+ },
+ "royce oneale": {
+  "name": "Royce O'Neale",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "CHA",
+  "pos": "SF"
+ },
+ "oso ighodaro": {
+  "name": "Oso Ighodaro",
   "ownAdp": null,
   "ownCount": 0,
   "ownMin": null,
   "ownMax": null,
   "ownPicks": [],
   "fantraxAdp": 240,
-  "team": "ATL",
-  "pos": "PG"
+  "team": "PHO",
+  "pos": "PF"
  },
- "max strus": {
-  "name": "Max Strus",
-  "ownAdp": 159.0,
-  "ownCount": 2,
-  "ownMin": 159,
-  "ownMax": 159,
+ "caleb wilson": {
+  "name": "Caleb Wilson",
+  "ownAdp": 99.2,
+  "ownCount": 21,
+  "ownMin": 51,
+  "ownMax": 125,
   "ownPicks": [
    {
-    "pick": 159,
+    "pick": 51,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    },
    {
-    "pick": 159,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   }
-  ],
-  "fantraxAdp": 241,
-  "team": "CLE",
-  "pos": "SF"
- },
- "kyshawn george": {
-  "name": "Kyshawn George",
-  "ownAdp": 119.9,
-  "ownCount": 17,
-  "ownMin": 98,
-  "ownMax": 148,
-  "ownPicks": [
-   {
-    "pick": 98,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
    },
    {
-    "pick": 101,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
    },
    {
-    "pick": 106,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
-   },
-   {
-    "pick": 107,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
-   },
-   {
-    "pick": 115,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
-   },
-   {
-    "pick": 118,
+    "pick": 87,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
    },
    {
-    "pick": 118,
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 101,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
    },
    {
-    "pick": 118,
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   }
+  ],
+  "fantraxAdp": 95,
+  "team": "CHI",
+  "pos": "PF"
+ },
+ "marvin bagley": {
+  "name": "Marvin Bagley",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "DEN",
+  "pos": "PF"
+ },
+ "tre jones": {
+  "name": "Tre Jones",
+  "ownAdp": 144.5,
+  "ownCount": 12,
+  "ownMin": 110,
+  "ownMax": 163,
+  "ownPicks": [
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 152,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 157,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 162,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 163,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 156,
+  "team": "CHI",
+  "pos": "PG"
+ },
+ "myles turner": {
+  "name": "Myles Turner",
+  "ownAdp": 83.2,
+  "ownCount": 21,
+  "ownMin": 66,
+  "ownMax": 99,
+  "ownPicks": [
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 81,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   }
+  ],
+  "fantraxAdp": 87,
+  "team": "MIL",
+  "pos": "C"
+ },
+ "josh giddey": {
+  "name": "Josh Giddey",
+  "ownAdp": 27.9,
+  "ownCount": 28,
+  "ownMin": 16,
+  "ownMax": 40,
+  "ownPicks": [
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 27,
+  "team": "CHI",
+  "pos": "PG"
+ },
+ "evan mobley": {
+  "name": "Evan Mobley",
+  "ownAdp": 28.4,
+  "ownCount": 26,
+  "ownMin": 21,
+  "ownMax": 37,
+  "ownPicks": [
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   }
+  ],
+  "fantraxAdp": 30,
+  "team": "CLE",
+  "pos": "PF"
+ },
+ "mario hezonja": {
+  "name": "Mario Hezonja",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "CLE",
+  "pos": "PF"
+ },
+ "santi aldama": {
+  "name": "Santi Aldama",
+  "ownAdp": 166.5,
+  "ownCount": 2,
+  "ownMin": 165,
+  "ownMax": 168,
+  "ownPicks": [
+   {
+    "pick": 165,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 168,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 231,
+  "team": "DAL",
+  "pos": "PF"
+ },
+ "dyson daniels": {
+  "name": "Dyson Daniels",
+  "ownAdp": 63.0,
+  "ownCount": 25,
+  "ownMin": 32,
+  "ownMax": 89,
+  "ownPicks": [
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 58,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   }
+  ],
+  "fantraxAdp": 58,
+  "team": "ATL",
+  "pos": "SG"
+ },
+ "damian lillard": {
+  "name": "Damian Lillard",
+  "ownAdp": 88.6,
+  "ownCount": 22,
+  "ownMin": 63,
+  "ownMax": 112,
+  "ownPicks": [
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 81,
+  "team": "POR",
+  "pos": "PG"
+ },
+ "labaron philon": {
+  "name": "Labaron Philon",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "PHI",
+  "pos": "PG"
+ },
+ "trey murphy": {
+  "name": "Trey Murphy",
+  "ownAdp": 28.9,
+  "ownCount": 27,
+  "ownMin": 18,
+  "ownMax": 44,
+  "ownPicks": [
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   }
+  ],
+  "fantraxAdp": 30,
+  "team": "NO",
+  "pos": "SF"
+ },
+ "derrick jones": {
+  "name": "Derrick Jones",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "LAC",
+  "pos": "SF"
+ },
+ "cade cunningham": {
+  "name": "Cade Cunningham",
+  "ownAdp": 5.5,
+  "ownCount": 31,
+  "ownMin": 4,
+  "ownMax": 7,
+  "ownPicks": [
+   {
+    "pick": 4,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 5,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 6,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 7,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 5,
+  "team": "DET",
+  "pos": "PG"
+ },
+ "jaden mcdaniels": {
+  "name": "Jaden McDaniels",
+  "ownAdp": 78.2,
+  "ownCount": 22,
+  "ownMin": 63,
+  "ownMax": 88,
+  "ownPicks": [
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   }
+  ],
+  "fantraxAdp": 78,
+  "team": "MIN",
+  "pos": "PF"
+ },
+ "james harden": {
+  "name": "James Harden",
+  "ownAdp": 26.0,
+  "ownCount": 28,
+  "ownMin": 13,
+  "ownMax": 33,
+  "ownPicks": [
+   {
+    "pick": 13,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   }
+  ],
+  "fantraxAdp": 27,
+  "team": "CLE",
+  "pos": "PG"
+ },
+ "jordan goodwin": {
+  "name": "Jordan Goodwin",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "PHO",
+  "pos": "PG"
+ },
+ "terrence shannon": {
+  "name": "Terrence Shannon",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "MIN",
+  "pos": "SG"
+ },
+ "brandin podziemski": {
+  "name": "Brandin Podziemski",
+  "ownAdp": 130.6,
+  "ownCount": 16,
+  "ownMin": 113,
+  "ownMax": 166,
+  "ownPicks": [
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 115,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
    },
    {
     "pick": 119,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
    },
    {
     "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 135,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
    },
    {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 138,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 166,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 120,
+  "team": "GS",
+  "pos": "SG"
+ },
+ "noah clowney": {
+  "name": "Noah Clowney",
+  "ownAdp": 150.5,
+  "ownCount": 2,
+  "ownMin": 147,
+  "ownMax": 154,
+  "ownPicks": [
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 154,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 234,
+  "team": "BKN",
+  "pos": "PF"
+ },
+ "al horford": {
+  "name": "Al Horford",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "GS",
+  "pos": "C"
+ },
+ "jusuf nurkic": {
+  "name": "Jusuf Nurkic",
+  "ownAdp": 123.1,
+  "ownCount": 17,
+  "ownMin": 86,
+  "ownMax": 153,
+  "ownPicks": [
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
     "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 125,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   }
+  ],
+  "fantraxAdp": 120,
+  "team": "UTA",
+  "pos": "C"
+ },
+ "jalen duren": {
+  "name": "Jalen Duren",
+  "ownAdp": 43.0,
+  "ownCount": 25,
+  "ownMin": 32,
+  "ownMax": 60,
+  "ownPicks": [
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 42,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   }
+  ],
+  "fantraxAdp": 42,
+  "team": "DET",
+  "pos": "C"
+ },
+ "derik queen": {
+  "name": "Derik Queen",
+  "ownAdp": 92.6,
+  "ownCount": 21,
+  "ownMin": 67,
+  "ownMax": 120,
+  "ownPicks": [
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 88,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   }
+  ],
+  "fantraxAdp": 92,
+  "team": "NO",
+  "pos": "C"
+ },
+ "saddiq bey": {
+  "name": "Saddiq Bey",
+  "ownAdp": 125.0,
+  "ownCount": 14,
+  "ownMin": 86,
+  "ownMax": 152,
+  "ownPicks": [
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 124,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 144,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 152,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 132,
+  "team": "NO",
+  "pos": "SF"
+ },
+ "dexter dennis": {
+  "name": "Dexter Dennis",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 243,
+  "team": "(N/A)",
+  "pos": "SG"
+ },
+ "cedric coward": {
+  "name": "Cedric Coward",
+  "ownAdp": 113.2,
+  "ownCount": 18,
+  "ownMin": 86,
+  "ownMax": 148,
+  "ownPicks": [
+   {
+    "pick": 86,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 109,
+  "team": "MEM",
+  "pos": "SG"
+ },
+ "cj mccollum": {
+  "name": "CJ McCollum",
+  "ownAdp": 108.5,
+  "ownCount": 17,
+  "ownMin": 96,
+  "ownMax": 128,
+  "ownPicks": [
+   {
+    "pick": 96,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 121,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   }
+  ],
+  "fantraxAdp": 117,
+  "team": "ATL",
+  "pos": "PG"
+ },
+ "bilal coulibaly": {
+  "name": "Bilal Coulibaly",
+  "ownAdp": 128.9,
+  "ownCount": 8,
+  "ownMin": 111,
+  "ownMax": 140,
+  "ownPicks": [
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 117,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 130,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   }
+  ],
+  "fantraxAdp": 198,
+  "team": "WAS",
+  "pos": "SF"
+ },
+ "neemias queta": {
+  "name": "Neemias Queta",
+  "ownAdp": 113.8,
+  "ownCount": 20,
+  "ownMin": 84,
+  "ownMax": 139,
+  "ownPicks": [
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 101,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 108,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 118,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 139,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   }
+  ],
+  "fantraxAdp": 105,
+  "team": "BOS",
+  "pos": "C"
+ },
+ "ajay mitchell": {
+  "name": "Ajay Mitchell",
+  "ownAdp": 114.8,
+  "ownCount": 19,
+  "ownMin": 95,
+  "ownMax": 133,
+  "ownPicks": [
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 110,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 120,
     "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
    },
    {
     "pick": 123,
-    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
    },
    {
-    "pick": 129,
-    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
    },
    {
-    "pick": 129,
+    "pick": 125,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
    },
    {
-    "pick": 132,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
    },
    {
-    "pick": 133,
+    "pick": 127,
     "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
    },
    {
-    "pick": 148,
-    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
    }
   ],
-  "fantraxAdp": 124,
+  "fantraxAdp": 114,
+  "team": "OKC",
+  "pos": "SG"
+ },
+ "demar derozan": {
+  "name": "DeMar DeRozan",
+  "ownAdp": 143.2,
+  "ownCount": 10,
+  "ownMin": 122,
+  "ownMax": 167,
+  "ownPicks": [
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 129,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 140,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 141,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 144,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 161,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 167,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 138,
+  "team": "(N/A)",
+  "pos": "SF"
+ },
+ "isaiah hartenstein": {
+  "name": "Isaiah Hartenstein",
+  "ownAdp": 98.3,
+  "ownCount": 19,
+  "ownMin": 65,
+  "ownMax": 134,
+  "ownPicks": [
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 91,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 97,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 106,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 111,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 114,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   }
+  ],
+  "fantraxAdp": 98,
+  "team": "OKC",
+  "pos": "C"
+ },
+ "alex caruso": {
+  "name": "Alex Caruso",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "OKC",
+  "pos": "SG"
+ },
+ "jaime jaquez": {
+  "name": "Jaime Jaquez",
+  "ownAdp": 120.8,
+  "ownCount": 16,
+  "ownMin": 74,
+  "ownMax": 156,
+  "ownPicks": [
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 127,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 128,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 133,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 156,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 126,
+  "team": "MIL",
+  "pos": "SF"
+ },
+ "victor wembanyama": {
+  "name": "Victor Wembanyama",
+  "ownAdp": 1.6,
+  "ownCount": 31,
+  "ownMin": 1,
+  "ownMax": 3,
+  "ownPicks": [
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   }
+  ],
+  "fantraxAdp": 2,
+  "team": "SA",
+  "pos": "C"
+ },
+ "tre johnson": {
+  "name": "Tre Johnson",
+  "ownAdp": 145.5,
+  "ownCount": 2,
+  "ownMin": 135,
+  "ownMax": 156,
+  "ownPicks": [
+   {
+    "pick": 135,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 156,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 240,
   "team": "WAS",
   "pos": "SG"
  },
- "anfernee simons": {
-  "name": "Anfernee Simons",
-  "ownAdp": 138.0,
-  "ownCount": 1,
-  "ownMin": 138,
-  "ownMax": 138,
+ "lebron james": {
+  "name": "LeBron James",
+  "ownAdp": 56.4,
+  "ownCount": 25,
+  "ownMin": 36,
+  "ownMax": 77,
   "ownPicks": [
    {
-    "pick": 138,
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 44,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 75,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   }
+  ],
+  "fantraxAdp": 55,
+  "team": "(N/A)",
+  "pos": "SF"
+ },
+ "cameron boozer": {
+  "name": "Cameron Boozer",
+  "ownAdp": 60.1,
+  "ownCount": 25,
+  "ownMin": 32,
+  "ownMax": 83,
+  "ownPicks": [
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 38,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 50,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 54,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 70,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 73,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 79,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   }
+  ],
+  "fantraxAdp": 58,
+  "team": "MEM",
+  "pos": "PF"
+ },
+ "fred vanvleet": {
+  "name": "Fred VanVleet",
+  "ownAdp": 111.4,
+  "ownCount": 21,
+  "ownMin": 74,
+  "ownMax": 144,
+  "ownPicks": [
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 87,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 107,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 109,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 113,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 119,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 122,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 123,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 136,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 137,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 143,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 144,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   }
+  ],
+  "fantraxAdp": 108,
+  "team": "HOU",
+  "pos": "PG"
+ },
+ "cameron johnson": {
+  "name": "Cameron Johnson",
+  "ownAdp": 143.5,
+  "ownCount": 6,
+  "ownMin": 120,
+  "ownMax": 168,
+  "ownPicks": [
+   {
+    "pick": 120,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 131,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 144,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 164,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 168,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 172,
+  "team": "DEN",
+  "pos": "PF"
+ },
+ "khris middleton": {
+  "name": "Khris Middleton",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "WAS",
+  "pos": "SF"
+ },
+ "austin reaves": {
+  "name": "Austin Reaves",
+  "ownAdp": 25.8,
+  "ownCount": 28,
+  "ownMin": 16,
+  "ownMax": 37,
+  "ownPicks": [
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 18,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 25,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 27,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   }
+  ],
+  "fantraxAdp": 24,
+  "team": "LAL",
+  "pos": "SG"
+ },
+ "collin sexton": {
+  "name": "Collin Sexton",
+  "ownAdp": 132.3,
+  "ownCount": 3,
+  "ownMin": 93,
+  "ownMax": 155,
+  "ownPicks": [
+   {
+    "pick": 93,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 223,
+  "team": "LAL",
+  "pos": "SG"
+ },
+ "deandre ayton": {
+  "name": "Deandre Ayton",
+  "ownAdp": 144.4,
+  "ownCount": 5,
+  "ownMin": 132,
+  "ownMax": 161,
+  "ownPicks": [
+   {
+    "pick": 132,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 134,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 146,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 161,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   }
+  ],
+  "fantraxAdp": 221,
+  "team": "WAS",
+  "pos": "C"
+ },
+ "andrew wiggins": {
+  "name": "Andrew Wiggins",
+  "ownAdp": 104.2,
+  "ownCount": 20,
+  "ownMin": 90,
+  "ownMax": 142,
+  "ownPicks": [
+   {
+    "pick": 90,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 92,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 94,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 95,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 98,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 99,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 100,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 102,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 103,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 104,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 105,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 112,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 115,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 116,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 126,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 142,
     "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
    }
   ],
-  "fantraxAdp": 241,
-  "team": "PHI",
+  "fantraxAdp": 107,
+  "team": "MIA",
+  "pos": "SF"
+ },
+ "christian braun": {
+  "name": "Christian Braun",
+  "ownAdp": 159.6,
+  "ownCount": 5,
+  "ownMin": 154,
+  "ownMax": 167,
+  "ownPicks": [
+   {
+    "pick": 154,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 155,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 156,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 166,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 167,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 186,
+  "team": "DEN",
   "pos": "SG"
+ },
+ "darius garland": {
+  "name": "Darius Garland",
+  "ownAdp": 54.9,
+  "ownCount": 25,
+  "ownMin": 33,
+  "ownMax": 68,
+  "ownPicks": [
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 47,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 48,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 51,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 52,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 55,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 56,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 57,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 59,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 60,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 62,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 63,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 65,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   }
+  ],
+  "fantraxAdp": 54,
+  "team": "LAC",
+  "pos": "PG"
+ },
+ "payton pritchard": {
+  "name": "Payton Pritchard",
+  "ownAdp": 73.8,
+  "ownCount": 24,
+  "ownMin": 49,
+  "ownMax": 89,
+  "ownPicks": [
+   {
+    "pick": 49,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 53,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 61,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 64,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 66,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 67,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 68,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 69,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 71,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 72,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 74,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 76,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 77,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 78,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 80,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 82,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 83,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 84,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 85,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 89,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   }
+  ],
+  "fantraxAdp": 80,
+  "team": "BOS",
+  "pos": "PG"
+ },
+ "joan beringer": {
+  "name": "Joan Beringer",
+  "ownAdp": 153.0,
+  "ownCount": 2,
+  "ownMin": 149,
+  "ownMax": 157,
+  "ownPicks": [
+   {
+    "pick": 149,
+    "source": "Fantrax-Draft-Results-AUTO-kjuxwfi4mrh17ll1"
+   },
+   {
+    "pick": 157,
+    "source": "Fantrax-Draft-Results-AUTO-t6wu7qhgmrhrgajw"
+   }
+  ],
+  "fantraxAdp": 185,
+  "team": "MIN",
+  "pos": "PF"
+ },
+ "kris dunn": {
+  "name": "Kris Dunn",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 242,
+  "team": "LAC",
+  "pos": "PG"
+ },
+ "jerami grant": {
+  "name": "Jerami Grant",
+  "ownAdp": 149.3,
+  "ownCount": 3,
+  "ownMin": 147,
+  "ownMax": 153,
+  "ownPicks": [
+   {
+    "pick": 147,
+    "source": "Fantrax-Draft-Results-AUTO-hdvwmdermrfwbgdo"
+   },
+   {
+    "pick": 148,
+    "source": "Fantrax-Draft-Results-AUTO-emeu5xuymrh1a5id"
+   },
+   {
+    "pick": 153,
+    "source": "Fantrax-Draft-Results-AUTO-t6wu7qhgmrhrgajw"
+   }
+  ],
+  "fantraxAdp": 210,
+  "team": "MEM",
+  "pos": "PF"
+ },
+ "bam adebayo": {
+  "name": "Bam Adebayo",
+  "ownAdp": 35.9,
+  "ownCount": 26,
+  "ownMin": 23,
+  "ownMax": 46,
+  "ownPicks": [
+   {
+    "pick": 23,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 34,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 35,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 36,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 37,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 39,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 40,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 41,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 43,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 45,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 46,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   }
+  ],
+  "fantraxAdp": 36,
+  "team": "MIA",
+  "pos": "C"
+ },
+ "deanthony melton": {
+  "name": "De'Anthony Melton",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 223,
+  "team": "GS",
+  "pos": "PG"
+ },
+ "nikola jokic": {
+  "name": "Nikola Jokic",
+  "ownAdp": 1.6,
+  "ownCount": 31,
+  "ownMin": 1,
+  "ownMax": 3,
+  "ownPicks": [
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 19"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 20"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 1,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 18"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 2,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 3,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   }
+  ],
+  "fantraxAdp": 2,
+  "team": "DEN",
+  "pos": "C"
+ },
+ "obi toppin": {
+  "name": "Obi Toppin",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "IND",
+  "pos": "PF"
+ },
+ "ebuka okorie": {
+  "name": "Ebuka Okorie",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "DET",
+  "pos": "PG"
+ },
+ "will riley": {
+  "name": "Will Riley",
+  "ownAdp": 150.0,
+  "ownCount": 1,
+  "ownMin": 150,
+  "ownMax": 150,
+  "ownPicks": [
+   {
+    "pick": 150,
+    "source": "Fantrax-Draft-Results-AUTO-hdvwmdermrfwbgdo"
+   }
+  ],
+  "fantraxAdp": 243,
+  "team": "WAS",
+  "pos": "SF"
+ },
+ "jaylin williams": {
+  "name": "Jaylin Williams",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "OKC",
+  "pos": "PF"
+ },
+ "lamelo ball": {
+  "name": "LaMelo Ball",
+  "ownAdp": 24.9,
+  "ownCount": 28,
+  "ownMin": 16,
+  "ownMax": 33,
+  "ownPicks": [
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 03"
+   },
+   {
+    "pick": 16,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 04"
+   },
+   {
+    "pick": 17,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 09"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 07"
+   },
+   {
+    "pick": 19,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_03"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 07"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 14"
+   },
+   {
+    "pick": 20,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 15"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_04"
+   },
+   {
+    "pick": 21,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_05"
+   },
+   {
+    "pick": 22,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_02"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 11"
+   },
+   {
+    "pick": 24,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 16"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01(1)"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 01"
+   },
+   {
+    "pick": 26,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_02"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 08"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 17"
+   },
+   {
+    "pick": 28,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 06"
+   },
+   {
+    "pick": 29,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 08"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 10"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 13"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_06"
+   },
+   {
+    "pick": 30,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_ROTO_01"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only POINTS 02"
+   },
+   {
+    "pick": 31,
+    "source": "Fantrax-Draft-Results-FBI Draft Only ROTO 05"
+   },
+   {
+    "pick": 32,
+    "source": "Fantrax-Draft-Results-FBI Draft Only H2H 12"
+   },
+   {
+    "pick": 33,
+    "source": "Fantrax-Draft-Results-FBI_Draft_Only_H2H_01"
+   }
+  ],
+  "fantraxAdp": 25,
+  "team": "MIN",
+  "pos": "PG"
+ },
+ "tristan da silva": {
+  "name": "Tristan da Silva",
+  "ownAdp": null,
+  "ownCount": 0,
+  "ownMin": null,
+  "ownMax": null,
+  "ownPicks": [],
+  "fantraxAdp": 244,
+  "team": "ORL",
+  "pos": "SF"
  }
 };
