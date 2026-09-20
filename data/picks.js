@@ -4,6 +4,13 @@
 //  bevorstehenden Draft (siehe getMaxKeepers() in js/navigation.js).
 const MAX_ROSTER_SIZE = 26;
 
+// Keeper Lock Date = Draft Day (laut ESPN identisch: "Linear Draft" ohne
+// Live-Teilnahme, startet automatisch -- kein separates Keeper-Lock-Event
+// noetig). Uhrzeit in Europe/Berlin. Aendert sich das Datum, reicht diese
+// eine Stelle -- js/navigation.js (renderDraftCountdown) rendert daraus
+// beide Karten auf der Startseite.
+const DRAFT_EVENT_DATE = "2026-10-01T08:00:00+02:00";
+
 const PICKS = [
   {year:2026,round:1,originalOwner:1,currentOwner:1,slot:12,note:"Champ-Regel"},{year:2026,round:1,originalOwner:2,currentOwner:2,slot:11},
   {year:2026,round:1,originalOwner:3,currentOwner:1,slot:10},{year:2026,round:1,originalOwner:4,currentOwner:1,slot:4},

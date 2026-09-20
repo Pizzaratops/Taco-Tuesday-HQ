@@ -139,7 +139,44 @@ function archivedStrengthBadge(roster, seasonKey) {
   </div>`;
 }
 
+// ── Draft Countdown (Startseite) ─────────────────────────────
+//  Zwei Karten wie bei Bear Witch Project HQ: "Keeper Lock Date" und
+//  "Draft Day". In dieser Liga sind beide identisch (ESPN Linear Draft
+//  startet automatisch, kein separates Lock-Event) -- DRAFT_EVENT_DATE
+//  liegt zentral in data/picks.js.
+function renderDraftCountdown() {
+  const el = document.getElementById('draftCountdown');
+  if (!el || typeof DRAFT_EVENT_DATE === 'undefined') return;
+  const target = new Date(DRAFT_EVENT_DATE);
+  const diffMs = target - new Date();
+  const dateStr = target.toLocaleString('de-DE', { weekday: 'short', day: '2-digit', month: 'long', year: 'numeric' })
+    + ', ' + target.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
+
+  let valueHtml;
+  if (diffMs <= 0) {
+    valueHtml = `<span style="color:var(--green);">✅ Vorbei</span>`;
+  } else {
+    const days = Math.floor(diffMs / 86400000);
+    const hours = Math.floor((diffMs % 86400000) / 3600000);
+    const mins = Math.floor((diffMs % 3600000) / 60000);
+    const parts = days > 0 ? `${days}T ${hours}Std` : (hours > 0 ? `${hours}Std ${mins}Min` : `${mins}Min`);
+    valueHtml = `<span style="color:var(--accent2);">⏳ ${parts}</span>`;
+  }
+
+  const card = (icon, label) => `<div class="countdown-card">
+    <div class="countdown-label">${icon} ${label}</div>
+    <div class="countdown-value">${valueHtml}</div>
+    <div class="countdown-date">${dateStr}</div>
+  </div>`;
+
+  el.innerHTML = `<div class="countdown-grid">
+    ${card('🔒', 'KEEPER LOCK DATE')}
+    ${card('📋', 'DRAFT DAY')}
+  </div>`;
+}
+
 function renderHome() {
+  renderDraftCountdown();
   renderSeasonPicker();
   const grid = document.getElementById('teamGrid');
 
@@ -528,9 +565,18 @@ function renderTeamDraftBoard(id) {
   const keepers = getMaxKeepers(id, year);
   const myPicks = PICKS.filter(p => p.year === year && p.currentOwner === id);
   const allRounds = [...new Set(PICKS.filter(p => p.year === year).map(p => p.round))].sort();
+  const currentRoster = (typeof ROSTERS !== 'undefined' && ROSTERS[id]) ? ROSTERS[id].length : null;
+  const overCap = currentRoster !== null && currentRoster > keepers;
+  const rosterRow = currentRoster !== null
+    ? `<div class="keeper-card-row">
+        <span class="keeper-card-label">Aktueller Kader</span>
+        <span class="keeper-card-value" style="${overCap ? 'color:var(--bad, #ff6584);' : ''}">${currentRoster}${overCap ? ` ⚠️ −${currentRoster - keepers}` : ''}</span>
+      </div>`
+    : '';
 
   let html = `<div class="keeper-card" style="border-color:${c}44;margin-bottom:24px;max-width:280px;">
     <div class="keeper-card-team" style="color:${c};">${t.name} — ${year}</div>
+    ${rosterRow}
     <div class="keeper-card-row">
       <span class="keeper-card-label">Picks ${year}</span>
       <span class="keeper-card-value">${picks}</span>
@@ -539,7 +585,7 @@ function renderTeamDraftBoard(id) {
       <span class="keeper-card-label">Max. Keeper</span>
       <span class="keeper-card-value keeper-card-value-accent" style="color:${c};">${keepers}</span>
     </div>
-  </div>
+  </div>${overCap ? `<p style="margin:-14px 0 12px;font-size:11.5px;color:var(--bad, #ff6584);">⚠️ Kader ${currentRoster - keepers} Spieler über dem erlaubten Keeper-Limit — vor/beim Draft kürzen.</p>` : ''}
   <p style="margin:-14px 0 20px;font-size:11.5px;color:var(--muted);">Kadergröße ${MAX_ROSTER_SIZE} (Picks + Keeper). Vollständiges Full Draft Board für alle Teams: <a href="#" onclick="showDraftboard();return false;" style="color:var(--accent);">hier</a>.</p>`;
 
   html += myPicks.length
@@ -762,8 +808,21 @@ function renderKeeperSummaryGrid(year) {
     const c = getTeamColor(t);
     const picks = getPicksCountForTeam(t.id, year);
     const keepers = getMaxKeepers(t.id, year);
+    // Tatsaechlicher aktueller Kaderstand (ROSTERS ist beim Seitenstart aus
+    // dem ESPN-Live-Sync hydriert, siehe _hydrateRostersFromLiveFile() in
+    // js/admin.js) -- zeigt VOR dem Draft, ob ein Team schon innerhalb
+    // seines erlaubten Keeper-Limits ist oder noch kuerzen muss.
+    const currentRoster = (typeof ROSTERS !== 'undefined' && ROSTERS[t.id]) ? ROSTERS[t.id].length : null;
+    const overCap = currentRoster !== null && currentRoster > keepers;
+    const rosterRow = currentRoster !== null
+      ? `<div class="keeper-card-row">
+          <span class="keeper-card-label">Aktueller Kader</span>
+          <span class="keeper-card-value" style="${overCap ? 'color:var(--bad, #ff6584);' : ''}">${currentRoster}${overCap ? ` ⚠️ −${currentRoster - keepers}` : ''}</span>
+        </div>`
+      : '';
     return `<div class="keeper-card" style="border-color:${c}44;">
       <div class="keeper-card-team" style="color:${c};">${t.name}</div>
+      ${rosterRow}
       <div class="keeper-card-row">
         <span class="keeper-card-label">Picks ${year}</span>
         <span class="keeper-card-value">${picks}</span>
@@ -779,7 +838,7 @@ function renderKeeperSummaryGrid(year) {
     <div class="keeper-summary-head">
       <div>
         <h3 style="margin:0 0 4px;font-size:16px;font-family:'Playfair Display',serif;color:var(--text);">🔑 Picks &amp; Keeper Übersicht ${year}</h3>
-        <p style="margin:0;font-size:12px;color:var(--muted);">Kadergröße ${MAX_ROSTER_SIZE} (Picks + Keeper). Weniger Picks = mehr mögliche Keeper.</p>
+        <p style="margin:0;font-size:12px;color:var(--muted);">Kadergröße ${MAX_ROSTER_SIZE} (Picks + Keeper). Weniger Picks = mehr mögliche Keeper. ⚠️ = Kader aktuell über dem erlaubten Keeper-Limit, muss vor/beim Draft gekürzt werden.</p>
       </div>
       <button class="draftboard-btn" style="width:auto;flex:0 0 auto;padding:9px 14px;" onclick="downloadKeeperSummary(${year})">📸 Screenshot</button>
     </div>

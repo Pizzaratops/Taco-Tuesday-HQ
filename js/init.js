@@ -5,6 +5,9 @@
   // Replace current history entry with proper state
   try { history.replaceState({ pageId: initPageId }, '', initHash || '#home'); } catch(e) {}
   renderHome(); // always render home data in background
+  // Countdown "lebt" auch ohne Neuladen weiter -- 1x/Minute reicht, das
+  // ist kein Sekunden-Timer.
+  setInterval(renderDraftCountdown, 60000);
   // Flow-Diagramm gehoert zur Home-Seite und wird deshalb hier gleich
   // mitgerendert, unabhaengig davon, welche Seite gerade offen ist.
   if (typeof initFlowDiagram === 'function') initFlowDiagram();
