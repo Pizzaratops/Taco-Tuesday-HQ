@@ -1332,6 +1332,11 @@
   font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
   background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 9px 12px; cursor: pointer;
 }
+.ps-field input[type="text"] {
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 9px 12px; min-width: 180px;
+}
+.ps-field input[type="text"]::placeholder { color: var(--muted); }
 .ps-seg { display: flex; background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 3px; gap: 2px; }
 .ps-seg button {
   font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--muted); background: transparent; border: 0;
@@ -1363,12 +1368,6 @@
 .ps-hero { display: flex; align-items: baseline; gap: 10px; margin: 0; }
 .ps-hero .ps-num { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 44px; line-height: 1; color: var(--accent); }
 .ps-hero-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 0; }
-/* Match-Modus zeigt zwei Bloecke uebereinander (aktuelles Shape Match +
-   Historic Match aus einer anderen Saison) -- Trennlinie nur zwischen
-   ihnen, der zweite etwas kompakter und in der dritten Radar-Farbe. */
-.ps-match-block { display: flex; flex-direction: column; gap: 8px; }
-.ps-match-block + .ps-match-block { border-top: 1px solid var(--border); padding-top: 14px; margin-top: 2px; }
-.ps-hero-secondary .ps-num { font-size: 30px; color: var(--accent3); }
 .ps-alt-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 19px; margin: 0; }
 .ps-meta { font-size: 12px; color: var(--muted); margin: 4px 0 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .ps-kv-list { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
@@ -1381,6 +1380,8 @@
 .ps-legend span { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); }
 .ps-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
 .ps-note { font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0; }
+.ps-note-translate { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); color: var(--text); }
+.ps-note-translate b { color: var(--accent3, var(--accent)); }
 .ps-empty { padding: 20px; color: var(--muted); font-size: 13px; }
 #psPoolNote { font-size: 11px; color: var(--muted); margin-top: 10px; text-align: right; }
 
