@@ -88,7 +88,7 @@
         <div class="snav-dropdown">
           <button class="snav-dropdown-item" data-page="playerrankings"    onclick="showPlayerRankings()">🏅 2026/27 Rankings</button>
           <button class="snav-dropdown-item" data-page="playerprojections" onclick="showPlayerProjections()">🔮 2026/27 Projections</button>
-          <button class="snav-dropdown-item" data-page="playershape" onclick="showPlayerShape()">🕸️ Player Shape Studio</button>
+          <button class="snav-dropdown-item" data-page="playershape" onclick="showPlayerShape()">🕸️ Cat Web</button>
           <div class="snav-dropdown-label">Live Projections (Test)</div>
           <button class="snav-dropdown-item" data-page="liveprojections"     onclick="showLiveProjections()">🧪 Projections</button>
           <button class="snav-dropdown-item" data-page="liveprojectionsteams" onclick="showLiveProjTeams()">🏀 NBA Teams</button>
@@ -184,7 +184,7 @@
         <div class="subnav-mobile-label">Player</div>
         <button class="subnav-mobile-btn" data-page="playerrankings"    onclick="showPlayerRankings();closeMobileNav()">🏅 2026/27 Rankings</button>
         <button class="subnav-mobile-btn" data-page="playerprojections" onclick="showPlayerProjections();closeMobileNav()">🔮 2026/27 Projections</button>
-        <button class="subnav-mobile-btn" data-page="playershape" onclick="showPlayerShape();closeMobileNav()">🕸️ Player Shape Studio</button>
+        <button class="subnav-mobile-btn" data-page="playershape" onclick="showPlayerShape();closeMobileNav()">🕸️ Cat Web</button>
         <button class="subnav-mobile-btn" data-page="liveprojections"      onclick="showLiveProjections();closeMobileNav()">🧪 Live Projections (Test): Projections</button>
         <button class="subnav-mobile-btn" data-page="liveprojectionsteams" onclick="showLiveProjTeams();closeMobileNav()">🏀 Live Projections (Test): NBA Teams</button>
         <button class="subnav-mobile-btn" data-page="liveprojectionsdraft" onclick="showLiveProjDraft();closeMobileNav()">🏆 Live Projections (Test): Fantrax Redraft</button>
@@ -979,12 +979,16 @@
 <div class="page page-wide" id="playerShapePage">
   <div class="hero">
     <div>
-      <h1>Player Shape Studio</h1>
-      <div class="sub">9-Cat-Perzentil-Radar für jeden gerosterten Spieler — Solo-Shape lesen oder das ähnlichste Profil im gesamten Liga-Pool für eine Trade-Idee finden. Perzentile aus data/live-projections.js, live über alle Kader berechnet.</div>
+      <h1>Cat Web</h1>
+      <div class="sub">9-Cat-Perzentil-Radar für jeden gerosterten Spieler — Solo-Shape lesen, das ähnlichste Profil im Liga-Pool für eine Trade-Idee finden, oder bis zu 3 Spieler manuell vergleichen. Perzentile aus der jeweils gewählten Saison, live über alle Kader berechnet.</div>
     </div>
   </div>
 
   <div class="panel ps-controls">
+    <div class="ps-field">
+      <label for="psSeasonSelect">Saison</label>
+      <select id="psSeasonSelect"></select>
+    </div>
     <div class="ps-field">
       <label for="psTeamFilter">Team-Filter</label>
       <select id="psTeamFilter"></select>
@@ -998,6 +1002,7 @@
       <div class="ps-seg" id="psModeSeg" role="group" aria-label="Ansicht wählen">
         <button type="button" data-mode="solo" aria-pressed="true" onclick="psSetMode('solo')">Solo Shape</button>
         <button type="button" data-mode="match" aria-pressed="false" onclick="psSetMode('match')">Shape Match</button>
+        <button type="button" data-mode="compare" aria-pressed="false" onclick="psSetMode('compare')">Vergleich</button>
       </div>
     </div>
     <button class="ps-export-btn" id="psExportBtn" onclick="psDownloadShape()">📸 Als Bild exportieren</button>
@@ -2312,6 +2317,7 @@
 <script src="data/rankings.js?v=ec950f55"></script>
 <script src="data/projections-baseline.js?v=f70cd7ad"></script>
 <script src="data/live-projections.js?v=4b9acf4e"></script>
+<script src="data/last-season-stats-2025-26.js?v=1"></script>
 <script src="data/dynasty-rolling.js?v=5a3bad82"></script>
 <script src="data/dynasty-live.js?v=e00d35ef"></script>
 <script src="data/hashtag.js?v=79b756a3"></script>
