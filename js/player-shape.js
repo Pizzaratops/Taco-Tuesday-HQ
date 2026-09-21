@@ -22,13 +22,21 @@
 //  PS_LAST_SEASON_ARRAYS um eine Zeile ergaenzen. Der Rest (Pool,
 //  Perzentile, Radar, Compare) braucht KEINE Aenderung.
 //
-//  Pool je Saison = alle gerosterten Spieler (heutiger Kaderstand)
-//  mit einem Treffer in der jeweiligen Saison-Statdatei (per
-//  normalizeName()+NAME_ALIASES abgeglichen, dieselbe zentrale
-//  Normalisierung wie ueberall sonst im Projekt). Spieler ohne
-//  Treffer (Rookies ohne Vorjahresstats o.ae.) fallen fuer DIESE
-//  Saison raus -- wird im Footer transparent ausgewiesen statt sie
-//  stillschweigend mit Perzentil 50 aufzufuellen.
+//  Pool je Saison = ALLE Spieler mit einer Statzeile in der jeweiligen
+//  Saison-Datenquelle -- nicht nur die aktuell gerosterten. Gerosterte
+//  Spieler (heutiger Kaderstand) werden zuerst per normalizeName()+
+//  NAME_ALIASES gegen die Saisonzeile abgeglichen (dieselbe zentrale
+//  Normalisierung wie ueberall sonst im Projekt) und behalten dabei
+//  pos/team/teamId aus ROSTERS; alle uebrigen Saison-Spieler (Free
+//  Agents, Rookies wie zB AJ Dybantsa) kommen direkt aus der Saison-
+//  Datenquelle selbst dazu, mit teamId=null ("Free Agents"-Gruppe in
+//  Team-Filter/optgroups). Fuer "current" liefert BEST_AVAILABLE_BOARD
+//  (data/best-available-board.js) die pos/team-Metadaten, die
+//  LIVE_PROJECTIONS selbst nicht hat (siehe _psCurrentMetaIndex).
+//  Gerosterte Spieler ganz ohne Treffer in der Saison-Statdatei (Rookies
+//  ohne Vorjahresstats o.ae.) fallen fuer DIESE Saison raus -- wird im
+//  Footer transparent ausgewiesen statt sie stillschweigend mit
+//  Perzentil 50 aufzufuellen.
 //
 //  MATCH-MODUS zeigt zwei Matches uebereinander: "Shape Match" (bestes
 //  Profil im Pool der AKTUELL gewaehlten Saison, siehe _psBestMatch)
@@ -36,6 +44,8 @@
 //  Saisonen hinweg, siehe _psBestHistoricMatch) -- inkl. Angabe, aus
 //  welcher Saison das historische Match stammt. Beide mit eigenem
 //  %-Score (100 - mittlerer Perzentil-Abstand ueber alle 9 Kategorien).
+//  Kandidaten mit zu wenig Einsatzzeit/Spielen werden dabei ausgefiltert
+//  (siehe PS_MATCH_MIN_MPG/PS_MATCH_MIN_GAMES/_psHasEnoughSample).
 // ============================================================
 
 const PS_CATS = [
@@ -183,16 +193,18 @@ function _psSeasonRawIndex(seasonKey) {
 
   if (seasonKey === 'current') {
     if (typeof LIVE_PROJECTIONS !== 'undefined') {
+      const meta = _psCurrentMetaIndex();
       Object.keys(LIVE_PROJECTIONS).forEach(nm => {
         const s = LIVE_PROJECTIONS[nm];
-        map.set(_psNorm(nm), { name: nm, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.tov, fgPct: s.fgPct, ftPct: s.ftPct });
+        const m = meta.get(_psNorm(nm));
+        map.set(_psNorm(nm), { name: nm, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.tov, fgPct: s.fgPct, ftPct: s.ftPct, min: s.min, games: s.gamesPlayed, pos: m ? m.pos : null, nbaTeam: m ? m.nbaTeam : null });
       });
     }
   } else if (PS_LAST_SEASON_ARRAYS[seasonKey]) {
     const arr = PS_LAST_SEASON_ARRAYS[seasonKey]();
     if (arr) {
       arr.forEach(s => {
-        map.set(_psNorm(s.name), { name: s.name, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
+        map.set(_psNorm(s.name), { name: s.name, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct, min: s.min, games: s.games, pos: s.pos || null, nbaTeam: s.team || null });
       });
     }
   }
@@ -201,35 +213,80 @@ function _psSeasonRawIndex(seasonKey) {
   return map;
 }
 
+// Positions-/Team-Metadaten fuer NICHT gerosterte Spieler der aktuellen
+// Saison (Free Agents, Rookies) -- LIVE_PROJECTIONS liefert nur Stats,
+// keine pos/team-Felder. BEST_AVAILABLE_BOARD (data/best-available-board.js,
+// taeglich generiert) deckt de facto ALLE NBA-Spieler ab (auch gerosterte)
+// und liefert genau diese Metadaten, siehe js/best-available.js fuer
+// dieselbe Quelle.
+let _psCurrentMetaCache = null;
+function _psCurrentMetaIndex() {
+  if (_psCurrentMetaCache) return _psCurrentMetaCache;
+  const m = new Map();
+  if (typeof BEST_AVAILABLE_BOARD !== 'undefined') {
+    BEST_AVAILABLE_BOARD.forEach(p => {
+      m.set(_psNorm(p.name), { pos: p.pos || null, nbaTeam: p.nbaTeam || null });
+    });
+  }
+  _psCurrentMetaCache = m;
+  return m;
+}
+
 function _psBuildPool(seasonKey) {
   seasonKey = seasonKey || _psState.season || 'current';
   if (_psPoolCache[seasonKey]) return _psPoolCache[seasonKey];
 
-  const pool = { players: [], rosteredCount: 0, matchedCount: 0 };
+  const pool = { players: [], rosteredCount: 0, matchedCount: 0, freeAgentCount: 0 };
   _psPoolCache[seasonKey] = pool;
-  if (typeof ROSTERS === 'undefined') return pool;
 
   const seasonIdx = _psSeasonRawIndex(seasonKey);
   const rows = [];
-  Object.keys(ROSTERS).forEach(tid => {
-    (ROSTERS[tid] || []).forEach(p => {
-      pool.rosteredCount++;
-      const norm = _psNorm(p.name);
-      const canon = (typeof NAME_ALIASES !== 'undefined' && NAME_ALIASES[norm]) || null;
-      const s = seasonIdx.get(norm) || (canon ? seasonIdx.get(_psNorm(canon)) : null);
-      if (!s) return;
-      // Generationen-Schutz: explizit widerspruechliche Jr/Sr/II-Suffixe
-      // (_psSuffixConflict) oder ein bekannter einseitiger Namensvetter-
-      // Fall (_PS_MATCH_BLOCKLIST) zwischen Roster-Namen und Saison-
-      // Statzeile gelten NICHT als Match.
-      if (_psSuffixConflict(p.name, s.name) || _psIsBlockedPair(p.name, s.name)) return;
-      rows.push({
-        name: p.name, pos: p.pos, nbaTeam: p.team, teamId: parseInt(tid, 10),
-        raw: { pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.tov, fgPct: s.fgPct, ftPct: s.ftPct },
+  const usedNorms = new Set();
+
+  // 1) Fantasy-gerosterte Spieler zuerst -- pos/team/teamId kommen aus
+  // ROSTERS (kuratiert, heutiger Kaderstand), nicht aus den Saison-
+  // Rohdaten selbst.
+  if (typeof ROSTERS !== 'undefined') {
+    Object.keys(ROSTERS).forEach(tid => {
+      (ROSTERS[tid] || []).forEach(p => {
+        pool.rosteredCount++;
+        const norm = _psNorm(p.name);
+        const canon = (typeof NAME_ALIASES !== 'undefined' && NAME_ALIASES[norm]) || null;
+        const s = seasonIdx.get(norm) || (canon ? seasonIdx.get(_psNorm(canon)) : null);
+        if (!s) return;
+        // Generationen-Schutz: explizit widerspruechliche Jr/Sr/II-Suffixe
+        // (_psSuffixConflict) oder ein bekannter einseitiger Namensvetter-
+        // Fall (_PS_MATCH_BLOCKLIST) zwischen Roster-Namen und Saison-
+        // Statzeile gelten NICHT als Match.
+        if (_psSuffixConflict(p.name, s.name) || _psIsBlockedPair(p.name, s.name)) return;
+        rows.push({
+          name: p.name, pos: p.pos, nbaTeam: p.team, teamId: parseInt(tid, 10),
+          min: s.min, games: s.games,
+          raw: { pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.tov, fgPct: s.fgPct, ftPct: s.ftPct },
+        });
+        usedNorms.add(norm);
+        if (canon) usedNorms.add(_psNorm(canon));
+        usedNorms.add(_psNorm(s.name));
       });
     });
-  });
+  }
   pool.matchedCount = rows.length;
+
+  // 2) Alle uebrigen Spieler aus den Saison-Rohdaten -- Free Agents und
+  // Rookies, die in KEINEM Fantasy-Kader stehen (zB AJ Dybantsa). Die
+  // Saison-Statdatei selbst ist bereits die volle Liga (nicht auf ROSTERS
+  // gefiltert), teamId bleibt null -> _psTeamTag()/_psOptionsHTML() zeigen
+  // dafuer "Free Agents". Kein Generationen-Check noetig, da Name direkt
+  // aus der Saisonzeile kommt (kein Alias-Umweg wie bei ROSTERS oben).
+  seasonIdx.forEach((s, norm) => {
+    if (usedNorms.has(norm)) return;
+    rows.push({
+      name: s.name, pos: s.pos || null, nbaTeam: s.nbaTeam || null, teamId: null,
+      min: s.min, games: s.games,
+      raw: { pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.tov, fgPct: s.fgPct, ftPct: s.ftPct },
+    });
+    pool.freeAgentCount++;
+  });
 
   // Perzentile je Kategorie ueber den kompletten Matched-Pool DIESER Saison
   const sortedByRaw = {};
@@ -257,6 +314,23 @@ function _psPlayerByName(name, seasonKey) {
 
 function _psVec(p) { return PS_CATS.map(c => p.pctl[c.k]); }
 
+// Mindest-Stichprobe fuer Shape-/Historic-Match-KANDIDATEN. Ohne das
+// landen zwei Tiefbank-Spieler mit kaum Einsatzzeit faelschlich als
+// "91% Match" nebeneinander -- beide haben einfach in fast jeder
+// Kategorie niedrige Perzentile (weil kaum Spielzeit = kaum Produktion),
+// nicht weil sie stilistisch aehnlich sind (Bug gefunden 2026-09-21:
+// Cam Whitmore [13,2 proj. min] <-> Larry Nance Jr. [11,7 proj. min],
+// 91% trotz komplett unterschiedlicher Rollen/Positionen). games wird
+// nur geprueft, wenn > 0 vorliegt (in der Preseason ist gamesPlayed=0
+// fuer ALLE Spieler -- das darf nicht faelschlich alle rausfiltern).
+const PS_MATCH_MIN_MPG = 15;
+const PS_MATCH_MIN_GAMES = 20;
+function _psHasEnoughSample(p) {
+  if (typeof p.min === 'number' && p.min < PS_MATCH_MIN_MPG) return false;
+  if (typeof p.games === 'number' && p.games > 0 && p.games < PS_MATCH_MIN_GAMES) return false;
+  return true;
+}
+
 function _psBestWorst(p) {
   let best = PS_CATS[0], worst = PS_CATS[0];
   PS_CATS.forEach(c => {
@@ -283,6 +357,7 @@ function _psBestMatch(player, seasonKey) {
   let bestAny = null, bestAnyScore = -1;
   pool.forEach(p2 => {
     if (p2.name === player.name) return;
+    if (!_psHasEnoughSample(p2)) return;
     const score = scoreOf(p2);
     if (score > bestAnyScore) { bestAnyScore = score; bestAny = p2; }
     if (p2.teamId !== player.teamId && score > bestOtherScore) { bestOtherScore = score; bestOther = p2; }
@@ -303,6 +378,7 @@ function _psBestHistoricMatch(player, excludeSeasonKey) {
     if (s.key === excludeSeasonKey) return;
     _psBuildPool(s.key).players.forEach(p2 => {
       if (_psNorm(p2.name) === _psNorm(player.name)) return;
+      if (!_psHasEnoughSample(p2)) return;
       const v2 = _psVec(p2);
       let sum = 0;
       for (let i = 0; i < v1.length; i++) sum += Math.abs(v1[i] - v2[i]);
@@ -412,7 +488,9 @@ function _psFillControls() {
   if (!teamSel || !playerSel) return;
   if (!teamSel.dataset.filled) {
     const teams = (typeof TEAMS !== 'undefined' ? TEAMS : []).slice().sort((a, b) => a.name.localeCompare(b.name));
-    teamSel.innerHTML = '<option value="">Alle Teams</option>' + teams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+    teamSel.innerHTML = '<option value="">Alle Teams</option>' +
+      teams.map(t => `<option value="${t.id}">${t.name}</option>`).join('') +
+      '<option value="FA">Free Agents</option>';
     teamSel.dataset.filled = '1';
     teamSel.addEventListener('change', () => { _psState.teamFilter = teamSel.value; _psFillPlayerOptions(); _psRenderCard(); });
   }
@@ -424,25 +502,39 @@ function _psFillControls() {
 
   const seasonLabel = (PS_SEASONS.find(s => s.key === _psState.season) || {}).label || _psState.season;
   document.getElementById('psPoolNote').textContent =
-    `${pool.matchedCount} von ${pool.rosteredCount} gerosterten Spielern haben Stats für ${seasonLabel}`;
+    `${pool.matchedCount} von ${pool.rosteredCount} gerosterten Spielern haben Stats für ${seasonLabel}` +
+    (pool.freeAgentCount ? ` (+ ${pool.freeAgentCount} Free Agents/Rookies)` : '');
 }
 
-// Baut die optgroup-Liste (nach Fantasy-Team gruppiert) fuer ein
-// beliebiges <select> -- genutzt vom Haupt-Spieler-Select UND von den
-// zwei Vergleichs-Selects im Compare-Modus.
+// "FA" ist der Sentinel-Wert im Team-Filter-<select> fuer "nur nicht
+// gerosterte Spieler" (teamId === null) -- eine normale Team-ID kommt aus
+// TEAMS[].id und ist immer eine Zahl, daher kein Kollisionsrisiko.
+function _psMatchesTeamFilter(p, teamFilterVal) {
+  if (!teamFilterVal) return true;
+  if (teamFilterVal === 'FA') return p.teamId === null;
+  return p.teamId === parseInt(teamFilterVal, 10);
+}
+
+// Baut die optgroup-Liste (nach Fantasy-Team gruppiert, Free Agents als
+// eigene Gruppe ganz am Ende) fuer ein beliebiges <select> -- genutzt vom
+// Haupt-Spieler-Select UND von den zwei Vergleichs-Selects im Compare-Modus.
 function _psOptionsHTML(players, teamFilterId) {
   const teamMapLocal = (typeof teamMap !== 'undefined') ? teamMap : {};
-  const filtered = teamFilterId ? players.filter(p => p.teamId === parseInt(teamFilterId, 10)) : players;
+  const filtered = teamFilterId ? players.filter(p => _psMatchesTeamFilter(p, teamFilterId)) : players;
   const byTeam = new Map();
   filtered.forEach(p => {
-    const tName = teamMapLocal[p.teamId] ? teamMapLocal[p.teamId].name : ('Team ' + p.teamId);
+    const tName = p.teamId !== null && teamMapLocal[p.teamId] ? teamMapLocal[p.teamId].name : 'Free Agents';
     if (!byTeam.has(tName)) byTeam.set(tName, []);
     byTeam.get(tName).push(p);
   });
-  const teamNames = [...byTeam.keys()].sort();
+  const teamNames = [...byTeam.keys()].sort((a, b) => {
+    if (a === 'Free Agents') return 1;
+    if (b === 'Free Agents') return -1;
+    return a.localeCompare(b);
+  });
   return teamNames.map(tName =>
     `<optgroup label="${tName}">` +
-    byTeam.get(tName).map(p => `<option value="${p.name.replace(/"/g, '&quot;')}">${p.name} (${p.nbaTeam} ${p.pos})</option>`).join('') +
+    byTeam.get(tName).map(p => `<option value="${p.name.replace(/"/g, '&quot;')}">${p.name} (${p.nbaTeam || '–'} ${p.pos || '–'})</option>`).join('') +
     '</optgroup>'
   ).join('');
 }
@@ -450,7 +542,7 @@ function _psOptionsHTML(players, teamFilterId) {
 function _psFillPlayerOptions() {
   const playerSel = document.getElementById('psPlayerSelect');
   const pool = _psBuildPool(_psState.season).players;
-  const filtered = _psState.teamFilter ? pool.filter(p => p.teamId === parseInt(_psState.teamFilter, 10)) : pool;
+  const filtered = _psState.teamFilter ? pool.filter(p => _psMatchesTeamFilter(p, _psState.teamFilter)) : pool;
   playerSel.innerHTML = _psOptionsHTML(pool, _psState.teamFilter);
   if (!filtered.some(p => p.name === _psState.name)) {
     _psState.name = filtered.length ? filtered[0].name : null;
@@ -473,6 +565,7 @@ function psSetCompare(slot, value) {
 }
 
 function _psTeamTag(teamId) {
+  if (teamId === null) return `<span class="ps-team-tag" style="border-color:var(--border);color:var(--text-dim,#888)">Free Agent</span>`;
   const t = (typeof teamMap !== 'undefined') ? teamMap[teamId] : null;
   if (!t) return '';
   const c = (typeof getTeamColor === 'function') ? getTeamColor(t) : 'var(--border)';
@@ -495,7 +588,7 @@ function _psRenderCard() {
     card.innerHTML = `
       <div class="ps-top">
         <div>
-          <p class="ps-id-tag">${p.nbaTeam} &middot; ${p.pos} &middot; <b>Solo Shape</b></p>
+          <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'} &middot; <b>Solo Shape</b></p>
           <h2 class="ps-name">${p.name}</h2>
         </div>
         ${_psTeamTag(p.teamId)}
@@ -525,7 +618,7 @@ function _psRenderCard() {
     card.innerHTML = `
       <div class="ps-top">
         <div>
-          <p class="ps-id-tag">${p.nbaTeam} &middot; ${p.pos} &middot; <b>Shape Match</b></p>
+          <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'} &middot; <b>Shape Match</b></p>
           <h2 class="ps-name">${p.name}</h2>
         </div>
         ${_psTeamTag(p.teamId)}
@@ -544,7 +637,7 @@ function _psRenderCard() {
           <p class="ps-hero"><span class="ps-num">${match.score}%</span><span class="ps-hero-label">Shape Match &middot; ${_psSeasonLabel(season)}</span></p>
           <div>
             <p class="ps-alt-name">${alt.name}</p>
-            <p class="ps-meta">${alt.nbaTeam} &middot; ${alt.pos} ${_psTeamTag(alt.teamId)}</p>
+            <p class="ps-meta">${alt.nbaTeam || '–'} &middot; ${alt.pos || '–'} ${_psTeamTag(alt.teamId)}</p>
           </div>
           <p class="ps-note">${alt.teamId === p.teamId
             ? 'Ähnlichstes Profil steht im selben Kader — für Trade-Ideen sonst nicht direkt nutzbar.'
@@ -556,7 +649,7 @@ function _psRenderCard() {
           <p class="ps-hero ps-hero-secondary"><span class="ps-num">${historic.score}%</span><span class="ps-hero-label">Historic Match &middot; ${_psSeasonLabel(historic.seasonKey)}</span></p>
           <div>
             <p class="ps-alt-name">${historicAlt.name}</p>
-            <p class="ps-meta">${historicAlt.nbaTeam} &middot; ${historicAlt.pos} ${_psTeamTag(historicAlt.teamId)}</p>
+            <p class="ps-meta">${historicAlt.nbaTeam || '–'} &middot; ${historicAlt.pos || '–'} ${_psTeamTag(historicAlt.teamId)}</p>
           </div>
           <p class="ps-note">Bestes 9-Cat-Profil-Match aus einer anderen Saison (${_psSeasonLabel(historic.seasonKey)}) im gerosterten Pool.</p>
           ` : '<p class="ps-note">Kein historisches Match in einer anderen Saison gefunden.</p>'}
@@ -589,7 +682,7 @@ function _psRenderCard() {
     card.innerHTML = `
       <div class="ps-top">
         <div>
-          <p class="ps-id-tag">${p.nbaTeam} &middot; ${p.pos} &middot; <b>Vergleich</b></p>
+          <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'} &middot; <b>Vergleich</b></p>
           <h2 class="ps-name">${p.name}</h2>
         </div>
         ${_psTeamTag(p.teamId)}
