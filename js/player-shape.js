@@ -12,17 +12,16 @@
 //  stehen. Pro Saison braucht es eine echte Pro-Spiel-Statzeile je
 //  Spieler (pts/reb/ast/stl/blk/3pm/to/fg%/ft%) -- ein blosser
 //  End-Rang (wie in data/season-rankings.js) reicht NICHT fuer einen
-//  Kategorie-Radar. Verfuegbar (per BBM-Player-Rankings-.xls ueber
-//  scripts/convert-bbm-last-season.py erzeugt):
-//    - "current"  data/live-projections.js          (LIVE_PROJECTIONS, dict)
-//    - "2025-26"  data/last-season-stats-2025-26.js (Array)
-//    - "2024-25"  data/last-season-stats-2024-25.js (Array)
-//    - "2023-24"  data/last-season-stats-2023-24.js (Array)
-//    - "2003-04"  data/last-season-stats-2003-04.js (Array, 2026-09-21 nachgereicht)
+//  Kategorie-Radar. "current" kommt aus data/live-projections.js
+//  (LIVE_PROJECTIONS, dict); alle anderen aus je einer per BBM-Player-
+//  Rankings-.xls + scripts/convert-bbm-last-season.py erzeugten
+//  data/last-season-stats-<saison>.js (Array). Aktuell vorhanden:
+//  2025-26, 2024-25, 2023-24, 2014-15 bis 2003-04 (Luecke 2015-16 bis
+//  2022-23 -- noch nicht nachgereicht, siehe PS_SEASONS fuer den
+//  jeweils aktuellen Stand).
 //  Weitere Saison ergaenzen: PS_SEASONS um einen Eintrag erweitern +
-//  in _psSeasonRawIndex() einen weiteren "else if" analog zu "2025-26"
-//  ergaenzen. Der Rest (Pool, Perzentile, Radar, Compare) braucht
-//  KEINE Aenderung, er haengt nur an dieser einen Funktion.
+//  PS_LAST_SEASON_ARRAYS um eine Zeile ergaenzen. Der Rest (Pool,
+//  Perzentile, Radar, Compare) braucht KEINE Aenderung.
 //
 //  Pool je Saison = alle gerosterten Spieler (heutiger Kaderstand)
 //  mit einem Treffer in der jeweiligen Saison-Statdatei (per
@@ -57,6 +56,17 @@ const PS_SEASONS = [
   { key: '2025-26', label: '2025/26 (Saison-Ist-Werte)' },
   { key: '2024-25', label: '2024/25 (Saison-Ist-Werte)' },
   { key: '2023-24', label: '2023/24 (Saison-Ist-Werte)' },
+  { key: '2014-15', label: '2014/15 (Saison-Ist-Werte)' },
+  { key: '2013-14', label: '2013/14 (Saison-Ist-Werte)' },
+  { key: '2012-13', label: '2012/13 (Saison-Ist-Werte)' },
+  { key: '2011-12', label: '2011/12 (Saison-Ist-Werte)' },
+  { key: '2010-11', label: '2010/11 (Saison-Ist-Werte)' },
+  { key: '2009-10', label: '2009/10 (Saison-Ist-Werte)' },
+  { key: '2008-09', label: '2008/09 (Saison-Ist-Werte)' },
+  { key: '2007-08', label: '2007/08 (Saison-Ist-Werte)' },
+  { key: '2006-07', label: '2006/07 (Saison-Ist-Werte)' },
+  { key: '2005-06', label: '2005/06 (Saison-Ist-Werte)' },
+  { key: '2004-05', label: '2004/05 (Saison-Ist-Werte)' },
   { key: '2003-04', label: '2003/04 (Saison-Ist-Werte)' },
 ];
 
@@ -122,6 +132,32 @@ function _psPercentileOf(sortedAsc, v) {
   return ((numLess + 0.5 * numEqual) / n) * 100;
 }
 
+// Saison-Key -> Getter, der das jeweilige LAST_SEASON_STATS_*-Array liefert
+// (oder null, falls das Datenscript nicht geladen ist). MUSS als Funktion
+// mit woertlichem Bezeichner geschrieben werden, kein String-Lookup wie
+// window[varName]: ein top-level "const X = [...]" in einem <script>-Tag
+// haengt NICHT an window (siehe Projekt-Learnings zu Script-Scope/vm-
+// Sandbox) -- der typeof-Check gegen den woertlichen Namen ist der einzige
+// sichere Weg. Neue Saison ergaenzen: hier eine Zeile + PS_SEASONS-Eintrag,
+// KEINE Aenderung an _psSeasonRawIndex/_psBuildPool/Radar/Compare noetig.
+const PS_LAST_SEASON_ARRAYS = {
+  '2025-26': () => (typeof LAST_SEASON_STATS_2025_26 !== 'undefined' ? LAST_SEASON_STATS_2025_26 : null),
+  '2024-25': () => (typeof LAST_SEASON_STATS_2024_25 !== 'undefined' ? LAST_SEASON_STATS_2024_25 : null),
+  '2023-24': () => (typeof LAST_SEASON_STATS_2023_24 !== 'undefined' ? LAST_SEASON_STATS_2023_24 : null),
+  '2014-15': () => (typeof LAST_SEASON_STATS_2014_15 !== 'undefined' ? LAST_SEASON_STATS_2014_15 : null),
+  '2013-14': () => (typeof LAST_SEASON_STATS_2013_14 !== 'undefined' ? LAST_SEASON_STATS_2013_14 : null),
+  '2012-13': () => (typeof LAST_SEASON_STATS_2012_13 !== 'undefined' ? LAST_SEASON_STATS_2012_13 : null),
+  '2011-12': () => (typeof LAST_SEASON_STATS_2011_12 !== 'undefined' ? LAST_SEASON_STATS_2011_12 : null),
+  '2010-11': () => (typeof LAST_SEASON_STATS_2010_11 !== 'undefined' ? LAST_SEASON_STATS_2010_11 : null),
+  '2009-10': () => (typeof LAST_SEASON_STATS_2009_10 !== 'undefined' ? LAST_SEASON_STATS_2009_10 : null),
+  '2008-09': () => (typeof LAST_SEASON_STATS_2008_09 !== 'undefined' ? LAST_SEASON_STATS_2008_09 : null),
+  '2007-08': () => (typeof LAST_SEASON_STATS_2007_08 !== 'undefined' ? LAST_SEASON_STATS_2007_08 : null),
+  '2006-07': () => (typeof LAST_SEASON_STATS_2006_07 !== 'undefined' ? LAST_SEASON_STATS_2006_07 : null),
+  '2005-06': () => (typeof LAST_SEASON_STATS_2005_06 !== 'undefined' ? LAST_SEASON_STATS_2005_06 : null),
+  '2004-05': () => (typeof LAST_SEASON_STATS_2004_05 !== 'undefined' ? LAST_SEASON_STATS_2004_05 : null),
+  '2003-04': () => (typeof LAST_SEASON_STATS_2003_04 !== 'undefined' ? LAST_SEASON_STATS_2003_04 : null),
+};
+
 // Liefert Map(normalizedName -> {pts,tpm,reb,ast,stl,blk,tov,fgPct,ftPct})
 // fuer die gewaehlte Saison. Jede Saison hat ihre eigene Rohdaten-Form
 // (Dict vs. Array, Feldname "to" vs. "tov") -- wird hier vereinheitlicht,
@@ -137,33 +173,14 @@ function _psSeasonRawIndex(seasonKey) {
         map.set(_psNorm(nm), { name: nm, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.tov, fgPct: s.fgPct, ftPct: s.ftPct });
       });
     }
-  } else if (seasonKey === '2025-26') {
-    if (typeof LAST_SEASON_STATS_2025_26 !== 'undefined') {
-      LAST_SEASON_STATS_2025_26.forEach(s => {
-        map.set(_psNorm(s.name), { name: s.name, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
-      });
-    }
-  } else if (seasonKey === '2024-25') {
-    if (typeof LAST_SEASON_STATS_2024_25 !== 'undefined') {
-      LAST_SEASON_STATS_2024_25.forEach(s => {
-        map.set(_psNorm(s.name), { name: s.name, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
-      });
-    }
-  } else if (seasonKey === '2023-24') {
-    if (typeof LAST_SEASON_STATS_2023_24 !== 'undefined') {
-      LAST_SEASON_STATS_2023_24.forEach(s => {
-        map.set(_psNorm(s.name), { name: s.name, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
-      });
-    }
-  } else if (seasonKey === '2003-04') {
-    if (typeof LAST_SEASON_STATS_2003_04 !== 'undefined') {
-      LAST_SEASON_STATS_2003_04.forEach(s => {
+  } else if (PS_LAST_SEASON_ARRAYS[seasonKey]) {
+    const arr = PS_LAST_SEASON_ARRAYS[seasonKey]();
+    if (arr) {
+      arr.forEach(s => {
         map.set(_psNorm(s.name), { name: s.name, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
       });
     }
   }
-  // Weitere Saisons: hier einen weiteren "else if" ergaenzen, sobald
-  // echte Stats vorliegen (siehe Kommentar am Dateikopf).
 
   _psSeasonIdxCache[seasonKey] = map;
   return map;
