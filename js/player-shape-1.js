@@ -12,13 +12,12 @@
 //  stehen. Pro Saison braucht es eine echte Pro-Spiel-Statzeile je
 //  Spieler (pts/reb/ast/stl/blk/3pm/to/fg%/ft%) -- ein blosser
 //  End-Rang (wie in data/season-rankings.js) reicht NICHT fuer einen
-//  Kategorie-Radar. Verfuegbar (per BBM-Player-Rankings-.xls ueber
-//  scripts/convert-bbm-last-season.py erzeugt):
+//  Kategorie-Radar. Verfuegbar (alle vier per BBM-Player-Rankings-.xls
+//  ueber scripts/convert-bbm-last-season.py erzeugt, 2026-09-21):
 //    - "current"  data/live-projections.js          (LIVE_PROJECTIONS, dict)
 //    - "2025-26"  data/last-season-stats-2025-26.js (Array)
 //    - "2024-25"  data/last-season-stats-2024-25.js (Array)
 //    - "2023-24"  data/last-season-stats-2023-24.js (Array)
-//    - "2003-04"  data/last-season-stats-2003-04.js (Array, 2026-09-21 nachgereicht)
 //  Weitere Saison ergaenzen: PS_SEASONS um einen Eintrag erweitern +
 //  in _psSeasonRawIndex() einen weiteren "else if" analog zu "2025-26"
 //  ergaenzen. Der Rest (Pool, Perzentile, Radar, Compare) braucht
@@ -57,7 +56,6 @@ const PS_SEASONS = [
   { key: '2025-26', label: '2025/26 (Saison-Ist-Werte)' },
   { key: '2024-25', label: '2024/25 (Saison-Ist-Werte)' },
   { key: '2023-24', label: '2023/24 (Saison-Ist-Werte)' },
-  { key: '2003-04', label: '2003/04 (Saison-Ist-Werte)' },
 ];
 
 let _psSeasonIdxCache = {};
@@ -66,44 +64,6 @@ let _psState = { name: null, mode: 'solo', teamFilter: '', season: 'current', co
 
 function _psNorm(name) {
   return (typeof normalizeName === 'function') ? normalizeName(name) : String(name || '').toLowerCase().trim();
-}
-
-// Generationen-Suffix ("Jr.", "Sr", "II", "III", "IV") am Namensende, oder
-// null falls keins vorhanden. normalizeName() strippt diese Suffixe bewusst
-// (siehe data/aliases.js, wegen ESPN-Formatierungsinkonsistenzen bei EINEM
-// Spieler) -- bei Namensvettern ueber Generationen (z.B. "Jabari Smith Jr."
-// heute vs. "Jabari Smith Sr" 2003/04) fuehrt genau das aber zu falschen
-// Treffern in alten Saisons.
-function _psSuffix(name) {
-  const m = String(name || '').trim().match(/\b(Jr\.?|Sr\.?|IV|III|II)\.?$/i);
-  return m ? m[1].replace(/\./g, '').toUpperCase() : null;
-}
-
-// Zwei Suffixe gelten als Generationen-Konflikt nur, wenn BEIDE Seiten
-// explizit eins tragen und sie sich unterscheiden ("Jr" vs "Sr"). Ein
-// EINSEITIG fehlendes Suffix ist KEIN Konflikt -- BBMs Exporte lassen bei
-// aktuellen Spielern (Kelly Oubre Jr., Robert Williams III, ...) das
-// Suffix haeufig einfach weg, das waere sonst faelschlich rausgefiltert
-// worden (siehe Test 2026-09-21: 6 legitime Treffer in 2025/26 betroffen).
-function _psSuffixConflict(nameA, nameB) {
-  const a = _psSuffix(nameA), b = _psSuffix(nameB);
-  return !!(a && b && a !== b);
-}
-
-// Manuelle Sperrliste fuer Namensvettern-Faelle, die _psSuffixConflict
-// NICHT erwischt (einseitig fehlendes Suffix, siehe Kommentar oben) -- z.B.
-// "Gary Payton II" (heute gerostert) vs. "Gary Payton" (Hall-of-Famer,
-// spielte 2003/04 fuer LAL). Beide Seiten normalisiert + kleingeschrieben,
-// Reihenfolge egal. Bei Bedarf weitere Faelle ergaenzen, sobald entdeckt.
-const _PS_MATCH_BLOCKLIST = new Set([
-  ['gary payton ii', 'gary payton'].sort().join('|'),
-]);
-function _psIsBlockedPair(nameA, nameB) {
-  // Bewusst NUR trim+lowercase, NICHT _psNorm() -- die Sperrliste muss
-  // gerade die per Suffix unterscheidbaren Rohnamen vergleichen, waehrend
-  // normalizeName() genau diese Suffixe wieder entfernen wuerde.
-  const key = [String(nameA || '').trim().toLowerCase(), String(nameB || '').trim().toLowerCase()].sort().join('|');
-  return _PS_MATCH_BLOCKLIST.has(key);
 }
 
 // Rank-Perzentil ueber ein sortiertes Array (aufsteigend). Gleiche Werte
@@ -134,31 +94,25 @@ function _psSeasonRawIndex(seasonKey) {
     if (typeof LIVE_PROJECTIONS !== 'undefined') {
       Object.keys(LIVE_PROJECTIONS).forEach(nm => {
         const s = LIVE_PROJECTIONS[nm];
-        map.set(_psNorm(nm), { name: nm, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.tov, fgPct: s.fgPct, ftPct: s.ftPct });
+        map.set(_psNorm(nm), { pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.tov, fgPct: s.fgPct, ftPct: s.ftPct });
       });
     }
   } else if (seasonKey === '2025-26') {
     if (typeof LAST_SEASON_STATS_2025_26 !== 'undefined') {
       LAST_SEASON_STATS_2025_26.forEach(s => {
-        map.set(_psNorm(s.name), { name: s.name, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
+        map.set(_psNorm(s.name), { pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
       });
     }
   } else if (seasonKey === '2024-25') {
     if (typeof LAST_SEASON_STATS_2024_25 !== 'undefined') {
       LAST_SEASON_STATS_2024_25.forEach(s => {
-        map.set(_psNorm(s.name), { name: s.name, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
+        map.set(_psNorm(s.name), { pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
       });
     }
   } else if (seasonKey === '2023-24') {
     if (typeof LAST_SEASON_STATS_2023_24 !== 'undefined') {
       LAST_SEASON_STATS_2023_24.forEach(s => {
-        map.set(_psNorm(s.name), { name: s.name, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
-      });
-    }
-  } else if (seasonKey === '2003-04') {
-    if (typeof LAST_SEASON_STATS_2003_04 !== 'undefined') {
-      LAST_SEASON_STATS_2003_04.forEach(s => {
-        map.set(_psNorm(s.name), { name: s.name, pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
+        map.set(_psNorm(s.name), { pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
       });
     }
   }
@@ -186,11 +140,6 @@ function _psBuildPool(seasonKey) {
       const canon = (typeof NAME_ALIASES !== 'undefined' && NAME_ALIASES[norm]) || null;
       const s = seasonIdx.get(norm) || (canon ? seasonIdx.get(_psNorm(canon)) : null);
       if (!s) return;
-      // Generationen-Schutz: explizit widerspruechliche Jr/Sr/II-Suffixe
-      // (_psSuffixConflict) oder ein bekannter einseitiger Namensvetter-
-      // Fall (_PS_MATCH_BLOCKLIST) zwischen Roster-Namen und Saison-
-      // Statzeile gelten NICHT als Match.
-      if (_psSuffixConflict(p.name, s.name) || _psIsBlockedPair(p.name, s.name)) return;
       rows.push({
         name: p.name, pos: p.pos, nbaTeam: p.team, teamId: parseInt(tid, 10),
         raw: { pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.tov, fgPct: s.fgPct, ftPct: s.ftPct },
