@@ -884,12 +884,12 @@ const SUBNAV_PAGES = {
   bestAvailPage:'bestavail', analyticsPage:'analytics', rollingRankingsPage:'rollingrankings', nbaPowerRankingsPage:'nbapowerrankings', nbaPowerScorePage:'nbapowerscore', tradePage:'trade',
   tradeFinderPage:'tradefinder', tradeHistoryPage:'tradehistory', adminSettingsPage:'adminsettings', standingsPage:'standings', rulesPage:'rules',
   liveScoresPage:'livescores', playerRankingsPage:'playerrankings', playerProjectionsPage:'playerprojections',
-  matchupPage:'matchup',
+  matchupPage:'matchup', playerShapePage:'playershape',
   liveProjectionsPage:'liveprojections', liveProjTeamsPage:'liveprojectionsteams', liveProjDraftPage:'liveprojectionsdraft',
 };
 
 const SNAV_GROUP = {
-  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer', liveprojections: 'snavPlayer', liveprojectionsteams: 'snavPlayer', liveprojectionsdraft: 'snavPlayer',
+  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer', playershape: 'snavPlayer', liveprojections: 'snavPlayer', liveprojectionsteams: 'snavPlayer', liveprojectionsdraft: 'snavPlayer',
   rankings: 'snavDynasty', dynastyrolling: 'snavDynasty',
   draft26: 'snavDraft', draft27: 'snavDraft', lottery: 'snavDraft', bigBoard: 'snavDraft',
   draftboard: 'snavTTHQBoards', draftresults: 'snavTTHQBoards',
@@ -1037,6 +1037,7 @@ function _rerenderPage(pageId) {
   if (pageId === 'liveProjectionsPage')  showLiveProjections();
   if (pageId === 'liveProjTeamsPage')    showLiveProjTeams();
   if (pageId === 'liveProjDraftPage')    showLiveProjDraft();
+  if (pageId === 'playerShapePage')      showPlayerShape();
   if (pageId === 'hashtagRankingsPage')  showHashtagRankings();
   if (pageId === 'analyticsPage')        showAnalytics();
   if (pageId === 'rollingRankingsPage')  showRollingRankings();
