@@ -16,9 +16,8 @@
 //  (LIVE_PROJECTIONS, dict); alle anderen aus je einer per BBM-Player-
 //  Rankings-.xls + scripts/convert-bbm-last-season.py erzeugten
 //  data/last-season-stats-<saison>.js (Array). Aktuell vorhanden:
-//  2025-26, 2024-25, 2023-24, 2014-15 bis 2003-04 (Luecke 2015-16 bis
-//  2022-23 -- noch nicht nachgereicht, siehe PS_SEASONS fuer den
-//  jeweils aktuellen Stand).
+//  2025-26 bis 2003-04, LUECKE nur bei 2017-18 (noch nicht nachgereicht,
+//  siehe PS_SEASONS fuer den jeweils aktuellen Stand).
 //  Weitere Saison ergaenzen: PS_SEASONS um einen Eintrag erweitern +
 //  PS_LAST_SEASON_ARRAYS um eine Zeile ergaenzen. Der Rest (Pool,
 //  Perzentile, Radar, Compare) braucht KEINE Aenderung.
@@ -56,6 +55,15 @@ const PS_SEASONS = [
   { key: '2025-26', label: '2025/26 (Saison-Ist-Werte)' },
   { key: '2024-25', label: '2024/25 (Saison-Ist-Werte)' },
   { key: '2023-24', label: '2023/24 (Saison-Ist-Werte)' },
+  { key: '2022-23', label: '2022/23 (Saison-Ist-Werte)' },
+  { key: '2021-22', label: '2021/22 (Saison-Ist-Werte)' },
+  { key: '2020-21', label: '2020/21 (Saison-Ist-Werte)' },
+  { key: '2019-20', label: '2019/20 (Saison-Ist-Werte)' },
+  { key: '2018-19', label: '2018/19 (Saison-Ist-Werte)' },
+  // 2017/18 fehlt bewusst -- noch nicht nachgereicht (siehe Kommentar am
+  // Dateikopf).
+  { key: '2016-17', label: '2016/17 (Saison-Ist-Werte)' },
+  { key: '2015-16', label: '2015/16 (Saison-Ist-Werte)' },
   { key: '2014-15', label: '2014/15 (Saison-Ist-Werte)' },
   { key: '2013-14', label: '2013/14 (Saison-Ist-Werte)' },
   { key: '2012-13', label: '2012/13 (Saison-Ist-Werte)' },
@@ -144,6 +152,13 @@ const PS_LAST_SEASON_ARRAYS = {
   '2025-26': () => (typeof LAST_SEASON_STATS_2025_26 !== 'undefined' ? LAST_SEASON_STATS_2025_26 : null),
   '2024-25': () => (typeof LAST_SEASON_STATS_2024_25 !== 'undefined' ? LAST_SEASON_STATS_2024_25 : null),
   '2023-24': () => (typeof LAST_SEASON_STATS_2023_24 !== 'undefined' ? LAST_SEASON_STATS_2023_24 : null),
+  '2022-23': () => (typeof LAST_SEASON_STATS_2022_23 !== 'undefined' ? LAST_SEASON_STATS_2022_23 : null),
+  '2021-22': () => (typeof LAST_SEASON_STATS_2021_22 !== 'undefined' ? LAST_SEASON_STATS_2021_22 : null),
+  '2020-21': () => (typeof LAST_SEASON_STATS_2020_21 !== 'undefined' ? LAST_SEASON_STATS_2020_21 : null),
+  '2019-20': () => (typeof LAST_SEASON_STATS_2019_20 !== 'undefined' ? LAST_SEASON_STATS_2019_20 : null),
+  '2018-19': () => (typeof LAST_SEASON_STATS_2018_19 !== 'undefined' ? LAST_SEASON_STATS_2018_19 : null),
+  '2016-17': () => (typeof LAST_SEASON_STATS_2016_17 !== 'undefined' ? LAST_SEASON_STATS_2016_17 : null),
+  '2015-16': () => (typeof LAST_SEASON_STATS_2015_16 !== 'undefined' ? LAST_SEASON_STATS_2015_16 : null),
   '2014-15': () => (typeof LAST_SEASON_STATS_2014_15 !== 'undefined' ? LAST_SEASON_STATS_2014_15 : null),
   '2013-14': () => (typeof LAST_SEASON_STATS_2013_14 !== 'undefined' ? LAST_SEASON_STATS_2013_14 : null),
   '2012-13': () => (typeof LAST_SEASON_STATS_2012_13 !== 'undefined' ? LAST_SEASON_STATS_2012_13 : null),
