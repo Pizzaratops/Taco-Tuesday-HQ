@@ -11,13 +11,15 @@
 //  SAISON-AUSWAHL: PS_SEASONS listet, welche Saisons zur Auswahl
 //  stehen. Pro Saison braucht es eine echte Pro-Spiel-Statzeile je
 //  Spieler (pts/reb/ast/stl/blk/3pm/to/fg%/ft%) -- ein blosser
-//  End-Rang (wie in data/season-rankings.js fuer 2023/24 & 2024/25)
-//  reicht NICHT fuer einen Kategorie-Radar. Aktuell verfuegbar:
-//    - "current"  data/live-projections.js   (LIVE_PROJECTIONS, dict)
-//    - "2025-26"  data/last-season-stats-2025-26.js (Array, BBM-Export)
-//  Sobald echte Stats fuer 2024/25 / 2023/24 vorliegen (Beyaz liefert
-//  sie nach): PS_SEASONS um einen Eintrag erweitern + in
-//  _psSeasonRawIndex() einen weiteren "else if" analog zu "2025-26"
+//  End-Rang (wie in data/season-rankings.js) reicht NICHT fuer einen
+//  Kategorie-Radar. Verfuegbar (alle vier per BBM-Player-Rankings-.xls
+//  ueber scripts/convert-bbm-last-season.py erzeugt, 2026-09-21):
+//    - "current"  data/live-projections.js          (LIVE_PROJECTIONS, dict)
+//    - "2025-26"  data/last-season-stats-2025-26.js (Array)
+//    - "2024-25"  data/last-season-stats-2024-25.js (Array)
+//    - "2023-24"  data/last-season-stats-2023-24.js (Array)
+//  Weitere Saison ergaenzen: PS_SEASONS um einen Eintrag erweitern +
+//  in _psSeasonRawIndex() einen weiteren "else if" analog zu "2025-26"
 //  ergaenzen. Der Rest (Pool, Perzentile, Radar, Compare) braucht
 //  KEINE Aenderung, er haengt nur an dieser einen Funktion.
 //
@@ -45,8 +47,8 @@ const PS_CATS = [
 const PS_SEASONS = [
   { key: 'current', label: '2026/27 (Projection)' },
   { key: '2025-26', label: '2025/26 (Saison-Ist-Werte)' },
-  // { key: '2024-25', label: '2024/25 (Saison-Ist-Werte)' },  // TODO sobald Stats vorliegen
-  // { key: '2023-24', label: '2023/24 (Saison-Ist-Werte)' },  // TODO sobald Stats vorliegen
+  { key: '2024-25', label: '2024/25 (Saison-Ist-Werte)' },
+  { key: '2023-24', label: '2023/24 (Saison-Ist-Werte)' },
 ];
 
 let _psSeasonIdxCache = {};
@@ -91,6 +93,18 @@ function _psSeasonRawIndex(seasonKey) {
   } else if (seasonKey === '2025-26') {
     if (typeof LAST_SEASON_STATS_2025_26 !== 'undefined') {
       LAST_SEASON_STATS_2025_26.forEach(s => {
+        map.set(_psNorm(s.name), { pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
+      });
+    }
+  } else if (seasonKey === '2024-25') {
+    if (typeof LAST_SEASON_STATS_2024_25 !== 'undefined') {
+      LAST_SEASON_STATS_2024_25.forEach(s => {
+        map.set(_psNorm(s.name), { pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
+      });
+    }
+  } else if (seasonKey === '2023-24') {
+    if (typeof LAST_SEASON_STATS_2023_24 !== 'undefined') {
+      LAST_SEASON_STATS_2023_24.forEach(s => {
         map.set(_psNorm(s.name), { pts: s.pts, tpm: s.tpm, reb: s.reb, ast: s.ast, stl: s.stl, blk: s.blk, tov: s.to, fgPct: s.fgPct, ftPct: s.ftPct });
       });
     }
