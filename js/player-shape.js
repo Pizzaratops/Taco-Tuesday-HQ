@@ -531,7 +531,39 @@ function showPlayerShape() {
   _psFillSeasonSelect();
   _psBuildPool(_psState.season);
   _psFillControls();
+  _psApplyControlsCollapseState();
   _psRenderCard();
+}
+
+// Auswahl-Panel ein-/ausklappbar (gemerkt in localStorage, ueberlebt also
+// einen Reload) -- rein kosmetisch, keine Auswirkung auf _psState/Pool.
+function psToggleControls() {
+  const panel = document.getElementById('psControlsPanel');
+  if (!panel) return;
+  const collapsed = panel.classList.toggle('ps-controls-collapsed');
+  _psSetControlsToggleUI(collapsed);
+  try { localStorage.setItem('psControlsCollapsed', collapsed ? '1' : '0'); } catch (e) {}
+}
+
+function _psSetControlsToggleUI(collapsed) {
+  const btn = document.getElementById('psControlsToggle');
+  const icon = document.getElementById('psControlsToggleIcon');
+  const label = document.getElementById('psControlsToggleLabel');
+  if (btn) btn.setAttribute('aria-expanded', String(!collapsed));
+  if (icon) icon.textContent = collapsed ? '▸' : '▾';
+  if (label) label.textContent = collapsed ? 'Auswahl anzeigen' : 'Auswahl ausblenden';
+}
+
+function _psApplyControlsCollapseState() {
+  const panel = document.getElementById('psControlsPanel');
+  if (!panel || panel.dataset.collapseInit) return;
+  panel.dataset.collapseInit = '1';
+  let collapsed = false;
+  try { collapsed = localStorage.getItem('psControlsCollapsed') === '1'; } catch (e) {}
+  if (collapsed) {
+    panel.classList.add('ps-controls-collapsed');
+    _psSetControlsToggleUI(true);
+  }
 }
 
 function _psFillSeasonSelect() {
@@ -673,8 +705,26 @@ function _psTeamTag(teamId) {
 // Off-Season/Live-Signale etc.), fuer historische Saisonen der Rang nach
 // dem BBM-Composite-Score dieser Saison (siehe _psSeasonRawIndex). Leerer
 // String, wenn kein Rang vorliegt (zB Rookie ganz ohne Board-Eintrag).
-function _psRankTag(p) {
-  return (typeof p.rank === 'number' && p.rank > 0) ? ` &middot; Rang #${p.rank}` : '';
+function _psRankTag(p, tooltip) {
+  if (!(typeof p.rank === 'number' && p.rank > 0)) return '';
+  const label = `Rang #${p.rank}`;
+  if (tooltip) return ` &middot; <span class="ps-rank-tag" title="${String(tooltip).replace(/"/g, '&quot;')}">${label}</span>`;
+  return ` &middot; ${label}`;
+}
+
+// Grobe Rang-Schaetzung, wenn ein Spielerprofil aus einer anderen Saison in
+// die ZIEL-Saison uebersetzt wuerde: skaliert seine relative Liga-Position
+// (Rang / Poolgroesse) in der QUELL-Saison auf die Poolgroesse der ZIEL-
+// Saison. Konsistent mit der perzentil-erhaltenden Idee von
+// _psTranslateStats(), aber KEINE echte Neuberechnung des Composite-Scores
+// in der Zielsaison -- nur eine Naeherung ueber die relative Liga-Position.
+function _psTranslateRank(sourcePlayer, sourceSeasonKey, targetSeasonKey) {
+  if (typeof sourcePlayer.rank !== 'number' || sourcePlayer.rank <= 0) return null;
+  const nSource = _psBuildPool(sourceSeasonKey).players.length;
+  const nTarget = _psBuildPool(targetSeasonKey).players.length;
+  if (!nSource || !nTarget) return null;
+  const frac = (sourcePlayer.rank - 1) / nSource;
+  return Math.max(1, Math.round(frac * nTarget) + 1);
 }
 
 function _psRenderCard() {
@@ -702,7 +752,7 @@ function _psRenderCard() {
         <div class="ps-radar-box">${radar}</div>
         <div class="ps-side">
           <p class="ps-hero-label">Shape Read</p>
-          <p class="ps-meta">Perzentil-Profil über ${PS_CATS.length} 9-Cat-Kategorien, relativ zu allen gerosterten Spielern mit Stats für diese Saison.</p>
+          <p class="ps-meta">Perzentil-Profil über ${PS_CATS.length} 9-Cat-Kategorien, relativ zu allen Spielern mit Stats für diese Saison.</p>
           <div class="ps-kv-list">
             <div class="ps-kv-row"><span class="ps-kv-k">Stärkste Kategorie</span><span class="ps-kv-v ps-good">${bw.best.label} · ${Math.round(p.pctl[bw.best.k])} PCTL · ${_psFmtCat(bw.best, p.raw)}</span></div>
             <div class="ps-kv-row"><span class="ps-kv-k">Schwächste Kategorie</span><span class="ps-kv-v ps-warn">${bw.worst.label} · ${Math.round(p.pctl[bw.worst.k])} PCTL · ${_psFmtCat(bw.worst, p.raw)}</span></div>
@@ -721,6 +771,7 @@ function _psRenderCard() {
     // unterschiedlich sind (bei season === historic.seasonKey identisch
     // mit den Rohwerten selbst).
     const translated = (historicAlt && historic.seasonKey !== season) ? _psTranslateStats(historicAlt, historic.seasonKey, season) : null;
+    const translatedRank = (historicAlt && historic.seasonKey !== season) ? _psTranslateRank(historicAlt, historic.seasonKey, season) : null;
     const radar = _psRadarSVG([
       { vals: _psVec(p), color: 'var(--accent)', fill: true },
       ...(alt ? [{ vals: _psVec(alt), color: 'var(--accent2)' }] : []),
@@ -748,11 +799,10 @@ function _psRenderCard() {
           <p class="ps-hero"><span class="ps-num">${match.score}%</span><span class="ps-hero-label">Shape Match &middot; ${_psSeasonLabel(season)}</span></p>
           <div>
             <p class="ps-alt-name">${alt.name}</p>
-            <p class="ps-meta">${alt.nbaTeam || '–'} &middot; ${alt.pos || '–'}${_psRankTag(alt)} ${_psTeamTag(alt.teamId)}</p>
+            <p class="ps-meta">${alt.nbaTeam || '–'} &middot; ${alt.pos || '–'}${_psRankTag(alt, alt.teamId === p.teamId
+              ? 'Ähnlichstes Profil steht im selben Kader — für Trade-Ideen sonst nicht direkt nutzbar.'
+              : 'Ähnlichstes 9-Cat-Profil im gesamten Liga-Pool, kann auch im selben Kader stehen — als Ausgangspunkt für Trade-Gespräche.')} ${_psTeamTag(alt.teamId)}</p>
           </div>
-          <p class="ps-note">${alt.teamId === p.teamId
-            ? 'Ähnlichstes Profil steht im selben Kader — für Trade-Ideen sonst nicht direkt nutzbar.'
-            : 'Ähnlichstes 9-Cat-Profil im gesamten Liga-Pool, kann auch im selben Kader stehen — als Ausgangspunkt für Trade-Gespräche.'}</p>
           ` : '<p class="ps-note">Kein weiterer Spieler mit Stats für diese Saison im Pool gefunden.</p>'}
           </div>
           <div class="ps-match-block">
@@ -760,9 +810,8 @@ function _psRenderCard() {
           <p class="ps-hero ps-hero-secondary"><span class="ps-num">${historic.score}%</span><span class="ps-hero-label">Historic Match &middot; ${_psSeasonLabel(historic.seasonKey)}</span></p>
           <div>
             <p class="ps-alt-name">${historicAlt.name}</p>
-            <p class="ps-meta">${historicAlt.nbaTeam || '–'} &middot; ${historicAlt.pos || '–'}${_psRankTag(historicAlt)} ${_psTeamTag(historicAlt.teamId)}</p>
+            <p class="ps-meta">${historicAlt.nbaTeam || '–'} &middot; ${historicAlt.pos || '–'}${_psRankTag(historicAlt, `Bestes 9-Cat-Profil-Match aus einer anderen Saison (${_psSeasonLabel(historic.seasonKey)}) im gerosterten Pool.`)}${typeof translatedRank === 'number' ? ` &middot; <span class="ps-rank-tag" title="Geschätzter Rang, wenn dieses Profil (perzentil-erhaltend übersetzt, siehe _psTranslateStats) unverändert in ${_psSeasonLabel(season)} gespielt hätte.">${_psSeasonLabel(season)} Rang: ~#${translatedRank}</span>` : ''} ${_psTeamTag(historicAlt.teamId)}</p>
           </div>
-          <p class="ps-note">Bestes 9-Cat-Profil-Match aus einer anderen Saison (${_psSeasonLabel(historic.seasonKey)}) im gerosterten Pool.</p>
           ${translated ? `
           <p class="ps-note ps-note-translate"><b>${historicAlt.name.split(' ')[0]}, übersetzt auf ${_psSeasonLabel(season)}:</b><br/>${PS_CATS.map(c => `${c.label} ${_psFmtRawValue(c.raw, translated[c.raw])}`).join(' · ')}</p>
           ` : ''}

@@ -1321,9 +1321,20 @@
    PLAYER SHAPE STUDIO (js/player-shape.js)
    ============================================================ */
 .ps-controls {
-  display: flex; flex-wrap: wrap; gap: 14px 16px; align-items: flex-end;
   padding: 16px; margin: 18px 0; background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
 }
+.ps-controls-toggle {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+  background: transparent; border: 0; cursor: pointer; padding: 0;
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .04em; color: var(--muted);
+}
+.ps-controls-toggle-icon { font-size: 11px; }
+.ps-controls-body {
+  display: flex; flex-wrap: wrap; gap: 14px 16px; align-items: flex-end; margin-top: 14px;
+}
+.ps-controls.ps-controls-collapsed .ps-controls-body { display: none; }
+.ps-controls.ps-controls-collapsed .ps-controls-toggle { color: var(--text); }
 .ps-field { display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto; min-width: 160px; }
 .ps-field-grow { flex: 1 1 260px; }
 .ps-field-auto { flex: 0 0 auto; }
@@ -1382,6 +1393,7 @@
 .ps-note { font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0; }
 .ps-note-translate { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); color: var(--text); }
 .ps-note-translate b { color: var(--accent3, var(--accent)); }
+.ps-rank-tag { cursor: help; border-bottom: 1px dotted var(--muted); }
 .ps-empty { padding: 20px; color: var(--muted); font-size: 13px; }
 #psPoolNote { font-size: 11px; color: var(--muted); margin-top: 10px; text-align: right; }
 
