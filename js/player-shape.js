@@ -865,12 +865,13 @@ function _psRenderCard() {
     const alt = match.player;
     const historic = _psBestHistoricMatch(p, season, _psState.samePositionOnly);
     const historicAlt = historic ? historic.player : null;
-    // Epochen-Uebersetzung: was historicAlt's Rohwerte (aus SEINER Saison)
-    // im Kontext der aktuell gewaehlten Saison bedeutet haetten, siehe
-    // _psTranslateStats(). Nur sinnvoll, wenn die Saisonen tatsaechlich
-    // unterschiedlich sind (bei season === historic.seasonKey identisch
-    // mit den Rohwerten selbst).
-    const translated = (historicAlt && historic.seasonKey !== season) ? _psTranslateStats(historicAlt, historic.seasonKey, season) : null;
+    // Epochen-uebersetzter Rang: was historicAlt's Rangposition (aus SEINER
+    // Saison) im Kontext der aktuell gewaehlten Saison bedeuten wuerde,
+    // siehe _psTranslateRank(). Nur sinnvoll, wenn die Saisonen tatsaechlich
+    // unterschiedlich sind. Die zugehoerigen uebersetzten Rohwerte werden
+    // nicht mehr angezeigt (Nutzerwunsch 2026-09-22: laesst sich aus dem
+    // Radar/PCTL ohnehin ablesen) -- _psTranslateStats() bleibt fuer
+    // moegliche spaetere Verwendung erhalten.
     const translatedRank = (historicAlt && historic.seasonKey !== season) ? _psTranslateRank(historicAlt, historic.seasonKey, season) : null;
     const radar = _psRadarSVG([
       { vals: _psVec(p), color: 'var(--accent)', fill: true },
@@ -912,9 +913,6 @@ function _psRenderCard() {
             <p class="ps-alt-name">${historicAlt.name}</p>
             <p class="ps-meta">${historicAlt.nbaTeam || '–'} &middot; ${historicAlt.pos || '–'}${_psRankTag(historicAlt, `Bestes 9-Cat-Profil-Match aus einer anderen Saison (${_psSeasonLabel(historic.seasonKey)}) im gerosterten Pool.`)}${typeof translatedRank === 'number' ? ` &middot; <span class="ps-rank-tag" title="Geschätzter Rang, wenn dieses Profil (perzentil-erhaltend übersetzt, siehe _psTranslateStats) unverändert in ${_psSeasonLabel(season)} gespielt hätte.">${_psSeasonLabel(season)} Rang: ~#${translatedRank}</span>` : ''} ${_psTeamTag(historicAlt.teamId)}</p>
           </div>
-          ${translated ? `
-          <p class="ps-note ps-note-translate"><b>${historicAlt.name.split(' ')[0]}, übersetzt auf ${_psSeasonLabel(season)}:</b><br/>${PS_CATS.map(c => `${c.label} ${_psFmtRawValue(c.raw, translated[c.raw])}`).join(' · ')}</p>
-          ` : ''}
           ` : '<p class="ps-note">Kein historisches Match in einer anderen Saison gefunden.</p>'}
           </div>
           <div class="ps-kv-list">
