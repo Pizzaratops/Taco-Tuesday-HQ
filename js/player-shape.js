@@ -282,17 +282,71 @@ function _psSeasonRawIndex(seasonKey) {
 // taeglich generiert) deckt de facto ALLE NBA-Spieler ab (auch gerosterte)
 // und liefert genau diese Metadaten, siehe js/best-available.js fuer
 // dieselbe Quelle.
+//
+// Der RANG selbst kommt NICHT von BEST_AVAILABLE_BOARD (das ist ein
+// Dynasty/Sticky-Composite), sondern von genau derselben Quelle wie die
+// Seite "🔮 2026/27 Projections": data/projections-consensus.js + der
+// dort in js/consensus-projections.js berechnete Z-Score-Gesamtrang
+// (cpRecompute().overallRank), inkl. der vom Nutzer in localStorage
+// gespeicherten Kategorie-Gewichte/Pool-Groesse -- so zeigt Cat Web
+// exakt denselben Rang, den die Projections-Seite selbst anzeigt.
 let _psCurrentMetaCache = null;
+let _psProjRankMap = null;
+
+function _psProjectionsRankMap() {
+  if (_psProjRankMap) return _psProjRankMap;
+  const m = new Map();
+  if (typeof PROJECTIONS_CONSENSUS !== 'undefined' && typeof cpRecompute === 'function') {
+    if (typeof cpLoadPrefs === 'function') cpLoadPrefs();
+    const rows = (typeof cpGetComputed === 'function' && cpGetComputed()) || cpRecompute();
+    if (rows) rows.forEach(r => { if (typeof r.overallRank === 'number') m.set(_psNorm(r.name), r.overallRank); });
+  }
+  _psProjRankMap = m;
+  return m;
+}
+
 function _psCurrentMetaIndex() {
   if (_psCurrentMetaCache) return _psCurrentMetaCache;
   const m = new Map();
+  const rankMap = _psProjectionsRankMap();
   if (typeof BEST_AVAILABLE_BOARD !== 'undefined') {
     BEST_AVAILABLE_BOARD.forEach(p => {
-      m.set(_psNorm(p.name), { pos: p.pos || null, nbaTeam: p.nbaTeam || null, experience: p.experience || null, rank: typeof p.rank === 'number' ? p.rank : null });
+      const norm = _psNorm(p.name);
+      const projRank = rankMap.get(norm);
+      // Fallback auf BEST_AVAILABLE_BOARD.rank nur, wenn der Spieler in den
+      // Consensus-Projections fehlt (z.B. sehr tiefe Free Agents) -- besser
+      // irgendein Rang als gar keiner.
+      m.set(norm, { pos: p.pos || null, nbaTeam: p.nbaTeam || null, experience: p.experience || null, rank: typeof projRank === 'number' ? projRank : (typeof p.rank === 'number' ? p.rank : null) });
     });
   }
   _psCurrentMetaCache = m;
   return m;
+}
+
+// Laedt data/projections-consensus.js nach (genau wie showPlayerProjections()
+// es tut), falls noch nicht geschehen -- diese Datei ist bewusst NICHT
+// statisch in index.html eingebunden (~2,4 MB), siehe Kommentar dort.
+let _psProjectionsLoadStarted = false;
+function _psEnsureProjectionsData(callback) {
+  if (typeof PROJECTIONS_CONSENSUS !== 'undefined' || _psProjectionsLoadStarted) { callback(); return; }
+  _psProjectionsLoadStarted = true;
+  const load = (typeof _loadScriptOnce === 'function')
+    ? _loadScriptOnce('data/projections-consensus.js?v=2')
+    : new Promise(res => {
+        const sc = document.createElement('script');
+        sc.src = 'data/projections-consensus.js?v=2';
+        sc.onload = res; sc.onerror = res;
+        document.body.appendChild(sc);
+      });
+  load.then(() => {
+    // Caches, die den (bisher rang-losen) Stand gespeichert haben, muessen
+    // weg, damit der jetzt bekannte Projections-Rang tatsaechlich einfliesst.
+    _psCurrentMetaCache = null;
+    _psProjRankMap = null;
+    delete _psSeasonIdxCache.current;
+    _psPoolCache = {};
+    callback();
+  });
 }
 
 function _psBuildPool(seasonKey) {
@@ -528,11 +582,13 @@ function _psRadarSVG(seriesList, primaryRaw) {
 // ── Steuerung / Rendering ──────────────────────────────────
 function showPlayerShape() {
   navigate('playerShapePage');
-  _psFillSeasonSelect();
-  _psBuildPool(_psState.season);
-  _psFillControls();
   _psApplyControlsCollapseState();
-  _psRenderCard();
+  _psEnsureProjectionsData(() => {
+    _psFillSeasonSelect();
+    _psBuildPool(_psState.season);
+    _psFillControls();
+    _psRenderCard();
+  });
 }
 
 // Auswahl-Panel ein-/ausklappbar (gemerkt in localStorage, ueberlebt also
