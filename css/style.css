@@ -1348,6 +1348,11 @@
   background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 9px 12px; min-width: 180px;
 }
 .ps-field input[type="text"]::placeholder { color: var(--muted); }
+.ps-checkbox-wrap {
+  display: flex; align-items: center; height: 38px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 9px; padding: 0 12px; cursor: pointer;
+}
+.ps-checkbox-wrap input[type="checkbox"] { cursor: pointer; width: 16px; height: 16px; accent-color: var(--accent); }
 .ps-seg { display: flex; background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 3px; gap: 2px; }
 .ps-seg button {
   font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--muted); background: transparent; border: 0;
