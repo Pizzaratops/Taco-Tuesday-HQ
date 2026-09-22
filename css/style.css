@@ -1411,4 +1411,28 @@
   flex: 1 1 200px; min-width: 160px;
 }
 .ps-compare-row { display: flex; align-items: center; gap: 8px; flex: 1 1 200px; min-width: 200px; }
-.ps-compare-swatch { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.ps-compare-swatch { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; margin-top: 9px; align-self: flex-start; }
+/* 22.09.2026: Namens-Suche vor den zwei Vergleichs-Selects (vorher zeigten
+   die immer den vollen, ungefilterten Spielerpool -- siehe _psFilteredComparePool
+   in player-shape.js). Swatch + Suchfeld + Select stehen jetzt als Spalte
+   uebereinander statt in einer Reihe, damit das Suchfeld genug Breite hat. */
+.ps-compare-field { display: flex; flex-direction: column; gap: 6px; flex: 1 1 200px; min-width: 200px; }
+/* .ps-compare-picks select hat flex:1 1 200px fuer die vorherige flache
+   Reihen-Anordnung -- innerhalb der neuen Spalte (.ps-compare-field, s.o.)
+   wuerde das den Select in der Hoehe strecken, deshalb hier ueberschrieben. */
+.ps-compare-field select, .ps-compare-field .ps-compare-search { flex: 0 0 auto; width: 100%; }
+.ps-compare-search {
+  font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 7px 10px;
+}
+.ps-compare-search::placeholder { color: var(--muted); }
+/* Screenshot-Button direkt an der Karte (ps-top), NICHT im einklappbaren
+   ps-controls-body -- der ist beim "Auswahl ausblenden" nicht mehr erreichbar,
+   genau dann will man aber typischerweise eine saubere Ansicht exportieren. */
+.ps-card-export-btn {
+  font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 12px; color: var(--text); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 9px; padding: 8px 12px; cursor: pointer; white-space: nowrap;
+  align-self: flex-start;
+}
+.ps-card-export-btn:hover { filter: brightness(1.1); border-color: var(--accent); }
+.ps-card-export-btn:disabled { opacity: .6; cursor: default; }

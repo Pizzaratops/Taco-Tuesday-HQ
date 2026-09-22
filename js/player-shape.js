@@ -90,7 +90,7 @@ const PS_SEASONS = [
 
 let _psSeasonIdxCache = {};
 let _psPoolCache = {};
-let _psState = { name: null, mode: 'solo', teamFilter: '', experienceFilter: 'all', search: '', season: 'current', compareA: null, compareB: null, samePositionOnly: false };
+let _psState = { name: null, mode: 'solo', teamFilter: '', experienceFilter: 'all', search: '', season: 'current', compareA: null, compareB: null, samePositionOnly: false, compareSearchA: '', compareSearchB: '' };
 
 // Positions-Overlap statt Exakt-Vergleich: Spieler mit mehreren eligiblen
 // Positionen (zB "PG/SG/SF/PF") sollen mit JEDER ihrer Positionen als
@@ -718,10 +718,12 @@ function _psMatchesTeamFilter(p, teamFilterVal) {
 }
 
 // Kombiniert Team-/Erfahrungs-Filter + Freitext-Suche (Name/Team/Position),
-// so wie sie ueber der SPIELER-Auswahl stehen. Gilt bewusst NUR fuer das
-// Haupt-Select -- die Vergleichs-Selects im Compare-Modus zeigen weiterhin
-// den vollen Pool (siehe _psRenderCard/optsFor), genau wie beim Team-Filter
-// schon vorher. p.experience kommt nur fuer "current" (BEST_AVAILABLE_BOARD)
+// so wie sie ueber der SPIELER-Auswahl stehen. Gilt NUR fuer das Haupt-Select
+// -- die zwei Vergleichs-Selects im Compare-Modus haben ihre eigene, separate
+// Namens-Suche (siehe _psFilteredComparePool/psFilterCompare weiter unten;
+// Team-/Erfahrungs-Filter bewusst NICHT uebernommen, da man im Vergleich oft
+// gezielt einen Spieler aus einem ANDEREN Team sucht). p.experience kommt nur
+// fuer "current" (BEST_AVAILABLE_BOARD)
 // zuverlaessig -- in historischen Saisons ist es null, der Rookie/Sophomore-
 // Filter liefert dort also bewusst leer statt falscher Treffer.
 function _psPassesFilters(p) {
@@ -737,7 +739,8 @@ function _psPassesFilters(p) {
 // Baut die optgroup-Liste (nach Fantasy-Team gruppiert, Free Agents als
 // eigene Gruppe ganz am Ende) fuer ein beliebiges <select> -- genutzt vom
 // Haupt-Spieler-Select (bereits vorgefiltert, siehe _psFillPlayerOptions)
-// UND von den zwei Vergleichs-Selects im Compare-Modus (unfiltriert).
+// UND von den zwei Vergleichs-Selects im Compare-Modus (siehe
+// _psFilteredComparePool).
 function _psOptionsHTML(players) {
   const teamMapLocal = (typeof teamMap !== 'undefined') ? teamMap : {};
   const byTeam = new Map();
@@ -767,6 +770,45 @@ function _psFillPlayerOptions() {
     _psState.name = filtered.length ? filtered[0].name : null;
   }
   if (_psState.name) playerSel.value = _psState.name;
+}
+
+// Filtert den Pool fuer EIN Vergleichs-Select: Hauptspieler und den jeweils
+// ANDEREN Compare-Slot immer raus (kann sonst zweimal denselben Spieler
+// waehlen), plus optionale Freitext-Suche ueber Name/Team/Position -- exakt
+// dieselbe Haystack-Logik wie _psPassesFilters oben, nur ohne Team-/
+// Erfahrungs-Filter (siehe Kommentar dort).
+function _psFilteredComparePool(pool, mainName, excludeName, query) {
+  const q = (query || '').trim().toLowerCase();
+  return pool.filter(x => {
+    if (x.name === mainName || x.name === excludeName) return false;
+    if (!q) return true;
+    const hay = `${x.name} ${x.nbaTeam || ''} ${x.pos || ''}`.toLowerCase();
+    return hay.includes(q);
+  });
+}
+
+// Live-Filter fuer die Namens-Suche vor den zwei Vergleichs-Selects
+// (22.09.2026, Nutzerwunsch). Baut bewusst NUR die Optionsliste des
+// betroffenen <select> neu, statt ueber _psRenderCard() die ganze Karte neu
+// zu rendern -- sonst wuerde das Suchfeld bei jedem Tastendruck neu erzeugt
+// und Fokus/Cursor gingen verloren.
+function psFilterCompare(slot, query) {
+  if (slot === 'A') _psState.compareSearchA = query || '';
+  else _psState.compareSearchB = query || '';
+  const season = _psState.season;
+  const mainPlayer = _psState.name ? _psPlayerByName(_psState.name, season) : null;
+  const pool = _psBuildPool(season).players;
+  const excludeName = slot === 'A' ? _psState.compareB : _psState.compareA;
+  const filtered = _psFilteredComparePool(pool, mainPlayer ? mainPlayer.name : null, excludeName, query);
+  const sel = document.getElementById(slot === 'A' ? 'psCompareSelectA' : 'psCompareSelectB');
+  if (!sel) return;
+  const current = slot === 'A' ? _psState.compareA : _psState.compareB;
+  sel.innerHTML = '<option value="">— Vergleichsspieler wählen —</option>' + _psOptionsHTML(filtered);
+  // Auswahl nur zuruecksetzen, wenn sie nach dem Filtern noch in der Liste
+  // steht -- _psState.compareA/B bleibt unangetastet, das aendert sich erst
+  // ueber psSetCompare (onchange), damit ein noch tippender Nutzer nicht
+  // ploetzlich die Auswahl verliert.
+  if (filtered.some(x => x.name === current)) sel.value = current;
 }
 
 function psSetMode(mode) {
@@ -827,6 +869,17 @@ function _psTranslateRank(sourcePlayer, sourceSeasonKey, targetSeasonKey) {
   return Math.max(1, Math.round(frac * nTarget) + 1);
 }
 
+// Screenshot-Button direkt an der Karte (22.09.2026, Nutzerwunsch) --
+// zusaetzlich zum bestehenden #psExportBtn oben im (einklappbaren!)
+// Auswahl-Panel. Beide rufen dieselbe psDownloadShape() auf, hier gibt es
+// nur einen zweiten, immer sichtbaren Einstiegspunkt direkt an der Karte,
+// die man ja tatsaechlich exportieren will -- gerade wenn man die Auswahl
+// vorher ueber "Auswahl ausblenden" versteckt hat, war der Original-Button
+// mit versteckt.
+function _psCardExportBtnHTML() {
+  return `<button type="button" class="ps-card-export-btn" id="psCardExportBtn" onclick="psDownloadShape()" title="Aktuelle Ansicht als Bild exportieren">📸 Exportieren</button>`;
+}
+
 function _psRenderCard() {
   const card = document.getElementById('psCard');
   if (!card) return;
@@ -846,7 +899,10 @@ function _psRenderCard() {
           <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'}${_psRankTag(p)} &middot; <b>Solo Shape</b></p>
           <h2 class="ps-name">${p.name}</h2>
         </div>
-        ${_psTeamTag(p.teamId)}
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+          ${_psTeamTag(p.teamId)}
+          ${_psCardExportBtnHTML()}
+        </div>
       </div>
       <div class="ps-body">
         <div class="ps-radar-box">${radar}</div>
@@ -884,7 +940,10 @@ function _psRenderCard() {
           <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'}${_psRankTag(p)} &middot; <b>Shape Match</b></p>
           <h2 class="ps-name">${p.name}</h2>
         </div>
-        ${_psTeamTag(p.teamId)}
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+          ${_psTeamTag(p.teamId)}
+          ${_psCardExportBtnHTML()}
+        </div>
       </div>
       <div class="ps-body">
         <div class="ps-radar-box">${radar}
@@ -938,7 +997,8 @@ function _psRenderCard() {
     if (pB) series.push({ vals: _psVec(pB), color: 'var(--accent3)' });
     const radar = _psRadarSVG(series, p.raw);
 
-    const optsFor = (excludeName) => _psOptionsHTML(pool.filter(x => x.name !== excludeName && x.name !== p.name));
+    const optsFor = (excludeName, searchStr) => _psOptionsHTML(_psFilteredComparePool(pool, p.name, excludeName, searchStr));
+    const escAttr = (s) => String(s || '').replace(/"/g, '&quot;');
 
     card.innerHTML = `
       <div class="ps-top">
@@ -946,23 +1006,32 @@ function _psRenderCard() {
           <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'}${_psRankTag(p)} &middot; <b>Vergleich</b></p>
           <h2 class="ps-name">${p.name}</h2>
         </div>
-        ${_psTeamTag(p.teamId)}
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+          ${_psTeamTag(p.teamId)}
+          ${_psCardExportBtnHTML()}
+        </div>
       </div>
 
       <div class="ps-compare-picks">
         <div class="ps-compare-row">
           <span class="ps-compare-swatch" style="background:var(--accent2);"></span>
-          <select onchange="psSetCompare('A', this.value)" aria-label="Vergleichsspieler 1">
-            <option value="">— Vergleichsspieler wählen —</option>
-            ${optsFor(_psState.compareB)}
-          </select>
+          <div class="ps-compare-field">
+            <input type="text" class="ps-compare-search" id="psCompareSearchA" placeholder="Name, Team, Position…" autocomplete="off" aria-label="Vergleichsspieler 1 suchen" value="${escAttr(_psState.compareSearchA)}" oninput="psFilterCompare('A', this.value)"/>
+            <select id="psCompareSelectA" onchange="psSetCompare('A', this.value)" aria-label="Vergleichsspieler 1">
+              <option value="">— Vergleichsspieler wählen —</option>
+              ${optsFor(_psState.compareB, _psState.compareSearchA)}
+            </select>
+          </div>
         </div>
         <div class="ps-compare-row">
           <span class="ps-compare-swatch" style="background:var(--accent3);"></span>
-          <select onchange="psSetCompare('B', this.value)" aria-label="Vergleichsspieler 2">
-            <option value="">— Vergleichsspieler wählen —</option>
-            ${optsFor(_psState.compareA)}
-          </select>
+          <div class="ps-compare-field">
+            <input type="text" class="ps-compare-search" id="psCompareSearchB" placeholder="Name, Team, Position…" autocomplete="off" aria-label="Vergleichsspieler 2 suchen" value="${escAttr(_psState.compareSearchB)}" oninput="psFilterCompare('B', this.value)"/>
+            <select id="psCompareSelectB" onchange="psSetCompare('B', this.value)" aria-label="Vergleichsspieler 2">
+              <option value="">— Vergleichsspieler wählen —</option>
+              ${optsFor(_psState.compareA, _psState.compareSearchB)}
+            </select>
+          </div>
         </div>
       </div>
 
@@ -997,9 +1066,15 @@ async function psDownloadShape() {
   const card = document.getElementById('psCard');
   if (!card) return;
   if (typeof html2canvas !== 'function') { alert('html2canvas Library nicht geladen.'); return; }
-  const btn = document.getElementById('psExportBtn');
-  const orig = btn ? btn.textContent : '';
-  if (btn) { btn.textContent = '⏳ Erstelle...'; btn.disabled = true; }
+  // 22.09.2026: es gibt jetzt zwei Buttons, die hierher fuehren (der urspr.
+  // #psExportBtn oben im einklappbaren Auswahl-Panel, und #psCardExportBtn
+  // direkt an der Karte, siehe _psCardExportBtnHTML) -- beide gleich
+  // behandeln, unabhaengig davon, welcher geklickt wurde. Beide sind
+  // BUTTON-Elemente und werden ueber ignoreElements() unten ohnehin nicht
+  // mitfotografiert.
+  const btns = ['psExportBtn', 'psCardExportBtn'].map(id => document.getElementById(id)).filter(Boolean);
+  const origTexts = btns.map(b => b.textContent);
+  btns.forEach(b => { b.textContent = '⏳ Erstelle...'; b.disabled = true; });
   try {
     const isLight = document.body.classList.contains('light');
     const canvas = await html2canvas(card, {
@@ -1015,11 +1090,11 @@ async function psDownloadShape() {
     const slug = (_psState.name || 'player').toLowerCase().replace(/[^a-z0-9]+/g, '-');
     link.download = `taco-catweb-${slug}-${stamp}.png`;
     link.click();
-    if (btn) { btn.textContent = '✓ Gespeichert!'; }
-    setTimeout(() => { if (btn) { btn.textContent = orig; btn.disabled = false; } }, 1500);
+    btns.forEach(b => { b.textContent = '✓ Gespeichert!'; });
+    setTimeout(() => { btns.forEach((b, i) => { b.textContent = origTexts[i]; b.disabled = false; }); }, 1500);
   } catch (err) {
     console.error('Cat Web Screenshot failed:', err);
     alert('Fehler beim Erstellen: ' + err.message);
-    if (btn) { btn.textContent = orig; btn.disabled = false; }
+    btns.forEach((b, i) => { b.textContent = origTexts[i]; b.disabled = false; });
   }
 }
