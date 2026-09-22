@@ -33,6 +33,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const { assertNoConflictMarkers } = require('./conflict-guard');
 
 const ROOT = path.join(__dirname, '..');
 
@@ -146,6 +147,13 @@ function detectAndSaveTrades(oldRosters, newRosters, { root = ROOT } = {}) {
   }
 
   const existingSrc = fs.readFileSync(tradeHistoryPath, 'utf8');
+  // 22.09.2026: derselbe Schutz wie in bump-data-version.js (siehe dort/
+  // conflict-guard.js) -- ohne ihn wuerde ein unaufgeloester Merge-Konflikt
+  // in dieser Datei entweder einen kryptischen JSON.parse-Fehler weiter
+  // unten werfen, oder schlimmstenfalls (falls die Klammer-Struktur zufaellig
+  // noch parsebar waere) die Konfliktmarker klaglos in die naechste
+  // Trade-History-Version hinein committen. Fatal by design, siehe Guard.
+  assertNoConflictMarkers(path.relative(ROOT, tradeHistoryPath), existingSrc);
   const m = existingSrc.match(/const TRADE_HISTORY_BASE = (\[[\s\S]*\]);/);
   if (!m) throw new Error('TRADE_HISTORY_BASE nicht in data/trade-history.js gefunden');
   const existingTrades = JSON.parse(m[1]);
