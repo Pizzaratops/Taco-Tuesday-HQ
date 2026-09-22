@@ -90,7 +90,21 @@ const PS_SEASONS = [
 
 let _psSeasonIdxCache = {};
 let _psPoolCache = {};
-let _psState = { name: null, mode: 'solo', teamFilter: '', experienceFilter: 'all', search: '', season: 'current', compareA: null, compareB: null };
+let _psState = { name: null, mode: 'solo', teamFilter: '', experienceFilter: 'all', search: '', season: 'current', compareA: null, compareB: null, samePositionOnly: false };
+
+// Positions-Overlap statt Exakt-Vergleich: Spieler mit mehreren eligiblen
+// Positionen (zB "PG/SG/SF/PF") sollen mit JEDER ihrer Positionen als
+// Treffer zaehlen, nicht nur bei exakt identischem Positions-String.
+// Split auf "/" UND "," -- die Positions-Strings sind je nach Datenquelle
+// unterschiedlich formatiert (zB best-available-board.js: "SF/PF/C",
+// teams-rosters.js: "PF, SF") und "/" allein wuerde Letzteres als EINEN
+// Positions-Token behandeln, der dann nie matcht.
+function _psPosOverlap(posA, posB) {
+  if (!posA || !posB) return false;
+  const a = String(posA).split(/[/,]+/).map(s => s.trim()).filter(Boolean);
+  const b = String(posB).split(/[/,]+/).map(s => s.trim()).filter(Boolean);
+  return a.some(x => b.includes(x));
+}
 
 function _psNorm(name) {
   return (typeof normalizeName === 'function') ? normalizeName(name) : String(name || '').toLowerCase().trim();
@@ -465,7 +479,7 @@ function _psBestWorst(p) {
 // wird bevorzugt (fuer Trade-Ideen relevanter als der eigene Kader) --
 // nur wenn dort niemand annaehernd passt, wird auch das eigene Team
 // durchsucht.
-function _psBestMatch(player, seasonKey) {
+function _psBestMatch(player, seasonKey, samePositionOnly) {
   const pool = _psBuildPool(seasonKey).players;
   const v1 = _psVec(player);
   function scoreOf(p2) {
@@ -476,13 +490,22 @@ function _psBestMatch(player, seasonKey) {
   }
   let bestOther = null, bestOtherScore = -1;
   let bestAny = null, bestAnyScore = -1;
+  let sawPosCandidate = false;
   pool.forEach(p2 => {
     if (p2.name === player.name) return;
     if (!_psHasEnoughSample(p2)) return;
+    if (samePositionOnly) {
+      if (!_psPosOverlap(player.pos, p2.pos)) return;
+      sawPosCandidate = true;
+    }
     const score = scoreOf(p2);
     if (score > bestAnyScore) { bestAnyScore = score; bestAny = p2; }
     if (p2.teamId !== player.teamId && score > bestOtherScore) { bestOtherScore = score; bestOther = p2; }
   });
+  // Failguard: kein Kandidat mit Positions-Overlap gefunden (zB sehr enge
+  // Positionsangabe oder Datenluecke) -- lieber ein unrestricted Ergebnis
+  // zeigen als gar keins.
+  if (samePositionOnly && !sawPosCandidate) { const r = _psBestMatch(player, seasonKey, false); r.posFallback = true; return r; }
   return bestOther ? { player: bestOther, score: Math.round(bestOtherScore) } : { player: bestAny, score: Math.round(bestAnyScore) };
 }
 
@@ -492,14 +515,19 @@ function _psBestMatch(player, seasonKey) {
 // hinweg). Der Spieler selbst wird ausgeschlossen -- eine eigene
 // Stat-Zeile aus einer frueheren Saison ist kein "Match", sondern er
 // selbst. Nuetzlich, um z.B. zu sehen "profiliert wie XY in 2024/25".
-function _psBestHistoricMatch(player, excludeSeasonKey) {
+function _psBestHistoricMatch(player, excludeSeasonKey, samePositionOnly) {
   const v1 = _psVec(player);
   let best = null, bestScore = -1, bestSeasonKey = null;
+  let sawPosCandidate = false;
   PS_SEASONS.forEach(s => {
     if (s.key === excludeSeasonKey) return;
     _psBuildPool(s.key).players.forEach(p2 => {
       if (_psNorm(p2.name) === _psNorm(player.name)) return;
       if (!_psHasEnoughSample(p2)) return;
+      if (samePositionOnly) {
+        if (!_psPosOverlap(player.pos, p2.pos)) return;
+        sawPosCandidate = true;
+      }
       const v2 = _psVec(p2);
       let sum = 0;
       for (let i = 0; i < v1.length; i++) sum += Math.abs(v1[i] - v2[i]);
@@ -507,6 +535,13 @@ function _psBestHistoricMatch(player, excludeSeasonKey) {
       if (score > bestScore) { bestScore = score; best = p2; bestSeasonKey = s.key; }
     });
   });
+  // Failguard wie bei _psBestMatch: kein Positions-Kandidat gefunden -->
+  // unrestricted nochmal versuchen statt "kein Match".
+  if (samePositionOnly && !sawPosCandidate) {
+    const r = _psBestHistoricMatch(player, excludeSeasonKey, false);
+    if (r) r.posFallback = true;
+    return r;
+  }
   return best ? { player: best, score: Math.round(bestScore), seasonKey: bestSeasonKey } : null;
 }
 
@@ -740,6 +775,15 @@ function psSetMode(mode) {
   _psRenderCard();
 }
 
+// "Nur gleiche Position" fuer Shape Match / Historic Match. Ueberlapp statt
+// Exakt-Vergleich (siehe _psPosOverlap) -- ein Spieler mit vier eligiblen
+// Positionen (zB Amen Thompson: PG/SG/SF/PF) zaehlt bei JEDER davon als
+// Treffer, sonst waere der Filter fuer Multi-Position-Spieler witzlos.
+function psToggleSamePosition(checked) {
+  _psState.samePositionOnly = !!checked;
+  _psRenderCard();
+}
+
 // Wird von den zwei dynamisch in der Card gerenderten Compare-Selects
 // aufgerufen (inline onchange, siehe _psRenderCard).
 function psSetCompare(slot, value) {
@@ -817,9 +861,9 @@ function _psRenderCard() {
       </div>`;
 
   } else if (_psState.mode === 'match') {
-    const match = _psBestMatch(p, season);
+    const match = _psBestMatch(p, season, _psState.samePositionOnly);
     const alt = match.player;
-    const historic = _psBestHistoricMatch(p, season);
+    const historic = _psBestHistoricMatch(p, season, _psState.samePositionOnly);
     const historicAlt = historic ? historic.player : null;
     // Epochen-Uebersetzung: was historicAlt's Rohwerte (aus SEINER Saison)
     // im Kontext der aktuell gewaehlten Saison bedeutet haetten, siehe
@@ -852,7 +896,7 @@ function _psRenderCard() {
         <div class="ps-side">
           <div class="ps-match-block">
           ${alt ? `
-          <p class="ps-hero"><span class="ps-num">${match.score}%</span><span class="ps-hero-label">Shape Match &middot; ${_psSeasonLabel(season)}</span></p>
+          <p class="ps-hero"><span class="ps-num">${match.score}%</span><span class="ps-hero-label">Shape Match &middot; ${_psSeasonLabel(season)}${match.posFallback ? ' <span class="ps-rank-tag" title="Kein Spieler mit Positions-Overlap gefunden — zeigt stattdessen das beste Match über alle Positionen.">(alle Positionen)</span>' : ''}</span></p>
           <div>
             <p class="ps-alt-name">${alt.name}</p>
             <p class="ps-meta">${alt.nbaTeam || '–'} &middot; ${alt.pos || '–'}${_psRankTag(alt, alt.teamId === p.teamId
@@ -863,7 +907,7 @@ function _psRenderCard() {
           </div>
           <div class="ps-match-block">
           ${historicAlt ? `
-          <p class="ps-hero ps-hero-secondary"><span class="ps-num">${historic.score}%</span><span class="ps-hero-label">Historic Match &middot; ${_psSeasonLabel(historic.seasonKey)}</span></p>
+          <p class="ps-hero ps-hero-secondary"><span class="ps-num">${historic.score}%</span><span class="ps-hero-label">Historic Match &middot; ${_psSeasonLabel(historic.seasonKey)}${historic.posFallback ? ' <span class="ps-rank-tag" title="Kein Spieler mit Positions-Overlap gefunden — zeigt stattdessen das beste Match über alle Positionen.">(alle Positionen)</span>' : ''}</span></p>
           <div>
             <p class="ps-alt-name">${historicAlt.name}</p>
             <p class="ps-meta">${historicAlt.nbaTeam || '–'} &middot; ${historicAlt.pos || '–'}${_psRankTag(historicAlt, `Bestes 9-Cat-Profil-Match aus einer anderen Saison (${_psSeasonLabel(historic.seasonKey)}) im gerosterten Pool.`)}${typeof translatedRank === 'number' ? ` &middot; <span class="ps-rank-tag" title="Geschätzter Rang, wenn dieses Profil (perzentil-erhaltend übersetzt, siehe _psTranslateStats) unverändert in ${_psSeasonLabel(season)} gespielt hätte.">${_psSeasonLabel(season)} Rang: ~#${translatedRank}</span>` : ''} ${_psTeamTag(historicAlt.teamId)}</p>
