@@ -112,7 +112,7 @@ const PICKS = [
 
 const DRAFT_NOTES = {
   2026:"Do not trade a 1st to Fighting Illini. He has enough. Draft order TBD based on final standings. Seagulls' R3/R4 2026 und R3 2027 gehen an Cooking Show (Murray-Boyles Trade). Vancouver's R1 slot5 + R3 2026 gehen an Always Money; Always Money's R3 2026 geht an Vancouver (Ayo/Essengue Trade).",
-  2027:"Fighting Illini's R1 goes to Always Money. Neukoelln's R1 goes to 3-POINT MAFIA. 3PM's R3 goes to Neukoelln. Cooking Show sends 2027 R1 & KJ for Vassell/ Ron Holland II. 3-Point Mafia's R2 goes to Double Dribble Trouble (Risacher Trade, September 2026). Double Dribble Trouble's R3 goes to Vancouver Curry-Wurst (Haliburton Trade, September 2026).",
+  2027:"Fighting Illini's R1 goes to Always Money. Neukoelln's R1 goes to 3-POINT MAFIA. 3PM's R3 goes to Neukoelln. Cooking Show sends 2027 R1 & KJ for Vassell/ Ron Holland II. 3-Point Mafia's R2 goes to Double Dribble Trouble (Risacher Trade, September 2026). Double Dribble Trouble's R3 goes to Vancouver Curry-Wurst (Haliburton Trade, September 2026). Neukoelln Hustlers' R2 goes to Vancouver Curry-Wurst, Double Dribble Trouble's R3 moves on from Vancouver to Neukoelln Hustlers (Trae Young Trade, September 2026).",
   2028:"Neukoelln's R1 goes to 3-POINT MAFIA in Banchero-Trade. 3PM's R2 goes to Bear Down (Moussa Diabate Trade). Double Dribble Trouble's R1 goes to Fighting Illini (Trae Young Trade, September 2026).",
   2029:"All teams hold their own picks. No trades recorded yet.",
 };
