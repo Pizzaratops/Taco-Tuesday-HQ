@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-22T13:48:00.126Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-23T13:59:03.227Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-09-22T13:48:00.126Z",
+ "fetchedAt": "2026-09-23T13:59:03.227Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -56,6 +56,15 @@ const ROSTERS_DATA = {
      "espnId": "5106262"
     },
     {
+     "name": "Dorian Finney-Smith",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 7\"",
+     "weight": "220 lbs",
+     "age": 33,
+     "espnId": "2578185"
+    },
+    {
      "name": "Kingston Flemings",
      "jersey": "4",
      "position": "G",
@@ -81,15 +90,6 @@ const ROSTERS_DATA = {
      "weight": "210 lbs",
      "age": 23,
      "espnId": "4712863"
-    },
-    {
-     "name": "Buddy Hield",
-     "jersey": "8",
-     "position": "G",
-     "height": "6' 4\"",
-     "weight": "220 lbs",
-     "age": 33,
-     "espnId": "2990984"
     },
     {
      "name": "Jalen Johnson",
@@ -126,15 +126,6 @@ const ROSTERS_DATA = {
      "weight": "190 lbs",
      "age": 35,
      "espnId": "2490149"
-    },
-    {
-     "name": "Ryan Nembhard",
-     "jersey": "19",
-     "position": "G",
-     "height": "5' 11\"",
-     "weight": "180 lbs",
-     "age": 23,
-     "espnId": "4433629"
     },
     {
      "name": "Asa Newell",
@@ -551,15 +542,6 @@ const ROSTERS_DATA = {
      "espnId": "4433249"
     },
     {
-     "name": "Dorian Finney-Smith",
-     "jersey": null,
-     "position": "F",
-     "height": "6' 7\"",
-     "weight": "220 lbs",
-     "age": 33,
-     "espnId": "2578185"
-    },
-    {
      "name": "PJ Hall",
      "jersey": "16",
      "position": "C",
@@ -567,6 +549,15 @@ const ROSTERS_DATA = {
      "weight": "245 lbs",
      "age": 24,
      "espnId": "4701225"
+    },
+    {
+     "name": "Buddy Hield",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "220 lbs",
+     "age": 33,
+     "espnId": "2990984"
     },
     {
      "name": "Sion James",
@@ -612,6 +603,15 @@ const ROSTERS_DATA = {
      "weight": "200 lbs",
      "age": 23,
      "espnId": "4433287"
+    },
+    {
+     "name": "Ryan Nembhard",
+     "jersey": null,
+     "position": "G",
+     "height": "5' 11\"",
+     "weight": "180 lbs",
+     "age": 23,
+     "espnId": "4433629"
     },
     {
      "name": "Royce O'Neale",
@@ -910,7 +910,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 7\"",
      "weight": "230 lbs",
-     "age": 25,
+     "age": 26,
      "espnId": "5177362"
     },
     {
@@ -1627,7 +1627,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 9\"",
      "weight": "203 lbs",
-     "age": 26,
+     "age": 27,
      "espnId": "4897449"
     },
     {
@@ -2754,6 +2754,15 @@ const ROSTERS_DATA = {
      "weight": "215 lbs",
      "age": 25,
      "espnId": "4601025"
+    },
+    {
+     "name": "Bez Mbeng",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "185 lbs",
+     "age": 24,
+     "espnId": "4898237"
     },
     {
      "name": "Davion Mitchell",
@@ -5001,15 +5010,6 @@ const ROSTERS_DATA = {
      "weight": "240 lbs",
      "age": 29,
      "espnId": "4066336"
-    },
-    {
-     "name": "Bez Mbeng",
-     "jersey": "21",
-     "position": "G",
-     "height": "6' 4\"",
-     "weight": "185 lbs",
-     "age": 24,
-     "espnId": "4898237"
     },
     {
      "name": "Svi Mykhailiuk",
