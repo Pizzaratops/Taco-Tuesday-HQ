@@ -16,7 +16,7 @@
   <meta name="apple-mobile-web-app-title" content="Taco Tuesday HQ">
   <link rel="apple-touch-icon" href="icon-192.png">
   <meta name="theme-color" content="#fff5ee">
-  <link rel="stylesheet" href="css/style.css?v=8">
+  <link rel="stylesheet" href="css/style.css?v=9">
   <link rel="stylesheet" href="css/big-board.css?v=5">
   <link rel="stylesheet" href="css/projections.css?v=1">
   <link rel="stylesheet" href="css/flow.css?v=1">
@@ -1017,6 +1017,13 @@
           <button type="button" data-mode="solo" aria-pressed="true" onclick="psSetMode('solo')">Solo Shape</button>
           <button type="button" data-mode="match" aria-pressed="false" onclick="psSetMode('match')">Shape Match</button>
           <button type="button" data-mode="compare" aria-pressed="false" onclick="psSetMode('compare')">Vergleich</button>
+        </div>
+      </div>
+      <div class="ps-field ps-field-auto">
+        <label title="Per Game: Produktion in der aktuellen Rolle. Per 36: Produktion pro Minute (Zählkategorien auf 36 Minuten hochgerechnet, FG%/FT% unverändert) – zeigt Effizienz und Upside bei mehr Spielzeit.">Basis</label>
+        <div class="ps-seg" id="psBasisSeg" role="group" aria-label="Statistik-Basis wählen">
+          <button type="button" data-basis="pg" aria-pressed="true" onclick="psSetBasis('pg')">Per Game</button>
+          <button type="button" data-basis="p36" aria-pressed="false" onclick="psSetBasis('p36')">Per 36</button>
         </div>
       </div>
       <div class="ps-field ps-field-auto">
@@ -2331,9 +2338,9 @@
 <script src="data/season-2022-23.js?v=ca4beb77"></script>
 <script src="data/season-2021-22.js?v=bb837487"></script>
 <script src="data/season-rankings.js?v=51f908be"></script>
-<script src="data/rosters-live.js?v=cfd70915"></script>
+<script src="data/rosters-live.js?v=7f2325a0"></script>
 <script src="data/picks.js?v=0f414c2e"></script>
-<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=2aeb96a4"></script>
+<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=8f1a0d08"></script>
 <!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=c819801f"></script>
 <script src="data/rankings.js?v=ec950f55"></script>
 <script src="data/projections-baseline.js?v=f70cd7ad"></script>
@@ -2375,7 +2382,7 @@
 <script src="js/navigation.js?v=6"></script>
 <!-- Gemeinsame Fantasy-Besitz-Logik fuer Projections, NBA Teams und Best Available -->
 <script src="js/fantasy-owner.js?v=1"></script>
-<script src="js/player-shape.js?v=9"></script>
+<script src="js/player-shape.js?v=10"></script>
 <script src="js/consensus-projections.js?v=1"></script>
 <script src="js/flow-diagram.js?v=1"></script>
 <script src="js/nba-teams.js?v=5"></script>
@@ -2398,7 +2405,7 @@
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<script src="data/team-analytics.js?v=5a46be6d"></script>
+<script src="data/team-analytics.js?v=9f135690"></script>
 <script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>

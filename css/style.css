@@ -1401,6 +1401,9 @@
 .ps-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 4px; }
 .ps-legend span { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); }
 .ps-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+/* Minuten in der Legende (Per Game / Per 36, siehe _psLegendName). Das
+   innere span erbt sonst das inline-flex der Legenden-Eintraege. */
+.ps-legend span.ps-legend-min { display: inline; font-size: 10px; font-weight: 700; letter-spacing: .03em; opacity: .75; }
 .ps-note { font-size: 12px; color: var(--muted); line-height: 1.5; margin: 0; }
 .ps-note-translate { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); color: var(--text); }
 .ps-note-translate b { color: var(--accent3, var(--accent)); }

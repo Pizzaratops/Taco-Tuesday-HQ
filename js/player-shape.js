@@ -90,7 +90,20 @@ const PS_SEASONS = [
 
 let _psSeasonIdxCache = {};
 let _psPoolCache = {};
-let _psState = { name: null, mode: 'solo', teamFilter: '', experienceFilter: 'all', search: '', season: 'current', compareA: null, compareB: null, samePositionOnly: false, compareSearchA: '', compareSearchB: '' };
+let _psState = { name: null, mode: 'solo', teamFilter: '', experienceFilter: 'all', search: '', season: 'current', compareA: null, compareB: null, samePositionOnly: false, compareSearchA: '', compareSearchB: '', basis: 'pg' };
+
+// ── Basis: Per Game vs. Per 36 (23.09.2026) ──
+// Per Game zeigt, was ein Spieler in seiner Rolle liefert. Per 36 zeigt,
+// wie effizient er pro Minute produziert -- macht z.B. sichtbar, dass
+// Reed Sheppard (24 Min) und Toumani Camara (33 Min) per Game aehnlich
+// aussehen, Sheppard pro Minute aber klar staerker ist. Nur Zaehl-
+// Kategorien werden hochgerechnet, FG%/FT% bleiben unveraendert.
+// Referenz-Verteilung fuer die Per-36-Perzentile sind nur Spieler ab
+// PS_PER36_MIN_MPG Minuten -- sonst verzerren 4-Minuten-Spieler mit
+// absurden Hochrechnungen die Perzentile aller anderen. Spieler darunter
+// werden trotzdem angezeigt, aber als "kleine Stichprobe" markiert.
+const PS_PER36_MIN_MPG = 10;
+const PS_PER36_COUNT_KEYS = ['pts', 'tpm', 'reb', 'ast', 'stl', 'blk', 'tov'];
 
 // Positions-Overlap statt Exakt-Vergleich: Spieler mit mehreren eligiblen
 // Positionen (zB "PG/SG/SF/PF") sollen mit JEDER ihrer Positionen als
@@ -365,10 +378,15 @@ function _psEnsureProjectionsData(callback) {
 
 function _psBuildPool(seasonKey) {
   seasonKey = seasonKey || _psState.season || 'current';
-  if (_psPoolCache[seasonKey]) return _psPoolCache[seasonKey];
+  // Cache pro Saison UND Basis -- alle Aufrufer (Radar, Shape/Historic
+  // Match, Rang-/Stat-Uebersetzung) bekommen so automatisch Pools im
+  // aktuell gewaehlten Modus, ohne selbst davon zu wissen.
+  const basis = _psState.basis === 'p36' ? 'p36' : 'pg';
+  const cacheKey = seasonKey + '|' + basis;
+  if (_psPoolCache[cacheKey]) return _psPoolCache[cacheKey];
 
-  const pool = { players: [], rosteredCount: 0, matchedCount: 0, freeAgentCount: 0 };
-  _psPoolCache[seasonKey] = pool;
+  const pool = { players: [], rosteredCount: 0, matchedCount: 0, freeAgentCount: 0, basis };
+  _psPoolCache[cacheKey] = pool;
 
   const seasonIdx = _psSeasonRawIndex(seasonKey);
   const rows = [];
@@ -423,9 +441,29 @@ function _psBuildPool(seasonKey) {
   // sortedByRaw wird am Pool-Objekt gespeichert (nicht nur lokal genutzt) --
   // _psTranslateStats() braucht spaeter genau diese sortierten Rohwert-
   // Arrays aus ZWEI verschiedenen Saison-Pools fuer die Epochen-Uebersetzung.
+  // Per 36: Zaehl-Kategorien auf 36 Minuten hochrechnen. Ohne Minuten-
+  // angabe bleibt die Zeile bei Per-Game-Werten (per36Ok=false).
+  rows.forEach(r => {
+    r.per36Ok = true;
+    if (basis !== 'p36') return;
+    const m = r.min;
+    if (!(typeof m === 'number' && m > 0)) { r.per36Ok = false; return; }
+    const f = 36 / m;
+    PS_PER36_COUNT_KEYS.forEach(k => {
+      if (typeof r.raw[k] === 'number' && !isNaN(r.raw[k])) r.raw[k] = r.raw[k] * f;
+    });
+    if (m < PS_PER36_MIN_MPG) r.per36Ok = false;
+  });
+  // Referenz-Verteilung: im Per-36-Modus nur belastbare Zeilen (siehe
+  // PS_PER36_MIN_MPG); Rueckfall auf alle, falls zu wenige uebrig bleiben.
+  let refRows = rows;
+  if (basis === 'p36') {
+    const ok = rows.filter(r => r.per36Ok);
+    if (ok.length >= 30) refRows = ok;
+  }
   const sortedByRaw = {};
   PS_CATS.forEach(c => {
-    sortedByRaw[c.raw] = rows.map(r => r.raw[c.raw]).filter(v => typeof v === 'number' && !isNaN(v)).sort((a, b) => a - b);
+    sortedByRaw[c.raw] = refRows.map(r => r.raw[c.raw]).filter(v => typeof v === 'number' && !isNaN(v)).sort((a, b) => a - b);
   });
   rows.forEach(r => {
     r.pctl = {};
@@ -705,7 +743,8 @@ function _psFillControls() {
   const seasonLabel = (PS_SEASONS.find(s => s.key === _psState.season) || {}).label || _psState.season;
   document.getElementById('psPoolNote').textContent =
     `${pool.matchedCount} von ${pool.rosteredCount} gerosterten Spielern haben Stats für ${seasonLabel}` +
-    (pool.freeAgentCount ? ` (+ ${pool.freeAgentCount} Free Agents/Rookies)` : '');
+    (pool.freeAgentCount ? ` (+ ${pool.freeAgentCount} Free Agents/Rookies)` : '') +
+    (_psState.basis === 'p36' ? ` · Basis: Per 36 (Perzentil-Referenz: Spieler ab ${PS_PER36_MIN_MPG} Min/Spiel)` : ' · Basis: Per Game');
 }
 
 // "FA" ist der Sentinel-Wert im Team-Filter-<select> fuer "nur nicht
@@ -811,6 +850,38 @@ function psFilterCompare(slot, query) {
   if (filtered.some(x => x.name === current)) sel.value = current;
 }
 
+// Per Game / Per 36 umschalten (Pool wird je Basis separat gecacht).
+function psSetBasis(basis) {
+  _psState.basis = basis === 'p36' ? 'p36' : 'pg';
+  document.querySelectorAll('#psBasisSeg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.basis === _psState.basis)));
+  _psFillControls();
+  _psRenderCard();
+}
+
+// Minuten immer sichtbar -- gerade im Per-36-Modus unverzichtbar, sonst
+// sehen Bankspieler mit wenigen Minuten ploetzlich wie Stars aus.
+function _psMinText(p) {
+  return (typeof p.min === 'number' && p.min > 0) ? p.min.toFixed(1) + ' MIN' : 'MIN –';
+}
+function _psMinTag(p) {
+  let s = ` &middot; ${_psMinText(p)}`;
+  if (_psState.basis === 'p36' && !p.per36Ok) {
+    s += (typeof p.min === 'number' && p.min > 0)
+      ? ` <span class="ps-rank-tag ps-warn" title="Unter ${PS_PER36_MIN_MPG} Min/Spiel: die Per-36-Hochrechnung ist wenig aussagekräftig.">⚠ kleine Stichprobe</span>`
+      : ` <span class="ps-rank-tag ps-warn" title="Keine Minutenangabe vorhanden: Per-Game-Werte angezeigt.">⚠ ohne Minuten</span>`;
+  }
+  return s;
+}
+function _psBasisTag() {
+  return _psState.basis === 'p36' ? ' &middot; <b>Per 36</b>' : '';
+}
+function _psLegendName(p, suffix) {
+  const warn = (_psState.basis === 'p36' && !p.per36Ok)
+    ? ` <span class="ps-legend-min ps-warn" title="Per-36-Hochrechnung wenig aussagekräftig (unter ${PS_PER36_MIN_MPG} Min/Spiel oder keine Minutenangabe).">⚠</span>`
+    : '';
+  return `${p.name}${suffix || ''} <span class="ps-legend-min">${_psMinText(p)}</span>${warn}`;
+}
+
 function psSetMode(mode) {
   _psState.mode = mode;
   document.querySelectorAll('#psModeSeg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
@@ -896,7 +967,7 @@ function _psRenderCard() {
     card.innerHTML = `
       <div class="ps-top">
         <div>
-          <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'}${_psRankTag(p)} &middot; <b>Solo Shape</b></p>
+          <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'}${_psRankTag(p)}${_psMinTag(p)} &middot; <b>Solo Shape</b>${_psBasisTag()}</p>
           <h2 class="ps-name">${p.name}</h2>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
@@ -908,7 +979,7 @@ function _psRenderCard() {
         <div class="ps-radar-box">${radar}</div>
         <div class="ps-side">
           <p class="ps-hero-label">Shape Read</p>
-          <p class="ps-meta">Perzentil-Profil über ${PS_CATS.length} 9-Cat-Kategorien, relativ zu allen Spielern mit Stats für diese Saison.</p>
+          <p class="ps-meta">Perzentil-Profil über ${PS_CATS.length} 9-Cat-Kategorien, relativ zu allen Spielern mit Stats für diese Saison.${_psState.basis === 'p36' ? ` Basis Per 36: Zählkategorien auf 36 Minuten hochgerechnet (Referenz: Spieler ab ${PS_PER36_MIN_MPG} Min/Spiel), FG%/FT% unverändert.` : ''}</p>
           <div class="ps-kv-list">
             <div class="ps-kv-row"><span class="ps-kv-k">Stärkste Kategorie</span><span class="ps-kv-v ps-good">${bw.best.label} · ${Math.round(p.pctl[bw.best.k])} PCTL · ${_psFmtCat(bw.best, p.raw)}</span></div>
             <div class="ps-kv-row"><span class="ps-kv-k">Schwächste Kategorie</span><span class="ps-kv-v ps-warn">${bw.worst.label} · ${Math.round(p.pctl[bw.worst.k])} PCTL · ${_psFmtCat(bw.worst, p.raw)}</span></div>
@@ -937,7 +1008,7 @@ function _psRenderCard() {
     card.innerHTML = `
       <div class="ps-top">
         <div>
-          <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'}${_psRankTag(p)} &middot; <b>Shape Match</b></p>
+          <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'}${_psRankTag(p)}${_psMinTag(p)} &middot; <b>Shape Match</b>${_psBasisTag()}</p>
           <h2 class="ps-name">${p.name}</h2>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
@@ -948,9 +1019,9 @@ function _psRenderCard() {
       <div class="ps-body">
         <div class="ps-radar-box">${radar}
           <div class="ps-legend">
-            <span><i style="background:var(--accent);"></i>${p.name}</span>
-            ${alt ? `<span><i style="background:var(--accent2);"></i>${alt.name}</span>` : ''}
-            ${historicAlt ? `<span><i style="background:var(--accent3);"></i>${historicAlt.name} (${_psSeasonLabel(historic.seasonKey)})</span>` : ''}
+            <span><i style="background:var(--accent);"></i>${_psLegendName(p)}</span>
+            ${alt ? `<span><i style="background:var(--accent2);"></i>${_psLegendName(alt)}</span>` : ''}
+            ${historicAlt ? `<span><i style="background:var(--accent3);"></i>${_psLegendName(historicAlt, ' (' + _psSeasonLabel(historic.seasonKey) + ')')}</span>` : ''}
           </div>
         </div>
         <div class="ps-side">
@@ -959,7 +1030,7 @@ function _psRenderCard() {
           <p class="ps-hero"><span class="ps-num">${match.score}%</span><span class="ps-hero-label">Shape Match &middot; ${_psSeasonLabel(season)}${match.posFallback ? ' <span class="ps-rank-tag" title="Kein Spieler mit Positions-Overlap gefunden — zeigt stattdessen das beste Match über alle Positionen.">(alle Positionen)</span>' : ''}</span></p>
           <div>
             <p class="ps-alt-name">${alt.name}</p>
-            <p class="ps-meta">${alt.nbaTeam || '–'} &middot; ${alt.pos || '–'}${_psRankTag(alt, alt.teamId === p.teamId
+            <p class="ps-meta">${alt.nbaTeam || '–'} &middot; ${alt.pos || '–'}${_psMinTag(alt)}${_psRankTag(alt, alt.teamId === p.teamId
               ? 'Ähnlichstes Profil steht im selben Kader — für Trade-Ideen sonst nicht direkt nutzbar.'
               : 'Ähnlichstes 9-Cat-Profil im gesamten Liga-Pool, kann auch im selben Kader stehen — als Ausgangspunkt für Trade-Gespräche.')} ${_psTeamTag(alt.teamId)}</p>
           </div>
@@ -970,7 +1041,7 @@ function _psRenderCard() {
           <p class="ps-hero ps-hero-secondary"><span class="ps-num">${historic.score}%</span><span class="ps-hero-label">Historic Match &middot; ${_psSeasonLabel(historic.seasonKey)}${historic.posFallback ? ' <span class="ps-rank-tag" title="Kein Spieler mit Positions-Overlap gefunden — zeigt stattdessen das beste Match über alle Positionen.">(alle Positionen)</span>' : ''}</span></p>
           <div>
             <p class="ps-alt-name">${historicAlt.name}</p>
-            <p class="ps-meta">${historicAlt.nbaTeam || '–'} &middot; ${historicAlt.pos || '–'}${_psRankTag(historicAlt, `Bestes 9-Cat-Profil-Match aus einer anderen Saison (${_psSeasonLabel(historic.seasonKey)}) im gerosterten Pool.`)}${typeof translatedRank === 'number' ? ` &middot; <span class="ps-rank-tag" title="Geschätzter Rang, wenn dieses Profil (perzentil-erhaltend übersetzt, siehe _psTranslateStats) unverändert in ${_psSeasonLabel(season)} gespielt hätte.">${_psSeasonLabel(season)} Rang: ~#${translatedRank}</span>` : ''} ${_psTeamTag(historicAlt.teamId)}</p>
+            <p class="ps-meta">${historicAlt.nbaTeam || '–'} &middot; ${historicAlt.pos || '–'}${_psMinTag(historicAlt)}${_psRankTag(historicAlt, `Bestes 9-Cat-Profil-Match aus einer anderen Saison (${_psSeasonLabel(historic.seasonKey)}) im gerosterten Pool.`)}${typeof translatedRank === 'number' ? ` &middot; <span class="ps-rank-tag" title="Geschätzter Rang, wenn dieses Profil (perzentil-erhaltend übersetzt, siehe _psTranslateStats) unverändert in ${_psSeasonLabel(season)} gespielt hätte.">${_psSeasonLabel(season)} Rang: ~#${translatedRank}</span>` : ''} ${_psTeamTag(historicAlt.teamId)}</p>
           </div>
           ` : '<p class="ps-note">Kein historisches Match in einer anderen Saison gefunden.</p>'}
           </div>
@@ -1003,7 +1074,7 @@ function _psRenderCard() {
     card.innerHTML = `
       <div class="ps-top">
         <div>
-          <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'}${_psRankTag(p)} &middot; <b>Vergleich</b></p>
+          <p class="ps-id-tag">${p.nbaTeam || '–'} &middot; ${p.pos || '–'}${_psRankTag(p)}${_psMinTag(p)} &middot; <b>Vergleich</b>${_psBasisTag()}</p>
           <h2 class="ps-name">${p.name}</h2>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
@@ -1038,14 +1109,14 @@ function _psRenderCard() {
       <div class="ps-body">
         <div class="ps-radar-box">${radar}
           <div class="ps-legend">
-            <span><i style="background:var(--accent);"></i>${p.name}</span>
-            ${pA ? `<span><i style="background:var(--accent2);"></i>${pA.name}</span>` : ''}
-            ${pB ? `<span><i style="background:var(--accent3);"></i>${pB.name}</span>` : ''}
+            <span><i style="background:var(--accent);"></i>${_psLegendName(p)}</span>
+            ${pA ? `<span><i style="background:var(--accent2);"></i>${_psLegendName(pA)}</span>` : ''}
+            ${pB ? `<span><i style="background:var(--accent3);"></i>${_psLegendName(pB)}</span>` : ''}
           </div>
         </div>
         <div class="ps-side">
           <p class="ps-hero-label">Direktvergleich</p>
-          <p class="ps-meta">Perzentile aller ausgewählten Spieler relativ zum selben Saison-Pool — direkt vergleichbar, unabhängig vom Fantasy-Team.</p>
+          <p class="ps-meta">Perzentile aller ausgewählten Spieler relativ zum selben Saison-Pool — direkt vergleichbar, unabhängig vom Fantasy-Team.${_psState.basis === 'p36' ? ' Basis Per 36: zeigt Produktion pro Minute, unabhängig von der aktuellen Rolle.' : ''}</p>
           <div class="ps-kv-list">
             <div class="ps-kv-row"><span class="ps-kv-k">${p.name}: Stärke</span><span class="ps-kv-v ps-good">${bw.best.label} · ${Math.round(p.pctl[bw.best.k])} PCTL · ${_psFmtCat(bw.best, p.raw)}</span></div>
             ${pA ? `<div class="ps-kv-row"><span class="ps-kv-k">${pA.name}: Stärke</span><span class="ps-kv-v ps-good">${_psBestWorst(pA).best.label} · ${Math.round(pA.pctl[_psBestWorst(pA).best.k])} PCTL · ${_psFmtCat(_psBestWorst(pA).best, pA.raw)}</span></div>` : ''}
@@ -1088,7 +1159,7 @@ async function psDownloadShape() {
     link.href = canvas.toDataURL('image/png');
     const stamp = new Date().toISOString().split('T')[0];
     const slug = (_psState.name || 'player').toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    link.download = `taco-catweb-${slug}-${stamp}.png`;
+    link.download = `taco-catweb-${slug}${_psState.basis === 'p36' ? '-per36' : ''}-${stamp}.png`;
     link.click();
     btns.forEach(b => { b.textContent = '✓ Gespeichert!'; });
     setTimeout(() => { btns.forEach((b, i) => { b.textContent = origTexts[i]; b.disabled = false; }); }, 1500);
