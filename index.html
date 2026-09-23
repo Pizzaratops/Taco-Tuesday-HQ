@@ -16,7 +16,7 @@
   <meta name="apple-mobile-web-app-title" content="Taco Tuesday HQ">
   <link rel="apple-touch-icon" href="icon-192.png">
   <meta name="theme-color" content="#fff5ee">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=8">
   <link rel="stylesheet" href="css/big-board.css?v=5">
   <link rel="stylesheet" href="css/projections.css?v=1">
   <link rel="stylesheet" href="css/flow.css?v=1">
@@ -74,6 +74,16 @@
 </div>
 
 <!-- SUB-NAV BAR -->
+<!-- Aufbau (23.09.2026): nach Nutzungshaeufigkeit und Denkweise eines
+     Dynasty-Managers sortiert statt nach Tool-Typ.
+       1) Direkt klickbar: was man waehrend der Saison JEDE Woche braucht
+          (Home, Matchup, Live Scores, Waiver).
+       2) Dropdowns in der Reihenfolge Liga -> Spieler -> Trade -> Draft,
+          also vom eigenen Liga-Kontext hin zu langfristigem Asset-Management.
+       3) Labs ganz rechts: Test-Features und NBA-Kontext ohne direkten
+          Bezug zur Taco Tuesday League.
+     Gruppen-IDs muessen zu SNAV_GROUP in js/navigation.js passen
+     (Active-State-Markierung der Gruppen-Buttons). -->
 <div class="subnav" id="subNav">
 
   <!-- Desktop: grouped dropdowns, one row -->
@@ -81,91 +91,88 @@
     <div class="subnav-inner">
 
       <button class="snav-single" data-page="home" onclick="goHome()">🏠 Home</button>
+      <button class="snav-single" data-page="matchup" onclick="showMatchupPlanner()">⚔️ Matchup</button>
+      <button class="snav-single" data-page="livescores" onclick="showLiveScores()">🔴 Live Scores</button>
+      <button class="snav-single" data-page="bestavail" onclick="showBestAvail()">🆓 Waiver</button>
       <div class="snav-divider"></div>
+
+      <div class="snav-group">
+        <button class="snav-group-btn" id="snavLeague">🏆 League <span class="snav-arrow">▾</span></button>
+        <div class="snav-dropdown">
+          <div class="snav-dropdown-label">Saison</div>
+          <button class="snav-dropdown-item" data-page="standings" onclick="showStandings()">📈 Standings</button>
+          <button class="snav-dropdown-item" data-page="analytics" onclick="showAnalytics()">📊 Team Analytics</button>
+          <div class="snav-dropdown-label">Organisation</div>
+          <button class="snav-dropdown-item" data-page="rules" onclick="showRules()">📜 Rules</button>
+        </div>
+      </div>
 
       <div class="snav-group">
         <button class="snav-group-btn" id="snavPlayer">🧍 Player <span class="snav-arrow">▾</span></button>
         <div class="snav-dropdown">
-          <button class="snav-dropdown-item" data-page="playerrankings"    onclick="showPlayerRankings()">🏅 2026/27 Rankings</button>
-          <button class="snav-dropdown-item" data-page="playerprojections" onclick="showPlayerProjections()">🔮 2026/27 Projections</button>
+          <div class="snav-dropdown-label">Saison 2026/27</div>
+          <button class="snav-dropdown-item" data-page="playerrankings"    onclick="showPlayerRankings()">🏅 Rankings</button>
+          <button class="snav-dropdown-item" data-page="playerprojections" onclick="showPlayerProjections()">🔮 Projections</button>
+          <div class="snav-dropdown-label">Form &amp; Profil</div>
+          <button class="snav-dropdown-item" data-page="rollingrankings" onclick="showRollingRankings()">📉 Rolling Rankings</button>
           <button class="snav-dropdown-item" data-page="playershape" onclick="showPlayerShape()">🕸️ Cat Web</button>
-          <div class="snav-dropdown-label">Live Projections (Test)</div>
-          <button class="snav-dropdown-item" data-page="liveprojections"     onclick="showLiveProjections()">🧪 Projections</button>
-          <button class="snav-dropdown-item" data-page="liveprojectionsteams" onclick="showLiveProjTeams()">🏀 NBA Teams</button>
-          <button class="snav-dropdown-item" data-page="liveprojectionsdraft" onclick="showLiveProjDraft()">🏆 Fantrax Redraft</button>
-        </div>
-      </div>
-
-      <div class="snav-group">
-        <button class="snav-group-btn" id="snavDynasty">🏅 Dynasty Rankings <span class="snav-arrow">▾</span></button>
-        <div class="snav-dropdown">
-          <button class="snav-dropdown-item" data-page="rankings"       onclick="showRankings()">🏅 Rankings</button>
-          <button class="snav-dropdown-item" data-page="dynastyrolling" onclick="showDynastyRolling()">📈 Rolling Rankings</button>
-        </div>
-      </div>
-      <div class="snav-divider"></div>
-
-      <div class="snav-group">
-        <button class="snav-group-btn" id="snavTTHQBoards">🏆 TTHQ Draft Boards <span class="snav-arrow">▾</span></button>
-        <div class="snav-dropdown">
-          <button class="snav-dropdown-item" data-page="draftboard"    onclick="showDraftboard()">📋 Full Draft Board</button>
-          <button class="snav-dropdown-item" data-page="draftresults" onclick="showDraftResults()">🏆 Draft Results</button>
-        </div>
-      </div>
-
-      <div class="snav-group">
-        <button class="snav-group-btn" id="snavDraft">📋 Draft <span class="snav-arrow">▾</span></button>
-        <div class="snav-dropdown">
-          <div class="snav-dropdown-label">2026</div>
-          <button class="snav-dropdown-item" data-page="draft26"    onclick="showDraft26()">🔎 Prospect Database</button>
-          <button class="snav-dropdown-item" data-page="bigBoard"  onclick="showBigBoard()">📋 MFHFBs Big Board</button>
-          <button class="snav-dropdown-item" data-page="lottery"    onclick="showLottery()">🎲 2026 Lottery</button>
-          <div class="snav-dropdown-label">2027</div>
-          <button class="snav-dropdown-item" data-page="draft27" onclick="showDraft27()">📋 MFHFBs Big Board</button>
-        </div>
-      </div>
-
-      <div class="snav-group">
-        <button class="snav-group-btn" id="snavAnalytics">📊 Analytics <span class="snav-arrow">▾</span></button>
-        <div class="snav-dropdown">
-          <button class="snav-dropdown-item" data-page="bestavail" onclick="showBestAvail()">🆓 Best Available</button>
-          <button class="snav-dropdown-item" data-page="analytics" onclick="showAnalytics()">📊 Team Analytics</button>
-          <button class="snav-dropdown-item" data-page="rollingrankings" onclick="showRollingRankings()">📈 Rolling Rankings</button>
-          <button class="snav-dropdown-item" data-page="nbapowerrankings" onclick="showNbaPowerRankings()">🏀 NBA Power Rankings</button>
-          <button class="snav-dropdown-item" data-page="nbapowerscore" onclick="showNbaPowerScore()">🕸️ NBA Bootleg Power Score</button>
+          <div class="snav-dropdown-label">Dynasty</div>
+          <button class="snav-dropdown-item" data-page="rankings"       onclick="showRankings()">💎 Dynasty Rankings</button>
+          <button class="snav-dropdown-item" data-page="dynastyrolling" onclick="showDynastyRolling()">📈 Dynasty Verlauf</button>
         </div>
       </div>
 
       <div class="snav-group">
         <button class="snav-group-btn" id="snavTrade">⚖️ Trade <span class="snav-arrow">▾</span></button>
         <div class="snav-dropdown">
-          <button class="snav-dropdown-item" data-page="trade"       onclick="showTrade()">⚖️ Trade Analyzer</button>
-          <button class="snav-dropdown-item" data-page="tradefinder" onclick="showTradeFinder()">🔍 Trade Finder</button>
+          <button class="snav-dropdown-item" data-page="trade"        onclick="showTrade()">⚖️ Trade Analyzer</button>
+          <button class="snav-dropdown-item" data-page="tradefinder"  onclick="showTradeFinder()">🔍 Trade Finder</button>
           <button class="snav-dropdown-item" data-page="tradehistory" onclick="showTradeHistory()">📜 Trade History</button>
         </div>
       </div>
 
-      <div class="snav-divider"></div>
-      <button class="snav-single" data-page="matchup" onclick="showMatchupPlanner()">⚔️ Matchup Planer</button>
-      <button class="snav-single" data-page="livescores" onclick="showLiveScores()">🔴 Live Scores</button>
-      <button class="snav-single" data-page="standings" onclick="showStandings()">📈 Standings</button>
-      <button class="snav-single" data-page="rules"     onclick="showRules()">📜 Rules</button>
-      <div class="snav-divider"></div>
-      <!-- Draft Duel deaktiviert bis 2027er Prospects da sind — Block einfach wieder auskommentieren
       <div class="snav-group">
-        <button class="snav-group-btn" id="snavDuel">⚡ Draft Duel <span class="snav-arrow">▾</span></button>
+        <button class="snav-group-btn" id="snavDraft">📋 Draft <span class="snav-arrow">▾</span></button>
         <div class="snav-dropdown">
+          <div class="snav-dropdown-label">TTHQ Rookie Draft</div>
+          <button class="snav-dropdown-item" data-page="draftboard"   onclick="showDraftboard()">📋 Pick-Übersicht</button>
+          <button class="snav-dropdown-item" data-page="draftresults" onclick="showDraftResults()">🏆 Draft Results</button>
+          <div class="snav-dropdown-label">Scouting 2026</div>
+          <button class="snav-dropdown-item" data-page="draft26"  onclick="showDraft26()">🔎 Prospect Database</button>
+          <button class="snav-dropdown-item" data-page="bigBoard" onclick="showBigBoard()">📋 MFHFBs Big Board</button>
+          <button class="snav-dropdown-item" data-page="lottery"  onclick="showLottery()">🎲 Lottery</button>
+          <div class="snav-dropdown-label">Scouting 2027</div>
+          <button class="snav-dropdown-item" data-page="draft27" onclick="showDraft27()">📋 MFHFBs Big Board</button>
+          <!-- Draft Duel deaktiviert bis 2027er Prospects da sind -- Block einfach wieder einkommentieren
+          <div class="snav-dropdown-label">Draft Duel</div>
           <button class="snav-dropdown-item" data-page="duel"         onclick="showDuelPage()">⚡ Duell starten</button>
           <button class="snav-dropdown-item" data-page="duelboard"    onclick="showDuelBoard()">📊 Duel Board</button>
           <button class="snav-dropdown-item" data-page="duelsettings" onclick="showDuelSettings()">⚙️ Duel Settings</button>
+          -->
         </div>
       </div>
-      -->
+
+      <div class="snav-divider"></div>
+
+      <div class="snav-group snav-group-right">
+        <button class="snav-group-btn" id="snavLabs">🧪 Labs <span class="snav-arrow">▾</span></button>
+        <div class="snav-dropdown">
+          <div class="snav-dropdown-label">Live Projections (Test)</div>
+          <button class="snav-dropdown-item" data-page="liveprojections"      onclick="showLiveProjections()">🧪 Projections</button>
+          <button class="snav-dropdown-item" data-page="liveprojectionsteams" onclick="showLiveProjTeams()">🏀 NBA Teams</button>
+          <button class="snav-dropdown-item" data-page="liveprojectionsdraft" onclick="showLiveProjDraft()">🏆 Fantrax Redraft</button>
+          <div class="snav-dropdown-label">NBA</div>
+          <button class="snav-dropdown-item" data-page="nbapowerrankings" onclick="showNbaPowerRankings()">🏀 NBA Power Rankings</button>
+          <button class="snav-dropdown-item" data-page="nbapowerscore"    onclick="showNbaPowerScore()">🕸️ NBA Bootleg Power Score</button>
+        </div>
+      </div>
 
     </div>
   </div>
 
-  <!-- Mobile: hamburger -->
+  <!-- Mobile: hamburger. Button-Texte bewusst selbsterklaerend, weil der
+       aktive Button-Text als Label oben im Hamburger erscheint
+       (siehe _applyPage in js/navigation.js). -->
   <div class="subnav-mobile">
     <button class="subnav-hamburger" onclick="toggleMobileNav()">
       <span id="mobileNavLabel">🌮 League Tools</span>
@@ -173,63 +180,57 @@
     </button>
     <div class="subnav-mobile-dropdown" id="mobileNavDropdown">
       <div class="subnav-mobile-group">
-        <div class="subnav-mobile-label">Navigation</div>
-        <button class="subnav-mobile-btn" data-page="home"      onclick="goHome();closeMobileNav()">🏠 Home</button>
-        <button class="subnav-mobile-btn" data-page="matchup"    onclick="showMatchupPlanner();closeMobileNav()">⚔️ Matchup Planer</button>
+        <div class="subnav-mobile-label">Diese Woche</div>
+        <button class="subnav-mobile-btn" data-page="home"       onclick="goHome();closeMobileNav()">🏠 Home</button>
+        <button class="subnav-mobile-btn" data-page="matchup"    onclick="showMatchupPlanner();closeMobileNav()">⚔️ Matchup</button>
         <button class="subnav-mobile-btn" data-page="livescores" onclick="showLiveScores();closeMobileNav()">🔴 Live Scores</button>
+        <button class="subnav-mobile-btn" data-page="bestavail"  onclick="showBestAvail();closeMobileNav()">🆓 Waiver</button>
+      </div>
+      <div class="subnav-mobile-group">
+        <div class="subnav-mobile-label">League</div>
         <button class="subnav-mobile-btn" data-page="standings" onclick="showStandings();closeMobileNav()">📈 Standings</button>
+        <button class="subnav-mobile-btn" data-page="analytics" onclick="showAnalytics();closeMobileNav()">📊 Team Analytics</button>
         <button class="subnav-mobile-btn" data-page="rules"     onclick="showRules();closeMobileNav()">📜 Rules</button>
       </div>
       <div class="subnav-mobile-group">
-        <div class="subnav-mobile-label">Player</div>
-        <button class="subnav-mobile-btn" data-page="playerrankings"    onclick="showPlayerRankings();closeMobileNav()">🏅 2026/27 Rankings</button>
-        <button class="subnav-mobile-btn" data-page="playerprojections" onclick="showPlayerProjections();closeMobileNav()">🔮 2026/27 Projections</button>
-        <button class="subnav-mobile-btn" data-page="playershape" onclick="showPlayerShape();closeMobileNav()">🕸️ Cat Web</button>
-        <button class="subnav-mobile-btn" data-page="liveprojections"      onclick="showLiveProjections();closeMobileNav()">🧪 Live Projections (Test): Projections</button>
-        <button class="subnav-mobile-btn" data-page="liveprojectionsteams" onclick="showLiveProjTeams();closeMobileNav()">🏀 Live Projections (Test): NBA Teams</button>
-        <button class="subnav-mobile-btn" data-page="liveprojectionsdraft" onclick="showLiveProjDraft();closeMobileNav()">🏆 Live Projections (Test): Fantrax Redraft</button>
+        <div class="subnav-mobile-label">Player · Saison 2026/27</div>
+        <button class="subnav-mobile-btn" data-page="playerrankings"    onclick="showPlayerRankings();closeMobileNav()">🏅 Rankings 2026/27</button>
+        <button class="subnav-mobile-btn" data-page="playerprojections" onclick="showPlayerProjections();closeMobileNav()">🔮 Projections 2026/27</button>
+        <button class="subnav-mobile-btn" data-page="rollingrankings"   onclick="showRollingRankings();closeMobileNav()">📉 Rolling Rankings</button>
+        <button class="subnav-mobile-btn" data-page="playershape"       onclick="showPlayerShape();closeMobileNav()">🕸️ Cat Web</button>
+        <div class="subnav-mobile-label">Player · Dynasty</div>
+        <button class="subnav-mobile-btn" data-page="rankings"       onclick="showRankings();closeMobileNav()">💎 Dynasty Rankings</button>
+        <button class="subnav-mobile-btn" data-page="dynastyrolling" onclick="showDynastyRolling();closeMobileNav()">📈 Dynasty Verlauf</button>
       </div>
       <div class="subnav-mobile-group">
-        <div class="subnav-mobile-label">Dynasty Rankings</div>
-        <button class="subnav-mobile-btn" data-page="rankings"       onclick="showRankings();closeMobileNav()">🏅 Rankings</button>
-        <button class="subnav-mobile-btn" data-page="dynastyrolling" onclick="showDynastyRolling();closeMobileNav()">📈 Rolling Rankings</button>
-      </div>
-      <div class="subnav-mobile-group">
-        <div class="subnav-mobile-label">TTHQ Draft Boards</div>
-        <button class="subnav-mobile-btn" data-page="draftboard"    onclick="showDraftboard();closeMobileNav()">📋 Full Draft Board</button>
-        <button class="subnav-mobile-btn" data-page="draftresults" onclick="showDraftResults();closeMobileNav()">🏆 Draft Results</button>
-      </div>
-      <div class="subnav-mobile-group">
-        <div class="subnav-mobile-label">Draft 2026</div>
-        <button class="subnav-mobile-btn" data-page="draft26"    onclick="showDraft26();closeMobileNav()">🔎 Prospect Database</button>
-        <button class="subnav-mobile-btn" data-page="bigBoard"  onclick="showBigBoard();closeMobileNav()">📋 MFHFBs Big Board</button>
-        <button class="subnav-mobile-btn" data-page="lottery"    onclick="showLottery();closeMobileNav()">🎲 2026 Lottery</button>
-      </div>
-      <div class="subnav-mobile-group">
-        <div class="subnav-mobile-label">Draft 2027</div>
-        <button class="subnav-mobile-btn" data-page="draft27" onclick="showDraft27();closeMobileNav()">📋 MFHFBs Big Board</button>
-      </div>
-      <div class="subnav-mobile-group">
-        <div class="subnav-mobile-label">Rankings & Analytics</div>
-        <button class="subnav-mobile-btn" data-page="bestavail" onclick="showBestAvail();closeMobileNav()">🆓 Best Available</button>
-        <button class="subnav-mobile-btn" data-page="analytics" onclick="showAnalytics();closeMobileNav()">📊 Team Analytics</button>
-        <button class="subnav-mobile-btn" data-page="rollingrankings" onclick="showRollingRankings();closeMobileNav()">📈 Rolling Rankings</button>
-        <button class="subnav-mobile-btn" data-page="nbapowerrankings" onclick="showNbaPowerRankings();closeMobileNav()">🏀 NBA Power Rankings</button>
-        <button class="subnav-mobile-btn" data-page="nbapowerscore" onclick="showNbaPowerScore();closeMobileNav()">🕸️ NBA Bootleg Power Score</button>
-      </div>
-      <!-- Draft Duel deaktiviert bis 2027er Prospects da sind — Block einfach wieder auskommentieren
-      <div class="subnav-mobile-group">
-        <div class="subnav-mobile-label">Draft Duel</div>
-        <button class="subnav-mobile-btn" data-page="duel"         onclick="showDuelPage();closeMobileNav()">⚡ Duell</button>
-        <button class="subnav-mobile-btn" data-page="duelboard"    onclick="showDuelBoard();closeMobileNav()">📊 Duel Board</button>
-        <button class="subnav-mobile-btn" data-page="duelsettings" onclick="showDuelSettings();closeMobileNav()">⚙️ Settings</button>
-      </div>
-      -->
-      <div class="subnav-mobile-group">
-        <div class="subnav-mobile-label">Trade Tools</div>
-        <button class="subnav-mobile-btn" data-page="trade"       onclick="showTrade();closeMobileNav()">⚖️ Trade Analyzer</button>
-        <button class="subnav-mobile-btn" data-page="tradefinder" onclick="showTradeFinder();closeMobileNav()">🔍 Trade Finder</button>
+        <div class="subnav-mobile-label">Trade</div>
+        <button class="subnav-mobile-btn" data-page="trade"        onclick="showTrade();closeMobileNav()">⚖️ Trade Analyzer</button>
+        <button class="subnav-mobile-btn" data-page="tradefinder"  onclick="showTradeFinder();closeMobileNav()">🔍 Trade Finder</button>
         <button class="subnav-mobile-btn" data-page="tradehistory" onclick="showTradeHistory();closeMobileNav()">📜 Trade History</button>
+      </div>
+      <div class="subnav-mobile-group">
+        <div class="subnav-mobile-label">Draft · TTHQ Rookie Draft</div>
+        <button class="subnav-mobile-btn" data-page="draftboard"   onclick="showDraftboard();closeMobileNav()">📋 Pick-Übersicht</button>
+        <button class="subnav-mobile-btn" data-page="draftresults" onclick="showDraftResults();closeMobileNav()">🏆 Draft Results</button>
+        <div class="subnav-mobile-label">Draft · Scouting</div>
+        <button class="subnav-mobile-btn" data-page="draft26"  onclick="showDraft26();closeMobileNav()">🔎 Prospect Database 2026</button>
+        <button class="subnav-mobile-btn" data-page="bigBoard" onclick="showBigBoard();closeMobileNav()">📋 Big Board 2026</button>
+        <button class="subnav-mobile-btn" data-page="lottery"  onclick="showLottery();closeMobileNav()">🎲 Lottery 2026</button>
+        <button class="subnav-mobile-btn" data-page="draft27"  onclick="showDraft27();closeMobileNav()">📋 Big Board 2027</button>
+        <!-- Draft Duel deaktiviert bis 2027er Prospects da sind -- Block einfach wieder einkommentieren
+        <div class="subnav-mobile-label">Draft · Duel</div>
+        <button class="subnav-mobile-btn" data-page="duel"         onclick="showDuelPage();closeMobileNav()">⚡ Draft Duel</button>
+        <button class="subnav-mobile-btn" data-page="duelboard"    onclick="showDuelBoard();closeMobileNav()">📊 Duel Board</button>
+        <button class="subnav-mobile-btn" data-page="duelsettings" onclick="showDuelSettings();closeMobileNav()">⚙️ Duel Settings</button>
+        -->
+      </div>
+      <div class="subnav-mobile-group">
+        <div class="subnav-mobile-label">Labs</div>
+        <button class="subnav-mobile-btn" data-page="liveprojections"      onclick="showLiveProjections();closeMobileNav()">🧪 Live Projections (Test)</button>
+        <button class="subnav-mobile-btn" data-page="liveprojectionsteams" onclick="showLiveProjTeams();closeMobileNav()">🏀 Live Proj. NBA Teams</button>
+        <button class="subnav-mobile-btn" data-page="liveprojectionsdraft" onclick="showLiveProjDraft();closeMobileNav()">🏆 Fantrax Redraft</button>
+        <button class="subnav-mobile-btn" data-page="nbapowerrankings"     onclick="showNbaPowerRankings();closeMobileNav()">🏀 NBA Power Rankings</button>
+        <button class="subnav-mobile-btn" data-page="nbapowerscore"        onclick="showNbaPowerScore();closeMobileNav()">🕸️ NBA Bootleg Power Score</button>
       </div>
     </div>
   </div>
@@ -2371,7 +2372,7 @@
 
 <!-- App logic -->
 <script src="js/theme.js?v=5"></script>
-<script src="js/navigation.js?v=5"></script>
+<script src="js/navigation.js?v=6"></script>
 <!-- Gemeinsame Fantasy-Besitz-Logik fuer Projections, NBA Teams und Best Available -->
 <script src="js/fantasy-owner.js?v=1"></script>
 <script src="js/player-shape.js?v=9"></script>

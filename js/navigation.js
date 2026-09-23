@@ -888,14 +888,18 @@ const SUBNAV_PAGES = {
   liveProjectionsPage:'liveprojections', liveProjTeamsPage:'liveprojectionsteams', liveProjDraftPage:'liveprojectionsdraft',
 };
 
+// Seite -> Dropdown-Gruppe (fuer die Active-Markierung des Gruppen-Buttons).
+// Muss zur Nav-Struktur in index.html passen (Umbau 23.09.2026). Seiten
+// ohne Eintrag (home, matchup, livescores, bestavail) sind Einzel-Buttons.
 const SNAV_GROUP = {
-  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer', playershape: 'snavPlayer', liveprojections: 'snavPlayer', liveprojectionsteams: 'snavPlayer', liveprojectionsdraft: 'snavPlayer',
-  rankings: 'snavDynasty', dynastyrolling: 'snavDynasty',
-  draft26: 'snavDraft', draft27: 'snavDraft', lottery: 'snavDraft', bigBoard: 'snavDraft',
-  draftboard: 'snavTTHQBoards', draftresults: 'snavTTHQBoards',
-  duel: 'snavDuel', duelboard: 'snavDuel', duelsettings: 'snavDuel',
-  bestavail: 'snavAnalytics', analytics: 'snavAnalytics', rollingrankings: 'snavAnalytics', nbapowerrankings: 'snavAnalytics', nbapowerscore: 'snavAnalytics',
-  trade:      'snavTrade', tradefinder: 'snavTrade', tradehistory: 'snavTrade',
+  standings: 'snavLeague', analytics: 'snavLeague', rules: 'snavLeague',
+  playerrankings: 'snavPlayer', playerprojections: 'snavPlayer', rollingrankings: 'snavPlayer', playershape: 'snavPlayer',
+  rankings: 'snavPlayer', dynastyrolling: 'snavPlayer',
+  trade: 'snavTrade', tradefinder: 'snavTrade', tradehistory: 'snavTrade',
+  draftboard: 'snavDraft', draftresults: 'snavDraft', draft26: 'snavDraft', bigBoard: 'snavDraft', lottery: 'snavDraft', draft27: 'snavDraft',
+  duel: 'snavDraft', duelboard: 'snavDraft', duelsettings: 'snavDraft',
+  liveprojections: 'snavLabs', liveprojectionsteams: 'snavLabs', liveprojectionsdraft: 'snavLabs',
+  nbapowerrankings: 'snavLabs', nbapowerscore: 'snavLabs',
 };
 
 // Reverse map: hash value → pageId

@@ -169,6 +169,9 @@
     to   { opacity:1; transform:translateY(0); }
   }
   .snav-group:hover .snav-dropdown { display: block; }
+  /* Letzte Gruppe (Labs) rechtsbuendig aufklappen, sonst ragt das
+     Dropdown bei schmaleren Desktop-Breiten ueber den rechten Rand. */
+  .snav-group-right .snav-dropdown { left: auto; right: 0; }
   .snav-dropdown-item {
     display: flex;
     align-items: center;
@@ -196,6 +199,7 @@
     background: var(--surface2);
     border-bottom: 1px solid var(--border);
   }
+  .snav-dropdown-item { white-space: nowrap; }
   .snav-dropdown-item:last-child { border-bottom: none; }
   .snav-dropdown-item:hover { background: var(--accent-light); color: var(--accent); }
   .snav-dropdown-item.active { color: var(--accent); background: var(--accent-light); }
@@ -265,6 +269,8 @@
       color: var(--muted);
       margin-bottom: 2px;
     }
+    /* Zweite Zwischenueberschrift innerhalb einer Gruppe (zB "Player · Dynasty") */
+    .subnav-mobile-btn + .subnav-mobile-label { margin-top: 8px; }
     .subnav-mobile-btn {
       background: var(--surface2);
       border: 1px solid var(--border);
