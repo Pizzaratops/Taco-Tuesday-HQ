@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-23T13:59:03.227Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-24T13:55:53.794Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-09-23T13:59:03.227Z",
+ "fetchedAt": "2026-09-24T13:55:53.794Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -99,6 +99,15 @@ const ROSTERS_DATA = {
      "weight": "219 lbs",
      "age": 24,
      "espnId": "4701230"
+    },
+    {
+     "name": "Keon Johnson",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 5\"",
+     "weight": "185 lbs",
+     "age": 24,
+     "espnId": "4432192"
     },
     {
      "name": "Corey Kispert",
@@ -1369,7 +1378,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 9\"",
      "weight": "226 lbs",
-     "age": 28,
+     "age": 29,
      "espnId": "3908845"
     },
     {
@@ -3789,6 +3798,15 @@ const ROSTERS_DATA = {
      "weight": "230 lbs",
      "age": 28,
      "espnId": "4065654"
+    },
+    {
+     "name": "Kevin Knox II",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 8\"",
+     "weight": "215 lbs",
+     "age": 27,
+     "espnId": "4278075"
     },
     {
      "name": "Alex Morales",
