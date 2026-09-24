@@ -16,7 +16,7 @@
   <meta name="apple-mobile-web-app-title" content="Taco Tuesday HQ">
   <link rel="apple-touch-icon" href="icon-192.png">
   <meta name="theme-color" content="#fff5ee">
-  <link rel="stylesheet" href="css/style.css?v=11">
+  <link rel="stylesheet" href="css/style.css?v=12">
   <link rel="stylesheet" href="css/big-board.css?v=5">
   <link rel="stylesheet" href="css/projections.css?v=1">
   <link rel="stylesheet" href="css/flow.css?v=1">
@@ -1014,10 +1014,6 @@
         <label for="psPlayerSelect">Spieler</label>
         <select id="psPlayerSelect"></select>
       </div>
-      <div class="ps-field ps-field-auto" title="Wirkt auf die angezeigten Gesamtränge vergangener Saisons. Der Radar selbst ist immer perzentil-basiert, der 2026/27-Rang kommt aus dem Best Available Board.">
-        <label>Rang-Bewertung</label>
-        <div data-score-mode-host></div>
-      </div>
       <div class="ps-field ps-field-auto">
         <label>Ansicht</label>
         <div class="ps-seg" id="psModeSeg" role="group" aria-label="Ansicht wählen">
@@ -1035,7 +1031,7 @@
       </div>
       <div class="ps-field ps-field-auto">
         <label for="psSamePosOnly" title="Gilt für Shape Match &amp; Historic Match. Spieler mit mehreren eligiblen Positionen (zB PG/SG/SF/PF) zählen bei jeder ihrer Positionen als Treffer. Findet sich niemand, wird automatisch wieder über alle Positionen gesucht.">Nur gleiche Position</label>
-        <label class="ps-checkbox-wrap">
+        <label class="ps-checkbox-wrap ps-checkbox-compact">
           <input type="checkbox" id="psSamePosOnly" onchange="psToggleSamePosition(this.checked)">
         </label>
       </div>
@@ -2345,9 +2341,9 @@
 <script src="data/season-2022-23.js?v=ca4beb77"></script>
 <script src="data/season-2021-22.js?v=bb837487"></script>
 <script src="data/season-rankings.js?v=51f908be"></script>
-<script src="data/rosters-live.js?v=377750f5"></script>
+<script src="data/rosters-live.js?v=3df081d2"></script>
 <script src="data/picks.js?v=8ef85cc3"></script>
-<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=d54adb68"></script>
+<!-- Auto-Override fuer den bevorstehenden Draft, taeglich aus ESPN --><script src="data/picks-live.js?v=ce081cad"></script>
 <!-- Wer wen gepickt hat, fuer einen abgeschlossenen Draft. Manuell aktualisiert, siehe scripts/fetch-draft-results-espn.js. NUR diese "active"-Datei einbinden, nicht zusaetzlich data/draft-results-<jahr>.js -- beide deklarieren dieselbe Konstante. --><script src="data/draft-results-active.js?v=c819801f"></script>
 <script src="data/rankings.js?v=ec950f55"></script>
 <script src="data/projections-baseline.js?v=f70cd7ad"></script>
@@ -2390,7 +2386,7 @@
 <script src="js/score-mode.js?v=1"></script>
 <!-- Gemeinsame Fantasy-Besitz-Logik fuer Projections, NBA Teams und Best Available -->
 <script src="js/fantasy-owner.js?v=1"></script>
-<script src="js/player-shape.js?v=11"></script>
+<script src="js/player-shape.js?v=12"></script>
 <script src="js/consensus-projections.js?v=2"></script>
 <script src="js/flow-diagram.js?v=1"></script>
 <script src="js/nba-teams.js?v=5"></script>
@@ -2413,7 +2409,7 @@
 <script src="js/trade-admin.js?v=5"></script>
 <script src="js/draft-duel.js?v=5"></script>
 <script src="js/big-board.js?v=5"></script>
-<script src="data/team-analytics.js?v=c637f1de"></script>
+<script src="data/team-analytics.js?v=001ec9b3"></script>
 <script src="js/analytics.js?v=6"></script>
 <script src="js/admin.js?v=5"></script>
 <script src="js/admin-inline.js?v=5"></script>
