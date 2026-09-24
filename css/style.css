@@ -410,7 +410,9 @@
   .keeper-badge-ok { background: rgba(47,184,101,0.14); color: #2fb865; }
   .keeper-badge-free { background: rgba(79,195,247,0.14); color: #2a9fd6; }
   .keeper-badge-bad { background: rgba(255,101,132,0.14); color: var(--bad, #ff6584); }
-  .keeper-card-over { box-shadow: 0 0 0 1px var(--bad, #ff6584) inset; }
+  /* Bewusst border statt inset-box-shadow: html2canvas (Screenshot-Button)
+     rendert inset-Schatten als vollflaechige Farbflaeche. */
+  .keeper-card-over { border-width: 2px; padding: 13px 15px; }
   .keeper-list { margin-top: 8px; border-top: 1px dashed var(--border); padding-top: 6px; }
   .keeper-list summary { font-size: 11px; font-weight: 700; color: var(--muted); cursor: pointer; list-style: none; }
   .keeper-list summary::-webkit-details-marker { display: none; }
