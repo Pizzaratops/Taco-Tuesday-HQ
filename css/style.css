@@ -397,13 +397,26 @@
   /* ===== KEEPER SUMMARY (Full Draft Board + Team-Tab "Draft Board") ===== */
   .keeper-summary { margin: 24px 0 32px; padding: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
   .keeper-summary-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
-  .keeper-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .keeper-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; align-items: start; }
   .keeper-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
   .keeper-card-team { font-weight: 800; font-size: 13px; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
   .keeper-card-row { display: flex; align-items: center; justify-content: space-between; padding: 3px 0; }
   .keeper-card-label { font-size: 11px; color: var(--muted); font-weight: 600; }
   .keeper-card-value { font-size: 15px; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
   .keeper-card-value-accent { font-size: 17px; }
+  /* Keeper-Status (ESPN-Keeper-Export vs. Liga-Limit, siehe _keeperStatus in js/navigation.js) */
+  .keeper-card-status { margin-top: 6px; }
+  .keeper-badge { display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 9px; border-radius: 20px; }
+  .keeper-badge-ok { background: rgba(47,184,101,0.14); color: #2fb865; }
+  .keeper-badge-free { background: rgba(79,195,247,0.14); color: #2a9fd6; }
+  .keeper-badge-bad { background: rgba(255,101,132,0.14); color: var(--bad, #ff6584); }
+  .keeper-card-over { box-shadow: 0 0 0 1px var(--bad, #ff6584) inset; }
+  .keeper-list { margin-top: 8px; border-top: 1px dashed var(--border); padding-top: 6px; }
+  .keeper-list summary { font-size: 11px; font-weight: 700; color: var(--muted); cursor: pointer; list-style: none; }
+  .keeper-list summary::-webkit-details-marker { display: none; }
+  .keeper-list summary::before { content: '▸ '; }
+  .keeper-list[open] summary::before { content: '▾ '; }
+  .keeper-list ol { margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; color: var(--text); line-height: 1.55; }
 
   /* ===== DRAFT COUNTDOWN (Startseite) ===== */
   .countdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 26px; }
