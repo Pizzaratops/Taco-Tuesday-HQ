@@ -4,19 +4,15 @@
 //  bevorstehenden Draft (siehe getMaxKeepers() in js/navigation.js).
 const MAX_ROSTER_SIZE = 26;
 
-// Keeper Lock Date = Draft Day (laut ESPN identisch: "Linear Draft" ohne
-// Live-Teilnahme, startet automatisch -- kein separates Keeper-Lock-Event
-// noetig). Uhrzeit in Europe/Berlin. Aendert sich das Datum, reicht diese
-// eine Stelle -- js/navigation.js (renderDraftCountdown) rendert daraus
-// beide Karten auf der Startseite.
-const DRAFT_EVENT_DATE = "2026-10-01T08:00:00+02:00";
-
-// Keeper Lock laut ESPN "League Keepers" (Export 24.09.2026): "Keeper Lock
-// Date: Oct 1, 2026 @ 2:00 AM GMT+2", "Keeper Designated Round: End of
-// Draft". Separat von DRAFT_EVENT_DATE, damit die Startseite beide Termine
-// korrekt zeigt. Fehlt die Konstante, faellt renderDraftCountdown() auf
-// DRAFT_EVENT_DATE zurueck.
-const KEEPER_LOCK_DATE = "2026-10-01T02:00:00+02:00";
+// Keeper Lock Date = Draft Day (ESPN "Linear Draft" ohne Live-Teilnahme,
+// startet automatisch). Laut ESPN "League Keepers" (Export 24.09.2026):
+// "Keeper Lock Date: Oct 1, 2026 @ 2:00 AM GMT+2" -- vorher stand hier
+// faelschlich 08:00 Uhr. Uhrzeit in Europe/Berlin. Aendert sich das Datum,
+// reicht diese eine Stelle -- js/navigation.js (renderDraftCountdown)
+// rendert daraus beide Karten auf der Startseite.
+const DRAFT_EVENT_DATE = "2026-10-01T02:00:00+02:00";
+// Eigene Konstante, falls Lock und Draft doch einmal auseinanderfallen.
+const KEEPER_LOCK_DATE = DRAFT_EVENT_DATE;
 
 // ============================================================
 //  KEEPERS -- Keeper-Auswahl je Team laut ESPN "League Keepers"

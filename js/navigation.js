@@ -911,7 +911,10 @@ async function downloadKeeperSummary(year) {
       scale: 2,
       logging: false,
       useCORS: true,
-      ignoreElements: (el) => el.tagName === 'BUTTON',
+      // Zugeklappte Keeper-Listen (<details>) komplett weglassen: html2canvas
+      // ignoriert den geschlossenen Zustand und wuerde sonst alle Namen
+      // ueber die Karten hinweg rendern. Aufgeklappte Listen bleiben drin.
+      ignoreElements: (el) => el.tagName === 'BUTTON' || (el.tagName === 'DETAILS' && !el.open),
     });
     const link = document.createElement('a');
     link.href = canvas.toDataURL('image/png');
