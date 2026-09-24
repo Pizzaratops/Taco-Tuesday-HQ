@@ -16,7 +16,7 @@
   <meta name="apple-mobile-web-app-title" content="Taco Tuesday HQ">
   <link rel="apple-touch-icon" href="icon-192.png">
   <meta name="theme-color" content="#fff5ee">
-  <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/style.css?v=11">
   <link rel="stylesheet" href="css/big-board.css?v=5">
   <link rel="stylesheet" href="css/projections.css?v=1">
   <link rel="stylesheet" href="css/flow.css?v=1">
@@ -410,12 +410,14 @@
 <!-- PLAYER RANKINGS -->
 <div class="page page-wide" id="playerRankingsPage">
   <h2 style="margin-bottom:6px;">🏅 2026/27 Rankings</h2>
-  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">9-Cat Z-Score Rankings · automatisch aus Live Score Stats</p>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">9-Cat Rankings · automatisch aus Live Score Stats · Bewertung umschaltbar: Z roh, Z ±3 (gekappt) oder Perzentil</p>
 
   <div class="ls-subtabs">
     <div class="ls-subtab" id="prSubtabOffSeason" onclick="prSwitchTab('offseason')">☀️ Off Season</div>
     <div class="ls-subtab active" id="prSubtabRegSeason" onclick="prSwitchTab('regseason')">🏆 Reg Season</div>
   </div>
+
+  <div class="score-mode-row" data-score-mode-host></div>
 
   <div class="rankings-search">
     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -441,6 +443,7 @@
      js/consensus-projections.js. -->
 <div class="page page-wide" id="playerProjectionsPage">
   <h2 style="margin-bottom:6px;">🔮 2026/27 Projections</h2>
+  <div class="score-mode-row" data-score-mode-host></div>
   <p id="cpInfo" style="color:var(--muted);font-size:12px;font-family:'DM Mono',monospace;margin-bottom:16px;"></p>
 
   <div class="cp-controls">
@@ -451,15 +454,15 @@
       <option value="SF">SF</option><option value="PF">PF</option><option value="F">F</option>
       <option value="C">C</option>
     </select>
-    <select class="cp-select" id="cpPool" onchange="cpSetPool(this.value)" title="Vergleichsgruppe für den Z-Score">
-      <option value="100">Z relativ zu Top 100</option>
-      <option value="150">Z relativ zu Top 150</option>
-      <option value="200">Z relativ zu Top 200</option>
-      <option value="250">Z relativ zu Top 250</option>
-      <option value="300">Z relativ zu Top 300</option>
-      <option value="350">Z relativ zu Top 350</option>
-      <option value="400">Z relativ zu Top 400</option>
-      <option value="all">Z relativ zu allen Spielern</option>
+    <select class="cp-select" id="cpPool" onchange="cpSetPool(this.value)" title="Vergleichsgruppe für Z-Score bzw. Perzentil">
+      <option value="100">Pool: Top 100</option>
+      <option value="150">Pool: Top 150</option>
+      <option value="200">Pool: Top 200</option>
+      <option value="250">Pool: Top 250</option>
+      <option value="300">Pool: Top 300</option>
+      <option value="350">Pool: Top 350</option>
+      <option value="400">Pool: Top 400</option>
+      <option value="all">Pool: alle Spieler</option>
     </select>
     <select class="cp-select" id="cpSource" onchange="cpSetSource(this.value)" title="Nach Datengrundlage filtern">
       <option value="twoplus">Mind. 2 von 3 Quellen (Standard)</option>
@@ -1010,6 +1013,10 @@
       <div class="ps-field ps-field-grow">
         <label for="psPlayerSelect">Spieler</label>
         <select id="psPlayerSelect"></select>
+      </div>
+      <div class="ps-field ps-field-auto" title="Wirkt auf die angezeigten Gesamtränge vergangener Saisons. Der Radar selbst ist immer perzentil-basiert, der 2026/27-Rang kommt aus dem Best Available Board.">
+        <label>Rang-Bewertung</label>
+        <div data-score-mode-host></div>
       </div>
       <div class="ps-field ps-field-auto">
         <label>Ansicht</label>
@@ -2379,11 +2386,12 @@
 
 <!-- App logic -->
 <script src="js/theme.js?v=5"></script>
-<script src="js/navigation.js?v=7"></script>
+<script src="js/navigation.js?v=8"></script>
+<script src="js/score-mode.js?v=1"></script>
 <!-- Gemeinsame Fantasy-Besitz-Logik fuer Projections, NBA Teams und Best Available -->
 <script src="js/fantasy-owner.js?v=1"></script>
-<script src="js/player-shape.js?v=10"></script>
-<script src="js/consensus-projections.js?v=1"></script>
+<script src="js/player-shape.js?v=11"></script>
+<script src="js/consensus-projections.js?v=2"></script>
 <script src="js/flow-diagram.js?v=1"></script>
 <script src="js/nba-teams.js?v=5"></script>
 <script src="js/standings.js?v=5"></script>
@@ -2429,7 +2437,7 @@
 <script src="data/livescores-boxscores.js?v=de657ac8"></script>
 <script src="js/livescores.js?v=7"></script>
 <script src="data/offseason-rankings.js?v=c53883eb"></script>
-<script src="js/player-rankings.js?v=1"></script>
+<script src="js/player-rankings.js?v=2"></script>
   <script src="js/init.js?v=5"></script>
 
 <script>
