@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-24T13:55:53.794Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-25T14:20:02.489Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-09-24T13:55:53.794Z",
+ "fetchedAt": "2026-09-25T14:20:02.489Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -99,15 +99,6 @@ const ROSTERS_DATA = {
      "weight": "219 lbs",
      "age": 24,
      "espnId": "4701230"
-    },
-    {
-     "name": "Keon Johnson",
-     "jersey": null,
-     "position": "G",
-     "height": "6' 5\"",
-     "weight": "185 lbs",
-     "age": 24,
-     "espnId": "4432192"
     },
     {
      "name": "Corey Kispert",
@@ -2063,15 +2054,6 @@ const ROSTERS_DATA = {
      "espnId": "6580"
     },
     {
-     "name": "Johni Broome",
-     "jersey": null,
-     "position": "F",
-     "height": "6' 10\"",
-     "weight": "235 lbs",
-     "age": 24,
-     "espnId": "4433569"
-    },
-    {
      "name": "Cam Christie",
      "jersey": "24",
      "position": "G",
@@ -3357,6 +3339,15 @@ const ROSTERS_DATA = {
      "weight": "250 lbs",
      "age": 21,
      "espnId": "4869780"
+    },
+    {
+     "name": "Julian Reese",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 9\"",
+     "weight": "252 lbs",
+     "age": 23,
+     "espnId": "4683742"
     },
     {
      "name": "Trendon Watford",
