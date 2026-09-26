@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-25T14:20:02.489Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-26T13:31:07.929Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-09-25T14:20:02.489Z",
+ "fetchedAt": "2026-09-26T13:31:07.929Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -1154,6 +1154,15 @@ const ROSTERS_DATA = {
      "espnId": "4898238"
     },
     {
+     "name": "Dwight Powell",
+     "jersey": "7",
+     "position": "F",
+     "height": "6' 10\"",
+     "weight": "240 lbs",
+     "age": 35,
+     "espnId": "2531367"
+    },
+    {
      "name": "Zaccharie Risacher",
      "jersey": "10",
      "position": "F",
@@ -1378,7 +1387,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 6\"",
      "weight": "220 lbs",
-     "age": 24,
+     "age": 25,
      "espnId": "4432166"
     },
     {
@@ -1495,7 +1504,7 @@ const ROSTERS_DATA = {
      "position": "C",
      "height": "7' 0\"",
      "weight": "236 lbs",
-     "age": 21,
+     "age": 22,
      "espnId": "5037878"
     },
     {
