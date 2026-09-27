@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-26T13:31:07.929Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-27T14:26:57.641Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-09-26T13:31:07.929Z",
+ "fetchedAt": "2026-09-27T14:26:57.641Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -283,7 +283,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 6\"",
      "weight": "205 lbs",
-     "age": 25,
+     "age": 26,
      "espnId": "4593841"
     },
     {
@@ -1125,6 +1125,15 @@ const ROSTERS_DATA = {
      "weight": "230 lbs",
      "age": 22,
      "espnId": "4683688"
+    },
+    {
+     "name": "Seth Lundy",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "202 lbs",
+     "age": 26,
+     "espnId": "4431775"
     },
     {
      "name": "Naji Marshall",
@@ -2207,15 +2216,6 @@ const ROSTERS_DATA = {
      "espnId": "4702352"
     },
     {
-     "name": "Jamarion Sharp",
-     "jersey": null,
-     "position": "C",
-     "height": "7' 5\"",
-     "weight": "235 lbs",
-     "age": 25,
-     "espnId": "4897696"
-    },
-    {
      "name": "Max Strus",
      "jersey": null,
      "position": "G",
@@ -2480,6 +2480,15 @@ const ROSTERS_DATA = {
      "espnId": "2991070"
     },
     {
+     "name": "Brendan Hausen",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 4\"",
+     "weight": "220 lbs",
+     "age": 22,
+     "espnId": "5105589"
+    },
+    {
      "name": "Jordan Hawkins",
      "jersey": null,
      "position": "G",
@@ -2577,15 +2586,6 @@ const ROSTERS_DATA = {
      "weight": "230 lbs",
      "age": 24,
      "espnId": "4595400"
-    },
-    {
-     "name": "D'Angelo Russell",
-     "jersey": null,
-     "position": "G",
-     "height": "6' 3\"",
-     "weight": "193 lbs",
-     "age": 30,
-     "espnId": "3136776"
     },
     {
      "name": "Richie Saunders",
@@ -2817,15 +2817,6 @@ const ROSTERS_DATA = {
      "weight": "210 lbs",
      "age": 31,
      "espnId": "3059319"
-    },
-    {
-     "name": "Jahmir Young",
-     "jersey": "17",
-     "position": "G",
-     "height": "6' 0\"",
-     "weight": "185 lbs",
-     "age": 25,
-     "espnId": "4433133"
     }
    ]
   },
@@ -2866,7 +2857,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 4\"",
      "weight": "190 lbs",
-     "age": 26,
+     "age": 27,
      "espnId": "4397475"
     },
     {
@@ -3798,15 +3789,6 @@ const ROSTERS_DATA = {
      "weight": "230 lbs",
      "age": 28,
      "espnId": "4065654"
-    },
-    {
-     "name": "Kevin Knox II",
-     "jersey": null,
-     "position": "F",
-     "height": "6' 8\"",
-     "weight": "215 lbs",
-     "age": 27,
-     "espnId": "4278075"
     },
     {
      "name": "Alex Morales",
