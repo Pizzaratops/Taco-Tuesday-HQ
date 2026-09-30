@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-29T15:15:40.731Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-30T15:29:27.654Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-09-29T15:15:40.731Z",
+ "fetchedAt": "2026-09-30T15:29:27.654Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -870,6 +870,15 @@ const ROSTERS_DATA = {
      "weight": "235 lbs",
      "age": 26,
      "espnId": "4593049"
+    },
+    {
+     "name": "Jaylin Sellers",
+     "jersey": "22",
+     "position": "G",
+     "height": "6' 5\"",
+     "weight": "205 lbs",
+     "age": 23,
+     "espnId": "4898010"
     },
     {
      "name": "Jalen Smith",
@@ -1762,7 +1771,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 9\"",
      "weight": "241 lbs",
-     "age": 23,
+     "age": 24,
      "espnId": "5175737"
     },
     {
@@ -1939,7 +1948,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 11\"",
      "weight": "240 lbs",
-     "age": 37,
+     "age": 38,
      "espnId": "3202"
     },
     {
@@ -2945,6 +2954,15 @@ const ROSTERS_DATA = {
      "espnId": "3064482"
     },
     {
+     "name": "Lester Quinones",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "208 lbs",
+     "age": 25,
+     "espnId": "4431720"
+    },
+    {
      "name": "Nick Richards",
      "jersey": "8",
      "position": "C",
@@ -3304,7 +3322,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 9\"",
      "weight": "185 lbs",
-     "age": 25,
+     "age": 26,
      "espnId": "4431671"
     },
     {
@@ -4152,7 +4170,7 @@ const ROSTERS_DATA = {
      "jersey": "25",
      "position": "F",
      "height": "6' 9\"",
-     "weight": "215 lbs",
+     "weight": "238 lbs",
      "age": 23,
      "espnId": "4870562"
     },
@@ -4161,7 +4179,7 @@ const ROSTERS_DATA = {
      "jersey": "30",
      "position": "C",
      "height": "6' 10\"",
-     "weight": "235 lbs",
+     "weight": "239 lbs",
      "age": 23,
      "espnId": "5105637"
     },
@@ -4179,7 +4197,7 @@ const ROSTERS_DATA = {
      "jersey": "1",
      "position": "G",
      "height": "6' 5\"",
-     "weight": "204 lbs",
+     "weight": "213 lbs",
      "age": 33,
      "espnId": "2581018"
     },
@@ -4187,7 +4205,7 @@ const ROSTERS_DATA = {
      "name": "VJ Edgecombe",
      "jersey": "77",
      "position": "G",
-     "height": "6' 4\"",
+     "height": "6' 5\"",
      "weight": "180 lbs",
      "age": 21,
      "espnId": "5124612"
@@ -4197,7 +4215,7 @@ const ROSTERS_DATA = {
      "jersey": "11",
      "position": "F",
      "height": "6' 7\"",
-     "weight": "203 lbs",
+     "weight": "222 lbs",
      "age": 22,
      "espnId": "4711297"
     },
@@ -4206,7 +4224,7 @@ const ROSTERS_DATA = {
      "jersey": "21",
      "position": "C",
      "height": "7' 0\"",
-     "weight": "280 lbs",
+     "weight": "270 lbs",
      "age": 32,
      "espnId": "3059318"
     },
@@ -4215,7 +4233,7 @@ const ROSTERS_DATA = {
      "jersey": "99",
      "position": "C",
      "height": "7' 6\"",
-     "weight": "250 lbs",
+     "weight": "299 lbs",
      "age": 30,
      "espnId": "3904625"
     },
@@ -4224,7 +4242,7 @@ const ROSTERS_DATA = {
      "jersey": "55",
      "position": "C",
      "height": "7' 0\"",
-     "weight": "246 lbs",
+     "weight": "258 lbs",
      "age": 24,
      "espnId": "4871141"
     },
@@ -4239,19 +4257,19 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Dillon Jones",
-     "jersey": null,
+     "jersey": "35",
      "position": "F",
      "height": "6' 5\"",
-     "weight": "235 lbs",
+     "weight": "241 lbs",
      "age": 24,
      "espnId": "4702159"
     },
     {
      "name": "Caleb Love",
-     "jersey": "9",
+     "jersey": "8",
      "position": "G",
      "height": "6' 3\"",
-     "weight": "212 lbs",
+     "weight": "214 lbs",
      "age": 25,
      "espnId": "4433144"
     },
@@ -4260,25 +4278,25 @@ const ROSTERS_DATA = {
      "jersey": "0",
      "position": "G",
      "height": "6' 2\"",
-     "weight": "200 lbs",
+     "weight": "204 lbs",
      "age": 25,
      "espnId": "4431678"
     },
     {
      "name": "Duke Miles",
-     "jersey": null,
+     "jersey": "31",
      "position": "G",
-     "height": "6' 0\"",
+     "height": "6' 1\"",
      "weight": "180 lbs",
      "age": 24,
      "espnId": "4702049"
     },
     {
      "name": "Jameer Nelson Jr.",
-     "jersey": null,
+     "jersey": "14",
      "position": "G",
      "height": "6' 1\"",
-     "weight": "190 lbs",
+     "weight": "201 lbs",
      "age": 25,
      "espnId": "4592444"
     },
@@ -4287,7 +4305,7 @@ const ROSTERS_DATA = {
      "jersey": "00",
      "position": "G",
      "height": "6' 3\"",
-     "weight": "176 lbs",
+     "weight": "179 lbs",
      "age": 20,
      "espnId": "4873090"
     },
@@ -4296,7 +4314,7 @@ const ROSTERS_DATA = {
      "jersey": "12",
      "position": "G",
      "height": "6' 7\"",
-     "weight": "205 lbs",
+     "weight": "207 lbs",
      "age": 22,
      "espnId": "5099752"
     },
@@ -4304,17 +4322,17 @@ const ROSTERS_DATA = {
      "name": "Anfernee Simons",
      "jersey": "5",
      "position": "G",
-     "height": "6' 3\"",
-     "weight": "200 lbs",
+     "height": "6' 4\"",
+     "weight": "206 lbs",
      "age": 27,
      "espnId": "4351851"
     },
     {
      "name": "Saint Thomas",
-     "jersey": null,
+     "jersey": "19",
      "position": "F",
-     "height": "6' 7\"",
-     "weight": "235 lbs",
+     "height": "6' 8\"",
+     "weight": "236 lbs",
      "age": 23,
      "espnId": "4897471"
     },
@@ -4323,7 +4341,7 @@ const ROSTERS_DATA = {
      "jersey": "45",
      "position": "F",
      "height": "6' 9\"",
-     "weight": "228 lbs",
+     "weight": "223 lbs",
      "age": 29,
      "espnId": "3912848"
     },
@@ -4332,7 +4350,7 @@ const ROSTERS_DATA = {
      "jersey": "33",
      "position": "F",
      "height": "6' 7\"",
-     "weight": "237 lbs",
+     "weight": "240 lbs",
      "age": 24,
      "espnId": "4432446"
     }
@@ -4512,6 +4530,15 @@ const ROSTERS_DATA = {
      "weight": "205 lbs",
      "age": 30,
      "espnId": "4592714"
+    },
+    {
+     "name": "Phillip Wheeler",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 8\"",
+     "weight": "185 lbs",
+     "age": 24,
+     "espnId": "4909710"
     },
     {
      "name": "Mark Williams",
