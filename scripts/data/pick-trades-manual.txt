@@ -36,3 +36,5 @@
 2026-09-22, 2027, 3, 11, 12, Double Dribble Trouble 2027 R3 an Vancouver Curry-Wurst -- Teil des Haliburton-Trades (Young/Garland/McBride/Pick fuer Haliburton, September 2026). Nachgetragen 23.09.: stand bisher nur direkt in data/picks-live.js
 2026-09-23, 2027, 2, 3, 12, Neukoelln Hustlers 2027 R2 an Vancouver Curry-Wurst -- Teil des Trae-Young-Trades (Banchero/Aldama/Pick fuer Young/Pick)
 2026-09-23, 2027, 3, 11, 3, Double Dribble Trouble 2027 R3 (via Vancouver Curry-Wurst aus dem Haliburton-Trade) an Neukoelln Hustlers -- Teil des Trae-Young-Trades
+2026-09-30, 2028, 3, 12, 1, Vancouver Curry-Wurst 2028 R3 an Fighting Illini (Bear Down) -- Gegenzug fuer Day'Ron Sharpe
+2026-09-30, 2029, 3, 12, 1, Vancouver Curry-Wurst 2029 R3 an Fighting Illini (Bear Down) -- Gegenzug fuer Day'Ron Sharpe
