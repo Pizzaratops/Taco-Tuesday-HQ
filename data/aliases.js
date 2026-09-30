@@ -182,6 +182,7 @@ const NAME_ALIASES = {
 // Name variants that can't be solved by normalization alone
 const NAME_FIRST_ALIASES = {
   'nicolas claxton':  'nic claxton',
+  'carlton carrington': 'bub carrington', // Board fuehrt ihn doppelt (Keeper "Bub Carrington")
   'ronald holland':   'ron holland',   // ESPN-Keeper "Ronald Holland II", Board "Ron Holland II"
   'alexandre sarr':   'alex sarr',
   'cameron johnson':  'cam johnson',  // Roster uses Cameron, DYNASTY_PLAYERS uses Cam
