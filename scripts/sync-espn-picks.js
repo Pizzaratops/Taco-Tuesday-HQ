@@ -156,6 +156,7 @@ async function main() {
   // Schreiben erhalten, damit ein Lauf dieses Scripts nicht die Arbeit
   // des anderen loescht.
   let bestehendManuell = [];
+  let bestehendAuto = [];
   if (fs.existsSync(OUT)) {
     try {
       const sandbox = {};
@@ -164,7 +165,19 @@ async function main() {
       if (sandbox.__EXIST__ && Array.isArray(sandbox.__EXIST__.manuell)) {
         bestehendManuell = sandbox.__EXIST__.manuell;
       }
+      if (sandbox.__EXIST__ && Array.isArray(sandbox.__EXIST__.automatisch)) {
+        bestehendAuto = sandbox.__EXIST__.automatisch;
+      }
     } catch (e) { /* vorherige Datei kaputt/leer -- ohne manuellen Teil neu schreiben */ }
+  }
+
+  // Schutz (30.09.2026): Seit dem Keeper Lock lieferte ESPN Picks ohne
+  // brauchbare Besitzer-Zuordnung -> "automatisch" wurde leer und alle
+  // Pick-Trades des bevorstehenden Drafts verschwanden. Liefert ein Lauf
+  // gar keine Zuordnung, bleibt die letzte bekannte Liste stehen.
+  if (!updates.length && bestehendAuto.length) {
+    console.warn(`  ESPN lieferte keine zuordenbaren Picks -- behalte ${bestehendAuto.length} bisherige Eintraege.`);
+    updates.push(...bestehendAuto);
   }
 
   const out = `// ============================================================
