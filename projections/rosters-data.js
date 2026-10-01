@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-09-30T15:29:27.654Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-01T15:52:19.482Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-09-30T15:29:27.654Z",
+ "fetchedAt": "2026-10-01T15:52:19.482Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -570,7 +570,7 @@ const ROSTERS_DATA = {
    "players": [
     {
      "name": "Grayson Allen",
-     "jersey": null,
+     "jersey": "8",
      "position": "G",
      "height": "6' 3\"",
      "weight": "198 lbs",
@@ -579,12 +579,21 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Christian Anderson",
-     "jersey": null,
+     "jersey": "5",
      "position": "G",
      "height": "6' 1\"",
      "weight": "180 lbs",
      "age": 20,
      "espnId": "5060701"
+    },
+    {
+     "name": "Kylan Boswell",
+     "jersey": "18",
+     "position": "G",
+     "height": "6' 1\"",
+     "weight": "226 lbs",
+     "age": 21,
+     "espnId": "4684269"
     },
     {
      "name": "Pat Connaughton",
@@ -606,7 +615,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Wyatt Fricks",
-     "jersey": null,
+     "jersey": "23",
      "position": "F",
      "height": "6' 9\"",
      "weight": "216 lbs",
@@ -633,7 +642,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Jarkel Joiner",
-     "jersey": null,
+     "jersey": "20",
      "position": "G",
      "height": "6' 1\"",
      "weight": "180 lbs",
@@ -678,7 +687,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Royce O'Neale",
-     "jersey": null,
+     "jersey": "00",
      "position": "F",
      "height": "6' 6\"",
      "weight": "226 lbs",
@@ -687,7 +696,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Naz Reid",
-     "jersey": null,
+     "jersey": "0",
      "position": "C",
      "height": "6' 9\"",
      "weight": "264 lbs",
@@ -705,7 +714,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Dennis Schroder",
-     "jersey": null,
+     "jersey": "17",
      "position": "G",
      "height": "6' 1\"",
      "weight": "175 lbs",
@@ -714,7 +723,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Hannes Steinbach",
-     "jersey": null,
+     "jersey": "22",
      "position": "F",
      "height": "6' 10\"",
      "weight": "248 lbs",
@@ -1195,7 +1204,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 10\"",
      "weight": "265 lbs",
-     "age": 27,
+     "age": 28,
      "espnId": "4278049"
     },
     {
@@ -1473,15 +1482,6 @@ const ROSTERS_DATA = {
      "weight": "240 lbs",
      "age": 25,
      "espnId": "4431690"
-    },
-    {
-     "name": "KJ Simpson",
-     "jersey": "25",
-     "position": "G",
-     "height": "6' 1\"",
-     "weight": "189 lbs",
-     "age": 24,
-     "espnId": "4683834"
     },
     {
      "name": "Julian Strawther",
@@ -2112,7 +2112,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "James Johnson",
-     "jersey": null,
+     "jersey": "16",
      "position": "F",
      "height": "6' 7\"",
      "weight": "240 lbs",
@@ -2130,7 +2130,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Larry Nance Jr.",
-     "jersey": null,
+     "jersey": "22",
      "position": "F",
      "height": "6' 6\"",
      "weight": "245 lbs",
@@ -2157,7 +2157,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Kelly Oubre Jr.",
-     "jersey": null,
+     "jersey": "10",
      "position": "G",
      "height": "6' 8\"",
      "weight": "203 lbs",
@@ -2193,7 +2193,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Braden Smith",
-     "jersey": null,
+     "jersey": "18",
      "position": "G",
      "height": "5' 10\"",
      "weight": "167 lbs",
@@ -3662,15 +3662,6 @@ const ROSTERS_DATA = {
      "espnId": "5211983"
     },
     {
-     "name": "N'Faly Dante",
-     "jersey": "12",
-     "position": "C",
-     "height": "6' 11\"",
-     "weight": "230 lbs",
-     "age": 24,
-     "espnId": "4592401"
-    },
-    {
      "name": "Mohamed Diawara",
      "jersey": "51",
      "position": "F",
@@ -3714,15 +3705,6 @@ const ROSTERS_DATA = {
      "weight": "195 lbs",
      "age": 25,
      "espnId": "4433225"
-    },
-    {
-     "name": "John Konchar",
-     "jersey": "55",
-     "position": "G",
-     "height": "6' 5\"",
-     "weight": "210 lbs",
-     "age": 30,
-     "espnId": "3134932"
     },
     {
      "name": "Miles McBride",
@@ -4111,7 +4093,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 8\"",
      "weight": "219 lbs",
-     "age": 22,
+     "age": 23,
      "espnId": "5107251"
     },
     {
