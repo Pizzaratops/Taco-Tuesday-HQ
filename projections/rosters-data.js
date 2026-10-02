@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-01T15:52:19.482Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-02T15:13:26.866Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-10-01T15:52:19.482Z",
+ "fetchedAt": "2026-10-02T15:13:26.866Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -899,24 +899,6 @@ const ROSTERS_DATA = {
      "espnId": "4397189"
     },
     {
-     "name": "Peter Suder",
-     "jersey": "15",
-     "position": "G",
-     "height": "6' 4\"",
-     "weight": "213 lbs",
-     "age": 23,
-     "espnId": "5106674"
-    },
-    {
-     "name": "Marquel Sutton",
-     "jersey": "0",
-     "position": "F",
-     "height": "6' 8\"",
-     "weight": "225 lbs",
-     "age": 23,
-     "espnId": "5107264"
-    },
-    {
      "name": "Dailyn Swain",
      "jersey": "5",
      "position": "G",
@@ -1475,6 +1457,15 @@ const ROSTERS_DATA = {
      "espnId": "3936299"
     },
     {
+     "name": "Ryan Nembhard",
+     "jersey": null,
+     "position": "G",
+     "height": "5' 11\"",
+     "weight": "180 lbs",
+     "age": 23,
+     "espnId": "4433629"
+    },
+    {
      "name": "Zeke Nnaji",
      "jersey": "22",
      "position": "F",
@@ -1914,15 +1905,6 @@ const ROSTERS_DATA = {
      "weight": "256 lbs",
      "age": 32,
      "espnId": "3102529"
-    },
-    {
-     "name": "Rafael Castro",
-     "jersey": "00",
-     "position": "C",
-     "height": "6' 9\"",
-     "weight": "224 lbs",
-     "age": 23,
-     "espnId": "4684443"
     },
     {
      "name": "Quadir Copeland",
