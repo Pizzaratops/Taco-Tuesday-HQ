@@ -29,11 +29,31 @@
 //  date format: "YYYY-MM-DD"
 //  league keys match the ESPN league slugs used in daily-9cat.js:
 //    "nba-summer-las-vegas" | "nba-preseason" | "nba"
-//
-//  Diese Datei ist zunächst leer (Platzhalter) — der erste Lauf der
-//  "Daily 9cat Live Scores"-Action nach Einführung des Box-Scores-Tabs
-//  füllt sie mit dem aktuellen Spieltag.
 // ============================================================
 
 const LIVESCORES_BOXSCORES = {
+  "nba": {
+    "2026-10-03": {
+    games: [
+      {
+      id: "401902644",
+      line: "Miami Heat @ Toronto Raptors (10/3 - 7:00 PM EDT)",
+      completed: false,
+      statusText: "10/3 - 7:00 PM EDT",
+      away: {
+        abbr: "MIA", name: "Miami Heat", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "TOR", name: "Toronto Raptors", score: null,
+        players: [
+
+        ]
+      }
+    }
+    ]
+  }
+  }
 };
