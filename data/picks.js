@@ -51,11 +51,11 @@ const PICKS = [
   {year:2026,round:1,originalOwner:7,currentOwner:1,slot:3},{year:2026,round:1,originalOwner:8,currentOwner:8,slot:7},
   {year:2026,round:1,originalOwner:9,currentOwner:1,slot:2},{year:2026,round:1,originalOwner:10,currentOwner:1,slot:6},
   {year:2026,round:1,originalOwner:11,currentOwner:1,slot:1},{year:2026,round:1,originalOwner:12,currentOwner:7,slot:5},
-  {year:2026,round:2,originalOwner:1,currentOwner:12,note:"an Vancouver Curry-Wurst"},{year:2026,round:2,originalOwner:2,currentOwner:2},
+  {year:2026,round:2,originalOwner:1,currentOwner:12,note:"an Vancouver Curry-Wurst"},{year:2026,round:2,originalOwner:2,currentOwner:9,note:"an Cooking Show (Trade 03.10.)"},
   {year:2026,round:2,originalOwner:3,currentOwner:3},{year:2026,round:2,originalOwner:4,currentOwner:4},
   {year:2026,round:2,originalOwner:5,currentOwner:5},{year:2026,round:2,originalOwner:6,currentOwner:6},
   {year:2026,round:2,originalOwner:7,currentOwner:7},{year:2026,round:2,originalOwner:8,currentOwner:8},
-  {year:2026,round:2,originalOwner:9,currentOwner:9},{year:2026,round:2,originalOwner:10,currentOwner:10},
+  {year:2026,round:2,originalOwner:9,currentOwner:2,note:"via Cooking Show (Trade 03.10.)"},{year:2026,round:2,originalOwner:10,currentOwner:10},
   {year:2026,round:2,originalOwner:11,currentOwner:1,note:"via Double Dribble Trouble"},{year:2026,round:2,originalOwner:12,currentOwner:12},
   {year:2026,round:3,originalOwner:1,currentOwner:12,note:"an Vancouver Curry-Wurst"},{year:2026,round:3,originalOwner:2,currentOwner:9},
   {year:2026,round:3,originalOwner:3,currentOwner:3},{year:2026,round:3,originalOwner:4,currentOwner:4},
@@ -105,7 +105,7 @@ const PICKS = [
   {year:2028,round:2,originalOwner:7,currentOwner:7},{year:2028,round:2,originalOwner:8,currentOwner:8},
   {year:2028,round:2,originalOwner:9,currentOwner:9},{year:2028,round:2,originalOwner:10,currentOwner:10},
   {year:2028,round:2,originalOwner:11,currentOwner:11},{year:2028,round:2,originalOwner:12,currentOwner:12},
-  {year:2028,round:3,originalOwner:1,currentOwner:1},{year:2028,round:3,originalOwner:2,currentOwner:2},
+  {year:2028,round:3,originalOwner:1,currentOwner:1},{year:2028,round:3,originalOwner:2,currentOwner:9,note:"an Cooking Show (Trade 03.10.)"},
   {year:2028,round:3,originalOwner:3,currentOwner:3},{year:2028,round:3,originalOwner:4,currentOwner:4},
   {year:2028,round:3,originalOwner:5,currentOwner:5},{year:2028,round:3,originalOwner:6,currentOwner:6},
   {year:2028,round:3,originalOwner:7,currentOwner:7},{year:2028,round:3,originalOwner:8,currentOwner:8},
@@ -144,9 +144,9 @@ const PICKS = [
 ];
 
 const DRAFT_NOTES = {
-  2026:"Do not trade a 1st to Fighting Illini. He has enough. Draft order TBD based on final standings. Seagulls' R3/R4 2026 und R3 2027 gehen an Cooking Show (Murray-Boyles Trade). Vancouver's R1 slot5 + R3 2026 gehen an Always Money; Always Money's R3 2026 geht an Vancouver (Ayo/Essengue Trade).",
+  2026:"Do not trade a 1st to Fighting Illini. He has enough. Draft order TBD based on final standings. Seagulls' R3/R4 2026 und R3 2027 gehen an Cooking Show (Murray-Boyles Trade). Vancouver's R1 slot5 + R3 2026 gehen an Always Money; Always Money's R3 2026 geht an Vancouver (Ayo/Essengue Trade). Seagulls und Cooking Show tauschen ihre R2 2026 (Live-Draft-Trade 03.10., Seagulls legen ihren R3 2028 drauf).",
   2027:"Fighting Illini's R1 goes to Always Money. Neukoelln's R1 goes to 3-POINT MAFIA. 3PM's R3 goes to Neukoelln. Cooking Show sends 2027 R1 & KJ for Vassell/ Ron Holland II. 3-Point Mafia's R2 goes to Double Dribble Trouble (Risacher Trade, September 2026). Double Dribble Trouble's R3 goes to Vancouver Curry-Wurst (Haliburton Trade, September 2026). Neukoelln Hustlers' R2 goes to Vancouver Curry-Wurst, Double Dribble Trouble's R3 moves on from Vancouver to Neukoelln Hustlers (Trae Young Trade, September 2026).",
-  2028:"Neukoelln's R1 goes to 3-POINT MAFIA in Banchero-Trade. 3PM's R2 goes to Bear Down (Moussa Diabate Trade). Double Dribble Trouble's R1 goes to Fighting Illini (Trae Young Trade, September 2026).",
+  2028:"Neukoelln's R1 goes to 3-POINT MAFIA in Banchero-Trade. 3PM's R2 goes to Bear Down (Moussa Diabate Trade). Double Dribble Trouble's R1 goes to Fighting Illini (Trae Young Trade, September 2026). Seagulls' R3 goes to Cooking Show (R2-Swap im Live Draft, 03.10.2026).",
   2029:"All teams hold their own picks. No trades recorded yet.",
 };
 
