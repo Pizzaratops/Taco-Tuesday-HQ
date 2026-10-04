@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-03T14:05:19.842Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-04T14:31:25.372Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-10-03T14:05:19.842Z",
+ "fetchedAt": "2026-10-04T14:31:25.372Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -2820,7 +2820,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Ryan Conwell",
-     "jersey": null,
+     "jersey": "4",
      "position": "G",
      "height": "6' 3\"",
      "weight": "220 lbs",
@@ -2829,7 +2829,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Tre Donaldson",
-     "jersey": null,
+     "jersey": "24",
      "position": "G",
      "height": "6' 2\"",
      "weight": "210 lbs",
@@ -2865,7 +2865,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "J'Vonne Hadley",
-     "jersey": null,
+     "jersey": "14",
      "position": "F",
      "height": "6' 5\"",
      "weight": "210 lbs",
@@ -2910,7 +2910,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Bez Mbeng",
-     "jersey": null,
+     "jersey": "19",
      "position": "G",
      "height": "6' 4\"",
      "weight": "185 lbs",
@@ -2937,7 +2937,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Lester Quinones",
-     "jersey": null,
+     "jersey": "25",
      "position": "G",
      "height": "6' 4\"",
      "weight": "208 lbs",
@@ -2954,6 +2954,15 @@ const ROSTERS_DATA = {
      "espnId": "4278076"
     },
     {
+     "name": "Ian Schieffelin",
+     "jersey": "20",
+     "position": "F",
+     "height": "6' 8\"",
+     "weight": "240 lbs",
+     "age": 23,
+     "espnId": "4693954"
+    },
+    {
      "name": "Dru Smith",
      "jersey": "12",
      "position": "G",
@@ -2964,7 +2973,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Klay Thompson",
-     "jersey": null,
+     "jersey": "11",
      "position": "G",
      "height": "6' 5\"",
      "weight": "220 lbs",
@@ -4048,7 +4057,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 10\"",
      "weight": "230 lbs",
-     "age": 28,
+     "age": 29,
      "espnId": "4065654"
     },
     {
@@ -5106,12 +5115,21 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Jaden Bradley",
-     "jersey": null,
+     "jersey": "8",
      "position": "G",
      "height": "6' 3\"",
      "weight": "205 lbs",
      "age": 23,
      "espnId": "4432737"
+    },
+    {
+     "name": "Nimari Burnett",
+     "jersey": "25",
+     "position": "G",
+     "height": "6' 5\"",
+     "weight": "195 lbs",
+     "age": 24,
+     "espnId": "4433138"
     },
     {
      "name": "Allen Graves",
@@ -5160,7 +5178,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Tyreke Key",
-     "jersey": null,
+     "jersey": "11",
      "position": "G",
      "height": "6' 2\"",
      "weight": "207 lbs",
