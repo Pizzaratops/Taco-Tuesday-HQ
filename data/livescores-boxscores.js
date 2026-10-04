@@ -54,6 +54,46 @@ const LIVESCORES_BOXSCORES = {
       }
     }
     ]
+  },
+    "2026-10-04": {
+    games: [
+      {
+      id: "401914127",
+      line: "Utah Jazz @ Denver Nuggets (10/4 - 7:00 PM EDT)",
+      completed: false,
+      statusText: "10/4 - 7:00 PM EDT",
+      away: {
+        abbr: "UTAH", name: "Utah Jazz", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "DEN", name: "Denver Nuggets", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401918010",
+      line: "Golden State Warriors @ LA Clippers (10/4 - 7:00 PM EDT)",
+      completed: false,
+      statusText: "10/4 - 7:00 PM EDT",
+      away: {
+        abbr: "GS", name: "Golden State Warriors", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "LAC", name: "LA Clippers", score: null,
+        players: [
+
+        ]
+      }
+    }
+    ]
   }
   }
 };
