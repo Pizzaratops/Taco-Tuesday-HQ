@@ -123,6 +123,100 @@ const LIVESCORES_BOXSCORES = {
       }
     }
     ]
+  },
+    "2026-10-05": {
+    games: [
+      {
+      id: "401898388",
+      line: "Memphis Grizzlies @ Atlanta Hawks (10/5 - 7:00 PM EDT)",
+      completed: false,
+      statusText: "10/5 - 7:00 PM EDT",
+      away: {
+        abbr: "MEM", name: "Memphis Grizzlies", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "ATL", name: "Atlanta Hawks", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401908947",
+      line: "Phoenix Suns @ Detroit Pistons (10/5 - 7:00 PM EDT)",
+      completed: false,
+      statusText: "10/5 - 7:00 PM EDT",
+      away: {
+        abbr: "PHX", name: "Phoenix Suns", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "DET", name: "Detroit Pistons", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401914101",
+      line: "New York Knicks @ Philadelphia 76ers (10/5 - 7:00 PM EDT)",
+      completed: false,
+      statusText: "10/5 - 7:00 PM EDT",
+      away: {
+        abbr: "NY", name: "New York Knicks", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "PHI", name: "Philadelphia 76ers", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401914102",
+      line: "Minnesota Timberwolves @ Milwaukee Bucks (10/5 - 8:00 PM EDT)",
+      completed: false,
+      statusText: "10/5 - 8:00 PM EDT",
+      away: {
+        abbr: "MIN", name: "Minnesota Timberwolves", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "MIL", name: "Milwaukee Bucks", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401898716",
+      line: "Los Angeles Lakers @ Sacramento Kings (10/5 - 10:00 PM EDT)",
+      completed: false,
+      statusText: "10/5 - 10:00 PM EDT",
+      away: {
+        abbr: "LAL", name: "Los Angeles Lakers", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "SAC", name: "Sacramento Kings", score: null,
+        players: [
+
+        ]
+      }
+    }
+    ]
   }
   }
 };
