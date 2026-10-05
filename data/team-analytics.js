@@ -3,12 +3,12 @@
 // ============================================================
 //  AUTO-GENERIERT von scripts/build-team-analytics.js ueber die
 //  "Daily 9cat Live Scores" GitHub Action. Nicht von Hand editieren.
-//  Zuletzt gebaut: 2026-10-05T17:04:49.931Z
+//  Zuletzt gebaut: 2026-10-05T17:22:57.827Z
 //
 //  Basis: LIVE_PROJECTIONS (Baseline + Live Blend) × ROSTERS_LIVE.
 //  Spieler ohne Projection sind bewusst NICHT enthalten (frueher
 //  stattdessen -2.0-Sentinels, die die Team-Scores verzerrt haben).
-//  Ohne Projection uebersprungen: 9 Spieler.
+//  Ohne Projection uebersprungen: 10 Spieler.
 //
 //  Wird von js/analytics.js als AN_ROSTER-Basis geladen.
 // ============================================================
