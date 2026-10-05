@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-10-04T14:31:25.372Z",
+ "fetchedAt": "2026-10-05T17:37:33.055Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -1007,7 +1007,7 @@
      "position": "G",
      "height": "6' 3\"",
      "weight": "195 lbs",
-     "age": 24,
+     "age": 25,
      "espnId": "4898369"
     },
     {
@@ -5305,6 +5305,15 @@
      "weight": "195 lbs",
      "age": 23,
      "espnId": "4683933"
+    },
+    {
+     "name": "Terrell Brown Jr.",
+     "jersey": "16",
+     "position": "G",
+     "height": "6' 3\"",
+     "weight": "180 lbs",
+     "age": 28,
+     "espnId": "4395997"
     },
     {
      "name": "Isaiah Collier",
