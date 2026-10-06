@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-05T17:37:33.055Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-06T15:35:43.431Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-10-05T17:37:33.055Z",
+ "fetchedAt": "2026-10-06T15:35:43.431Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -151,7 +151,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 11\"",
      "weight": "224 lbs",
-     "age": 20,
+     "age": 21,
      "espnId": "4873201"
     },
     {
@@ -3286,7 +3286,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 7\"",
      "weight": "225 lbs",
-     "age": 23,
+     "age": 24,
      "espnId": "4433247"
     },
     {
@@ -3445,7 +3445,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 7\"",
      "weight": "206 lbs",
-     "age": 27,
+     "age": 28,
      "espnId": "4277813"
     },
     {
@@ -3590,6 +3590,15 @@ const ROSTERS_DATA = {
      "espnId": "4397018"
     },
     {
+     "name": "Jaden Akins",
+     "jersey": "14",
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "195 lbs",
+     "age": 23,
+     "espnId": "4683730"
+    },
+    {
      "name": "Jose Alvarado",
      "jersey": "5",
      "position": "G",
@@ -3608,6 +3617,15 @@ const ROSTERS_DATA = {
      "espnId": "3934719"
     },
     {
+     "name": "Tony Bradley",
+     "jersey": "13",
+     "position": "C",
+     "height": "6' 10\"",
+     "weight": "248 lbs",
+     "age": 28,
+     "espnId": "4065673"
+    },
+    {
      "name": "Mikal Bridges",
      "jersey": "25",
      "position": "G",
@@ -3618,7 +3636,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Bruce Brown",
-     "jersey": null,
+     "jersey": "1",
      "position": "G",
      "height": "6' 4\"",
      "weight": "202 lbs",
@@ -3744,7 +3762,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "James Wiseman",
-     "jersey": null,
+     "jersey": "35",
      "position": "C",
      "height": "6' 11\"",
      "weight": "240 lbs",
@@ -5148,15 +5166,6 @@ const ROSTERS_DATA = {
      "weight": "193 lbs",
      "age": 23,
      "espnId": "4590360"
-    },
-    {
-     "name": "Andre Jackson Jr.",
-     "jersey": "44",
-     "position": "G",
-     "height": "6' 6\"",
-     "weight": "209 lbs",
-     "age": 24,
-     "espnId": "4432190"
     },
     {
      "name": "Trayce Jackson-Davis",
