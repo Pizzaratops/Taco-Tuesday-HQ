@@ -282,6 +282,82 @@ const LIVESCORES_BOXSCORES = {
       }
     }
     ]
+  },
+    "2026-10-06": {
+    games: [
+      {
+      id: "401901820",
+      line: "Brooklyn Nets @ Charlotte Hornets (10/6 - 7:00 PM EDT)",
+      completed: false,
+      statusText: "10/6 - 7:00 PM EDT",
+      away: {
+        abbr: "BKN", name: "Brooklyn Nets", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "CHA", name: "Charlotte Hornets", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401898389",
+      line: "New Orleans Pelicans @ Oklahoma City Thunder (10/6 - 8:00 PM EDT)",
+      completed: false,
+      statusText: "10/6 - 8:00 PM EDT",
+      away: {
+        abbr: "NO", name: "New Orleans Pelicans", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "OKC", name: "Oklahoma City Thunder", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401914128",
+      line: "Denver Nuggets @ Utah Jazz (10/6 - 9:00 PM EDT)",
+      completed: false,
+      statusText: "10/6 - 9:00 PM EDT",
+      away: {
+        abbr: "DEN", name: "Denver Nuggets", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "UTAH", name: "Utah Jazz", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401898390",
+      line: "Los Angeles Lakers @ Golden State Warriors (10/6 - 10:00 PM EDT)",
+      completed: false,
+      statusText: "10/6 - 10:00 PM EDT",
+      away: {
+        abbr: "LAL", name: "Los Angeles Lakers", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "GS", name: "Golden State Warriors", score: null,
+        players: [
+
+        ]
+      }
+    }
+    ]
   }
   }
 };
