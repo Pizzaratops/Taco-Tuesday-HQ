@@ -1,0 +1,96 @@
+{
+  "league": "nba",
+  "date": "2026-10-07",
+  "games": [
+    {
+      "id": "401914123",
+      "line": "Minnesota Timberwolves @ Indiana Pacers (10/7 - 7:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/7 - 7:00 PM EDT",
+      "away": {
+        "abbr": "MIN",
+        "name": "Minnesota Timberwolves",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "IND",
+        "name": "Indiana Pacers",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401898391",
+      "line": "Orlando Magic @ Memphis Grizzlies (10/7 - 8:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/7 - 8:00 PM EDT",
+      "away": {
+        "abbr": "ORL",
+        "name": "Orlando Magic",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "MEM",
+        "name": "Memphis Grizzlies",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401908620",
+      "line": "Milwaukee Bucks @ Oklahoma City Thunder (10/7 - 8:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/7 - 8:00 PM EDT",
+      "away": {
+        "abbr": "MIL",
+        "name": "Milwaukee Bucks",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "OKC",
+        "name": "Oklahoma City Thunder",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401908939",
+      "line": "Phoenix Suns @ Chicago Bulls (10/7 - 8:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/7 - 8:00 PM EDT",
+      "away": {
+        "abbr": "PHX",
+        "name": "Phoenix Suns",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "CHI",
+        "name": "Chicago Bulls",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401914129",
+      "line": "Golden State Warriors @ Portland Trail Blazers (10/7 - 10:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/7 - 10:00 PM EDT",
+      "away": {
+        "abbr": "GS",
+        "name": "Golden State Warriors",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "POR",
+        "name": "Portland Trail Blazers",
+        "score": null,
+        "players": []
+      }
+    }
+  ]
+}
