@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-06T15:35:43.431Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-07T15:56:01.672Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-10-06T15:35:43.431Z",
+ "fetchedAt": "2026-10-07T15:56:01.672Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -2315,15 +2315,6 @@ const ROSTERS_DATA = {
      "espnId": "3448"
     },
     {
-     "name": "Fletcher Loyer",
-     "jersey": "26",
-     "position": "G",
-     "height": "6' 3\"",
-     "weight": "180 lbs",
-     "age": 23,
-     "espnId": "5105853"
-    },
-    {
      "name": "Nick Martinelli",
      "jersey": "12",
      "position": "F",
@@ -2452,7 +2443,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 2\"",
      "weight": "210 lbs",
-     "age": 21,
+     "age": 22,
      "espnId": "4683774"
     },
     {
@@ -3857,15 +3848,6 @@ const ROSTERS_DATA = {
      "espnId": "4683778"
     },
     {
-     "name": "Robert McCray V",
-     "jersey": "16",
-     "position": "G",
-     "height": "6' 4\"",
-     "weight": "188 lbs",
-     "age": 24,
-     "espnId": "4685802"
-    },
-    {
      "name": "Ajay Mitchell",
      "jersey": "25",
      "position": "G",
@@ -3882,6 +3864,15 @@ const ROSTERS_DATA = {
      "weight": "217 lbs",
      "age": 23,
      "espnId": "5106270"
+    },
+    {
+     "name": "Anthony Pritchard",
+     "jersey": "5",
+     "position": "G",
+     "height": "6' 1\"",
+     "weight": "186 lbs",
+     "age": 23,
+     "espnId": "4897155"
     },
     {
      "name": "Zhaire Smith",
@@ -5318,15 +5309,6 @@ const ROSTERS_DATA = {
      "espnId": "4683933"
     },
     {
-     "name": "Terrell Brown Jr.",
-     "jersey": "16",
-     "position": "G",
-     "height": "6' 3\"",
-     "weight": "180 lbs",
-     "age": 28,
-     "espnId": "4395997"
-    },
-    {
      "name": "Isaiah Collier",
      "jersey": "8",
      "position": "G",
@@ -5343,6 +5325,15 @@ const ROSTERS_DATA = {
      "weight": "250 lbs",
      "age": 22,
      "espnId": "4684793"
+    },
+    {
+     "name": "Taylor Funk",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 8\"",
+     "weight": "230 lbs",
+     "age": 28,
+     "espnId": "4278395"
     },
     {
      "name": "Keyonte George",
