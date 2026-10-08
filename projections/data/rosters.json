@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-10-07T15:56:01.672Z",
+ "fetchedAt": "2026-10-08T15:58:41.910Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -572,7 +572,7 @@
      "position": "G",
      "height": "6' 3\"",
      "weight": "198 lbs",
-     "age": 30,
+     "age": 31,
      "espnId": "3135045"
     },
     {
@@ -771,6 +771,15 @@
      "espnId": "4432162"
     },
     {
+     "name": "Jalen Bridges",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 7\"",
+     "weight": "225 lbs",
+     "age": 25,
+     "espnId": "4432946"
+    },
+    {
      "name": "Matas Buzelis",
      "jersey": "14",
      "position": "F",
@@ -814,6 +823,15 @@
      "weight": "216 lbs",
      "age": 23,
      "espnId": "4871145"
+    },
+    {
+     "name": "Jordan Hawkins",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 5\"",
+     "weight": "190 lbs",
+     "age": 24,
+     "espnId": "4683750"
     },
     {
      "name": "Buddy Hield",
@@ -895,6 +913,15 @@
      "weight": "215 lbs",
      "age": 26,
      "espnId": "4397189"
+    },
+    {
+     "name": "Isaiah Stevens",
+     "jersey": null,
+     "position": "G",
+     "height": "5' 11\"",
+     "weight": "185 lbs",
+     "age": 25,
+     "espnId": "4432117"
     },
     {
      "name": "Dailyn Swain",
@@ -2649,15 +2676,6 @@
      "espnId": "2991070"
     },
     {
-     "name": "Jordan Hawkins",
-     "jersey": "19",
-     "position": "G",
-     "height": "6' 5\"",
-     "weight": "190 lbs",
-     "age": 24,
-     "espnId": "4683750"
-    },
-    {
      "name": "Taylor Hendricks",
      "jersey": "22",
      "position": "F",
@@ -2994,6 +3012,15 @@
      "espnId": "5164559"
     },
     {
+     "name": "Johni Broome",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 10\"",
+     "weight": "235 lbs",
+     "age": 24,
+     "espnId": "4433569"
+    },
+    {
      "name": "Brayden Burries",
      "jersey": "0",
      "position": "G",
@@ -3001,15 +3028,6 @@
      "weight": "215 lbs",
      "age": 21,
      "espnId": "5082206"
-    },
-    {
-     "name": "John Butler Jr.",
-     "jersey": "27",
-     "position": "F",
-     "height": "7' 0\"",
-     "weight": "212 lbs",
-     "age": 23,
-     "espnId": "4432588"
     },
     {
      "name": "Ousmane Dieng",
@@ -4633,6 +4651,15 @@
      "weight": "200 lbs",
      "age": 36,
      "espnId": "6606"
+    },
+    {
+     "name": "Jaylen Martin",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 6\"",
+     "weight": "216 lbs",
+     "age": 22,
+     "espnId": "4684737"
     },
     {
      "name": "Ja Morant",

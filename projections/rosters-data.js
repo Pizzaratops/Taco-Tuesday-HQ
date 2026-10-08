@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-07T15:56:01.672Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-08T15:58:41.910Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-10-07T15:56:01.672Z",
+ "fetchedAt": "2026-10-08T15:58:41.910Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -574,7 +574,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 3\"",
      "weight": "198 lbs",
-     "age": 30,
+     "age": 31,
      "espnId": "3135045"
     },
     {
@@ -773,6 +773,15 @@ const ROSTERS_DATA = {
      "espnId": "4432162"
     },
     {
+     "name": "Jalen Bridges",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 7\"",
+     "weight": "225 lbs",
+     "age": 25,
+     "espnId": "4432946"
+    },
+    {
      "name": "Matas Buzelis",
      "jersey": "14",
      "position": "F",
@@ -816,6 +825,15 @@ const ROSTERS_DATA = {
      "weight": "216 lbs",
      "age": 23,
      "espnId": "4871145"
+    },
+    {
+     "name": "Jordan Hawkins",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 5\"",
+     "weight": "190 lbs",
+     "age": 24,
+     "espnId": "4683750"
     },
     {
      "name": "Buddy Hield",
@@ -897,6 +915,15 @@ const ROSTERS_DATA = {
      "weight": "215 lbs",
      "age": 26,
      "espnId": "4397189"
+    },
+    {
+     "name": "Isaiah Stevens",
+     "jersey": null,
+     "position": "G",
+     "height": "5' 11\"",
+     "weight": "185 lbs",
+     "age": 25,
+     "espnId": "4432117"
     },
     {
      "name": "Dailyn Swain",
@@ -2651,15 +2678,6 @@ const ROSTERS_DATA = {
      "espnId": "2991070"
     },
     {
-     "name": "Jordan Hawkins",
-     "jersey": "19",
-     "position": "G",
-     "height": "6' 5\"",
-     "weight": "190 lbs",
-     "age": 24,
-     "espnId": "4683750"
-    },
-    {
      "name": "Taylor Hendricks",
      "jersey": "22",
      "position": "F",
@@ -2996,6 +3014,15 @@ const ROSTERS_DATA = {
      "espnId": "5164559"
     },
     {
+     "name": "Johni Broome",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 10\"",
+     "weight": "235 lbs",
+     "age": 24,
+     "espnId": "4433569"
+    },
+    {
      "name": "Brayden Burries",
      "jersey": "0",
      "position": "G",
@@ -3003,15 +3030,6 @@ const ROSTERS_DATA = {
      "weight": "215 lbs",
      "age": 21,
      "espnId": "5082206"
-    },
-    {
-     "name": "John Butler Jr.",
-     "jersey": "27",
-     "position": "F",
-     "height": "7' 0\"",
-     "weight": "212 lbs",
-     "age": 23,
-     "espnId": "4432588"
     },
     {
      "name": "Ousmane Dieng",
@@ -4635,6 +4653,15 @@ const ROSTERS_DATA = {
      "weight": "200 lbs",
      "age": 36,
      "espnId": "6606"
+    },
+    {
+     "name": "Jaylen Martin",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 6\"",
+     "weight": "216 lbs",
+     "age": 22,
+     "espnId": "4684737"
     },
     {
      "name": "Ja Morant",
