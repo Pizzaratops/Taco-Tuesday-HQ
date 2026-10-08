@@ -721,6 +721,118 @@ const LIVESCORES_BOXSCORES = {
       }
     }
     ]
+  },
+    "2026-10-08": {
+    games: [
+      {
+      id: "401898392",
+      line: "Boston Celtics @ Cleveland Cavaliers (10/8 - 7:00 PM EDT)",
+      completed: false,
+      statusText: "10/8 - 7:00 PM EDT",
+      away: {
+        abbr: "BOS", name: "Boston Celtics", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "CLE", name: "Cleveland Cavaliers", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401898393",
+      line: "New Orleans Pelicans @ Miami Heat (10/8 - 7:30 PM EDT)",
+      completed: false,
+      statusText: "10/8 - 7:30 PM EDT",
+      away: {
+        abbr: "NO", name: "New Orleans Pelicans", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "MIA", name: "Miami Heat", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401901823",
+      line: "Philadelphia 76ers @ Brooklyn Nets (10/8 - 7:30 PM EDT)",
+      completed: false,
+      statusText: "10/8 - 7:30 PM EDT",
+      away: {
+        abbr: "PHI", name: "Philadelphia 76ers", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "BKN", name: "Brooklyn Nets", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401906508",
+      line: "Washington Wizards @ New York Knicks (10/8 - 7:30 PM EDT)",
+      completed: false,
+      statusText: "10/8 - 7:30 PM EDT",
+      away: {
+        abbr: "WSH", name: "Washington Wizards", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "NY", name: "New York Knicks", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401898394",
+      line: "Atlanta Hawks @ San Antonio Spurs (10/8 - 8:00 PM EDT)",
+      completed: false,
+      statusText: "10/8 - 8:00 PM EDT",
+      away: {
+        abbr: "ATL", name: "Atlanta Hawks", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "SA", name: "San Antonio Spurs", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401898717",
+      line: "Sacramento Kings @ Los Angeles Lakers (10/8 - 10:30 PM EDT)",
+      completed: false,
+      statusText: "10/8 - 10:30 PM EDT",
+      away: {
+        abbr: "SAC", name: "Sacramento Kings", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "LAL", name: "Los Angeles Lakers", score: null,
+        players: [
+
+        ]
+      }
+    }
+    ]
   }
   }
 };
