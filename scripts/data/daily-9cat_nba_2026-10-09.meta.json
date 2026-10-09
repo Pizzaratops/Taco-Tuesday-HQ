@@ -1,0 +1,12 @@
+{
+  "league": "nba",
+  "date": "2026-10-09",
+  "games": [
+    "Houston Rockets 135 @ Dallas Mavericks 117 (Final)",
+    "Memphis Grizzlies @ Chicago Bulls (10/9 - 8:00 PM EDT)"
+  ],
+  "leagueAvg": {
+    "fg": 50.6,
+    "ft": 69.4
+  }
+}
