@@ -971,6 +971,46 @@ const LIVESCORES_BOXSCORES = {
       }
     }
     ]
+  },
+    "2026-10-09": {
+    games: [
+      {
+      id: "401898395",
+      line: "Houston Rockets @ Dallas Mavericks (10/9 - 8:00 AM EDT)",
+      completed: false,
+      statusText: "10/9 - 8:00 AM EDT",
+      away: {
+        abbr: "HOU", name: "Houston Rockets", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "DAL", name: "Dallas Mavericks", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401908940",
+      line: "Memphis Grizzlies @ Chicago Bulls (10/9 - 8:00 PM EDT)",
+      completed: false,
+      statusText: "10/9 - 8:00 PM EDT",
+      away: {
+        abbr: "MEM", name: "Memphis Grizzlies", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "CHI", name: "Chicago Bulls", score: null,
+        players: [
+
+        ]
+      }
+    }
+    ]
   }
   }
 };
