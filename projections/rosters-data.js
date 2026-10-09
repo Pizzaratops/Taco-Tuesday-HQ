@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-08T15:58:41.910Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-09T15:41:05.853Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-10-08T15:58:41.910Z",
+ "fetchedAt": "2026-10-09T15:41:05.853Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -2873,15 +2873,6 @@ const ROSTERS_DATA = {
      "espnId": "4700818"
     },
     {
-     "name": "J'Vonne Hadley",
-     "jersey": "14",
-     "position": "F",
-     "height": "6' 5\"",
-     "weight": "210 lbs",
-     "age": 24,
-     "espnId": "4702784"
-    },
-    {
      "name": "Tim Hardaway Jr.",
      "jersey": "10",
      "position": "G",
@@ -2909,6 +2900,15 @@ const ROSTERS_DATA = {
      "espnId": "4997528"
     },
     {
+     "name": "Kylor Kelley",
+     "jersey": null,
+     "position": "C",
+     "height": "7' 0\"",
+     "weight": "230 lbs",
+     "age": 29,
+     "espnId": "3950760"
+    },
+    {
      "name": "Pelle Larsson",
      "jersey": "9",
      "position": "G",
@@ -2916,6 +2916,15 @@ const ROSTERS_DATA = {
      "weight": "215 lbs",
      "age": 25,
      "espnId": "4601025"
+    },
+    {
+     "name": "Gabe Madsen",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 6\"",
+     "weight": "200 lbs",
+     "age": 25,
+     "espnId": "4432753"
     },
     {
      "name": "Bez Mbeng",
@@ -2943,15 +2952,6 @@ const ROSTERS_DATA = {
      "weight": "250 lbs",
      "age": 31,
      "espnId": "3064482"
-    },
-    {
-     "name": "Lester Quinones",
-     "jersey": "25",
-     "position": "G",
-     "height": "6' 4\"",
-     "weight": "208 lbs",
-     "age": 25,
-     "espnId": "4431720"
     },
     {
      "name": "Nick Richards",
@@ -3627,7 +3627,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Tony Bradley",
-     "jersey": "13",
+     "jersey": "18",
      "position": "C",
      "height": "6' 10\"",
      "weight": "248 lbs",
@@ -5341,7 +5341,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 4\"",
      "weight": "210 lbs",
-     "age": 21,
+     "age": 22,
      "espnId": "4683766"
     },
     {
@@ -5491,7 +5491,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 3\"",
      "weight": "190 lbs",
-     "age": 24,
+     "age": 25,
      "espnId": "4432187"
     },
     {
@@ -5574,6 +5574,15 @@ const ROSTERS_DATA = {
      "weight": "215 lbs",
      "age": 23,
      "espnId": "4432645"
+    },
+    {
+     "name": "Skal Labissiere",
+     "jersey": "17",
+     "position": "C",
+     "height": "6' 10\"",
+     "weight": "235 lbs",
+     "age": 30,
+     "espnId": "3936296"
     },
     {
      "name": "Chris Livingston",
