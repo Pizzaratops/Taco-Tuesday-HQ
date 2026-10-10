@@ -1,0 +1,132 @@
+{
+  "league": "nba",
+  "date": "2026-10-10",
+  "games": [
+    {
+      "id": "401902645",
+      "line": "LA Clippers @ Toronto Raptors (10/10 - 6:30 PM EDT)",
+      "completed": false,
+      "statusText": "10/10 - 6:30 PM EDT",
+      "away": {
+        "abbr": "LAC",
+        "name": "LA Clippers",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "TOR",
+        "name": "Toronto Raptors",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401898396",
+      "line": "Atlanta Hawks @ Indiana Pacers (10/10 - 7:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/10 - 7:00 PM EDT",
+      "away": {
+        "abbr": "ATL",
+        "name": "Atlanta Hawks",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "IND",
+        "name": "Indiana Pacers",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401906510",
+      "line": "Detroit Pistons @ Washington Wizards (10/10 - 7:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/10 - 7:00 PM EDT",
+      "away": {
+        "abbr": "DET",
+        "name": "Detroit Pistons",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "WSH",
+        "name": "Washington Wizards",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401898397",
+      "line": "Minnesota Timberwolves @ Miami Heat (10/10 - 8:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/10 - 8:00 PM EDT",
+      "away": {
+        "abbr": "MIN",
+        "name": "Minnesota Timberwolves",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "MIA",
+        "name": "Miami Heat",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401898398",
+      "line": "Philadelphia 76ers @ Boston Celtics (10/10 - 8:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/10 - 8:00 PM EDT",
+      "away": {
+        "abbr": "PHI",
+        "name": "Philadelphia 76ers",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "BOS",
+        "name": "Boston Celtics",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401898399",
+      "line": "Sacramento Kings @ Golden State Warriors (10/10 - 8:30 PM EDT)",
+      "completed": false,
+      "statusText": "10/10 - 8:30 PM EDT",
+      "away": {
+        "abbr": "SAC",
+        "name": "Sacramento Kings",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "GS",
+        "name": "Golden State Warriors",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401898720",
+      "line": "San Antonio Spurs @ Phoenix Suns (10/10 - 10:30 PM EDT)",
+      "completed": false,
+      "statusText": "10/10 - 10:30 PM EDT",
+      "away": {
+        "abbr": "SA",
+        "name": "San Antonio Spurs",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "PHX",
+        "name": "Phoenix Suns",
+        "score": null,
+        "players": []
+      }
+    }
+  ]
+}
