@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-09T15:41:05.853Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-10T14:55:55.082Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-10-09T15:41:05.853Z",
+ "fetchedAt": "2026-10-10T14:55:55.082Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -774,7 +774,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Jalen Bridges",
-     "jersey": null,
+     "jersey": "20",
      "position": "F",
      "height": "6' 7\"",
      "weight": "225 lbs",
@@ -823,12 +823,12 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 7\"",
      "weight": "216 lbs",
-     "age": 23,
+     "age": 24,
      "espnId": "4871145"
     },
     {
      "name": "Jordan Hawkins",
-     "jersey": null,
+     "jersey": "15",
      "position": "G",
      "height": "6' 5\"",
      "weight": "190 lbs",
@@ -837,7 +837,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Buddy Hield",
-     "jersey": null,
+     "jersey": "7",
      "position": "G",
      "height": "6' 4\"",
      "weight": "220 lbs",
@@ -1735,7 +1735,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 0\"",
      "weight": "200 lbs",
-     "age": 24,
+     "age": 25,
      "espnId": "4433149"
     },
     {
@@ -1975,7 +1975,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 1\"",
      "weight": "195 lbs",
-     "age": 23,
+     "age": 24,
      "espnId": "4709131"
     },
     {
@@ -2438,6 +2438,15 @@ const ROSTERS_DATA = {
      "espnId": "5113969"
     },
     {
+     "name": "Rafael Castro",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 9\"",
+     "weight": "224 lbs",
+     "age": 23,
+     "espnId": "4684443"
+    },
+    {
      "name": "Luka Doncic",
      "jersey": "77",
      "position": "G",
@@ -2499,15 +2508,6 @@ const ROSTERS_DATA = {
      "weight": "215 lbs",
      "age": 25,
      "espnId": "4897943"
-    },
-    {
-     "name": "William Kyle III",
-     "jersey": "45",
-     "position": "F",
-     "height": "6' 9\"",
-     "weight": "230 lbs",
-     "age": 22,
-     "espnId": "5107258"
     },
     {
      "name": "Jake LaRavia",
