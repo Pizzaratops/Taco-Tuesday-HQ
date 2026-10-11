@@ -1376,9 +1376,9 @@ const LIVESCORES_BOXSCORES = {
     games: [
       {
       id: "401898400",
-      line: "Dallas Mavericks @ Houston Rockets (7:17 - 2nd)",
+      line: "Dallas Mavericks @ Houston Rockets (Halftime)",
       completed: false,
-      statusText: "7:17 - 2nd",
+      statusText: "Halftime",
       away: {
         abbr: "DAL", name: "Dallas Mavericks", score: null,
         players: [
