@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-10T14:55:55.082Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-11T15:12:51.332Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-10-10T14:55:55.082Z",
+ "fetchedAt": "2026-10-11T15:12:51.332Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -220,7 +220,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 1\"",
      "weight": "175 lbs",
-     "age": 38,
+     "age": 39,
      "espnId": "3195"
     },
     {
@@ -673,7 +673,7 @@ const ROSTERS_DATA = {
      "position": "G",
      "height": "6' 7\"",
      "weight": "210 lbs",
-     "age": 20,
+     "age": 21,
      "espnId": "5239590"
     },
     {
@@ -2342,6 +2342,15 @@ const ROSTERS_DATA = {
      "espnId": "3448"
     },
     {
+     "name": "Fletcher Loyer",
+     "jersey": "26",
+     "position": "G",
+     "height": "6' 3\"",
+     "weight": "180 lbs",
+     "age": 23,
+     "espnId": "5105853"
+    },
+    {
      "name": "Nick Martinelli",
      "jersey": "12",
      "position": "F",
@@ -2403,6 +2412,15 @@ const ROSTERS_DATA = {
      "weight": "215 lbs",
      "age": 30,
      "espnId": "4065778"
+    },
+    {
+     "name": "Jahmyl Telfort",
+     "jersey": "19",
+     "position": "F",
+     "height": "6' 7\"",
+     "weight": "225 lbs",
+     "age": 25,
+     "espnId": "4702785"
     },
     {
      "name": "Keaton Wagler",
@@ -2873,6 +2891,15 @@ const ROSTERS_DATA = {
      "espnId": "4700818"
     },
     {
+     "name": "J'Vonne Hadley",
+     "jersey": "14",
+     "position": "F",
+     "height": "6' 5\"",
+     "weight": "210 lbs",
+     "age": 24,
+     "espnId": "4702784"
+    },
+    {
      "name": "Tim Hardaway Jr.",
      "jersey": "10",
      "position": "G",
@@ -2954,6 +2981,15 @@ const ROSTERS_DATA = {
      "espnId": "3064482"
     },
     {
+     "name": "Lester Quinones",
+     "jersey": "25",
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "208 lbs",
+     "age": 25,
+     "espnId": "4431720"
+    },
+    {
      "name": "Nick Richards",
      "jersey": "8",
      "position": "C",
@@ -2979,6 +3015,15 @@ const ROSTERS_DATA = {
      "weight": "200 lbs",
      "age": 28,
      "espnId": "4066993"
+    },
+    {
+     "name": "Dennis Smith Jr.",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 2\"",
+     "weight": "205 lbs",
+     "age": 28,
+     "espnId": "4065697"
     },
     {
      "name": "Klay Thompson",
@@ -5014,7 +5059,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 5\"",
      "weight": "220 lbs",
-     "age": 26,
+     "age": 27,
      "espnId": "4395723"
     },
     {
@@ -5168,6 +5213,15 @@ const ROSTERS_DATA = {
      "espnId": "4433138"
     },
     {
+     "name": "Tyson Degenhart",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 7\"",
+     "weight": "232 lbs",
+     "age": 23,
+     "espnId": "4898260"
+    },
+    {
      "name": "Allen Graves",
      "jersey": "22",
      "position": "F",
@@ -5184,6 +5238,15 @@ const ROSTERS_DATA = {
      "weight": "193 lbs",
      "age": 23,
      "espnId": "4590360"
+    },
+    {
+     "name": "Andre Jackson Jr.",
+     "jersey": "44",
+     "position": "G",
+     "height": "6' 6\"",
+     "weight": "209 lbs",
+     "age": 24,
+     "espnId": "4432190"
     },
     {
      "name": "Trayce Jackson-Davis",
@@ -5556,6 +5619,15 @@ const ROSTERS_DATA = {
      "weight": "230 lbs",
      "age": 33,
      "espnId": "2581184"
+    },
+    {
+     "name": "Jazian Gortman",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 1\"",
+     "weight": "175 lbs",
+     "age": 23,
+     "espnId": "4708972"
     },
     {
      "name": "Tre Johnson",
