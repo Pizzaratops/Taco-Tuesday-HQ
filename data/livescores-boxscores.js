@@ -1371,6 +1371,82 @@ const LIVESCORES_BOXSCORES = {
       }
     }
     ]
+  },
+    "2026-10-11": {
+    games: [
+      {
+      id: "401898400",
+      line: "Dallas Mavericks @ Houston Rockets (35.0 - 1st)",
+      completed: false,
+      statusText: "35.0 - 1st",
+      away: {
+        abbr: "DAL", name: "Dallas Mavericks", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "HOU", name: "Houston Rockets", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401898401",
+      line: "Orlando Magic @ Cleveland Cavaliers (10/11 - 6:30 PM EDT)",
+      completed: false,
+      statusText: "10/11 - 6:30 PM EDT",
+      away: {
+        abbr: "ORL", name: "Orlando Magic", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "CLE", name: "Cleveland Cavaliers", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401901821",
+      line: "Milwaukee Bucks @ Charlotte Hornets (10/11 - 7:00 PM EDT)",
+      completed: false,
+      statusText: "10/11 - 7:00 PM EDT",
+      away: {
+        abbr: "MIL", name: "Milwaukee Bucks", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "CHA", name: "Charlotte Hornets", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401908941",
+      line: "Chicago Bulls @ Denver Nuggets (10/11 - 9:00 PM EDT)",
+      completed: false,
+      statusText: "10/11 - 9:00 PM EDT",
+      away: {
+        abbr: "CHI", name: "Chicago Bulls", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "DEN", name: "Denver Nuggets", score: null,
+        players: [
+
+        ]
+      }
+    }
+    ]
   }
   }
 };
