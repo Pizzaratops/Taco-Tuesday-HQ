@@ -1,0 +1,96 @@
+{
+  "league": "nba",
+  "date": "2026-10-12",
+  "games": [
+    {
+      "id": "401914130",
+      "line": "London Lions @ Portland Trail Blazers (10/12 - 4:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/12 - 4:00 PM EDT",
+      "away": {
+        "abbr": "LON",
+        "name": "London Lions",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "POR",
+        "name": "Portland Trail Blazers",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401898402",
+      "line": "Oklahoma City Thunder @ Atlanta Hawks (10/12 - 7:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/12 - 7:00 PM EDT",
+      "away": {
+        "abbr": "OKC",
+        "name": "Oklahoma City Thunder",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "ATL",
+        "name": "Atlanta Hawks",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401901824",
+      "line": "Brooklyn Nets @ Washington Wizards (10/12 - 7:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/12 - 7:00 PM EDT",
+      "away": {
+        "abbr": "BKN",
+        "name": "Brooklyn Nets",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "WSH",
+        "name": "Washington Wizards",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401914124",
+      "line": "Minnesota Timberwolves @ New York Knicks (10/12 - 7:30 PM EDT)",
+      "completed": false,
+      "statusText": "10/12 - 7:30 PM EDT",
+      "away": {
+        "abbr": "MIN",
+        "name": "Minnesota Timberwolves",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "NY",
+        "name": "New York Knicks",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401898721",
+      "line": "San Antonio Spurs @ Utah Jazz (10/12 - 9:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/12 - 9:00 PM EDT",
+      "away": {
+        "abbr": "SA",
+        "name": "San Antonio Spurs",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "UTAH",
+        "name": "Utah Jazz",
+        "score": null,
+        "players": []
+      }
+    }
+  ]
+}
