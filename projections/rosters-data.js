@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-11T15:12:51.332Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-12T18:24:27.533Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-10-11T15:12:51.332Z",
+ "fetchedAt": "2026-10-12T18:24:27.533Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -918,7 +918,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Isaiah Stevens",
-     "jersey": null,
+     "jersey": "99",
      "position": "G",
      "height": "5' 11\"",
      "weight": "185 lbs",
@@ -1103,6 +1103,15 @@ const ROSTERS_DATA = {
      "espnId": "4701845"
     },
     {
+     "name": "Jaxson Robinson",
+     "jersey": "2",
+     "position": "F",
+     "height": "6' 6\"",
+     "weight": "192 lbs",
+     "age": 23,
+     "espnId": "4702528"
+    },
+    {
      "name": "Meleek Thomas",
      "jersey": "15",
      "position": "G",
@@ -1146,6 +1155,15 @@ const ROSTERS_DATA = {
      "weight": "200 lbs",
      "age": 24,
      "espnId": "4576087"
+    },
+    {
+     "name": "Noam Yaacov",
+     "jersey": "30",
+     "position": "G",
+     "height": "6' 1\"",
+     "weight": null,
+     "age": 21,
+     "espnId": "5457832"
     }
    ]
   },
@@ -1485,7 +1503,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Ryan Nembhard",
-     "jersey": null,
+     "jersey": "9",
      "position": "G",
      "height": "5' 11\"",
      "weight": "180 lbs",
@@ -3060,7 +3078,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Johni Broome",
-     "jersey": null,
+     "jersey": "22",
      "position": "F",
      "height": "6' 10\"",
      "weight": "235 lbs",
@@ -3075,6 +3093,15 @@ const ROSTERS_DATA = {
      "weight": "215 lbs",
      "age": 21,
      "espnId": "5082206"
+    },
+    {
+     "name": "John Butler Jr.",
+     "jersey": "27",
+     "position": "F",
+     "height": "7' 0\"",
+     "weight": "212 lbs",
+     "age": 23,
+     "espnId": "4432588"
     },
     {
      "name": "Ousmane Dieng",
@@ -4176,6 +4203,15 @@ const ROSTERS_DATA = {
      "weight": "180 lbs",
      "age": 20,
      "espnId": "5239561"
+    },
+    {
+     "name": "Mike Sharavjamts",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 9\"",
+     "weight": "195 lbs",
+     "age": 24,
+     "espnId": "5105875"
     },
     {
      "name": "Jalen Suggs",
