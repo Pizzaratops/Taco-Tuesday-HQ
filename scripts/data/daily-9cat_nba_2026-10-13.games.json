@@ -1,0 +1,96 @@
+{
+  "league": "nba",
+  "date": "2026-10-13",
+  "games": [
+    {
+      "id": "401898403",
+      "line": "Cleveland Cavaliers @ Orlando Magic (10/13 - 7:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/13 - 7:00 PM EDT",
+      "away": {
+        "abbr": "CLE",
+        "name": "Cleveland Cavaliers",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "ORL",
+        "name": "Orlando Magic",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401908944",
+      "line": "New York Knicks @ Toronto Raptors (10/13 - 7:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/13 - 7:00 PM EDT",
+      "away": {
+        "abbr": "NY",
+        "name": "New York Knicks",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "TOR",
+        "name": "Toronto Raptors",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401908621",
+      "line": "Indiana Pacers @ Oklahoma City Thunder (10/13 - 8:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/13 - 8:00 PM EDT",
+      "away": {
+        "abbr": "IND",
+        "name": "Indiana Pacers",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "OKC",
+        "name": "Oklahoma City Thunder",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401898718",
+      "line": "Golden State Warriors @ Los Angeles Lakers (10/13 - 10:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/13 - 10:00 PM EDT",
+      "away": {
+        "abbr": "GS",
+        "name": "Golden State Warriors",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "LAL",
+        "name": "Los Angeles Lakers",
+        "score": null,
+        "players": []
+      }
+    },
+    {
+      "id": "401901826",
+      "line": "Portland Trail Blazers @ Sacramento Kings (10/13 - 10:00 PM EDT)",
+      "completed": false,
+      "statusText": "10/13 - 10:00 PM EDT",
+      "away": {
+        "abbr": "POR",
+        "name": "Portland Trail Blazers",
+        "score": null,
+        "players": []
+      },
+      "home": {
+        "abbr": "SAC",
+        "name": "Sacramento Kings",
+        "score": null,
+        "players": []
+      }
+    }
+  ]
+}
