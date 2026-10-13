@@ -1,7 +1,7 @@
-// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-12T18:24:27.533Z
+// Automatisch generiert von scripts/fetch-rosters.mjs — 2026-10-13T16:37:02.526Z
 // Quelle: ESPN (site.api.espn.com)
 const ROSTERS_DATA = {
- "fetchedAt": "2026-10-12T18:24:27.533Z",
+ "fetchedAt": "2026-10-13T16:37:02.526Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -144,6 +144,15 @@ const ROSTERS_DATA = {
      "weight": "190 lbs",
      "age": 35,
      "espnId": "2490149"
+    },
+    {
+     "name": "Isaac McKneely",
+     "jersey": "15",
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "195 lbs",
+     "age": 22,
+     "espnId": "4712845"
     },
     {
      "name": "Asa Newell",
@@ -399,6 +408,15 @@ const ROSTERS_DATA = {
      "weight": "228 lbs",
      "age": 22,
      "espnId": "5105626"
+    },
+    {
+     "name": "Dion Brown",
+     "jersey": null,
+     "position": "G",
+     "height": "6' 3\"",
+     "weight": "180 lbs",
+     "age": 23,
+     "espnId": "5107242"
     },
     {
      "name": "Mikel Brown Jr.",
@@ -1527,15 +1545,6 @@ const ROSTERS_DATA = {
      "weight": "205 lbs",
      "age": 24,
      "espnId": "4432181"
-    },
-    {
-     "name": "Lonnie Walker IV",
-     "jersey": "4",
-     "position": "G",
-     "height": "6' 4\"",
-     "weight": "205 lbs",
-     "age": 27,
-     "espnId": "4277890"
     },
     {
      "name": "Cam Whitmore",
@@ -2982,7 +2991,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Davion Mitchell",
-     "jersey": "45",
+     "jersey": "2",
      "position": "G",
      "height": "6' 0\"",
      "weight": "210 lbs",
@@ -3399,7 +3408,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Norchad Omier",
-     "jersey": null,
+     "jersey": "23",
      "position": "F",
      "height": "6' 5\"",
      "weight": "248 lbs",
@@ -3501,15 +3510,6 @@ const ROSTERS_DATA = {
      "weight": "190 lbs",
      "age": 19,
      "espnId": "5144091"
-    },
-    {
-     "name": "Caleb Houstan",
-     "jersey": "33",
-     "position": "F",
-     "height": "6' 8\"",
-     "weight": "205 lbs",
-     "age": 23,
-     "espnId": "4433623"
     },
     {
      "name": "AJ Johnson",
@@ -3936,6 +3936,15 @@ const ROSTERS_DATA = {
      "weight": "195 lbs",
      "age": 22,
      "espnId": "4683778"
+    },
+    {
+     "name": "Robert McCray V",
+     "jersey": "16",
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "188 lbs",
+     "age": 24,
+     "espnId": "4685802"
     },
     {
      "name": "Ajay Mitchell",
@@ -5254,7 +5263,7 @@ const ROSTERS_DATA = {
      "position": "F",
      "height": "6' 7\"",
      "weight": "232 lbs",
-     "age": 23,
+     "age": 24,
      "espnId": "4898260"
     },
     {
@@ -5265,15 +5274,6 @@ const ROSTERS_DATA = {
      "weight": "225 lbs",
      "age": 20,
      "espnId": "5149115"
-    },
-    {
-     "name": "Chucky Hepburn",
-     "jersey": "24",
-     "position": "G",
-     "height": "6' 0\"",
-     "weight": "193 lbs",
-     "age": 23,
-     "espnId": "4590360"
     },
     {
      "name": "Andre Jackson Jr.",
@@ -5435,6 +5435,15 @@ const ROSTERS_DATA = {
      "espnId": "4683933"
     },
     {
+     "name": "Terrell Brown Jr.",
+     "jersey": "16",
+     "position": "G",
+     "height": "6' 3\"",
+     "weight": "180 lbs",
+     "age": 28,
+     "espnId": "4395997"
+    },
+    {
      "name": "Isaiah Collier",
      "jersey": "8",
      "position": "G",
@@ -5454,7 +5463,7 @@ const ROSTERS_DATA = {
     },
     {
      "name": "Taylor Funk",
-     "jersey": null,
+     "jersey": "33",
      "position": "F",
      "height": "6' 8\"",
      "weight": "230 lbs",
@@ -5568,6 +5577,15 @@ const ROSTERS_DATA = {
      "weight": "235 lbs",
      "age": 22,
      "espnId": "5105839"
+    },
+    {
+     "name": "Mohamed Wague",
+     "jersey": "17",
+     "position": "F",
+     "height": "6' 10\"",
+     "weight": "225 lbs",
+     "age": 26,
+     "espnId": "5106293"
     }
    ]
   },
@@ -5772,6 +5790,15 @@ const ROSTERS_DATA = {
      "weight": "210 lbs",
      "age": 25,
      "espnId": "4606840"
+    },
+    {
+     "name": "Alondes Williams",
+     "jersey": "31",
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "210 lbs",
+     "age": 27,
+     "espnId": "4592216"
     },
     {
      "name": "Trae Young",
