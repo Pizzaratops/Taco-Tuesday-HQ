@@ -2059,6 +2059,136 @@ const LIVESCORES_BOXSCORES = {
       }
     }
     ]
+  },
+    "2026-10-14": {
+    games: [
+      {
+      id: "401898404",
+      line: "Brooklyn Nets @ Miami Heat (10/14 - 7:30 PM EDT)",
+      completed: false,
+      statusText: "10/14 - 7:30 PM EDT",
+      away: {
+        abbr: "BKN", name: "Brooklyn Nets", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "MIA", name: "Miami Heat", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401898405",
+      line: "Charlotte Hornets @ Boston Celtics (10/14 - 7:30 PM EDT)",
+      completed: false,
+      statusText: "10/14 - 7:30 PM EDT",
+      away: {
+        abbr: "CHA", name: "Charlotte Hornets", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "BOS", name: "Boston Celtics", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401898722",
+      line: "Phoenix Suns @ San Antonio Spurs (10/14 - 8:00 PM EDT)",
+      completed: false,
+      statusText: "10/14 - 8:00 PM EDT",
+      away: {
+        abbr: "PHX", name: "Phoenix Suns", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "SA", name: "San Antonio Spurs", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401901825",
+      line: "New Orleans Pelicans @ Dallas Mavericks (10/14 - 8:00 PM EDT)",
+      completed: false,
+      statusText: "10/14 - 8:00 PM EDT",
+      away: {
+        abbr: "NO", name: "New Orleans Pelicans", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "DAL", name: "Dallas Mavericks", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401908942",
+      line: "Chicago Bulls @ Milwaukee Bucks (10/14 - 8:00 PM EDT)",
+      completed: false,
+      statusText: "10/14 - 8:00 PM EDT",
+      away: {
+        abbr: "CHI", name: "Chicago Bulls", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "MIL", name: "Milwaukee Bucks", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401914125",
+      line: "Detroit Pistons @ Minnesota Timberwolves (10/14 - 8:00 PM EDT)",
+      completed: false,
+      statusText: "10/14 - 8:00 PM EDT",
+      away: {
+        abbr: "DET", name: "Detroit Pistons", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "MIN", name: "Minnesota Timberwolves", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401918011",
+      line: "Denver Nuggets @ LA Clippers (10/14 - 10:30 PM EDT)",
+      completed: false,
+      statusText: "10/14 - 10:30 PM EDT",
+      away: {
+        abbr: "DEN", name: "Denver Nuggets", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "LAC", name: "LA Clippers", score: null,
+        players: [
+
+        ]
+      }
+    }
+    ]
   }
   }
 };
