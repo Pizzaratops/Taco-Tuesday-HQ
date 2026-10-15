@@ -6,6 +6,29 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+// ============================================================
+//  MFHFB HQ — Weiterleitung (NBA-Cutover)
+// ============================================================
+//  Diese Seite ist in den Hub umgezogen: https://pizzaratops.github.io/MFHFBHQ/#/tthq
+//  Alte Links (#livescores, #matchup, #trade, …) landen auf der passenden Hub-Seite.
+//  Ausnahmen (bleiben hier):
+//    - ?legacy=1              (alte Seite bewusst öffnen; gilt für die ganze Sitzung)
+//    - Einbettung im iframe   (Hub-Legacy-Ansicht)
+// ============================================================
+(function () {
+  var hash = location.hash.slice(1);
+  var stay = window.self !== window.top;
+  try {
+    if (/(^|[?&])legacy=1/.test(location.search)) sessionStorage.setItem('tthq-legacy', '1');
+    if (sessionStorage.getItem('tthq-legacy') === '1') stay = true;
+  } catch (e) { if (/(^|[?&])legacy=1/.test(location.search)) stay = true; }
+  if (stay) return;
+  var MAP = {"home": "", "draftboard": "picks", "draftresults": "draftresults", "draft26": "prospects", "draft27": "prospects/2027", "bigBoard": "bigboard", "duel": "", "duelboard": "", "duelsettings": "", "lottery": "lottery", "rankings": "dynrank", "dynastyrolling": "dynrank/verlauf", "bestavail": "waiver", "analytics": "analytics", "rollingrankings": "rolling", "nbapowerrankings": "nbateams", "nbapowerscore": "nbateams", "trade": "trade", "tradefinder": "tradefinder", "tradehistory": "tradehistory", "adminsettings": "", "standings": "standings", "rules": "", "livescores": "livescores", "playerrankings": "players", "playerprojections": "projections", "matchup": "planner", "playershape": "catweb", "liveprojections": "projections", "liveprojectionsteams": "nbateams", "liveprojectionsdraft": "projections", "team": "teams", "nbateam": "nbateams"};
+  var sub = MAP[hash] != null ? MAP[hash] : '';
+  location.replace('https://pizzaratops.github.io/MFHFBHQ/#/tthq' + (sub ? '/' + sub : ''));
+})();
+</script>
   <title>Taco Tuesday HQ 🌮</title>
   <link rel="manifest" href="manifest.json?v=6">
   <!-- iOS Safari nutzt manifest.json kaum -- fuer "Zum Home-Bildschirm" (Teilen-Menü,
