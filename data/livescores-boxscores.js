@@ -2326,6 +2326,46 @@ const LIVESCORES_BOXSCORES = {
       }
     }
     ]
+  },
+    "2026-10-15": {
+    games: [
+      {
+      id: "401908945",
+      line: "Toronto Raptors @ New York Knicks (10/15 - 7:30 PM EDT)",
+      completed: false,
+      statusText: "10/15 - 7:30 PM EDT",
+      away: {
+        abbr: "TOR", name: "Toronto Raptors", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "NY", name: "New York Knicks", score: null,
+        players: [
+
+        ]
+      }
+    },
+      {
+      id: "401908622",
+      line: "Oklahoma City Thunder @ Houston Rockets (10/15 - 8:30 PM EDT)",
+      completed: false,
+      statusText: "10/15 - 8:30 PM EDT",
+      away: {
+        abbr: "OKC", name: "Oklahoma City Thunder", score: null,
+        players: [
+
+        ]
+      },
+      home: {
+        abbr: "HOU", name: "Houston Rockets", score: null,
+        players: [
+
+        ]
+      }
+    }
+    ]
   }
   }
 };
