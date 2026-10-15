@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-10-14T14:13:51.841Z",
+ "fetchedAt": "2026-10-15T13:48:57.843Z",
  "source": "ESPN (site.api.espn.com)",
  "teamCount": 30,
  "errors": [],
@@ -16,6 +16,15 @@
      "weight": "205 lbs",
      "age": 28,
      "espnId": "4278039"
+    },
+    {
+     "name": "Giorgi Bezhanishvili",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 9\"",
+     "weight": "245 lbs",
+     "age": 27,
+     "espnId": "4397003"
     },
     {
      "name": "Cameron Corhen",
@@ -1092,15 +1101,6 @@
      "espnId": "4701845"
     },
     {
-     "name": "Jaxson Robinson",
-     "jersey": "2",
-     "position": "F",
-     "height": "6' 6\"",
-     "weight": "192 lbs",
-     "age": 23,
-     "espnId": "4702528"
-    },
-    {
      "name": "Meleek Thomas",
      "jersey": "15",
      "position": "G",
@@ -1204,6 +1204,15 @@
      "weight": "202 lbs",
      "age": 20,
      "espnId": "5279129"
+    },
+    {
+     "name": "Jorge Diaz Graham",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 11\"",
+     "weight": "205 lbs",
+     "age": 23,
+     "espnId": "5105411"
     },
     {
      "name": "Cooper Flagg",
@@ -1374,6 +1383,15 @@
      "espnId": "4698719"
     },
     {
+     "name": "Steven Crowl",
+     "jersey": null,
+     "position": "C",
+     "height": "7' 0\"",
+     "weight": "248 lbs",
+     "age": 25,
+     "espnId": "4588201"
+    },
+    {
      "name": "DeMar DeRozan",
      "jersey": "10",
      "position": "G",
@@ -1516,6 +1534,15 @@
      "weight": "205 lbs",
      "age": 24,
      "espnId": "4432181"
+    },
+    {
+     "name": "Lonnie Walker IV",
+     "jersey": "4",
+     "position": "G",
+     "height": "6' 4\"",
+     "weight": "205 lbs",
+     "age": 27,
+     "espnId": "4277890"
     },
     {
      "name": "Cam Whitmore",
@@ -2322,6 +2349,15 @@
      "espnId": "3936099"
     },
     {
+     "name": "Yuki Kawamura",
+     "jersey": "17",
+     "position": "G",
+     "height": "5' 7\"",
+     "weight": "159 lbs",
+     "age": 25,
+     "espnId": "5159895"
+    },
+    {
      "name": "Brook Lopez",
      "jersey": "11",
      "position": "C",
@@ -2428,6 +2464,15 @@
      "weight": "190 lbs",
      "age": 23,
      "espnId": "4683935"
+    },
+    {
+     "name": "DeAndre Williams",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 9\"",
+     "weight": "205 lbs",
+     "age": 30,
+     "espnId": "4397355"
     }
    ]
   },
@@ -2587,15 +2632,6 @@
      "weight": "190 lbs",
      "age": 27,
      "espnId": "4277811"
-    },
-    {
-     "name": "Cole Swider",
-     "jersey": "41",
-     "position": "F",
-     "height": "6' 8\"",
-     "weight": "220 lbs",
-     "age": 27,
-     "espnId": "4397134"
     },
     {
      "name": "Adou Thiero",
@@ -3483,6 +3519,15 @@
      "espnId": "5144091"
     },
     {
+     "name": "Caleb Houstan",
+     "jersey": "33",
+     "position": "F",
+     "height": "6' 8\"",
+     "weight": "205 lbs",
+     "age": 23,
+     "espnId": "4433623"
+    },
+    {
      "name": "AJ Johnson",
      "jersey": "14",
      "position": "G",
@@ -3553,6 +3598,15 @@
      "weight": "235 lbs",
      "age": 22,
      "espnId": "5061589"
+    },
+    {
+     "name": "Jalon Moore",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 6\"",
+     "weight": "211 lbs",
+     "age": 23,
+     "espnId": "4701819"
     },
     {
      "name": "Trey Murphy III",
@@ -5025,6 +5079,15 @@
      "espnId": "4592479"
     },
     {
+     "name": "RJ Davis",
+     "jersey": "14",
+     "position": "G",
+     "height": "6' 0\"",
+     "weight": "175 lbs",
+     "age": 24,
+     "espnId": "4433176"
+    },
+    {
      "name": "Jon Elmore",
      "jersey": "33",
      "position": "G",
@@ -5106,15 +5169,6 @@
      "espnId": "3134916"
     },
     {
-     "name": "Taelon Peter",
-     "jersey": "8",
-     "position": "G",
-     "height": "6' 3\"",
-     "weight": "185 lbs",
-     "age": 24,
-     "espnId": "4703421"
-    },
-    {
      "name": "Jayden Quaintance",
      "jersey": "22",
      "position": "F",
@@ -5133,6 +5187,15 @@
      "espnId": "5105809"
     },
     {
+     "name": "Terry Taylor",
+     "jersey": null,
+     "position": "F",
+     "height": "6' 5\"",
+     "weight": "230 lbs",
+     "age": 27,
+     "espnId": "4279815"
+    },
+    {
      "name": "Devin Vassell",
      "jersey": "24",
      "position": "G",
@@ -5149,15 +5212,6 @@
      "weight": "235 lbs",
      "age": 22,
      "espnId": "5104157"
-    },
-    {
-     "name": "Malik Williams",
-     "jersey": "35",
-     "position": "C",
-     "height": "6' 11\"",
-     "weight": "250 lbs",
-     "age": 28,
-     "espnId": "4277880"
     }
    ]
   },
@@ -5265,15 +5319,6 @@
      "espnId": "4431684"
     },
     {
-     "name": "Trey Jemison III",
-     "jersey": "50",
-     "position": "C",
-     "height": "6' 10\"",
-     "weight": "270 lbs",
-     "age": 26,
-     "espnId": "4395623"
-    },
-    {
      "name": "Tyreke Key",
      "jersey": "11",
      "position": "G",
@@ -5315,7 +5360,7 @@
      "position": "C",
      "height": "7' 0\"",
      "weight": "253 lbs",
-     "age": 30,
+     "age": 31,
      "espnId": "3134908"
     },
     {
@@ -5687,7 +5732,7 @@
      "position": "F",
      "height": "6' 6\"",
      "weight": "220 lbs",
-     "age": 22,
+     "age": 23,
      "espnId": "4433622"
     },
     {
